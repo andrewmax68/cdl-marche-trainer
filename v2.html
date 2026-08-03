@@ -95,9 +95,55 @@
   .hidden{display:none;}
   @media(max-width:580px){.scn .row{grid-template-columns:1fr;}.field{grid-template-columns:1fr 120px;}.diff{margin-left:0;}}
   @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+/* Navigazione principale */
+.app-nav{
+  background:var(--t1);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 12px;
+  margin:0 auto 16px;
+  max-width:840px;
+  border-radius:10px;
+}
+.app-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+  font-weight:600;
+  padding:7px 12px;
+  border-radius:7px;
+  transition:background .2s ease,color .2s ease;
+}
+.app-nav a:hover{
+  background:rgba(255,255,255,.12);
+}
+.app-nav a.active{
+  background:#fff;
+  color:var(--t1);
+}
+@media(max-width:580px){
+  .app-nav{
+    justify-content:flex-start;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+}
+
 </style>
 </head>
 <body>
+
+<nav class="app-nav" aria-label="Navigazione principale">
+  <a href="index.html">🏠 Home</a>
+  <a href="v1.html">Versione 1</a>
+  <a href="v2.html" class="active" aria-current="page">Versione 2</a>
+</nav>
+
 <div class="wrap">
   <header>
     <div class="kicker">Esercitazione · II Prova teorico-pratica</div>

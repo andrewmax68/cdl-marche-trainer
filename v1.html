@@ -48,9 +48,51 @@ pre{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);padding
 @media print{
  body{background:white}.no-print{display:none!important}.card{border-radius:0;break-inside:avoid}main{max-width:none;margin:0;padding:0}
 }
+
+/* Navigazione principale */
+.app-nav{
+  background:#0f2f55;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-bottom:1px solid rgba(255,255,255,.18);
+}
+.app-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 14px;
+  border-radius:8px;
+  transition:background .2s ease,color .2s ease;
+}
+.app-nav a:hover{
+  background:rgba(255,255,255,.14);
+}
+.app-nav a.active{
+  background:#fff;
+  color:#123a63;
+}
+@media(max-width:620px){
+  .app-nav{
+    justify-content:flex-start;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+}
+
 </style>
 </head>
 <body>
+
+<nav class="app-nav no-print" aria-label="Navigazione principale">
+  <a href="index.html">🏠 Home</a>
+  <a href="v1.html" class="active" aria-current="page">Versione 1</a>
+  <a href="v2.html">Versione 2</a>
+</nav>
+
 <header>
   <h1>CdL Marche Trainer 2026 – versione 5.0 audit completo</h1>
   <p>Busta paga, conguaglio e Certificazione Unica con tracce casuali, correzione analitica e modalità esame.</p>
