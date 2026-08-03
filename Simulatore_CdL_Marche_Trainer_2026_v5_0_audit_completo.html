@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulatore CdL Marche 2026 – Busta paga e CU</title>
+<style>
+:root{
+  --bg:#f4f6f8;--card:#fff;--ink:#17212b;--muted:#64707d;--line:#d8dee6;
+  --blue:#123a63;--blue2:#eaf0f6;--green:#1d7a4c;--red:#b42318;--amber:#9a6700;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--blue);color:#fff;padding:18px 22px}
+header h1{margin:0;font-size:24px}
+header p{margin:6px 0 0;opacity:.9}
+main{max-width:1200px;margin:18px auto;padding:0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+label{font-size:13px;font-weight:700;display:block;margin-bottom:5px}
+select,input{border:1px solid #aeb8c5;border-radius:8px;padding:9px 10px;font-size:14px;background:#fff}
+select{min-width:220px}
+button{border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}
+.primary{background:var(--blue);color:#fff}.secondary{background:#e8edf3;color:#1d2a38}.good{background:var(--green);color:#fff}.warn{background:#f2dfaa;color:#503b00}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+h2{font-size:19px;margin:0 0 10px;color:var(--blue)} h3{font-size:15px;margin:16px 0 8px}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.meta div{background:var(--blue2);border-radius:8px;padding:8px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px;text-align:left;vertical-align:top}
+th{background:#eef2f6}
+.answer input{width:100%}
+.small{font-size:12px;color:var(--muted)}
+.note{border-left:4px solid var(--amber);background:#fff7df;padding:10px 12px;font-size:13px;margin-top:10px}
+.novita{border-left:4px solid #2563eb;background:#eef5ff;padding:10px 12px;font-size:13px;margin:10px 0;border-radius:6px}
+.novita b{color:#123a63}
+.novita-tag{display:inline-block;background:#2563eb;color:#fff;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:700;margin-right:6px}
+.storica-tag{display:inline-block;background:#64748b;color:#fff;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:700;margin-right:6px}
+.score{font-size:26px;font-weight:800;color:var(--blue)}
+.ok{color:var(--green);font-weight:700}.ko{color:var(--red);font-weight:700}
+.hidden{display:none}
+.badge{display:inline-block;background:var(--blue2);padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;margin-bottom:8px}
+.progress{height:10px;background:#e7ecf1;border-radius:999px;overflow:hidden;margin-top:6px}
+.progress span{display:block;height:100%;background:var(--blue)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tab{background:#e8edf3}.tab.active{background:var(--blue);color:white}
+pre{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);padding:10px;border-radius:8px;font-size:12px}
+@media print{
+ body{background:white}.no-print{display:none!important}.card{border-radius:0;break-inside:avoid}main{max-width:none;margin:0;padding:0}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>CdL Marche Trainer 2026 – versione 5.0 audit completo</h1>
+  <p>Busta paga, conguaglio e Certificazione Unica con tracce casuali, correzione analitica e modalità esame.</p>
+</header>
+
+<main>
+<div class="card toolbar no-print">
+  <div><label for="module">Modulo</label><select id="module">
+    <option value="payroll">Busta paga</option>
+    <option value="cu">Certificazione Unica</option>
+    <option value="conguaglio">Conguaglio fiscale</option>
+  </select></div>
+  <div><label for="difficulty">Difficoltà</label><select id="difficulty">
+    <option value="base">Base</option>
+    <option value="intermediate" selected>Intermedia</option>
+    <option value="advanced">Avanzata</option>
+  </select></div>
+  <div><label for="mode">Modalità</label><select id="mode">
+    <option value="guided">Guidata</option>
+    <option value="exam">Esame</option>
+  </select></div>
+  <button class="primary" id="generateBtn">Genera nuova traccia</button>
+  <button class="secondary" id="startTimerBtn">Avvia cronometro</button>
+  <button class="secondary" id="stopTimerBtn">Ferma</button>
+  <button class="secondary" id="resetBtn">Azzera</button>
+  <button class="secondary" id="printBtn">Stampa</button>
+  <div style="margin-left:auto">
+    <label>Tempo impiegato</label>
+    <div id="timerDisplay" style="font-size:20px;font-weight:800;color:var(--blue)">00:00:00</div>
+  </div>
+</div>
+
+<div class="tabs no-print">
+  <button class="tab active" data-tab="exercise">Esercizio</button>
+  <button class="tab" data-tab="stats">Statistiche sessione</button>
+  <button class="tab" data-tab="params">Parametri 2026</button>
+</div>
+
+<section id="exerciseTab">
+<div class="grid">
+  <section class="card">
+    <span id="badge" class="badge"></span>
+    <h2 id="title"></h2>
+    <p id="intro"></p>
+    <div class="meta" id="meta"></div>
+
+    <h3>Traccia in stile Commissione Marche</h3>
+    <div id="commissionText" style="background:#f8fafc;border:1px solid var(--line);padding:12px;border-radius:8px;white-space:pre-line"></div>
+
+    <h3>Dati della traccia</h3>
+    <table id="facts"></table>
+
+    <div id="novitaBox"></div>
+
+    <div id="helpBox">
+      <h3>Schema di lavoro</h3>
+      <ol id="steps"></ol>
+    </div>
+
+    <div class="note">
+      Il simulatore è didattico. Quando un parametro varia per settore, qualifica o Comune, prevale sempre il dato esplicitamente indicato nella traccia.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Risposte</h2>
+    <table class="answer">
+      <thead><tr><th>Voce richiesta</th><th>Risposta</th></tr></thead>
+      <tbody id="answers"></tbody>
+    </table>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap" class="no-print">
+      <button class="good" id="checkBtn">Correggi</button>
+      <button class="warn" id="solutionBtn">Mostra soluzione</button>
+    </div>
+    <div id="resultBox" class="hidden">
+      <h3>Esito</h3>
+      <div class="score" id="score"></div>
+      <div class="progress"><span id="scoreBar"></span></div>
+      <table id="sectionScores" style="margin-top:10px"></table>
+      <table id="results" style="margin-top:10px"></table>
+      <h3>Diagnosi</h3>
+      <div id="diagnosis"></div>
+    </div>
+  </section>
+</div>
+</section>
+
+<section id="statsTab" class="card hidden">
+  <h2>Statistiche della sessione</h2>
+  <table>
+    <tr><th>Esercizi corretti</th><td id="sTotal">0</td></tr>
+    <tr><th>Punteggio medio</th><td id="sAvg">0%</td></tr>
+    <tr><th>Errori su imponibile previdenziale</th><td id="sPrev">0</td></tr>
+    <tr><th>Errori su contributi</th><td id="sContr">0</td></tr>
+    <tr><th>Errori su imponibile fiscale</th><td id="sFiscal">0</td></tr>
+    <tr><th>Errori su IRPEF/detrazioni</th><td id="sTax">0</td></tr>
+    <tr><th>Errori su addizionali/conguaglio</th><td id="sAdd">0</td></tr>
+    <tr><th>Errori su CU</th><td id="sCu">0</td></tr>
+    <tr><th>Errori teorico-normativi</th><td id="sTheory">0</td></tr>
+    <tr><th>Tempo medio per esercizio</th><td id="sTime">00:00:00</td></tr>
+  </table>
+</section>
+
+<section id="paramsTab" class="card hidden">
+  <h2>Parametri didattici 2026</h2>
+  <div class="novita"><span class="novita-tag">Novità 2026</span> regola modificata rispetto all'anno precedente. 
+<span class="novita-tag">Parametro 2026</span> soglia o valore applicato agli esercizi 2026. 
+<span class="storica-tag">Regola consolidata</span> disciplina non presentata come novità dell'anno.</div>
+  <table>
+    <tr><th>Stato revisione</th><td><b>Motore prudenziale:</b> non ricava automaticamente aliquote contributive, addizionali o tassi INAIL da dati insufficienti; li fornisce nella traccia.</td></tr>
+    <tr><th>IRPEF</th><td><span class="novita-tag">Verificato nel materiale allegato</span> 23% fino a €28.000; 33% tra €28.000 e €50.000; 43% oltre €50.000.</td></tr>
+    <tr><th>Detrazione lavoro dipendente</th><td><span class="novita-tag">Verificato nel materiale allegato</span> €1.955 fino a €15.000; formula intermedia fino a €28.000; formula decrescente fino a €50.000; maggiorazione €65 tra €25.000 e €35.000.</td></tr>
+    <tr><th>Beneficio fiscale/cuneo 2026</th><td><span class="novita-tag">Novità 2026</span> Fino a €20.000: somma non imponibile con percentuali 7,1%, 5,3% o 4,8%; da €20.000 a €32.000: ulteriore detrazione annua €1.000; da €32.000 a €40.000: detrazione decrescente fino a zero.</td></tr>
+    <tr><th>Buoni pasto elettronici</th><td><span class="novita-tag">Novità 2026</span> Esenti fino a €10 per ticket elettronico. In precedenza la soglia ordinaria era €8.</td></tr>
+    <tr><th>Fringe benefit</th><td><span class="novita-tag">Parametro 2026</span> Soglia €1.000, elevata a €2.000 nei casi previsti. Se la soglia è superata, diventa imponibile l'intero valore.</td></tr>
+    <tr><th>TFR</th><td>La retribuzione utile è sempre dichiarata nella traccia; quota didattica = utile / 13,5 meno contributo 0,50% quando richiesto.</td></tr>
+    <tr><th>INAIL</th><td>Premio mensile = imponibile assicurativo × tasso fornito dalla traccia / 1.000.</td></tr>
+    <tr><th>Aliquote contributive</th><td><span class="novita-tag">Valore 2026</span> Sempre fornite dalla traccia. È gestito anche l'1% IVS sulla quota mensile oltre €4.685, quando applicabile.</td></tr>
+  </table>
+
+  <h3>Registro di attendibilità dei parametri</h3>
+  <table>
+    <tr><th>Parametro</th><th>Trattamento nel simulatore</th><th>Stato</th></tr>
+    <tr><td>Aliquote IRPEF, detrazioni e beneficio cuneo</td><td>Calcolo automatico.</td><td><span class="ok">Supportato dal materiale 2026 allegato</span></td></tr>
+    <tr><td>Aliquota contributiva ordinaria</td><td>È sempre fornita dalla traccia; non viene desunta dal CCNL.</td><td><span class="ok">Approccio prudenziale</span></td></tr>
+    <tr><td>Addizionali regionale e comunale</td><td>Sono rate/importi forniti dalla traccia; non vengono ricavati da un Comune casuale.</td><td><span class="ok">Approccio prudenziale</span></td></tr>
+    <tr><td>Tasso INAIL</td><td>È sempre fornito dalla traccia; non viene dedotto dal settore.</td><td><span class="ok">Approccio prudenziale</span></td></tr>
+    <tr><td>Buoni pasto, fringe benefit e IVS aggiuntivo</td><td>La regola applicata è dichiarata espressamente nella traccia e nella soluzione.</td><td><span style="color:var(--amber);font-weight:700">Da validare anche con esperto paghe prima della diffusione esterna</span></td></tr>
+    <tr><td>CCNL e minimi tabellari</td><td>Non usati per ricavare la paga; il CCNL è solo indicativo e la retribuzione viene fornita.</td><td><span class="ok">Coerente con l'impostazione delle tracce Marche</span></td></tr>
+  </table>
+
+  <h3>Controllo automatico del generatore</h3>
+  <p id="selfTestStatus" class="small">Autotest non ancora eseguito.</p>
+  <button class="secondary no-print" id="selfTestBtn">Esegui autotest su 1.000 tracce</button>
+</section>
+
+<div class="card">
+  <h2>Avvertenza</h2>
+  <p class="small">Versione didattica 5.0: audit coordinato di cedolino, CU e conguaglio; beneficio fiscale/cuneo 2026 integrato; registro di attendibilità e controlli logici automatici. Richiede comunque validazione finale di un esperto paghe prima della diffusione come standard formativo. Resta necessaria una validazione professionale esterna prima di considerarla uno standard formativo definitivo. Non sostituisce un software paghe, le istruzioni ufficiali dell'Agenzia delle Entrate, le circolari INPS/INAIL o la verifica del CCNL applicabile.</p>
+</div>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const round2=n=>Math.round((Number(n)+Number.EPSILON)*100)/100;
+const euro=n=>round2(n).toFixed(2);
+
+function annualTax(y){
+  if(y<=28000) return y*.23;
+  if(y<=50000) return 28000*.23+(y-28000)*.33;
+  return 28000*.23+22000*.33+(y-50000)*.43;
+}
+function employeeDeduction(y,days=365){
+  let d=0;
+  if(y<=15000)d=1955;
+  else if(y<=28000)d=1910+1190*((28000-y)/13000);
+  else if(y<=50000)d=1910*((50000-y)/22000);
+  if(y>25000&&y<=35000)d+=65;
+  return Math.max(0,d)*(days/365);
+}
+
+function employmentTaxBenefit2026(y,days=365){
+  /*
+    Beneficio fiscale/cuneo 2026 secondo il materiale di studio allegato:
+    - fino a 20.000 euro: somma non imponibile calcolata sul reddito;
+    - 20.000-32.000 euro: ulteriore detrazione annua di 1.000 euro;
+    - 32.000-40.000 euro: detrazione decrescente fino a zero;
+    - oltre 40.000 euro: nessun beneficio.
+  */
+  let annual=0, type="nessuno";
+  if(y<=8500){annual=y*.071; type="somma non imponibile";}
+  else if(y<=15000){annual=y*.053; type="somma non imponibile";}
+  else if(y<=20000){annual=y*.048; type="somma non imponibile";}
+  else if(y<=32000){annual=1000; type="ulteriore detrazione";}
+  else if(y<=40000){annual=1000*((40000-y)/8000); type="ulteriore detrazione";}
+  return {annual:Math.max(0,annual)*(days/365),type};
+}
+
+function rand(min,max,step=1){
+  const n=Math.floor((max-min)/step+1);
+  return min+Math.floor(Math.random()*n)*step;
+}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+
+const stats={total:0,sum:0,prev:0,contr:0,fiscal:0,tax:0,add:0,cu:0,theory:0,totalSeconds:0};
+let timerSeconds=0, timerHandle=null, exerciseStartedAt=null;
+
+function formatTime(sec){
+  sec=Math.max(0,Math.floor(sec));
+  const h=String(Math.floor(sec/3600)).padStart(2,"0");
+  const m=String(Math.floor((sec%3600)/60)).padStart(2,"0");
+  const s=String(sec%60).padStart(2,"0");
+  return `${h}:${m}:${s}`;
+}
+function startTimer(){
+  if(timerHandle) return;
+  exerciseStartedAt=exerciseStartedAt||Date.now();
+  timerHandle=setInterval(()=>{timerSeconds++;$("timerDisplay").textContent=formatTime(timerSeconds);},1000);
+}
+function stopTimer(){if(timerHandle){clearInterval(timerHandle);timerHandle=null;}}
+function resetTimer(){stopTimer();timerSeconds=0;exerciseStartedAt=null;$("timerDisplay").textContent="00:00:00";}
+function normRef(category){
+  const refs={gross:"Art. 2099 c.c. e disciplina retributiva indicata nella traccia.",prev:"Art. 51 TUIR: principio di onnicomprensività; rilevanza previdenziale secondo la traccia.",contr:"Obbligazione contributiva e aliquota indicata nella traccia.",fiscal:"Artt. 49 e 51 TUIR: reddito di lavoro dipendente e imponibile fiscale.",tax:"Artt. 11 e 13 TUIR: scaglioni IRPEF e detrazioni per lavoro dipendente.",add:"D.Lgs. 360/1998 e disciplina regionale: addizionali; artt. 17 e 19 TUIR per il TFR.",cu:"Art. 4 DPR 322/1998: Certificazione Unica.",theory:"Art. 64 DPR 600/1973: sostituto d'imposta; art. 23 DPR 600/1973: ritenute."};
+  return refs[category]||"Riferimento normativo da verificare in base alla specifica voce.";
+}
+function commissionPrompt(ex){
+  const lines=ex.facts.map(x=>`• ${x[0]}: ${x[1]}`).join("\n");
+  let request="";
+  if(ex.module==="Busta paga") request="Si richiede al candidato di predisporre il prospetto paga, determinando imponibili, contributi, ritenute fiscali, netto, quota TFR e premio INAIL.";
+  else if(ex.module==="Certificazione Unica") request="Si richiede al candidato di individuare e calcolare i principali dati fiscali, previdenziali e di TFR da riportare nella Certificazione Unica.";
+  else request="Si richiede al candidato di effettuare il conguaglio fiscale di fine anno, considerando i redditi e le ritenute già operate.";
+  return `PROVA TEORICO-PRATICA DI DIRITTO TRIBUTARIO\n\nPremessi brevi cenni sulla figura del sostituto d'imposta e sui relativi obblighi, il/la candidato/a esamini il seguente caso:\n\n${lines}\n\n${request}`;
+}
+function sectionFor(field){
+  const cat=field[4];
+  if(cat==="gross"||cat==="prev"||cat==="contr"||cat==="fiscal") return "Cedolino / imponibili";
+  if(cat==="tax"||cat==="add") return "Fiscalità / conguaglio";
+  if(cat==="cu") return "Certificazione Unica";
+  return "Parte teorica";
+}
+
+function makePayroll(diff){
+  /*
+    Motore prudenziale verificato:
+    - qualifica e retribuzione sono estratte da fasce plausibili;
+    - aliquota contributiva, rate addizionali e tasso INAIL sono DATI DELLA TRACCIA;
+    - il simulatore non pretende di ricavarli dal solo CCNL/Comune/PAT;
+    - buoni pasto elettronici: soglia didattica 2026 pari a €10;
+    - fringe benefit: se la soglia annua è superata, diviene imponibile l'intero valore;
+    - contributo IVS aggiuntivo 1% sulla quota mensile oltre €4.685, se aliquota base <10%.
+  */
+  const profiles={
+    "Commercio/Terziario":{
+      mensilita:14,
+      qualifiche:{
+        "Operaio":{min:1800,max:2450,step:50,varMin:80,varMax:300},
+        "Impiegato":{min:1900,max:3200,step:50,varMin:80,varMax:350},
+        "Quadro":{min:3800,max:5900,step:100,varMin:0,varMax:350}
+      }
+    },
+    "Metalmeccanica industria":{
+      mensilita:13,
+      qualifiche:{
+        "Operaio":{min:1900,max:2950,step:50,varMin:120,varMax:450},
+        "Impiegato":{min:2100,max:3550,step:50,varMin:100,varMax:400},
+        "Quadro":{min:4100,max:6400,step:100,varMin:0,varMax:400}
+      }
+    },
+    "Servizi/Studi":{
+      mensilita:14,
+      qualifiche:{
+        "Operaio":{min:1750,max:2300,step:50,varMin:60,varMax:250},
+        "Impiegato":{min:1850,max:3050,step:50,varMin:60,varMax:300},
+        "Quadro":{min:3600,max:5500,step:100,varMin:0,varMax:300}
+      }
+    }
+  };
+
+  const sector=pick(Object.keys(profiles));
+  const qualification=pick(["Operaio","Impiegato","Quadro"]);
+  const profile=profiles[sector];
+  const q=profile.qualifiche[qualification];
+
+  const gross=rand(q.min,q.max,q.step);
+  const contribRate=pick([.0919,.0946,.0949,.0950]); // dato fornito dalla traccia
+  const days=rand(20,26,1);
+
+  let overtime=0;
+  if(diff!=="base"){
+    if(qualification==="Quadro") overtime=pick([0,0,rand(q.varMin,q.varMax,50)]);
+    else overtime=rand(q.varMin,q.varMax,50);
+  }
+
+  // 2026: buono elettronico esente fino a €10 per ticket.
+  const mealValue=pick([8,9,10,11,12]);
+  const mealTaxable=Math.max(0,(mealValue-10)*days);
+
+  const fringeThreshold=pick([1000,2000]);
+  let fringeAnnual=0;
+  if(diff==="advanced"){
+    fringeAnnual=pick([
+      rand(0,fringeThreshold,100),
+      rand(fringeThreshold+100,fringeThreshold+1200,100)
+    ]);
+  }
+  // Se si supera la soglia, l'intero valore diviene imponibile.
+  const fringeTaxable=fringeAnnual>fringeThreshold ? fringeAnnual : 0;
+
+  const leave104=diff==="advanced"?pick([0,0,16,24]):0;
+  const grossMoney=gross+overtime;
+  const previd=grossMoney+mealTaxable+fringeTaxable;
+
+  const baseContrib=previd*contribRate;
+  const ivsThresholdMonthly=4685;
+  const ivsExtraBase=(contribRate<.10)?Math.max(0,previd-ivsThresholdMonthly):0;
+  const ivsExtra=ivsExtraBase*.01;
+  const contrib=baseContrib+ivsExtra;
+
+  const fiscal=previd-contrib;
+
+  // Reddito presunto costruito coerentemente, poi dichiarato dalla traccia.
+  const annualBase=gross*profile.mensilita;
+  const annualVariable=overtime*8;
+  const annual=round2(annualBase+annualVariable+fringeTaxable+mealTaxable*8);
+
+  /*
+    Convenzione didattica espressa nella traccia:
+    IRPEF annua sul reddito presunto / 12 e detrazione annua / 12.
+    Non viene presentata come unico algoritmo possibile di un software paghe reale.
+  */
+  const annualGrossTax=annualTax(annual);
+  const annualDed=employeeDeduction(annual,365);
+  const grossTax=annualGrossTax/12;
+  const ded=annualDed/12;
+  const taxBenefitData=employmentTaxBenefit2026(annual,365);
+  const annualTaxBenefit=taxBenefitData.annual;
+  const monthlyTaxBenefit=annualTaxBenefit/12;
+  const taxBenefitType=taxBenefitData.type;
+  const netTax=Math.max(0,grossTax-ded);
+  const taxWithBenefit=Math.max(0,netTax-monthlyTaxBenefit);
+
+  /*
+    Le addizionali sono rate fornite dalla traccia.
+    Sono generate entro fasce coerenti con il reddito, ma non sono ricavate
+    automaticamente da una Regione/Comune non specificati.
+  */
+  const incomeBand=annual<28000?"low":annual<=50000?"mid":"high";
+  const addReg=incomeBand==="low"?rand(15,45,5):incomeBand==="mid"?rand(35,85,5):rand(65,130,5);
+  const addCom=incomeBand==="low"?rand(8,25,1):incomeBand==="mid"?rand(18,50,2):rand(35,80,5);
+
+  const net=grossMoney-contrib-taxWithBenefit-addReg-addCom;
+
+  // La traccia dichiara che lordo monetario e variabile sono utili al TFR.
+  const tfrUseful=grossMoney;
+  const tfrGross=tfrUseful/13.5;
+  const tfrContribution=tfrUseful*.005;
+  const tfr=tfrGross-tfrContribution;
+
+  // Tasso espressamente fornito, non desunto dal settore.
+  const inailRate=pick([4,5,7,9,12]);
+  const inail=previd*inailRate/1000;
+
+  const facts=[
+    ["CCNL/settore indicativo",sector],
+    ["Qualifica",qualification],
+    ["Mensilità usate per il reddito presunto",profile.mensilita],
+    ["Retribuzione ordinaria",`€ ${euro(gross)}`],
+    ["Straordinario/elemento variabile",`€ ${euro(overtime)}`],
+    ["Aliquota contributiva base fornita",`${(contribRate*100).toFixed(2)}%`],
+    ["Soglia mensile IVS aggiuntivo 1%",`€ ${euro(ivsThresholdMonthly)}`],
+    ["Reddito presunto annuo fornito",`€ ${euro(annual)}`],
+    ["Convenzione IRPEF della traccia","imposta, detrazione ordinaria e beneficio cuneo annui ÷ 12"],
+    ["Beneficio fiscale/cuneo 2026",`${taxBenefitType}; € ${euro(annualTaxBenefit)} annui`],
+    ["Buoni pasto elettronici",`€ ${mealValue} × ${days} giorni; esenzione fino a €10`],
+    ["Rata addizionale regionale fornita",`€ ${euro(addReg)}`],
+    ["Rata addizionale comunale fornita",`€ ${euro(addCom)}`],
+    ["Retribuzione utile TFR dichiarata",`€ ${euro(tfrUseful)}`],
+    ["Tasso INAIL fornito",`${inailRate}‰`]
+  ];
+  if(fringeAnnual>0){
+    facts.push(["Fringe benefit annuali",`€ ${euro(fringeAnnual)}`]);
+    facts.push(["Soglia fringe applicabile",`€ ${euro(fringeThreshold)}`]);
+    facts.push(["Regola esplicitata","se la soglia è superata, è imponibile l'intero valore"]);
+  }
+  if(leave104>0) facts.push(["Permessi L.104",`${leave104} ore retribuite, senza decurtazione del lordo mensile`]);
+
+  return {
+    module:"Busta paga",
+    title:"Cedolino casuale 2026 – motore prudenziale",
+    intro:"Tutti i parametri non ricavabili univocamente sono forniti dalla traccia. Il candidato deve applicare correttamente le regole e verificare la coerenza dei risultati.",
+    meta:[
+      ["Difficoltà",diff],
+      ["Periodo","mese ordinario 2026"],
+      ["Settore",sector],
+      ["Qualifica",qualification]
+    ],
+    facts,
+    context:{
+      gross,overtime,grossMoney,mealValue,days,mealTaxable,
+      fringeAnnual,fringeThreshold,fringeTaxable,previd,contribRate,
+      baseContrib,ivsThresholdMonthly,ivsExtraBase,ivsExtra,contrib,fiscal,
+      annual,annualGrossTax,annualDed,grossTax,ded,annualTaxBenefit,monthlyTaxBenefit,taxBenefitType,netTax,taxWithBenefit,addReg,addCom,net,
+      tfrUseful,tfrGross,tfrContribution,tfr,inailRate,inail,
+      sector,qualification,mensilita:profile.mensilita
+    },
+    novita:[
+      {
+        tipo:"Novità 2026",
+        titolo:"Buoni pasto elettronici",
+        testo:"Nel simulatore la soglia di esenzione è €10 per ticket elettronico. La soglia precedente era €8. Solo l'eventuale eccedenza rispetto a €10 entra negli imponibili."
+      },
+      {
+        tipo:"Parametro 2026",
+        titolo:"Fringe benefit",
+        testo:"La traccia indica la soglia applicabile (€1.000 oppure €2.000). Se il valore complessivo supera la soglia, diventa imponibile l'intero ammontare, non soltanto l'eccedenza."
+      },
+      {
+        tipo:"Novità 2026",
+        titolo:"Beneficio fiscale sul lavoro dipendente",
+        testo:"Il simulatore calcola la somma non imponibile fino a €20.000 oppure l'ulteriore detrazione tra €20.000 e €40.000, sulla base del reddito presunto annuo."
+      },
+      {
+        tipo:"Valore 2026",
+        titolo:"Contributo IVS aggiuntivo",
+        testo:"Quando applicabile, il simulatore calcola l'1% sulla quota mensile che supera €4.685. L'aliquota contributiva base resta comunque un dato fornito dalla traccia."
+      }
+    ],
+    steps:[
+      "Controllare qualifica, retribuzione, mensilità e reddito presunto.",
+      "Calcolare il lordo monetario.",
+      "Verificare buoni pasto e fringe benefit ai fini dell'imponibilità.",
+      "Determinare imponibile previdenziale e contributi, incluso l'eventuale IVS aggiuntivo.",
+      "Determinare imponibile fiscale.",
+      "Applicare la convenzione IRPEF dichiarata dalla traccia.",
+      "Sottrarre le rate delle addizionali fornite.",
+      "Calcolare TFR e premio INAIL sui valori espressamente indicati."
+    ],
+    fields:[
+      ["gross","Lordo monetario",grossMoney,"Retribuzione ordinaria più elemento variabile.","gross"],
+      ["meal","Buoni pasto imponibili",mealTaxable,"Solo la quota oltre €10 per ciascun ticket elettronico.","prev"],
+      ["fringe","Fringe imponibile",fringeTaxable,"Zero entro soglia; intero valore se la soglia è superata.","prev"],
+      ["prev","Imponibile previdenziale",previd,"Lordo monetario più utilità imponibili.","prev"],
+      ["baseContr","Contributi base dipendente",baseContrib,"Imponibile previdenziale × aliquota base fornita.","contr"],
+      ["ivsExtra","Contributo IVS aggiuntivo 1%",ivsExtra,"1% sulla quota mensile oltre €4.685, se l'aliquota base è inferiore al 10%.","contr"],
+      ["contr","Contributi dipendente totali",contrib,"Contributi base più eventuale IVS aggiuntivo.","contr"],
+      ["fiscal","Imponibile fiscale",fiscal,"Imponibile previdenziale meno contributi a carico dipendente.","fiscal"],
+      ["grossTax","IRPEF lorda mensile",grossTax,"Secondo la convenzione di annualizzazione esplicitata.","tax"],
+      ["ded","Detrazione ordinaria mensile",ded,"Detrazione annua ex art. 13 rapportata a 12 mensilità.","tax"],
+      ["taxBenefit","Beneficio fiscale/cuneo mensile",monthlyTaxBenefit,"Somma non imponibile o ulteriore detrazione 2026 rapportata al mese.","tax"],
+      ["netTax","IRPEF netta prima del beneficio",netTax,"IRPEF lorda meno detrazione ordinaria.","tax"],
+      ["taxWithBenefit","Ritenuta IRPEF dopo il beneficio",taxWithBenefit,"IRPEF netta ridotta del beneficio fiscale 2026, entro il limite dell'imposta.","tax"],
+      ["net","Netto monetario",net,"Lordo monetario meno contributi, ritenuta IRPEF dopo il beneficio e rate addizionali.","add"],
+      ["tfr","TFR netto didattico",tfr,"Retribuzione utile dichiarata / 13,5 meno contributo 0,50%.","add"],
+      ["inail","Premio INAIL",inail,"Imponibile assicurativo × tasso fornito / 1.000.","add"]
+    ]
+  };
+}
+
+function makeCU(diff){
+  const income=rand(9000,42000,500);
+  const days=diff==="base"?365:rand(120,365,5);
+  const grossTax=annualTax(income);
+  const ded=employeeDeduction(income,days);
+  const netTax=Math.max(0,grossTax-ded);
+  const taxBenefitData=employmentTaxBenefit2026(income,days);
+  const taxBenefit=taxBenefitData.annual;
+  const finalWithholding=Math.max(0,netTax-taxBenefit);
+  const regional=round2(income*pick([.0123,.0133,.014]));
+  const municipal=round2(income*pick([.006,.007,.008]));
+  const prev=round2(income+rand(1500,3500,250));
+  const contr=round2(prev*pick([.0946,.0949,.095]));
+  const tfr=round2(income/13.5);
+  const bonus=income<20000?rand(300,900,50):0;
+
+  return {
+    module:"Certificazione Unica",
+    title:"CU casuale 2026",
+    intro:"Completa i principali campi della CU sulla base dei dati annuali.",
+    meta:[["Difficoltà",diff],["Anno redditi","2026"],["Rapporto",days===365?"intero anno":"parte dell'anno"],["Giorni",String(days)]],
+    context:{income,days,grossTax,ded,netTax,taxBenefit,taxBenefitType:taxBenefitData.type,finalWithholding,regional,municipal,prev,contr,tfr,bonus},
+    facts:[
+      ["Reddito lavoro dipendente",`€ ${euro(income)}`],
+      ["Giorni di detrazione",days],
+      ["Imponibile previdenziale",`€ ${euro(prev)}`],
+      ["Contributi lavoratore",`€ ${euro(contr)}`],
+      ["TFR maturato",`€ ${euro(tfr)}`],
+      ["Trattamento integrativo storico/altro dato fornito",`€ ${euro(bonus)}`],
+      ["Beneficio fiscale/cuneo 2026",`${taxBenefitData.type}; € ${euro(taxBenefit)}`]
+    ],
+    novita:[
+      {
+        tipo:"Parametri fiscali 2026",
+        titolo:"Aliquote e detrazioni",
+        testo:"La simulazione applica gli scaglioni IRPEF e le detrazioni da lavoro dipendente impostati nella sezione Parametri 2026."
+      }
+    ],
+    steps:[
+      "Calcolare imposta lorda annua.",
+      "Calcolare detrazione lavoro per i giorni spettanti.",
+      "Determinare imposta netta e ritenute.",
+      "Calcolare addizionali secondo le aliquote indicate.",
+      "Riportare imponibile previdenziale, contributi e TFR."
+    ],
+    fields:[
+      ["income","Reddito lavoro dipendente",income,"Dato fornito.","cu"],
+      ["days","Giorni detrazione",days,"Dato fornito.","cu"],
+      ["grossTax","Imposta lorda",grossTax,"Applicare gli scaglioni IRPEF 2026.","tax"],
+      ["ded","Detrazione lavoro",ded,"Applicare la formula ex art. 13 e proporzionare ai giorni.","tax"],
+      ["netTax","Imposta netta prima del beneficio",netTax,"Imposta lorda meno detrazione ordinaria.","tax"],
+      ["taxBenefit","Beneficio fiscale/cuneo 2026",taxBenefit,"Beneficio annuale rapportato ai giorni di lavoro.","tax"],
+      ["withheld","Ritenute IRPEF finali",finalWithholding,"Imposta netta ridotta del beneficio 2026.","cu"],
+      ["regional","Addizionale regionale",regional,"Reddito × aliquota prevista dalla traccia.","add"],
+      ["municipal","Addizionale comunale",municipal,"Reddito × aliquota prevista dalla traccia.","add"],
+      ["prev","Imponibile previdenziale",prev,"Dato fornito.","cu"],
+      ["contr","Contributi lavoratore",contr,"Dato fornito.","cu"],
+      ["tfr","TFR maturato",tfr,"Dato fornito.","cu"],
+      ["bonus","Trattamento integrativo",bonus,"Dato fornito.","cu"]
+    ]
+  };
+}
+
+function makeConguaglio(diff){
+  const prevIncome=diff==="base"?0:rand(7000,14000,500);
+  const currentIncome=rand(9000,22000,500);
+  const total=prevIncome+currentIncome;
+  const prevWithheld=round2(annualTax(prevIncome)-employeeDeduction(prevIncome,180));
+  const currentWithheld=round2((annualTax(currentIncome)-employeeDeduction(currentIncome,185))*pick([.8,.9,1]));
+  const grossTax=annualTax(total);
+  const ded=employeeDeduction(total,365);
+  const dueBeforeBenefit=Math.max(0,grossTax-ded);
+  const benefitData=employmentTaxBenefit2026(total,365);
+  const benefitDue=benefitData.annual;
+  const due=Math.max(0,dueBeforeBenefit-benefitDue);
+  const benefitAlready=round2(benefitDue*pick([.70,.85,1]));
+  const totalAlreadyWithheld=prevWithheld+currentWithheld-benefitAlready;
+  const diffTax=due-totalAlreadyWithheld;
+  const regional=round2(total*.0123);
+  const municipal=round2(total*.008);
+
+  return {
+    module:"Conguaglio fiscale",
+    title:"Conguaglio casuale 2026",
+    intro:"Ricalcola l'imposta annua tenendo conto dell'eventuale CU del precedente datore.",
+    meta:[["Difficoltà",diff],["Anno","2026"],["Rapporti",prevIncome>0?"due":"uno"],["Conguaglio","dicembre"]],
+    context:{prevIncome,currentIncome,total,prevWithheld,currentWithheld,grossTax,ded,dueBeforeBenefit,benefitDue,benefitType:benefitData.type,benefitAlready,totalAlreadyWithheld,due,diffTax,regional,municipal},
+    facts:[
+      ["Reddito precedente datore",`€ ${euro(prevIncome)}`],
+      ["Ritenute precedente datore",`€ ${euro(prevWithheld)}`],
+      ["Reddito attuale datore",`€ ${euro(currentIncome)}`],
+      ["Ritenute attuale datore prima del beneficio",`€ ${euro(currentWithheld)}`],
+      ["Beneficio fiscale 2026 già riconosciuto",`€ ${euro(benefitAlready)}`],
+      ["Aliquota addizionale regionale","1,23%"],
+      ["Aliquota addizionale comunale","0,80%"]
+    ],
+    novita:[
+      {
+        tipo:"Parametri fiscali 2026",
+        titolo:"Conguaglio annuale",
+        testo:"Il ricalcolo utilizza gli scaglioni e le detrazioni 2026. I redditi e le ritenute dei rapporti precedenti sono dati espressamente forniti dalla traccia."
+      }
+    ],
+    steps:[
+      "Sommare i redditi dei rapporti.",
+      "Ricalcolare IRPEF lorda e detrazioni sull'intero anno.",
+      "Confrontare l'imposta dovuta con le ritenute già operate.",
+      "Determinare trattenuta o rimborso.",
+      "Calcolare le addizionali sull'imponibile annuale."
+    ],
+    fields:[
+      ["total","Reddito complessivo",total,"Somma dei redditi dei due rapporti.","fiscal"],
+      ["grossTax","IRPEF lorda annua",grossTax,"Applicare gli scaglioni 2026.","tax"],
+      ["ded","Detrazione annua",ded,"Detrazione lavoro ex art. 13.","tax"],
+      ["dueBefore","IRPEF dovuta prima del beneficio",dueBeforeBenefit,"Imposta lorda meno detrazione ordinaria.","tax"],
+      ["benefitDue","Beneficio fiscale 2026 spettante",benefitDue,"Beneficio annuale ricalcolato sul reddito complessivo.","tax"],
+      ["due","IRPEF dovuta dopo il beneficio",due,"Imposta dovuta ridotta del beneficio fiscale 2026.","tax"],
+      ["already","Ritenute nette già operate",totalAlreadyWithheld,"Ritenute dei datori meno beneficio già riconosciuto.","add"],
+      ["balance","Conguaglio da trattenere (+) o rimborsare (-)",diffTax,"Imposta dovuta meno ritenute già operate.","add"],
+      ["regional","Addizionale regionale",regional,"Reddito complessivo × 1,23%.","add"],
+      ["municipal","Addizionale comunale",municipal,"Reddito complessivo × 0,80%.","add"]
+    ]
+  };
+}
+
+let current=null;
+
+function generate(){
+  const m=$("module").value,d=$("difficulty").value;
+  current=m==="payroll"?makePayroll(d):m==="cu"?makeCU(d):makeConguaglio(d);
+  render();
+}
+function render(){
+  $("badge").textContent=current.module;
+  $("title").textContent=current.title;
+  $("intro").textContent=current.intro;
+  $("meta").innerHTML=current.meta.map(x=>`<div><b>${x[0]}:</b> ${x[1]}</div>`).join("");
+  $("commissionText").textContent=commissionPrompt(current);
+  $("facts").innerHTML="<tr><th>Dato</th><th>Valore</th></tr>"+current.facts.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`).join("");
+  $("steps").innerHTML=current.steps.map(x=>`<li>${x}</li>`).join("");
+  const novita=current.novita||[];
+  $("novitaBox").innerHTML=novita.length
+    ? `<h3>Commenti sulle novità e sui parametri 2026</h3>`+
+      novita.map(n=>`<div class="novita"><span class="novita-tag">${n.tipo}</span><b>${n.titolo}</b><br>${n.testo}</div>`).join("")
+    : "";
+  $("answers").innerHTML=current.fields.map(f=>`<tr><td>${f[1]}</td><td><input type="number" step="0.01" id="a_${f[0]}" placeholder="0,00"></td></tr>`).join("");
+  $("resultBox").classList.add("hidden");
+  resetTimer();
+  $("helpBox").style.display=$("mode").value==="guided"?"block":"none";
+}
+
+function detailedCalc(field){
+  const id=field[0], c=current.context||{};
+  if(current.module==="Busta paga"){
+    const m={
+      gross:`Retribuzione ordinaria € ${euro(c.gross)} + elemento variabile € ${euro(c.overtime)} = € ${euro(c.grossMoney)}.`,
+      meal:`<span class="novita-tag">Novità 2026</span> Quota imponibile per ticket: max(€ ${euro(c.mealValue)} − € 10,00; 0) = € ${euro(Math.max(0,c.mealValue-10))}. Per ${c.days} giorni: € ${euro(c.mealTaxable)}. La precedente soglia ordinaria era €8.`,
+      fringe:c.fringeAnnual>c.fringeThreshold
+        ? `<span class="novita-tag">Parametro 2026</span> Fringe € ${euro(c.fringeAnnual)} > soglia € ${euro(c.fringeThreshold)}: diventa imponibile l'intero valore di € ${euro(c.fringeTaxable)}, non soltanto l'eccedenza.`
+        : `<span class="novita-tag">Parametro 2026</span> Fringe € ${euro(c.fringeAnnual)} entro soglia € ${euro(c.fringeThreshold)}: imponibile € 0,00.`,
+      prev:`Lordo monetario € ${euro(c.grossMoney)} + buoni pasto imponibili € ${euro(c.mealTaxable)} + fringe imponibile € ${euro(c.fringeTaxable)} = € ${euro(c.previd)}.`,
+      baseContr:`Imponibile previdenziale € ${euro(c.previd)} × ${(c.contribRate*100).toFixed(2)}% = € ${euro(c.baseContrib)}.`,
+      ivsExtra:c.ivsExtra>0
+        ? `<span class="novita-tag">Valore 2026</span> Quota oltre soglia: € ${euro(c.previd)} − € ${euro(c.ivsThresholdMonthly)} = € ${euro(c.ivsExtraBase)}; × 1% = € ${euro(c.ivsExtra)}.`
+        : `<span class="novita-tag">Valore 2026</span> Imponibile € ${euro(c.previd)} non genera contributo aggiuntivo: quota oltre € ${euro(c.ivsThresholdMonthly)} = € ${euro(c.ivsExtraBase)}; contributo € 0,00.`,
+      contr:`Contributi base € ${euro(c.baseContrib)} + IVS aggiuntivo € ${euro(c.ivsExtra)} = € ${euro(c.contrib)}.`,
+      fiscal:`Imponibile previdenziale € ${euro(c.previd)} − contributi dipendente € ${euro(c.contrib)} = € ${euro(c.fiscal)}.`,
+      grossTax:`Reddito presunto € ${euro(c.annual)}: IRPEF annua per scaglioni = € ${euro(c.annualGrossTax)}. Convenzione della traccia: € ${euro(c.annualGrossTax)} ÷ 12 = € ${euro(c.grossTax)}.`,
+      ded:`Detrazione annua ordinaria = € ${euro(c.annualDed)}. Convenzione della traccia: € ${euro(c.annualDed)} ÷ 12 = € ${euro(c.ded)}.`,
+      taxBenefit:`<span class="novita-tag">Novità 2026</span> Reddito presunto € ${euro(c.annual)}: ${c.taxBenefitType}. Beneficio annuo € ${euro(c.annualTaxBenefit)} ÷ 12 = € ${euro(c.monthlyTaxBenefit)}.`,
+      netTax:`IRPEF lorda mensile € ${euro(c.grossTax)} − detrazione ordinaria € ${euro(c.ded)} = € ${euro(c.netTax)}.`,
+      taxWithBenefit:`IRPEF netta prima del beneficio € ${euro(c.netTax)} − beneficio 2026 € ${euro(c.monthlyTaxBenefit)} = € ${euro(c.taxWithBenefit)} trattenuti, senza scendere sotto zero.`,
+      net:`Lordo monetario € ${euro(c.grossMoney)} − contributi € ${euro(c.contrib)} − ritenuta IRPEF dopo beneficio € ${euro(c.taxWithBenefit)} − rata regionale € ${euro(c.addReg)} − rata comunale € ${euro(c.addCom)} = € ${euro(c.net)}.`,
+      tfr:`Retribuzione utile dichiarata € ${euro(c.tfrUseful)} ÷ 13,5 = quota lorda € ${euro(c.tfrGross)}. Contributo 0,50%: € ${euro(c.tfrUseful)} × 0,50% = € ${euro(c.tfrContribution)}. Quota netta didattica: € ${euro(c.tfrGross)} − € ${euro(c.tfrContribution)} = € ${euro(c.tfr)}.`,
+      inail:`Imponibile assicurativo € ${euro(c.previd)} × ${c.inailRate}‰ ÷ 1.000 = € ${euro(c.inail)}. Il tasso è fornito dalla traccia.`
+    };
+    return m[id]||field[3];
+  }
+  if(current.module==="Certificazione Unica"){
+    const m={
+      income:`Dato della traccia da riportare nella sezione fiscale: € ${euro(c.income)}.`,
+      days:`Giorni utili indicati dalla traccia: ${c.days}.`,
+      grossTax:`IRPEF su € ${euro(c.income)} = € ${euro(c.grossTax)} applicando gli scaglioni 2026.`,
+      ded:`Detrazione annua teorica ex art. 13 × ${c.days}/365 = € ${euro(c.ded)}.`,
+      netTax:`Imposta lorda € ${euro(c.grossTax)} − detrazione ordinaria € ${euro(c.ded)} = € ${euro(c.netTax)}.`,
+      taxBenefit:`<span class="novita-tag">Novità 2026</span> ${c.taxBenefitType}: beneficio annuo rapportato ai giorni = € ${euro(c.taxBenefit)}.`,
+      withheld:`Ritenute finali: imposta netta € ${euro(c.netTax)} − beneficio 2026 € ${euro(c.taxBenefit)} = € ${euro(c.finalWithholding)}, senza scendere sotto zero.`,
+      regional:`Reddito € ${euro(c.income)} × aliquota regionale della traccia = € ${euro(c.regional)}.`,
+      municipal:`Reddito € ${euro(c.income)} × aliquota comunale della traccia = € ${euro(c.municipal)}.`,
+      prev:`Dato previdenziale da riportare: € ${euro(c.prev)}.`,
+      contr:`Contributi a carico lavoratore da riportare: € ${euro(c.contr)}.`,
+      tfr:`TFR maturato da riportare nella sezione dedicata: € ${euro(c.tfr)}.`,
+      bonus:`Trattamento integrativo erogato: € ${euro(c.bonus)}.`
+    };
+    return m[id]||field[3];
+  }
+  if(current.module==="Conguaglio fiscale"){
+    const m={
+      total:`Reddito precedente € ${euro(c.prevIncome)} + reddito attuale € ${euro(c.currentIncome)} = € ${euro(c.total)}.`,
+      grossTax:`IRPEF lorda sul reddito complessivo € ${euro(c.total)} = € ${euro(c.grossTax)}.`,
+      ded:`Detrazione annua ex art. 13 sul reddito € ${euro(c.total)} = € ${euro(c.ded)}.`,
+      dueBefore:`IRPEF lorda € ${euro(c.grossTax)} − detrazione ordinaria € ${euro(c.ded)} = € ${euro(c.dueBeforeBenefit)}.`,
+      benefitDue:`<span class="novita-tag">Novità 2026</span> Sul reddito complessivo € ${euro(c.total)} spetta ${c.benefitType} per € ${euro(c.benefitDue)}.`,
+      due:`IRPEF dovuta prima del beneficio € ${euro(c.dueBeforeBenefit)} − beneficio spettante € ${euro(c.benefitDue)} = € ${euro(c.due)}.`,
+      already:`Ritenute lorde precedenti € ${euro(c.prevWithheld+c.currentWithheld)} − beneficio già riconosciuto € ${euro(c.benefitAlready)} = ritenute nette € ${euro(c.totalAlreadyWithheld)}.`,
+      balance:`IRPEF dovuta dopo beneficio € ${euro(c.due)} − ritenute nette già operate € ${euro(c.totalAlreadyWithheld)} = € ${euro(c.diffTax)}. Positivo = trattenuta; negativo = rimborso.`,
+      regional:`Reddito complessivo € ${euro(c.total)} × 1,23% = € ${euro(c.regional)}.`,
+      municipal:`Reddito complessivo € ${euro(c.total)} × 0,80% = € ${euro(c.municipal)}.`
+    };
+    return m[id]||field[3];
+  }
+  return field[3];
+}
+
+function correct(showSolution=false){
+  stopTimer();
+  let ok=0,rows="<tr><th>Voce</th><th>Tua risposta</th><th>Corretta</th><th>Esito, calcolo e norma</th></tr>";
+  const localErrors={prev:0,contr:0,fiscal:0,tax:0,add:0,cu:0,gross:0,theory:0};
+  const sections={};
+  current.fields.forEach(f=>{
+    const el=$("a_"+f[0]);let v=parseFloat(el.value);const exp=round2(f[2]);
+    if(showSolution){v=exp;el.value=euro(exp);}
+    const good=Number.isFinite(v)&&Math.abs(v-exp)<=0.02;
+    if(good)ok++;else localErrors[f[4]]=(localErrors[f[4]]||0)+1;
+    const sec=sectionFor(f);if(!sections[sec])sections[sec]={ok:0,total:0};sections[sec].total++;if(good)sections[sec].ok++;
+    rows+=`<tr><td>${f[1]}</td><td>${Number.isFinite(v)?euro(v):"—"}</td><td>${euro(exp)}</td><td class="${good?"ok":"ko"}">${good?"Corretto":"Da correggere"}<div class="small"><b>Passaggi:</b> ${detailedCalc(f)}<br><b>Norma:</b> ${normRef(f[4])}</div></td></tr>`;
+  });
+  const pct=Math.round(ok/current.fields.length*100);
+  $("score").textContent=`Punteggio complessivo: ${pct}/100 – Tempo ${formatTime(timerSeconds)}`;
+  $("scoreBar").style.width=pct+"%";
+  $("results").innerHTML=rows;
+  $("sectionScores").innerHTML="<tr><th>Sezione</th><th>Punteggio</th></tr>"+Object.entries(sections).map(([k,v])=>`<tr><td>${k}</td><td>${v.ok}/${v.total} – ${Math.round(v.ok/v.total*100)}%</td></tr>`).join("");
+  $("diagnosis").innerHTML=buildDiagnosis(localErrors,pct);
+  $("resultBox").classList.remove("hidden");
+  if(!showSolution){
+    stats.total++;stats.sum+=pct;stats.totalSeconds+=timerSeconds;
+    stats.prev+=localErrors.prev||0;stats.contr+=localErrors.contr||0;stats.fiscal+=localErrors.fiscal||0;stats.tax+=localErrors.tax||0;stats.add+=localErrors.add||0;stats.cu+=localErrors.cu||0;stats.theory+=localErrors.theory||0;
+    updateStats();
+  }
+}
+function buildDiagnosis(e,pct){
+  let a=[];
+  if(pct===100)a.push("<p class='ok'>Esercizio interamente corretto.</p>");
+  if(e.prev)a.push("<p><b>Imponibile previdenziale:</b> ricontrolla la soglia di €10 dei buoni pasto elettronici e la regola per cui, superata la soglia fringe, diventa imponibile l'intero valore.</p>");
+  if(e.contr)a.push("<p><b>Contributi:</b> verifica aliquota e base imponibile.</p>");
+  if(e.fiscal)a.push("<p><b>Imponibile fiscale:</b> non applicare l'IRPEF direttamente sul lordo; sottrai prima i contributi.</p>");
+  if(e.tax)a.push("<p><b>IRPEF/detrazioni:</b> ricontrolla scaglioni, reddito presunto e proporzione dei giorni.</p>");
+  if(e.add)a.push("<p><b>Addizionali/conguaglio:</b> verifica se l'importo è una rata, un saldo o un ricalcolo annuale.</p>");
+  if(e.cu)a.push("<p><b>CU:</b> ricontrolla la collocazione tra sezione fiscale, previdenziale e TFR.</p>");
+  return a.join("")||"<p>Nessuna diagnosi disponibile.</p>";
+}
+function updateStats(){
+  $("sTotal").textContent=stats.total;
+  $("sAvg").textContent=stats.total?Math.round(stats.sum/stats.total)+"%":"0%";
+  $("sPrev").textContent=stats.prev;$("sContr").textContent=stats.contr;$("sFiscal").textContent=stats.fiscal;$("sTax").textContent=stats.tax;$("sAdd").textContent=stats.add;$("sCu").textContent=stats.cu;
+  $("sTheory").textContent=stats.theory;
+  $("sTime").textContent=stats.total?formatTime(stats.totalSeconds/stats.total):"00:00:00";
+}
+function resetAnswers(){ if(current) render(); }
+
+
+function validateGeneratedExercise(ex){
+  const errors=[];
+  const c=ex.context||{};
+  if(ex.module==="Busta paga"){
+    if(c.qualification==="Quadro" && c.gross<3500) errors.push("Quadro con retribuzione troppo bassa");
+    if(c.qualification==="Operaio" && c.gross>3200) errors.push("Operaio fuori fascia");
+    if(c.annual < c.gross*c.mensilita) errors.push("Reddito annuo inferiore alla retribuzione fissa proiettata");
+    if(c.mealTaxable<0 || c.fringeTaxable<0) errors.push("Imponibile benefit negativo");
+    if(c.fringeAnnual<=c.fringeThreshold && c.fringeTaxable!==0) errors.push("Fringe entro soglia ma imponibile");
+    if(c.fringeAnnual>c.fringeThreshold && c.fringeTaxable!==c.fringeAnnual) errors.push("Fringe oltre soglia non integralmente imponibile");
+    const expectedMeal=Math.max(0,(c.mealValue-10)*c.days);
+    if(Math.abs(c.mealTaxable-expectedMeal)>.01) errors.push("Buoni pasto incoerenti");
+    const expectedExtra=(c.contribRate<.10)?Math.max(0,c.previd-4685)*.01:0;
+    if(Math.abs(c.ivsExtra-expectedExtra)>.02) errors.push("IVS aggiuntivo incoerente");
+    if(c.contrib<0 || c.fiscal<0 || c.net<0) errors.push("Risultato negativo non plausibile");
+    const b=employmentTaxBenefit2026(c.annual,365);
+    if(Math.abs(c.annualTaxBenefit-b.annual)>.02) errors.push("Beneficio fiscale 2026 incoerente");
+    if(c.taxWithBenefit<0 || c.taxWithBenefit>c.netTax+.02) errors.push("Ritenuta dopo beneficio incoerente");
+    if(c.addReg<0 || c.addCom<0) errors.push("Addizionale negativa");
+    if(c.inailRate<=0 || c.inail<0) errors.push("INAIL incoerente");
+  }
+  for(const f of ex.fields){
+    if(!Number.isFinite(Number(f[2]))) errors.push("Campo non numerico: "+f[1]);
+  }
+  return errors;
+}
+function runSelfTest(){
+  const failures=[];
+  ["base","intermediate","advanced"].forEach(d=>{
+    for(let i=0;i<334;i++){
+      const ex=makePayroll(d);
+      const errs=validateGeneratedExercise(ex);
+      if(errs.length) failures.push({d,errs,ex});
+    }
+  });
+  if(failures.length===0){
+    $("selfTestStatus").innerHTML="<span class='ok'>Autotest superato:</span> 1.002 tracce di busta paga generate senza anomalie logiche rilevate.";
+  }else{
+    $("selfTestStatus").innerHTML="<span class='ko'>Autotest non superato:</span> "+failures.length+" tracce anomale. Non utilizzare il generatore finché non corretto.";
+    console.error("Autotest failures",failures);
+  }
+}
+
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+  $("exerciseTab").classList.add("hidden");$("statsTab").classList.add("hidden");$("paramsTab").classList.add("hidden");
+  $(b.dataset.tab+"Tab").classList.remove("hidden");
+}));
+$("generateBtn").addEventListener("click",generate);
+$("startTimerBtn").addEventListener("click",startTimer);
+$("stopTimerBtn").addEventListener("click",stopTimer);
+$("resetBtn").addEventListener("click",resetAnswers);
+$("checkBtn").addEventListener("click",()=>correct(false));
+$("solutionBtn").addEventListener("click",()=>correct(true));
+$("mode").addEventListener("change",()=>{$("helpBox").style.display=$("mode").value==="guided"?"block":"none"});
+$("printBtn").addEventListener("click",()=>window.print());
+$("selfTestBtn").addEventListener("click",runSelfTest);
+generate();
+runSelfTest();
+</script>
+</body>
+</html>
