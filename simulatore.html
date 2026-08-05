@@ -231,6 +231,7 @@
       <br><br><b>CU (redditi 2025):</b> il tab CU applica il <b>2&deg; scaglione al 35%</b> (aliquota vigente sui redditi 2025, ante riduzione a 33% della L. 199/2025), coerente con l'etichetta &laquo;periodo 2025&raquo; e con la CU 2026.
       <br><br><b>SEMPLIFICATO</b> (approssimazione didattica dichiarata): <b>indennità di malattia</b> calcolata su retribuzione giornaliera con divisore <b>/26</b> anziché sulla RMG del mese precedente con divisore 30 (sovrastima ~15%; all'esame il divisore 30 è fornito dalla traccia); <b>base TFR</b> ex art. 2120 c.c. approssimata alla retribuzione contrattuale (retrib./13,5), mentre lo <b>0,50% ex L. 297/82</b> è correttamente calcolato sull'imponibile previdenziale; detrazioni mensili ragguagliate a giorni di calendario del mese.
       <br><br><b>FUORI PERIMETRO</b> (non modellato, mai generato dalle tracce): redditi &le; &euro; 20.000 (dove il cuneo opera come somma integrativa esente, non come detrazione — confermato dal riscontro su cedolini reali part-time); massimale/minimale contributivo; trattamento integrativo ex DL 3/2020; imposta sostitutiva su detassazione premi/incrementi 2026; part-time; ratei 13&ordf;/14&ordf;; rivalutazione TFR e quota ante-2001 a tassazione separata; CCNL diversi dai tre generati.
+      <br><br><b>Ente bilaterale e FIS/CIGS:</b> anche nei tre CCNL supportati, questi contributi (specifici di settore, con nome, importo e regole propri del singolo CCNL) <b>non sono scomposti</b> come voci separate: sono compresi nell'aliquota INPS c/dipendente aggregata (9,19/9,46/9,49%). Nella realt&agrave; compaiono come righe distinte in busta (es. "Ente bilat." e "Ritenuta FIS/Sostegno reddito"), con importi non ricavabili dall'aliquota unica qui utilizzata — segnalato da un formatore CdL in fase di revisione.
     </div>
   </details>
 
@@ -358,11 +359,12 @@ function genCedolino(){
   if(av&&EVENTI.cessione)cessione=r2(nettoPre/5*rnd(0.6,1.0));
   const netto=r2(nettoPre-cessione);
   const tfr=r2(b.lordo/13.5-impPrev*0.005), inail=r2(impPrev*tassoInail/1000);
-  return {av,scn:{...b,aliq,mese,ggMese,ggLavorativi,ggEff,ggPasto,malGiorni,retrOrd,festiv,straord,integrMal,indINPS,contribFondo,cessione,buonoU,tassoInail,rataReg,rataCom,RC,quotaG},
-    sol:{impPrev,contributiBase,ivsExtra,ivsThr,contributi,impFisc,irpL,detrA,detrM,cun,cunM,irpN,buoniTot,buoniEs,buoniEcc,compCash,netto,tfr,inail,s1m:28000/12}};
+  return {av,scn:{...b,aliq,mese,ggMese,ggLavorativi,ggEff,ggPasto,malGiorni,retrOrd,festiv,straord,integrMal,indINPS,contribFondo,cessione,buonoU,tassoInail,arReg,arCom,RC,quotaG},
+    sol:{impPrev,contributiBase,ivsExtra,ivsThr,contributi,impFisc,irpL,detrA,detrM,cun,cunM,irpN,rataReg,rataCom,buoniTot,buoniEs,buoniEcc,compCash,netto,tfr,inail,s1m:28000/12}};
 }
 const CED_FIELDS=[
   {k:'impPrev',l:'Imponibile previdenziale',h:'voci imponibili; esclusa l\'indennit&agrave; INPS',cat:'prev'},
+  {k:'buoniEcc',l:'Eccedenza buoni pasto imponibile',h:'(buono &minus; 10) &times; gg pasto, se il buono supera 10 &euro;',cat:'prev'},
   {k:'contributiBase',l:'Contributi base c/dip',h:'imponibile prev &times; aliquota',cat:'contr'},
   {k:'ivsExtra',l:'Contributo IVS aggiuntivo 1%',h:'1% sulla quota oltre &euro; 4.685',cat:'contr'},
   {k:'contributi',l:'Contributi c/dip totali',h:'base + IVS aggiuntivo',cat:'contr'},
@@ -371,6 +373,8 @@ const CED_FIELDS=[
   {k:'detrM',l:'Detrazione lavoro dip. (mese)',h:'art. 13 &times; giorni/365',cat:'tax'},
   {k:'cunM',l:'Ulteriore detrazione cuneo (mese)',h:'&times; giorni/365',cat:'tax'},
   {k:'irpN',l:'IRPEF netta del mese',h:'lorda &minus; detrazioni',cat:'tax'},
+  {k:'rataReg',l:'Rata addizionale regionale',h:'reddito presunto &times; aliquota / 11 mesi',cat:'add'},
+  {k:'rataCom',l:'Rata addizionale comunale',h:'reddito presunto &times; aliquota / 11 mesi',cat:'add'},
   {k:'netto',l:'Netto in busta',h:'competenze &minus; trattenute (incl. cessione)',cat:'add'},
   {k:'tfr',l:'TFR netto del mese',h:'retrib./13,5 &minus; 0,50%',cat:'add'},
   {k:'inail',l:'Premio INAIL c/ditta',h:'imponibile &times; tasso',cat:'add'}
@@ -406,8 +410,8 @@ function renderCedolino(){
     <div class="row">
       <div><span class="k">Aliquota INPS c/dip</span><span class="v">${fmt(s.aliq)}%</span></div>
       <div><span class="k">Reddito presunto annuo</span><span class="v">${fmt0(s.RC)}</span></div>
-      <div><span class="k">Rata add. regionale</span><span class="v">${fmt(s.rataReg)}</span></div>
-      <div><span class="k">Rata add. comunale</span><span class="v">${fmt(s.rataCom)}</span></div>
+      <div><span class="k">Aliquota add. regionale</span><span class="v">${fmt(s.arReg)}%</span></div>
+      <div><span class="k">Aliquota add. comunale</span><span class="v">${fmt(s.arCom)}%</span></div>
       <div><span class="k">Tasso INAIL</span><span class="v">${s.tassoInail}&#8240;</span></div>
       <div><span class="k">Giorni lavorativi mese</span><span class="v">${s.ggLavorativi}</span></div>
     </div>`;
@@ -419,6 +423,7 @@ function renderCedolino(){
 }
 function cedCalc(k){const s=CED.scn,o=CED.sol;const s1=o.s1m,s2=50000/12;switch(k){
   case 'impPrev':{let p=[`${fmt(s.retrOrd)} (ord.)`];if(s.festiv)p.push(`${fmt(s.festiv)} (fest.)`);if(s.straord)p.push(`${fmt(s.straord)} (str.)`);if(s.integrMal)p.push(`${fmt(s.integrMal)} (integr.)`);if(o.buoniEcc)p.push(`${fmt(o.buoniEcc)} (buoni ecc.)`);return p.join(' + ')+` = ${fmt(o.impPrev)}`;}
+  case 'buoniEcc':return o.buoniEcc>0?`(${fmt(s.buonoU)} − 10) × ${s.ggPasto} gg = ${fmt(o.buoniEcc)}`:`buono ${fmt(s.buonoU)} ≤ 10 → nessuna eccedenza imponibile (0,00)`;
   case 'contributiBase':return `${fmt(o.impPrev)} × ${fmt(s.aliq)}% = ${fmt(o.contributiBase)}`;
   case 'ivsExtra':return o.ivsExtra>0?`quota oltre soglia: ${fmt(o.impPrev)} − 4.685,00 = ${fmt(r2(o.impPrev-o.ivsThr))}; × 1% = ${fmt(o.ivsExtra)}`:`imponibile ${fmt(o.impPrev)} ≤ 4.685,00 → nessun contributo aggiuntivo (0,00)`;
   case 'contributi':return `base ${fmt(o.contributiBase)} + IVS agg. ${fmt(o.ivsExtra)} = ${fmt(o.contributi)}`;
@@ -427,7 +432,9 @@ function cedCalc(k){const s=CED.scn,o=CED.sol;const s1=o.s1m,s2=50000/12;switch(
   case 'detrM':{if(o.detrA<=0)return `reddito ${fmt0(s.RC)} > 50.000 → detrazione 0,00`;const b=(s.RC>25000&&s.RC<=35000)?65:0;const base=r2(o.detrA-b);return `base ${fmt(base)} × ${s.ggMese}/365${b?` + 65/12 (non ragg.)`:``} = ${fmt(o.detrM)}`;}
   case 'cunM':return o.cun.imp>0?`annua ${fmt(r2(o.cun.imp))} × ${s.ggMese}/365 = ${fmt(o.cunM)}`:`reddito ${fmt0(s.RC)} > 40.000 → cuneo 0,00`;
   case 'irpN':return `${fmt(o.irpL)} − ${fmt(o.detrM)} − ${fmt(o.cunM)} = ${fmt(o.irpN)}`;
-  case 'netto':return `competenze ${fmt(o.compCash)} − contrib ${fmt(o.contributi)}${s.contribFondo?` − fondo ${fmt(s.contribFondo)}`:''} − IRPEF ${fmt(o.irpN)} − addiz ${fmt(r2(s.rataReg+s.rataCom))}${s.cessione?` − cess. ${fmt(s.cessione)}`:''} = ${fmt(o.netto)}`;
+  case 'rataReg':return `${fmt0(s.RC)} × ${fmt(s.arReg)}% / 11 = ${fmt(o.rataReg)}`;
+  case 'rataCom':return `${fmt0(s.RC)} × ${fmt(s.arCom)}% / 11 = ${fmt(o.rataCom)}`;
+  case 'netto':return `competenze ${fmt(o.compCash)} − contrib ${fmt(o.contributi)}${s.contribFondo?` − fondo ${fmt(s.contribFondo)}`:''} − IRPEF ${fmt(o.irpN)} − addiz ${fmt(r2(o.rataReg+o.rataCom))}${s.cessione?` − cess. ${fmt(s.cessione)}`:''} = ${fmt(o.netto)}`;
   case 'tfr':return `retrib. ${fmt(s.lordo)}/13,5 − 0,50% di ${fmt(o.impPrev)} (imp. prev.) = ${fmt(o.tfr)}`;
   case 'inail':return `${fmt(o.impPrev)} × ${s.tassoInail}/1000 = ${fmt(o.inail)}`;
 } return '';}
