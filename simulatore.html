@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulatore Cedolino · CU · Conguaglio 2026 — Esercitazione CdL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDF0F3;--card:#FFFFFF;--ink:#1A2233;--ink-soft:#4A5568;--line:#CBD3DC;--line-soft:#E3E8ED;
+    --t1:#26324D;--t2:#9A6A1E;--t3:#1F7A72;--t4:#BE3320;
+    --t1-bg:#E7EAF1;--t2-bg:#F4ECDD;--t3-bg:#E1F0EE;--t4-bg:#FAE5E1;
+    --ok:#1F7A45;--ok-bg:#E3F1E8;--warn:#9A6A1E;--warn-bg:#F7EFDD;--err:#BE3320;--err-bg:#FAE5E1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+    line-height:1.4;padding:22px 16px;-webkit-font-smoothing:antialiased;font-size:13.5px;}
+  .wrap{max-width:840px;margin:0 auto;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  header{border-bottom:2px solid var(--ink);padding-bottom:13px;margin-bottom:16px;}
+  header .kicker{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);margin-bottom:5px;}
+  header h1{font-family:'Spectral',serif;font-weight:800;font-size:25px;line-height:1.05;letter-spacing:-.01em;}
+  header p{color:var(--ink-soft);font-style:italic;margin-top:3px;font-family:'Spectral',serif;font-size:14px;}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px;}
+  .tabs{display:flex;gap:4px;background:#E1E6EB;border-radius:9px;padding:3px;}
+  .tab{border:none;background:transparent;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.02em;padding:7px 12px;border-radius:7px;cursor:pointer;color:var(--ink-soft);}
+  .tab.active{background:var(--t1);color:#fff;}
+  .diff{display:flex;gap:4px;background:#E1E6EB;border-radius:9px;padding:3px;margin-left:auto;}
+  .diffbtn{border:none;background:transparent;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:6px 11px;border-radius:7px;cursor:pointer;color:var(--ink-soft);}
+  .diffbtn.active{background:var(--t2);color:#fff;}
+  .diff.dim{opacity:.4;pointer-events:none;}
+  .score{display:flex;gap:8px;margin-bottom:16px;}
+  .score .s{flex:1;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px;text-align:center;}
+  .score .s .lab{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .score .s .val{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;margin-top:2px;}
+  .score .s.hl .val{color:var(--t3);}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px;}
+  .sec-h{display:flex;align-items:baseline;gap:10px;margin-bottom:12px;}
+  .sec-h .n{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#fff;background:var(--t4);border-radius:5px;padding:2px 8px;}
+  .sec-h h3{font-family:'Spectral',serif;font-weight:700;font-size:16px;}
+  .sec-h .tag{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-soft);text-align:right;}
+  .scn{font-size:12.5px;}
+  .scn h4{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--t2);margin:12px 0 5px;}
+  .scn h4:first-child{margin-top:0;}
+  .scn .row{display:grid;grid-template-columns:1fr 1fr;gap:2px 22px;}
+  .scn .row div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dotted var(--line-soft);padding:3px 0;}
+  .scn .k{color:var(--ink-soft);}
+  .scn .v{font-family:'IBM Plex Mono',monospace;font-weight:500;}
+  .anag{background:#F6F8FA;border:1px solid var(--line-soft);border-radius:8px;padding:10px 12px;margin-bottom:10px;}
+  .anag .top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-bottom:6px;}
+  .anag .badge{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;padding:2px 8px;border-radius:5px;background:var(--t1);color:#fff;}
+  .anag .badge.q{background:var(--t3);}
+  .anag .ccnl{font-family:'Spectral',serif;font-weight:600;font-size:14px;}
+  .voce{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted var(--line-soft);}
+  .voce .vd{flex:1;}
+  .voce .vv{font-family:'IBM Plex Mono',monospace;font-weight:600;}
+  .nt{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.03em;padding:1px 6px;border-radius:4px;white-space:nowrap;}
+  .nt.imp{background:var(--t3-bg);color:var(--t3);}
+  .nt.fis{background:var(--t2-bg);color:var(--t2);}
+  .nt.ese{background:var(--ok-bg);color:var(--ok);}
+  .nt.ded{background:var(--t1-bg);color:var(--t1);}
+  .nt.tra{background:var(--err-bg);color:var(--err);}
+  .legenda{font-size:10.5px;color:var(--ink-soft);margin-top:8px;display:flex;flex-wrap:wrap;gap:4px 10px;}
+  .field{display:grid;grid-template-columns:1fr 150px;gap:8px 12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line-soft);}
+  .field:last-of-type{border-bottom:none;}
+  .field label{font-size:12.5px;}
+  .field label .hint{display:block;font-size:11px;color:var(--ink-soft);}
+  .field .inbox{position:relative;}
+  .field .inbox::before{content:"€";position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;font-size:12px;pointer-events:none;}
+  .field input{width:100%;font-family:'IBM Plex Mono',monospace;font-size:13px;text-align:right;padding:7px 9px 7px 20px;border:1.5px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);}
+  .field input:focus{outline:2px solid var(--t3);outline-offset:1px;border-color:var(--t3);}
+  .field.noeuro .inbox::before{content:"";}
+  .field .fb{grid-column:1/3;font-family:'IBM Plex Mono',monospace;font-size:11.5px;border-radius:6px;padding:6px 9px;margin-top:2px;display:none;line-height:1.45;}
+  .field .fb.show{display:block;}
+  .fb.ok{background:var(--ok-bg);color:var(--ok);border-left:3px solid var(--ok);}
+  .fb.warn{background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);}
+  .fb.err{background:var(--err-bg);color:var(--err);border-left:3px solid var(--err);}
+  .fb .norma{display:block;color:var(--ink-soft);font-weight:400;margin-top:3px;font-size:10.5px;font-family:'Inter',sans-serif;}
+  .diag{margin-top:8px;font-size:12px;background:#fff;border:1px solid var(--line-soft);border-radius:8px;padding:8px 12px;}
+  .diag b{color:var(--t4);}
+  .diag div{padding:3px 0;}
+  @media print{.bar,.actions,.diffbtn,.tab,#modeWrap,#diffWrap{display:none!important}}
+  input.ok{border-color:var(--ok);background:var(--ok-bg);}
+  input.warn{border-color:var(--warn);background:var(--warn-bg);}
+  input.err{border-color:var(--err);background:var(--err-bg);}
+  .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  button.act{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.02em;padding:9px 16px;border-radius:8px;cursor:pointer;border:1.5px solid var(--t1);}
+  button.primary{background:var(--t1);color:#fff;}
+  button.ghost{background:#fff;color:var(--t1);}
+  button.ghost.t3{border-color:var(--t3);color:var(--t3);}
+  button.act:focus-visible{outline:2px solid var(--t3);outline-offset:2px;}
+  .banner{border-radius:9px;padding:11px 14px;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;display:none;}
+  .banner.show{display:block;}
+  .banner.good{background:var(--ok-bg);color:var(--ok);}
+  .banner.mid{background:var(--warn-bg);color:var(--warn);}
+  .note{background:#F6F8FA;border-left:3px solid var(--t2);border-radius:6px;padding:10px 14px;margin-top:6px;font-size:12px;color:var(--ink-soft);}
+  .note b{color:var(--ink);}
+  .hidden{display:none;}
+  @media(max-width:580px){.scn .row{grid-template-columns:1fr;}.field{grid-template-columns:1fr 120px;}.diff{margin-left:0;}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.2</div>
+    <h1>Simulatore Cedolino · CU · Conguaglio 2026</h1>
+    <p>Motore fiscale verificato + modalità Esame, cronometro, 1% IVS e diagnosi per errore.</p>
+  </header>
+
+  <div class="bar">
+    <div class="tabs">
+      <button class="tab active" data-tab="ced">Cedolino</button>
+      <button class="tab" data-tab="cu">CU</button>
+      <button class="tab" data-tab="cong">Conguaglio</button>
+    </div>
+    <div class="diff" id="diffWrap">
+      <button class="diffbtn active" data-diff="base">Base</button>
+      <button class="diffbtn" data-diff="avanzato">Avanzato</button>
+    </div>
+    <div class="diff" id="modeWrap">
+      <button class="diffbtn active" data-mode="guided">Guidata</button>
+      <button class="diffbtn" data-mode="exam">Esame</button>
+    </div>
+  </div>
+
+  <div class="bar" style="gap:8px;align-items:center">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">CCNL</span>
+    <div class="diff" id="ccnlWrap">
+      <button class="diffbtn active" data-ccnl="tutti">Tutti</button>
+      <button class="diffbtn" data-ccnl="commercio">Commercio</button>
+      <button class="diffbtn" data-ccnl="metalmecc">Metalmecc.</button>
+      <button class="diffbtn" data-ccnl="calzature">Calzature</button>
+    </div>
+  </div>
+
+  <div class="bar" style="gap:6px;align-items:center">
+    <button class="act ghost" id="timerStart">▶ Cronometro</button>
+    <button class="act ghost" id="timerStop">⏸ Ferma</button>
+    <button class="act ghost" id="timerReset">↺ Azzera</button>
+    <span class="mono" id="timerDisp" style="font-weight:600;font-size:16px;color:var(--t1)">00:00:00</span>
+    <button class="act ghost" id="printBtn" style="margin-left:auto">🖶 Stampa</button>
+  </div>
+
+  <div class="score">
+    <div class="s"><div class="lab">Esercizi</div><div class="val" id="scEx">0</div></div>
+    <div class="s hl"><div class="lab">Campi corretti</div><div class="val" id="scOk">0 / 0</div></div>
+    <div class="s"><div class="lab">Serie perfette</div><div class="val" id="scStreak">0</div></div>
+  </div>
+
+  <div id="tab-ced">
+    <section>
+      <div class="sec-h"><span class="n">A</span><h3>Traccia — competenze e dati del mese</h3><span class="tag" id="cedTag"></span></div>
+      <div class="scn" id="cedScn"></div>
+    </section>
+    <section>
+      <div class="sec-h"><span class="n">B</span><h3>Compila il prospetto</h3><span class="tag">importi in euro</span></div>
+      <div id="cedFields"></div>
+      <div class="actions">
+        <button class="act primary" id="cedCheck">Controlla</button>
+        <button class="act ghost t3" id="cedSol">Mostra soluzione</button>
+        <button class="act ghost" id="cedNew">Nuovo esercizio</button>
+      </div>
+      <div class="banner" id="cedBanner"></div>
+      <div class="note" id="cedNote"></div>
+    </section>
+  </div>
+
+  <div id="tab-cu" class="hidden">
+    <section>
+      <div class="sec-h"><span class="n">A</span><h3>Dati annui (redditi 2025)</h3><span class="tag" id="cuTag"></span></div>
+      <div class="scn" id="cuScn"></div>
+    </section>
+    <section>
+      <div class="sec-h"><span class="n">B</span><h3>Compila i punti chiave della CU</h3><span class="tag">modello ordinario</span></div>
+      <div id="cuFields"></div>
+      <div class="actions">
+        <button class="act primary" id="cuCheck">Controlla</button>
+        <button class="act ghost t3" id="cuSol">Mostra soluzione</button>
+        <button class="act ghost" id="cuNew">Nuovo esercizio</button>
+      </div>
+      <div class="banner" id="cuBanner"></div>
+      <div class="note">I numeri di casella 1, 6, 11 sono stabili; verifica sempre sul provv. 15.1.2026 n. 15707. Qui si esercita la logica.</div>
+    </section>
+  </div>
+
+  <div id="tab-cong" class="hidden">
+    <section>
+      <div class="sec-h"><span class="n">A</span><h3>Conguaglio di dicembre con CU di un rapporto precedente</h3><span class="tag">la traccia estratta 2024/2025</span></div>
+      <div class="scn" id="congScn"></div>
+    </section>
+    <section>
+      <div class="sec-h"><span class="n">B</span><h3>Ricalcola l'imposta sul cumulato</h3><span class="tag">dati annui</span></div>
+      <div id="congFields"></div>
+      <div class="actions">
+        <button class="act primary" id="congCheck">Controlla</button>
+        <button class="act ghost t3" id="congSol">Mostra soluzione</button>
+        <button class="act ghost" id="congNew">Nuovo esercizio</button>
+      </div>
+      <div class="banner" id="congBanner"></div>
+      <div class="note">Somma i due redditi &rarr; IRPEF sul <b>cumulato</b> &rarr; detrazioni ai <b>giorni totali</b> &rarr; sottrai <b>tutte</b> le ritenute gi&agrave; operate. Positivo = <b>a debito</b>. Trattamento integrativo non richiesto.</div>
+    </section>
+  </div>
+
+  <div class="note" style="border-color:var(--t4);">
+    <b>Dati congrui.</b> Tre CCNL selezionabili: <b>Terziario-Commercio</b> (Quadri + 1°&ndash;5°, 14 mensilit&agrave;), <b>Metalmeccanica Industria</b> (9 livelli D1&ndash;A1, 13 mensilit&agrave;), <b>Calzature Industria</b> (8 livelli + Super, 13 mensilit&agrave;). <b>La logica di calcolo &egrave; identica per ogni CCNL</b>: cambia solo il livello dati (mensilit&agrave;, inquadramento, profilo INAIL, aliquota comparto), che all'esame la traccia fornisce comunque. La retribuzione &egrave; legata a <b>qualifica e livello</b> (operaio &lt; impiegato &lt; quadro), la contingenza ex-scala mobile &egrave; congelata (~&euro; 520&ndash;540, simile tra i comparti), l'aliquota INPS &egrave; quella del comparto (9,19 / 9,46 / 9,49%), il tasso INAIL segue il profilo (basso per impiegati/quadri, alto per operai di produzione), le voci di malattia ricompongono il lordo, la cessione del quinto non supera 1/5 del netto. Restano dati d'esame: aliquote, addizionali, tasso INAIL. Fuori perimetro: part-time, ratei 13&ordf;/14&ordf;, rivalutazione TFR e quota ante-2001, e i redditi sotto &euro; 20.000 (dove il cuneo &egrave; somma esente, non detrazione).
+    <br><br><b>Parametri 2026 verificati su fonte:</b> IRPEF 23% / 33% / 43% (2&deg; scaglione ridotto dal 35 al 33% &mdash; L. 199/2025) &middot; detrazione lavoro dip. &euro; 1.955 + &euro; 65 (25&ndash;35k, non ragguagliato) &middot; cuneo strutturale (detr. &euro; 1.000 tra 20 e 32k, azzerata a 40k) &middot; buoni pasto elettronici esenti fino a <b>&euro; 10</b> (soglia 2026) &middot; fringe benefit &euro; 1.000 / &euro; 2.000 con figli (2025&ndash;2027).
+  </div>
+
+  <details class="note" style="border-color:var(--t3);">
+    <summary style="cursor:pointer;font-weight:600;">Legenda degli assunti — natura di ogni parametro</summary>
+    <div style="margin-top:10px;line-height:1.55;">
+      <b>VERIFICATO</b> (parametro riscontrato su fonte 2026): scaglioni IRPEF 23/33/43% con soglie 28k/50k; curva detrazione art. 13 TUIR (1.955; 1.910+1.190×(28k−RC)/13k; 1.910×(50k−RC)/22k; 0 oltre 50k); +65 comma 1-bis <b>non ragguagliato ai giorni</b>; cuneo L. 207/2024 (detr. 1.000 tra 20-32k, décalage 32-40k); soglia 1% IVS aggiuntivo &euro; 4.685/mese (circ. INPS 6/2026); buoni pasto elettronici esenti fino a &euro; 10; indennità INPS malattia esclusa dal previdenziale e inclusa nel fiscale.
+      <br><br><b>CU (redditi 2025):</b> il tab CU applica il <b>2&deg; scaglione al 35%</b> (aliquota vigente sui redditi 2025, ante riduzione a 33% della L. 199/2025), coerente con l'etichetta &laquo;periodo 2025&raquo; e con la CU 2026.
+      <br><br><b>SEMPLIFICATO</b> (approssimazione didattica dichiarata): <b>indennità di malattia</b> calcolata su retribuzione giornaliera con divisore <b>/26</b> anziché sulla RMG del mese precedente con divisore 30 (sovrastima ~15%; all'esame il divisore 30 è fornito dalla traccia); <b>base TFR</b> ex art. 2120 c.c. approssimata alla retribuzione contrattuale (retrib./13,5), mentre lo <b>0,50% ex L. 297/82</b> è correttamente calcolato sull'imponibile previdenziale; detrazioni mensili ragguagliate a giorni di calendario del mese.
+      <br><br><b>FUORI PERIMETRO</b> (non modellato, mai generato dalle tracce): redditi &le; &euro; 20.000 (dove il cuneo opera come somma integrativa esente, non come detrazione — confermato dal riscontro su cedolini reali part-time); massimale/minimale contributivo; trattamento integrativo ex DL 3/2020; imposta sostitutiva su detassazione premi/incrementi 2026; part-time; ratei 13&ordf;/14&ordf;; rivalutazione TFR e quota ante-2001 a tassazione separata; CCNL diversi dai tre generati.
+    </div>
+  </details>
+
+  <footer class="foot">
+    <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
+    <div class="foot-meta">Beta 1.2 · agosto 2026 · tre CCNL (Commercio · Metalmeccanica · Calzature) · motore corretto e validato su cedolini reali.</div>
+    <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
+  </footer>
+</div>
+
+<style>
+  .foot{margin-top:8px;padding:16px 4px 6px;border-top:1px solid var(--line);color:var(--ink-soft);}
+  .foot-main{font-family:'Spectral',serif;font-size:13.5px;color:var(--ink);}
+  .foot-meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.02em;margin-top:5px;}
+  .foot-disc{font-size:11px;margin-top:6px;line-height:1.45;max-width:80ch;}
+</style>
+
+<script>
+"use strict";
+const r2=x=>Math.round((x+Number.EPSILON)*100)/100;
+const fmt=x=>x.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt0=x=>x.toLocaleString('it-IT');
+function parseNum(s){if(s==null)return NaN;s=String(s).trim().replace(/[€\s]/g,'');if(s==='')return NaN;if(s.indexOf(',')>=0)s=s.replace(/\./g,'').replace(',','.');return parseFloat(s);}
+const rnd=(a,b)=>a+Math.random()*(b-a);const pick=a=>a[Math.floor(Math.random()*a.length)];
+const round10=x=>Math.round(x/10)*10;const chance=p=>Math.random()<p;
+
+function detrBase(RC){let b;if(RC<=15000)b=1955;else if(RC<=28000)b=1910+1190*(28000-RC)/13000;else if(RC<=50000)b=1910*(50000-RC)/22000;else b=0;return b;}
+function add65(RC){return (RC>25000&&RC<=35000)?65:0;}   // comma 1-bis: NON ragguagliato ai giorni
+function detrLavDip(RC){return detrBase(RC)+add65(RC);}
+function cuneo(RC){if(RC<=20000)return{tipo:'esente',imp:0};if(RC<=32000)return{tipo:'detr',imp:1000};if(RC<=40000)return{tipo:'detr',imp:1000*(40000-RC)/8000};return{tipo:'detr',imp:0};}
+function irpefLorda(imp,s1,s2,a2){a2=(a2===undefined?0.33:a2);let t=0,x=imp;if(x>s2){t+=(x-s2)*0.43;x=s2;}if(x>s1){t+=(x-s1)*a2;x=s1;}t+=x*0.23;return t;}
+const MESI=[['gennaio',31],['febbraio',28],['marzo',31],['aprile',30],['maggio',31],['giugno',30],['luglio',31],['settembre',30],['ottobre',31],['novembre',30]];
+
+/* ===== CCNL multipli — inquadramenti verificati su fonte (ago. 2026) ===== */
+/* Il MOTORE di calcolo è nazionale e IDENTICO per ogni CCNL: qui cambia solo il livello dati
+   (mensilità, divisore, nomenclatura livelli, profilo INAIL, aliquota comparto).
+   Bande retributive INDICATIVE e congrue, non minimi ufficiali; all'esame la traccia fornisce i dati.
+   Contingenza ex-scala mobile congelata dal 1992: importo ~simile tra i comparti. */
+const CCNL_LIST=[
+ {key:'commercio',nome:'Terziario-Commercio (Confcommercio)',mens:14,orario:168,aliq:[9.19,9.46],conting:[518,535],w:1.4,
+  livelli:[
+   {label:'Quadro',    q:'Quadro',   pb:[3300,5200],scatto:45,inail:[4,6], w:0.8},
+   {label:'1° livello',q:'Impiegato',pb:[1950,2150],scatto:32,inail:[4,6], w:1.4},
+   {label:'2° livello',q:'Impiegato',pb:[1720,1900],scatto:29,inail:[4,7], w:1.8},
+   {label:'3° livello',q:'Impiegato',pb:[1520,1700],scatto:26,inail:[4,7], w:1.8},
+   {label:'4° livello',q:'Operaio',  pb:[1380,1510],scatto:24,inail:[8,14],w:1.4},
+   {label:'5° livello',q:'Operaio',  pb:[1290,1380],scatto:22,inail:[9,15],w:1}]},
+ {key:'metalmecc',nome:'Metalmeccanica Industria (Federmeccanica-Assistal)',mens:13,orario:173,aliq:[9.19,9.49],conting:[520,540],w:1.2,
+  livelli:[
+   {label:'A1 (Quadro)',q:'Quadro',   pb:[3300,5000],scatto:52,inail:[4,6], w:0.8},
+   {label:'B3',         q:'Impiegato',pb:[2650,2950],scatto:42,inail:[4,7], w:0.9},
+   {label:'B2',         q:'Impiegato',pb:[2400,2650],scatto:38,inail:[4,8], w:1.1},
+   {label:'B1',         q:'Impiegato',pb:[2200,2400],scatto:35,inail:[5,9], w:1.2},
+   {label:'C3',         q:'Impiegato',pb:[2050,2250],scatto:32,inail:[6,12],w:1.3},
+   {label:'C2',         q:'Operaio',  pb:[1900,2080],scatto:29,inail:[9,16],w:1.4},
+   {label:'C1',         q:'Operaio',  pb:[1800,1950],scatto:27,inail:[10,18],w:1.2},
+   {label:'D2',         q:'Operaio',  pb:[1720,1850],scatto:25,inail:[12,20],w:1.1},
+   {label:'D1',         q:'Operaio',  pb:[1650,1780],scatto:23,inail:[12,22],w:1}]},
+ {key:'calzature',nome:'Calzature Industria (Assocalzaturifici)',mens:13,orario:173,aliq:[9.19,9.49],conting:[518,535],w:1,
+  livelli:[
+   {label:'8° (Quadro)',q:'Quadro',   pb:[3000,4600],scatto:12,inail:[4,6], w:0.7},
+   {label:'7°',         q:'Impiegato',pb:[2400,2750],scatto:12,inail:[4,7], w:0.9},
+   {label:'6°',         q:'Impiegato',pb:[2050,2300],scatto:10,inail:[6,10],w:1.1},
+   {label:'5°',         q:'Impiegato',pb:[1850,2050],scatto:9, inail:[8,14],w:1.2},
+   {label:'4°',         q:'Operaio',  pb:[1680,1850],scatto:8, inail:[12,22],w:1.4},
+   {label:'3°S',        q:'Operaio',  pb:[1600,1720],scatto:8, inail:[12,24],w:0.7},
+   {label:'3°',         q:'Operaio',  pb:[1540,1660],scatto:8, inail:[12,24],w:1.2},
+   {label:'2°S',        q:'Operaio',  pb:[1470,1580],scatto:7, inail:[12,26],w:0.6},
+   {label:'2°',         q:'Operaio',  pb:[1420,1520],scatto:7, inail:[12,26],w:1},
+   {label:'1°',         q:'Operaio',  pb:[1360,1450],scatto:7, inail:[12,28],w:0.9}]}
+];
+let CCNLSEL='tutti';
+function wpick(a){const t=a.reduce((s,x)=>s+x.w,0);let r=Math.random()*t;for(const x of a){if((r-=x.w)<0)return x;}return a[a.length-1];}
+function pickCCNL(){if(CCNLSEL!=='tutti'){const c=CCNL_LIST.find(x=>x.key===CCNLSEL);if(c)return c;}return wpick(CCNL_LIST);}
+function buildLivello(C){
+  const L=wpick(C.livelli);
+  const pagaBase=round10(rnd(L.pb[0],L.pb[1])),conting=r2(rnd(C.conting[0],C.conting[1]));
+  const nScatti=Math.floor(rnd(0,4)),scattoU=r2(L.scatto+rnd(-1,2)),scattiTot=r2(nScatti*scattoU);
+  const lordo=r2(pagaBase+conting+scattiTot);
+  const aliq=pick(C.aliq), inailTasso=Math.round(rnd(L.inail[0],L.inail[1]));
+  return {ccnl:C.nome,ccnlKey:C.key,q:L.q,liv:L.label,pagaBase,conting,nScatti,scattoU,scattiTot,lordo,aliq,inailTasso,orario:C.orario,mens:C.mens};
+}
+function genLivello(){return buildLivello(pickCCNL());}
+
+let DIFF='base',MODE='guided',TAB='ced',CED=null,CU=null,CONG=null;
+const stats={ex:0,ok:0,tot:0,streak:0,err:{prev:0,contr:0,fiscal:0,tax:0,add:0,cu:0}};
+let tSec=0,tHandle=null;
+
+/* ===== CEDOLINO ===== */
+function genCedolino(){
+  const av=DIFF==='avanzato';
+  const b=genLivello();
+  const aliq=b.aliq;
+  const [mese,ggMese]=pick(MESI);
+  const ggLavorativi=Math.round(ggMese*22/30), tassoInail=b.inailTasso;   // giorni lavorativi del mese
+  const RC=round10(b.lordo*(1-aliq/100)*b.mens);   // reddito presunto sulla retribuzione contrattuale
+  const arReg=pick([1.23,1.53,1.73]), arCom=pick([0.50,0.70,0.80]);
+  const rataReg=r2(RC*arReg/100/11), rataCom=r2(RC*arCom/100/11);
+  const quotaG=r2(b.lordo/26);
+  let retrOrd=b.lordo, festiv=0,straord=0,integrMal=0,indINPS=0,contribFondo=0,cessione=0,buonoU=10,malGiorni=0,ggEff=ggLavorativi;
+  if(av){
+    if(chance(0.55)){malGiorni=Math.floor(rnd(4,9));const ggINPS=Math.max(0,malGiorni-3);
+      indINPS=r2(quotaG*0.5*ggINPS); integrMal=r2(quotaG*0.5*ggINPS);
+      retrOrd=r2(b.lordo-quotaG*ggINPS); ggEff=ggLavorativi-malGiorni;}
+    if(chance(0.5))festiv=r2(quotaG*pick([0.5,1]));
+    if(chance(0.45)){const ore=Math.floor(rnd(3,9));straord=r2((b.lordo/b.orario)*ore*pick([1.15,1.25,1.30]));}
+    if(chance(0.5))buonoU=pick([10,12,12]);
+    if(chance(0.5))contribFondo=r2(pick([13,2,3.62,10]));
+  }
+  const ggPasto=ggEff;
+  const buoniTot=r2(buonoU*ggPasto),buoniEs=r2(Math.min(buonoU,10)*ggPasto),buoniEcc=r2(buoniTot-buoniEs);
+  const impPrev=r2(retrOrd+festiv+straord+integrMal+buoniEcc);
+  const contributiBase=r2(impPrev*aliq/100);
+  const ivsThr=4685;                                              // soglia mensile 1ª fascia pensionabile 2026 (€56.224/anno)
+  const ivsExtra=r2(Math.max(0,impPrev-ivsThr)*0.01);            // 1% IVS aggiuntivo art. 3-ter DL 384/1992
+  const contributi=r2(contributiBase+ivsExtra);
+  const impFisc=r2(impPrev-contributi-contribFondo+indINPS);
+  const irpL=r2(irpefLorda(impFisc,28000/12,50000/12));
+  const detrA=detrLavDip(RC), _b65=add65(RC), detrM=r2(detrBase(RC)*ggMese/365+_b65/12);
+  const cun=cuneo(RC), cunM=r2(cun.imp*ggMese/365);
+  let irpN=r2(irpL-detrM-cunM); if(irpN<0)irpN=0;
+  const compCash=r2(retrOrd+festiv+straord+integrMal+indINPS);
+  const nettoPre=r2(compCash-contributi-contribFondo-irpN-rataReg-rataCom);
+  if(av&&chance(0.4))cessione=r2(nettoPre/5*rnd(0.6,1.0));
+  const netto=r2(nettoPre-cessione);
+  const tfr=r2(b.lordo/13.5-impPrev*0.005), inail=r2(impPrev*tassoInail/1000);
+  return {av,scn:{...b,aliq,mese,ggMese,ggLavorativi,ggEff,ggPasto,malGiorni,retrOrd,festiv,straord,integrMal,indINPS,contribFondo,cessione,buonoU,tassoInail,rataReg,rataCom,RC,quotaG},
+    sol:{impPrev,contributiBase,ivsExtra,ivsThr,contributi,impFisc,irpL,detrA,detrM,cun,cunM,irpN,buoniTot,buoniEs,buoniEcc,compCash,netto,tfr,inail,s1m:28000/12}};
+}
+const CED_FIELDS=[
+  {k:'impPrev',l:'Imponibile previdenziale',h:'voci imponibili; esclusa l\'indennit&agrave; INPS',cat:'prev'},
+  {k:'contributiBase',l:'Contributi base c/dip',h:'imponibile prev &times; aliquota',cat:'contr'},
+  {k:'ivsExtra',l:'Contributo IVS aggiuntivo 1%',h:'1% sulla quota oltre &euro; 4.685',cat:'contr'},
+  {k:'contributi',l:'Contributi c/dip totali',h:'base + IVS aggiuntivo',cat:'contr'},
+  {k:'impFisc',l:'Imponibile fiscale',h:'imp.prev &minus; contributi &minus; fondo + ind. INPS',cat:'fiscal'},
+  {k:'irpL',l:'IRPEF lorda del mese',h:'scaglioni mensili (annui / 12)',cat:'tax'},
+  {k:'detrM',l:'Detrazione lavoro dip. (mese)',h:'art. 13 &times; giorni/365',cat:'tax'},
+  {k:'cunM',l:'Ulteriore detrazione cuneo (mese)',h:'&times; giorni/365',cat:'tax'},
+  {k:'irpN',l:'IRPEF netta del mese',h:'lorda &minus; detrazioni',cat:'tax'},
+  {k:'netto',l:'Netto in busta',h:'competenze &minus; trattenute (incl. cessione)',cat:'add'},
+  {k:'tfr',l:'TFR netto del mese',h:'retrib./13,5 &minus; 0,50%',cat:'add'},
+  {k:'inail',l:'Premio INAIL c/ditta',h:'imponibile &times; tasso',cat:'add'}
+];
+function vociCed(s){const V=[];V.push(['Retribuzione ordinaria',s.retrOrd,'imp']);
+  if(s.festiv)V.push(['Festivit&agrave; non goduta',s.festiv,'imp']);
+  if(s.straord)V.push(['Straordinario',s.straord,'imp']);
+  if(s.integrMal)V.push([`Integrazione malattia c/ditta`,s.integrMal,'imp']);
+  if(s.indINPS)V.push(['Indennit&agrave; malattia INPS',s.indINPS,'fis']);
+  V.push([`Buoni pasto elettr. (${s.ggPasto} &times; ${fmt(s.buonoU)})`,r2(s.buonoU*s.ggPasto),s.buonoU>10?'imp':'ese']);
+  if(s.contribFondo)V.push(['Contributo fondo assistenza c/dip',s.contribFondo,'ded']);
+  if(s.cessione)V.push(['Cessione del quinto',s.cessione,'tra']);return V;}
+const NAT={imp:'imponibile',fis:'solo fiscale',ese:'esente',ded:'deducibile',tra:'trattenuta'};
+function renderCedolino(){
+  const s=CED.scn;
+  document.getElementById('cedTag').textContent=`${s.mese} (${s.ggMese} gg cal.) · ${s.ggEff} lavorati${s.malGiorni?` · ${s.malGiorni} malattia`:''}`;
+  const voci=vociCed(s).map(([d,v,n])=>`<div class="voce"><span class="vd">${d}</span><span class="nt ${n}">${NAT[n]}</span><span class="vv">${fmt(v)}</span></div>`).join('');
+  document.getElementById('cedScn').innerHTML=`
+    <div class="anag">
+      <div class="top"><span class="badge">${s.ccnl}</span><span class="badge q">${s.q} · ${s.liv}</span></div>
+      <div class="row">
+        <div><span class="k">Paga base</span><span class="v">${fmt(s.pagaBase)}</span></div>
+        <div><span class="k">Contingenza</span><span class="v">${fmt(s.conting)}</span></div>
+        <div><span class="k">Scatti (n. ${s.nScatti})</span><span class="v">${fmt(s.scattiTot)}</span></div>
+        <div><span class="k">Retrib. contrattuale</span><span class="v">${fmt(s.lordo)}</span></div>
+        <div><span class="k">Divisori</span><span class="v">mens. 26 · or. ${s.orario}</span></div>
+        <div><span class="k">Mensilit&agrave;</span><span class="v">${s.mens}</span></div>
+      </div>
+    </div>
+    <h4>Competenze del mese</h4>${voci}
+    <div class="legenda"><span><b class="mono">imponibile</b>=prev+fisc</span>·<span><b class="mono">solo fiscale</b>=no contributi</span>·<span><b class="mono">esente</b>=buoni &le;10</span>·<span><b class="mono">deducibile</b>=riduce imp.fisc.</span>·<span><b class="mono">trattenuta</b>=solo netto</span></div>
+    <h4>Parametri (dati)</h4>
+    <div class="row">
+      <div><span class="k">Aliquota INPS c/dip</span><span class="v">${fmt(s.aliq)}%</span></div>
+      <div><span class="k">Reddito presunto annuo</span><span class="v">${fmt0(s.RC)}</span></div>
+      <div><span class="k">Rata add. regionale</span><span class="v">${fmt(s.rataReg)}</span></div>
+      <div><span class="k">Rata add. comunale</span><span class="v">${fmt(s.rataCom)}</span></div>
+      <div><span class="k">Tasso INAIL</span><span class="v">${s.tassoInail}&#8240;</span></div>
+      <div><span class="k">Giorni lavorativi mese</span><span class="v">${s.ggLavorativi}</span></div>
+    </div>`;
+  buildFields('cedFields',CED_FIELDS);
+  document.getElementById('cedBanner').className='banner';
+  document.getElementById('cedNote').innerHTML=CED.av
+    ?'<b>Modalit&agrave; avanzata.</b> L\'indennit&agrave; INPS &egrave; imponibile <b>fiscale ma non previdenziale</b>; il fondo assistenza <b>riduce</b> l\'imponibile fiscale; la cessione incide <b>solo sul netto</b>; dei buoni oltre &euro; 10 (soglia 2026) &egrave; imponibile la sola eccedenza. In malattia la retribuzione ordinaria &egrave; ridotta e reintegrata da indennit&agrave; + integrazione.'
+    :'<b>Modalit&agrave; base.</b> Mese pieno, buoni &euro; 10 esenti (soglia elettronici 2026). Catena lordo &rarr; contributi &rarr; fiscale &rarr; IRPEF &rarr; netto.';
+}
+function cedCalc(k){const s=CED.scn,o=CED.sol;const s1=o.s1m,s2=50000/12;switch(k){
+  case 'impPrev':{let p=[`${fmt(s.retrOrd)} (ord.)`];if(s.festiv)p.push(`${fmt(s.festiv)} (fest.)`);if(s.straord)p.push(`${fmt(s.straord)} (str.)`);if(s.integrMal)p.push(`${fmt(s.integrMal)} (integr.)`);if(o.buoniEcc)p.push(`${fmt(o.buoniEcc)} (buoni ecc.)`);return p.join(' + ')+` = ${fmt(o.impPrev)}`;}
+  case 'contributiBase':return `${fmt(o.impPrev)} × ${fmt(s.aliq)}% = ${fmt(o.contributiBase)}`;
+  case 'ivsExtra':return o.ivsExtra>0?`quota oltre soglia: ${fmt(o.impPrev)} − 4.685,00 = ${fmt(r2(o.impPrev-o.ivsThr))}; × 1% = ${fmt(o.ivsExtra)}`:`imponibile ${fmt(o.impPrev)} ≤ 4.685,00 → nessun contributo aggiuntivo (0,00)`;
+  case 'contributi':return `base ${fmt(o.contributiBase)} + IVS agg. ${fmt(o.ivsExtra)} = ${fmt(o.contributi)}`;
+  case 'impFisc':{let t=`${fmt(o.impPrev)} − ${fmt(o.contributi)}`;if(s.contribFondo)t+=` − ${fmt(s.contribFondo)} (fondo)`;if(s.indINPS)t+=` + ${fmt(s.indINPS)} (ind.INPS)`;return t+` = ${fmt(o.impFisc)}`;}
+  case 'irpL':{const q1=Math.min(o.impFisc,s1);let parts=[`${fmt(q1)}×23%`];let x=o.impFisc;if(x>s1){const q2=Math.min(x,s2)-s1;parts.push(`${fmt(r2(q2))}×33%`);}if(x>s2){parts.push(`${fmt(r2(x-s2))}×43%`);}return parts.join(' + ')+` = ${fmt(o.irpL)}`;}
+  case 'detrM':{if(o.detrA<=0)return `reddito ${fmt0(s.RC)} > 50.000 → detrazione 0,00`;const b=(s.RC>25000&&s.RC<=35000)?65:0;const base=r2(o.detrA-b);return `base ${fmt(base)} × ${s.ggMese}/365${b?` + 65/12 (non ragg.)`:``} = ${fmt(o.detrM)}`;}
+  case 'cunM':return o.cun.imp>0?`annua ${fmt(r2(o.cun.imp))} × ${s.ggMese}/365 = ${fmt(o.cunM)}`:`reddito ${fmt0(s.RC)} > 40.000 → cuneo 0,00`;
+  case 'irpN':return `${fmt(o.irpL)} − ${fmt(o.detrM)} − ${fmt(o.cunM)} = ${fmt(o.irpN)}`;
+  case 'netto':return `competenze ${fmt(o.compCash)} − contrib ${fmt(o.contributi)}${s.contribFondo?` − fondo ${fmt(s.contribFondo)}`:''} − IRPEF ${fmt(o.irpN)} − addiz ${fmt(r2(s.rataReg+s.rataCom))}${s.cessione?` − cess. ${fmt(s.cessione)}`:''} = ${fmt(o.netto)}`;
+  case 'tfr':return `retrib. ${fmt(s.lordo)}/13,5 − 0,50% di ${fmt(o.impPrev)} (imp. prev.) = ${fmt(o.tfr)}`;
+  case 'inail':return `${fmt(o.impPrev)} × ${s.tassoInail}/1000 = ${fmt(o.inail)}`;
+} return '';}
+const NORMA={prev:'Art. 12 L. 153/1969; art. 51 TUIR (onnicomprensivit&agrave;).',contr:'Aliquota da traccia; art. 3-ter DL 384/1992 per l\'1% IVS aggiuntivo.',fiscal:'Artt. 49 e 51 TUIR: reddito di lavoro dipendente e imponibile fiscale.',tax:'Artt. 11 e 13 TUIR: scaglioni IRPEF e detrazioni; cuneo L. 207/2024.',add:'D.Lgs. 360/1998 (addizionali); art. 2120 c.c. (TFR); DPR 1124/1965 (INAIL).',cu:'Art. 4 DPR 322/1998: Certificazione Unica.'};
+
+/* ===== CU ===== */
+function genCU(){
+  const b=genLivello();
+  const lordoA=r2(b.lordo*b.mens), aliq=b.aliq;
+  const aliqReg=pick([1.23,1.53,1.73]), aliqCom=pick([0.50,0.70,0.80]);
+  const contribA=r2(lordoA*aliq/100), impFiscA=r2(lordoA-contribA);
+  let RC=impFiscA; if(RC<21000)RC=21000;
+  const irpLA=r2(irpefLorda(impFiscA,28000,50000,0.35)), detrA=r2(detrLavDip(RC)), cunA=r2(cuneo(RC).imp);
+  let irpNA=r2(irpLA-detrA-cunA); if(irpNA<0)irpNA=0;
+  const addReg=r2(impFiscA*aliqReg/100), addCom=r2(impFiscA*aliqCom/100);
+  return {scn:{...b,lordoA,aliq,aliqReg,aliqCom},
+    sol:{impPrev:lordoA,contrib:contribA,punto1:impFiscA,giorni:365,irpNA,irpLA,detrA,cunA,addReg,addCom,redRif:impFiscA}};
+}
+const CU_FIELDS=[
+  {k:'punto1',l:'Punto 1 — Redditi di lavoro dip. (TI)',h:'imponibile fiscale annuo',cat:'cu'},
+  {k:'giorni',l:'Punto 6 — Giorni per detrazioni',h:'anno intero',int:true,cat:'cu'},
+  {k:'irpNA',l:'Punto 11 — Ritenute IRPEF',h:'imposta netta annua',cat:'tax'},
+  {k:'addReg',l:'Addizionale regionale',h:'imponibile &times; aliquota reg.',cat:'add'},
+  {k:'addCom',l:'Addizionale comunale',h:'imponibile &times; aliquota com.',cat:'add'},
+  {k:'impPrev',l:'Imponibile previdenziale INPS',h:'retribuzione lorda annua',cat:'prev'},
+  {k:'contrib',l:'Contributi c/lavoratore',h:'imponibile prev &times; aliquota',cat:'contr'},
+  {k:'redRif',l:'Punto 449 — Reddito di riferimento',h:'somma redditi (qui = punto 1)',cat:'cu'}
+];
+function renderCU(){
+  const s=CU.scn;
+  document.getElementById('cuTag').textContent=`${s.q} · ${s.liv}`;
+  document.getElementById('cuScn').innerHTML=`
+    <div class="anag"><div class="top"><span class="badge">${s.ccnl}</span><span class="badge q">${s.q} · ${s.liv}</span></div>
+      <div class="row">
+        <div><span class="k">Retrib. contrattuale mens.</span><span class="v">${fmt(s.lordo)}</span></div>
+        <div><span class="k">Mensilit&agrave;</span><span class="v">${s.mens}</span></div>
+        <div><span class="k">Retribuzione lorda annua</span><span class="v">${fmt(s.lordoA)}</span></div>
+        <div><span class="k">Aliquota INPS c/dip</span><span class="v">${fmt(s.aliq)}%</span></div>
+        <div><span class="k">Aliquota add. regionale</span><span class="v">${fmt(s.aliqReg)}%</span></div>
+        <div><span class="k">Aliquota add. comunale</span><span class="v">${fmt(s.aliqCom)}%</span></div>
+        <div><span class="k">Periodo</span><span class="v">01/01 – 31/12/2025</span></div>
+        <div><span class="k">Giorni rapporto</span><span class="v">365</span></div>
+      </div></div>`;
+  buildFields('cuFields',CU_FIELDS);
+  document.getElementById('cuBanner').className='banner';
+}
+function cuCalc(k){const s=CU.scn,o=CU.sol;switch(k){
+  case 'punto1':return `${fmt(o.impPrev)} − ${fmt(o.contrib)} (contributi) = ${fmt(o.punto1)}`;
+  case 'giorni':return `anno intero = 365`;
+  case 'irpNA':return `lorda ${fmt(o.irpLA)} − detr. ${fmt(o.detrA)} − cuneo ${fmt(o.cunA)} = ${fmt(o.irpNA)}`;
+  case 'addReg':return `${fmt(o.punto1)} × ${fmt(s.aliqReg)}% = ${fmt(o.addReg)}`;
+  case 'addCom':return `${fmt(o.punto1)} × ${fmt(s.aliqCom)}% = ${fmt(o.addCom)}`;
+  case 'impPrev':return `= retribuzione lorda annua = ${fmt(o.impPrev)}`;
+  case 'contrib':return `${fmt(o.impPrev)} × ${fmt(s.aliq)}% = ${fmt(o.contrib)}`;
+  case 'redRif':return `sommatoria redditi = punto 1 = ${fmt(o.redRif)}`;
+} return '';}
+
+/* ===== CONGUAGLIO ===== */
+function genRapporto(){
+  // per il conguaglio servono redditi medio-alti (Quadro / livello subito sotto) così il cumulato supera i 28k
+  const C=pickCCNL();
+  const L=Math.random()<0.7?C.livelli[0]:C.livelli[1];
+  const pagaBase=round10(rnd(L.pb[0],L.pb[1])), conting=r2(rnd(C.conting[0],C.conting[1]));
+  const scattiTot=r2(Math.floor(rnd(0,4))*(L.scatto+rnd(-1,2)));
+  const lordo=r2(pagaBase+conting+scattiTot), aliq=pick(C.aliq);
+  const mFisc=r2(lordo*(1-aliq/100));
+  return {ccnl:C.nome,q:L.q,liv:L.label,lordo,aliq,mFisc,mens:C.mens};
+}
+function genConguaglio(){
+  // rapporto attuale (assunto a metà anno) + precedente: redditi alti che, cumulati, sforano i 28k
+  const bA=genRapporto();
+  const ggPrec=Math.round(rnd(165,205)), gap=Math.round(rnd(0,20));
+  const ggAtt=Math.max(120,365-ggPrec-gap);
+  const mesiAtt=ggAtt/30;
+  const impAtt=r2(bA.mFisc*mesiAtt), dic=r2(bA.mFisc), impProgr=r2(impAtt-dic);
+  const bP=genRapporto();
+  const mesiPrec=ggPrec/30;
+  const redPrec=r2(bP.mFisc*mesiPrec);
+  const aliqReg=pick([1.23,1.53,1.73]), aliqCom=pick([0.50,0.70,0.80]);
+
+  const tot=r2(impProgr+dic+redPrec);
+  const ggTot=Math.min(365,ggPrec+ggAtt);
+  // ritenute standalone (corrette per ciascun datore)
+  const irpVersPrec=r2(Math.max(0,irpefLorda(redPrec,28000,50000)-(detrBase(redPrec)*ggPrec/365+add65(redPrec))-cuneo(redPrec).imp*ggPrec/365));
+  const irpTrattProgr=r2(Math.max(0,irpefLorda(impAtt,28000,50000)-(detrBase(impAtt)*ggAtt/365+add65(impAtt))-cuneo(impAtt).imp*ggAtt/365));
+
+  const irpLA=r2(irpefLorda(tot,28000,50000));
+  const detrA=r2(detrBase(tot)*ggTot/365+add65(tot));
+  const cunA=r2(cuneo(tot).imp*ggTot/365);
+  let irpDov=r2(irpLA-detrA-cunA); if(irpDov<0)irpDov=0;
+  const giaTratt=r2(irpTrattProgr+irpVersPrec);
+  const cong=r2(irpDov-giaTratt);
+  const addReg=r2(tot*aliqReg/100), addCom=r2(tot*aliqCom/100);
+  return {scn:{bA,bP,impProgr,dic,redPrec,ggPrec,ggAtt,ggTot,irpTrattProgr,irpVersPrec,aliqReg,aliqCom},
+    sol:{tot,irpLA,detrA,cunA,irpDov,giaTratt,cong,addReg,addCom}};
+}
+const CONG_FIELDS=[
+  {k:'tot',l:'Reddito complessivo annuo',h:'attuale (gen–dic) + CU precedente',cat:'fiscal'},
+  {k:'irpLA',l:'IRPEF lorda annua',h:'scaglioni sul cumulato',cat:'tax'},
+  {k:'detrA',l:'Detrazione lavoro dip. annua',h:'base &times; giorni tot./365 + bonus 65 (intero)',cat:'tax'},
+  {k:'cunA',l:'Ulteriore detrazione cuneo annua',h:'&times; giorni totali/365',cat:'tax'},
+  {k:'irpDov',l:'IRPEF netta dovuta annua',h:'lorda &minus; detrazioni',cat:'tax'},
+  {k:'giaTratt',l:'IRPEF gi&agrave; trattenuta',h:'attuale + versata da CU prec.',cat:'tax'},
+  {k:'cong',l:'Conguaglio IRPEF (+ debito / &minus; credito)',h:'dovuta &minus; gi&agrave; trattenuta',cat:'add'},
+  {k:'addReg',l:'Addizionale regionale dovuta',h:'cumulato &times; aliquota reg.',cat:'add'},
+  {k:'addCom',l:'Addizionale comunale dovuta',h:'cumulato &times; aliquota com.',cat:'add'}
+];
+function renderCong(){
+  const s=CONG.scn;
+  document.getElementById('congScn').innerHTML=`
+    <div class="anag"><div class="top"><span class="badge">${s.bA.ccnl}</span><span class="badge q">${s.bA.q} · ${s.bA.liv} (attuale)</span></div>
+      <div class="row">
+        <div><span class="k">Imponibile fisc. gen–nov</span><span class="v">${fmt(s.impProgr)}</span></div>
+        <div><span class="k">Imponibile fisc. dicembre</span><span class="v">${fmt(s.dic)}</span></div>
+        <div><span class="k">Giorni rapporto</span><span class="v">${s.ggAtt}</span></div>
+        <div><span class="k">IRPEF trattenuta gen–nov</span><span class="v">${fmt(s.irpTrattProgr)}</span></div>
+      </div></div>
+    <div class="anag"><div class="top"><span class="badge">${s.bP.ccnl}</span><span class="badge q">${s.bP.q} · ${s.bP.liv} (CU precedente)</span></div>
+      <div class="row">
+        <div><span class="k">Reddito di riferimento</span><span class="v">${fmt(s.redPrec)}</span></div>
+        <div><span class="k">IRPEF versata</span><span class="v">${fmt(s.irpVersPrec)}</span></div>
+        <div><span class="k">Giorni rapporto</span><span class="v">${s.ggPrec}</span></div>
+        <div><span class="k">Giorni totali anno</span><span class="v">${s.ggTot}</span></div>
+      </div></div>
+    <h4>Aliquote addizionali (dati)</h4>
+    <div class="row">
+      <div><span class="k">Regionale</span><span class="v">${fmt(s.aliqReg)}%</span></div>
+      <div><span class="k">Comunale</span><span class="v">${fmt(s.aliqCom)}%</span></div>
+    </div>`;
+  buildFields('congFields',CONG_FIELDS);
+  document.getElementById('congBanner').className='banner';
+}
+function congCalc(k){const s=CONG.scn,o=CONG.sol;switch(k){
+  case 'tot':return `${fmt(s.impProgr)} + ${fmt(s.dic)} + ${fmt(s.redPrec)} = ${fmt(o.tot)}`;
+  case 'irpLA':{let t;if(o.tot>50000)t=`28.000×23% + 22.000×33% + ${fmt(r2(o.tot-50000))}×43%`;else if(o.tot>28000)t=`28.000×23% + ${fmt(r2(o.tot-28000))}×33%`;else t=`${fmt(o.tot)}×23%`;return t+` = ${fmt(o.irpLA)}`;}
+  case 'detrA':{const b65=add65(o.tot);return `base ${fmt0(Math.round(detrBase(o.tot)))} × ${s.ggTot}/365${b65?` + 65 (intero)`:``} = ${fmt(o.detrA)}`;}
+  case 'cunA':return `cuneo(${fmt0(o.tot)}) × ${s.ggTot}/365 = ${fmt(o.cunA)}`;
+  case 'irpDov':return `${fmt(o.irpLA)} − ${fmt(o.detrA)} − ${fmt(o.cunA)} = ${fmt(o.irpDov)}`;
+  case 'giaTratt':return `${fmt(s.irpTrattProgr)} (attuale) + ${fmt(s.irpVersPrec)} (CU prec.) = ${fmt(o.giaTratt)}`;
+  case 'cong':return `${fmt(o.irpDov)} − ${fmt(o.giaTratt)} = ${fmt(o.cong)} → ${o.cong>=0?'a DEBITO':'a CREDITO'}`;
+  case 'addReg':return `${fmt(o.tot)} × ${fmt(s.aliqReg)}% = ${fmt(o.addReg)}`;
+  case 'addCom':return `${fmt(o.tot)} × ${fmt(s.aliqCom)}% = ${fmt(o.addCom)}`;
+} return '';}
+
+/* ===== infrastruttura ===== */
+function buildFields(boxId,fields){
+  const box=document.getElementById(boxId); box.innerHTML='';
+  fields.forEach(f=>box.insertAdjacentHTML('beforeend',
+    `<div class="field ${f.int?'noeuro':''}" data-k="${f.k}">
+      <label>${f.l}<span class="hint">${f.h}</span></label>
+      <div class="inbox"><input type="text" inputmode="decimal" autocomplete="off" data-in="${f.k}"></div>
+      <div class="fb" data-fb="${f.k}"></div></div>`));
+}
+function check(fields,sol,calc,bannerId){
+  let ok=0; const errByCat={};
+  fields.forEach(f=>{
+    const inp=document.querySelector(`#tab-${TAB} [data-in="${f.k}"]`);
+    const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
+    const correct=sol[f.k], val=parseNum(inp.value);
+    const cat=f.cat||'tax';
+    const norma=NORMA[cat]?`<span class="norma">Norma: ${NORMA[cat]}</span>`:'';
+    inp.classList.remove('ok','warn','err');
+    if(isNaN(val)){fb.className='fb err show';fb.innerHTML=`Da compilare — corretto: ${f.int?correct:fmt(correct)}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
+    const diff=Math.abs(val-correct), tol=f.int?0.5:0.011, tolW=f.int?0.5:1.0;
+    if(diff<=tol){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML=`✓ Corretto. ${calc(f.k)}${norma}`;}
+    else if(diff<=tolW){ok++;inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML=`≈ Corretto (arrotondamento). ${calc(f.k)}${norma}`;}
+    else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=`✗ Corretto: ${f.int?correct:fmt(correct)} — ${calc(f.k)}${norma}`;errByCat[cat]=(errByCat[cat]||0)+1;}
+  });
+  stats.ex++; stats.ok+=ok; stats.tot+=fields.length;
+  for(const c in errByCat) stats.err[c]=(stats.err[c]||0)+errByCat[c];
+  stats.streak=ok===fields.length?stats.streak+1:0; stopTimer(); updateScore();
+  const b=document.getElementById(bannerId);
+  const diag=buildDiag(errByCat);
+  if(ok===fields.length){b.className='banner good show';b.innerHTML=`Tutto corretto — ${ok}/${fields.length} · tempo ${formatTime(tSec)}. Serie perfette: ${stats.streak}.`;}
+  else{b.className='banner mid show';b.innerHTML=`${ok}/${fields.length} corretti · tempo ${formatTime(tSec)}. Rivedi i campi in rosso.${diag}`;}
+}
+const DIAGTXT={
+  prev:'Imponibile previdenziale: verifica la soglia €10 dei buoni e che l\'indennità INPS non entri nel previdenziale.',
+  contr:'Contributi: controlla aliquota, base e l\'1% IVS aggiuntivo sulla quota oltre €4.685.',
+  fiscal:'Imponibile fiscale: non applicare l\'IRPEF sul lordo; sottrai prima i contributi.',
+  tax:'IRPEF/detrazioni: ricontrolla scaglioni, reddito presunto e ragguaglio ai giorni (il +65 non si ragguaglia).',
+  add:'Addizionali/netto/conguaglio: verifica se è una rata, un saldo o un ricalcolo annuale.',
+  cu:'CU: ricontrolla la collocazione tra sezione fiscale, previdenziale e reddito di riferimento.'
+};
+function buildDiag(errByCat){
+  const keys=Object.keys(errByCat).filter(k=>errByCat[k]>0);
+  if(!keys.length) return '';
+  return `<div class="diag"><b>Diagnosi:</b>`+keys.map(k=>`<div>• ${DIAGTXT[k]||k}</div>`).join('')+`</div>`;
+}
+function reveal(fields,calc){fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);fb.className='fb warn show';fb.innerHTML=`Soluzione: ${calc(f.k)}`;});}
+function updateScore(){document.getElementById('scEx').textContent=stats.ex;document.getElementById('scOk').textContent=`${stats.ok} / ${stats.tot}`;document.getElementById('scStreak').textContent=stats.streak;}
+/* cronometro */
+function formatTime(s){s=Math.max(0,Math.floor(s));const h=String(Math.floor(s/3600)).padStart(2,'0'),m=String(Math.floor((s%3600)/60)).padStart(2,'0'),x=String(s%60).padStart(2,'0');return `${h}:${m}:${x}`;}
+function startTimer(){if(tHandle)return;tHandle=setInterval(()=>{tSec++;document.getElementById('timerDisp').textContent=formatTime(tSec);},1000);}
+function stopTimer(){if(tHandle){clearInterval(tHandle);tHandle=null;}}
+function resetTimer(){stopTimer();tSec=0;document.getElementById('timerDisp').textContent='00:00:00';}
+/* modalità: in Esame nascondi i suggerimenti (hint) e il pulsante soluzione */
+function applyMode(){
+  document.querySelectorAll('.field .hint').forEach(h=>h.style.display=MODE==='exam'?'none':'block');
+  document.querySelectorAll('.act.ghost.t3').forEach(btn=>btn.style.display=MODE==='exam'?'none':'inline-block');
+}
+
+function newCed(){CED=genCedolino();renderCedolino();resetTimer();applyMode();}
+function newCU(){CU=genCU();renderCU();resetTimer();applyMode();}
+function newCong(){CONG=genConguaglio();renderCong();resetTimer();applyMode();}
+
+document.getElementById('cedCheck').onclick=()=>check(CED_FIELDS,CED.sol,cedCalc,'cedBanner');
+document.getElementById('cedSol').onclick=()=>reveal(CED_FIELDS,cedCalc);
+document.getElementById('cedNew').onclick=newCed;
+document.getElementById('cuCheck').onclick=()=>check(CU_FIELDS,CU.sol,cuCalc,'cuBanner');
+document.getElementById('cuSol').onclick=()=>reveal(CU_FIELDS,cuCalc);
+document.getElementById('cuNew').onclick=newCU;
+document.getElementById('congCheck').onclick=()=>check(CONG_FIELDS,CONG.sol,congCalc,'congBanner');
+document.getElementById('congSol').onclick=()=>reveal(CONG_FIELDS,congCalc);
+document.getElementById('congNew').onclick=newCong;
+
+document.getElementById('timerStart').onclick=startTimer;
+document.getElementById('timerStop').onclick=stopTimer;
+document.getElementById('timerReset').onclick=resetTimer;
+document.getElementById('printBtn').onclick=()=>window.print();
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); TAB=t.dataset.tab;
+  document.getElementById('tab-ced').classList.toggle('hidden',TAB!=='ced');
+  document.getElementById('tab-cu').classList.toggle('hidden',TAB!=='cu');
+  document.getElementById('tab-cong').classList.toggle('hidden',TAB!=='cong');
+  document.getElementById('diffWrap').classList.toggle('dim',TAB==='cong');
+  applyMode();
+});
+document.querySelectorAll('#diffWrap .diffbtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#diffWrap .diffbtn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); DIFF=b.dataset.diff; newCed(); newCU();
+});
+document.querySelectorAll('#modeWrap .diffbtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#modeWrap .diffbtn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); MODE=b.dataset.mode; applyMode();
+});
+document.querySelectorAll('#ccnlWrap .diffbtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#ccnlWrap .diffbtn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); CCNLSEL=b.dataset.ccnl; newCed(); newCU(); newCong();
+});
+
+newCed(); newCU(); newCong(); updateScore();
+</script>
+</body>
+</html>
