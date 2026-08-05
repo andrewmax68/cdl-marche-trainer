@@ -30,6 +30,9 @@
   .diff{display:flex;gap:4px;background:#E1E6EB;border-radius:9px;padding:3px;margin-left:auto;}
   .diffbtn{border:none;background:transparent;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:6px 11px;border-radius:7px;cursor:pointer;color:var(--ink-soft);}
   .diffbtn.active{background:var(--t2);color:#fff;}
+  .evchk{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;user-select:none;}
+  .evchk input{cursor:pointer;accent-color:var(--t2);}
+  .evchk:has(input:checked){color:var(--ink);}
   .diff.dim{opacity:.4;pointer-events:none;}
   .score{display:flex;gap:8px;margin-bottom:16px;}
   .score .s{flex:1;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px;text-align:center;}
@@ -134,6 +137,18 @@
       <button class="diffbtn" data-ccnl="metalmecc">Metalmecc.</button>
       <button class="diffbtn" data-ccnl="calzature">Calzature</button>
     </div>
+  </div>
+
+  <div class="bar" id="eventiWrap" style="gap:14px;align-items:center;display:none;flex-wrap:wrap;background:var(--t1-bg,#E7EAF1);border-radius:10px;padding:10px 14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">Eventi da includere</span>
+    <label class="evchk"><input type="checkbox" data-ev="malattia"> Malattia</label>
+    <label class="evchk"><input type="checkbox" data-ev="festiv"> Festività</label>
+    <label class="evchk"><input type="checkbox" data-ev="straord"> Straordinario</label>
+    <label class="evchk"><input type="checkbox" data-ev="buoni"> Buoni oltre soglia</label>
+    <label class="evchk"><input type="checkbox" data-ev="fondo"> Fondo assistenza</label>
+    <label class="evchk"><input type="checkbox" data-ev="cessione"> Cessione del quinto</label>
+    <button class="act ghost" id="evRandom" style="margin-left:auto;">🎲 Casuale</button>
+    <button class="act ghost" id="evNone">Nessuno</button>
   </div>
 
   <div class="bar" style="gap:6px;align-items:center">
@@ -301,6 +316,7 @@ function buildLivello(C){
 function genLivello(){return buildLivello(pickCCNL());}
 
 let DIFF='base',MODE='guided',TAB='ced',CED=null,CU=null,CONG=null;
+let EVENTI={malattia:false,festiv:false,straord:false,buoni:false,fondo:false,cessione:false};
 const stats={ex:0,ok:0,tot:0,streak:0,err:{prev:0,contr:0,fiscal:0,tax:0,add:0,cu:0}};
 let tSec=0,tHandle=null;
 
@@ -317,13 +333,13 @@ function genCedolino(){
   const quotaG=r2(b.lordo/26);
   let retrOrd=b.lordo, festiv=0,straord=0,integrMal=0,indINPS=0,contribFondo=0,cessione=0,buonoU=10,malGiorni=0,ggEff=ggLavorativi;
   if(av){
-    if(chance(0.55)){malGiorni=Math.floor(rnd(4,9));const ggINPS=Math.max(0,malGiorni-3);
+    if(EVENTI.malattia){malGiorni=Math.floor(rnd(4,9));const ggINPS=Math.max(0,malGiorni-3);
       indINPS=r2(quotaG*0.5*ggINPS); integrMal=r2(quotaG*0.5*ggINPS);
       retrOrd=r2(b.lordo-quotaG*ggINPS); ggEff=ggLavorativi-malGiorni;}
-    if(chance(0.5))festiv=r2(quotaG*pick([0.5,1]));
-    if(chance(0.45)){const ore=Math.floor(rnd(3,9));straord=r2((b.lordo/b.orario)*ore*pick([1.15,1.25,1.30]));}
-    if(chance(0.5))buonoU=pick([10,12,12]);
-    if(chance(0.5))contribFondo=r2(pick([13,2,3.62,10]));
+    if(EVENTI.festiv)festiv=r2(quotaG*pick([0.5,1]));
+    if(EVENTI.straord){const ore=Math.floor(rnd(3,9));straord=r2((b.lordo/b.orario)*ore*pick([1.15,1.25,1.30]));}
+    if(EVENTI.buoni)buonoU=pick([12,12]);
+    if(EVENTI.fondo)contribFondo=r2(pick([13,2,3.62,10]));
   }
   const ggPasto=ggEff;
   const buoniTot=r2(buonoU*ggPasto),buoniEs=r2(Math.min(buonoU,10)*ggPasto),buoniEcc=r2(buoniTot-buoniEs);
@@ -339,7 +355,7 @@ function genCedolino(){
   let irpN=r2(irpL-detrM-cunM); if(irpN<0)irpN=0;
   const compCash=r2(retrOrd+festiv+straord+integrMal+indINPS);
   const nettoPre=r2(compCash-contributi-contribFondo-irpN-rataReg-rataCom);
-  if(av&&chance(0.4))cessione=r2(nettoPre/5*rnd(0.6,1.0));
+  if(av&&EVENTI.cessione)cessione=r2(nettoPre/5*rnd(0.6,1.0));
   const netto=r2(nettoPre-cessione);
   const tfr=r2(b.lordo/13.5-impPrev*0.005), inail=r2(impPrev*tassoInail/1000);
   return {av,scn:{...b,aliq,mese,ggMese,ggLavorativi,ggEff,ggPasto,malGiorni,retrOrd,festiv,straord,integrMal,indINPS,contribFondo,cessione,buonoU,tassoInail,rataReg,rataCom,RC,quotaG},
@@ -398,7 +414,7 @@ function renderCedolino(){
   buildFields('cedFields',CED_FIELDS);
   document.getElementById('cedBanner').className='banner';
   document.getElementById('cedNote').innerHTML=CED.av
-    ?'<b>Modalit&agrave; avanzata.</b> L\'indennit&agrave; INPS &egrave; imponibile <b>fiscale ma non previdenziale</b>; il fondo assistenza <b>riduce</b> l\'imponibile fiscale; la cessione incide <b>solo sul netto</b>; dei buoni oltre &euro; 10 (soglia 2026) &egrave; imponibile la sola eccedenza. In malattia la retribuzione ordinaria &egrave; ridotta e reintegrata da indennit&agrave; + integrazione.'
+    ?'<b>Modalit&agrave; avanzata.</b> Scegli gli eventi da esercitare con le caselle sopra (nessuno spuntato = come Base). L\'indennit&agrave; INPS &egrave; imponibile <b>fiscale ma non previdenziale</b>; il fondo assistenza <b>riduce</b> l\'imponibile fiscale; la cessione incide <b>solo sul netto</b>; dei buoni oltre &euro; 10 (soglia 2026) &egrave; imponibile la sola eccedenza. In malattia la retribuzione ordinaria &egrave; ridotta e reintegrata da indennit&agrave; + integrazione.'
     :'<b>Modalit&agrave; base.</b> Mese pieno, buoni &euro; 10 esenti (soglia elettronici 2026). Catena lordo &rarr; contributi &rarr; fiscale &rarr; IRPEF &rarr; netto.';
 }
 function cedCalc(k){const s=CED.scn,o=CED.sol;const s1=o.s1m,s2=50000/12;switch(k){
@@ -644,7 +660,9 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
 });
 document.querySelectorAll('#diffWrap .diffbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#diffWrap .diffbtn').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active'); DIFF=b.dataset.diff; newCed(); newCU();
+  b.classList.add('active'); DIFF=b.dataset.diff;
+  document.getElementById('eventiWrap').style.display=(DIFF==='avanzato'?'flex':'none');
+  newCed(); newCU();
 });
 document.querySelectorAll('#modeWrap .diffbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#modeWrap .diffbtn').forEach(x=>x.classList.remove('active'));
@@ -654,6 +672,20 @@ document.querySelectorAll('#ccnlWrap .diffbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#ccnlWrap .diffbtn').forEach(x=>x.classList.remove('active'));
   b.classList.add('active'); CCNLSEL=b.dataset.ccnl; newCed(); newCU(); newCong();
 });
+document.querySelectorAll('#eventiWrap input[data-ev]').forEach(cb=>cb.onchange=()=>{
+  EVENTI[cb.dataset.ev]=cb.checked; newCed();
+});
+document.getElementById('evRandom').onclick=()=>{
+  const probs={malattia:0.55,festiv:0.5,straord:0.45,buoni:0.5,fondo:0.5,cessione:0.4};
+  document.querySelectorAll('#eventiWrap input[data-ev]').forEach(cb=>{
+    const on=chance(probs[cb.dataset.ev]); cb.checked=on; EVENTI[cb.dataset.ev]=on;
+  });
+  newCed();
+};
+document.getElementById('evNone').onclick=()=>{
+  document.querySelectorAll('#eventiWrap input[data-ev]').forEach(cb=>{cb.checked=false; EVENTI[cb.dataset.ev]=false;});
+  newCed();
+};
 
 newCed(); newCU(); newCong(); updateScore();
 </script>
