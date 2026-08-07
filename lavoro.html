@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulatore prova I — Consulente del Lavoro · Ancona 2026 · V5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161d29;--ink-2:#26324a;--paper:#eae7de;--surface:#f4f2eb;--surface-2:#fbfaf6;
+    --line:#cdc7ba;--line-2:#ded9cd;--oxblood:#7c2b2b;--oxblood-2:#9a4040;--brass:#9a7a34;
+    --muted:#6a6656;--ok:#3d6b4a;--ok-2:#e7efe6;
+    --shadow:0 1px 0 rgba(0,0,0,.04),0 6px 20px -12px rgba(22,29,41,.28);
+    --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --serif:"Spectral",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:var(--ui);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(124,43,43,.16)}
+  a{color:var(--oxblood);text-underline-offset:2px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  header.top{border-bottom:2px solid var(--ink);background:var(--surface)}
+  .masthead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:22px 0 16px}
+  .brand{max-width:640px}
+  .eyebrow{font:600 11px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);margin:0 0 8px}
+  h1.title{font:600 clamp(24px,3.4vw,34px)/1.08 var(--serif);letter-spacing:-.01em;margin:0}
+  .subtitle{font-size:14px;color:var(--muted);margin:8px 0 0;max-width:54ch}
+  .examcard{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);border:1px solid var(--line);background:var(--surface-2);padding:12px 14px;border-radius:2px;min-width:196px;line-height:1.7}
+  .examcard b{color:var(--oxblood);font-weight:600}
+  .examcard .row{display:flex;justify-content:space-between;gap:14px}
+
+  nav.tabs{display:flex;gap:2px;border-top:1px solid var(--line-2);flex-wrap:wrap}
+  nav.tabs button{font:600 12.5px/1 var(--ui);letter-spacing:.02em;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:14px 15px;cursor:pointer;display:flex;align-items:center;gap:8px}
+  nav.tabs button .n{font:600 10px/1 var(--mono);color:var(--line)}
+  nav.tabs button:hover{color:var(--ink)}
+  nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--oxblood)}
+  nav.tabs button[aria-selected="true"] .n{color:var(--oxblood)}
+
+  main{padding:28px 0 80px}
+  .view{display:none}
+  .view.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  .lead{font-size:14.5px;color:var(--ink-2);max-width:74ch}
+  .btn{font:600 13px/1 var(--ui);cursor:pointer;background:var(--ink);color:#fff;border:1px solid var(--ink);padding:13px 20px;border-radius:2px;letter-spacing:.02em;transition:background .15s,transform .05s}
+  .btn:hover{background:var(--ink-2)}
+  .btn:active{transform:translateY(1px)}
+  .btn.oxblood{background:var(--oxblood);border-color:var(--oxblood)}
+  .btn.oxblood:hover{background:var(--oxblood-2)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{background:var(--surface-2)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn.sm{padding:9px 14px;font-size:12px}
+
+  .peso{font:600 10px/1 var(--mono);letter-spacing:.06em;padding:4px 7px;border-radius:2px;white-space:nowrap;border:1px solid}
+  .peso.ap,.peso.a{color:var(--oxblood);border-color:rgba(124,43,43,.35);background:rgba(124,43,43,.06)}
+  .peso.bp,.peso.b{color:var(--brass);border-color:rgba(154,122,52,.4);background:rgba(154,122,52,.07)}
+  .peso.c{color:var(--muted);border-color:var(--line);background:var(--surface-2)}
+  .tag2526{font:600 10px/1 var(--mono);letter-spacing:.04em;color:#fff;background:var(--ink-2);padding:4px 7px;border-radius:2px}
+
+  /* config */
+  .sim-intro{border:1px solid var(--line);background:var(--surface);border-radius:3px;padding:26px;box-shadow:var(--shadow)}
+  .sim-intro h2{font:600 19px/1.2 var(--serif);margin:0 0 8px}
+  .config{display:flex;flex-wrap:wrap;gap:22px;margin:22px 0}
+  .config fieldset{border:none;padding:0;margin:0}
+  .config legend{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;padding:0}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;flex-wrap:wrap}
+  .seg button{font:500 12.5px/1 var(--ui);background:var(--surface-2);border:none;padding:10px 14px;cursor:pointer;color:var(--ink-2);border-right:1px solid var(--line)}
+  .seg button:last-child{border-right:none}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+  /* sorteggio */
+  .buste{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 4px}
+  .busta{position:relative;border:1px solid var(--line);background:var(--surface-2);border-radius:3px;padding:18px 16px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s,box-shadow .3s,border-color .3s,opacity .3s}
+  .busta .n{font:600 11px/1 var(--mono);letter-spacing:.1em;color:var(--muted)}
+  .busta .lbl{font:600 14px/1.25 var(--serif);color:var(--ink-2)}
+  .busta .status{font:600 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--line)}
+  .busta.drawing{animation:shuffle .5s ease}
+  @keyframes shuffle{0%,100%{transform:translateY(0)}25%{transform:translateY(-6px) rotate(-1deg)}75%{transform:translateY(3px) rotate(.6deg)}}
+  .busta.estratta{border-color:var(--oxblood);box-shadow:0 8px 26px -14px rgba(124,43,43,.6);background:#fff;transform:translateY(-4px)}
+  .busta.estratta .status{color:var(--oxblood)}
+  .busta.scartata{opacity:.5}
+  .busta .seal{position:absolute;top:-9px;right:12px;font:600 9px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--oxblood);padding:5px 8px;border-radius:2px;opacity:0;transition:opacity .3s .2s}
+  .busta.estratta .seal{opacity:1}
+
+  /* timer */
+  .timerbar{position:sticky;top:0;z-index:20;display:none;align-items:center;justify-content:space-between;gap:18px;background:var(--ink);color:#fff;padding:12px 18px;border-radius:3px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .timerbar.on{display:flex}
+  .clock{font:600 clamp(22px,4vw,30px)/1 var(--mono);letter-spacing:.02em}
+  .clock.warn{color:#ffb4a2}
+  .clock small{display:block;font:600 10px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  .timerbar .meta{font:500 12px/1.4 var(--ui);color:rgba(255,255,255,.8);max-width:44ch}
+  .timerbar .actions{display:flex;gap:8px;flex-shrink:0}
+  .timerbar .btn.ghost{color:#fff;border-color:rgba(255,255,255,.3);background:transparent}
+  .timerbar .btn.ghost:hover{background:rgba(255,255,255,.1)}
+
+  /* sheet */
+  .sheet{border:1px solid var(--line);background:var(--surface-2);border-radius:3px;padding:34px 38px;box-shadow:var(--shadow)}
+  .sheet .stamp{font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--oxblood);border-bottom:1px solid var(--line);padding-bottom:12px;display:flex;justify-content:space-between;gap:12px;margin-bottom:22px}
+  .sheet .traccia-tit{font:600 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  .sheet .traccia-body{font:400 18.5px/1.62 var(--serif);color:var(--ink);max-width:64ch}
+  .draft{margin-top:22px}
+  .draft label{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
+  textarea{width:100%;min-height:200px;resize:vertical;font:400 15px/1.6 var(--serif);color:var(--ink);border:1px solid var(--line);border-radius:2px;background:#fff;padding:14px 16px}
+  textarea:focus{outline:2px solid var(--oxblood);outline-offset:-1px}
+  .draft .hint{font-size:12px;color:var(--muted);margin-top:8px}
+  .sim-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+
+  /* correction */
+  .correction{margin-top:26px;display:none}
+  .correction.on{display:block}
+  .corr-head{border-top:2px solid var(--ink);padding-top:18px;margin-bottom:16px}
+  .corr-head h3{font:600 17px/1.2 var(--serif);margin:0 0 4px}
+  .corr-head .note{font-size:12.5px;color:var(--muted);max-width:66ch}
+
+  /* coverage meter */
+  .cover{border:1px solid var(--line);border-radius:3px;background:#fff;padding:18px 20px;margin-bottom:14px}
+  .cover .top{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .gauge{--v:0;width:74px;height:74px;border-radius:50%;flex-shrink:0;background:conic-gradient(var(--oxblood) calc(var(--v)*1%),var(--line-2) 0);display:grid;place-items:center;position:relative}
+  .gauge::after{content:'';position:absolute;inset:8px;background:#fff;border-radius:50%}
+  .gauge b{position:relative;z-index:1;font:600 18px/1 var(--mono);color:var(--ink)}
+  .cover .lbl{font:600 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .cover .cap{font-size:12.5px;color:var(--muted);margin-top:4px;max-width:52ch}
+  .dims{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+  .dim{font:600 11px/1 var(--mono);letter-spacing:.03em;padding:6px 9px;border-radius:2px;border:1px solid var(--line);color:var(--muted);display:flex;align-items:center;gap:6px}
+  .dim.hit{color:var(--ok);border-color:rgba(61,107,74,.4);background:var(--ok-2)}
+  .dim .mk{font-weight:700}
+  .omis{margin-top:14px}
+  .omis h5{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--oxblood);margin:0 0 8px}
+  .omis .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .omis .chip{font:500 12px/1 var(--ui);border:1px dashed var(--line);color:var(--ink-2);padding:6px 9px;border-radius:2px;background:var(--surface-2)}
+  .recov{margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2)}
+  .recov h5{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  .recov li{font-size:13.5px;margin-bottom:5px}
+
+  /* grid */
+  .grid-block{border:1px solid var(--line-2);border-radius:3px;background:var(--surface-2);margin-bottom:14px;overflow:hidden}
+  .grid-block > h4{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin:0;padding:12px 16px;background:var(--surface);color:var(--ink-2);border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:10px}
+  .grid-block > h4 .step{color:var(--oxblood);font-weight:600}
+  .grid-block ul{margin:0;padding:14px 20px 16px 34px}
+  .grid-block li{font-size:14px;color:var(--ink);margin-bottom:7px;line-height:1.5}
+  .grid-block li:last-child{margin-bottom:0}
+  .norm{font-family:var(--mono);font-size:12.5px;color:var(--oxblood);font-weight:500}
+  .aggior{border:1px solid rgba(38,50,74,.25);background:rgba(38,50,74,.045);border-radius:3px;padding:14px 18px;margin-bottom:14px}
+  .aggior h4{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .aggior li{font-size:13.5px;margin-bottom:6px}
+  .aggior ul{margin:0;padding-left:20px}
+
+  .selfbox{border:1px solid var(--line);border-radius:3px;padding:18px 20px;background:#fff;margin-bottom:14px}
+  .selfbox h4{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--oxblood);margin:0 0 6px}
+  .selfbox .sub{font-size:12.5px;color:var(--muted);margin:0 0 14px;max-width:60ch}
+  .svol{margin-top:16px}
+  .tier{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 16px}
+  .tier-lbl{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .bp-legend{font-size:12px;color:var(--muted);margin:0 0 12px}
+  .bp-legend .sog{margin-right:5px}
+  .bp-block{border:1px solid var(--line-2);border-radius:3px;background:var(--surface-2);margin-bottom:12px;overflow:hidden}
+  .bp-block > h4{font:600 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;margin:0;padding:11px 15px;background:var(--surface);color:var(--ink-2);border-bottom:1px solid var(--line-2);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .bp-block > h4 .step{color:var(--oxblood);font-weight:700}
+  .bp-block > h4 .anat{font:600 9px/1 var(--mono);letter-spacing:.04em;color:#fff;background:var(--ink-2);padding:3px 6px;border-radius:2px;margin-left:auto}
+  .bp-block ul{margin:0;padding:12px 18px 14px 18px}
+  .bp-block li{font-size:13.5px;color:var(--ink);margin-bottom:8px;line-height:1.5;list-style:none}
+  .bp-block li:last-child{margin-bottom:0}
+  .bp-note{font-size:13px;color:var(--muted);padding:12px 18px;line-height:1.5}
+  .sog{font:600 9px/1 var(--mono);letter-spacing:.04em;padding:2px 5px;border-radius:2px;margin-right:8px;vertical-align:middle;white-space:nowrap}
+  .sog.ind{color:var(--muted);border:1px solid var(--line);background:#fff}
+  .sog.alto{color:var(--oxblood);border:1px solid rgba(124,43,43,.4);background:rgba(124,43,43,.06)}
+  .checklist .item{display:flex;gap:11px;align-items:flex-start;margin-bottom:11px;cursor:pointer}
+  .checklist input[type=checkbox]{margin-top:3px;width:16px;height:16px;accent-color:var(--oxblood);flex-shrink:0}
+  .checklist .item span{font-size:14px;color:var(--ink)}
+  .score-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line-2);padding-top:16px;margin-top:14px}
+  .score-row label{font:600 12px/1.3 var(--ui);color:var(--ink-2);max-width:32ch}
+  select{font:500 13px var(--ui);padding:9px 12px;border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink)}
+
+  /* studio */
+  .studio-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+  .studio-intro h2{font:600 20px/1.15 var(--serif);margin:0 0 6px}
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .chip-f{font:500 12px/1 var(--ui);border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);padding:8px 12px;border-radius:2px;cursor:pointer}
+  .chip-f[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .accordion{border-top:1px solid var(--line)}
+  .acc-item{border-bottom:1px solid var(--line)}
+  .acc-btn{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:18px 4px;display:flex;align-items:center;gap:14px}
+  .acc-btn:hover{background:var(--surface-2)}
+  .acc-idx{font:600 12px/1 var(--mono);color:var(--line);width:26px;flex-shrink:0}
+  .acc-tit{font:600 16.5px/1.25 var(--serif);color:var(--ink);flex:1}
+  .acc-meta{display:flex;gap:8px;align-items:center;flex-shrink:0}
+  .acc-years{font:500 11px/1 var(--mono);color:var(--muted)}
+  .acc-caret{color:var(--muted);transition:transform .2s;font-size:13px}
+  .acc-btn[aria-expanded="true"] .acc-caret{transform:rotate(90deg)}
+  .acc-panel{display:none;padding:4px 4px 26px 40px}
+  .acc-panel.on{display:block}
+  .acc-panel .traccia-preview{font:400 16px/1.55 var(--serif);color:var(--ink-2);border-left:2px solid var(--oxblood);padding:2px 0 2px 16px;margin:0 0 20px;max-width:66ch}
+
+  /* radar / copertura */
+  .cov-intro{margin-bottom:18px}
+  .cov-intro h2{font:600 20px/1.15 var(--serif);margin:0 0 6px}
+  table.cov{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.cov th{font:600 10.5px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--ink)}
+  table.cov th.num,table.cov td.num{text-align:right;font-family:var(--mono)}
+  table.cov td{padding:12px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+  table.cov tr.untouched td{color:var(--muted)}
+  table.cov .tname{font-weight:600;color:var(--ink)}
+  .barwrap{height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;min-width:80px}
+  .bar-i{height:100%;background:var(--oxblood)}
+  .nudge{border:1px solid rgba(124,43,43,.3);background:rgba(124,43,43,.05);border-radius:3px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:var(--ink-2)}
+  .nudge b{color:var(--oxblood)}
+  .cov-actions{margin-top:18px;display:flex;gap:10px}
+
+  /* fonti */
+  .fonti-intro{margin-bottom:18px}
+  .fonti-intro h2{font:600 20px/1.15 var(--serif);margin:0 0 6px}
+  table.fonti{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.fonti th{font:600 10.5px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--ink)}
+  table.fonti td{padding:13px 12px;border-bottom:1px solid var(--line-2);vertical-align:top}
+  table.fonti td.src{font-weight:600;color:var(--ink);white-space:nowrap;font-family:var(--mono);font-size:12px}
+  table.fonti td.body{color:var(--ink-2)}
+
+  footer.foot{border-top:1px solid var(--line);padding:22px 0 40px;margin-top:40px}
+  .foot p{font-size:12px;color:var(--muted);max-width:82ch;margin:0 0 8px}
+  .foot .mono{font-family:var(--mono);font-size:11px}
+
+  @media (max-width:720px){
+    .masthead{flex-direction:column;align-items:flex-start}
+    .buste{grid-template-columns:1fr}
+    .sheet{padding:24px 20px}
+    .sheet .traccia-body{font-size:17px}
+    nav.tabs{overflow-x:auto}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* V4 */
+  .ai-actions{border:1px solid rgba(38,50,74,.28);background:#f4f7fb;border-radius:3px;padding:16px 18px;margin:14px 0}
+  .ai-actions h4{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 7px}
+  .ai-actions p{font-size:13px;color:var(--ink-2);margin:0 0 12px}
+  .matrixline{font:500 11px/1.5 var(--mono);color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+  .copyok{font:600 11px/1 var(--mono);color:var(--ok);margin-left:8px}
+  .livebox{border-left:4px solid var(--ink-2);background:#f4f7fb;padding:12px 14px;margin:14px 0;font-size:13px;color:var(--ink-2)}
+
+
+  /* V5 */
+  .v5panel{border:1px solid var(--line);background:#fff;border-radius:3px;padding:16px 18px;margin:14px 0}
+  .v5panel h4{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 9px}
+  .profile-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+  .metric{border:1px solid var(--line-2);padding:10px;background:var(--surface-2)}
+  .metric b{display:block;font:600 18px/1.1 var(--mono);color:var(--oxblood)}
+  .metric span{font-size:11px;color:var(--muted)}
+  .methodbar{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .methodstep{font:600 10.5px/1 var(--mono);padding:6px 8px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted)}
+  .methodstep.hit{background:var(--ok-2);border-color:rgba(61,107,74,.4);color:var(--ok)}
+  .commission-box{border-left:4px solid var(--oxblood);background:#fff;padding:14px 16px;margin:14px 0}
+  .commission-box h4{margin:0 0 8px;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--oxblood)}
+  .commission-box p{font-size:13px;margin:6px 0}
+  .mini-score{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+  .mini-score div{border:1px solid var(--line);padding:10px;text-align:center;background:var(--surface-2)}
+  .mini-score b{display:block;font:600 19px/1.1 var(--mono)}
+  .weekflag{font:600 10px/1 var(--mono);padding:4px 7px;background:var(--oxblood);color:#fff;border-radius:2px}
+  .trace-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .trace-meta span{font:600 10px/1 var(--mono);border:1px solid var(--line);padding:5px 7px;color:var(--muted);background:#fff}
+  .drill{border:1px solid rgba(154,122,52,.35);background:rgba(154,122,52,.06);padding:13px 15px;margin:12px 0}
+  .drill h5{font:600 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--brass);margin:0 0 8px}
+  .drill li{font-size:13px;margin-bottom:5px}
+  @media(max-width:820px){.profile-grid{grid-template-columns:1fr 1fr}.mini-score{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="masthead">
+      <div class="brand">
+        <p class="eyebrow">Esame di Stato · Consulente del Lavoro · L. 12/1979 · V5</p>
+        <h1 class="title">Prova scritta I — Diritto del lavoro e legislazione sociale</h1>
+        <p class="subtitle">Motore Commissione Marche, tracce combinatorie anti-ripetizione, allenamento adattivo, modalità Rausei e pacchetto per correzione AI. Il motore offline misura copertura e metodo; la valutazione giuridico-semantica resta distinta.</p>
+      </div>
+      <div class="examcard">
+        <div class="row"><span>Sede</span><b>ITL Ancona</b></div>
+        <div class="row"><span>Prova I</span><b>27 ott 2026</b></div>
+        <div class="row"><span>Durata</span><b>7 ore</b></div>
+        <div class="row"><span>Tracce</span><b>3 → 1 sorteggio</b></div>
+        <div class="row"><span>Sufficienza</span><b>6/10</b></div>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-view="sim"><span class="n">01</span>Simulazione</button>
+      <button role="tab" aria-selected="false" data-view="studio"><span class="n">02</span>Studio dei temi</button>
+      <button role="tab" aria-selected="false" data-view="cov"><span class="n">03</span>Radar &amp; copertura</button>
+      <button role="tab" aria-selected="false" data-view="fonti"><span class="n">04</span>Fonti di controllo</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- SIMULAZIONE -->
+    <section class="view active" id="view-sim">
+      <div class="timerbar" id="timerbar">
+        <div class="clock" id="clock">7:00:00<small id="clocklbl">Tempo residuo</small></div>
+        <div class="meta" id="timermeta">Sviluppa la traccia estratta. Alla prova reale hai 7 ore e consulti i codici non commentati.</div>
+        <div class="actions">
+          <button class="btn ghost sm" id="btnPause">Pausa</button>
+          <button class="btn oxblood sm" id="btnTermina">Consegna e correggi</button>
+        </div>
+      </div>
+
+      <div class="sim-intro" id="simIntro">
+        <h2>Avvia una sessione a condizioni d'esame</h2>
+        <div id="weekNotice"></div>
+        <p class="lead">La commissione propone tre tracce; una sola è sorteggiata e va svolta. La composizione è pesata sulle ricorrenze effettive di Ancona, ma il sorteggio resta cieco: la strategia razionale è coprire in ampiezza, non specializzarsi su un tema solo.</p>
+        <div class="config">
+          <fieldset>
+            <legend>Durata</legend>
+            <div class="seg" id="segDurata" role="group" aria-label="Durata">
+              <button data-min="420" aria-pressed="true">7 ore · reale</button>
+              <button data-min="90">90 min</button>
+              <button data-min="35">35 min · schema</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Selezione temi</legend>
+            <div class="seg" id="segBacino" role="group" aria-label="Selezione">
+              <button data-mode="radar" aria-pressed="true">Radar Marche</button>
+              <button data-mode="weak">Temi deboli</button>
+              <button data-mode="uniform">Uniforme</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Difficoltà</legend>
+            <div class="seg" id="segDiff" role="group" aria-label="Difficoltà">
+              <button data-diff="std" aria-pressed="true">Standard</button>
+              <button data-diff="alta">Avanzata</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Protocollo</legend>
+            <div class="seg" id="segProtocol" role="group" aria-label="Protocollo">
+              <button data-proto="commissione" aria-pressed="true">Commissione</button>
+              <button data-proto="rausei">Metodo Rausei</button>
+              <button data-proto="week">Ultima settimana</button>
+            </div>
+          </fieldset>
+        </div>
+        <button class="btn oxblood" id="btnAvvia">Genera 3 tracce &amp; sorteggia</button>
+      </div>
+
+      <div id="sorteggio" style="display:none"><div class="buste" id="buste"></div></div>
+
+      <div class="sheet" id="sheet" style="display:none">
+        <div class="stamp"><span>Traccia estratta · da svolgere</span><span>Diritto del lavoro e legislazione sociale</span></div>
+        <p class="traccia-tit" id="tracciaTit"></p>
+        <div class="traccia-body" id="tracciaBody"></div><div class="matrixline" id="matrixLine"></div>
+        <div class="draft">
+          <label for="draftArea">Elaborato (facoltativo — puoi scrivere su carta e usare solo il timer; se scrivi qui, il motore misura la copertura)</label>
+          <textarea id="draftArea" placeholder="Imposta la scaletta sui cinque livelli, poi sviluppa. Il testo resta solo in questa sessione."></textarea>
+          <p class="hint">Prima di scrivere, fissa in 5 minuti la scaletta: inquadramento → disciplina → adempimenti → sanzioni/ispezione → prassi. È lì che il tema si vince o si perde. <span id="wordCount">0 parole</span></p>
+        </div>
+        <div class="sim-actions">
+          <button class="btn oxblood" id="btnTermina2">Consegna e correggi</button>
+          <button class="btn ghost" id="btnAnnulla">Annulla sessione</button>
+        </div>
+
+        <div class="correction" id="correction">
+          <div class="corr-head">
+            <h3>Correzione</h3>
+            <p class="note">Il misuratore qui sotto valuta la <b>copertura degli ancoraggi essenziali</b> — non la qualità del ragionamento né la correttezza giuridica, che una macchina a parole-chiave non può giudicare. Quelle le valuti tu, confrontando l'elaborato con la griglia-modello.</p>
+          </div>
+          <div id="coverBox"></div>
+          <div class="ai-actions" id="aiActions">
+            <h4>Correzione AI — livello semantico</h4>
+            <p>La V5 prepara un pacchetto strutturato con traccia, elaborato, griglia attesa, metodo e tre prospettive di Commissione. Copialo in ChatGPT per una correzione giuridica vera: errori di diritto, norme applicate male, omissioni, voto motivato /10 e domande da commissario.</p>
+            <div class="sim-actions" style="margin-top:0">
+              <button class="btn sm" id="btnCopyAI">Copia pacchetto AI</button>
+              <button class="btn ghost sm" id="btnDownloadAI">Scarica pacchetto .txt</button>
+              <span class="copyok" id="copyStatus"></span>
+            </div>
+          </div>
+          <div id="commissionFeedback"></div>
+          <div id="corrContent"></div>
+          <div class="selfbox">
+            <h4>Autovalutazione del ragionamento</h4>
+            <p class="sub">Le cinque domande riguardano ciò che il motore non vede: struttura, correttezza, capacità di applicare la norma alla fattispecie.</p>
+            <div class="checklist" id="checklistItems"></div>
+            <div class="score-row">
+              <label for="scoreSel">Voto che ti daresti sull'impianto e sul ragionamento (non sulla copertura):</label>
+              <select id="scoreSel">
+                <option value="">— seleziona —</option>
+                <option value="3">3 · impianto assente</option>
+                <option value="4">4 · lacunoso</option>
+                <option value="5">5 · insufficiente ma avviato</option>
+                <option value="6">6 · sufficiente</option>
+                <option value="7">7 · buono</option>
+                <option value="8">8 · solido</option>
+                <option value="9">9 · pienamente padroneggiato</option>
+              </select>
+              <button class="btn sm" id="btnRegistra">Registra e chiudi</button>
+            </div>
+          </div>
+
+          <div class="svol" id="svolModule">
+            <div class="corr-head" style="border-top-color:var(--oxblood)">
+              <h3>Svolgimento modello</h3>
+              <p class="note">Disponibile solo ora, dopo la consegna, per non trasformare il simulatore in lettura passiva. Sotto: il <b>blueprint</b> offline (architettura a 9 blocchi, con soglia 6 / voto alto) e il pacchetto per generare con l'AI il tema continuo, selettivo sulla traccia estratta e verificato sul web. Usalo <b>dopo</b> aver scritto il tuo — leggere un tema perfetto non insegna a scriverne uno.</p>
+            </div>
+            <div class="tier">
+              <span class="tier-lbl">Misura</span>
+              <div class="seg" id="segTier" role="group" aria-label="Lunghezza">
+                <button data-tier="sintesi">Sintesi · 800–1000</button>
+                <button data-tier="completo" aria-pressed="true">Completo · 1200–1500</button>
+                <button data-tier="appro">Approfondimento · 1700–2000</button>
+              </div>
+            </div>
+            <div id="blueprintBox"></div>
+            <div class="ai-actions">
+              <h4>Genera svolgimento modello AI</h4>
+              <p>Prepara il pacchetto: l'AI verifica prima normativa e giurisprudenza 2025–26 su fonti ufficiali, poi produce il <b>Tema modello Commissione Marche</b> (prosa continua, misura scelta, selettivo sulla traccia — non enciclopedico), l'<b>Anatomia del tema</b> e la <b>soglia 6 / 7-8-9</b>. Serve un modello con accesso al web attivo.</p>
+              <div class="sim-actions" style="margin-top:0">
+                <button class="btn sm oxblood" id="btnCopySvol">Copia pacchetto svolgimento</button>
+                <button class="btn ghost sm" id="btnDownloadSvol">Scarica .txt</button>
+                <span class="copyok" id="svolStatus"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDIO -->
+    <section class="view" id="view-studio">
+      <div class="studio-intro">
+        <div>
+          <h2>Studio dei temi</h2>
+          <p class="lead">I dodici temi del bacino, con la scaletta sui cinque livelli, le ancore normative e le novità 2025–2026 da innestare.</p>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filtra">
+          <button class="chip-f" data-f="all" aria-pressed="true">Tutti</button>
+          <button class="chip-f" data-f="alta" aria-pressed="false">Fascia A</button>
+          <button class="chip-f" data-f="2526" aria-pressed="false">Con novità 25–26</button>
+        </div>
+      </div>
+      <div class="accordion" id="accordion"></div>
+    </section>
+
+    <!-- RADAR & COPERTURA -->
+    <section class="view" id="view-cov">
+      <div class="cov-intro">
+        <h2>Radar &amp; copertura</h2>
+        <p class="lead">La priorità è un indice didattico basato sulle ricorrenze di Ancona e sull'impatto delle novità. Le colonne di destra sono il tuo storico reale: copertura media dal motore, autovalutazione media dal tuo giudizio.</p>
+      </div>
+      <div id="nudge"></div>
+      <div class="v5panel" id="commissionProfile">
+        <h4>Profilo Commissione Marche — modello didattico</h4>
+        <p class="lead" style="margin:0">L'indice non è una previsione statistica dell'estrazione. Serve a distribuire il tempo di studio privilegiando temi ricorrenti, attuali e ad alta densità operativa/ispettiva.</p>
+        <div class="profile-grid">
+          <div class="metric"><b>30%</b><span>ricorrenza storica</span></div>
+          <div class="metric"><b>20%</b><span>recenza / rotazione</span></div>
+          <div class="metric"><b>20%</b><span>novità 2025–26</span></div>
+          <div class="metric"><b>20%</b><span>densità operativa/ispettiva</span></div>
+          <div class="metric"><b>10%</b><span>collegamenti sistemici</span></div>
+        </div>
+      </div>
+      <table class="cov">
+        <thead><tr>
+          <th>Tema</th><th>Priorità</th><th class="num">Sessioni</th>
+          <th class="num">Copertura</th><th class="num">Autoval.</th><th class="num">Ultima</th>
+        </tr></thead>
+        <tbody id="covBody"></tbody>
+      </table>
+      <div class="cov-actions"><button class="btn ghost sm" id="btnReset">Azzera storico</button></div>
+    </section>
+
+    <!-- FONTI -->
+    <section class="view" id="view-fonti">
+      <div class="fonti-intro">
+        <h2>Fonti di controllo integrate</h2>
+        <p class="lead">Riferimenti verificati su cui poggiano tracce e aggiornamenti. Le numerazioni di dettaglio vanno comunque ricontrollate sul codice non commentato in sede d'esame.</p>
+      </div>
+      <div class="livebox"><b>V5:</b> queste sono ancore verificate al 7 agosto 2026. Il file HTML non effettua chiamate Internet autonome. Il pacchetto “Correzione AI” ordina invece al modello di riverificare online gli aggiornamenti prima di valutare.</div><table class="fonti"><thead><tr><th>Fonte</th><th>Contenuto</th></tr></thead><tbody id="fontiBody"></tbody></table>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><b>Nota metodologica.</b> Bacino e pesi derivano dalle tracce Lavoro effettivamente proposte a Ancona: sicurezza (2024, 2025) e contrattazione/prossimità (2023, 2025) ricorrono di più; l'asse retribuzione/rapporto individuale è il segnale del 2025; licenziamento è in fascia alta per effetto di Corte cost. 118/2025. Il motore offline misura copertura, applicazione del metodo e progressione senza fingere una valutazione giuridica. La V5 aggiunge motore Commissione, anti-ripetizione, allenamento adattivo, protocollo Rausei e modalità ultima settimana.</p>
+    <p class="mono">Aggiornamenti recepiti e da riverificare live prima dell'uso: L. 198/2025 (Decreto Sicurezza) · Corte cost. 118/2025 (tetto indennità piccole imprese) · Corte cost. 156/2025 (art. 19 St. Lav., RSA) · D.Lgs. 96/2026 (trasparenza retributiva) · D.L. 62/2026 conv. L. 112/2026 (salario giusto) · L. 203/2024 (Collegato Lavoro). I dati di sessione restano sul tuo dispositivo.</p>
+  </div>
+</footer>
+<script>
+const N = s => '<span class="norm">'+s+'</span>';
+
+const TEMI = [
+ {
+  id:'sicurezza', titolo:'Sicurezza sul lavoro: obbligo di sicurezza, DVR, preposto e RLS',
+  tier:'ap', prio:96, anni:'2024 · 2025', w:6,
+  tracce:[
+   `Il candidato, premesso l'inquadramento costituzionale e civilistico dell'obbligo di sicurezza, illustri il sistema di prevenzione delineato dal d.lgs. 81/2008 con particolare riguardo alla valutazione dei rischi e al relativo documento, nonché alle figure del preposto e del rappresentante dei lavoratori per la sicurezza. Si soffermi sugli adempimenti che il consulente del lavoro cura nell'assistenza al datore, sul regime sanzionatorio e sui poteri degli organi di vigilanza, tenendo conto delle novità della legge 198/2025.`,
+   `Il candidato illustri il sistema delle responsabilità in materia di salute e sicurezza, distinguendo datore di lavoro, dirigente e preposto, e tratti la delega di funzioni e i suoi requisiti di validità, con i profili sanzionatori e le recenti modifiche del Testo Unico.`
+  ],
+  schema:{
+   cost:[`${N('art. 32 Cost.')} salute come diritto fondamentale e interesse della collettività`,`${N('art. 41 c.2 Cost.')} l'iniziativa economica non può contrastare la sicurezza e la dignità`,`${N('art. 2087 c.c.')} norma di chiusura: obbligo di adottare le misure necessarie a tutelare integrità fisica e personalità morale`],
+   dett:[`${N('d.lgs. 81/2008')} soggetti e obblighi (datore, dirigente, preposto ${N('art. 19')}, lavoratore)`,`Valutazione dei rischi e DVR ${N('artt. 28–29')}; obbligo non delegabile di valutazione e nomina RSPP ${N('art. 17')}`,`RSPP, medico competente e sorveglianza sanitaria, RLS ${N('artt. 47–50')}`,`Informazione, formazione e addestramento ${N('artt. 36–37')}; DPI; emergenze`],
+   adem:[`Corretta individuazione e nomina delle figure; delega di funzioni ${N('art. 16')}`,`Verifica e tracciabilità della formazione (novità L. 198/2025)`,`Coordinamento negli appalti interni: DUVRI ${N('art. 26')}; tessera di riconoscimento`,`Coerenza sostanziale del DVR (non mero adempimento formale)`],
+   sanz:[`Contravvenzioni penali (arresto e/o ammenda) a carico di datore, dirigente, preposto`,`Prescrizione ${N('d.lgs. 758/1994')}: regolarizzazione ed estinzione del reato`,`Sospensione dell'attività imprenditoriale ${N('art. 14')}; poteri di ITL e ASL`,`Cantieri: patente a crediti ${N('art. 27')} con sanzioni inasprite dalla L. 198/2025`],
+   giur:[`Posizione di garanzia e nesso causale nell'infortunio`,`Delega di funzioni: requisiti (forma scritta, effettività, autonomia di spesa)`]
+  },
+  aggior:[`${N('art. 15 lett. z-bis)')} prevenzione delle condotte violente o moleste verso i lavoratori`,`${N('art. 30')} MOG: riferimento a UNI EN ISO 45001:2023`,`Linee guida sui near miss per imprese con più di 15 dipendenti`,`Badge di cantiere con codice univoco; formazione entro 30 giorni nel turistico-ricettivo; accreditamento dei formatori`,`Sanzioni: operare senza patente a crediti da 6.000 a 12.000 €; sospensione fino a un anno in caso di morte o inabilità permanente`],
+  check:[`Ho ancorato l'obbligo all'art. 2087 c.c. e non solo al d.lgs. 81/2008?`,`Ho distinto con precisione datore, dirigente e preposto e i rispettivi obblighi?`,`Ho trattato il DVR come obbligo non delegabile e citato la delega di funzioni?`,`Ho chiuso con il profilo sanzionatorio (penale, 758/1994, sospensione)?`,`Ho inserito almeno una novità pertinente della L. 198/2025?`],
+  kw:{bases:['2087','32 cost','41','integrità'],keys:['81/2008','dvr','valutazione dei rischi','preposto','rls','rspp','sorveglianza sanitaria','formazione','dpi','medico competente'],ops:['delega','duvri','tessera','nomina','tracciabilità'],updates:['198/2025','patente a crediti','near miss','molest','45001','badge']}
+ },
+ {
+  id:'retribuzione', titolo:'Retribuzione, giusta retribuzione e salario giusto',
+  tier:'ap', prio:94, anni:'2025 · novità 2026', w:6,
+  tracce:[
+   `Il candidato illustri il principio della giusta retribuzione, il suo fondamento costituzionale e il ruolo del giudice in assenza di un contratto collettivo applicabile, trattando la struttura della retribuzione, il rapporto con la contrattazione comparativamente più rappresentativa e le recenti disposizioni sul "salario giusto".`,
+   `Premesso l'inquadramento dell'art. 36 Cost., il candidato tratti la nozione e la struttura della retribuzione, il contrasto al dumping contrattuale e gli obblighi di trasparenza retributiva più recenti.`
+  ],
+  schema:{
+   cost:[`${N('art. 36 Cost.')} retribuzione proporzionata alla quantità e qualità del lavoro e sufficiente a un'esistenza libera e dignitosa`,`${N('art. 35 Cost.')} tutela del lavoro; nesso con ${N('art. 39')} (in assenza di CCNL applicabile il giudice usa l'art. 36)`],
+   dett:[`${N('art. 2099 c.c.')} determinazione della retribuzione; ${N('art. 2094')} corrispettivo della subordinazione`,`Struttura: minimi tabellari, scatti di anzianità, superminimi, mensilità aggiuntive; nozione di retribuzione e voci escluse`,`TFR ${N('art. 2120 c.c.')}`,`Parametro del CCNL comparativamente più rappresentativo ${N('art. 51 d.lgs. 81/2015')}`],
+   adem:[`Corretta imputazione delle voci in busta paga e rispetto dei minimi del CCNL applicabile`,`Gestione di scatti, superminimo assorbibile e mensilità aggiuntive`,`Accantonamento e liquidazione del TFR`],
+   sanz:[`Retribuzione insufficiente: intervento correttivo del giudice ex art. 36 Cost.`,`Dumping contrattuale e ricadute su benefici e regolarità contributiva`],
+   giur:[`Cassazione 2023 sull'inadeguatezza dei minimi dei CCNL non comparativamente rappresentativi (verifica gli estremi sul repertorio)`,`Rilievo dell'art. 36 come parametro immediatamente precettivo`]
+  },
+  aggior:[`${N('d.l. 62/2026 conv. L. 112/2026')} "salario giusto": la retribuzione di riferimento è quella della contrattazione comparativamente più rappresentativa`,`Definizione del Trattamento Economico Complessivo (TEC): voci fisse e continuative, indennità, welfare della generalità dei dipendenti`,`${N('d.lgs. 96/2026')} trasparenza retributiva: divieto di chiedere la retribuzione pregressa; fasce retributive nei bandi; reporting dei divari (≥100 dipendenti)`],
+  check:[`Ho fondato la giusta retribuzione sull'art. 36 Cost. e spiegato il ruolo suppletivo del giudice?`,`Ho descritto la struttura della retribuzione con le sue voci?`,`Ho collegato il "quale minimo" all'art. 51 d.lgs. 81/2015?`,`Ho trattato il dumping contrattuale come profilo critico?`,`Ho agganciato salario giusto/TEC e trasparenza retributiva senza limitarmi a nominarli?`],
+  kw:{bases:['36 cost','proporzionata','sufficiente','35 cost'],keys:['2099','retribuzione','minimi','superminimo','mensilità','tfr','2120','51 d.lgs'],ops:['busta paga','cedolino','accantonamento','imputazione'],updates:['salario giusto','tec','112/2026','96/2026','trasparenza retributiva','dumping']}
+ },
+ {
+  id:'licenziamento', titolo:'Licenziamento individuale: presupposti, procedura e tutele',
+  tier:'ap', prio:92, anni:'2024', w:5,
+  tracce:[
+   `Il candidato illustri la disciplina del licenziamento individuale, distinguendo giusta causa e giustificato motivo, forma e procedura, e tratti il regime sanzionatorio con riguardo al doppio binario tra art. 18 dello Statuto (come modificato dalla l. 92/2012) e tutele crescenti del d.lgs. 23/2015, dando conto della rilevanza delle soglie dimensionali e della recente giurisprudenza costituzionale.`,
+   `Il candidato tratti il licenziamento disciplinare, la procedura ex art. 7 l. 300/1970 e le conseguenze dell'illegittimità, distinguendo reintegrazione e tutela indennitaria anche alla luce degli interventi della Corte costituzionale.`
+  ],
+  schema:{
+   cost:[`${N('art. 2118 c.c.')} recesso con preavviso; ${N('art. 2119')} giusta causa senza preavviso`,`${N('art. 2110 c.c.')} comporto: limite al recesso in malattia`,`${N('artt. 4 e 35 Cost.')} valore del lavoro come cornice della tutela`],
+   dett:[`${N('l. 604/1966')} giustificato motivo soggettivo e oggettivo; forma scritta e motivazione; impugnazione (60 gg + 180 gg)`,`${N('art. 7 l. 300/1970')} procedura disciplinare (contestazione, difesa, proporzionalità)`,`${N('art. 18 St. Lav.')} come novellato dalla ${N('l. 92/2012')}: tutele graduate`,`${N('d.lgs. 23/2015')} tutele crescenti per gli assunti dal 7/3/2015`],
+   adem:[`Gestione corretta della procedura disciplinare e dei termini`,`Lettera di licenziamento con motivazione contestuale`,`Calcolo di preavviso, TFR e indennità`],
+   sanz:[`Reintegrazione vs. indennità secondo il vizio e le dimensioni ${N('art. 8 l. 604/1966')}`,`Licenziamento discriminatorio o nullo: reintegrazione piena a prescindere dai requisiti dimensionali`],
+   giur:[`Corte cost. 194/2018: irragionevolezza dell'automatismo indennitario legato alla sola anzianità`,`Corte cost. 118/2025: illegittimità del tetto delle 6 mensilità per le piccole imprese ${N('art. 9 c.1 d.lgs. 23/2015')}; il giudice può superarlo adeguando alla gravità`]
+  },
+  aggior:[`${N('Corte cost. 118/2025')} (dep. 21/7/2025): cade il tetto massimo delle 6 mensilità per i licenziamenti illegittimi nelle piccole imprese soggette al d.lgs. 23/2015; aumenta l'imprevedibilità del rischio economico e va rimeditato il calcolo dell'indennità`],
+  check:[`Ho distinto con nettezza giusta causa e giustificato motivo (soggettivo/oggettivo)?`,`Ho gestito il doppio binario art. 18 / d.lgs. 23/2015 con il criterio della data di assunzione?`,`Ho collegato il regime sanzionatorio alle soglie dimensionali?`,`Ho isolato il licenziamento nullo/discriminatorio come regime a sé?`,`Ho citato Corte cost. 194/2018 e 118/2025 sull'evoluzione delle tutele?`],
+  kw:{bases:['2118','2119','2110','preavviso','giusta causa'],keys:['604/1966','giustificato motivo','7 l. 300','art. 18','92/2012','23/2015','tutele crescenti','reintegr','indennità'],ops:['contestazione','procedura disciplinare','motivazione','termini'],updates:['118/2025','194/2018','6 mensilità','piccole imprese']}
+ },
+ {
+  id:'contrattazione', titolo:'Contrattazione collettiva, prossimità e rappresentanza sindacale',
+  tier:'a', prio:89, anni:'2023 · 2025', w:4,
+  tracce:[
+   `Il candidato illustri i livelli e l'efficacia della contrattazione collettiva, soffermandosi sull'inattuazione della seconda parte dell'art. 39 Cost., sul contratto comparativamente più rappresentativo e sulla contrattazione di prossimità ex art. 8 d.l. 138/2011, con le sue potenzialità derogatorie e i limiti, e con cenni alla costituzione delle rappresentanze sindacali dopo la recente giurisprudenza costituzionale.`,
+   `Premesso il quadro costituzionale, il candidato tratti il rapporto tra contrattazione nazionale e aziendale, la rappresentatività sindacale e il tema del contrasto al dumping contrattuale.`
+  ],
+  schema:{
+   cost:[`${N('art. 39 Cost.')} libertà sindacale; la seconda parte (efficacia erga omnes) è rimasta inattuata: conseguenze sull'efficacia soggettiva`,`${N('art. 36 Cost.')} retribuzione come parametro suppletivo; ${N('art. 40')} sciopero`],
+   dett:[`Livelli: interconfederale, nazionale (CCNL), territoriale, aziendale`,`Natura contrattuale ${N('art. 1372 c.c.')}: efficacia limitata agli iscritti, salvo recepimento nel contratto individuale; ${N('art. 2070 c.c.')}`,`CCNL comparativamente più rappresentativo ${N('art. 51 d.lgs. 81/2015')}`,`Prossimità ${N('art. 8 d.l. 138/2011')} (conv. L. 148/2011): materie, deroghe anche in pejus entro i limiti costituzionali/UE, efficacia verso tutti se soggetti maggioritari`,`RSA ${N('art. 19 l. 300/1970')} e Corte cost. 231/2013; RSU`],
+   adem:[`Individuazione del CCNL applicabile e verifica della rappresentatività (rischio CCNL "pirata")`,`Gestione e deposito di accordi aziendali e di prossimità`,`Applicazione di minimi e istituti`],
+   sanz:[`Dumping contrattuale e ricadute su benefici e regolarità`,`Art. 51 come argine al CCNL non rappresentativo`],
+   giur:[`Corte cost. 156/2025: art. 19 St. Lav., RSA costituibili anche nell'ambito delle associazioni comparativamente più rappresentative sul piano nazionale`,`Limiti alle deroghe della contrattazione di prossimità`]
+  },
+  aggior:[`${N('Corte cost. 156/2025')} (dep. 30/10/2025): riscrive l'art. 19 St. Lav., ammettendo la costituzione di RSA anche nell'ambito delle associazioni comparativamente più rappresentative sul piano nazionale, oltre a firmatarie e partecipanti alla negoziazione`,`${N('d.l. 62/2026 conv. L. 112/2026')} "salario giusto": ancoraggio alla contrattazione comparativamente più rappresentativa`],
+  check:[`Ho spiegato perché il CCNL non ha efficacia erga omnes (art. 39 inattuato)?`,`Ho trattato l'art. 8 sulla prossimità con deroghe E limiti, non solo elencandolo?`,`Ho usato l'art. 51 d.lgs. 81/2015 come chiave del "quale CCNL"?`,`Ho collegato la rappresentanza sindacale a Corte cost. 231/2013 e 156/2025?`,`Ho evitato di confondere efficacia soggettiva e obbligatoria?`],
+  kw:{bases:['39 cost','erga omnes','libertà sindacale','36 cost'],keys:['ccnl','aziendale','prossimità','8 d.l. 138','51 d.lgs','2070','rappresentativ','rsa','rsu','19 l. 300'],ops:['deposito','individuazione del ccnl','minimi'],updates:['156/2025','231/2013','salario giusto','112/2026','dumping']}
+ },
+ {
+  id:'appalto', titolo:'Appalto, somministrazione, distacco e responsabilità solidale',
+  tier:'a', prio:87, anni:'2024', w:4,
+  tracce:[
+   `Il candidato distingua l'appalto genuino dalla somministrazione di manodopera, trattando la responsabilità solidale del committente, le ipotesi di appalto illecito e somministrazione fraudolenta, il regime sanzionatorio e gli adempimenti a tutela dei lavoratori, con cenni al distacco anche alla luce delle novità 2024–2026.`,
+   `Il candidato illustri gli strumenti di decentramento produttivo (appalto, somministrazione, distacco), evidenziando gli indici di genuinità dell'appalto e le conseguenze della loro assenza.`
+  ],
+  schema:{
+   cost:[`${N('art. 1655 c.c.')} nozione di appalto; ${N('art. 2094')} lavoro subordinato`,`Indici di genuinità: organizzazione dei mezzi, potere direttivo, rischio d'impresa in capo all'appaltatore`],
+   dett:[`${N('art. 29 d.lgs. 276/2003')} responsabilità solidale committente–appaltatore per retribuzioni e contributi (biennio)`,`Somministrazione ${N('artt. 30–40 d.lgs. 81/2015')}: a termine e indeterminato (staff leasing), limiti, causali`,`Somministrazione fraudolenta ${N('art. 38-bis d.lgs. 81/2015')}`,`Distacco ${N('art. 30 d.lgs. 276/2003')}: interesse del distaccante, temporaneità`],
+   adem:[`Verifica di genuinità e regolarità (DURC, tessera di riconoscimento)`,`Gestione della responsabilità solidale e delle garanzie`,`Corretta redazione dei contratti di somministrazione e distacco`],
+   sanz:[`Appalto illecito / interposizione: costituzione del rapporto in capo all'utilizzatore effettivo`,`Somministrazione fraudolenta: profilo aggravato e sanzioni`],
+   giur:[`Criteri di distinzione tra appalto e mera fornitura di manodopera`]
+  },
+  aggior:[`${N('L. 203/2024')} Collegato Lavoro: la somministrazione a termine non può superare i 24 mesi, pena la costituzione di un rapporto a tempo indeterminato in capo all'utilizzatore; esenzioni dai limiti quantitativi`,`${N('d.l. 62/2026 conv. L. 112/2026')}: distacco ammesso anche tra imprese di settori o CCNL diversi (sperimentale fino al 31/12/2029, previo accordo sindacale)`],
+  check:[`Ho definito gli indici di genuinità dell'appalto prima di tutto?`,`Ho trattato l'art. 29 sulla responsabilità solidale con il termine biennale?`,`Ho distinto appalto illecito e somministrazione fraudolenta con le conseguenze?`,`Ho collegato la novità dei 24 mesi (L. 203/2024)?`,`Ho speso i cenni al distacco anche con la novità 2026?`],
+  kw:{bases:['1655','2094','genuinità','rischio d'],keys:['29 d.lgs. 276','responsabilità solidale','somministrazione','staff leasing','distacco','38-bis','81/2015'],ops:['durc','tessera','garanzie','utilizzatore'],updates:['203/2024','24 mesi','112/2026','settori diversi','collegato lavoro']}
+ },
+ {
+  id:'individuale', titolo:'Rapporto individuale, obblighi informativi e trasparenza',
+  tier:'a', prio:83, anni:'2025', w:4,
+  tracce:[
+   `Il candidato tratti la costituzione del rapporto di lavoro subordinato e gli obblighi informativi a carico del datore, con riguardo al d.lgs. 104/2022, illustrando forma, contenuti e tempi dell'informazione, gli adempimenti del consulente del lavoro e il regime sanzionatorio, con cenni alla trasparenza retributiva.`,
+   `Premessa la nozione di subordinazione e la distinzione dal lavoro autonomo, il candidato illustri gli elementi del contratto individuale e gli obblighi di trasparenza introdotti dalle più recenti disposizioni.`
+  ],
+  schema:{
+   cost:[`${N('art. 2094 c.c.')} subordinazione: eterodirezione e inserimento nell'organizzazione`,`${N('art. 2095')} categorie; ${N('art. 2103')} mansioni e jus variandi; ${N('art. 2099')} retribuzione`,`Indici della subordinazione elaborati dalla giurisprudenza`],
+   dett:[`Forma: libertà di forma; forma scritta per singoli elementi (prova, termine, part-time)`,`${N('d.lgs. 104/2022')} decreto trasparenza: obblighi informativi analitici, tempi e modalità (anche elettroniche)`,`Comunicazioni obbligatorie e Libro Unico del Lavoro`],
+   adem:[`Lettera di assunzione conforme al d.lgs. 104/2022`,`Comunicazione UNILAV nei termini; tenuta del LUL`,`Consegna e conservazione della documentazione informativa`],
+   sanz:[`Sanzioni per omessa o incompleta informazione ex d.lgs. 104/2022`,`Riqualificazione del rapporto in caso di simulazione dell'autonomia`],
+   giur:[`Prevalenza della sostanza sulla forma nella qualificazione`]
+  },
+  aggior:[`${N('d.lgs. 96/2026')} trasparenza retributiva (dir. UE 2023/970): obblighi informativi pre-assunzione e fascia retributiva nei bandi`,`Divieto di chiedere ai candidati la retribuzione percepita in rapporti precedenti o in corso`,`Diritto di accesso ai criteri retributivi; reporting dei divari (≥100 dipendenti); valutazione congiunta se il divario supera il 5%`],
+  check:[`Sono partito dall'art. 2094 c.c. e dagli indici della subordinazione?`,`Ho trattato il d.lgs. 104/2022 nei contenuti concreti (cosa, come, quando)?`,`Ho descritto gli adempimenti reali del CdL (lettera, UNILAV, LUL)?`,`Ho chiuso con il regime sanzionatorio?`,`Ho collegato trasparenza informativa e retributiva (d.lgs. 96/2026)?`],
+  kw:{bases:['2094','subordinazione','eterodirezione','2103'],keys:['104/2022','obblighi informativi','forma','lul','libro unico','comunicazioni'],ops:['lettera di assunzione','unilav','conservazione'],updates:['96/2026','trasparenza retributiva','fascia retributiva','divari','2023/970']}
+ },
+ {
+  id:'termine', titolo:'Contratto a tempo determinato',
+  tier:'bp', prio:78, anni:'2023', w:3,
+  tracce:[
+   `Il candidato illustri la disciplina del contratto a tempo determinato: apposizione del termine e causali, durata massima, proroghe e rinnovi, limiti quantitativi, diritto di precedenza e regime sanzionatorio, con il ruolo della contrattazione collettiva.`,
+   `Il candidato tratti l'evoluzione della disciplina del contratto a termine e le condizioni di legittimità dell'apposizione del termine, con le conseguenze dell'illegittimità.`
+  ],
+  schema:{
+   cost:[`Indeterminatezza come forma comune ${N('art. 1 d.lgs. 81/2015')}`,`${N('artt. 4 e 35 Cost.')} come cornice della stabilità`],
+   dett:[`${N('artt. 19–29 d.lgs. 81/2015')}: termine e causali (dopo Decreto Dignità ${N('L. 96/2018')} e modifiche)`,`Durata massima 24 mesi; proroghe (max 4) e rinnovi; stop & go`,`Limiti quantitativi (di norma 20%); diritto di precedenza; forma scritta`,`Rinvio alla contrattazione collettiva per causali e limiti`],
+   adem:[`Documentazione della causale`,`Gestione di proroghe, rinnovi e computo complessivo`,`Rispetto di limiti quantitativi e diritto di precedenza`],
+   sanz:[`Trasformazione a tempo indeterminato in caso di illegittimità`,`Indennità onnicomprensiva tra scadenza e sentenza`],
+   giur:[`Onere della prova della causale a carico del datore`]
+  },
+  aggior:[`${N('L. 203/2024')}: definizione delle attività stagionali per le deroghe; periodo di prova nei contratti a termine proporzionato alla durata`],
+  check:[`Ho collegato il termine al principio dell'indeterminatezza come regola?`,`Ho trattato causali, durata, proroghe e rinnovi con i numeri corretti?`,`Ho inserito limiti quantitativi e diritto di precedenza?`,`Ho indicato con chiarezza la sanzione (trasformazione)?`,`Ho valorizzato il rinvio alla contrattazione collettiva?`],
+  kw:{bases:['indeterminat','1 d.lgs. 81','35 cost'],keys:['19','causali','24 mesi','proroghe','rinnovi','stop','20%','precedenza','termine'],ops:['documentazione','computo'],updates:['203/2024','stagional','periodo di prova']}
+ },
+ {
+  id:'dimissioni', titolo:'Estinzione del rapporto e dimissioni per fatti concludenti',
+  tier:'bp', prio:75, anni:'novità 2025', w:3,
+  tracce:[
+   `Il candidato illustri le modalità di estinzione del rapporto per volontà del lavoratore, con riguardo alle dimissioni telematiche e all'istituto delle dimissioni per fatti concludenti introdotto dal Collegato Lavoro, trattando presupposti, comunicazione all'Ispettorato, effetti sulla NASpI e adempimenti del consulente del lavoro.`,
+   `Il candidato distingua dimissioni, risoluzione consensuale e licenziamento, soffermandosi sui profili operativi e sui rischi di gestione dell'assenza ingiustificata prolungata.`
+  ],
+  schema:{
+   cost:[`${N('art. 4 Cost.')} libertà di recesso del lavoratore; ${N('art. 2118 c.c.')} recesso con preavviso`,`Libertà delle forme di risoluzione consensuale ${N('art. 1372 c.c.')}`],
+   dett:[`Dimissioni telematiche ${N('art. 26 d.lgs. 151/2015')}: forma vincolata e revocabilità`,`Risoluzione consensuale con convalida`,`Dimissioni per fatti concludenti ${N('art. 26 c. 7-bis d.lgs. 151/2015')} (L. 203/2024): assenza ingiustificata oltre il termine del CCNL o, in mancanza, oltre 15 giorni`],
+   adem:[`Comunicazione all'ITL dell'assenza (nota INL 579/2025); dati del lavoratore e conteggio dei giorni`,`UNILAV di cessazione con codice "FC"`,`Valutazione dell'opportunità rispetto al licenziamento disciplinare`],
+   sanz:[`Esclusione dalla NASpI per il lavoratore`,`Verifica di veridicità da parte dell'ITL; onere della prova al lavoratore (forza maggiore o fatto del datore)`],
+   giur:[`Il termine dei 15 giorni come soglia minima (indicazioni ministeriali)`]
+  },
+  aggior:[`${N('L. 203/2024')} art. 19: introduce l'${N('art. 26 c. 7-bis d.lgs. 151/2015')}`,`Nota INL 579/2025: modello di comunicazione; codice cessazione "FC" su UNILAV dal 29/1/2025`,`Effetto qualificante: la risoluzione vale come dimissione e preclude la NASpI`],
+  check:[`Ho distinto dimissioni telematiche, risoluzione consensuale e fatti concludenti?`,`Ho indicato il presupposto temporale (termine CCNL o 15 giorni)?`,`Ho descritto la comunicazione all'ITL e la verifica di veridicità?`,`Ho evidenziato l'effetto sulla NASpI?`,`Ho collocato l'istituto tra le scelte operative del datore vs. licenziamento?`],
+  kw:{bases:['2118','1372','recesso'],keys:['dimissioni','telematiche','26 d.lgs. 151','risoluzione consensuale','fatti concludenti','7-bis','15 giorni'],ops:['itl','unilav','conteggio','fc'],updates:['203/2024','naspi','579/2025','assenza ingiustificata']}
+ },
+ {
+  id:'sospensione', titolo:'Sospensione del rapporto: malattia, infortunio, maternità e paternità',
+  tier:'b', prio:69, anni:'2023', w:2,
+  tracce:[
+   `Il candidato tratti gli istituti di tutela in caso di malattia, infortunio, maternità e paternità, illustrando fondamento costituzionale, sospensione e conservazione del posto, profili previdenziali e adempimenti del datore e del consulente del lavoro.`,
+   `Il candidato illustri le tutele della genitorialità, con riguardo ai congedi, al divieto di licenziamento e alla convalida delle dimissioni.`
+  ],
+  schema:{
+   cost:[`${N('art. 32 Cost.')} salute; ${N('art. 37')} tutela della donna e del minore; ${N('art. 38')} previdenza`,`${N('art. 2110 c.c.')} conservazione del posto e comporto`],
+   dett:[`Malattia e infortunio: sospensione, comporto, trattamento economico (INPS/INAIL)`,`${N('d.lgs. 151/2001')} T.U. maternità e paternità: congedi di maternità, paternità e parentali`,`Divieto di licenziamento della lavoratrice madre; convalida delle dimissioni nel periodo protetto`,`Congedo di paternità obbligatorio`],
+   adem:[`Gestione di comunicazioni e certificati; anticipazione delle indennità e conguaglio`,`Applicazione del comporto e dei periodi protetti`],
+   sanz:[`Nullità del licenziamento in violazione dei divieti`,`Sanzioni per omissioni contributive e violazione delle tutele`],
+   giur:[`Conservazione del posto e limiti al recesso durante il comporto`]
+  },
+  aggior:[],
+  check:[`Ho dato il fondamento costituzionale (artt. 32, 37, 38)?`,`Ho trattato il comporto ex art. 2110 c.c. come limite al recesso?`,`Ho richiamato il T.U. 151/2001 e i congedi?`,`Ho isolato il divieto di licenziamento e la convalida delle dimissioni?`,`Ho indicato profili previdenziali e adempimenti concreti?`],
+  kw:{bases:['32 cost','37','38','2110','comporto'],keys:['malattia','infortunio','inps','inail','151/2001','maternità','paternità','congedo','parentale'],ops:['certificati','anticipazione','conguaglio','periodi protetti'],updates:[]}
+ },
+ {
+  id:'previdenza', titolo:'Previdenza, contribuzione e ammortizzatori sociali',
+  tier:'b', prio:66, anni:'trasversale', w:2,
+  tracce:[
+   `Il candidato illustri il sistema previdenziale obbligatorio, l'obbligo contributivo e i principali ammortizzatori sociali, con gli adempimenti del datore e del consulente del lavoro e il regime sanzionatorio dell'omissione ed evasione contributiva.`,
+   `Il candidato tratti la tutela della disoccupazione e gli strumenti di integrazione salariale, con i relativi presupposti e adempimenti.`
+  ],
+  schema:{
+   cost:[`${N('art. 38 Cost.')} diritto al mantenimento e all'assistenza sociale; previdenza obbligatoria`],
+   dett:[`Assicurazione generale obbligatoria IVS gestita dall'INPS; contribuzione (aliquote, minimale e massimale)`,`Assicurazione INAIL contro infortuni e malattie professionali`,`Ammortizzatori: NASpI, integrazioni salariali ${N('d.lgs. 148/2015')} (CIGO, CIGS, FIS)`],
+   adem:[`Calcolo e versamento dei contributi (F24, flusso UniEmens); DURC`,`Gestione di eventi (malattia, maternità, disoccupazione) e conguagli`],
+   sanz:[`Omissione ed evasione contributiva: sanzioni civili; profilo penale per le ritenute`,`Prescrizione dei contributi (di regola quinquennale)`],
+   giur:[`Distinzione tra omissione ed evasione contributiva`]
+  },
+  aggior:[],
+  check:[`Ho fondato la previdenza sull'art. 38 Cost.?`,`Ho distinto IVS/INPS e INAIL?`,`Ho trattato almeno un ammortizzatore (NASpI o CIG) con i presupposti?`,`Ho descritto gli adempimenti (UniEmens, F24, DURC)?`,`Ho chiuso con omissione/evasione e prescrizione?`],
+  kw:{bases:['38 cost','previdenza'],keys:['inps','ivs','contribut','inail','naspi','cig','148/2015','ammortizzatori','aliquote'],ops:['uniemens','f24','durc','versamento'],updates:[]}
+ },
+ {
+  id:'disabili', titolo:'Collocamento mirato dei lavoratori disabili',
+  tier:'b', prio:61, anni:'2023', w:2,
+  tracce:[
+   `Il candidato illustri la disciplina del collocamento mirato dei lavoratori disabili di cui alla l. 68/1999: quote di riserva, modalità di assunzione, convenzioni, esoneri e compensazioni, prospetto informativo e regime sanzionatorio, con gli adempimenti del datore e del consulente del lavoro.`,
+   `Il candidato tratti il fondamento costituzionale e gli strumenti del collocamento mirato, con la base di computo e le cause di esclusione.`
+  ],
+  schema:{
+   cost:[`${N('art. 4 Cost.')} diritto al lavoro; ${N('art. 38')} avviamento professionale degli inabili; ${N('art. 3')} uguaglianza sostanziale`],
+   dett:[`${N('l. 68/1999')} quote di riserva: 7% oltre 50 dipendenti; 2 unità tra 36 e 50; 1 tra 15 e 35`,`Collocamento mirato, convenzioni ${N('artt. 11 e 14')}, base di computo`,`Esonero parziale e compensazioni territoriali; prospetto informativo annuale`],
+   adem:[`Calcolo della base di computo e della quota d'obbligo`,`Invio del prospetto informativo; gestione di convenzioni e richieste`,`Verifica di esonero e sospensione`],
+   sanz:[`Sanzioni per omesso prospetto e per scopertura della quota`,`Preclusione a benefici e gare in caso di irregolarità`],
+   giur:[`Nozione di base di computo e cause di esclusione`]
+  },
+  aggior:[],
+  check:[`Ho dato il fondamento costituzionale (artt. 3, 4, 38)?`,`Ho riportato correttamente le tre soglie della l. 68/1999?`,`Ho trattato convenzioni, esoneri e compensazioni?`,`Ho descritto il prospetto informativo come adempimento centrale?`,`Ho chiuso con sanzioni e preclusioni?`],
+  kw:{bases:['4 cost','38','3 cost','uguaglianza'],keys:['68/1999','quote','riserva','collocamento mirato','convenzion','esonero','prospetto informativo'],ops:['base di computo','quota','invio'],updates:[]}
+ },
+ {
+  id:'agile', titolo:'Lavoro agile e organizzazione del rapporto',
+  tier:'c', prio:58, anni:'collegamenti', w:1,
+  tracce:[
+   `Il candidato illustri la disciplina del lavoro agile, distinguendolo dal telelavoro, con l'accordo individuale, il diritto alla disconnessione, la parità di trattamento e i profili di sicurezza, e gli adempimenti del datore e del consulente del lavoro.`,
+   `Il candidato tratti le forme flessibili di organizzazione del rapporto e il potere organizzativo del datore, con i limiti posti a tutela del lavoratore.`
+  ],
+  schema:{
+   cost:[`${N('art. 2094 c.c.')} subordinazione; ${N('art. 2103')} mansioni; potere organizzativo e suoi limiti`],
+   dett:[`${N('l. 81/2017')} lavoro agile: accordo individuale, assenza di postazione fissa, fasce di disponibilità`,`Diritto alla disconnessione; parità di trattamento economico e normativo`,`Sicurezza: informativa e assicurazione INAIL; distinzione dal telelavoro`],
+   adem:[`Accordo individuale scritto e comunicazione; informativa sui rischi`,`Gestione di orario, controlli e diritto alla disconnessione`],
+   sanz:[`Responsabilità del datore per sicurezza anche in modalità agile`],
+   giur:[`Limiti al potere di controllo e tutela della riservatezza`]
+  },
+  aggior:[`Collegato Lavoro: semplificazione delle comunicazioni in materia di lavoro agile`],
+  check:[`Ho distinto lavoro agile e telelavoro?`,`Ho trattato l'accordo individuale ex l. 81/2017?`,`Ho inserito disconnessione e parità di trattamento?`,`Ho gestito il profilo sicurezza (informativa, INAIL)?`,`Ho richiamato i limiti al potere di controllo?`],
+  kw:{bases:['2094','2103','potere organizzativo'],keys:['lavoro agile','81/2017','accordo individuale','disconnessione','parità di trattamento','telelavoro'],ops:['comunicazione','informativa'],updates:['collegato lavoro']}
+ }
+];
+
+const FONTI = [
+ ['Ministero del Lavoro · D.D. n. 1/2026','Bando esami CdL 2026: prima prova 27/10/2026, seconda 28/10/2026; 7 ore per prova; testi di legge non commentati autorizzati; sufficienza 6/10. Fonte ufficiale: lavoro.gov.it.'],
+ ['Accordo Stato-Regioni 17/04/2025','Formazione in materia di salute e sicurezza; pubblicazione in G.U. del 24/05/2025.'],
+ ['L. 198/2025 (D.L. 159/2025)','Decreto Sicurezza: modifiche al d.lgs. 81/2008, patente a crediti rafforzata, prevenzione molestie (art. 15 z-bis), near miss, sanzioni inasprite. In vigore dal 31/12/2025.'],
+ ['Corte costituzionale · sent. 118/2025','Illegittimità parziale dell’art. 9, c.1, D.Lgs. 23/2015 nella parte relativa al tetto massimo di sei mensilità per il licenziamento ingiustificato nelle piccole imprese. Fonte ufficiale: cortecostituzionale.it.'],
+ ['Corte costituzionale · sent. 156/2025','Art. 19 St. Lav.: RSA costituibili anche nell’ambito delle associazioni sindacali comparativamente più rappresentative sul piano nazionale. Fonte ufficiale: cortecostituzionale.it.'],
+ ['D.Lgs. 96/2026','Attuazione direttiva UE 2023/970 sulla parità e trasparenza retributiva; GU 1/06/2026, entrata in vigore 7/06/2026. Fonte ufficiale: gazzettaufficiale.it.'],
+ ['D.L. 62/2026 conv. L. 112/2026','Decreto 1° maggio / "salario giusto": TEC, distacco intersettoriale sperimentale, somministrazione, tutele piattaforme.'],
+ ['L. 203/2024','Collegato Lavoro: dimissioni per fatti concludenti, somministrazione a termine max 24 mesi, periodo di prova a termine.']
+];
+
+
+/* ---------- V4: MATRICE DI GENERAZIONE DINAMICA ---------- */
+const VARIANTI = {
+ sicurezza:{focus:['DVR e obblighi non delegabili','datore, dirigente, preposto e delega di funzioni','formazione, addestramento e tracciabilità','DUVRI e coordinamento negli appalti','patente a crediti e vigilanza nei cantieri'],scenario:['un appalto interno con interferenze non adeguatamente valutate','un infortunio con contestazione sulla reale vigilanza del preposto','una verifica ispettiva che rileva formazione incompleta','un cantiere nel quale opera un soggetto privo dei requisiti richiesti'],task:['distingua obblighi, responsabilità e rimedi','individui gli adempimenti preventivi del datore e del consulente','ricostruisca poteri di vigilanza e conseguenze sanzionatorie']},
+ retribuzione:{focus:['art. 36 Cost. e giusta retribuzione','scelta del CCNL e dumping contrattuale','struttura della retribuzione e TEC','parità e trasparenza retributiva','criteri di progressione economica'],scenario:['un’impresa che applica minimi inferiori a quelli del contratto collettivo di riferimento','una procedura di selezione priva di indicazioni retributive','un divario retributivo tra lavoratori comparabili','una contestazione sull’assorbibilità del superminimo'],task:['valuti il parametro retributivo utilizzabile e i rischi di contenzioso','indichi gli obblighi informativi e le conseguenze delle violazioni','colleghi disciplina individuale, collettiva e antidiscriminatoria']},
+ licenziamento:{focus:['licenziamento disciplinare e art. 7 Statuto','GMO e fatto posto a base del recesso','doppio binario art. 18 / D.Lgs. 23/2015','soglie dimensionali e tutele','licenziamento nullo o discriminatorio'],scenario:['un lavoratore assunto dopo il 7 marzo 2015 in una piccola impresa','una contestazione disciplinare generica e tardiva','un recesso per ragioni organizzative successivamente contestate','un licenziamento intimato durante una situazione protetta'],task:['individui il regime di tutela applicabile','distingua vizi procedurali, sostanziali e nullità','valuti gli effetti della più recente giurisprudenza costituzionale']},
+ contrattazione:{focus:['efficacia soggettiva del CCNL','contrattazione aziendale e di prossimità','rappresentatività e costituzione delle RSA','art. 51 D.Lgs. 81/2015 e CCNL qualificato','rapporti tra art. 36 e contrattazione'],scenario:['un accordo aziendale che deroga alla disciplina legale','un’impresa che applica un CCNL scarsamente rappresentativo','una sigla sindacale non firmataria che chiede di costituire RSA','una controversia sui minimi retributivi'],task:['precisi condizioni di efficacia e limiti delle deroghe','individui i criteri di rappresentatività rilevanti','colleghi la disciplina alla prevenzione del dumping contrattuale']},
+ appalto:{focus:['genuinità dell’appalto','responsabilità solidale','somministrazione fraudolenta','distacco e interesse del distaccante','sicurezza e appalto'],scenario:['l’appaltatore privo di reale autonomia organizzativa','l’utilizzatore che impartisce direttamente ordini ai dipendenti dell’appaltatore','crediti retributivi e contributivi rimasti insoluti','un distacco privo di un interesse concretamente dimostrabile'],task:['qualifichi correttamente il rapporto','individui responsabilità solidali e conseguenze dell’illecito','indichi i controlli preventivi che dovrebbe svolgere il consulente']},
+ individuale:{focus:['subordinazione e indici qualificatori','obblighi informativi del D.Lgs. 104/2022','lettera di assunzione, UNILAV e LUL','trasparenza retributiva preassuntiva','mansioni e inquadramento'],scenario:['un collaboratore formalmente autonomo ma inserito stabilmente nell’organizzazione','una lettera di assunzione incompleta','una selezione nella quale viene chiesta la retribuzione precedente','una modifica delle mansioni non adeguatamente formalizzata'],task:['distingua qualificazione formale e sostanziale','individui gli adempimenti e il regime sanzionatorio','colleghi gli obblighi informativi alle novità del 2026']},
+ termine:{focus:['causali e durata massima','proroghe e rinnovi','diritto di precedenza','periodo di prova','stagionalità e contrattazione'],scenario:['una successione di contratti oltre la durata complessiva consentita','un rinnovo senza corretta gestione della causale','un periodo di prova sproporzionato alla durata del contratto','un’attività qualificata come stagionale dal datore'],task:['ricostruisca limiti e conseguenze dell’illegittimità','indichi gli adempimenti documentali e comunicativi','precisi il ruolo della contrattazione collettiva']},
+ dimissioni:{focus:['dimissioni telematiche','fatti concludenti e assenza ingiustificata','risoluzione consensuale','effetti sulla NASpI','scelta tra fatti concludenti e licenziamento disciplinare'],scenario:['un lavoratore assente senza giustificazione per un periodo prolungato','una cessazione comunicata senza preventiva verifica dei presupposti','un lavoratore che contesta che l’assenza sia imputabile alla propria volontà'],task:['ricostruisca presupposti e procedura','individui i rischi per il datore e gli effetti previdenziali','distingua l’istituto dal licenziamento disciplinare']},
+ sospensione:{focus:['malattia e comporto','infortunio e tutela INAIL','maternità e paternità','congedi e divieti di licenziamento','dimissioni nel periodo protetto'],scenario:['un superamento contestato del periodo di comporto','un infortunio con assenza prolungata','dimissioni rese durante il periodo protetto','un recesso datoriale durante una tutela di genitorialità'],task:['distingua conservazione del posto e trattamento economico','indichi gli adempimenti previdenziali e datoriali','valuti la validità del recesso o delle dimissioni']},
+ disabili:{focus:['quote di riserva','base di computo','convenzioni ed esoneri','prospetto informativo','sanzioni per scopertura'],scenario:['un datore che supera la soglia occupazionale rilevante','un prospetto informativo omesso','una richiesta di esonero non adeguatamente motivata'],task:['calcoli logicamente l’obbligo occupazionale','indichi procedure e strumenti di assolvimento','ricostruisca il regime sanzionatorio']},
+ previdenza:{focus:['obbligazione contributiva','rapporto assicurativo INAIL','prestazioni previdenziali','omissione ed evasione contributiva','previdenza complementare'],scenario:['contributi non versati per lavoratori regolarmente denunciati','una contestazione sulla qualificazione previdenziale del rapporto','un evento tutelato dall’assicurazione obbligatoria'],task:['distingua obblighi del datore e diritti del lavoratore','individui enti, adempimenti e conseguenze dell’inadempimento','colleghi contribuzione e prestazioni']},
+ agile:{focus:['accordo individuale di lavoro agile','potere direttivo e organizzazione','sicurezza del lavoratore agile','comunicazioni obbligatorie','recesso dall’accordo'],scenario:['un rapporto gestito in modalità agile senza accordo coerente','una modifica unilaterale delle giornate da remoto','un infortunio durante una giornata di lavoro agile'],task:['individui contenuti dell’accordo e adempimenti','colleghi organizzazione, sicurezza e poteri datoriali','precisi le conseguenze delle irregolarità']}
+};
+function choice(a){return a[Math.floor(Math.random()*a.length)];}
+function cleanTitle(t){return t.titolo.replace(/:.*/, '').toLowerCase();}
+function composeTrace(t,advanced=false){
+ const v=VARIANTI[t.id]; if(!v)return choice(t.tracce);
+ const f1=choice(v.focus),sc=choice(v.scenario),tk=choice(v.task),others=v.focus.filter(x=>x!==f1),f2=others.length?choice(others):f1;
+ const upd=(t.aggior&&t.aggior.length)?' Tenga conto, ove pertinente, delle più recenti modifiche normative e giurisprudenziali 2025–2026.':'';
+ if(!advanced)return `Il candidato, premesso il necessario inquadramento costituzionale e civilistico, illustri ${f1} nell’ambito della disciplina di ${cleanTitle(t)}. Con riferimento al caso di ${sc}, ${tk}, soffermandosi sugli adempimenti del consulente del lavoro e sui principali profili ispettivi e sanzionatori.${upd}`;
+ return `Il candidato esamini criticamente ${f1} e i suoi rapporti con ${f2}. Muovendo dall’ipotesi di ${sc}, ricostruisca la disciplina applicabile, ${tk}. Valuti inoltre le conseguenze di una qualificazione o gestione non corretta dell’istituto, distinguendo responsabilità, rimedi e tutele, e indichi le cautele professionali idonee a prevenire il contenzioso.${upd}`;
+}
+
+/* ---------- V4: PACCHETTO CORREZIONE AI ---------- */
+function stripHtml(s){const d=document.createElement('div');d.innerHTML=s;return d.textContent||d.innerText||'';}
+function buildAIPackage(){
+ const t=currentTema,essay=document.getElementById('draftArea').value||'';
+ const model=['I. INQUADRAMENTO: '+t.schema.cost.map(stripHtml).join(' | '),'II. DISCIPLINA: '+t.schema.dett.map(stripHtml).join(' | '),'III. ADEMPIMENTI: '+t.schema.adem.map(stripHtml).join(' | '),'IV. ISPETTIVO/SANZIONI: '+t.schema.sanz.map(stripHtml).join(' | '),'V. GIURISPRUDENZA/PRASSI: '+t.schema.giur.map(stripHtml).join(' | '),'AGGIORNAMENTI 2025-26: '+(t.aggior&&t.aggior.length?t.aggior.map(stripHtml).join(' | '):'nessuno specifico nel database')].join('\n');
+ return `CORREZIONE AI — ESAME CONSULENTE DEL LAVORO, ANCONA 2026
+
+⚠ REQUISITO: usa un modello con accesso al web ATTIVO. Se non puoi effettuare ricerche in tempo reale, dichiaralo all'inizio e tratta il voto come puramente indicativo: la verifica delle norme e della giurisprudenza 2025-2026 è parte essenziale della correzione, non un dettaglio.
+
+RUOLO
+Agisci come componente rigoroso della Commissione d'esame. Correggi semanticamente, non per parole chiave.
+
+REGOLE
+1. Prima di valutare, verifica sul web le norme/prassi/giurisprudenza 2025-2026 citate o rilevanti, privilegiando Gazzetta Ufficiale, Normattiva, Ministero del Lavoro, INL, INPS, INAIL, Corte costituzionale e Cassazione.
+2. Distingui errore giuridico, imprecisione, omissione rilevante e omissione marginale.
+3. Valuta: norma → obbligo → adempimento → controllo → responsabilità → sanzione/rimedio.
+4. Non premiare la semplice citazione di articoli se applicati male.
+5. Voto ufficiale in decimi; sufficienza 6/10.
+
+RUBRICA
+- Inquadramento e fonti 1,0
+- Padronanza disciplina 2,5
+- Correttezza e aggiornamento 2,0
+- Adempimenti operativi CdL 1,5
+- Profili ispettivi/sanzionatori 1,5
+- Struttura e pertinenza 1,0
+- Collegamenti/prevenzione contenzioso 0,5
+
+TRACCIA
+${currentTraccia}
+
+ELABORATO
+${essay||'[elaborato non inserito]'}
+
+GRIGLIA-MODELLO
+${model}
+
+OUTPUT
+A. Voto /10 e giudizio sintetico.
+B. Tabella rubrica.
+C. Errori giuridici con breve richiamo alla frase del candidato e correzione.
+D. Omissioni rilevanti in ordine di gravità.
+E. Punti forti.
+F. Come migliorare la struttura senza riscrivere integralmente il tema.
+G. Tre domande da commissario sugli errori/lacune effettive.
+H. Schema ideale in massimo 20 punti.
+I. Fonti ufficiali usate per gli aggiornamenti 2025-2026.`;
+}
+async function copyAIPackage(){const txt=buildAICommissionPackage();try{await navigator.clipboard.writeText(txt);document.getElementById('copyStatus').textContent='Copiato.';}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();document.getElementById('copyStatus').textContent='Copiato.';}}
+function downloadAIPackage(){const blob=new Blob([buildAICommissionPackage()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Pacchetto_Correzione_AI_CdL_2026.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+
+/* ---------- V5.1: SVOLGIMENTO MODELLO ---------- */
+let svolTier='completo';
+const TIER={sintesi:['800','1000'],completo:['1200','1500'],appro:['1700','2000']};
+function bpBlock(step,title,anat,items,soglia){
+ if(!items||!items.length)return '';
+ const lab=soglia==='alto'?'★ 7–9':'⚑ 6/10';
+ return `<div class="bp-block"><h4><span class="step">${step}</span>${title}<span class="anat">${anat}</span></h4><ul>${items.map(i=>`<li><span class="sog ${soglia==='alto'?'alto':'ind'}">${lab}</span>${i}</li>`).join('')}</ul></div>`;
+}
+function bpNote(step,title,anat,note){return `<div class="bp-block"><h4><span class="step">${step}</span>${title}<span class="anat">${anat}</span></h4><div class="bp-note">${note}</div></div>`;}
+function buildBlueprint(t){
+ let h=`<p class="bp-legend"><span class="sog ind">⚑ 6/10</span> indispensabile per la sufficienza · <span class="sog alto">★ 7–9</span> elemento distintivo verso il voto alto. I blocchi I, IV e IX dipendono dalla traccia estratta: si scrivono su misura, non si riempiono a memoria.</p>`;
+ h+=bpNote('I','Apertura e inquadramento','INQUADRAMENTO','Una-due frasi che collocano il tema e ne annunciano l\'impianto, agganciando la traccia estratta. Niente definizioni manualistiche generiche.');
+ h+=bpBlock('II','Fonti costituzionali e civilistiche','INQUADRAMENTO',t.schema.cost,'ind');
+ h+=bpBlock('III','Disciplina speciale','DISCIPLINA',t.schema.dett,'ind');
+ h+=bpNote('IV','Applicazione alla fattispecie','DISCIPLINA','Cala la disciplina sul caso proposto dalla traccia. È qui che si seleziona: a fondo ciò che la traccia chiede, a cenno il resto.');
+ h+=bpBlock('V','Adempimenti operativi del consulente','OPERATIVITÀ CdL',t.schema.adem,'ind');
+ h+=bpBlock('VI','Profili ispettivi, responsabilità e sanzioni','ISPETTIVO/SANZIONATORIO',t.schema.sanz,'ind');
+ h+=bpBlock('VII','Giurisprudenza e prassi essenziale','APPROFONDIMENTO',t.schema.giur,'alto');
+ if(t.aggior&&t.aggior.length)h+=bpBlock('VIII','Novità 2025–2026 pertinenti','AGGIORNAMENTO 25–26',t.aggior,'alto');
+ h+=bpNote('IX','Chiusura professionale','OPERATIVITÀ CdL','Una-due frasi che ricompongono il quadro in chiave di prevenzione del contenzioso e ruolo del consulente. Niente riassunto meccanico.');
+ return h;
+}
+function buildSvolgimentoPackage(){
+ const t=currentTema,r=TIER[svolTier]||TIER.completo;
+ const grid=['I. INQUADRAMENTO: '+t.schema.cost.map(stripHtml).join(' | '),'II. DISCIPLINA: '+t.schema.dett.map(stripHtml).join(' | '),'III. ADEMPIMENTI: '+t.schema.adem.map(stripHtml).join(' | '),'IV. ISPETTIVO/SANZIONI: '+t.schema.sanz.map(stripHtml).join(' | '),'V. GIURISPRUDENZA/PRASSI: '+t.schema.giur.map(stripHtml).join(' | '),'AGGIORNAMENTI 2025-26: '+(t.aggior&&t.aggior.length?t.aggior.map(stripHtml).join(' | '):'nessuno specifico nel database')].join('\n');
+ return `SVOLGIMENTO MODELLO — ESAME CONSULENTE DEL LAVORO, ANCONA 2026
+
+⚠ REQUISITO: usa un modello con accesso al web ATTIVO. Prima di scrivere, verifica su fonti ufficiali (Gazzetta Ufficiale, Normattiva, Ministero del Lavoro, INL, INPS, INAIL, Corte costituzionale, Cassazione) le norme e la giurisprudenza 2025-2026 pertinenti. Se non puoi cercare, dichiaralo e indica quali riferimenti restano da verificare.
+
+RUOLO
+Sei un commissario esperto che redige lo svolgimento-modello della prima prova scritta di Consulente del Lavoro per la sede di Ancona (Marche). Impostazione operativo-sanzionatoria: norma -> obbligo -> adempimento -> controllo -> responsabilità -> sanzione/rimedio.
+
+TRACCIA ESTRATTA (svolgi ESATTAMENTE questa)
+${currentTraccia}
+
+REGOLE DI REDAZIONE
+1. SELEZIONA: non riversare tutto ciò che sai sul tema. Tratta a fondo ciò che questa traccia chiede, riduci a cenno il resto. La selezione distingue un buon elaborato da una risposta enciclopedica.
+2. MISURA: da ${r[0]} a ${r[1]} parole. Non superarle: la prolissità è penalizzante.
+3. REGISTRO: tecnico-giuridico, asciutto, italiano formale da prova d'esame, in prosa continua.
+4. Cita un articolo solo se lo applichi correttamente: una citazione applicata male vale meno di zero.
+
+ARCHITETTURA (internalizzala, NON usarla come titoletti)
+1) Apertura e inquadramento; 2) Fonti costituzionali e civilistiche pertinenti; 3) Disciplina speciale; 4) Applicazione alla fattispecie; 5) Adempimenti del consulente; 6) Profili ispettivi, responsabilità e sanzioni; 7) Giurisprudenza/prassi essenziale; 8) Novità 2025-2026 pertinenti; 9) Chiusura orientata alla prevenzione del contenzioso.
+
+GRIGLIA DI RIFERIMENTO (ancore del tema; seleziona il pertinente, non ripeterle tutte)
+${grid}
+
+OUTPUT
+A. «TEMA MODELLO — COMMISSIONE MARCHE»: il testo continuo come apparirebbe sul foglio d'esame, senza titoletti né elenchi, nella misura indicata.
+B. «ANATOMIA DEL TEMA»: per ciascun paragrafo una riga che lo classifica — INQUADRAMENTO (perché serve) / DISCIPLINA (cosa dimostra) / OPERATIVITÀ CdL (elemento premiante) / ISPETTIVO-SANZIONATORIO (elemento tipicamente rilevante) / AGGIORNAMENTO 2025-26 (elemento distintivo).
+C. «SOGLIA 6 vs 7-8-9» per QUESTA traccia: cosa è indispensabile per la sufficienza e cosa porta al voto alto.
+D. «FONTI UFFICIALI VERIFICATE»: i riferimenti controllati sul web per gli aggiornamenti 2025-2026.`;
+}
+async function copySvol(){const txt=buildSvolgimentoPackage();try{await navigator.clipboard.writeText(txt);document.getElementById('svolStatus').textContent='Copiato.';}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();document.getElementById('svolStatus').textContent='Copiato.';}}
+function downloadSvol(){const blob=new Blob([buildSvolgimentoPackage()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Svolgimento_Modello_CdL_2026.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+
+
+/* ============================================================
+   V5 — MOTORE COMMISSIONE / ANTI-RIPETIZIONE / ADATTIVO
+   ============================================================ */
+let protocol='commissione';
+const EXAM_DATE=new Date('2026-10-27T08:30:00+01:00');
+const TRACE_MEM='cdl_v5_recent_traces';
+
+const COMMISSION_FACTORS={
+ sicurezza:{hist:100,rec:86,nov:94,op:100,sys:92},
+ retribuzione:{hist:75,rec:100,nov:100,op:82,sys:96},
+ licenziamento:{hist:90,rec:82,nov:92,op:94,sys:94},
+ contrattazione:{hist:100,rec:92,nov:94,op:86,sys:100},
+ appalto:{hist:90,rec:82,nov:86,op:100,sys:98},
+ individuale:{hist:78,rec:94,nov:100,op:92,sys:85},
+ termine:{hist:76,rec:70,nov:82,op:90,sys:82},
+ dimissioni:{hist:45,rec:100,nov:96,op:100,sys:78},
+ sospensione:{hist:75,rec:66,nov:55,op:88,sys:84},
+ disabili:{hist:62,rec:60,nov:48,op:94,sys:70},
+ previdenza:{hist:60,rec:72,nov:72,op:90,sys:88},
+ agile:{hist:42,rec:76,nov:72,op:86,sys:74}
+};
+
+const TRACE_PARTS={
+ sicurezza:{
+  error:['DVR redatto in modo generico e non aggiornato','preposto nominato solo formalmente ma privo di effettivi poteri','formazione obbligatoria non completata o non tracciabile','DUVRI assente nonostante rischi interferenziali','impresa operante in cantiere con criticità sulla patente a crediti'],
+  inspect:['accesso ispettivo con verifica documentale e delle posizioni di garanzia','infortunio dal quale emerge un possibile deficit organizzativo','controllo sulla formazione e sull’effettività della vigilanza'],
+  remedy:['prescrizione e regolarizzazione ove applicabili','revisione del sistema prevenzionistico e della catena delle responsabilità','misure organizzative idonee a prevenire reiterazione e contenzioso'],
+  cross:['appalto e responsabilità del committente','potere disciplinare verso il lavoratore inadempiente','organizzazione aziendale e delega di funzioni']
+ },
+ retribuzione:{
+  error:['applicazione di un CCNL scarsamente rappresentativo con minimi inferiori','mancata indicazione della fascia retributiva nella fase preassuntiva','differenza retributiva non supportata da criteri oggettivi','superminimo gestito senza chiarezza sulla sua assorbibilità'],
+  inspect:['verifica contributiva collegata alla base imponibile e ai minimi','contenzioso individuale ex art. 36 Cost.','accertamento di una possibile discriminazione retributiva'],
+  remedy:['riallineamento retributivo e contributivo','revisione dei criteri retributivi e delle informative','ricostruzione del corretto CCNL-parametro'],
+  cross:['contrattazione collettiva e rappresentatività','parità di trattamento e discriminazioni','benefici normativi e contributivi']
+ },
+ licenziamento:{
+  error:['contestazione disciplinare generica o tardiva','GMO basato su un fatto organizzativo non dimostrato','scelta errata del regime di tutela in relazione alla data di assunzione','errata applicazione delle soglie dimensionali','recesso durante una situazione protetta'],
+  inspect:['verifica documentale del procedimento disciplinare','contenzioso sull’insussistenza del fatto','contestazione della natura discriminatoria o nulla del recesso'],
+  remedy:['revoca o rinnovazione degli atti ove consentita','corretta gestione dell’impugnazione e del rischio economico','valutazione preventiva di proporzionalità e prova del fatto'],
+  cross:['malattia e comporto','procedimento disciplinare','trasferimento d’azienda e continuità del rapporto']
+ },
+ contrattazione:{
+  error:['accordo aziendale che pretende di derogare oltre i limiti consentiti','applicazione di CCNL privo di adeguata rappresentatività','esclusione di una sigla sindacale dalla costituzione di RSA senza corretta verifica','confusione tra efficacia obbligatoria ed efficacia soggettiva'],
+  inspect:['verifica del CCNL utilizzato per benefici e istituti legali','contenzioso sull’efficacia dell’accordo aziendale','contestazione sindacale ex art. 28 Statuto'],
+  remedy:['verifica dei soggetti stipulanti e del perimetro derogatorio','riallineamento al CCNL qualificato','revisione dell’accordo nel rispetto dei limiti costituzionali e UE'],
+  cross:['salario giusto e art. 36 Cost.','orario di lavoro','contratti flessibili e rinvii all’art. 51 D.Lgs. 81/2015']
+ },
+ appalto:{
+  error:['appaltatore privo di autonoma organizzazione e rischio d’impresa','committente che esercita direttamente il potere direttivo','mancata verifica di regolarità contributiva','distacco privo di interesse concreto del distaccante'],
+  inspect:['accesso ispettivo volto a verificare la genuinità dell’appalto','azione del lavoratore per la costituzione del rapporto','richiesta di crediti retributivi e contributivi in solidarietà'],
+  remedy:['riqualificazione corretta dei rapporti e revisione del contratto','presidi documentali e organizzativi per la genuinità','garanzie e controlli preventivi sul contraente'],
+  cross:['sicurezza e DUVRI','responsabilità solidale','somministrazione e distacco']
+ },
+ individuale:{
+  error:['lavoro autonomo formalmente dichiarato ma sostanzialmente eterodiretto','lettera di assunzione incompleta','UNILAV tardivo o incoerente','richiesta al candidato della retribuzione pregressa'],
+  inspect:['riqualificazione ispettiva del rapporto','verifica degli obblighi informativi','contenzioso su mansioni e inquadramento'],
+  remedy:['regolarizzazione del rapporto e degli adempimenti','integrazione delle informative','riallineamento tra contratto, LUL e comunicazioni'],
+  cross:['retribuzione e trasparenza','mansioni ex art. 2103 c.c.','orario e organizzazione del lavoro']
+ },
+ termine:{
+  error:['superamento della durata massima','rinnovo gestito senza corretta causale','periodo di prova sproporzionato','violazione del diritto di precedenza'],
+  inspect:['verifica sulla successione dei rapporti','contenzioso sulla trasformazione a tempo indeterminato','controllo sui limiti quantitativi'],
+  remedy:['corretto computo della durata complessiva','revisione delle clausole e delle causali','gestione preventiva del diritto di precedenza'],
+  cross:['contrattazione collettiva','somministrazione a termine','lavoro stagionale']
+ },
+ dimissioni:{
+  error:['cessazione per fatti concludenti senza presupposti','conteggio errato dell’assenza ingiustificata','omessa comunicazione all’ITL','uso dell’istituto per eludere un licenziamento disciplinare'],
+  inspect:['verifica ITL sulla genuinità dell’assenza','contestazione del lavoratore sulla causa dell’assenza','verifica degli effetti sulla NASpI'],
+  remedy:['corretta sequenza procedurale e documentazione','scelta motivata tra fatti concludenti e licenziamento','ripristino del rapporto se i presupposti vengono meno'],
+  cross:['procedimento disciplinare','NASpI','dimissioni protette']
+ },
+ sospensione:{
+  error:['licenziamento prima del superamento del comporto','errata gestione dell’infortunio','violazione del divieto di licenziamento in maternità','dimissioni non convalidate nel periodo protetto'],
+  inspect:['verifica dei periodi di assenza e delle certificazioni','contenzioso sulla conservazione del posto','controllo INPS/INAIL sul trattamento economico'],
+  remedy:['corretto computo del comporto','regolarizzazione degli adempimenti previdenziali','rispetto delle procedure di convalida'],
+  cross:['licenziamento','INPS e INAIL','discriminazioni connesse alla genitorialità']
+ },
+ disabili:{
+  error:['base di computo calcolata in modo errato','prospetto informativo omesso','quota di riserva scoperta','esonero applicato senza requisiti'],
+  inspect:['verifica sul rispetto della L. 68/1999','controllo della base di computo','contestazione della scopertura'],
+  remedy:['richiesta di assunzione o convenzione','regolarizzazione del prospetto','verifica di esoneri e compensazioni'],
+  cross:['benefici e regolarità','organizzazione dell’organico','divieti di discriminazione']
+ },
+ previdenza:{
+  error:['contributi denunciati ma non versati','errata qualificazione contributiva del rapporto','omessa denuncia di elementi retributivi','gestione incoerente della posizione assicurativa INAIL'],
+  inspect:['accertamento contributivo INPS','verifica ispettiva sulla base imponibile','accertamento INAIL sul rischio assicurato'],
+  remedy:['regolarizzazione contributiva','ricostruzione dell’imponibile','correzione delle denunce e gestione delle sanzioni civili'],
+  cross:['retribuzione','qualificazione del rapporto','prestazioni previdenziali']
+ },
+ agile:{
+  error:['lavoro agile senza accordo coerente','mancata comunicazione','assenza di adeguata informativa sui rischi','recesso dall’accordo gestito irregolarmente'],
+  inspect:['verifica degli obblighi documentali','contenzioso sull’organizzazione della prestazione','infortunio durante attività resa da remoto'],
+  remedy:['revisione dell’accordo individuale','regolarizzazione delle comunicazioni','coordinamento con sicurezza e privacy'],
+  cross:['orario e disconnessione','sicurezza','potere direttivo']
+ }
+};
+
+function commissionIndex(t){
+ const f=COMMISSION_FACTORS[t.id]||{hist:50,rec:50,nov:50,op:50,sys:50};
+ return Math.round(f.hist*.30+f.rec*.20+f.nov*.20+f.op*.20+f.sys*.10);
+}
+function daysToExam(){return Math.ceil((EXAM_DATE-new Date())/86400000);}
+function isLastWeek(){const d=daysToExam();return d>=0&&d<=7;}
+function traceHistory(){try{return JSON.parse(localStorage.getItem(TRACE_MEM)||'[]')}catch(e){return[]}}
+function saveTraceSig(sig){let a=traceHistory();a.unshift(sig);a=[...new Set(a)].slice(0,40);try{localStorage.setItem(TRACE_MEM,JSON.stringify(a))}catch(e){}}
+function sigFor(t,a,b,c,d){return [t.id,a,b,c,d].join('|');}
+
+function composeTraceV5(t,advanced=false){
+ const v=VARIANTI[t.id],p=TRACE_PARTS[t.id];
+ if(!v||!p)return composeTrace(t,advanced);
+ let attempt=0,out=null,sig='';
+ const history=traceHistory();
+ do{
+  const f1=choice(v.focus), f2=choice(v.focus.filter(x=>x!==f1).length?v.focus.filter(x=>x!==f1):v.focus);
+  const scenario=choice(v.scenario), err=choice(p.error), insp=choice(p.inspect), rem=choice(p.remedy), cross=choice(p.cross), task=choice(v.task);
+  sig=sigFor(t,f1,scenario,err,cross);
+  const update=(t.aggior&&t.aggior.length)?' Tenga conto delle modifiche normative, di prassi e giurisprudenziali 2025–2026 pertinenti.':'';
+  const rausei=` Ricostruisca il percorso norma → obbligo → controllo → responsabilità → sanzione → rimedio.`;
+  if(protocol==='week'){
+    out=`Il candidato, con esposizione essenziale ma completa, tratti ${f1} con particolare riferimento a ${err}. Individui le norme-cardine, ${task} e indichi i principali profili di ${insp}, concludendo sulle cautele professionali e su ${rem}.${update}`;
+  } else if(protocol==='rausei'){
+    out=`Il candidato esamini ${f1} nell'ambito di ${cleanTitle(t)}. Muovendo dal caso di ${scenario}, nel quale emerge ${err}, ${task}. Valuti ${insp}, le responsabilità coinvolte e ${rem}; colleghi inoltre la fattispecie a ${cross}.${update}${rausei}`;
+  } else if(advanced){
+    out=`Il candidato esamini criticamente ${f1} e i rapporti con ${f2}. In una fattispecie caratterizzata da ${scenario} e da ${err}, ricostruisca la disciplina applicabile e ${task}. Valuti anche ${insp}, le responsabilità e i rimedi, collegando il tema a ${cross} e indicando le cautele del consulente per prevenire il contenzioso.${update}`;
+  } else {
+    out=`Il candidato, premesso il necessario inquadramento costituzionale e civilistico, illustri ${f1} nell'ambito di ${cleanTitle(t)}. Con riferimento al caso di ${scenario}, nel quale si riscontra ${err}, ${task}. Si soffermi su ${insp}, sugli adempimenti del consulente del lavoro e su ${rem}.${update}`;
+  }
+  attempt++;
+ }while(history.includes(sig)&&attempt<20);
+ saveTraceSig(sig);
+ return out;
+}
+
+function methodAnalysis(text){
+ const low=(text||'').toLowerCase();
+ const sets=[
+  ['Norma',['cost','c.c.','d.lgs','legge','art.','l. ']],
+  ['Obbligo',['obblig','deve','tenuto','ademp']],
+  ['Controllo',['ispett','vigil','inl','inps','inail','asl','controll']],
+  ['Responsabilità',['responsabil','solidale','datore','dirigente','preposto']],
+  ['Sanzione',['sanzion','ammenda','arresto','indenn','reinteg','nullità','trasformazione']],
+  ['Rimedio',['rimed','regolar','prescrizione','revoca','sanatoria','preven','contenzioso']]
+ ];
+ return sets.map(([n,keys])=>[n,keys.some(k=>low.includes(k))]);
+}
+
+function offlineCommissionScores(cov,methods,words){
+ const mh=methods.filter(x=>x[1]).length;
+ let legal=Math.min(9,3.2+cov*.035+mh*.25+(words>500?.4:0));
+ let ops=Math.min(9,3.0+cov*.025+mh*.38+(words>350?.3:0));
+ let insp=Math.min(9,2.8+cov*.02+methods.slice(2,6).filter(x=>x[1]).length*.55);
+ return [legal,ops,insp].map(x=>Math.max(3,Math.round(x*10)/10));
+}
+
+function buildAICommissionPackage(){
+ const base=buildAIPackage();
+ return base+`
+
+PROTOCOLLO V5 — COMMISSIONE MARCHE
+Valuta inoltre con tre prospettive separate:
+1. COMMISSARIO GIURIDICO: correttezza normativa, sistema delle fonti, giurisprudenza.
+2. COMMISSARIO OPERATIVO: capacità del candidato di assistere concretamente datore/lavoratore.
+3. COMMISSARIO ISPETTIVO-SANZIONATORIO: controlli, responsabilità, sanzioni, rimedi.
+
+METODO RAUSEI (strumento didattico, non criterio ufficiale della Commissione)
+Verifica se l'elaborato costruisce coerentemente: NORMA → OBBLIGO → CONTROLLO → RESPONSABILITÀ → SANZIONE → RIMEDIO.
+
+RICHIESTA AGGIUNTIVA
+- Assegna un voto /10 per ciascuno dei tre commissari e una media finale motivata.
+- Distingui chiaramente ciò che è indispensabile per la sufficienza da ciò che porta il tema da 7 a 8-9.
+- Se la traccia generata contiene un presupposto normativamente inesatto, segnalalo prima di correggere il candidato e non penalizzare il candidato per averlo rettificato.
+- Verifica le fonti ufficiali aggiornate alla data corrente prima di concludere.`;
+}
+
+/* ---------- STATE + STORAGE (fallback, non solo localStorage) ---------- */
+let mem = {};
+async function storeGet(k){ try{ if(window.storage){const r=await window.storage.get(k); return r?JSON.parse(r.value):null;} }catch(e){} try{const v=localStorage.getItem(k); return v?JSON.parse(v):null;}catch(e){} return (k in mem)?mem[k]:null; }
+async function storeSet(k,v){ try{ if(window.storage){await window.storage.set(k,JSON.stringify(v)); return;} }catch(e){} try{localStorage.setItem(k,JSON.stringify(v)); return;}catch(e){} mem[k]=v; }
+const REC='cdl_v5_rec';
+async function rec(){ return (await storeGet(REC))||{}; }
+async function logSession(id,coverage,self){ const r=await rec(); if(!r[id])r[id]={count:0,cov:[],self:[],last:null}; r[id].count++; r[id].last=new Date().toISOString().slice(0,10); if(coverage!=null)r[id].cov.push(coverage); if(self)r[id].self.push(Number(self)); await storeSet(REC,r); }
+
+/* ---------- TABS ---------- */
+const tabs=document.querySelectorAll('nav.tabs button');
+const views={sim:document.getElementById('view-sim'),studio:document.getElementById('view-studio'),cov:document.getElementById('view-cov'),fonti:document.getElementById('view-fonti')};
+tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-selected','false'));t.setAttribute('aria-selected','true');Object.values(views).forEach(v=>v.classList.remove('active'));views[t.dataset.view].classList.add('active');if(t.dataset.view==='cov')renderCov();}));
+
+/* ---------- CONFIG ---------- */
+let durataMin=420,mode='radar',diff='std';
+function bindSeg(id,cb){const s=document.getElementById(id);s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{s.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');cb(b);}));}
+bindSeg('segDurata',b=>durataMin=+b.dataset.min);
+bindSeg('segBacino',b=>mode=b.dataset.mode);
+bindSeg('segDiff',b=>diff=b.dataset.diff);
+bindSeg('segProtocol',b=>protocol=b.dataset.proto);
+
+/* ---------- ESTRAZIONE ---------- */
+let recCache={};
+async function weightOf(t){ if(mode==='uniform')return 1; if(mode==='weak'){const c=(recCache[t.id]?.count)||0; return Math.max(1,7-c)*(t.prio/60);} return t.prio; }
+async function pickThree(){ recCache=await rec(); const pool=[]; for(const t of TEMI)pool.push({t,w:await weightOf(t)}); const chosen=[],local=[...pool]; for(let i=0;i<3&&local.length;i++){const tot=local.reduce((s,x)=>s+x.w,0);let r=Math.random()*tot,idx=0;for(let j=0;j<local.length;j++){r-=local[j].w;if(r<=0){idx=j;break;}}chosen.push(local[idx].t);local.splice(idx,1);} return chosen; }
+
+let currentTema=null,currentTraccia='';
+const btnAvvia=document.getElementById('btnAvvia'),simIntro=document.getElementById('simIntro'),sorteggioWrap=document.getElementById('sorteggio'),buste=document.getElementById('buste'),sheet=document.getElementById('sheet');
+
+btnAvvia.addEventListener('click',async()=>{
+ const three=await pickThree(); const est=Math.floor(Math.random()*three.length);
+ simIntro.style.display='none';sheet.style.display='none';sorteggioWrap.style.display='block';buste.innerHTML='';
+ three.forEach((t,i)=>{const el=document.createElement('div');el.className='busta drawing';el.innerHTML=`<span class="seal">Estratta</span><div><div class="n">TRACCIA ${i+1}</div><div class="lbl">${t.titolo}</div></div><div class="status">in sorteggio…</div>`;buste.appendChild(el);});
+ const els=[...buste.children];
+ setTimeout(()=>{els.forEach((el,i)=>{el.classList.remove('drawing');if(i===est){el.classList.add('estratta');el.querySelector('.status').textContent='da svolgere';}else{el.classList.add('scartata');el.querySelector('.status').textContent='non estratta';}});
+  currentTema=three[est];
+  currentTraccia=composeTraceV5(currentTema,diff==='alta');
+  setTimeout(openSheet,900);},850);
+});
+function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;document.getElementById('matrixLine').textContent='V5 · traccia combinatoria anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
+
+/* ---------- TIMER ---------- */
+let timerInt=null,remaining=0,paused=false;
+const timerbar=document.getElementById('timerbar'),clock=document.getElementById('clock'),clockLbl=document.getElementById('clocklbl');
+function fmt(s){const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return (h>0?h+':':'')+String(m).padStart(h>0?2:1,'0')+':'+String(ss).padStart(2,'0');}
+function paint(){clock.firstChild.textContent=fmt(Math.max(0,remaining));clock.classList.toggle('warn',remaining<=300);}
+function startTimer(sec){clearInterval(timerInt);remaining=sec;paused=false;document.getElementById('btnPause').textContent='Pausa';clockLbl.textContent='Tempo residuo';timerbar.classList.add('on');paint();timerInt=setInterval(()=>{if(paused)return;remaining--;paint();if(remaining<=0){clearInterval(timerInt);clockLbl.textContent='Tempo scaduto';reveal();}},1000);}
+document.getElementById('draftArea').addEventListener('input',e=>{document.getElementById('wordCount').textContent=((e.target.value.match(/\S+/g)||[]).length)+' parole';});
+document.getElementById('btnPause').addEventListener('click',e=>{paused=!paused;e.target.textContent=paused?'Riprendi':'Pausa';clockLbl.textContent=paused?'In pausa':'Tempo residuo';});
+function stopTimer(){clearInterval(timerInt);timerbar.classList.remove('on');}
+
+/* ---------- CORREZIONE (copertura, non voto) ---------- */
+const SANZ=['sanzion','ispettor','vigilanza','responsabilità','prescrizione','reinteg','indennità','trasformazione','nullità'];
+function block(title,step,items){if(!items||!items.length)return '';return `<div class="grid-block"><h4><span class="step">${step}</span>${title}</h4><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;}
+function hits(text,arr){const t=text.toLowerCase();return arr.filter(k=>t.includes(k.toLowerCase()));}
+let lastCoverage=null;
+function reveal(){
+ const t=currentTema,text=document.getElementById('draftArea').value||'';
+ const anchors=[...t.kw.bases,...t.kw.keys,...t.kw.ops,...t.kw.updates];
+ const hit=hits(text,anchors), miss=anchors.filter(a=>!text.toLowerCase().includes(a.toLowerCase()));
+ const cov=anchors.length?Math.round(hit.length/anchors.length*100):0; lastCoverage=text.trim()?cov:null;
+ const bH=hits(text,t.kw.bases).length,kH=hits(text,t.kw.keys).length,oH=hits(text,t.kw.ops).length,uH=hits(text,t.kw.updates).length,sH=hits(text,SANZ).length;
+ const dims=[['Costituzionale/civile',bH>0],['Disciplina',kH>=2],['Adempimenti',oH>0],['Sanzioni/ispezione',sH>0],['Aggiornamento 25–26',t.kw.updates.length?uH>0:null]];
+ const words=(text.match(/\S+/g)||[]).length;
+ const methods=methodAnalysis(text); const committee=offlineCommissionScores(cov,methods,words);
+ let coverHtml='';
+ if(text.trim()){
+  coverHtml=`<div class="cover"><div class="top">
+    <div class="gauge" style="--v:${cov}"><b>${cov}%</b></div>
+    <div><div class="lbl">Copertura degli ancoraggi</div><div class="cap">Quota delle ancore essenziali presenti nel testo (${hit.length} su ${anchors.length}). Non è un voto: misura cosa hai nominato, non se lo hai usato bene. ${words<350?'<b>Elaborato breve per una prova di 7 ore.</b>':''}</div></div>
+   </div>
+   <div class="dims">${dims.filter(d=>d[1]!==null).map(d=>`<span class="dim ${d[1]?'hit':''}"><span class="mk">${d[1]?'✓':'—'}</span>${d[0]}</span>`).join('')}</div>
+   ${miss.length?`<div class="omis"><h5>Omissioni probabili da verificare</h5><div class="chips">${miss.slice(0,8).map(m=>`<span class="chip">${m}</span>`).join('')}</div></div>`:''}
+   ${miss.length?`<div class="recov"><h5>Domande di recupero</h5><ul>${miss.slice(0,3).map((m,i)=>`<li>${['Che ruolo ha «'+m+'» nella soluzione della traccia?','Quale conseguenza operativa o sanzionatoria colleghi a «'+m+'»?','Dove collochi «'+m+'» nell\u2019impianto dell\u2019elaborato?'][i]}</li>`).join('')}</ul></div>`:''}
+  </div>`;
+ } else {
+  coverHtml=`<div class="cover"><div class="cap">Non hai scritto nell'elaborato: la copertura non è calcolabile. Confronta comunque la tua traccia (o quella su carta) con la griglia-modello qui sotto.</div></div>`;
+ }
+ document.getElementById('coverBox').innerHTML=coverHtml;
+  const methodHtml=`<div class="v5panel"><h4>Metodo — struttura dell'elaborato</h4><div class="methodbar">${methods.map(m=>`<span class="methodstep ${m[1]?'hit':''}">${m[1]?'✓':'—'} ${m[0]}</span>`).join('')}</div><p class="note" style="margin-top:9px">È un controllo euristico della struttura, non della correttezza giuridica.</p></div>`;
+  const commissionHtml=text.trim()?`<div class="commission-box"><h4>Commissione virtuale offline — indicatori, non voto ufficiale</h4><div class="mini-score"><div><span>Giuridico</span><b>${committee[0].toFixed(1)}</b></div><div><span>Operatività</span><b>${committee[1].toFixed(1)}</b></div><div><span>Ispettivo</span><b>${committee[2].toFixed(1)}</b></div></div><p>Questi valori stimano solo copertura, struttura e densità degli ancoraggi. Usa <b>Correzione AI</b> per il voto giuridico-semantico motivato.</p></div>`:'';
+  document.getElementById('commissionFeedback').innerHTML=methodHtml+commissionHtml;
+
+ let g='';
+ g+=block('Inquadramento costituzionale e civilistico','I',t.schema.cost);
+ g+=block('Disciplina di dettaglio','II',t.schema.dett);
+ g+=block('Adempimenti operativi del consulente','III',t.schema.adem);
+ g+=block('Profili ispettivi e sanzionatori','IV',t.schema.sanz);
+ g+=block('Giurisprudenza e prassi','V',t.schema.giur);
+ if(t.aggior&&t.aggior.length)g+=`<div class="aggior"><h4><span class="tag2526">2025–26</span> Aggiornamenti da innestare</h4><ul>${t.aggior.map(a=>`<li>${a}</li>`).join('')}</ul></div>`;
+ document.getElementById('corrContent').innerHTML=g;
+ document.getElementById('checklistItems').innerHTML=t.check.map((q,i)=>`<label class="item"><input type="checkbox" id="chk${i}"><span>${q}</span></label>`).join('');
+ document.getElementById('blueprintBox').innerHTML=buildBlueprint(t);
+ document.getElementById('svolStatus').textContent='';
+ document.getElementById('correction').classList.add('on');
+ document.getElementById('correction').scrollIntoView({behavior:'smooth',block:'start'});
+ stopTimer();
+}
+document.getElementById('btnCopyAI').addEventListener('click',copyAIPackage);
+document.getElementById('btnDownloadAI').addEventListener('click',downloadAIPackage);
+document.getElementById('btnCopySvol').addEventListener('click',copySvol);
+document.getElementById('btnDownloadSvol').addEventListener('click',downloadSvol);
+(function(){const s=document.getElementById('segTier');s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{s.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');svolTier=b.dataset.tier;document.getElementById('svolStatus').textContent='';}));})();
+document.getElementById('btnTermina').addEventListener('click',reveal);
+document.getElementById('btnTermina2').addEventListener('click',reveal);
+document.getElementById('btnAnnulla').addEventListener('click',resetSim);
+function resetSim(){stopTimer();clockLbl.textContent='Tempo residuo';sheet.style.display='none';sorteggioWrap.style.display='none';simIntro.style.display='block';simIntro.scrollIntoView({behavior:'smooth',block:'start'});}
+document.getElementById('btnRegistra').addEventListener('click',async()=>{const s=document.getElementById('scoreSel').value;await logSession(currentTema.id,lastCoverage,s);resetSim();document.querySelector('nav.tabs button[data-view="cov"]').click();});
+
+/* ---------- STUDIO ---------- */
+const tierLbl={ap:'A+',a:'A',bp:'B+',b:'B',c:'C'};
+function renderAccordion(f='all'){
+ const acc=document.getElementById('accordion');
+ const list=TEMI.filter(t=>f==='all'?true:f==='alta'?(t.tier==='ap'||t.tier==='a'):(t.aggior&&t.aggior.length));
+ acc.innerHTML=list.map(t=>{const idx=String(TEMI.indexOf(t)+1).padStart(2,'0');return `<div class="acc-item"><button class="acc-btn" aria-expanded="false" data-id="${t.id}"><span class="acc-idx">${idx}</span><span class="acc-tit">${t.titolo}</span><span class="acc-meta"><span class="peso ${t.tier}">${tierLbl[t.tier]}</span>${t.aggior&&t.aggior.length?'<span class="tag2526">25–26</span>':''}<span class="acc-years">${t.anni}</span><span class="acc-caret">▸</span></span></button><div class="acc-panel" id="panel-${t.id}"></div></div>`;}).join('');
+ acc.querySelectorAll('.acc-btn').forEach(b=>b.addEventListener('click',()=>{const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));const p=document.getElementById('panel-'+b.dataset.id);if(open){p.classList.remove('on');return;}if(!p.innerHTML)p.innerHTML=studioPanel(TEMI.find(x=>x.id===b.dataset.id));p.classList.add('on');}));
+}
+function studioPanel(t){let h=`<p class="traccia-preview">${t.tracce[0]}</p>`;h+=block('Inquadramento costituzionale e civilistico','I',t.schema.cost);h+=block('Disciplina di dettaglio','II',t.schema.dett);h+=block('Adempimenti operativi del consulente','III',t.schema.adem);h+=block('Profili ispettivi e sanzionatori','IV',t.schema.sanz);h+=block('Giurisprudenza e prassi','V',t.schema.giur);if(t.aggior&&t.aggior.length)h+=`<div class="aggior"><h4><span class="tag2526">2025–26</span> Aggiornamenti da innestare</h4><ul>${t.aggior.map(a=>`<li>${a}</li>`).join('')}</ul></div>`;h+=`<div class="selfbox"><h4>Autovalutazione</h4><div class="checklist">${t.check.map(q=>`<label class="item"><input type="checkbox"><span>${q}</span></label>`).join('')}</div></div>`;return h;}
+document.querySelectorAll('#filters .chip-f').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('#filters .chip-f').forEach(x=>x.setAttribute('aria-pressed','false'));c.setAttribute('aria-pressed','true');renderAccordion(c.dataset.f);}));
+
+/* ---------- RADAR & COPERTURA ---------- */
+async function renderCov(){
+ const r=await rec(),body=document.getElementById('covBody');let untouched=[];
+ const sorted=[...TEMI].sort((a,b)=>commissionIndex(b)-commissionIndex(a));
+ body.innerHTML=sorted.map(t=>{const x=r[t.id];const c=x?x.count:0;const last=x&&x.last?x.last:'—';
+  const cov=x&&x.cov.length?Math.round(x.cov.reduce((a,b)=>a+b,0)/x.cov.length):null;
+  const self=x&&x.self.length?(x.self.reduce((a,b)=>a+b,0)/x.self.length).toFixed(1):null;
+  if(c===0&&(t.tier==='ap'||t.tier==='a'))untouched.push(t.titolo);
+  return `<tr class="${c===0?'untouched':''}"><td class="tname">${t.titolo}</td><td><span class="peso ${t.tier}">${tierLbl[t.tier]} · ${commissionIndex(t)}</span></td><td class="num">${c}</td><td class="num">${cov!=null?cov+'%':'—'}</td><td class="num">${self||'—'}</td><td class="num">${last}</td></tr>`;
+ }).join('');
+ const n=document.getElementById('nudge');n.className='nudge';
+ n.innerHTML=untouched.length?`<b>Priorità di fascia A non ancora esercitate:</b> ${untouched.join(' · ')}. Con il sorteggio cieco, un tema ad alta ricorrenza mai simulato è il rischio più concreto — usa la modalità «Temi deboli».`:'Tutte le priorità di fascia A sono state esercitate almeno una volta. Ora alza copertura e autovalutazione media, non solo il conteggio.';
+}
+document.getElementById('btnReset').addEventListener('click',async()=>{await storeSet(REC,{});renderCov();});
+
+/* ---------- FONTI ---------- */
+document.getElementById('fontiBody').innerHTML=FONTI.map(f=>`<tr><td class="src">${f[0]}</td><td class="body">${f[1]}</td></tr>`).join('');
+
+/* init */
+renderAccordion('all');
+</script>
+</body>
+</html>
