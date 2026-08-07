@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CdL Marche Trainer 2026 — Cedolino, CU, Conguaglio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDF0F3;--card:#FFFFFF;--ink:#1A2233;--ink-soft:#4A5568;--line:#CBD3DC;--line-soft:#E3E8ED;
+    --t1:#26324D;--t2:#9A6A1E;--t3:#1F7A72;--t4:#BE3320;
+    --t1-bg:#E7EAF1;--t2-bg:#F4ECDD;--t3-bg:#E1F0EE;--t4-bg:#FAE5E1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+    line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .band{background:var(--t1);color:#fff;padding:44px 20px 40px;}
+  .band .wrap{max-width:820px;margin:0 auto;}
+  .band .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:#B9C4D8;margin-bottom:10px;}
+  .band h1{font-family:'Spectral',serif;font-weight:800;font-size:34px;line-height:1.05;letter-spacing:-.01em;}
+  .band p{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:#D7DEEA;margin-top:8px;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px;}
+  main{padding:26px 20px 10px;}
+  main .wrap{padding:0;}
+
+  .hero{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:16px;
+    box-shadow:0 1px 2px rgba(26,34,51,.04);}
+  .hero h2{font-family:'Spectral',serif;font-weight:700;font-size:22px;margin-bottom:4px;}
+  .hero .sub{color:var(--ink-soft);font-size:14px;margin-bottom:16px;}
+  .feat{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 20px;margin:14px 0 20px;}
+  .feat div{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;}
+  .feat .dot{width:7px;height:7px;border-radius:50%;background:var(--t3);margin-top:7px;flex:none;}
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--t1);color:#fff;text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:.02em;
+    padding:13px 22px;border-radius:10px;transition:background .15s ease;}
+  .cta:hover{background:#1B2438;}
+  .cta:focus-visible{outline:3px solid var(--t3);outline-offset:2px;}
+
+  .params{background:var(--t1-bg);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .params h3{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--t2);margin-bottom:10px;}
+  .params ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px 22px;font-size:12.5px;}
+  .params li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dotted var(--line);padding:3px 0;}
+  .params .k{color:var(--ink-soft);}
+  .params .v{font-family:'IBM Plex Mono',monospace;font-weight:500;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .box h3{font-family:'Spectral',serif;font-weight:700;font-size:15px;margin-bottom:8px;}
+  .box.is h3{color:var(--t3);} .box.isnt h3{color:var(--t4);}
+  .box ul{list-style:none;font-size:12.5px;color:var(--ink-soft);}
+  .box li{padding:3px 0 3px 15px;position:relative;}
+  .box li::before{content:"—";position:absolute;left:0;color:var(--line);}
+
+  footer{border-top:1px solid var(--line);margin-top:8px;padding:22px 20px 40px;}
+  footer .wrap{padding:0;}
+  .f-main{font-family:'Spectral',serif;font-size:14px;color:var(--ink);}
+  .f-meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);letter-spacing:.02em;margin-top:6px;}
+  .f-disc{font-size:11.5px;color:var(--ink-soft);margin-top:8px;line-height:1.5;max-width:82ch;}
+
+  @media(max-width:640px){
+    .band h1{font-size:27px;} .feat,.params ul,.cols{grid-template-columns:1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <div class="kicker">Esame di Stato · Consulente del Lavoro · Regione Marche</div>
+    <h1>CdL Marche Trainer 2026</h1>
+    <p>Esercitazione alla seconda prova scritta: cedolino, Certificazione Unica e conguaglio.</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <div class="hero">
+      <h2>Simulatore Cedolino · CU · Conguaglio</h2>
+      <div class="sub">Genera tracce casuali in stile Commissione, tu compili, il motore corregge voce per voce con calcolo e riferimento normativo.</div>
+      <div class="feat">
+        <div><span class="dot"></span><span>Busta paga con contributi, IRPEF, detrazioni, cuneo, TFR e INAIL</span></div>
+        <div><span class="dot"></span><span>Certificazione Unica e conguaglio di fine anno con CU precedente</span></div>
+        <div><span class="dot"></span><span>Modalità Guidata ed Esame, con cronometro</span></div>
+        <div><span class="dot"></span><span>Correzione automatica e diagnosi per tipo di errore</span></div>
+      </div>
+      <a class="cta" href="simulatore.html">Apri il simulatore &rarr;</a>
+    </div>
+
+    <div class="params">
+      <h3>Parametri normativi 2026</h3>
+      <ul>
+        <li><span class="k">IRPEF (cedolino, redditi 2026)</span><span class="v">23 / 33 / 43%</span></li>
+        <li><span class="k">Detrazione lavoro dip.</span><span class="v">€ 1.955 + € 65</span></li>
+        <li><span class="k">Cuneo strutturale</span><span class="v">fino a € 1.000</span></li>
+        <li><span class="k">Buoni pasto elettronici</span><span class="v">esenti fino a € 10</span></li>
+        <li><span class="k">Fringe benefit</span><span class="v">€ 1.000 / € 2.000</span></li>
+        <li><span class="k">1% IVS aggiuntivo</span><span class="v">oltre € 4.685/mese</span></li>
+      </ul>
+      <p style="font-size:12px;color:var(--ink-soft);margin-top:10px;line-height:1.5;">
+        <b>Attenzione allo scaglione medio:</b> la Certificazione Unica 2026 certifica i <b>redditi 2025</b>, tassati con il 2° scaglione al <b>35%</b> (aliquota vigente su quell'anno). Il 33% mostrato sopra si applica invece ai <b>redditi 2026</b> — quelli del cedolino corrente — che confluiranno nella CU 2027. Il simulatore applica l'aliquota corretta in ciascun modulo (33% nel Cedolino, 35% nella CU), ma il dato non va confuso leggendo i due moduli fuori contesto.
+      </p>
+    </div>
+
+    <div class="cols">
+      <div class="box is">
+        <h3>Che cos'è</h3>
+        <ul>
+          <li>Uno strumento di studio per prendere dimestichezza con la meccanica dei calcoli</li>
+          <li>Casi con dati congrui a qualifica e livello, corretti al centesimo dal motore</li>
+          <li>Parametri riferiti alle regole 2026</li>
+        </ul>
+      </div>
+      <div class="box isnt">
+        <h3>Che cosa non è</h3>
+        <ul>
+          <li>Un software paghe professionale</li>
+          <li>Un sostituto delle istruzioni dell'Agenzia delle Entrate o delle circolari INPS/INAIL</li>
+          <li>Un riferimento per il CCNL applicabile, che va sempre verificato</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-main">A cura di <b>Andrea Marziali</b> — materiale di esercitazione personale per la preparazione all'Esame di Stato.</div>
+    <div class="f-meta">Beta 1.2 · agosto 2026 · tre CCNL · motore corretto e validato su cedolini reali.</div>
+    <div class="f-disc">Progetto a finalità didattiche. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe. I valori numerici delle tracce sono realistici ma indicativi; all'esame prevale sempre il dato fornito dalla traccia.</div>
+  </div>
+</footer>
+
+</body>
+</html>
