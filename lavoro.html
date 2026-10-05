@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulatore prova I — Consulente del Lavoro · Ancona 2026 · V5</title>
+<title>Simulatore prova I — Consulente del Lavoro · Ancona 2026 · V5.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -278,7 +278,7 @@
   <div class="wrap">
     <div class="masthead">
       <div class="brand">
-        <p class="eyebrow">Esame di Stato · Consulente del Lavoro · L. 12/1979 · V5</p>
+        <p class="eyebrow">Esame di Stato · Consulente del Lavoro · L. 12/1979 · V5.1</p>
         <h1 class="title">Prova scritta I — Diritto del lavoro e legislazione sociale</h1>
         <p class="subtitle">Motore Commissione Marche, tracce combinatorie anti-ripetizione, allenamento adattivo, modalità Rausei e pacchetto per correzione AI. Il motore offline misura copertura e metodo; la valutazione giuridico-semantica resta distinta.</p>
       </div>
@@ -329,7 +329,8 @@
           <fieldset>
             <legend>Selezione temi</legend>
             <div class="seg" id="segBacino" role="group" aria-label="Selezione">
-              <button data-mode="radar" aria-pressed="true">Radar Marche</button>
+              <button data-mode="rausei26" aria-pressed="true">Rausei 2026</button>
+      <button data-mode="radar" aria-pressed="false">Radar Marche</button>
               <button data-mode="weak">Temi deboli</button>
               <button data-mode="uniform">Uniforme</button>
             </div>
@@ -439,7 +440,7 @@
       <div class="studio-intro">
         <div>
           <h2>Studio dei temi</h2>
-          <p class="lead">I dodici temi del bacino, con la scaletta sui cinque livelli, le ancore normative e le novità 2025–2026 da innestare.</p>
+          <p class="lead">I sedici temi del bacino, con la scaletta sui cinque livelli, le ancore normative e le novità 2025–2026 da innestare.</p>
         </div>
         <div class="filters" id="filters" role="group" aria-label="Filtra">
           <button class="chip-f" data-f="all" aria-pressed="true">Tutti</button>
@@ -484,7 +485,7 @@
         <h2>Fonti di controllo integrate</h2>
         <p class="lead">Riferimenti verificati su cui poggiano tracce e aggiornamenti. Le numerazioni di dettaglio vanno comunque ricontrollate sul codice non commentato in sede d'esame.</p>
       </div>
-      <div class="livebox"><b>V5:</b> queste sono ancore verificate al 7 agosto 2026. Il file HTML non effettua chiamate Internet autonome. Il pacchetto “Correzione AI” ordina invece al modello di riverificare online gli aggiornamenti prima di valutare.</div><table class="fonti"><thead><tr><th>Fonte</th><th>Contenuto</th></tr></thead><tbody id="fontiBody"></tbody></table>
+      <div class="livebox"><b>V5.1:</b> ancore verificate al 5 ottobre 2026 sui testi vigenti in libreria (D.L. 62/2026 al 24/9/2026; D.Lgs. 124/2004, art. 8 D.L. 138/2011, D.Lgs. 81/2008 e D.Lgs. 81/2015 al 27/9/2026; D.Lgs. 96/2026 e 91/2026). Il file HTML non effettua chiamate Internet autonome. Il pacchetto “Correzione AI” ordina invece al modello di riverificare online gli aggiornamenti prima di valutare.</div><table class="fonti"><thead><tr><th>Fonte</th><th>Contenuto</th></tr></thead><tbody id="fontiBody"></tbody></table>
     </section>
 
   </div>
@@ -492,14 +493,86 @@
 
 <footer class="foot">
   <div class="wrap">
-    <p><b>Nota metodologica.</b> Bacino e pesi derivano dalle tracce Lavoro effettivamente proposte a Ancona: sicurezza (2024, 2025) e contrattazione/prossimità (2023, 2025) ricorrono di più; l'asse retribuzione/rapporto individuale è il segnale del 2025; licenziamento è in fascia alta per effetto di Corte cost. 118/2025. Il motore offline misura copertura, applicazione del metodo e progressione senza fingere una valutazione giuridica. La V5 aggiunge motore Commissione, anti-ripetizione, allenamento adattivo, protocollo Rausei e modalità ultima settimana.</p>
-    <p class="mono">Aggiornamenti recepiti e da riverificare live prima dell'uso: L. 198/2025 (Decreto Sicurezza) · Corte cost. 118/2025 (tetto indennità piccole imprese) · Corte cost. 156/2025 (art. 19 St. Lav., RSA) · D.Lgs. 96/2026 (trasparenza retributiva) · D.L. 62/2026 conv. L. 112/2026 (salario giusto) · L. 203/2024 (Collegato Lavoro). I dati di sessione restano sul tuo dispositivo.</p>
+    <p><b>Nota metodologica.</b> Bacino e pesi derivano dalle tracce Lavoro effettivamente proposte a Ancona: sicurezza (2024, 2025) e contrattazione/prossimità (2023, 2025) ricorrono di più; l'asse retribuzione/rapporto individuale è il segnale del 2025; licenziamento è in fascia alta per effetto di Corte cost. 118/2025. Il motore offline misura copertura, applicazione del metodo e progressione senza fingere una valutazione giuridica. La V5 aggiunge motore Commissione, anti-ripetizione, allenamento adattivo, protocollo Rausei e modalità ultima settimana. La V5.1 aggiunge la selezione «Rausei 2026», basata su indicazioni informali e non ufficiali: almeno una delle tre buste riguarda il D.L. 62/2026 o il D.Lgs. 96/2026 (salario giusto, prossimità, poteri ispettivi, trasparenza, piattaforme); le altre due pescano per circa il 40% dallo stesso nucleo, per il 45% dai temi ponte (sicurezza, appalto, rapporto individuale, retribuzione), con un aggancio obbligatorio ai decreti nella traccia, e per il 15% dagli altri temi.</p>
+    <p class="mono">Aggiornamenti recepiti e da riverificare live prima dell'uso: L. 198/2025 (Decreto Sicurezza) · Corte cost. 118/2025 (tetto indennità piccole imprese) · Corte cost. 156/2025 (art. 19 St. Lav., RSA) · D.Lgs. 96/2026 (trasparenza retributiva) · D.L. 62/2026 conv. L. 112/2026 (salario giusto, art. 7-bis, piattaforme) · D.Lgs. 124/2004 e art. 14 D.Lgs. 81/2008 (poteri ispettivi) · D.Lgs. 91/2026 · L. 203/2024 (Collegato Lavoro). I dati di sessione restano sul tuo dispositivo.</p>
   </div>
 </footer>
 <script>
 const N = s => '<span class="norm">'+s+'</span>';
 
 const TEMI = [
+ {
+  id:'salariogiusto', titolo:'Salario giusto e trattamento economico complessivo (D.L. 62/2026)',
+  tier:'ap', prio:97, anni:'novità 2026', w:6,
+  tracce:[
+   `Premessi brevi cenni sul principio della retribuzione proporzionata e sufficiente di cui all'art. 36 Cost., il candidato illustri la disciplina del "salario giusto" introdotta dall'art. 7 del d.l. 62/2026, convertito dalla legge 112/2026, soffermandosi sulla nozione di trattamento economico complessivo, sui criteri di individuazione del contratto collettivo di riferimento e sulle conseguenze per l'accesso ai benefici, anche sotto il profilo della vigilanza.`,
+   `Il candidato tratti il rapporto tra contrattazione collettiva comparativamente più rappresentativa e trattamento economico dovuto ai lavoratori alla luce del d.l. 62/2026, con particolare riferimento al comma 4-bis dell'art. 7, al monitoraggio retributivo, alla disciplina dei rinnovi contrattuali e agli obblighi informativi relativi al codice del contratto collettivo applicato.`
+  ],
+  schema:{
+   cost:[`${N('art. 36 Cost.')} retribuzione proporzionata e sufficiente; ruolo tradizionalmente suppletivo del giudice`,`${N('art. 39 Cost.')} seconda parte inattuata: il CCNL non ha efficacia erga omnes, da qui la scelta di un parametro legale di riferimento`,`${N('art. 2099 c.c.')} determinazione della retribuzione`],
+   dett:[`${N('art. 7 c.1-2 d.l. 62/2026')} la contrattazione collettiva è lo strumento di determinazione del salario giusto; riferimento al TEC dei CCNL stipulati dalle organizzazioni comparativamente più rappresentative, avuto riguardo a settore, categoria, attività prevalente, dimensione e natura giuridica del datore`,`${N('art. 7 c.3-4')} il TEC dei CCNL diversi non può essere inferiore a quello di riferimento; nei settori privi di contrattazione vale il CCNL con ambito più connesso all'attività`,`${N('art. 7 c.4-bis')} (introdotto in conversione): TEC = voci fisse e continuative dirette, indirette e differite, mensilità aggiuntive, indennità fisse e continuative, welfare contrattuale della generalità dei dipendenti; escluse le voci discrezionali e variabili individuali`,`${N('art. 7 c.5')} accesso ai benefici del decreto solo con trattamento individuale non inferiore al TEC`,`${N('art. 10')} rinnovi: decorsi nove mesi dalla scadenza, in assenza di diverse pattuizioni, anticipazione pari al 50% dell'IPCA-NEI; per i CCNL già scaduti dal 1° gennaio 2027; contributo di assistenza contrattuale non riconoscibile decorsi dodici mesi`,`${N('artt. 8-9')} monitoraggio retributivo, Rapporto nazionale CNEL, archivio dei contratti aziendali e territoriali`],
+   adem:[`Verifica del CCNL applicato e confronto del trattamento individuale con il TEC del CCNL di riferimento`,`Codice alfanumerico unico del CCNL nell'informativa ${N('art. 1 c.1 lett. q-bis) d.lgs. 152/1997')} e nel prospetto paga ${N('art. 1 L. 4/1953')}, come previsto dall'${N('art. 11 d.l. 62/2026')}`,`Annunci sul SIISL con codice del CCNL e retribuzione per qualifica e livello ${N('art. 7 c.6')}`,`Controllo dei requisiti prima di fruire degli incentivi ${N('artt. 1-4')}`],
+   sanz:[`Esclusione dai benefici se il trattamento è inferiore al TEC ${N('art. 7 c.5')}`,`Accertamento ispettivo delle differenze retributive e contributive; diffida accertativa per i crediti dei lavoratori ${N('art. 12 d.lgs. 124/2004')}`,`Uso del codice CCNL da parte di MLPS, INL, INPS e CNEL per programmare la vigilanza e individuare il dumping ${N('art. 11 c.3-4')}`],
+   giur:[`Giurisprudenza sull'art. 36 come parametro immediatamente precettivo e sul ricorso ai CCNL leader (estremi da verificare sul repertorio)`,`[DOTTRINA] il TEC rafforza la diffida accertativa quando il datore non applica il contratto leader`]
+  },
+  aggior:[`${N('L. 112/2026')} di conversione: comma 4-bis sulla nozione di TEC`,`${N('art. 7-bis d.l. 62/2026')} contrattazione di prossimità: deposito e regole per i trattamenti peggiorativi`,`${N('art. 11')} codice alfanumerico del CCNL in informativa, prospetto paga e flussi`],
+  check:[`Ho fondato il tema sull'art. 36 e spiegato perché serve un parametro legale (art. 39 inattuato)?`,`Ho definito il TEC con il comma 4-bis, voci incluse ed escluse?`,`Ho collegato il TEC all'accesso ai benefici (art. 7, c. 5)?`,`Ho trattato la vigilanza: differenze retributive, diffida accertativa, recupero contributivo?`,`Ho chiuso con gli adempimenti del consulente (codice CCNL, verifica del contratto applicato)?`],
+  kw:{bases:['36 cost','39 cost','proporzionata','sufficiente'],keys:['salario giusto','trattamento economico complessivo','tec','4-bis','comparativamente più rappresentativ','62/2026','112/2026'],ops:['codice alfanumerico','siisl','incentiv','verifica del ccnl'],updates:['ipca','rinnov','cnel','monitoraggio','diffida accertativa']}
+ },
+ {
+  id:'ispezioni', titolo:'Poteri ispettivi: disposizione, diffida accertativa, prescrizione e sospensione',
+  tier:'ap', prio:95, anni:'novità 2026', w:6,
+  tracce:[
+   `Premessi brevi cenni sulla funzione di vigilanza in materia di lavoro e legislazione sociale, il candidato illustri i poteri del personale ispettivo dell'Ispettorato nazionale del lavoro, con particolare riferimento alla disposizione, alla diffida accertativa per crediti patrimoniali e al provvedimento di sospensione dell'attività imprenditoriale, evidenziandone presupposti, effetti, strumenti di difesa e conseguenze retributive, contributive e sanzionatorie.`,
+   `Il candidato illustri le conseguenze di un accertamento ispettivo dal quale emerga la corresponsione di trattamenti retributivi inferiori a quelli dovuti, soffermandosi sulla diffida accertativa, sulla responsabilità solidale degli utilizzatori, sul recupero contributivo e sul ruolo del consulente del lavoro nella fase difensiva e conciliativa.`
+  ],
+  schema:{
+   cost:[`${N('art. 35 Cost.')} tutela del lavoro; ${N('art. 36 Cost.')} quale parametro dei crediti retributivi`,`${N('art. 97 Cost.')} buon andamento e imparzialità dell'azione amministrativa`],
+   dett:[`Accesso ispettivo e verbale di primo accesso ${N('art. 13 c.1 d.lgs. 124/2004')}`,`Diffida a regolarizzare gli illeciti amministrativi sanabili entro 30 giorni, con pagamento del minimo o di un quarto della sanzione fissa; verbale unico di accertamento e notificazione ${N('art. 13 c.2-5')}`,`Disposizione immediatamente esecutiva per irregolarità non già soggette a sanzioni penali o amministrative; ricorso al direttore ITL entro 15 giorni, senza effetto sospensivo ${N('art. 14 d.lgs. 124/2004')}`,`Diffida accertativa per crediti patrimoniali da inosservanze della disciplina contrattuale, anche verso gli utilizzatori solidalmente responsabili; entro 30 giorni conciliazione o ricorso al direttore (sospende l'esecutività, decisione in 60 giorni); poi titolo esecutivo ${N('art. 12')}`,`Prescrizione obbligatoria per le contravvenzioni punite con arresto o ammenda alternativi o con la sola ammenda ${N('art. 15 d.lgs. 124/2004')} ${N('artt. 20-21 d.lgs. 758/1994')}`,`Conciliazione monocratica, anche nel corso della vigilanza: versamenti e pagamenti estinguono il procedimento ispettivo ${N('art. 11')}`,`Sospensione dell'attività con almeno il 10% di lavoratori irregolari presenti o per gravi violazioni dell'Allegato I; revoca con regolarizzazione e somma aggiuntiva (2.500 euro fino a cinque irregolari, 5.000 oltre; doppia se recidiva nei cinque anni) ${N('art. 14 d.lgs. 81/2008')}`],
+   adem:[`Assistenza durante l'accesso e cura delle dichiarazioni a verbale`,`Valutazione della regolarizzazione e del pagamento in misura minima`,`Scelta tra conciliazione e ricorso entro 30 giorni dalla diffida accertativa`,`Ricorsi amministrativi ${N('artt. 16-17 d.lgs. 124/2004')} e opposizione giudiziale`,`Istanza di revoca della sospensione, anche con pagamento del 20% della somma aggiuntiva ${N('art. 14 c.11 d.lgs. 81/2008')}`],
+   sanz:[`Inottemperanza alla disposizione: sanzione da 500 a 3.000 euro, senza diffida`,`Inottemperanza alla sospensione: arresto fino a sei mesi (sicurezza); arresto da tre a sei mesi o ammenda da 2.500 a 6.400 euro (lavoro irregolare)`,`Recupero dei contributi sulle differenze retributive e sanzioni civili`],
+   giur:[`[PRASSI] nota INL n. 4539/2020 sugli ambiti di applicazione della disposizione`,`[DOTTRINA] Rausei (convegno di Fermo, 18/9/2026; Il Lavoro nella giurisprudenza 8-9/2026): disposizione, diffida accertativa e sospensione come strumenti distinti, con propri rimedi`]
+  },
+  aggior:[`${N('art. 12-bis d.l. 76/2020')} conv. L. 120/2020: nuova disposizione e diffida accertativa estesa agli utilizzatori`,`${N('d.l. 62/2026')}: il TEC dell'art. 7 come parametro dei crediti nella diffida accertativa (lettura dottrinale, non norma)`,`${N('art. 8 c.2-ter d.l. 138/2011')}: intese peggiorative nelle imprese fino a 15 dipendenti sottoscritte presso l'ITL`],
+  check:[`Ho distinto disposizione (art. 14), diffida a regolarizzare (art. 13) e diffida accertativa (art. 12)?`,`Ho indicato presupposti, termini, effetti e rimedi di ciascun potere?`,`Ho trattato la sospensione: soglia del 10%, Allegato I, revoca, ricorso?`,`Ho collegato l'accertamento alle conseguenze retributive, contributive e sanzionatorie?`,`Ho descritto il ruolo del consulente nella fase ispettiva e difensiva?`],
+  kw:{bases:['35 cost','36 cost','vigilanza'],keys:['124/2004','disposizione','diffida accertativa','diffida','verbale unico','prescrizione','758/1994','sospensione','81/2008','conciliazione monocratica'],ops:['ricorso','titolo esecutivo','regolarizzazione','primo accesso'],updates:['76/2020','4539','salario giusto','tec','2-ter']}
+ },
+ {
+  id:'trasparenza', titolo:'Parità e trasparenza retributiva (D.Lgs. 96/2026)',
+  tier:'ap', prio:93, anni:'novità 2026', w:5,
+  tracce:[
+   `Premessi brevi cenni sul principio di parità retributiva tra uomini e donne, il candidato illustri gli obblighi introdotti dal d.lgs. 96/2026 in attuazione della direttiva (UE) 2023/970, con particolare riferimento alla trasparenza prima dell'assunzione, al diritto di informazione dei lavoratori, alla comunicazione dei dati sul divario retributivo e alla valutazione congiunta, nonché agli strumenti di tutela.`,
+   `Il candidato tratti gli adempimenti di un datore di lavoro che pubblica un avviso di selezione e gestisce le richieste di informazione dei dipendenti alla luce del d.lgs. 96/2026, coordinandoli con gli obblighi informativi del d.lgs. 152/1997 e con quelli previsti dal d.l. 62/2026.`
+  ],
+  schema:{
+   cost:[`${N('art. 37 Cost.')} parità di retribuzione della lavoratrice; ${N('art. 3 Cost.')} uguaglianza`,`${N('art. 157 TFUE')} parità di retribuzione per uno stesso lavoro o un lavoro di pari valore`],
+   dett:[`Stesso lavoro e lavoro di pari valore: criteri oggettivi e neutri ${N('art. 4 d.lgs. 96/2026')}`,`Prima dell'assunzione: retribuzione iniziale o fascia e disposizioni del CCNL negli avvisi e nei bandi; divieto di chiedere le retribuzioni pregresse, anche tramite chi gestisce la selezione ${N('art. 5')}`,`Criteri retributivi e di progressione accessibili; l'informativa del d.lgs. 152/1997 e il rinvio al CCNL leader come modalità di adempimento; sotto i 50 dipendenti nessun obbligo sui criteri di progressione ${N('art. 6')}`,`Diritto di informazione sui livelli retributivi medi per sesso: risposta scritta entro due mesi, una volta l'anno; vietate le clausole che impediscono di rendere nota la propria retribuzione ${N('art. 7')}`,`Dati sul divario retributivo da 100 dipendenti: entro il 7 giugno 2027 (annuale da 250, triennale 150-249) e entro il 7 giugno 2031 (100-149) ${N('art. 9')}`,`Valutazione congiunta con le rappresentanze se il divario medio è almeno del 5% in una categoria e non è giustificato ${N('art. 10')}`],
+   adem:[`Revisione di avvisi e procedure di selezione`,`Mappatura delle categorie di lavoratori e dei criteri retributivi`,`Gestione delle richieste di informazione e informativa annuale ai lavoratori ${N('art. 7 c.4')}`,`Raccolta dei dati sul divario e coordinamento con il rapporto biennale ${N('art. 46 d.lgs. 198/2006')}`],
+   sanz:[`Tutela giudiziaria del Codice pari opportunità, azionabile su delega anche da rappresentanti, sindacati e associazioni ${N('art. 12')}`,`In caso di discriminazione si applica l'${N('art. 41 d.lgs. 198/2006')} ${N('art. 13')}`,`Divieto di ritorsioni ${N('art. 41-bis d.lgs. 198/2006')}`,`Nessuna sanzione autonoma per la sola omessa indicazione retributiva nell'avviso: profilo da argomentare`],
+   giur:[`[NORMA] d.lgs. 91/2026: organismi per la parità (dir. UE 2024/1499 e 2024/1500)`,`[PRASSI] circolari applicative: da verificare alla data della prova`]
+  },
+  aggior:[`${N('d.lgs. 96/2026')}: attuazione della dir. (UE) 2023/970`,`${N('art. 7 c.6 d.l. 62/2026')}: annunci sul SIISL con codice del CCNL e retribuzione per qualifica e livello, obbligo distinto da quello dell'art. 5`,`${N('d.lgs. 91/2026')}: organismi per la parità`],
+  check:[`Ho ancorato il tema all'art. 37 Cost. e all'art. 157 TFUE?`,`Ho distinto obblighi pre-assuntivi, diritto di informazione e reporting?`,`Ho indicato soglie dimensionali e scadenze (50, 100, 150, 250 dipendenti)?`,`Ho trattato la valutazione congiunta e la soglia del 5%?`,`Ho chiuso con tutele e ruolo del consulente?`],
+  kw:{bases:['37 cost','157','parità'],keys:['96/2026','2023/970','pari valore','fascia','retribuzione iniziale','divario','valutazione congiunta','diritto di informazione'],ops:['avviso','annunci','informativa','152/1997','rapporto biennale'],updates:['91/2026','organismi per la parità','siisl','2027','2031']}
+ },
+ {
+  id:'piattaforme', titolo:'Lavoro tramite piattaforme digitali e caporalato digitale',
+  tier:'a', prio:88, anni:'novità 2026', w:4,
+  tracce:[
+   `Premessi brevi cenni sulla qualificazione del rapporto di lavoro, il candidato illustri la disciplina del lavoro tramite piattaforme digitali, con particolare riferimento alle tutele del capo V-bis del d.lgs. 81/2015, alle novità del d.l. 62/2026 sulla qualificazione del rapporto, sull'informazione relativa ai sistemi automatizzati e sul contrasto del caporalato digitale, nonché alla prospettiva del recepimento della direttiva (UE) 2024/2831.`,
+   `Il candidato tratti la qualificazione del rapporto dei lavoratori che operano tramite piattaforme digitali, soffermandosi sulla presunzione introdotta dall'art. 12 del d.l. 62/2026, sugli obblighi del committente e sui poteri di vigilanza.`
+  ],
+  schema:{
+   cost:[`${N('art. 35 Cost.')} tutela del lavoro in tutte le sue forme`,`${N('art. 2094 c.c.')} subordinazione; ${N('art. 2 d.lgs. 81/2015')} collaborazioni etero-organizzate, anche mediante piattaforme digitali`],
+   dett:[`Capo V-bis: tutele minime per i rider autonomi che consegnano beni in ambito urbano tramite piattaforme ${N('art. 47-bis d.lgs. 81/2015')}; accesso con SPID, CIE, CNS o account con autenticazione a più fattori; divieto di cessione dell'account e di più account per codice fiscale ${N('c. 2-bis e 2-ter')}`,`Forma scritta e informazioni del d.lgs. 152/1997 ${N('art. 47-ter')}; compenso fissato dai CCNL o, in mancanza, minimo orario parametrato e divieto di pagamento a consegna; indennità integrativa non inferiore al 10% ${N('art. 47-quater')}; LUL dal 1° luglio 2026 con consegne e importi ${N('c. 3-bis')}`,`Divieto di discriminazione ed esclusione per mancata accettazione ${N('art. 47-quinquies')}; INAIL e d.lgs. 81/2008 a carico del committente ${N('art. 47-septies')}`,`${N('art. 12 d.l. 62/2026')}: rilevano le concrete modalità della prestazione; presunzione di subordinazione, salvo prova contraria, quando emergono poteri di direzione e controllo anche tramite sistemi automatizzati`,`${N('art. 13')}: indicatori di rischio e conservazione per almeno 5 anni dei dati su accessi, assegnazioni, rifiuti, tempi e corrispettivi; ${N('art. 14')}: informazioni sui sistemi algoritmici e riesame umano delle decisioni automatizzate`],
+   adem:[`Verifica della qualificazione e degli indici di etero-direzione algoritmica`,`Contratto scritto e informative`,`LUL dei rider dal 1° luglio 2026 (termine prorogato di 90 giorni per il periodo in corso) ${N('art. 15 c.1-bis d.l. 62/2026')}`,`Formazione base sul SIISL entro 30 giorni dalla prima prestazione ${N('art. 47-septies c.3-bis')}`],
+   sanz:[`Cessione dell'account: 800-1.200 euro; account multipli o prestazioni inconciliabili: 1.000-1.500 euro; mancata formazione: 800-2.400 euro per il committente`,`Riqualificazione del rapporto con recupero retributivo e contributivo; diffida accertativa`,`Violazioni dei committenti comunicate all'Autorità europea del lavoro ${N('art. 13 d.l. 62/2026')}`],
+   giur:[`Cass. 1663/2020 sui rider e l'etero-organizzazione (art. 2 d.lgs. 81/2015)`,`[NORMA in itinere] schema di d.lgs. di recepimento della dir. (UE) 2024/2831, approvato in esame preliminare il 23/7/2026; termine di recepimento 2/12/2026`]
+  },
+  aggior:[`${N('d.l. 62/2026')} capo III: ambito riferito ai lavoratori del capo V-bis ${N('art. 11-bis')}`,`${N('art. 15 d.l. 62/2026')}: accesso, account, LUL e formazione dei rider`,`Recepimento della dir. (UE) 2024/2831: norma in itinere, da citare come tale`],
+  check:[`Ho distinto subordinazione, etero-organizzazione e autonomia dei rider?`,`Ho trattato la presunzione dell'art. 12 d.l. 62/2026?`,`Ho indicato gli obblighi del committente (informativa, LUL, INAIL, sicurezza, formazione)?`,`Ho trattato vigilanza e sanzioni?`,`Ho presentato la direttiva 2024/2831 come norma non ancora recepita?`],
+  kw:{bases:['35 cost','2094','etero-organizz'],keys:['piattaform','rider','47-bis','v-bis','algoritm','presunzione','62/2026'],ops:['account','libro unico','inail','formazione','siisl'],updates:['2024/2831','caporalato digitale','sistemi automatizzati','12 d.l.']}
+ },
  {
   id:'sicurezza', titolo:'Sicurezza sul lavoro: obbligo di sicurezza, DVR, preposto e RLS',
   tier:'ap', prio:96, anni:'2024 · 2025', w:6,
@@ -514,7 +587,7 @@ const TEMI = [
    sanz:[`Contravvenzioni penali (arresto e/o ammenda) a carico di datore, dirigente, preposto`,`Prescrizione ${N('d.lgs. 758/1994')}: regolarizzazione ed estinzione del reato`,`Sospensione dell'attività imprenditoriale ${N('art. 14')}; poteri di ITL e ASL`,`Cantieri: patente a crediti ${N('art. 27')} con sanzioni inasprite dalla L. 198/2025`],
    giur:[`Posizione di garanzia e nesso causale nell'infortunio`,`Delega di funzioni: requisiti (forma scritta, effettività, autonomia di spesa)`]
   },
-  aggior:[`${N('art. 15 lett. z-bis)')} prevenzione delle condotte violente o moleste verso i lavoratori`,`${N('art. 30')} MOG: riferimento a UNI EN ISO 45001:2023`,`Linee guida sui near miss per imprese con più di 15 dipendenti`,`Badge di cantiere con codice univoco; formazione entro 30 giorni nel turistico-ricettivo; accreditamento dei formatori`,`Sanzioni: operare senza patente a crediti da 6.000 a 12.000 €; sospensione fino a un anno in caso di morte o inabilità permanente`],
+  aggior:[`${N('art. 15 lett. z-bis)')} prevenzione delle condotte violente o moleste verso i lavoratori`,`${N('art. 30')} MOG: riferimento a UNI EN ISO 45001:2023`,`Linee guida sui near miss per imprese con più di 15 dipendenti`,`Badge di cantiere con codice univoco; formazione entro 30 giorni nel turistico-ricettivo; accreditamento dei formatori`,`Patente a crediti: per chi opera senza patente o con meno di 15 crediti la soglia minima della sanzione sale da 6.000 a 12.000 €`],
   check:[`Ho ancorato l'obbligo all'art. 2087 c.c. e non solo al d.lgs. 81/2008?`,`Ho distinto con precisione datore, dirigente e preposto e i rispettivi obblighi?`,`Ho trattato il DVR come obbligo non delegabile e citato la delega di funzioni?`,`Ho chiuso con il profilo sanzionatorio (penale, 758/1994, sospensione)?`,`Ho inserito almeno una novità pertinente della L. 198/2025?`],
   kw:{bases:['2087','32 cost','41','integrità'],keys:['81/2008','dvr','valutazione dei rischi','preposto','rls','rspp','sorveglianza sanitaria','formazione','dpi','medico competente'],ops:['delega','duvri','tessera','nomina','tracciabilità'],updates:['198/2025','patente a crediti','near miss','molest','45001','badge']}
  },
@@ -559,18 +632,19 @@ const TEMI = [
   tier:'a', prio:89, anni:'2023 · 2025', w:4,
   tracce:[
    `Il candidato illustri i livelli e l'efficacia della contrattazione collettiva, soffermandosi sull'inattuazione della seconda parte dell'art. 39 Cost., sul contratto comparativamente più rappresentativo e sulla contrattazione di prossimità ex art. 8 d.l. 138/2011, con le sue potenzialità derogatorie e i limiti, e con cenni alla costituzione delle rappresentanze sindacali dopo la recente giurisprudenza costituzionale.`,
-   `Premesso il quadro costituzionale, il candidato tratti il rapporto tra contrattazione nazionale e aziendale, la rappresentatività sindacale e il tema del contrasto al dumping contrattuale.`
+   `Premesso il quadro costituzionale, il candidato tratti il rapporto tra contrattazione nazionale e aziendale, la rappresentatività sindacale e il tema del contrasto al dumping contrattuale.`,
+   `Il candidato illustri la contrattazione collettiva di prossimità di cui all'art. 8 del d.l. 138/2011, come modificato dall'art. 7-bis del d.l. 62/2026, convertito dalla legge 112/2026, soffermandosi sulle finalità, sulle materie, sui limiti alle deroghe, sugli obblighi di deposito e sulle regole per le intese che prevedono trattamenti peggiorativi nelle imprese fino a quindici dipendenti.`
   ],
   schema:{
    cost:[`${N('art. 39 Cost.')} libertà sindacale; la seconda parte (efficacia erga omnes) è rimasta inattuata: conseguenze sull'efficacia soggettiva`,`${N('art. 36 Cost.')} retribuzione come parametro suppletivo; ${N('art. 40')} sciopero`],
-   dett:[`Livelli: interconfederale, nazionale (CCNL), territoriale, aziendale`,`Natura contrattuale ${N('art. 1372 c.c.')}: efficacia limitata agli iscritti, salvo recepimento nel contratto individuale; ${N('art. 2070 c.c.')}`,`CCNL comparativamente più rappresentativo ${N('art. 51 d.lgs. 81/2015')}`,`Prossimità ${N('art. 8 d.l. 138/2011')} (conv. L. 148/2011): materie, deroghe anche in pejus entro i limiti costituzionali/UE, efficacia verso tutti se soggetti maggioritari`,`RSA ${N('art. 19 l. 300/1970')} e Corte cost. 231/2013; RSU`],
-   adem:[`Individuazione del CCNL applicabile e verifica della rappresentatività (rischio CCNL "pirata")`,`Gestione e deposito di accordi aziendali e di prossimità`,`Applicazione di minimi e istituti`],
-   sanz:[`Dumping contrattuale e ricadute su benefici e regolarità`,`Art. 51 come argine al CCNL non rappresentativo`],
+   dett:[`Livelli: interconfederale, nazionale (CCNL), territoriale, aziendale`,`Natura contrattuale ${N('art. 1372 c.c.')}: efficacia limitata agli iscritti, salvo recepimento nel contratto individuale; ${N('art. 2070 c.c.')}`,`CCNL comparativamente più rappresentativo ${N('art. 51 d.lgs. 81/2015')}`,`Prossimità ${N('art. 8 d.l. 138/2011')} (conv. L. 148/2011): intese aziendali o territoriali con criterio maggioritario ed efficacia verso tutti i lavoratori interessati, per finalità tipiche (occupazione, emersione, crisi, competitività…); materie del c. 2, con esclusione di licenziamento discriminatorio e tutele della maternità; deroghe a legge e CCNL entro Costituzione, vincoli UE e convenzioni internazionali ${N('c. 2-bis')}`,`Riforma dell'${N('art. 7-bis d.l. 62/2026')}: deposito presso la DG Rapporti di lavoro del MLPS e presso l'archivio CNEL ${N('c. 1-bis')}; nelle imprese fino a 15 dipendenti le intese aziendali peggiorative sono sottoscritte presso l'ITL ${N('c. 2-ter')}; se peggiorative, informativa scritta ai lavoratori entro tre giorni ${N('c. 2-quater')}`,`RSA ${N('art. 19 l. 300/1970')} e Corte cost. 231/2013; RSU`],
+   adem:[`Individuazione del CCNL applicabile e verifica della rappresentatività (rischio CCNL "pirata")`,`Deposito delle intese di prossimità presso MLPS e CNEL; sottoscrizione presso l'ITL (fino a 15 dipendenti, se peggiorative); informativa ai lavoratori entro tre giorni`,`Applicazione di minimi e istituti`],
+   sanz:[`Dumping contrattuale e ricadute su benefici e regolarità`,`Art. 51 come argine al CCNL non rappresentativo`,`Intesa priva dei requisiti dell'art. 8 (soggetti, finalità, materie, limiti): inefficace la deroga, con differenze retributive e contributive accertabili in sede ispettiva`],
    giur:[`Corte cost. 156/2025: art. 19 St. Lav., RSA costituibili anche nell'ambito delle associazioni comparativamente più rappresentative sul piano nazionale`,`Limiti alle deroghe della contrattazione di prossimità`]
   },
-  aggior:[`${N('Corte cost. 156/2025')} (dep. 30/10/2025): riscrive l'art. 19 St. Lav., ammettendo la costituzione di RSA anche nell'ambito delle associazioni comparativamente più rappresentative sul piano nazionale, oltre a firmatarie e partecipanti alla negoziazione`,`${N('d.l. 62/2026 conv. L. 112/2026')} "salario giusto": ancoraggio alla contrattazione comparativamente più rappresentativa`],
-  check:[`Ho spiegato perché il CCNL non ha efficacia erga omnes (art. 39 inattuato)?`,`Ho trattato l'art. 8 sulla prossimità con deroghe E limiti, non solo elencandolo?`,`Ho usato l'art. 51 d.lgs. 81/2015 come chiave del "quale CCNL"?`,`Ho collegato la rappresentanza sindacale a Corte cost. 231/2013 e 156/2025?`,`Ho evitato di confondere efficacia soggettiva e obbligatoria?`],
-  kw:{bases:['39 cost','erga omnes','libertà sindacale','36 cost'],keys:['ccnl','aziendale','prossimità','8 d.l. 138','51 d.lgs','2070','rappresentativ','rsa','rsu','19 l. 300'],ops:['deposito','individuazione del ccnl','minimi'],updates:['156/2025','231/2013','salario giusto','112/2026','dumping']}
+  aggior:[`${N('Corte cost. 156/2025')} (dep. 30/10/2025): riscrive l'art. 19 St. Lav., ammettendo la costituzione di RSA anche nell'ambito delle associazioni comparativamente più rappresentative sul piano nazionale, oltre a firmatarie e partecipanti alla negoziazione`,`${N('d.l. 62/2026 conv. L. 112/2026')} "salario giusto": ancoraggio alla contrattazione comparativamente più rappresentativa`,`${N('art. 7-bis d.l. 62/2026')}: commi 1-bis, 2-ter e 2-quater dell'art. 8 d.l. 138/2011 (deposito, sottoscrizione presso l'ITL, informativa entro tre giorni)`],
+  check:[`Ho spiegato perché il CCNL non ha efficacia erga omnes (art. 39 inattuato)?`,`Ho trattato l'art. 8 sulla prossimità con deroghe E limiti, non solo elencandolo?`,`Ho inserito le novità dell'art. 7-bis (deposito, ITL fino a 15 dipendenti, informativa entro tre giorni)?`,`Ho usato l'art. 51 d.lgs. 81/2015 come chiave del "quale CCNL"?`,`Ho collegato la rappresentanza sindacale a Corte cost. 231/2013 e 156/2025?`,`Ho evitato di confondere efficacia soggettiva e obbligatoria?`],
+  kw:{bases:['39 cost','erga omnes','libertà sindacale','36 cost'],keys:['ccnl','aziendale','prossimità','8 d.l. 138','51 d.lgs','2070','rappresentativ','rsa','rsu','19 l. 300'],ops:['deposito','individuazione del ccnl','minimi'],updates:['156/2025','231/2013','salario giusto','112/2026','dumping','7-bis','2-ter','cnel','peggiorativ']}
  },
  {
   id:'appalto', titolo:'Appalto, somministrazione, distacco e responsabilità solidale',
@@ -586,9 +660,9 @@ const TEMI = [
    sanz:[`Appalto illecito / interposizione: costituzione del rapporto in capo all'utilizzatore effettivo`,`Somministrazione fraudolenta: profilo aggravato e sanzioni`],
    giur:[`Criteri di distinzione tra appalto e mera fornitura di manodopera`]
   },
-  aggior:[`${N('L. 203/2024')} Collegato Lavoro: la somministrazione a termine non può superare i 24 mesi, pena la costituzione di un rapporto a tempo indeterminato in capo all'utilizzatore; esenzioni dai limiti quantitativi`,`${N('d.l. 62/2026 conv. L. 112/2026')}: distacco ammesso anche tra imprese di settori o CCNL diversi (sperimentale fino al 31/12/2029, previo accordo sindacale)`],
-  check:[`Ho definito gli indici di genuinità dell'appalto prima di tutto?`,`Ho trattato l'art. 29 sulla responsabilità solidale con il termine biennale?`,`Ho distinto appalto illecito e somministrazione fraudolenta con le conseguenze?`,`Ho collegato la novità dei 24 mesi (L. 203/2024)?`,`Ho speso i cenni al distacco anche con la novità 2026?`],
-  kw:{bases:['1655','2094','genuinità','rischio d'],keys:['29 d.lgs. 276','responsabilità solidale','somministrazione','staff leasing','distacco','38-bis','81/2015'],ops:['durc','tessera','garanzie','utilizzatore'],updates:['203/2024','24 mesi','112/2026','settori diversi','collegato lavoro']}
+  aggior:[`${N('L. 203/2024')} Collegato Lavoro: esenti dal limite del 30% i somministrati assunti a tempo indeterminato dal somministratore ${N('art. 31 c.2 d.lgs. 81/2015')}; nel computo dei 24 mesi dell'${N('art. 19 c.2')} rilevano le missioni dei somministrati assunti a termine`,`${N('art. 16-quinquies d.l. 62/2026')}: missioni a termine fino a 36 mesi presso lo stesso utilizzatore per i somministrati assunti a tempo indeterminato ${N('art. 19 c.2-bis d.lgs. 81/2015')}; nulle le clausole che limitano l'assunzione da parte dell'utilizzatore`,`${N('art. 16-quater d.l. 62/2026')}: fino al 31/12/2029, previo accordo sindacale, distacco ammesso anche senza interesse del distaccante e tra imprese di settori o CCNL diversi, per salvaguardia occupazionale e continuità produttiva`],
+  check:[`Ho definito gli indici di genuinità dell'appalto prima di tutto?`,`Ho trattato l'art. 29 sulla responsabilità solidale con il termine biennale?`,`Ho distinto appalto illecito e somministrazione fraudolenta con le conseguenze?`,`Ho collegato le novità sulla somministrazione (L. 203/2024 e art. 19, c. 2-bis)?`,`Ho speso i cenni al distacco anche con la novità 2026?`],
+  kw:{bases:['1655','2094','genuinità','rischio d'],keys:['29 d.lgs. 276','responsabilità solidale','somministrazione','staff leasing','distacco','38-bis','81/2015'],ops:['durc','tessera','garanzie','utilizzatore'],updates:['203/2024','24 mesi','36 mesi','16-quater','112/2026','settori diversi','collegato lavoro']}
  },
  {
   id:'individuale', titolo:'Rapporto individuale, obblighi informativi e trasparenza',
@@ -725,13 +799,22 @@ const FONTI = [
  ['Corte costituzionale · sent. 118/2025','Illegittimità parziale dell’art. 9, c.1, D.Lgs. 23/2015 nella parte relativa al tetto massimo di sei mensilità per il licenziamento ingiustificato nelle piccole imprese. Fonte ufficiale: cortecostituzionale.it.'],
  ['Corte costituzionale · sent. 156/2025','Art. 19 St. Lav.: RSA costituibili anche nell’ambito delle associazioni sindacali comparativamente più rappresentative sul piano nazionale. Fonte ufficiale: cortecostituzionale.it.'],
  ['D.Lgs. 96/2026','Attuazione direttiva UE 2023/970 sulla parità e trasparenza retributiva; GU 1/06/2026, entrata in vigore 7/06/2026. Fonte ufficiale: gazzettaufficiale.it.'],
- ['D.L. 62/2026 conv. L. 112/2026','Decreto 1° maggio / "salario giusto": TEC, distacco intersettoriale sperimentale, somministrazione, tutele piattaforme.'],
- ['L. 203/2024','Collegato Lavoro: dimissioni per fatti concludenti, somministrazione a termine max 24 mesi, periodo di prova a termine.']
+ ['D.L. 62/2026 conv. L. 112/2026','Decreto 1° maggio / "salario giusto": TEC (art. 7, c. 4-bis), prossimità (art. 7-bis), rinnovi (art. 10), codice CCNL (art. 11), piattaforme (artt. 12-15), distacco (art. 16-quater), somministrazione (art. 16-quinquies). Testo coordinato vigente al 24/9/2026 in libreria.'],
+ ['L. 203/2024','Collegato Lavoro: dimissioni per fatti concludenti, esenzioni dai limiti quantitativi della somministrazione, periodo di prova a termine.'],
+ ['Art. 7-bis D.L. 62/2026','Modifica l’art. 8 D.L. 138/2011: deposito presso MLPS e CNEL (c. 1-bis), sottoscrizione presso l’ITL delle intese peggiorative fino a 15 dipendenti (c. 2-ter), informativa entro tre giorni (c. 2-quater). Testo vigente in libreria.'],
+ ['D.Lgs. 124/2004','Funzioni ispettive: conciliazione monocratica (art. 11), diffida accertativa (art. 12), diffida e verbale unico (art. 13), disposizione (art. 14), prescrizione (art. 15). Testo vigente al 27/9/2026 in libreria.'],
+ ['Art. 14 D.Lgs. 81/2008','Sospensione dell’attività imprenditoriale: 10% di lavoratori irregolari o gravi violazioni dell’Allegato I; revoca e somme aggiuntive. Testo vigente in libreria.'],
+ ['Capo V-bis D.Lgs. 81/2015 e artt. 11-bis–15 D.L. 62/2026','Rider e piattaforme: tutele minime, presunzione di subordinazione, dati e trasparenza algoritmica. Schema di recepimento della dir. (UE) 2024/2831 approvato in esame preliminare il 23/7/2026 (in itinere).'],
+ ['D.Lgs. 91/2026','Organismi per la parità (dir. UE 2024/1499 e 2024/1500). Testo vigente in libreria.']
 ];
 
 
 /* ---------- V4: MATRICE DI GENERAZIONE DINAMICA ---------- */
 const VARIANTI = {
+ salariogiusto:{focus:['nozione di trattamento economico complessivo','individuazione del CCNL di riferimento','TEC e accesso ai benefici','rinnovi contrattuali e anticipazione IPCA-NEI','codice alfanumerico del CCNL e monitoraggio'],scenario:['un’impresa che applica un CCNL con minimi inferiori a quelli del contratto leader e intende fruire di un incentivo all’assunzione','un datore di un settore privo di contrattazione specifica','un lavoratore che lamenta l’esclusione dell’indennità fissa dal calcolo del trattamento','un CCNL scaduto da oltre nove mesi senza rinnovo'],task:['individui il parametro retributivo applicabile e le voci che lo compongono','valuti le conseguenze sui benefici e i rischi ispettivi','indichi gli adempimenti del consulente per prevenire il contenzioso']},
+ ispezioni:{focus:['disposizione ex art. 14 d.lgs. 124/2004','diffida accertativa per crediti patrimoniali','diffida a regolarizzare e verbale unico','sospensione dell’attività imprenditoriale','prescrizione obbligatoria','conciliazione monocratica'],scenario:['un accesso ispettivo che rileva differenze retributive rispetto al contratto di riferimento','un cantiere con lavoratori non comunicati','un’irregolarità non sanzionata da alcuna norma specifica','un appalto nel quale l’appaltatore non ha pagato le retribuzioni'],task:['distingua presupposti, effetti e rimedi dei poteri esercitabili','indichi le scelte difensive e conciliative del datore assistito dal consulente','ricostruisca le conseguenze retributive, contributive e sanzionatorie']},
+ trasparenza:{focus:['trasparenza retributiva prima dell’assunzione','diritto di informazione dei lavoratori','comunicazione dei dati sul divario retributivo','valutazione congiunta delle retribuzioni','lavoro di pari valore e criteri neutri'],scenario:['un avviso di selezione privo di indicazioni retributive','un colloquio nel quale si chiede la retribuzione percepita in precedenza','una lavoratrice che chiede i livelli retributivi medi della propria categoria','un’impresa con 180 dipendenti e un divario medio del 6% in una categoria'],task:['individui obblighi, soglie e scadenze applicabili','indichi gli strumenti di tutela e le conseguenze delle violazioni','coordini la disciplina con gli obblighi informativi già vigenti']},
+ piattaforme:{focus:['qualificazione del rapporto dei lavoratori tramite piattaforma','presunzione di subordinazione dell’art. 12 d.l. 62/2026','tutele minime del capo V-bis','trasparenza dei sistemi algoritmici','obblighi del committente e vigilanza'],scenario:['un rider pagato a consegna e disattivato dopo alcuni rifiuti','una piattaforma che assegna turni e valuta le prestazioni tramite algoritmo','un account utilizzato da persona diversa dal titolare','un committente che non ha tenuto il libro unico dei rider'],task:['qualifichi il rapporto e individui la disciplina applicabile','indichi obblighi informativi e documentali del committente','ricostruisca poteri di vigilanza e sanzioni']},
  sicurezza:{focus:['DVR e obblighi non delegabili','datore, dirigente, preposto e delega di funzioni','formazione, addestramento e tracciabilità','DUVRI e coordinamento negli appalti','patente a crediti e vigilanza nei cantieri'],scenario:['un appalto interno con interferenze non adeguatamente valutate','un infortunio con contestazione sulla reale vigilanza del preposto','una verifica ispettiva che rileva formazione incompleta','un cantiere nel quale opera un soggetto privo dei requisiti richiesti'],task:['distingua obblighi, responsabilità e rimedi','individui gli adempimenti preventivi del datore e del consulente','ricostruisca poteri di vigilanza e conseguenze sanzionatorie']},
  retribuzione:{focus:['art. 36 Cost. e giusta retribuzione','scelta del CCNL e dumping contrattuale','struttura della retribuzione e TEC','parità e trasparenza retributiva','criteri di progressione economica'],scenario:['un’impresa che applica minimi inferiori a quelli del contratto collettivo di riferimento','una procedura di selezione priva di indicazioni retributive','un divario retributivo tra lavoratori comparabili','una contestazione sull’assorbibilità del superminimo'],task:['valuti il parametro retributivo utilizzabile e i rischi di contenzioso','indichi gli obblighi informativi e le conseguenze delle violazioni','colleghi disciplina individuale, collettiva e antidiscriminatoria']},
  licenziamento:{focus:['licenziamento disciplinare e art. 7 Statuto','GMO e fatto posto a base del recesso','doppio binario art. 18 / D.Lgs. 23/2015','soglie dimensionali e tutele','licenziamento nullo o discriminatorio'],scenario:['un lavoratore assunto dopo il 7 marzo 2015 in una piccola impresa','una contestazione disciplinare generica e tardiva','un recesso per ragioni organizzative successivamente contestate','un licenziamento intimato durante una situazione protetta'],task:['individui il regime di tutela applicabile','distingua vizi procedurali, sostanziali e nullità','valuti gli effetti della più recente giurisprudenza costituzionale']},
@@ -871,6 +954,10 @@ const EXAM_DATE=new Date('2026-10-27T08:30:00+01:00');
 const TRACE_MEM='cdl_v5_recent_traces';
 
 const COMMISSION_FACTORS={
+ salariogiusto:{hist:70,rec:100,nov:100,op:92,sys:100},
+ ispezioni:{hist:80,rec:96,nov:94,op:100,sys:96},
+ trasparenza:{hist:60,rec:100,nov:100,op:90,sys:90},
+ piattaforme:{hist:50,rec:92,nov:100,op:84,sys:88},
  sicurezza:{hist:100,rec:86,nov:94,op:100,sys:92},
  retribuzione:{hist:75,rec:100,nov:100,op:82,sys:96},
  licenziamento:{hist:90,rec:82,nov:92,op:94,sys:94},
@@ -886,6 +973,30 @@ const COMMISSION_FACTORS={
 };
 
 const TRACE_PARTS={
+ salariogiusto:{
+  error:['trattamento individuale inferiore al TEC del contratto di riferimento','esclusione dal calcolo di indennità fisse e continuative','incentivo fruito senza il requisito dell’art. 7, c. 5','codice del CCNL assente dall’informativa e dal prospetto paga'],
+  inspect:['accertamento ispettivo sulle differenze retributive','verifica INPS dei requisiti per gli incentivi','controllo sul CCNL dichiarato nei flussi'],
+  remedy:['riallineamento retributivo e contributivo','restituzione dei benefici indebiti','revisione del CCNL applicato e delle informative'],
+  cross:['contrattazione di prossimità','diffida accertativa','trasparenza retributiva']
+ },
+ ispezioni:{
+  error:['crediti retributivi non corrisposti','lavoratori non comunicati al momento dell’accesso','irregolarità non coperta da sanzione specifica','gravi violazioni in materia di sicurezza'],
+  inspect:['accesso ispettivo con verbale di primo accesso','verbale unico di accertamento e notificazione','provvedimento di sospensione'],
+  remedy:['regolarizzazione e pagamento in misura minima','conciliazione o ricorso contro la diffida accertativa','revoca della sospensione'],
+  cross:['salario giusto e TEC','responsabilità solidale negli appalti','sicurezza sul lavoro']
+ },
+ trasparenza:{
+  error:['avviso privo della retribuzione iniziale o della fascia','richiesta della retribuzione pregressa al candidato','mancata risposta alla richiesta di informazioni','divario non giustificato da criteri oggettivi'],
+  inspect:['richiesta di chiarimenti da parte dell’Ispettorato o degli organismi per la parità','azione giudiziale antidiscriminatoria','verifica dei dati comunicati sul divario'],
+  remedy:['revisione dei criteri retributivi','valutazione congiunta con le rappresentanze','correzione delle procedure di selezione'],
+  cross:['salario giusto','obblighi informativi del d.lgs. 152/1997','codice pari opportunità']
+ },
+ piattaforme:{
+  error:['pagamento a consegna in assenza di CCNL','disattivazione per rifiuto delle prestazioni','informazioni sui sistemi algoritmici non fornite','libro unico non tenuto'],
+  inspect:['accertamento sulla qualificazione del rapporto','acquisizione dei dati conservati dalla piattaforma','verifica degli obblighi INAIL e di sicurezza'],
+  remedy:['riqualificazione del rapporto e recupero contributivo','adeguamento di contratti e informative','regolarizzazione del LUL e della formazione'],
+  cross:['subordinazione ed etero-organizzazione','poteri ispettivi','privacy e controlli a distanza']
+ },
  sicurezza:{
   error:['DVR redatto in modo generico e non aggiornato','preposto nominato solo formalmente ma privo di effettivi poteri','formazione obbligatoria non completata o non tracciabile','DUVRI assente nonostante rischi interferenziali','impresa operante in cantiere con criticità sulla patente a crediti'],
   inspect:['accesso ispettivo con verifica documentale e delle posizioni di garanzia','infortunio dal quale emerge un possibile deficit organizzativo','controllo sulla formazione e sull’effettività della vigilanza'],
@@ -1051,7 +1162,7 @@ const views={sim:document.getElementById('view-sim'),studio:document.getElementB
 tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-selected','false'));t.setAttribute('aria-selected','true');Object.values(views).forEach(v=>v.classList.remove('active'));views[t.dataset.view].classList.add('active');if(t.dataset.view==='cov')renderCov();}));
 
 /* ---------- CONFIG ---------- */
-let durataMin=420,mode='radar',diff='std';
+let durataMin=420,mode='rausei26',diff='std';
 function bindSeg(id,cb){const s=document.getElementById(id);s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{s.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');cb(b);}));}
 bindSeg('segDurata',b=>durataMin=+b.dataset.min);
 bindSeg('segBacino',b=>mode=b.dataset.mode);
@@ -1060,8 +1171,20 @@ bindSeg('segProtocol',b=>protocol=b.dataset.proto);
 
 /* ---------- ESTRAZIONE ---------- */
 let recCache={};
-async function weightOf(t){ if(mode==='uniform')return 1; if(mode==='weak'){const c=(recCache[t.id]?.count)||0; return Math.max(1,7-c)*(t.prio/60);} return t.prio; }
-async function pickThree(){ recCache=await rec(); const pool=[]; for(const t of TEMI)pool.push({t,w:await weightOf(t)}); const chosen=[],local=[...pool]; for(let i=0;i<3&&local.length;i++){const tot=local.reduce((s,x)=>s+x.w,0);let r=Math.random()*tot,idx=0;for(let j=0;j<local.length;j++){r-=local[j].w;if(r<=0){idx=j;break;}}chosen.push(local[idx].t);local.splice(idx,1);} return chosen; }
+const CORE26=['salariogiusto','contrattazione','ispezioni','trasparenza','piattaforme'];
+const PONTE26=['sicurezza','appalto','individuale','retribuzione'];
+const G26={core:0.40,ponte:0.45,altri:0.15};
+function group26(id){return CORE26.includes(id)?'core':PONTE26.includes(id)?'ponte':'altri';}
+function w26(t){const g=group26(t.id);const tot=TEMI.filter(x=>group26(x.id)===g).reduce((a,x)=>a+x.prio,0);return G26[g]*t.prio/tot;}
+const HOOKS26={
+ sicurezza:` Colleghi la trattazione ai poteri degli organi di vigilanza: sospensione dell'attività (art. 14 d.lgs. 81/2008), disposizione (art. 14 d.lgs. 124/2004) e prescrizione obbligatoria (art. 15 d.lgs. 124/2004).`,
+ appalto:` Colleghi la trattazione al distacco sperimentale dell'art. 16-quater d.l. 62/2026, alle missioni dei somministrati a tempo indeterminato (art. 19, c. 2-bis, d.lgs. 81/2015) e alla diffida accertativa nei confronti degli utilizzatori (art. 12 d.lgs. 124/2004).`,
+ individuale:` Colleghi la trattazione agli obblighi informativi introdotti dall'art. 11 d.l. 62/2026 (codice alfanumerico del CCNL) e agli artt. 5 e 6 d.lgs. 96/2026.`,
+ retribuzione:` Colleghi la trattazione al trattamento economico complessivo dell'art. 7, c. 4-bis, d.l. 62/2026 e alle sue ricadute in sede ispettiva.`
+};
+async function weightOf(t){ if(mode==='rausei26')return w26(t); if(mode==='uniform')return 1; if(mode==='weak'){const c=(recCache[t.id]?.count)||0; return Math.max(1,7-c)*(t.prio/60);} return t.prio; }
+async function pickThree(){ recCache=await rec(); const pool=[]; for(const t of TEMI)pool.push({t,w:await weightOf(t)}); const chosen=[];let local=[...pool];
+ if(mode==='rausei26'){ /* almeno una busta sui decreti 62 e 96 */ const core=local.filter(x=>CORE26.includes(x.t.id)); const tot=core.reduce((s,x)=>s+x.t.prio,0); let r=Math.random()*tot,pk=core[core.length-1]; for(const x of core){r-=x.t.prio;if(r<=0){pk=x;break;}} chosen.push(pk.t); local=local.filter(x=>x!==pk); for(let i=0;i<2&&local.length;i++){const tt=local.reduce((s,x)=>s+x.w,0);let rr=Math.random()*tt,idx=local.length-1;for(let j=0;j<local.length;j++){rr-=local[j].w;if(rr<=0){idx=j;break;}}chosen.push(local[idx].t);local.splice(idx,1);} for(let i=chosen.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[chosen[i],chosen[j]]=[chosen[j],chosen[i]];} return chosen; } for(let i=0;i<3&&local.length;i++){const tot=local.reduce((s,x)=>s+x.w,0);let r=Math.random()*tot,idx=0;for(let j=0;j<local.length;j++){r-=local[j].w;if(r<=0){idx=j;break;}}chosen.push(local[idx].t);local.splice(idx,1);} return chosen; }
 
 let currentTema=null,currentTraccia='';
 const btnAvvia=document.getElementById('btnAvvia'),simIntro=document.getElementById('simIntro'),sorteggioWrap=document.getElementById('sorteggio'),buste=document.getElementById('buste'),sheet=document.getElementById('sheet');
@@ -1074,6 +1197,7 @@ btnAvvia.addEventListener('click',async()=>{
  setTimeout(()=>{els.forEach((el,i)=>{el.classList.remove('drawing');if(i===est){el.classList.add('estratta');el.querySelector('.status').textContent='da svolgere';}else{el.classList.add('scartata');el.querySelector('.status').textContent='non estratta';}});
   currentTema=three[est];
   currentTraccia=composeTraceV5(currentTema,diff==='alta');
+  if(mode==='rausei26'&&HOOKS26[currentTema.id])currentTraccia+=HOOKS26[currentTema.id];
   setTimeout(openSheet,900);},850);
 });
 function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;document.getElementById('matrixLine').textContent='V5 · traccia combinatoria anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
