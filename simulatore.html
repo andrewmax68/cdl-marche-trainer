@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.4</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.5</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -198,6 +198,7 @@
       </div>
       <div class="banner" id="cedBanner"></div>
       <div class="note" id="cedNote"></div>
+      <div id="cedProsp" class="scn hidden"></div>
     </section>
   </div>
 
@@ -274,7 +275,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.4 · 7 ottobre 2026 · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.5 · 7 ottobre 2026 · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -558,6 +559,7 @@ function renderCedolino(){
     ${s.rateDate?'':`<div class="k" style="font-size:11px;margin-top:4px">${MARCHE_TXT} (scaglioni 2025).</div>`}`;
   buildFields('cedFields',CED.fields);
   document.getElementById('cedBanner').className='banner';
+  const pr=document.getElementById('cedProsp');pr.innerHTML='';pr.classList.add('hidden');
   document.getElementById('cedNote').innerHTML=s.tracciaId
     ?'<b>Traccia reale riparametrata.</b> Importi forniti dalla commissione mantenuti come dati; parametri fiscali 2026. Le soluzioni coincidono con quelle svolte e commentate in chat.'
     :(CED.av
@@ -586,6 +588,85 @@ function cedCalc(k){const s=CED.scn,o=CED.sol,m=s.mal;const s1=o.s1m,s2=50000/12
   case 'tfr':return `${fmt(s.lordo)} × ${s.mens} / 13,5 / 12 = ${fmt(o.tfrLordo)} − 0,50% × ${fmt0(o.impPrevArr)} = ${fmt(o.tfr)} (art. 2120 c.c.; in malattia base piena)`;
   case 'inail':return `${fmt(o.impPrev)} × ${s.tassoInail}/1000 = ${fmt(o.inail)}`;
 } return '';}
+
+/* ===== CEDOLINO: perché di ogni campo ===== */
+const CED_WHY={
+  trattMal:'Il mensilizzato riceve la retribuzione piena: i giorni di malattia si tolgono col divisore 26 e si ripagano con indennità INPS e integrazione.',
+  trasfImp:'Le indennità forfettarie di trasferta fuori del comune sono esenti fino a 46,48 €/giorno; solo l\'eccedenza è imponibile (art. 51, c. 5, TUIR).',
+  fringeImp:'Se nell\'anno i benefit superano la soglia, diventa imponibile tutto il valore, non solo l\'eccedenza; la stessa regola vale per i contributi.',
+  buoniEcc:'I buoni pasto elettronici sono esenti fino a 10 €/giorno (2026); è imponibile solo la parte oltre il limite.',
+  impPrev:'Comprende tutto ciò che il datore paga per il lavoro; restano fuori le indennità anticipate per conto dell\'INPS, coperte da contribuzione figurativa.',
+  contributiBase:'L\'imponibile si arrotonda all\'euro; si applica l\'aliquota a carico del lavoratore indicata dalla traccia.',
+  ivsExtra:'Contributo aggiuntivo dell\'1% sulla parte di retribuzione mensile oltre la prima fascia pensionabile (4.685 € nel 2026).',
+  contributi:'Somma dei contributi a carico del lavoratore: si deducono dall\'imponibile fiscale.',
+  impFisc:'Dal previdenziale si tolgono contributi e fondo sanitario (deducibili) e si aggiungono le indennità INPS, che sono reddito sostitutivo (art. 6, c. 2, TUIR).',
+  irpL:'Gli scaglioni annui 2026 divisi per 12: 23% fino a 2.333,33 €, 33% fino a 4.166,67 €, 43% oltre.',
+  detrM:'La detrazione annua (art. 13 TUIR) sul reddito presunto si ragguaglia ai giorni del mese; la maggiorazione di 65 € non si ragguaglia e qui si ripartisce in dodicesimi.',
+  cunM:'L. 207/2024: 1.000 € annui tra 20.000 e 32.000 di reddito, decrescenti fino a 40.000, rapportati al periodo.',
+  irpN:'È la ritenuta IRPEF da versare con F24 (codice 1001) entro il 16 del mese successivo.',
+  addTot:'Le addizionali dell\'anno precedente si trattengono a rate: regionale e saldo comunale in max 11 rate, acconto comunale in max 9 rate da marzo.',
+  netto:'Si sommano le somme pagate in denaro (non buoni pasto né benefit in natura) e si tolgono tutte le trattenute.',
+  tfr:'Quota annua = retribuzione annua / 13,5 (art. 2120 c.c.), meno lo 0,50% dell\'imponibile previdenziale che il datore versa all\'INPS.',
+  inail:'Il premio INAIL è a carico del datore: imponibile × tasso della voce di tariffa, per mille.'
+};
+function cedCalcWhy(k){const t=cedCalc(k),w=CED_WHY[k];return w?`${t}<br><span style="font-family:inherit;opacity:.85">Perché: ${w}</span>`:t;}
+
+/* ===== CEDOLINO: prospetto paga svolto voce per voce ===== */
+function prospettoCed(){
+  const s=CED.scn,o=CED.sol,m=s.mal,g=r2(s.lordo/26);const R=[];
+  const add=(voce,calc,comp,tratt,why)=>R.push({voce,calc,comp,tratt,why});
+  const elemTxt=(s.elementi||[]).map(e=>fmt(e[1])).join(' + ');
+  add('Retribuzione mensile',elemTxt?`${elemTxt} = ${fmt(s.lordo)}`:fmt(s.lordo),s.lordo,null,'Mensilizzato: spetta per intero; le assenze si trattano con voci separate.');
+  if(s.permOre)add(`Permesso retribuito ${s.permOre} h (giorno ${s.permGiorno})`,'già compreso nella retribuzione',null,null,'Neutro: è retribuito dal datore, non cambia lordo né imponibili.');
+  if(m){
+    add(`Trattenuta malattia (${m.dal.d}-${m.al.d})`,`${m.n26} gg (domeniche escluse) × ${fmt(g)}`,null,o.trattMal,'Si tolgono le giornate non lavorate col divisore 26; la copertura arriva dalle due voci successive.');
+    add('Indennità malattia c/INPS',m.dato?`dato di traccia (50% × ${fmt(r2(s.lordo*s.mens/12/30))} × ${m.nINPS} gg dal 4°)`:`50% × ${fmt(r2(m.rmg))} (retrib. × ${s.mens}/12/30) × ${m.nINPS} gg di calendario dal 4°`,o.indINPS,null,'Anticipata dal datore e recuperata dall\'INPS: soggetta a IRPEF, non a contributi.');
+    add('Integrazione malattia c/ditta',`garantito ${m.nC} gg × ${m.car}% + ${m.nD} gg × ${m.dopo}% = ${fmt(m.garantito)} − INPS ${fmt(m.indINPS)} − lordizz. ${fmt(m.lordizz)}`,o.integr,null,'A carico ditta, imponibile pieno. La lordizzazione (INPS × aliquota/(100 − aliquota)) non si paga: serve a non far pagare contributi sulla quota coperta dall\'INPS.');
+  }
+  if(s.n104){
+    add(`Trattenuta permessi L. 104 (${s.n104} gg)`,`${s.n104} × ${fmt(g)}`,null,o.p104,'Giornate di permesso tolte dalla retribuzione mensile.');
+    add('Indennità permessi L. 104 c/INPS',`${s.n104} × ${fmt(g)}`,o.p104,null,'Anticipata dal datore e conguagliata con l\'INPS; contribuzione figurativa: solo IRPEF.');
+  }
+  if(s.festiv)add('Festività non goduta',`${fmt(g)} × ${s.festiv===g?'1':'0,5'}`,s.festiv,null,'Retribuzione aggiuntiva: imponibile pieno.');
+  if(s.straord)add('Lavoro straordinario',`${s.oreStr} h × ${fmt(r2(s.lordo/s.orario))} (= ${fmt(s.lordo)}/${s.orario}) × ${String(s.maggStr).replace('.',',')}`,s.straord,null,'Paga oraria maggiorata della percentuale contrattuale: imponibile pieno.');
+  if(s.trasfGG)add('Indennità di trasferta Italia',`${s.trasfGG} × ${fmt(s.trasfU)}; esente ${s.trasfGG} × ${fmt(Math.min(s.trasfU,TRASF_ESENTE))} = ${fmt(o.trasfEs)}; imponibile ${fmt(o.trasfImp)}`,o.trasfTot,null,'Pagata per intero; entra negli imponibili solo l\'eccedenza oltre 46,48 €/giorno.');
+  if(s.fringe)add('Fringe benefit (in natura)',o.fringeImp?`${fmt(s.fringe)} > soglia ${fmt0(o.sogliaFringe)}: imponibile ${fmt(o.fringeImp)}`:`${fmt(s.fringe)} ≤ soglia ${fmt0(o.sogliaFringe)}: esente`,null,null,'Non è denaro: non entra nel netto. Oltre soglia è imponibile per intero, fiscale e contributivo.');
+  add('Buoni pasto elettronici (informativa)',`${s.ggPasto} gg × ${fmt(s.buonoU)} = ${fmt(o.buoniTot)}${o.buoniEcc?`; imponibile ${fmt(o.buoniEcc)}`:''}`,null,null,'Non si pagano in busta; esenti fino a 10 €/giorno di presenza.');
+  if(o.rimb730)add('Rimborso IRPEF da 730-4','dato',o.rimb730,null,'Credito del lavoratore anticipato dal datore, che lo recupera riducendo le ritenute da versare: non è reddito.');
+  add('Contributi INPS c/dipendente',`${fmt0(o.impPrevArr)} × ${fmt(s.aliq)}%${o.ivsExtra?` + 1% oltre 4.685 (${fmt(o.ivsExtra)})`:''}`,null,o.contributi,'Calcolati sull\'imponibile previdenziale arrotondato all\'euro.');
+  if(s.contribFondo)add('Fondo assistenza sanitaria c/dip','dato',null,s.contribFondo,'Trattenuta deducibile dall\'imponibile IRPEF fino a 3.615,20 €/anno (art. 51, c. 2, lett. a), TUIR).');
+  add('IRPEF netta',`lorda ${fmt(o.irpL)} (${fmt(o.impFisc)} a scaglioni) − detrazione ${fmt(o.detrM)} − ulteriore ${fmt(o.cunM)}`,null,o.irpN,'Ritenuta d\'acconto del sostituto d\'imposta sull\'imponibile fiscale del mese.');
+  if(s.rateDate){
+    add('Addizionale regionale anno precedente (rata)','dato',null,o.rataReg,'Determinata al conguaglio dell\'anno precedente, trattenuta a rate.');
+    add('Addizionale comunale anno precedente (rata)','dato',null,o.rataCom,'Saldo dell\'anno precedente, a rate.');
+    add('Acconto addizionale comunale anno corrente (rata)','dato',null,o.rataAcc,'Acconto del 30%, a rate da marzo.');
+  }else{
+    add('Addizionale regionale 2025 (rata)',`${fmt(o.addReg25)} / 11`,null,o.rataReg,'Marche a scaglioni sul reddito 2025; max 11 rate gennaio-novembre.');
+    add('Saldo addizionale comunale 2025 (rata)',`${fmt(o.saldoCom25)} / 11`,null,o.rataCom,'Dovuta 2025 meno acconto già trattenuto; max 11 rate.');
+    add('Acconto addizionale comunale 2026 (rata)',o.rataAcc?`${fmt(o.accCom26)} / 9`:'non dovuta in questo mese',null,o.rataAcc,'30% dell\'addizionale 2025, in max 9 rate da marzo a novembre.');
+  }
+  if(o.deb730)add('Saldo IRPEF da 730-4','dato',null,o.deb730,'Debito del lavoratore trattenuto dal sostituto e versato all\'Erario.');
+  if(s.cessione)add('Cessione del quinto','dato',null,s.cessione,'Trattenuta a favore della finanziaria: incide solo sul netto.');
+  const totC=r2(R.reduce((a,x)=>a+(x.comp||0),0)), totT=r2(R.reduce((a,x)=>a+(x.tratt||0),0));
+  const td='padding:5px 7px;border-bottom:1px solid var(--line-soft);vertical-align:top';
+  const num=`${td};font-family:'IBM Plex Mono',monospace;text-align:right;white-space:nowrap`;
+  const rows=R.map(x=>`<tr><td style="${td}"><b>${x.voce}</b><div style="font-size:11px;color:var(--ink-soft);margin-top:2px">${x.why}</div></td><td style="${td};font-family:'IBM Plex Mono',monospace;font-size:11px">${x.calc}</td><td style="${num}">${x.comp!=null?fmt(x.comp):''}</td><td style="${num}">${x.tratt!=null?fmt(x.tratt):''}</td></tr>`).join('');
+  const ok=Math.abs(r2(totC-totT)-o.netto)<0.006;
+  return `<h4 style="margin-top:14px">Prospetto paga svolto</h4>
+  <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px;background:var(--card)">
+  <thead><tr style="background:var(--t1-bg)"><th style="${td};text-align:left">Voce e perché</th><th style="${td};text-align:left">Calcolo</th><th style="${td};text-align:right">Competenze</th><th style="${td};text-align:right">Trattenute</th></tr></thead>
+  <tbody>${rows}
+  <tr style="background:var(--t1-bg)"><td style="${td}"><b>Totali</b></td><td style="${td}"></td><td style="${num}"><b>${fmt(totC)}</b></td><td style="${num}"><b>${fmt(totT)}</b></td></tr>
+  <tr style="background:var(--ok-bg)"><td style="${td}"><b>Netto in busta</b></td><td style="${td};font-family:'IBM Plex Mono',monospace;font-size:11px">${fmt(totC)} − ${fmt(totT)}${ok?'':' (verifica)'}</td><td style="${num}" colspan="2"><b>${fmt(o.netto)}</b></td></tr>
+  </tbody></table></div>
+  <div class="row" style="margin-top:8px">
+    <div><span class="k">Imponibile previdenziale</span><span class="v">${fmt(o.impPrev)} → ${fmt0(o.impPrevArr)}</span></div>
+    <div><span class="k">Imponibile fiscale</span><span class="v">${fmt(o.impFisc)}</span></div>
+    ${s.noTfr?'':`<div><span class="k">Quota TFR del mese</span><span class="v">${fmt(o.tfr)}</span></div>`}
+    ${s.tassoInail?`<div><span class="k">Premio INAIL c/ditta</span><span class="v">${fmt(o.inail)}</span></div>`:''}
+  </div>`;
+}
+function mostraProspetto(){const b=document.getElementById('cedProsp');b.innerHTML=prospettoCed();b.classList.remove('hidden');}
 
 const NORMA={prev:'Art. 12 L. 153/1969; art. 51 TUIR (onnicomprensivit&agrave;).',contr:'Aliquota da traccia; art. 3-ter DL 384/1992 per l\'1% IVS aggiuntivo.',fiscal:'Artt. 49 e 51 TUIR: reddito di lavoro dipendente e imponibile fiscale.',tax:'Artt. 11 e 13 TUIR: scaglioni IRPEF e detrazioni; cuneo L. 207/2024.',add:'Art. 50 D.Lgs. 446/1997 e art. 1 D.Lgs. 360/1998 (addizionali: saldo in max 11 rate, acconto comunale 30% in max 9 rate da marzo); art. 2120 c.c. (TFR); DPR 1124/1965 (INAIL).',fatt:'Artt. 6, 15 e 21 D.P.R. 633/1972; art. 25 D.P.R. 600/1973 (ritenuta 20%); contributo integrativo ENPACL 4%; art. 1, cc. 58 e 67, L. 190/2014 (forfettario); D.P.R. 642/1972 (bollo 2 € oltre 77,47 €).',cu:'Art. 4 DPR 322/1998: Certificazione Unica.'};
 
@@ -986,8 +1067,8 @@ function newCU(){const s=genCU();CU={scn:s,sol:solveCU(s)};renderCU();resetTimer
 function newCong(){CONG=genConguaglio();renderCong();resetTimer();applyMode();}
 function newFatt(){FATT=genFatt();renderFatt();resetTimer();applyMode();}
 
-document.getElementById('cedCheck').onclick=()=>check(CED.fields,CED.sol,cedCalc,'cedBanner');
-document.getElementById('cedSol').onclick=()=>reveal(CED.fields,cedCalc);
+document.getElementById('cedCheck').onclick=()=>{check(CED.fields,CED.sol,cedCalcWhy,'cedBanner');mostraProspetto();};
+document.getElementById('cedSol').onclick=()=>{reveal(CED.fields,cedCalcWhy);mostraProspetto();};
 document.getElementById('cedNew').onclick=()=>newCed();
 document.getElementById('cuCheck').onclick=()=>{check(CU_FIELDS,CU.sol,cuCalc,'cuBanner');document.getElementById('cuMemo').classList.remove('hidden');};
 document.getElementById('cuSol').onclick=()=>{reveal(CU_FIELDS,cuCalc);document.getElementById('cuMemo').classList.remove('hidden');};
