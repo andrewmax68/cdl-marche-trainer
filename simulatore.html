@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.3</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.4</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -143,6 +143,11 @@
   <div class="bar" id="eventiWrap" style="gap:14px;align-items:center;display:none;flex-wrap:wrap;background:var(--t1-bg,#E7EAF1);border-radius:10px;padding:10px 14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">Eventi da includere</span>
     <label class="evchk"><input type="checkbox" data-ev="malattia"> Malattia</label>
+    <label class="evchk"><input type="checkbox" data-ev="p104"> Permessi L. 104</label>
+    <label class="evchk"><input type="checkbox" data-ev="permesso"> Permesso retribuito</label>
+    <label class="evchk"><input type="checkbox" data-ev="trasferte"> Trasferte</label>
+    <label class="evchk"><input type="checkbox" data-ev="fringe"> Fringe benefit</label>
+    <label class="evchk"><input type="checkbox" data-ev="c730"> Conguaglio 730</label>
     <label class="evchk"><input type="checkbox" data-ev="festiv"> Festività</label>
     <label class="evchk"><input type="checkbox" data-ev="straord"> Straordinario</label>
     <label class="evchk"><input type="checkbox" data-ev="buoni"> Buoni oltre soglia</label>
@@ -162,7 +167,13 @@
 
   <div class="bar" style="gap:10px;align-items:center;flex-wrap:wrap">
     <button class="act primary" id="estraiBtn">&#127922; Estrai prova d'esame</button>
-    <span class="mono" style="font-size:10.5px;color:var(--ink-soft)">Pesi didattici (indicazioni informali): CU 50% &middot; cedolino 15% &middot; conguaglio 15% &middot; fattura 20%. Attiva la modalit&agrave; Esame e il cronometro.</span>
+    <span class="mono" style="font-size:10.5px;color:var(--ink-soft)">Pesi allineati alle tracce di Ancona 2024-2025: CU 45% &middot; cedolino 35% &middot; fattura 15% &middot; conguaglio 5%. Attiva la modalit&agrave; Esame e il cronometro.</span>
+  </div>
+  <div class="bar" style="gap:8px;align-items:center;flex-wrap:wrap">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">Tracce reali ITL Ancona 2025 (riparametrate)</span>
+    <button class="act ghost" data-traccia="T1">n. 1 · Busta paga Terziario (set. 2026)</button>
+    <button class="act ghost" data-traccia="T2">n. 2 · CU 2026 (estratta)</button>
+    <button class="act ghost" data-traccia="T3">n. 3 · Busta paga Calzature (lug. 2026)</button>
   </div>
   <div class="note hidden" id="teoriaBox" style="margin-bottom:14px"></div>
 
@@ -204,7 +215,8 @@
         <button class="act ghost" id="cuNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="cuBanner"></div>
-      <div class="note">Numerazione verificata sulle istruzioni CU 2026 (periodo d'imposta 2025) presenti in libreria: punti 1, 6, 21, 22, 26, 27, 29, 361, 367, 368, 374, 375, 449; sezione INPS, punti 4 e 6. Fuori perimetro: familiari a carico, oneri, TFR, conguaglio da 730, trattamento integrativo e somma esente (punti 718-725).</div>
+      <div class="note">Punti riscontrati sulle istruzioni CU 2026 (periodo d'imposta 2025): 1, 6, 21, 22, 26, 27, 29, 121, 122, 361, 362, 367, 368, 374, 375, 390, 441, 449, 718, 719, 721, 724, 801, 920; sezione INPS, punti 4 e 6. Fuori perimetro: redditi fino a 20.000 (somma esente) e trattamento integrativo spettante, oneri, figli, altri redditi.</div>
+      <div class="note hidden" id="cuMemo"></div>
     </section>
   </div>
 
@@ -262,7 +274,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.3 · 5 ottobre 2026 · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.4 · 7 ottobre 2026 · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -342,212 +354,402 @@ function buildLivello(C){
 }
 function genLivello(){return buildLivello(pickCCNL());}
 
+const PROB_EVENTI={malattia:0.5,p104:0.35,permesso:0.3,festiv:0.3,straord:0.35,trasferte:0.3,fringe:0.35,c730:0.3,buoni:0.3,fondo:0.45,cessione:0.15};
 let DIFF='base',MODE='guided',TAB='ced',CED=null,CU=null,CONG=null,FATT=null;
-let EVENTI={malattia:false,festiv:false,straord:false,buoni:false,fondo:false,cessione:false};
+let EVENTI={malattia:false,p104:false,permesso:false,festiv:false,straord:false,trasferte:false,fringe:false,c730:false,buoni:false,fondo:false,cessione:false};
 const stats={ex:0,ok:0,tot:0,streak:0,err:{prev:0,contr:0,fiscal:0,tax:0,add:0,cu:0}};
 let tSec=0,tHandle=null;
 
 /* ===== CEDOLINO ===== */
-function genCedolino(){
-  const av=DIFF==='avanzato';
-  const b=genLivello();
-  const aliq=b.aliq;
-  const [mese,ggMese]=pick(MESI);
-  const ggLavorativi=Math.round(ggMese*22/30), tassoInail=b.inailTasso;   // giorni lavorativi del mese
-  const RC=round10(b.lordo*(1-aliq/100)*b.mens);   // reddito presunto sulla retribuzione contrattuale
-  const arReg=pick([1.23,1.53,1.73]), arCom=pick([0.50,0.70,0.80]);
-  // Addizionali trattenute nel 2026: calcolate sul reddito 2025 in sede di conguaglio (dato di traccia).
-  // Regionale e saldo comunale: max 11 rate gennaio-novembre; acconto comunale 2026 (30%): max 9 rate marzo-novembre.
-  const meseIdx=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'].indexOf(mese);
-  const red25=round10(RC*rnd(0.95,1.03));
-  const addReg25=r2(red25*arReg/100), addCom25=r2(red25*arCom/100);
+/* ===== Calendario 2026, addizionale regionale Marche, regole eventi ===== */
+const ANNO_CED=2026;
+const NOMI_MESI=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+const MESI_IDX=[0,1,2,3,4,5,6,8,9,10];                 // esclusi agosto e dicembre (ferie collettive / tredicesima)
+const GSET=['dom','lun','mar','mer','gio','ven','sab'];
+function calMese(idx,anno){anno=anno||ANNO_CED;const n=new Date(anno,idx+1,0).getDate();const g=[];
+  for(let d=1;d<=n;d++)g.push({d,dow:new Date(anno,idx,d).getDay()});
+  return {gg:n,giorni:g,lav:g.filter(x=>x.dow>=1&&x.dow<=5).length};}
+// Regione Marche, addizionale regionale IRPEF 2025 a scaglioni. Riscontro: traccia n. 2 ITL Ancona 2025 (589,11 € ricalcolato al centesimo)
+// e fonti secondarie concordi; DA VERIFICARE sul sito del Dipartimento delle Finanze. Per i redditi 2026 si assumono gli stessi scaglioni.
+const MARCHE_SCAGLIONI=[[15000,1.23],[28000,1.53],[50000,1.70],[Infinity,1.73]];
+function addRegMarche(x){let t=0,prev=0;for(const [lim,al] of MARCHE_SCAGLIONI){if(x>prev)t+=(Math.min(x,lim)-prev)*al/100;prev=lim;}return r2(t);}
+function addRegMarcheTxt(x){const p=[];let prev=0;for(const [lim,al] of MARCHE_SCAGLIONI){if(x>prev)p.push(`${fmt(r2(Math.min(x,lim)-prev))} × ${fmt(al)}%`);prev=lim;}return p.join(' + ');}
+const MARCHE_TXT='Regione Marche, a scaglioni: 1,23% fino a 15.000 · 1,53% fino a 28.000 · 1,70% fino a 50.000 · 1,73% oltre';
+// Integrazione di malattia: la regola è un dato della traccia. Terziario: [CCNL] fonte secondaria; altri CCNL: ipotesi didattica dichiarata.
+const REGOLA_MAL={
+  commercio:{car:100,dopo:75,txt:'CCNL Terziario: integrazione al 100% nei giorni di carenza (1°-3°, primi due eventi dell\'anno) e al 75% dal 4° al 20° giorno, con lordizzazione dell\'indennità INPS'},
+  metalmecc:{car:100,dopo:100,txt:'Dato di traccia (ipotesi didattica): integrazione a carico ditta fino al 100% della retribuzione, con lordizzazione dell\'indennità INPS'},
+  calzature:{car:100,dopo:100,txt:'Dato di traccia (ipotesi didattica): integrazione a carico ditta fino al 100% della retribuzione, con lordizzazione dell\'indennità INPS'}};
+const TRASF_ESENTE=46.48;   // art. 51, c. 5, TUIR: 90.000 lire/giorno, trasferta in Italia fuori del comune, senza rimborso di vitto o alloggio
+
+/* ===== CEDOLINO: generatore (dati) ===== */
+function genCedolino(forceAv){
+  const av=forceAv||DIFF==='avanzato';
+  let b,n=0,RC;
+  do{b=genLivello();RC=round10(b.lordo*(1-b.aliq/100)*b.mens);n++;}while(RC<=20000&&n<200); // fuori perimetro: somma esente del cuneo
+  let meseIdx=pick(MESI_IDX);
+  if(av&&EVENTI.c730&&meseIdx<6)meseIdx=pick([6,8,9]);      // i conguagli 730 partono dalla retribuzione di luglio
+  const cal=calMese(meseIdx);
+  const red25=round10(RC*rnd(0.95,1.03)), arCom=pick([0.50,0.70,0.80]);
   const accCom25=r2(round10(red25*rnd(0.94,1.0))*arCom/100*0.30);
-  const saldoCom25=r2(addCom25-accCom25), accCom26=r2(addCom25*0.30);
-  const rataReg=meseIdx<=10?r2(addReg25/11):0, rataCom=meseIdx<=10?r2(saldoCom25/11):0;
-  const rataAcc=(meseIdx>=2&&meseIdx<=10)?r2(accCom26/9):0;
-  const quotaG=r2(b.lordo/26);
-  let retrOrd=b.lordo, festiv=0,straord=0,integrMal=0,indINPS=0,contribFondo=0,cessione=0,buonoU=10,malGiorni=0,ggEff=ggLavorativi;
+  const g=r2(b.lordo/26);
+  const s={...b,anno:ANNO_CED,meseIdx,mese:NOMI_MESI[meseIdx],ggMese:cal.gg,ggLavorativi:cal.lav,RC,red25,arCom,accCom25,
+    elementi:[['Paga base',b.pagaBase],['Contingenza',b.conting],[`Scatti di anzianità (n. ${b.nScatti})`,b.scattiTot]],
+    mal:null,regolaMal:null,n104:0,p104:0,permGiorno:0,permOre:0,festiv:0,straord:0,oreStr:0,maggStr:0,buonoU:pick([8,10]),contribFondo:0,cessione:0,
+    trasfGG:0,trasfU:0,fringe:0,fringeFigli:false,c730:0,tassoInail:b.inailTasso,rateDate:null,tracciaId:null,noTfr:false};
+  let liberi=cal.giorni.filter(x=>x.dow>=1&&x.dow<=5).map(x=>x.d);
+  const togli=arr=>{liberi=liberi.filter(d=>!arr.includes(d));};
+  let assLav=0;   // giorni lun-ven di assenza (per i buoni pasto)
   if(av){
-    if(EVENTI.malattia){malGiorni=Math.floor(rnd(4,9));const ggINPS=Math.max(0,malGiorni-3);
-      indINPS=r2(quotaG*0.5*ggINPS); integrMal=r2(quotaG*0.5*ggINPS);
-      retrOrd=r2(b.lordo-quotaG*ggINPS); ggEff=ggLavorativi-malGiorni;}
-    if(EVENTI.festiv)festiv=r2(quotaG*pick([0.5,1]));
-    if(EVENTI.straord){const ore=Math.floor(rnd(3,9));straord=r2((b.lordo/b.orario)*ore*pick([1.15,1.25,1.30]));}
-    if(EVENTI.buoni)buonoU=pick([12,12]);
-    if(EVENTI.fondo)contribFondo=r2(pick([13,2,3.62,10]));
+    if(EVENTI.malattia){
+      const L=Math.floor(rnd(3,11));                                  // giorni di calendario
+      const starts=liberi.filter(d=>d+L-1<=cal.gg);
+      const d0=pick(starts.length?starts:[1]);
+      const days=[];for(let d=d0;d<d0+L&&d<=cal.gg;d++)days.push(cal.giorni[d-1]);
+      const n26=days.filter(x=>x.dow!==0).length;
+      const nC=days.slice(0,3).filter(x=>x.dow!==0).length, nD=days.slice(3).filter(x=>x.dow!==0).length;
+      const nINPS=Math.max(0,days.length-3);
+      const R=REGOLA_MAL[b.ccnlKey]||REGOLA_MAL.metalmecc;
+      const garantito=r2(r2(nC*g*R.car/100)+r2(nD*g*R.dopo/100));
+      const rmg=b.lordo*b.mens/12/30;
+      const indINPS=r2(rmg*0.5*nINPS);
+      const lordizz=r2(indINPS*b.aliq/(100-b.aliq));
+      const integr=Math.max(0,r2(garantito-indINPS-lordizz));
+      s.mal={dal:days[0],al:days[days.length-1],L:days.length,n26,nC,nD,nINPS,g,garantito,rmg,indINPS,lordizz,integr,tratt:r2(n26*g),car:R.car,dopo:R.dopo,dato:false};
+      s.regolaMal=R;
+      const lav=days.filter(x=>x.dow>=1&&x.dow<=5).map(x=>x.d);assLav+=lav.length;togli(lav);
+    }
+    if(EVENTI.p104&&liberi.length){
+      const k=Math.min(liberi.length,Math.floor(rnd(1,4)));const ds=[];for(let i=0;i<k;i++){const d=pick(liberi);ds.push(d);togli([d]);}
+      s.n104=k;s.p104=r2(k*g);s.gg104=ds.sort((a,b)=>a-b);assLav+=k;
+    }
+    if(EVENTI.permesso&&liberi.length){const d=pick(liberi);togli([d]);s.permGiorno=d;s.permOre=8;assLav+=1;}
+    if(EVENTI.festiv)s.festiv=r2(g*pick([0.5,1]));
+    if(EVENTI.straord){s.oreStr=Math.floor(rnd(3,9));s.maggStr=pick([1.15,1.25,1.30]);s.straord=r2((b.lordo/b.orario)*s.oreStr*s.maggStr);}
+    if(EVENTI.trasferte){s.trasfGG=Math.floor(rnd(1,5));s.trasfU=pick([40,45,50,55,60,65]);}
+    if(EVENTI.fringe){s.fringe=pick([300,600,900,1200,1500,1800,2400]);s.fringeFigli=chance(0.5);}
+    if(EVENTI.c730)s.c730=chance(0.6)?round10(rnd(80,700)):-round10(rnd(60,500));
+    if(EVENTI.buoni)s.buonoU=12;
+    if(EVENTI.fondo)s.contribFondo=r2(pick([13,2,3.62,10]));
   }
-  const ggPasto=ggEff;
-  const buoniTot=r2(buonoU*ggPasto),buoniEs=r2(Math.min(buonoU,10)*ggPasto),buoniEcc=r2(buoniTot-buoniEs);
-  const impPrev=r2(retrOrd+festiv+straord+integrMal+buoniEcc);
-  const contributiBase=r2(impPrev*aliq/100);
-  const ivsThr=4685;                                              // soglia mensile 1ª fascia pensionabile 2026 (€56.224/anno)
-  const ivsExtra=r2(Math.max(0,impPrev-ivsThr)*0.01);            // 1% IVS aggiuntivo art. 3-ter DL 384/1992
-  const contributi=r2(contributiBase+ivsExtra);
-  const impFisc=r2(impPrev-contributi-contribFondo+indINPS);
-  const irpL=r2(irpefLorda(impFisc,28000/12,50000/12));
-  const detrA=detrLavDip(RC), _b65=add65(RC), detrM=r2(detrBase(RC)*ggMese/365+_b65/12);
-  const cun=cuneo(RC), cunM=r2(cun.imp*ggMese/365);
-  let irpN=r2(irpL-detrM-cunM); if(irpN<0)irpN=0;
-  const compCash=r2(retrOrd+festiv+straord+integrMal+indINPS);
-  const nettoPre=r2(compCash-contributi-contribFondo-irpN-rataReg-rataCom-rataAcc);
-  if(av&&EVENTI.cessione)cessione=r2(nettoPre/5*rnd(0.6,1.0));
-  const netto=r2(nettoPre-cessione);
-  const tfr=r2(b.lordo/13.5-impPrev*0.005), inail=r2(impPrev*tassoInail/1000);
-  return {av,scn:{...b,aliq,mese,ggMese,ggLavorativi,ggEff,ggPasto,malGiorni,retrOrd,festiv,straord,integrMal,indINPS,contribFondo,cessione,buonoU,tassoInail,arReg,arCom,RC,quotaG,red25,addReg25,addCom25,accCom25,saldoCom25,accCom26},
-    sol:{impPrev,contributiBase,ivsExtra,ivsThr,contributi,impFisc,irpL,detrA,detrM,cun,cunM,irpN,rataReg,rataCom,rataAcc,buoniTot,buoniEs,buoniEcc,compCash,netto,tfr,inail,s1m:28000/12}};
+  s.ggPasto=cal.lav-assLav;
+  if(av&&EVENTI.cessione){const q=rnd(0.6,1.0);const pre=solveCed(s);s.cessione=r2(pre.netto/5*q);}
+  return s;
 }
-const CED_FIELDS=[
-  {k:'impPrev',l:'Imponibile previdenziale',h:'voci imponibili; esclusa l\'indennit&agrave; INPS',cat:'prev'},
-  {k:'buoniEcc',l:'Eccedenza buoni pasto imponibile',h:'(buono &minus; 10) &times; gg pasto, se il buono supera 10 &euro;',cat:'prev'},
-  {k:'contributiBase',l:'Contributi base c/dip',h:'imponibile prev &times; aliquota',cat:'contr'},
-  {k:'ivsExtra',l:'Contributo IVS aggiuntivo 1%',h:'1% sulla quota oltre &euro; 4.685',cat:'contr'},
-  {k:'contributi',l:'Contributi c/dip totali',h:'base + IVS aggiuntivo',cat:'contr'},
-  {k:'impFisc',l:'Imponibile fiscale',h:'imp.prev &minus; contributi &minus; fondo + ind. INPS',cat:'fiscal'},
-  {k:'irpL',l:'IRPEF lorda del mese',h:'scaglioni mensili (annui / 12)',cat:'tax'},
-  {k:'detrM',l:'Detrazione lavoro dip. (mese)',h:'art. 13 &times; giorni/365',cat:'tax'},
-  {k:'cunM',l:'Ulteriore detrazione cuneo (mese)',h:'&times; giorni/365',cat:'tax'},
-  {k:'irpN',l:'IRPEF netta del mese',h:'lorda &minus; detrazioni',cat:'tax'},
-  {k:'rataReg',l:'Rata addizionale regionale 2025',h:'addizionale 2025 da conguaglio / 11 rate (gennaio&ndash;novembre)',cat:'add'},
-  {k:'rataCom',l:'Rata saldo addizionale comunale 2025',h:'(dovuta 2025 &minus; acconto gi&agrave; trattenuto) / 11 rate',cat:'add'},
-  {k:'rataAcc',l:'Rata acconto addizionale comunale 2026',h:'30% dell\'addizionale comunale 2025 / 9 rate (marzo&ndash;novembre)',cat:'add'},
-  {k:'netto',l:'Netto in busta',h:'competenze &minus; trattenute (incl. cessione)',cat:'add'},
-  {k:'tfr',l:'TFR netto del mese',h:'retrib./13,5 &minus; 0,50%',cat:'add'},
-  {k:'inail',l:'Premio INAIL c/ditta',h:'imponibile &times; tasso',cat:'add'}
-];
-function vociCed(s){const V=[];V.push(['Retribuzione ordinaria',s.retrOrd,'imp']);
+
+/* ===== CEDOLINO: motore di calcolo (unico per tracce casuali e tracce reali) ===== */
+function solveCed(s){
+  const m=s.mal;
+  const trattMal=m?m.tratt:0, integr=m?m.integr:0, indINPS=m?m.indINPS:0;
+  const p104=s.p104||0;
+  const trasfTot=r2(s.trasfGG*s.trasfU), trasfEs=r2(s.trasfGG*Math.min(s.trasfU,TRASF_ESENTE)), trasfImp=r2(trasfTot-trasfEs);
+  const sogliaFringe=s.fringeFigli?2000:1000, fringeImp=s.fringe>sogliaFringe?s.fringe:0;
+  const buoniTot=r2(s.buonoU*s.ggPasto),buoniEs=r2(Math.min(s.buonoU,10)*s.ggPasto),buoniEcc=r2(buoniTot-buoniEs);
+  const impPrev=r2(s.lordo-trattMal-p104+s.festiv+s.straord+integr+buoniEcc+trasfImp+fringeImp);
+  const impPrevArr=Math.round(impPrev);                                   // imponibile INPS arrotondato all'euro
+  const contributiBase=r2(impPrevArr*s.aliq/100);
+  const ivsThr=4685, ivsExtra=r2(Math.max(0,impPrevArr-ivsThr)*0.01);   // art. 3-ter D.L. 384/1992; soglia 2026 (circ. INPS 6/2026)
+  const contributi=r2(contributiBase+ivsExtra);
+  const impFisc=r2(impPrev-contributi-s.contribFondo+indINPS+p104);
+  const irpL=r2(irpefLorda(impFisc,28000/12,50000/12));
+  const detrA=detrLavDip(s.RC), b65=add65(s.RC), detrM=r2(detrBase(s.RC)*s.ggMese/365+b65/12);
+  const cun=cuneo(s.RC), cunM=r2(cun.imp*s.ggMese/365);
+  let irpN=r2(irpL-detrM-cunM); if(irpN<0)irpN=0;
+  let rataReg,rataCom,rataAcc,addReg25=0,addCom25=0,saldoCom25=0,accCom26=0;
+  if(s.rateDate){rataReg=s.rateDate.reg;rataCom=s.rateDate.com;rataAcc=s.rateDate.acc;}
+  else{addReg25=addRegMarche(s.red25);addCom25=r2(s.red25*s.arCom/100);saldoCom25=r2(addCom25-s.accCom25);accCom26=r2(addCom25*0.30);
+    const mi=s.meseIdx;rataReg=mi<=10?r2(addReg25/11):0;rataCom=mi<=10?r2(saldoCom25/11):0;rataAcc=(mi>=2&&mi<=10)?r2(accCom26/9):0;}
+  const addTot=r2(rataReg+rataCom+rataAcc);
+  const rimb730=s.c730>0?s.c730:0, deb730=s.c730<0?-s.c730:0;
+  const compCash=r2(s.lordo-trattMal-p104+s.festiv+s.straord+integr+indINPS+p104+trasfTot+rimb730);
+  const tratTot=r2(contributi+s.contribFondo+irpN+addTot+deb730+(s.cessione||0));
+  const netto=r2(compCash-tratTot);
+  const tfrLordo=r2(s.lordo*s.mens/13.5/12), tfr=r2(tfrLordo-r2(impPrevArr*0.005));
+  const inail=s.tassoInail?r2(impPrev*s.tassoInail/1000):0;
+  return {trattMal,integr,indINPS,p104,trasfTot,trasfEs,trasfImp,sogliaFringe,fringeImp,buoniTot,buoniEs,buoniEcc,impPrev,impPrevArr,contributiBase,ivsThr,ivsExtra,contributi,impFisc,irpL,detrA,b65,detrM,cun,cunM,irpN,
+    rataReg,rataCom,rataAcc,addReg25,addCom25,saldoCom25,accCom26,addTot,rimb730,deb730,compCash,tratTot,netto,tfrLordo,tfr,inail,s1m:28000/12};
+}
+
+/* ===== CEDOLINO: campi da compilare (dinamici secondo gli eventi) ===== */
+function cedFields(s){
+  const F=[];
+  if(s.mal)F.push({k:'trattMal',l:'Trattenuta per i giorni di malattia',h:'giorni di malattia esclusa la domenica &times; retribuzione/26',cat:'prev'});
+  if(s.trasfGG)F.push({k:'trasfImp',l:'Quota imponibile delle trasferte',h:'eccedenza oltre 46,48 &euro;/giorno (art. 51, c. 5, TUIR)',cat:'prev'});
+  if(s.fringe)F.push({k:'fringeImp',l:'Fringe benefit imponibile',h:'se supera la soglia (1.000; 2.000 con figli a carico) &egrave; imponibile per intero; altrimenti 0',cat:'prev'});
+  F.push({k:'buoniEcc',l:'Eccedenza buoni pasto imponibile',h:'(buono &minus; 10) &times; giorni di presenza, se il buono supera 10 &euro;',cat:'prev'});
+  F.push({k:'impPrev',l:'Imponibile previdenziale (non arrotondato)',h:'voci imponibili; escluse le indennit&agrave; a carico INPS',cat:'prev'});
+  F.push({k:'contributiBase',l:'Contributi c/dipendente',h:'imponibile arrotondato all\'euro &times; aliquota',cat:'contr'});
+  F.push({k:'ivsExtra',l:'Contributo IVS aggiuntivo 1%',h:'1% sulla quota oltre 4.685 &euro;',cat:'contr'});
+  F.push({k:'contributi',l:'Contributi c/dipendente totali',h:'base + IVS aggiuntivo',cat:'contr'});
+  F.push({k:'impFisc',l:'Imponibile fiscale',h:'imp. prev. &minus; contributi &minus; fondo + indennit&agrave; INPS',cat:'fiscal'});
+  F.push({k:'irpL',l:'IRPEF lorda del mese',h:'scaglioni 2026 mensilizzati: 23% / 33% / 43%',cat:'tax'});
+  F.push({k:'detrM',l:'Detrazione lavoro dipendente del mese',h:'art. 13 &times; giorni/365, + 65/12 tra 25.000 e 35.000',cat:'tax'});
+  F.push({k:'cunM',l:'Ulteriore detrazione del mese (L. 207/2024)',h:'&times; giorni/365',cat:'tax'});
+  F.push({k:'irpN',l:'IRPEF netta del mese',h:'lorda &minus; detrazioni',cat:'tax'});
+  F.push({k:'addTot',l:'Rate addizionali trattenute nel mese',h:'regionale 2025 + saldo comunale 2025 + acconto comunale 2026',cat:'add'});
+  F.push({k:'netto',l:'Netto in busta',h:'competenze in denaro &minus; trattenute',cat:'add'});
+  if(!s.noTfr)F.push({k:'tfr',l:'Quota TFR netta del mese',h:'retribuzione &times; mensilit&agrave; / 13,5 / 12 &minus; 0,50% dell\'imponibile',cat:'add'});
+  if(s.tassoInail)F.push({k:'inail',l:'Premio INAIL c/ditta (stima mensile)',h:'imponibile &times; tasso',cat:'add'});
+  return F;
+}
+
+/* ===== CEDOLINO: voci della traccia ===== */
+function dd(x,s){return `${GSET[x.dow]} ${x.d}`;}
+function vociCed(s,o){const V=[];
+  V.push(['Retribuzione mensile',s.lordo,'imp']);
+  if(s.permOre)V.push([`Permesso retribuito (${s.permOre} h, giorno ${s.permGiorno})`,null,'inf']);
+  if(s.mal){
+    V.push([`Malattia: trattenuta dei giorni non lavorati (da calcolare)`,null,'neg']);
+    V.push(['Integrazione malattia c/ditta (dato)',s.mal.integr,'imp']);
+    V.push(['Indennit&agrave; malattia c/INPS (dato)',s.mal.indINPS,'fis']);
+    V.push(['Lordizzazione dell\'indennit&agrave; INPS (dato di calcolo)',s.mal.lordizz,'inf']);
+  }
+  if(s.n104){V.push([`Permessi L. 104/1992: trattenuta ${s.n104} gg &times; ${fmt(r2(s.lordo/26))}`,-s.p104,'neg']);V.push([`Indennit&agrave; permessi L. 104/1992 c/INPS`,s.p104,'fis']);}
   if(s.festiv)V.push(['Festivit&agrave; non goduta',s.festiv,'imp']);
-  if(s.straord)V.push(['Straordinario',s.straord,'imp']);
-  if(s.integrMal)V.push([`Integrazione malattia c/ditta`,s.integrMal,'imp']);
-  if(s.indINPS)V.push(['Indennit&agrave; malattia INPS',s.indINPS,'fis']);
-  V.push([`Buoni pasto elettr. (${s.ggPasto} &times; ${fmt(s.buonoU)})`,r2(s.buonoU*s.ggPasto),s.buonoU>10?'imp':'ese']);
-  if(s.contribFondo)V.push(['Contributo fondo assistenza c/dip',s.contribFondo,'ded']);
-  if(s.cessione)V.push(['Cessione del quinto',s.cessione,'tra']);return V;}
-const NAT={imp:'imponibile',fis:'solo fiscale',ese:'esente',ded:'deducibile',tra:'trattenuta'};
+  if(s.straord)V.push([`Straordinario (${s.oreStr} h &times; ${fmt(r2(s.lordo/s.orario))} &times; ${String(s.maggStr).replace('.',',')})`,s.straord,'imp']);
+  if(s.trasfGG)V.push([`Indennit&agrave; di trasferta Italia (${s.trasfGG} gg &times; ${fmt(s.trasfU)}), senza rimborso vitto/alloggio`,r2(s.trasfGG*s.trasfU),'tras']);
+  if(s.fringe)V.push([`Fringe benefit (unico dell'anno)${s.fringeFigli?', lavoratore con figli a carico':''}`,s.fringe,'nat']);
+  V.push([`Buoni pasto elettronici (${s.ggPasto} gg &times; ${fmt(s.buonoU)})`,r2(s.buonoU*s.ggPasto),s.buonoU>10?'mista':'ese']);
+  if(s.contribFondo)V.push(['Contributo fondo assistenza sanitaria c/dip',s.contribFondo,'ded']);
+  if(s.c730>0)V.push(['Rimborso IRPEF da 730-4',s.c730,'n730']);
+  if(s.c730<0)V.push(['Trattenuta saldo IRPEF da 730-4',-s.c730,'tra']);
+  if(s.cessione)V.push(['Cessione del quinto',s.cessione,'tra']);
+  return V;}
+const NAT={imp:'imponibile',fis:'solo fiscale',ese:'esente',ded:'deducibile',tra:'trattenuta',neg:'riduce imponibili',inf:'informativa',tras:'esente fino a 46,48/g',nat:'in natura: verifica soglia',mista:'esente fino a 10 €',n730:'non imponibile'};
+
 function renderCedolino(){
-  const s=CED.scn;
-  document.getElementById('cedTag').textContent=`${s.mese} (${s.ggMese} gg cal.) · ${s.ggEff} lavorati${s.malGiorni?` · ${s.malGiorni} malattia`:''}`;
-  const voci=vociCed(s).map(([d,v,n])=>`<div class="voce"><span class="vd">${d}</span><span class="nt ${n}">${NAT[n]}</span><span class="vv">${fmt(v)}</span></div>`).join('');
+  const s=CED.scn, m=s.mal;
+  document.getElementById('cedTag').textContent=`${s.mese} ${s.anno} (${s.ggMese} gg) · ${s.ggLavorativi} lavorativi lun-ven${m?` · malattia ${m.L} gg`:''}${s.tracciaId?' · '+s.tracciaId:''}`;
+  const voci=vociCed(s).map(([d,v,n])=>`<div class="voce"><span class="vd">${d}</span><span class="nt ${n==='neg'||n==='inf'||n==='tras'||n==='nat'||n==='mista'||n==='n730'?'fis':n}">${NAT[n]}</span><span class="vv">${v==null?'—':fmt(v)}</span></div>`).join('');
+  const elem=(s.elementi||[]).map(([k,v])=>`<div><span class="k">${k}</span><span class="v">${fmt(v)}</span></div>`).join('');
+  const eventi=[];
+  if(m)eventi.push(`<b>Malattia</b> dal ${dd(m.dal)} al ${dd(m.al)} ${s.mese} (${m.L} giorni di calendario). ${s.regolaMal?s.regolaMal.txt:''}. Dati forniti: indennit&agrave; INPS ${fmt(m.indINPS)}; lordizzazione ${fmt(m.lordizz)}; integrazione c/ditta ${fmt(m.integr)}.`);
+  if(s.n104)eventi.push(`<b>Permessi L. 104/1992</b>: ${s.n104} giorni${s.gg104?` (${s.gg104.join(', ')} ${s.mese})`:''}, indennit&agrave; anticipata dal datore e recuperata dall'INPS; divisore 26.`);
+  if(s.permOre)eventi.push(`<b>Permesso retribuito</b> di ${s.permOre} ore il giorno ${s.permGiorno}.`);
+  if(s.trasfGG)eventi.push(`<b>Trasferta</b> fuori del comune: ${s.trasfGG} giorni a indennit&agrave; forfettaria di ${fmt(s.trasfU)} &euro;, senza rimborso di vitto e alloggio.`);
+  if(s.fringe)eventi.push(`<b>Fringe benefit</b> di ${fmt(s.fringe)} &euro; (unico benefit dell'anno)${s.fringeFigli?'; il lavoratore ha dichiarato figli fiscalmente a carico':'; nessun figlio a carico'}.`);
+  if(s.c730)eventi.push(`<b>730-4</b> ricevuto: ${s.c730>0?'rimborso':'saldo a debito'} di ${fmt(Math.abs(s.c730))} &euro; da conguagliare in questa retribuzione.`);
+  if(s.extraNote)eventi.push(s.extraNote);
+  const add=s.rateDate
+    ?`<div><span class="k">Rata add. regionale anno precedente</span><span class="v">${fmt(s.rateDate.reg)}</span></div><div><span class="k">Rata add. comunale anno precedente</span><span class="v">${fmt(s.rateDate.com)}</span></div><div><span class="k">Rata add. comunale anno corrente</span><span class="v">${fmt(s.rateDate.acc)}</span></div>`
+    :`<div><span class="k">Add. regionale</span><span class="v" style="font-size:11px">Marche a scaglioni</span></div><div><span class="k">Aliquota add. comunale (2025 = 2026)</span><span class="v">${fmt(s.arCom)}%</span></div><div><span class="k">Imponibile 2025 da conguaglio</span><span class="v">${fmt0(s.red25)}</span></div><div><span class="k">Acconto add. com. 2025 gi&agrave; trattenuto</span><span class="v">${fmt(s.accCom25)}</span></div>`;
   document.getElementById('cedScn').innerHTML=`
+    ${s.titolo?`<div class="note" style="margin-bottom:8px"><b>${s.titolo}</b></div>`:''}
     <div class="anag">
       <div class="top"><span class="badge">${s.ccnl}</span><span class="badge q">${s.q} · ${s.liv}</span></div>
       <div class="k" style="font-size:11.5px;margin:2px 0 6px">Codice alfanumerico unico CNEL del CCNL: <b>${s.cnel}</b>${s.cnel==='D121'?' (da verificare sull\'archivio CNEL)':''}. Va indicato nel prospetto paga (art. 1 L. 4/1953, come modificato dall\'art. 11, c. 2, D.L. 62/2026).</div>
-      <div class="row">
-        <div><span class="k">Paga base</span><span class="v">${fmt(s.pagaBase)}</span></div>
-        <div><span class="k">Contingenza</span><span class="v">${fmt(s.conting)}</span></div>
-        <div><span class="k">Scatti (n. ${s.nScatti})</span><span class="v">${fmt(s.scattiTot)}</span></div>
-        <div><span class="k">Retrib. contrattuale</span><span class="v">${fmt(s.lordo)}</span></div>
+      <div class="row">${elem}
+        <div><span class="k">Retribuzione mensile</span><span class="v">${fmt(s.lordo)}</span></div>
         <div><span class="k">Divisori</span><span class="v">mens. 26 · or. ${s.orario}</span></div>
-        <div><span class="k">Mensilit&agrave;</span><span class="v">${s.mens}</span></div>
+        <div><span class="k">Mensilit&agrave;</span><span class="v">${s.mens||'—'}</span></div>
       </div>
     </div>
-    <h4>Competenze del mese</h4>${voci}
-    <div class="legenda"><span><b class="mono">imponibile</b>=prev+fisc</span>·<span><b class="mono">solo fiscale</b>=no contributi</span>·<span><b class="mono">esente</b>=buoni &le;10</span>·<span><b class="mono">deducibile</b>=riduce imp.fisc.</span>·<span><b class="mono">trattenuta</b>=solo netto</span></div>
+    ${eventi.length?`<h4>Eventi del mese</h4><div class="note">${eventi.map(x=>`<div style="margin:3px 0">${x}</div>`).join('')}</div>`:''}
+    <h4>Competenze e voci del mese</h4>${voci}
+    <div class="legenda"><span><b class="mono">imponibile</b>=prev+fisc</span>·<span><b class="mono">solo fiscale</b>=no contributi</span>·<span><b class="mono">deducibile</b>=riduce imp.fisc.</span>·<span><b class="mono">trattenuta</b>=solo netto</span>·<span><b class="mono">informativa</b>=non si paga</span></div>
     <h4>Parametri (dati)</h4>
     <div class="row">
       <div><span class="k">Aliquota INPS c/dip</span><span class="v">${fmt(s.aliq)}%</span></div>
-      <div><span class="k">Reddito presunto annuo (detrazioni)</span><span class="v">${fmt0(s.RC)}</span></div>
-      <div><span class="k">Aliquota add. regionale</span><span class="v">${fmt(s.arReg)}%</span></div>
-      <div><span class="k">Aliquota add. comunale (2025 = 2026)</span><span class="v">${fmt(s.arCom)}%</span></div>
-      <div><span class="k">Imponibile 2025 da conguaglio</span><span class="v">${fmt0(s.red25)}</span></div>
-      <div><span class="k">Acconto add. com. 2025 gi&agrave; trattenuto</span><span class="v">${fmt(s.accCom25)}</span></div>
-      <div><span class="k">Tasso INAIL</span><span class="v">${s.tassoInail}&#8240;</span></div>
-      <div><span class="k">Giorni lavorativi mese</span><span class="v">${s.ggLavorativi}</span></div>
-    </div>`;
-  buildFields('cedFields',CED_FIELDS);
+      <div><span class="k">Reddito presunto annuo (detrazioni)</span><span class="v">${fmt(s.RC)}</span></div>
+      ${add}
+      ${s.tassoInail?`<div><span class="k">Tasso INAIL</span><span class="v">${s.tassoInail}&#8240;</span></div>`:''}
+      <div><span class="k">Giorni di presenza (buoni pasto)</span><span class="v">${s.ggPasto}</span></div>
+    </div>
+    ${s.rateDate?'':`<div class="k" style="font-size:11px;margin-top:4px">${MARCHE_TXT} (scaglioni 2025).</div>`}`;
+  buildFields('cedFields',CED.fields);
   document.getElementById('cedBanner').className='banner';
-  document.getElementById('cedNote').innerHTML=CED.av
-    ?'<b>Modalit&agrave; avanzata.</b> Scegli gli eventi da esercitare con le caselle sopra (nessuno spuntato = come Base). L\'indennit&agrave; INPS &egrave; imponibile <b>fiscale ma non previdenziale</b>; il fondo assistenza <b>riduce</b> l\'imponibile fiscale; la cessione incide <b>solo sul netto</b>; dei buoni oltre &euro; 10 (soglia 2026) &egrave; imponibile la sola eccedenza. In malattia la retribuzione ordinaria &egrave; ridotta e reintegrata da indennit&agrave; + integrazione.'
-    :'<b>Modalit&agrave; base.</b> Mese pieno, buoni &euro; 10 esenti (soglia elettronici 2026). Catena lordo &rarr; contributi &rarr; fiscale &rarr; IRPEF &rarr; netto.';
+  document.getElementById('cedNote').innerHTML=s.tracciaId
+    ?'<b>Traccia reale riparametrata.</b> Importi forniti dalla commissione mantenuti come dati; parametri fiscali 2026. Le soluzioni coincidono con quelle svolte e commentate in chat.'
+    :(CED.av
+      ?'<b>Modalit&agrave; avanzata.</b> Le indennit&agrave; a carico INPS (malattia, L. 104) sono imponibili <b>fiscali ma non previdenziali</b>; l\'integrazione c/ditta &egrave; imponibile pieno; la lordizzazione serve solo a calcolare l\'integrazione e <b>non si paga</b>. Trasferte: imponibile solo l\'eccedenza oltre 46,48 &euro;/g. Fringe: oltre soglia imponibile per intero (anche ai fini contributivi), ma non entra nel netto in denaro. Rimborso 730: solo netto.'
+      :'<b>Modalit&agrave; base.</b> Mese pieno sul calendario 2026, buoni pasto entro i 10 &euro; esenti. Catena lordo &rarr; contributi &rarr; fiscale &rarr; IRPEF &rarr; netto.');
 }
-function cedCalc(k){const s=CED.scn,o=CED.sol;const s1=o.s1m,s2=50000/12;switch(k){
-  case 'impPrev':{let p=[`${fmt(s.retrOrd)} (ord.)`];if(s.festiv)p.push(`${fmt(s.festiv)} (fest.)`);if(s.straord)p.push(`${fmt(s.straord)} (str.)`);if(s.integrMal)p.push(`${fmt(s.integrMal)} (integr.)`);if(o.buoniEcc)p.push(`${fmt(o.buoniEcc)} (buoni ecc.)`);return p.join(' + ')+` = ${fmt(o.impPrev)}`;}
-  case 'buoniEcc':return o.buoniEcc>0?`(${fmt(s.buonoU)} − 10) × ${s.ggPasto} gg = ${fmt(o.buoniEcc)}`:`buono ${fmt(s.buonoU)} ≤ 10 → nessuna eccedenza imponibile (0,00)`;
-  case 'contributiBase':return `${fmt(o.impPrev)} × ${fmt(s.aliq)}% = ${fmt(o.contributiBase)}`;
-  case 'ivsExtra':return o.ivsExtra>0?`quota oltre soglia: ${fmt(o.impPrev)} − 4.685,00 = ${fmt(r2(o.impPrev-o.ivsThr))}; × 1% = ${fmt(o.ivsExtra)}`:`imponibile ${fmt(o.impPrev)} ≤ 4.685,00 → nessun contributo aggiuntivo (0,00)`;
-  case 'contributi':return `base ${fmt(o.contributiBase)} + IVS agg. ${fmt(o.ivsExtra)} = ${fmt(o.contributi)}`;
-  case 'impFisc':{let t=`${fmt(o.impPrev)} − ${fmt(o.contributi)}`;if(s.contribFondo)t+=` − ${fmt(s.contribFondo)} (fondo)`;if(s.indINPS)t+=` + ${fmt(s.indINPS)} (ind.INPS)`;return t+` = ${fmt(o.impFisc)}`;}
-  case 'irpL':{const q1=Math.min(o.impFisc,s1);let parts=[`${fmt(q1)}×23%`];let x=o.impFisc;if(x>s1){const q2=Math.min(x,s2)-s1;parts.push(`${fmt(r2(q2))}×33%`);}if(x>s2){parts.push(`${fmt(r2(x-s2))}×43%`);}return parts.join(' + ')+` = ${fmt(o.irpL)}`;}
-  case 'detrM':{if(o.detrA<=0)return `reddito ${fmt0(s.RC)} > 50.000 → detrazione 0,00`;const b=(s.RC>25000&&s.RC<=35000)?65:0;const base=r2(o.detrA-b);return `base ${fmt(base)} × ${s.ggMese}/365${b?` + 65/12 (non ragg.)`:``} = ${fmt(o.detrM)}`;}
-  case 'cunM':return o.cun.imp>0?`annua ${fmt(r2(o.cun.imp))} × ${s.ggMese}/365 = ${fmt(o.cunM)}`:`reddito ${fmt0(s.RC)} > 40.000 → cuneo 0,00`;
+
+/* ===== CEDOLINO: spiegazione di ogni campo ===== */
+function cedCalc(k){const s=CED.scn,o=CED.sol,m=s.mal;const s1=o.s1m,s2=50000/12;switch(k){
+  case 'trattMal':return `${m.n26} giorni (dal ${m.dal.d} al ${m.al.d}, domeniche escluse) × ${fmt(m.g)} (= ${fmt(s.lordo)}/26) = ${fmt(o.trattMal)}. Controprova dell'integrazione: garantito ${m.nC} gg × ${m.car}% + ${m.nD} gg × ${m.dopo}% = ${fmt(m.garantito)}; − INPS ${fmt(m.indINPS)} − lordizzazione ${fmt(m.lordizz)} = integrazione ${fmt(m.integr)}`;
+  case 'trasfImp':return `${s.trasfGG} gg × (${fmt(s.trasfU)} − 46,48) = ${fmt(o.trasfImp)}${o.trasfImp===0?' (indennità entro la franchigia)':''}`;
+  case 'fringeImp':return o.fringeImp?`${fmt(s.fringe)} > soglia ${fmt0(o.sogliaFringe)} → imponibile per intero = ${fmt(o.fringeImp)} (anche contributi)`:`${fmt(s.fringe)} ≤ soglia ${fmt0(o.sogliaFringe)}${s.fringeFigli?' (figli a carico)':''} → esente: 0,00`;
+  case 'buoniEcc':return o.buoniEcc>0?`(${fmt(s.buonoU)} − 10) × ${s.ggPasto} gg = ${fmt(o.buoniEcc)}`:`buono ${fmt(s.buonoU)} ≤ 10 → nessuna eccedenza (0,00)`;
+  case 'impPrev':{let p=[`${fmt(s.lordo)} (retrib.)`];if(o.trattMal)p.push(`− ${fmt(o.trattMal)} (malattia)`);if(o.p104)p.push(`− ${fmt(o.p104)} (L. 104)`);if(s.festiv)p.push(`+ ${fmt(s.festiv)} (fest.)`);if(s.straord)p.push(`+ ${fmt(s.straord)} (str.)`);if(o.integr)p.push(`+ ${fmt(o.integr)} (integr. ditta)`);if(o.buoniEcc)p.push(`+ ${fmt(o.buoniEcc)} (buoni)`);if(o.trasfImp)p.push(`+ ${fmt(o.trasfImp)} (trasf.)`);if(o.fringeImp)p.push(`+ ${fmt(o.fringeImp)} (fringe)`);return p.join(' ')+` = ${fmt(o.impPrev)}${(o.indINPS||o.p104)?'; le indennità c/INPS restano fuori (contribuzione figurativa)':''}`;}
+  case 'contributiBase':return `${fmt(o.impPrev)} → arrotondato ${fmt0(o.impPrevArr)} × ${fmt(s.aliq)}% = ${fmt(o.contributiBase)}`;
+  case 'ivsExtra':return o.ivsExtra>0?`(${fmt0(o.impPrevArr)} − 4.685) × 1% = ${fmt(o.ivsExtra)}`:`imponibile ${fmt0(o.impPrevArr)} ≤ 4.685 → 0,00`;
+  case 'contributi':return `${fmt(o.contributiBase)} + ${fmt(o.ivsExtra)} = ${fmt(o.contributi)}`;
+  case 'impFisc':{let t=`${fmt(o.impPrev)} − ${fmt(o.contributi)}`;if(s.contribFondo)t+=` − ${fmt(s.contribFondo)} (fondo)`;if(o.indINPS)t+=` + ${fmt(o.indINPS)} (ind. malattia INPS)`;if(o.p104)t+=` + ${fmt(o.p104)} (ind. L. 104)`;return t+` = ${fmt(o.impFisc)}`;}
+  case 'irpL':{const q1=Math.min(o.impFisc,s1);let parts=[`${fmt(r2(q1))}×23%`];let x=o.impFisc;if(x>s1){parts.push(`${fmt(r2(Math.min(x,s2)-s1))}×33%`);}if(x>s2){parts.push(`${fmt(r2(x-s2))}×43%`);}return parts.join(' + ')+` = ${fmt(o.irpL)}`;}
+  case 'detrM':{if(o.detrA<=0)return `reddito ${fmt(s.RC)} > 50.000 → 0,00`;return `annua ${fmt(r2(detrBase(s.RC)))} × ${s.ggMese}/365${o.b65?` + 65/12`:``} = ${fmt(o.detrM)} (rapporto troncato alla 4ª cifra)`;}
+  case 'cunM':return o.cun.imp>0?`annua ${fmt(r2(o.cun.imp))} × ${s.ggMese}/365 = ${fmt(o.cunM)}`:`reddito ${fmt(s.RC)} > 40.000 → 0,00`;
   case 'irpN':return `${fmt(o.irpL)} − ${fmt(o.detrM)} − ${fmt(o.cunM)} = ${fmt(o.irpN)}`;
-  case 'rataReg':return `${fmt0(s.red25)} × ${fmt(s.arReg)}% = ${fmt(s.addReg25)}; / 11 = ${fmt(o.rataReg)}`;
-  case 'rataCom':return `${fmt0(s.red25)} × ${fmt(s.arCom)}% = ${fmt(s.addCom25)} − acconto ${fmt(s.accCom25)} = saldo ${fmt(s.saldoCom25)}; / 11 = ${fmt(o.rataCom)}`;
-  case 'rataAcc':return o.rataAcc>0?`${fmt(s.addCom25)} × 30% = ${fmt(s.accCom26)}; / 9 = ${fmt(o.rataAcc)}`:`${s.mese}: l'acconto comunale si trattiene da marzo a novembre → 0,00`;
-  case 'netto':return `competenze ${fmt(o.compCash)} − contrib ${fmt(o.contributi)}${s.contribFondo?` − fondo ${fmt(s.contribFondo)}`:''} − IRPEF ${fmt(o.irpN)} − addiz ${fmt(r2(o.rataReg+o.rataCom+o.rataAcc))}${s.cessione?` − cess. ${fmt(s.cessione)}`:''} = ${fmt(o.netto)}`;
-  case 'tfr':return `retrib. ${fmt(s.lordo)}/13,5 − 0,50% di ${fmt(o.impPrev)} (imp. prev.) = ${fmt(o.tfr)}`;
+  case 'addTot':return s.rateDate?`rate date: ${fmt(s.rateDate.reg)} + ${fmt(s.rateDate.com)} + ${fmt(s.rateDate.acc)} = ${fmt(o.addTot)}`
+    :`regionale ${addRegMarcheTxt(s.red25)} = ${fmt(o.addReg25)} / 11 = ${fmt(o.rataReg)}; comunale ${fmt0(s.red25)} × ${fmt(s.arCom)}% = ${fmt(o.addCom25)} − acconto ${fmt(s.accCom25)} = saldo ${fmt(o.saldoCom25)} / 11 = ${fmt(o.rataCom)}; acconto 2026 ${fmt(o.accCom26)} / 9 = ${fmt(o.rataAcc)}${o.rataAcc?'':' (solo da marzo)'}; totale ${fmt(o.addTot)}`;
+  case 'netto':return `competenze in denaro ${fmt(o.compCash)}${o.rimb730?` (incl. rimborso 730 ${fmt(o.rimb730)})`:''} − trattenute ${fmt(o.tratTot)} [contributi ${fmt(o.contributi)}${s.contribFondo?` + fondo ${fmt(s.contribFondo)}`:''} + IRPEF ${fmt(o.irpN)} + addizionali ${fmt(o.addTot)}${o.deb730?` + 730 ${fmt(o.deb730)}`:''}${s.cessione?` + cessione ${fmt(s.cessione)}`:''}] = ${fmt(o.netto)}`;
+  case 'tfr':return `${fmt(s.lordo)} × ${s.mens} / 13,5 / 12 = ${fmt(o.tfrLordo)} − 0,50% × ${fmt0(o.impPrevArr)} = ${fmt(o.tfr)} (art. 2120 c.c.; in malattia base piena)`;
   case 'inail':return `${fmt(o.impPrev)} × ${s.tassoInail}/1000 = ${fmt(o.inail)}`;
 } return '';}
+
 const NORMA={prev:'Art. 12 L. 153/1969; art. 51 TUIR (onnicomprensivit&agrave;).',contr:'Aliquota da traccia; art. 3-ter DL 384/1992 per l\'1% IVS aggiuntivo.',fiscal:'Artt. 49 e 51 TUIR: reddito di lavoro dipendente e imponibile fiscale.',tax:'Artt. 11 e 13 TUIR: scaglioni IRPEF e detrazioni; cuneo L. 207/2024.',add:'Art. 50 D.Lgs. 446/1997 e art. 1 D.Lgs. 360/1998 (addizionali: saldo in max 11 rate, acconto comunale 30% in max 9 rate da marzo); art. 2120 c.c. (TFR); DPR 1124/1965 (INAIL).',fatt:'Artt. 6, 15 e 21 D.P.R. 633/1972; art. 25 D.P.R. 600/1973 (ritenuta 20%); contributo integrativo ENPACL 4%; art. 1, cc. 58 e 67, L. 190/2014 (forfettario); D.P.R. 642/1972 (bollo 2 € oltre 77,47 €).',cu:'Art. 4 DPR 322/1998: Certificazione Unica.'};
 
 /* ===== CU ===== */
+/* ===== CU 2026 (redditi 2025) ===== */
+// Detrazione per il coniuge a carico: art. 12, c. 1, lett. a) e b), TUIR; rapporti troncati alla 4ª cifra (art. 12, c. 4).
+function detrConiuge(RC){let d;
+  if(RC<=15000)d=800-110*t4(RC/15000);else if(RC<=40000)d=690;else if(RC<=80000)d=690*t4((80000-RC)/40000);else d=0;
+  if(RC>29000&&RC<=29200)d+=10;else if(RC>29200&&RC<=34700)d+=20;else if(RC>34700&&RC<=35000)d+=30;else if(RC>35000&&RC<=35100)d+=20;else if(RC>35100&&RC<=35200)d+=10;
+  return d;}
 function genCU(){
-  // Redditi 2025. Perimetro: imponibile fiscale > 20.000 (no somma esente punti 718-725) e retribuzione annua <= 54.000 (no contributo IVS 1%).
-  let b,lordoA,aliq,contribA,impFiscA,n=0;
-  do{b=genLivello();lordoA=r2(b.lordo*b.mens);aliq=b.aliq;contribA=r2(lordoA*aliq/100);impFiscA=r2(lordoA-contribA);n++;}
-  while((impFiscA<=20000||lordoA>54000)&&n<300);
-  const aliqReg=pick([1.23,1.53,1.73]), aliqCom=pick([0.50,0.70,0.80]);
-  const red24=round10(impFiscA*rnd(0.94,1.0));
-  const p361=r2(irpefLorda(impFiscA,28000,50000,0.35));
-  const p367=r2(detrLavDip(impFiscA)), p368=r2(cuneo(impFiscA).imp);
-  const p374=r2(p367+p368), p375=r2(Math.max(0,p361-p374));
-  const addComDov=r2(impFiscA*aliqCom/100);
-  const p22=r2(impFiscA*aliqReg/100), p26=r2(red24*aliqCom/100*0.30), p27=r2(addComDov-p26), p29=r2(addComDov*0.30);
-  return {scn:{...b,lordoA,aliq,aliqReg,aliqCom,red24},
-    sol:{punto1:impFiscA,giorni:365,p361,p367,p368,p374,p375,p21:p375,p22,p26,p27,p29,inps4:lordoA,inps6:contribA,redRif:impFiscA,addComDov}};
+  let s,o,n=0;
+  do{
+    const b=genLivello();
+    const lordoA=r2(b.lordo*b.mens), contribA=r2(lordoA*b.aliq/100);
+    const fondoDip=chance(0.5)?pick([24,60,120,156]):0, fondoDat=fondoDip?pick([0,0,96,120]):0;
+    const impFiscA=r2(lordoA-contribA-fondoDip);
+    const tot730=chance(0.6)?round10(rnd(150,1300)):0;
+    const anni=Math.floor(rnd(4,26));
+    const tfrMat=r2(lordoA/13.5*anni*rnd(1.05,1.25));
+    s={...b,anno:2025,lordoA,contribA,fondoDip,fondoDat,fondoTot:r2(fondoDip+fondoDat),impFiscA,
+      coniuge:chance(0.45),aliqCom:pick([0.50,0.70,0.80]),red24:round10(impFiscA*rnd(0.94,1.0)),
+      acc1:tot730?r2(tot730*0.40):0,acc2:tot730?r2(tot730*0.60):0,
+      tfrMat,tfrAnte2001:anni>25?r2(tfrMat*0.15):0,impSostTFR:r2(tfrMat*rnd(0.022,0.032)*0.17),
+      dataAss:`${String(Math.floor(rnd(1,28))).padStart(2,'0')}/${String(Math.floor(rnd(1,13))).padStart(2,'0')}/${2025-anni}`,
+      matricola:String(Math.floor(rnd(1e9,9e9))),pat:String(Math.floor(rnd(1e9,9e9))),comuneInail:'A271 (Ancona)'};
+    o=solveCU(s);n++;
+  }while((s.impFiscA<=20000||s.lordoA>54000||o.tiSpetta)&&n<300);
+  return s;
+}
+function solveCU(s){
+  const punto1=s.impFiscA;
+  const p361=r2(irpefLorda(punto1,28000,50000,0.35));                 // scaglioni 2025
+  const p362=s.coniuge?r2(detrConiuge(punto1)):0;
+  const p367=r2(detrLavDip(punto1)), p368=r2(cuneo(punto1).imp);
+  const p374=r2(p362+p367+p368), p375=r2(Math.max(0,p361-p374));
+  const tiSpetta=punto1<=28000&&(p362+p367)>p361;                      // trattamento integrativo: fuori perimetro del generatore
+  const addComDov=r2(punto1*s.aliqCom/100);
+  const p22=addRegMarche(punto1);
+  const p26=s.p26dato!=null?s.p26dato:r2(s.red24*s.aliqCom/100*0.30);
+  const p27=r2(addComDov-p26), p29=r2(addComDov*0.30);
+  return {punto1,giorni:365,p361,p362,p367,p368,p374,p375,p21:p375,p22,p26,p27,p29,p121:s.acc1||0,p122:s.acc2||0,
+    p390:2,p441:s.fondoTot||0,p718:1,p719:punto1,p721:365,p724:2,p801:0,p920:s.impSostTFR||0,
+    inps4:s.lordoA,inps6:s.contribA,redRif:punto1,addComDov,tiSpetta};
 }
 const CU_FIELDS=[
-  {k:'punto1',l:'Punto 1 — Redditi di lavoro dipendente (tempo indet.)',h:'imponibile fiscale annuo = retribuzione &minus; contributi',cat:'cu'},
-  {k:'giorni',l:'Punto 6 — Giorni di lavoro dipendente',h:'giorni per i quali spettano le detrazioni',int:true,cat:'cu'},
+  {k:'punto1',l:'Punto 1 — Redditi di lavoro dipendente a tempo indeterminato',h:'imponibile fiscale annuo',cat:'cu'},
+  {k:'giorni',l:'Punto 6 — Giorni per i quali spettano le detrazioni',h:'',int:true,cat:'cu'},
+  {k:'p21',l:'Punto 21 — Ritenute IRPEF',h:'risultanti dal conguaglio (non comprendono gli acconti 730)',cat:'tax'},
+  {k:'p22',l:'Punto 22 — Addizionale regionale 2025',h:'Marche, a scaglioni',cat:'add'},
+  {k:'p26',l:'Punto 26 — Acconto addizionale comunale 2025',h:'trattenuto nel 2025',cat:'add'},
+  {k:'p27',l:'Punto 27 — Saldo addizionale comunale 2025',h:'dovuta &minus; acconto',cat:'add'},
+  {k:'p29',l:'Punto 29 — Acconto addizionale comunale 2026',h:'30% dell\'addizionale 2025',cat:'add'},
+  {k:'p121',l:'Punto 121 — Primo acconto IRPEF trattenuto (730/2025)',h:'0 se non c\'&egrave; 730',cat:'cu'},
+  {k:'p122',l:'Punto 122 — Secondo o unico acconto IRPEF trattenuto',h:'0 se non c\'&egrave; 730',cat:'cu'},
   {k:'p361',l:'Punto 361 — Imposta lorda',h:'scaglioni 2025: 23% / 35% / 43%',cat:'tax'},
-  {k:'p367',l:'Punto 367 — Detrazione lavoro dipendente',h:'art. 13 TUIR, +65 per intero tra 25 e 35k',cat:'tax'},
-  {k:'p368',l:'Punto 368 — Ulteriore detrazione (L. 207/2024)',h:'1.000 tra 20 e 32k, d&eacute;calage fino a 40k',cat:'tax'},
-  {k:'p374',l:'Punto 374 — Totale detrazioni',h:'qui: 367 + 368',cat:'tax'},
-  {k:'p375',l:'Punto 375 — Imposta netta',h:'361 &minus; 374 (non negativa)',cat:'tax'},
-  {k:'p21',l:'Punto 21 — Ritenute IRPEF',h:'ritenute risultanti dal conguaglio',cat:'tax'},
-  {k:'p22',l:'Punto 22 — Addizionale regionale 2025',h:'punto 1 &times; aliquota regionale',cat:'add'},
-  {k:'p26',l:'Punto 26 — Acconto add. comunale 2025 trattenuto',h:'30% &times; imponibile 2024 &times; aliquota comunale',cat:'add'},
-  {k:'p27',l:'Punto 27 — Saldo add. comunale 2025',h:'punto 1 &times; aliquota com. &minus; punto 26',cat:'add'},
-  {k:'p29',l:'Punto 29 — Acconto add. comunale 2026',h:'30% &times; punto 1 &times; aliquota com.',cat:'add'},
-  {k:'inps4',l:'Sez. INPS, punto 4 — Imponibile previdenziale',h:'retribuzioni dovute nell\'anno',cat:'prev'},
-  {k:'inps6',l:'Sez. INPS, punto 6 — Contributi c/lavoratore trattenuti',h:'imponibile &times; aliquota',cat:'contr'},
-  {k:'redRif',l:'Punto 449 — Reddito di riferimento per le agevolazioni',h:'qui coincide con il punto 1',cat:'cu'}
+  {k:'p362',l:'Punto 362 — Detrazioni per carichi di famiglia',h:'art. 12 TUIR; 0 se nessun familiare',cat:'tax'},
+  {k:'p367',l:'Punto 367 — Detrazione per lavoro dipendente',h:'art. 13 TUIR, +65 per intero tra 25.000 e 35.000',cat:'tax'},
+  {k:'p368',l:'Punto 368 — Ulteriore detrazione (L. 207/2024)',h:'1.000 tra 20.000 e 32.000, decrescente fino a 40.000',cat:'tax'},
+  {k:'p374',l:'Punto 374 — Totale detrazioni',h:'362 + 367 + 368',cat:'tax'},
+  {k:'p375',l:'Punto 375 — Imposta netta',h:'361 &minus; 374',cat:'tax'},
+  {k:'p390',l:'Punto 390 — Trattamento integrativo: codice',h:'1 riconosciuto ed erogato · 2 non riconosciuto o non erogato',int:true,cat:'cu'},
+  {k:'p441',l:'Punto 441 — Contributi sanitari che non hanno concorso al reddito',h:'versati dal sostituto e/o dal lavoratore, entro 3.615,20',cat:'cu'},
+  {k:'redRif',l:'Punto 449 — Reddito di riferimento per le agevolazioni',h:'',cat:'cu'},
+  {k:'p718',l:'Punto 718 — Codice (redditi di lavoro dipendente agevolabili L. 207/2024)',h:'1 o 2',int:true,cat:'cu'},
+  {k:'p719',l:'Punto 719 — Reddito di lavoro dipendente (art. 49 TUIR)',h:'compreso nei punti 1 e 2',cat:'cu'},
+  {k:'p721',l:'Punto 721 — Giorni di lavoro dipendente',h:'obbligatorio con 718 = 1',int:true,cat:'cu'},
+  {k:'p724',l:'Punto 724 — Somma esente: codice',h:'obbligatorio con 718 = 1',int:true,cat:'cu'},
+  {k:'p801',l:'Punto 801 — TFR e indennit&agrave; erogati nell\'anno',h:'attenzione al TFR solo maturato',cat:'cu'},
+  {k:'p920',l:'Punto 920 — Imposta sostitutiva sulle rivalutazioni del TFR',h:'',cat:'cu'},
+  {k:'inps4',l:'Sez. INPS, punto 4 — Imponibile previdenziale',h:'',cat:'prev'},
+  {k:'inps6',l:'Sez. INPS, punto 6 — Contributi c/lavoratore trattenuti',h:'',cat:'contr'}
 ];
 function renderCU(){
-  const s=CU.scn;
-  document.getElementById('cuTag').textContent=`${s.q} · ${s.liv}`;
+  const s=CU.scn, giv=s.tracciaId;
+  document.getElementById('cuTag').textContent=giv?s.tracciaId:`${s.q} · ${s.liv}`;
+  const R=(k,v)=>`<div><span class="k">${k}</span><span class="v">${v}</span></div>`;
+  let righe='';
+  if(giv){
+    righe=R('Datore / sostituto',s.datore)+R('Dipendente',s.dip)+R('Periodo','01/01 – 31/12/2025, tempo indeterminato')+R('Data assunzione',s.dataAss)
+      +R('Retribuzione lorda annua',fmt(s.lordoA))+R('Matricola INPS',s.matricola)+R('Contributi c/dipendente',fmt(s.contribA))+R('Imponibile fiscale',fmt(s.impFiscA))
+      +R('Ritenute IRPEF operate',fmt(s.ritDate))+R('Detrazioni lavoro dipendente spettanti',fmt(s.detrDate.lav))+R('Detrazione carichi di famiglia',fmt(s.detrDate.fam))
+      +R('730/2025: primo acconto / secondo acconto',`${fmt(s.acc1)} / ${fmt(s.acc2)}`)+R('Addizionale regionale trattenuta',fmt(s.addRegDato))
+      +R('Add. comunale: acconto 2025 · saldo 2025 · acconto 2026',`${fmt(s.p26dato)} · ${fmt(s.saldoDato)} · ${fmt(s.acc26Dato)}`)
+      +R('Contributi al fondo sanitario integrativo',fmt(s.fondoTot))+R('TFR maturato al 31/12/2025, rimasto in azienda',`${fmt(s.tfrMat)} (di cui ante 2001 ${fmt(s.tfrAnte2001)})`)
+      +R('Imposta sostitutiva rivalutazioni TFR',fmt(s.impSostTFR))+R('PAT INAIL · comune',`${s.pat} · ${s.comuneInail}`);
+  }else{
+    righe=R('Retribuzione mensile',fmt(s.lordo))+R('Mensilit&agrave;',s.mens)+R('Retribuzione lorda annua',fmt(s.lordoA))+R('Aliquota INPS c/dip',fmt(s.aliq)+'%')
+      +R('Contributi c/dipendente',fmt(s.contribA))+R('Data assunzione',s.dataAss)+R('Periodo','01/01 – 31/12/2025, in forza al 31/12')
+      +R('Familiari a carico',s.coniuge?'coniuge, 12 mesi':'nessuno')
+      +R('Fondo sanitario: c/dipendente (dedotto in busta) · c/datore',s.fondoTot?`${fmt(s.fondoDip)} · ${fmt(s.fondoDat)}`:'nessuno')
+      +R('730/2025: acconti trattenuti (luglio / novembre)',s.acc1?`${fmt(s.acc1)} / ${fmt(s.acc2)}`:'nessun 730')
+      +R('Aliquota add. comunale (2024, 2025, 2026)',fmt(s.aliqCom)+'%')+R('Imponibile fiscale 2024',fmt0(s.red24))
+      +R('TFR maturato al 31/12/2025, non erogato',fmt(s.tfrMat))+R('Imposta sostitutiva rivalutazioni TFR versata',fmt(s.impSostTFR))
+      +R('Matricola INPS · PAT INAIL',`${s.matricola} · ${s.pat}`);
+  }
   document.getElementById('cuScn').innerHTML=`
-    <div class="anag"><div class="top"><span class="badge">${s.ccnl}</span><span class="badge q">${s.q} · ${s.liv}</span></div>
-      <div class="row">
-        <div><span class="k">Retrib. contrattuale mens.</span><span class="v">${fmt(s.lordo)}</span></div>
-        <div><span class="k">Mensilit&agrave;</span><span class="v">${s.mens}</span></div>
-        <div><span class="k">Retribuzione lorda annua</span><span class="v">${fmt(s.lordoA)}</span></div>
-        <div><span class="k">Aliquota INPS c/dip</span><span class="v">${fmt(s.aliq)}%</span></div>
-        <div><span class="k">Aliquota add. regionale</span><span class="v">${fmt(s.aliqReg)}%</span></div>
-        <div><span class="k">Aliquota add. comunale (2024, 2025 e 2026)</span><span class="v">${fmt(s.aliqCom)}%</span></div>
-        <div><span class="k">Imponibile fiscale 2024</span><span class="v">${fmt0(s.red24)}</span></div>
-        <div><span class="k">Periodo</span><span class="v">01/01 – 31/12/2025, tempo indet.</span></div>
-      </div></div>
-    <div class="note">Ipotesi: nessun familiare a carico, nessun onere, nessun altro reddito comunicato, conguaglio regolare. Comune che applica l'addizionale.</div>`;
+    ${s.titolo?`<div class="note" style="margin-bottom:8px"><b>${s.titolo}</b></div>`:''}
+    <div class="anag">${giv?'':`<div class="top"><span class="badge">${s.ccnl}</span><span class="badge q">${s.q} · ${s.liv}</span></div>`}<div class="row">${righe}</div></div>
+    <div class="k" style="font-size:11px;margin-top:4px">${MARCHE_TXT} (2025).</div>
+    <div class="note">${giv?(s.extraNote||''):'Ipotesi: nessun onere, nessun altro reddito, conguaglio regolare, domicilio fiscale in un comune che applica l\'addizionale.'}</div>`;
   buildFields('cuFields',CU_FIELDS);
   document.getElementById('cuBanner').className='banner';
+  const memo=document.getElementById('cuMemo');memo.innerHTML=CU_PROMEMORIA;memo.classList.add('hidden');
 }
 function cuCalc(k){const s=CU.scn,o=CU.sol;switch(k){
-  case 'punto1':return `${fmt(o.inps4)} − ${fmt(o.inps6)} (contributi) = ${fmt(o.punto1)}`;
+  case 'punto1':return s.tracciaId?`imponibile fiscale fornito = ${fmt(o.punto1)} (non quadra di 2,45 € con lordo − contributi: si usa il dato coerente con ritenute e detrazioni)`
+    :`${fmt(s.lordoA)} − ${fmt(s.contribA)} (INPS)${s.fondoDip?` − ${fmt(s.fondoDip)} (fondo c/dip)`:''} = ${fmt(o.punto1)}`;
   case 'giorni':return `rapporto per l'intero anno = 365`;
-  case 'p361':{const x=o.punto1;let t;if(x>50000)t=`28.000×23% + 22.000×35% + ${fmt(r2(x-50000))}×43%`;else if(x>28000)t=`28.000×23% + ${fmt(r2(x-28000))}×35%`;else t=`${fmt(x)}×23%`;return t+` = ${fmt(o.p361)}`;}
-  case 'p367':{const b65=add65(o.punto1);return `art. 13 su ${fmt0(Math.round(o.punto1))}: ${fmt(r2(detrBase(o.punto1)))}${b65?' + 65':''} = ${fmt(o.p367)}`;}
-  case 'p368':return o.p368>0?`reddito ${fmt0(Math.round(o.punto1))}: ${o.punto1<=32000?'1.000':'1.000 × (40.000 − RC)/8.000'} = ${fmt(o.p368)}`:`reddito oltre 40.000 → 0,00`;
-  case 'p374':return `${fmt(o.p367)} + ${fmt(o.p368)} = ${fmt(o.p374)}`;
-  case 'p375':return `${fmt(o.p361)} − ${fmt(o.p374)} = ${fmt(o.p375)}`;
-  case 'p21':return `con conguaglio regolare coincide con il punto 375 = ${fmt(o.p21)}`;
-  case 'p22':return `${fmt(o.punto1)} × ${fmt(s.aliqReg)}% = ${fmt(o.p22)}`;
-  case 'p26':return `${fmt0(s.red24)} × ${fmt(s.aliqCom)}% × 30% = ${fmt(o.p26)}`;
-  case 'p27':return `${fmt(o.punto1)} × ${fmt(s.aliqCom)}% = ${fmt(o.addComDov)}; − ${fmt(o.p26)} = ${fmt(o.p27)}`;
+  case 'p21':return `conguaglio regolare: coincide con il punto 375 = ${fmt(o.p21)}; gli acconti 730 vanno nei punti 121-122`;
+  case 'p22':return `${addRegMarcheTxt(o.punto1)} = ${fmt(o.p22)}`;
+  case 'p26':return s.p26dato!=null?`dato = ${fmt(o.p26)}`:`${fmt0(s.red24)} × ${fmt(s.aliqCom)}% × 30% = ${fmt(o.p26)}`;
+  case 'p27':return `${fmt(o.punto1)} × ${fmt(s.aliqCom)}% = ${fmt(o.addComDov)} − ${fmt(o.p26)} = ${fmt(o.p27)}`;
   case 'p29':return `${fmt(o.addComDov)} × 30% = ${fmt(o.p29)}`;
-  case 'inps4':return `retribuzione lorda annua = ${fmt(o.inps4)}`;
-  case 'inps6':return `${fmt(o.inps4)} × ${fmt(s.aliq)}% = ${fmt(o.inps6)}`;
-  case 'redRif':return `punti 1+2+3+4+5+13+652 = punto 1 = ${fmt(o.redRif)}`;
+  case 'p121':return o.p121?`primo acconto trattenuto a luglio = ${fmt(o.p121)}`:'nessun 730: 0';
+  case 'p122':return o.p122?`secondo acconto trattenuto a novembre = ${fmt(o.p122)}`:'nessun 730: 0';
+  case 'p361':{const x=o.punto1;let t;if(x>50000)t=`28.000×23% + 22.000×35% + ${fmt(r2(x-50000))}×43%`;else if(x>28000)t=`28.000×23% + ${fmt(r2(x-28000))}×35%`;else t=`${fmt(x)}×23%`;return t+` = ${fmt(o.p361)}`;}
+  case 'p362':{if(!s.coniuge)return 'nessun familiare a carico: 0';const x=o.punto1;let t;if(x<=15000)t=`800 − 110 × ${String(t4(x/15000)).replace('.',',')}`;else if(x<=40000)t='690';else t=`690 × (80.000 − ${fmt(x)})/40.000 = 690 × ${String(t4((80000-x)/40000)).replace('.',',')}`;const inc=r2(detrConiuge(x)-(x<=15000?800-110*t4(x/15000):x<=40000?690:690*t4((80000-x)/40000)));return `coniuge, 12 mesi: ${t}${inc?` + ${inc} (art. 12, c. 1, lett. b)`:''} = ${fmt(o.p362)}`;}
+  case 'p367':{const x=o.punto1,b65=add65(x);let t;if(x<=28000)t=`1.910 + 1.190 × ${String(t4((28000-x)/13000)).replace('.',',')}`;else if(x<=50000)t=`1.910 × ${String(t4((50000-x)/22000)).replace('.',',')}`;else t='0';return `${t}${b65?' + 65':''} = ${fmt(o.p367)}`;}
+  case 'p368':return o.p368>0?(o.punto1<=32000?`reddito tra 20.000 e 32.000: ${fmt(o.p368)}`:`1.000 × (40.000 − ${fmt(o.punto1)})/8.000 = ${fmt(o.p368)}`):`reddito oltre 40.000 → 0`;
+  case 'p374':return `${fmt(o.p362)} + ${fmt(o.p367)} + ${fmt(o.p368)} = ${fmt(o.p374)}`;
+  case 'p375':return `${fmt(o.p361)} − ${fmt(o.p374)} = ${fmt(o.p375)}`;
+  case 'p390':return `2: ${o.punto1>28000?'reddito oltre 28.000':'le detrazioni non superano l\'imposta lorda'}, trattamento non riconosciuto (sezione da compilare in presenza di redditi di lavoro dipendente)`;
+  case 'p441':return o.p441?`contributi al fondo con fini esclusivamente assistenziali, non concorrenti al reddito = ${fmt(o.p441)}; codice fiscale del fondo al punto 443`:'nessun fondo: 0';
+  case 'redRif':return `punti 1+2+3+4+5+13 (+652) = ${fmt(o.redRif)}`;
+  case 'p718':return '1: nel punto 1 ci sono redditi di lavoro dipendente; la spettanza effettiva si esprime nei punti 724 e 368';
+  case 'p719':return `reddito art. 49 TUIR compreso nel punto 1 = ${fmt(o.p719)}`;
+  case 'p721':return 'giorni di lavoro dipendente = 365';
+  case 'p724':return '2: somma esente non riconosciuta, reddito complessivo oltre 20.000';
+  case 'p801':return `0: il TFR maturato (${fmt(s.tfrMat)}) non è stato erogato; i punti 801-813 si compilano solo all'erogazione`;
+  case 'p920':return `imposta sostitutiva 17% sulla rivalutazione = ${fmt(o.p920)}: va indicata anche senza erogazione del TFR`;
+  case 'inps4':return `imponibile previdenziale annuo = ${fmt(o.inps4)}`;
+  case 'inps6':return s.tracciaId?`dato = ${fmt(o.inps6)}`:`${fmt(o.inps4)} × ${fmt(s.aliq)}% = ${fmt(o.inps6)}`;
 } return '';}
+const CU_PROMEMORIA='<b>Da riportare anche (non numerici):</b> punto 8 data di assunzione; punto 10 barrato (in forza al 31/12); prospetto familiari: C, codice fiscale del coniuge, 12 mesi; punto 443 codice fiscale del fondo sanitario; sezione INPS: punto 1 matricola, punto 2 barrato, punto 7 «Tutti»; sezione INAIL: punto 92 PAT, punto 95 codice comune. Domicilio fiscale all\'1/1/2025 e all\'1/1/2026 (punti 20-26).';
+
+/* ===== TRACCE REALI ITL ANCONA 2025, riparametrate ===== */
+function tracciaT1(){return {tracciaId:'Traccia n. 1 ITL Ancona 2025',titolo:'Traccia n. 1 — prova del 29/10/2025, riparametrata a settembre 2026 (parametri fiscali 2026)',
+  ccnl:'Terziario-Commercio (Confcommercio)',ccnlKey:'commercio',cnel:'H011',q:'Impiegato tempo pieno',liv:'3° livello',
+  elementi:[['Paga base',1413.47],['Contingenza',527.90],['Scatti di anzianità',197.55],['EDR',5.82],['Terzo elemento',2.07],['Superminimo',26.86]],
+  lordo:2173.67,orario:168,mens:14,aliq:9.46,anno:2026,meseIdx:8,mese:'settembre',ggMese:30,ggLavorativi:22,RC:26977.95,
+  mal:{dal:{d:8,dow:2},al:{d:14,dow:1},L:7,n26:6,nC:3,nD:3,nINPS:4,g:83.60,tratt:501.60,indINPS:169.08,lordizz:17.64,integr:252.18,garantito:438.90,car:100,dopo:75,dato:true},
+  regolaMal:REGOLA_MAL.commercio,n104:0,p104:0,permGiorno:2,permOre:8,festiv:0,straord:0,buonoU:8,ggPasto:16,contribFondo:2.00,cessione:0,
+  trasfGG:0,trasfU:0,fringe:0,fringeFigli:false,c730:530,tassoInail:0,rateDate:{reg:35.16,com:13.09,acc:6.77},noTfr:false,
+  extraNote:'Contributo Fondo Est c/dipendente 2,00 €; aliquota INPS 9,46% (9,19 + 0,27). La lordizzazione non si paga: serve a calcolare l\'integrazione.'};}
+function tracciaT3(){return {tracciaId:'Traccia n. 3 ITL Ancona 2025',titolo:'Traccia n. 3 — prova del 29/10/2025, riparametrata a luglio 2026 (parametri fiscali 2026)',
+  ccnl:'Calzature Industria',ccnlKey:'calzature',cnel:'D121',q:'Impiegata tempo pieno',liv:'3S livello',
+  elementi:[['Paga base',1884.61],['Scatti di anzianità',39.85],['Elemento riassorbibile',92.00]],
+  lordo:2016.46,orario:173,mens:null,aliq:9.49,anno:2026,meseIdx:6,mese:'luglio',ggMese:31,ggLavorativi:23,RC:23848.24,
+  mal:null,regolaMal:null,n104:3,p104:232.68,permGiorno:0,permOre:0,festiv:0,straord:0,buonoU:8,ggPasto:20,contribFondo:0,cessione:0,
+  trasfGG:0,trasfU:0,fringe:1500,fringeFigli:true,c730:0,tassoInail:0,rateDate:{reg:30.09,com:12.75,acc:6.56},noTfr:true,
+  extraNote:'Ulteriori detrazioni indicate dalla traccia: 84,93 € (= 1.000 × 31/365). Incoerenza della traccia: data di nascita 20/04/2000 e assunzione 02/01/2006.'};}
+function tracciaT2(){return {tracciaId:'Traccia n. 2 ITL Ancona 2025',titolo:'Traccia n. 2 (estratta) — prova del 29/10/2025, riparametrata: CU 2026 sui redditi 2025',
+  datore:'Alfa S.r.l. — P.IVA 01234567890',dip:'Rossi Marco — RSSMRC75A01H501Y',dataAss:'19/04/1990',anno:2025,
+  lordoA:44308.00,contribA:4204.84,impFiscA:40100.71,ritDate:9127.73,detrDate:{lav:859.31,fam:688.21},coniuge:true,aliqCom:0.8,
+  p26dato:95.52,saldoDato:225.29,acc26Dato:96.24,addRegDato:589.11,acc1:382.00,acc2:573.00,fondoTot:156.00,
+  tfrMat:96961.11,tfrAnte2001:13840.26,impSostTFR:363.91,matricola:'1234567890',pat:'2233445566',comuneInail:'A271 (Ancona)',
+  extraNote:'Le detrazioni familiari (688,21) corrispondono al coniuge a carico per 12 mesi. Lo scarto di 2,45 € tra lordo − contributi e imponibile fiscale non è spiegato dalla traccia.'};}
+function loadTraccia(id){
+  document.getElementById('teoriaBox').classList.add('hidden');
+  if(id==='T2'){showTab('cu');const s=tracciaT2();CU={scn:s,sol:solveCU(s)};renderCU();}
+  else{showTab('ced');const s=id==='T1'?tracciaT1():tracciaT3();CED={av:true,scn:s,sol:solveCed(s),fields:cedFields(s)};renderCedolino();}
+  resetTimer();applyMode();
+}
 
 /* ===== CONGUAGLIO ===== */
 function genRapporto(){
@@ -584,7 +786,7 @@ function genConguaglio(){
   let irpDov=r2(irpLA-detrA-cunA); if(irpDov<0)irpDov=0;
   const giaTratt=r2(irpTrattProgr+irpVersPrec);
   const cong=r2(irpDov-giaTratt);
-  const addReg=r2(tot*aliqReg/100), addCom=r2(tot*aliqCom/100);
+  const addReg=addRegMarche(tot), addCom=r2(tot*aliqCom/100);
   return {scn:{bA,bP,impProgr,dic,redPrec,ggPrec,ggAtt,ggTot,irpTrattProgr,irpVersPrec,aliqReg,aliqCom},
     sol:{tot,irpLA,detrA,cunA,irpDov,giaTratt,cong,addReg,addCom}};
 }
@@ -596,7 +798,7 @@ const CONG_FIELDS=[
   {k:'irpDov',l:'IRPEF netta dovuta annua',h:'lorda &minus; detrazioni',cat:'tax'},
   {k:'giaTratt',l:'IRPEF gi&agrave; trattenuta',h:'attuale + versata da CU prec.',cat:'tax'},
   {k:'cong',l:'Conguaglio IRPEF (+ debito / &minus; credito)',h:'dovuta &minus; gi&agrave; trattenuta',cat:'add'},
-  {k:'addReg',l:'Addizionale regionale dovuta',h:'cumulato &times; aliquota reg.',cat:'add'},
+  {k:'addReg',l:'Addizionale regionale dovuta',h:'Marche, scaglioni sul cumulato',cat:'add'},
   {k:'addCom',l:'Addizionale comunale dovuta',h:'cumulato &times; aliquota com.',cat:'add'}
 ];
 function renderCong(){
@@ -618,7 +820,7 @@ function renderCong(){
       </div></div>
     <h4>Aliquote addizionali (dati)</h4>
     <div class="row">
-      <div><span class="k">Regionale</span><span class="v">${fmt(s.aliqReg)}%</span></div>
+      <div><span class="k">Regionale</span><span class="v" style="font-size:11px">Marche a scaglioni (2025; per il 2026 da verificare)</span></div>
       <div><span class="k">Comunale</span><span class="v">${fmt(s.aliqCom)}%</span></div>
     </div>`;
   buildFields('congFields',CONG_FIELDS);
@@ -632,7 +834,7 @@ function congCalc(k){const s=CONG.scn,o=CONG.sol;switch(k){
   case 'irpDov':return `${fmt(o.irpLA)} − ${fmt(o.detrA)} − ${fmt(o.cunA)} = ${fmt(o.irpDov)}`;
   case 'giaTratt':return `${fmt(s.irpTrattProgr)} (attuale) + ${fmt(s.irpVersPrec)} (CU prec.) = ${fmt(o.giaTratt)}`;
   case 'cong':return `${fmt(o.irpDov)} − ${fmt(o.giaTratt)} = ${fmt(o.cong)} → ${o.cong>=0?'a DEBITO':'a CREDITO'}`;
-  case 'addReg':return `${fmt(o.tot)} × ${fmt(s.aliqReg)}% = ${fmt(o.addReg)}`;
+  case 'addReg':return `${addRegMarcheTxt(o.tot)} = ${fmt(o.addReg)}`;
   case 'addCom':return `${fmt(o.tot)} × ${fmt(s.aliqCom)}% = ${fmt(o.addCom)}`;
 } return '';}
 
@@ -708,9 +910,9 @@ function showTab(name){
 }
 function setMode(m){MODE=m;document.querySelectorAll('#modeWrap .diffbtn').forEach(x=>x.classList.toggle('active',x.dataset.mode===m));applyMode();}
 function estraiProva(){
-  const r=Math.random(); const t=r<0.50?'cu':r<0.65?'ced':r<0.80?'cong':'fatt';
+  const r=Math.random(); const t=r<0.45?'cu':r<0.80?'ced':r<0.95?'fatt':'cong';
   showTab(t);
-  if(t==='ced')newCed(); else if(t==='cu')newCU(); else if(t==='cong')newCong(); else newFatt();
+  if(t==='ced'){const sv={...EVENTI};for(const e in EVENTI)EVENTI[e]=chance(PROB_EVENTI[e]);newCed(true);Object.assign(EVENTI,sv);} else if(t==='cu')newCU(); else if(t==='cong')newCong(); else newFatt();
   setMode('exam');
   const it=pick(TEORIA[t]); const box=document.getElementById('teoriaBox');
   const nome={cu:'Certificazione Unica',ced:'Busta paga',cong:'Conguaglio',fatt:'Fattura del CdL'}[t];
@@ -734,7 +936,7 @@ function check(fields,sol,calc,bannerId){
   fields.forEach(f=>{
     const inp=document.querySelector(`#tab-${TAB} [data-in="${f.k}"]`);
     const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
-    const correct=sol[f.k], val=parseNum(inp.value);
+    const correct=sol[f.k]; let val=parseNum(inp.value); if(isNaN(val)&&correct===0)val=0;
     const cat=f.cat||'tax';
     const norma=NORMA[cat]?`<span class="norma">Norma: ${NORMA[cat]}</span>`:'';
     inp.classList.remove('ok','warn','err');
@@ -779,16 +981,16 @@ function applyMode(){
   document.querySelectorAll('.act.ghost.t3').forEach(btn=>btn.style.display=MODE==='exam'?'none':'inline-block');
 }
 
-function newCed(){CED=genCedolino();renderCedolino();resetTimer();applyMode();}
-function newCU(){CU=genCU();renderCU();resetTimer();applyMode();}
+function newCed(forceAv){const s=genCedolino(forceAv);CED={av:!!(forceAv||DIFF==='avanzato'),scn:s,sol:solveCed(s),fields:cedFields(s)};renderCedolino();resetTimer();applyMode();}
+function newCU(){const s=genCU();CU={scn:s,sol:solveCU(s)};renderCU();resetTimer();applyMode();}
 function newCong(){CONG=genConguaglio();renderCong();resetTimer();applyMode();}
 function newFatt(){FATT=genFatt();renderFatt();resetTimer();applyMode();}
 
-document.getElementById('cedCheck').onclick=()=>check(CED_FIELDS,CED.sol,cedCalc,'cedBanner');
-document.getElementById('cedSol').onclick=()=>reveal(CED_FIELDS,cedCalc);
-document.getElementById('cedNew').onclick=newCed;
-document.getElementById('cuCheck').onclick=()=>check(CU_FIELDS,CU.sol,cuCalc,'cuBanner');
-document.getElementById('cuSol').onclick=()=>reveal(CU_FIELDS,cuCalc);
+document.getElementById('cedCheck').onclick=()=>check(CED.fields,CED.sol,cedCalc,'cedBanner');
+document.getElementById('cedSol').onclick=()=>reveal(CED.fields,cedCalc);
+document.getElementById('cedNew').onclick=()=>newCed();
+document.getElementById('cuCheck').onclick=()=>{check(CU_FIELDS,CU.sol,cuCalc,'cuBanner');document.getElementById('cuMemo').classList.remove('hidden');};
+document.getElementById('cuSol').onclick=()=>{reveal(CU_FIELDS,cuCalc);document.getElementById('cuMemo').classList.remove('hidden');};
 document.getElementById('cuNew').onclick=newCU;
 document.getElementById('congCheck').onclick=()=>check(CONG_FIELDS,CONG.sol,congCalc,'congBanner');
 document.getElementById('congSol').onclick=()=>reveal(CONG_FIELDS,congCalc);
@@ -797,6 +999,7 @@ document.getElementById('fattCheck').onclick=()=>check(FATT_FIELDS,FATT.sol,fatt
 document.getElementById('fattSol').onclick=()=>reveal(FATT_FIELDS,fattCalc);
 document.getElementById('fattNew').onclick=newFatt;
 document.getElementById('estraiBtn').onclick=estraiProva;
+document.querySelectorAll('[data-traccia]').forEach(b=>b.onclick=()=>loadTraccia(b.dataset.traccia));
 
 document.getElementById('timerStart').onclick=startTimer;
 document.getElementById('timerStop').onclick=stopTimer;
@@ -822,7 +1025,7 @@ document.querySelectorAll('#eventiWrap input[data-ev]').forEach(cb=>cb.onchange=
   EVENTI[cb.dataset.ev]=cb.checked; newCed();
 });
 document.getElementById('evRandom').onclick=()=>{
-  const probs={malattia:0.55,festiv:0.5,straord:0.45,buoni:0.5,fondo:0.5,cessione:0.4};
+  const probs=PROB_EVENTI;
   document.querySelectorAll('#eventiWrap input[data-ev]').forEach(cb=>{
     const on=chance(probs[cb.dataset.ev]); cb.checked=on; EVENTI[cb.dataset.ev]=on;
   });
