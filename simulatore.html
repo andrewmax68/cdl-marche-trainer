@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6.3</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6.4</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -275,7 +275,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.6.3 · 13 ottobre 2026 · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.6.4 · 13 ottobre 2026 · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -502,6 +502,8 @@ function cedFields(s){
   F.push({k:'tiM',l:'Trattamento integrativo del mese (D.L. 3/2020)',h:'reddito fino a 15.000 e imposta lorda annua &gt; detrazione &minus; 75: 1.200 &times; giorni/365; altrimenti 0',cat:'tax'});
   F.push({k:'seM',l:'Somma esente del cuneo del mese (L. 207/2024, c. 4)',h:'reddito fino a 20.000: imponibile fiscale del mese &times; 7,1 / 5,3 / 4,8% (una sola percentuale); altrimenti 0',cat:'tax'});
   F.push({k:'addTot',l:'Rate addizionali trattenute nel mese',h:'regionale 2025 + saldo comunale 2025 + acconto comunale 2026',cat:'add'});
+  if(s.c730>0)F.push({k:'rimb730',l:'Rimborso IRPEF da 730-4 (si aggiunge al netto)',h:'importo del 730-4; non è reddito: niente contributi né IRPEF (art. 19 D.M. 164/1999)',cat:'add'});
+  if(s.c730<0)F.push({k:'deb730',l:'Debito IRPEF da 730-4 (trattenuto dal netto)',h:'importo del 730-4; non è reddito: niente contributi né IRPEF (art. 19 D.M. 164/1999)',cat:'add'});
   F.push({k:'netto',l:'Netto in busta',h:'competenze in denaro (+ rimborso 730) &minus; trattenute (contributi, IRPEF, addizionali, debito 730, altre) + trattamento integrativo + somma esente',cat:'add'});
   if(!s.noTfr)F.push({k:'tfr',l:'Quota TFR netta del mese',h:'retribuzione &times; mensilit&agrave; / 13,5 / 12 &minus; 0,50% dell\'imponibile',cat:'add'});
   if(s.tassoInail)F.push({k:'inail',l:'Premio INAIL c/ditta (stima mensile)',h:'imponibile &times; tasso',cat:'add'});
@@ -602,6 +604,8 @@ function cedCalc(k){const s=CED.scn,o=CED.sol,m=s.mal;const s1=o.s1m,s2=50000/12
   case 'irpN':return `${fmt(o.irpL)} − ${fmt(o.detrM)} − ${fmt(o.cunM)} = ${fmt(o.irpN)}`;
   case 'addTot':return s.rateDate?`rate date: ${fmt(s.rateDate.reg)} + ${fmt(s.rateDate.com)} + ${fmt(s.rateDate.acc)} = ${fmt(o.addTot)}`
     :(o.addReg25===0&&o.addCom25===0)?'IRPEF 2025 non dovuta (imposta netta zero) → nessuna addizionale 2025 da trattenere: 0,00':`regionale ${addRegMarcheTxt(s.red25)} = ${fmt(o.addReg25)} / 11 = ${fmt(o.rataReg)}; comunale ${fmt0(s.red25)} × ${fmt(s.arCom)}% = ${fmt(o.addCom25)} − acconto ${fmt(s.accCom25)} = saldo ${fmt(o.saldoCom25)} / 11 = ${fmt(o.rataCom)}; acconto 2026 ${fmt(o.accCom26)} / 9 = ${fmt(o.rataAcc)}${o.rataAcc?'':' (solo da marzo)'}; totale ${fmt(o.addTot)}`;
+  case 'rimb730':return `dato del 730-4: + ${fmt(o.rimb730)} al netto; il datore lo recupera versando meno ritenute con l'F24 del 16 del mese dopo`;
+  case 'deb730':return `dato del 730-4: − ${fmt(o.deb730)} dal netto; il datore lo versa all'Erario con l'F24`;
   case 'netto':return `competenze in denaro ${fmt(o.compCash)}${o.rimb730?` (incl. rimborso 730 ${fmt(o.rimb730)})`:''}${o.tiM?` + trattamento integrativo ${fmt(o.tiM)}`:''}${o.seM?` + somma esente ${fmt(o.seM)}`:''} − trattenute ${fmt(o.tratTot)} [contributi ${fmt(o.contributi)}${s.contribFondo?` + fondo ${fmt(s.contribFondo)}`:''} + IRPEF ${fmt(o.irpN)} + addizionali ${fmt(o.addTot)}${o.deb730?` + 730 ${fmt(o.deb730)}`:''}${s.cessione?` + cessione ${fmt(s.cessione)}`:''}] = ${fmt(o.netto)}`;
   case 'tfr':return `${fmt(s.lordo)} × ${s.mens} / 13,5 / 12 = ${fmt(o.tfrLordo)} − 0,50% × ${fmt0(o.impPrevArr)} = ${fmt(o.tfr)} (art. 2120 c.c.; in malattia base piena)`;
   case 'inail':return `${fmt(o.impPrev)} × ${s.tassoInail}/1000 = ${fmt(o.inail)}`;
@@ -627,7 +631,9 @@ const CED_WHY={
   addTot:'Le addizionali dell\'anno precedente si trattengono a rate: regionale e saldo comunale in max 11 rate, acconto comunale in max 9 rate da marzo.',
   netto:'Si sommano le somme pagate in denaro (non buoni pasto né benefit in natura) e si tolgono tutte le trattenute.',
   tfr:'Quota annua = retribuzione annua / 13,5 (art. 2120 c.c.), meno lo 0,50% dell\'imponibile previdenziale che il datore versa all\'INPS.',
-  inail:'Il premio INAIL è a carico del datore: imponibile × tasso della voce di tariffa, per mille.'
+  rimb730:'Il 730-4 si applica dalla retribuzione del mese successivo al ricevimento (di regola luglio): il rimborso non è reddito, si aggiunge solo al netto; il datore lo anticipa e lo recupera riducendo le ritenute da versare.',
+  deb730:'Il debito da 730-4 (saldo e primo acconto a luglio, secondo acconto a novembre) non è reddito: si toglie solo dal netto e il datore lo versa all\'Erario.',
+  inail:'Il premio INAIL è a carico del datore: imponibile × tasso della voce di tariffa, per mille. Non è una trattenuta e non tocca il netto: si paga con l\'autoliquidazione annuale.'
 };
 function cedCalcWhy(k){const t=cedCalc(k),w=CED_WHY[k];return w?`${t}<br><span style="font-family:inherit;opacity:.85">Perché: ${w}</span>`:t;}
 
