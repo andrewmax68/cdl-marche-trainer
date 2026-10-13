@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6.5</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6.6</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -175,7 +175,7 @@
       <option value="cong">Conguaglio</option>
     </select>
     <button class="act primary" id="estraiBtn">&#127922; Estrai prova d'esame</button>
-    <span class="mono" style="font-size:10.5px;color:var(--ink-soft)">Scegli il tipo oppure «Casuale» (CU 45% &middot; cedolino 35% &middot; fattura 15% &middot; conguaglio 5%). Attiva la modalit&agrave; Esame, la parte teorica e il cronometro.</span>
+    <span class="mono" style="font-size:10.5px;color:var(--ink-soft)">Scegli il tipo oppure «Casuale» (cedolino 40% &middot; CU 35% &middot; conguaglio 15% &middot; fattura 10%: stima dalle 6 tracce di Ancona 2024-2025, cioè 3 cedolini, 2 CU estratte, 1 conguaglio di dicembre, più l'indicazione informale sulla fattura). Attiva la modalit&agrave; Esame, la parte teorica e il cronometro.</span>
   </div>
   <div class="bar" style="gap:8px;align-items:center;flex-wrap:wrap">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">Tracce reali ITL Ancona 2025 (riparametrate)</span>
@@ -283,7 +283,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.6.5 · 13 ottobre 2026 · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -369,7 +369,7 @@ function buildLivello(C){
   return {ccnl:C.nome,ccnlKey:C.key,cnel:C.cnel,q:L.q,liv:L.label,pagaBase,conting,nScatti,scattoU,scattiTot,lordo,aliq,inailTasso,orario:C.orario,mens:C.mens};
 }
 function genLivello(){return buildLivello(pickCCNL());}
-const PT_PROB=0.4, PT_PERC=[50,60,70,75,80];
+const PT_PROB=0.15, PT_PERC=[50,60,70,75,80];
 function applyPT(b,pt){const f=pt/100;const x={...b};x.pagaBase=r2(b.pagaBase*f);x.conting=r2(b.conting*f);x.scattiTot=r2(b.scattiTot*f);x.lordo=r2(x.pagaBase+x.conting+x.scattiTot);x.pt=pt;return x;}
 
 const PROB_EVENTI={malattia:0.5,p104:0.35,permesso:0.3,festiv:0.3,straord:0.35,trasferte:0.3,fringe:0.35,c730:0.3,buoni:0.3,fondo:0.45,cessione:0.15};
@@ -1036,7 +1036,7 @@ function setMode(m){MODE=m;document.querySelectorAll('#modeWrap .diffbtn').forEa
 function estraiProva(){
   const sel=document.getElementById('estraiTipo'); const scelta=sel?sel.value:'rand';
   try{localStorage.setItem('cdl_estraiTipo',scelta);}catch(e){}
-  const r=Math.random(); const t=scelta!=='rand'?scelta:(r<0.45?'cu':r<0.80?'ced':r<0.95?'fatt':'cong');
+  const r=Math.random(); const t=scelta!=='rand'?scelta:(r<0.40?'ced':r<0.75?'cu':r<0.90?'cong':'fatt');
   showTab(t);
   if(t==='ced'){const sv={...EVENTI};for(const e in EVENTI)EVENTI[e]=chance(PROB_EVENTI[e]);newCed(true);Object.assign(EVENTI,sv);} else if(t==='cu')newCU(); else if(t==='cong')newCong(); else newFatt();
   setMode('exam');
