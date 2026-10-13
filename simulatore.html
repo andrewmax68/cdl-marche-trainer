@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6.4</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6.5</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -166,8 +166,16 @@
   </div>
 
   <div class="bar" style="gap:10px;align-items:center;flex-wrap:wrap">
+    <label for="estraiTipo" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">Tipo di prova</label>
+    <select id="estraiTipo" style="font:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--line,#cfd6e0);border-radius:8px;background:#fff;color:inherit">
+      <option value="rand">Casuale</option>
+      <option value="ced">Busta paga</option>
+      <option value="cu">Certificazione Unica</option>
+      <option value="fatt">Fattura del CdL</option>
+      <option value="cong">Conguaglio</option>
+    </select>
     <button class="act primary" id="estraiBtn">&#127922; Estrai prova d'esame</button>
-    <span class="mono" style="font-size:10.5px;color:var(--ink-soft)">Pesi allineati alle tracce di Ancona 2024-2025: CU 45% &middot; cedolino 35% &middot; fattura 15% &middot; conguaglio 5%. Attiva la modalit&agrave; Esame e il cronometro.</span>
+    <span class="mono" style="font-size:10.5px;color:var(--ink-soft)">Scegli il tipo oppure «Casuale» (CU 45% &middot; cedolino 35% &middot; fattura 15% &middot; conguaglio 5%). Attiva la modalit&agrave; Esame, la parte teorica e il cronometro.</span>
   </div>
   <div class="bar" style="gap:8px;align-items:center;flex-wrap:wrap">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)">Tracce reali ITL Ancona 2025 (riparametrate)</span>
@@ -275,7 +283,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.6.4 · 13 ottobre 2026 · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.6.5 · 13 ottobre 2026 · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -1026,7 +1034,9 @@ function showTab(name){
 }
 function setMode(m){MODE=m;document.querySelectorAll('#modeWrap .diffbtn').forEach(x=>x.classList.toggle('active',x.dataset.mode===m));applyMode();}
 function estraiProva(){
-  const r=Math.random(); const t=r<0.45?'cu':r<0.80?'ced':r<0.95?'fatt':'cong';
+  const sel=document.getElementById('estraiTipo'); const scelta=sel?sel.value:'rand';
+  try{localStorage.setItem('cdl_estraiTipo',scelta);}catch(e){}
+  const r=Math.random(); const t=scelta!=='rand'?scelta:(r<0.45?'cu':r<0.80?'ced':r<0.95?'fatt':'cong');
   showTab(t);
   if(t==='ced'){const sv={...EVENTI};for(const e in EVENTI)EVENTI[e]=chance(PROB_EVENTI[e]);newCed(true);Object.assign(EVENTI,sv);} else if(t==='cu')newCU(); else if(t==='cong')newCong(); else newFatt();
   setMode('exam');
@@ -1117,6 +1127,7 @@ document.getElementById('fattCheck').onclick=()=>check(FATT_FIELDS,FATT.sol,fatt
 document.getElementById('fattSol').onclick=()=>reveal(FATT_FIELDS,fattCalc);
 document.getElementById('fattNew').onclick=newFatt;
 document.getElementById('estraiBtn').onclick=estraiProva;
+try{const v=localStorage.getItem('cdl_estraiTipo');if(v)document.getElementById('estraiTipo').value=v;}catch(e){}
 document.querySelectorAll('[data-traccia]').forEach(b=>b.onclick=()=>loadTraccia(b.dataset.traccia));
 
 document.getElementById('timerStart').onclick=startTimer;
