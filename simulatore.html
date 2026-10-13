@@ -502,7 +502,7 @@ function cedFields(s){
   F.push({k:'tiM',l:'Trattamento integrativo del mese (D.L. 3/2020)',h:'reddito fino a 15.000 e imposta lorda annua &gt; detrazione &minus; 75: 1.200 &times; giorni/365; altrimenti 0',cat:'tax'});
   F.push({k:'seM',l:'Somma esente del cuneo del mese (L. 207/2024, c. 4)',h:'reddito fino a 20.000: imponibile fiscale del mese &times; 7,1 / 5,3 / 4,8% (una sola percentuale); altrimenti 0',cat:'tax'});
   F.push({k:'addTot',l:'Rate addizionali trattenute nel mese',h:'regionale 2025 + saldo comunale 2025 + acconto comunale 2026',cat:'add'});
-  F.push({k:'netto',l:'Netto in busta',h:'competenze in denaro &minus; trattenute + trattamento integrativo + somma esente',cat:'add'});
+  F.push({k:'netto',l:'Netto in busta',h:'competenze in denaro (+ rimborso 730) &minus; trattenute (contributi, IRPEF, addizionali, debito 730, altre) + trattamento integrativo + somma esente',cat:'add'});
   if(!s.noTfr)F.push({k:'tfr',l:'Quota TFR netta del mese',h:'retribuzione &times; mensilit&agrave; / 13,5 / 12 &minus; 0,50% dell\'imponibile',cat:'add'});
   if(s.tassoInail)F.push({k:'inail',l:'Premio INAIL c/ditta (stima mensile)',h:'imponibile &times; tasso',cat:'add'});
   return F;
