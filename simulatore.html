@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.5</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -216,7 +216,7 @@
         <button class="act ghost" id="cuNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="cuBanner"></div>
-      <div class="note">Punti riscontrati sulle istruzioni CU 2026 (periodo d'imposta 2025): 1, 6, 21, 22, 26, 27, 29, 121, 122, 361, 362, 367, 368, 374, 375, 390, 441, 449, 718, 719, 721, 724, 801, 920; sezione INPS, punti 4 e 6. Fuori perimetro: redditi fino a 20.000 (somma esente) e trattamento integrativo spettante, oneri, figli, altri redditi.</div>
+      <div class="note">Punti riscontrati sulle istruzioni CU 2026 (periodo d'imposta 2025): 1, 6, 21, 22, 26, 27, 29, 121, 122, 361, 362, 367, 368, 374, 375, 390, 391, 441, 449, 718, 719, 721, 724, 725, 801, 920; sezione INPS, punti 4 e 6. Dalla Beta 1.6 anche redditi bassi (part-time): trattamento integrativo (390-391) e somma esente (724-725). Fuori perimetro: oneri, figli, altri redditi.</div>
       <div class="note hidden" id="cuMemo"></div>
     </section>
   </div>
@@ -258,8 +258,8 @@
   </div>
 
   <div class="note" style="border-color:var(--t4);">
-    <b>Dati congrui.</b> Tre CCNL selezionabili: <b>Terziario-Commercio</b> (Quadri + 1°&ndash;5°, 14 mensilit&agrave;), <b>Metalmeccanica Industria</b> (9 livelli D1&ndash;A1, 13 mensilit&agrave;), <b>Calzature Industria</b> (8 livelli + Super, 13 mensilit&agrave;). <b>La logica di calcolo &egrave; identica per ogni CCNL</b>: cambia solo il livello dati (mensilit&agrave;, inquadramento, profilo INAIL, aliquota comparto), che all'esame la traccia fornisce comunque. La retribuzione &egrave; legata a <b>qualifica e livello</b> (operaio &lt; impiegato &lt; quadro), la contingenza ex-scala mobile &egrave; congelata (~&euro; 520&ndash;540, simile tra i comparti), l'aliquota INPS &egrave; quella del comparto (9,19 / 9,46 / 9,49%), il tasso INAIL segue il profilo (basso per impiegati/quadri, alto per operai di produzione), le voci di malattia ricompongono il lordo, la cessione del quinto non supera 1/5 del netto. Restano dati d'esame: aliquote, addizionali, tasso INAIL. Fuori perimetro: part-time, ratei 13&ordf;/14&ordf;, rivalutazione TFR e quota ante-2001, e i redditi sotto &euro; 20.000 (dove il cuneo &egrave; somma esente, non detrazione).
-    <br><br><b>Parametri 2026 verificati su fonte:</b> IRPEF 23% / 33% / 43% (2&deg; scaglione ridotto dal 35 al 33% &mdash; L. 199/2025) &middot; detrazione lavoro dip. &euro; 1.955 + &euro; 65 (25&ndash;35k, non ragguagliato) &middot; cuneo strutturale (detr. &euro; 1.000 tra 20 e 32k, azzerata a 40k) &middot; buoni pasto elettronici esenti fino a <b>&euro; 10</b> (soglia 2026) &middot; fringe benefit &euro; 1.000 / &euro; 2.000 con figli (2025&ndash;2027).
+    <b>Dati congrui.</b> Tre CCNL selezionabili: <b>Terziario-Commercio</b> (Quadri + 1°&ndash;5°, 14 mensilit&agrave;), <b>Metalmeccanica Industria</b> (9 livelli D1&ndash;A1, 13 mensilit&agrave;), <b>Calzature Industria</b> (8 livelli + Super, 13 mensilit&agrave;). <b>La logica di calcolo &egrave; identica per ogni CCNL</b>: cambia solo il livello dati (mensilit&agrave;, inquadramento, profilo INAIL, aliquota comparto), che all'esame la traccia fornisce comunque. La retribuzione &egrave; legata a <b>qualifica e livello</b> (operaio &lt; impiegato &lt; quadro), la contingenza ex-scala mobile &egrave; congelata (~&euro; 520&ndash;540, simile tra i comparti), l'aliquota INPS &egrave; quella del comparto (9,19 / 9,46 / 9,49%), il tasso INAIL segue il profilo (basso per impiegati/quadri, alto per operai di produzione), le voci di malattia ricompongono il lordo, la cessione del quinto non supera 1/5 del netto. Restano dati d'esame: aliquote, addizionali, tasso INAIL. Dalla Beta 1.6 il generatore propone anche rapporti <b>part-time</b> (50-80%) con redditi bassi: si calcolano <b>trattamento integrativo</b> (D.L. 3/2020) e <b>somma esente</b> del cuneo (L. 207/2024, c. 4). Fuori perimetro: ratei 13&ordf;/14&ordf;, rivalutazione TFR e quota ante-2001.
+    <br><br><b>Parametri 2026 verificati su fonte:</b> IRPEF 23% / 33% / 43% (2&deg; scaglione ridotto dal 35 al 33% &mdash; L. 199/2025) &middot; detrazione lavoro dip. &euro; 1.955 + &euro; 65 (25&ndash;35k, non ragguagliato) &middot; cuneo strutturale (somma esente 7,1 / 5,3 / 4,8% fino a 20k; detr. &euro; 1.000 tra 20 e 32k, azzerata a 40k) &middot; trattamento integrativo &euro; 1.200 fino a 15k (imposta lorda &gt; detrazione &minus; 75) &middot; buoni pasto elettronici esenti fino a <b>&euro; 10</b> (soglia 2026) &middot; fringe benefit &euro; 1.000 / &euro; 2.000 con figli (2025&ndash;2027).
   </div>
 
   <details class="note" style="border-color:var(--t3);">
@@ -268,14 +268,14 @@
       <b>VERIFICATO</b> (parametro riscontrato su fonte 2026): scaglioni IRPEF 23/33/43% con soglie 28k/50k; curva detrazione art. 13 TUIR (1.955; 1.910+1.190×(28k−RC)/13k; 1.910×(50k−RC)/22k; 0 oltre 50k); +65 (art. 13, c. 1.1, TUIR) <b>non ragguagliato ai giorni</b> (circ. AdE 4/E/2022); addizionali in rate sul reddito dell'anno precedente (saldo max 11 rate gennaio&ndash;novembre, acconto comunale 30% max 9 rate marzo&ndash;novembre); punti CU sulle istruzioni 2026; fattura: integrativo ENPACL 4%, IVA 22%, ritenuta 20% sul solo onorario, bollo 2 &euro; oltre 77,47 &euro;; cuneo L. 207/2024 (detr. 1.000 tra 20-32k, décalage 32-40k); soglia 1% IVS aggiuntivo &euro; 4.685/mese (circ. INPS 6/2026); buoni pasto elettronici esenti fino a &euro; 10; indennità INPS malattia esclusa dal previdenziale e inclusa nel fiscale.
       <br><br><b>CU (redditi 2025):</b> il tab CU applica il <b>2&deg; scaglione al 35%</b> (aliquota vigente sui redditi 2025, ante riduzione a 33% della L. 199/2025), coerente con l'etichetta &laquo;periodo 2025&raquo; e con la CU 2026.
       <br><br><b>SEMPLIFICATO</b> (approssimazione didattica dichiarata): <b>indennità di malattia</b> calcolata su retribuzione giornaliera con divisore <b>/26</b> anziché sulla RMG del mese precedente con divisore 30 (sovrastima ~15%; all'esame il divisore 30 è fornito dalla traccia); <b>base TFR</b> ex art. 2120 c.c. approssimata alla retribuzione contrattuale (retrib./13,5), mentre lo <b>0,50% ex L. 297/82</b> è correttamente calcolato sull'imponibile previdenziale; detrazioni mensili ragguagliate a giorni di calendario del mese.
-      <br><br><b>FUORI PERIMETRO</b> (non modellato, mai generato dalle tracce): contributo IVS 1% nella CU 2025 (generatore limitato a retribuzioni annue &le; &euro; 54.000); conguaglio da 730 e TFR in CU; redditi &le; &euro; 20.000 (dove il cuneo opera come somma integrativa esente, non come detrazione — confermato dal riscontro su cedolini reali part-time); massimale/minimale contributivo; trattamento integrativo ex DL 3/2020; imposta sostitutiva su detassazione premi/incrementi 2026; part-time; ratei 13&ordf;/14&ordf;; rivalutazione TFR e quota ante-2001 a tassazione separata; CCNL diversi dai tre generati.
+      <br><br><b>FUORI PERIMETRO</b> (non modellato, mai generato dalle tracce): contributo IVS 1% nella CU 2025 (generatore limitato a retribuzioni annue &le; &euro; 54.000); conguaglio da 730 e TFR in CU; massimale/minimale contributivo; imposta sostitutiva su detassazione premi/incrementi 2026; straordinario nel part-time (lavoro supplementare); ratei 13&ordf;/14&ordf;; rivalutazione TFR e quota ante-2001 a tassazione separata; CCNL diversi dai tre generati.
       <br><br><b>Ente bilaterale e FIS/CIGS:</b> anche nei tre CCNL supportati, questi contributi (specifici di settore, con nome, importo e regole propri del singolo CCNL) <b>non sono scomposti</b> come voci separate: sono compresi nell'aliquota INPS c/dipendente aggregata (9,19/9,46/9,49%). Nella realt&agrave; compaiono come righe distinte in busta (es. "Ente bilat." e "Ritenuta FIS/Sostegno reddito"), con importi non ricavabili dall'aliquota unica qui utilizzata — segnalato da un formatore CdL in fase di revisione.
     </div>
   </details>
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.5 · 7 ottobre 2026 · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.6 · 13 ottobre 2026 · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -301,6 +301,13 @@ function detrBase(RC){let b;if(RC<=15000)b=1955;else if(RC<=28000)b=1910+1190*t4
 function add65(RC){return (RC>25000&&RC<=35000)?65:0;}   // art. 13, c. 1.1, TUIR: +65 NON ragguagliato ai giorni (circ. AdE 4/E/2022)
 function detrLavDip(RC){return detrBase(RC)+add65(RC);}
 function cuneo(RC){if(RC<=20000)return{tipo:'esente',imp:0};if(RC<=32000)return{tipo:'detr',imp:1000};if(RC<=40000)return{tipo:'detr',imp:1000*(40000-RC)/8000};return{tipo:'detr',imp:0};}
+// Trattamento integrativo (art. 1 D.L. 3/2020, Codice del Lavoro p. 849) e somma esente del cuneo (L. 207/2024, c. 4-5).
+// tiAnnuo: fino a 15.000 spetta 1.200 se imposta lorda > detrazione art. 13 - 75; tra 15.000 e 28.000 solo se detrazioni (artt. 12 e 13, c. 1) > imposta lorda, per la differenza (max 1.200).
+function tiAnnuo(RC,lorda,detrFam){detrFam=detrFam||0;
+  if(RC<=15000)return lorda>(detrBase(RC)-75)?1200:0;
+  if(RC<=28000){const d=detrBase(RC)+detrFam;return d>lorda?Math.min(1200,r2(d-lorda)):0;}
+  return 0;}
+function percSE(redLD){return redLD<=8500?7.1:(redLD<=15000?5.3:4.8);}   // una sola percentuale su tutto il reddito di lavoro dipendente
 function irpefLorda(imp,s1,s2,a2){a2=(a2===undefined?0.33:a2);let t=0,x=imp;if(x>s2){t+=(x-s2)*0.43;x=s2;}if(x>s1){t+=(x-s1)*a2;x=s1;}t+=x*0.23;return t;}
 const MESI=[['gennaio',31],['febbraio',28],['marzo',31],['aprile',30],['maggio',31],['giugno',30],['luglio',31],['settembre',30],['ottobre',31],['novembre',30]];
 
@@ -354,6 +361,8 @@ function buildLivello(C){
   return {ccnl:C.nome,ccnlKey:C.key,cnel:C.cnel,q:L.q,liv:L.label,pagaBase,conting,nScatti,scattoU,scattiTot,lordo,aliq,inailTasso,orario:C.orario,mens:C.mens};
 }
 function genLivello(){return buildLivello(pickCCNL());}
+const PT_PROB=0.4, PT_PERC=[50,60,70,75,80];
+function applyPT(b,pt){const f=pt/100;const x={...b};x.pagaBase=r2(b.pagaBase*f);x.conting=r2(b.conting*f);x.scattiTot=r2(b.scattiTot*f);x.lordo=r2(x.pagaBase+x.conting+x.scattiTot);x.pt=pt;return x;}
 
 const PROB_EVENTI={malattia:0.5,p104:0.35,permesso:0.3,festiv:0.3,straord:0.35,trasferte:0.3,fringe:0.35,c730:0.3,buoni:0.3,fondo:0.45,cessione:0.15};
 let DIFF='base',MODE='guided',TAB='ced',CED=null,CU=null,CONG=null,FATT=null;
@@ -387,7 +396,7 @@ const TRASF_ESENTE=46.48;   // art. 51, c. 5, TUIR: 90.000 lire/giorno, trasfert
 function genCedolino(forceAv){
   const av=forceAv||DIFF==='avanzato';
   let b,n=0,RC;
-  do{b=genLivello();RC=round10(b.lordo*(1-b.aliq/100)*b.mens);n++;}while(RC<=20000&&n<200); // fuori perimetro: somma esente del cuneo
+  b=genLivello();if(chance(PT_PROB))b=applyPT(b,pick(PT_PERC));RC=round10(b.lordo*(1-b.aliq/100)*b.mens); // dalla Beta 1.6 anche redditi bassi (part-time): trattamento integrativo e somma esente
   let meseIdx=pick(MESI_IDX);
   if(av&&EVENTI.c730&&meseIdx<6)meseIdx=pick([6,8,9]);      // i conguagli 730 partono dalla retribuzione di luglio
   const cal=calMese(meseIdx);
@@ -395,7 +404,7 @@ function genCedolino(forceAv){
   const accCom25=r2(round10(red25*rnd(0.94,1.0))*arCom/100*0.30);
   const g=r2(b.lordo/26);
   const s={...b,anno:ANNO_CED,meseIdx,mese:NOMI_MESI[meseIdx],ggMese:cal.gg,ggLavorativi:cal.lav,RC,red25,arCom,accCom25,
-    elementi:[['Paga base',b.pagaBase],['Contingenza',b.conting],[`Scatti di anzianità (n. ${b.nScatti})`,b.scattiTot]],
+    elementi:[['Paga base'+(b.pt?` (part-time ${b.pt}%)`:''),b.pagaBase],['Contingenza',b.conting],[`Scatti di anzianità (n. ${b.nScatti})`,b.scattiTot]],
     mal:null,regolaMal:null,n104:0,p104:0,permGiorno:0,permOre:0,festiv:0,straord:0,oreStr:0,maggStr:0,buonoU:pick([8,10]),contribFondo:0,cessione:0,
     trasfGG:0,trasfU:0,fringe:0,fringeFigli:false,c730:0,tassoInail:b.inailTasso,rateDate:null,tracciaId:null,noTfr:false};
   let liberi=cal.giorni.filter(x=>x.dow>=1&&x.dow<=5).map(x=>x.d);
@@ -426,7 +435,7 @@ function genCedolino(forceAv){
     }
     if(EVENTI.permesso&&liberi.length){const d=pick(liberi);togli([d]);s.permGiorno=d;s.permOre=8;assLav+=1;}
     if(EVENTI.festiv)s.festiv=r2(g*pick([0.5,1]));
-    if(EVENTI.straord){s.oreStr=Math.floor(rnd(3,9));s.maggStr=pick([1.15,1.25,1.30]);s.straord=r2((b.lordo/b.orario)*s.oreStr*s.maggStr);}
+    if(EVENTI.straord&&!b.pt){s.oreStr=Math.floor(rnd(3,9));s.maggStr=pick([1.15,1.25,1.30]);s.straord=r2((b.lordo/b.orario)*s.oreStr*s.maggStr);}
     if(EVENTI.trasferte){s.trasfGG=Math.floor(rnd(1,5));s.trasfU=pick([40,45,50,55,60,65]);}
     if(EVENTI.fringe){s.fringe=pick([300,600,900,1200,1500,1800,2400]);s.fringeFigli=chance(0.5);}
     if(EVENTI.c730)s.c730=chance(0.6)?round10(rnd(80,700)):-round10(rnd(60,500));
@@ -456,6 +465,8 @@ function solveCed(s){
   const detrA=detrLavDip(s.RC), b65=add65(s.RC), detrM=r2(detrBase(s.RC)*s.ggMese/365+b65/12);
   const cun=cuneo(s.RC), cunM=r2(cun.imp*s.ggMese/365);
   let irpN=r2(irpL-detrM-cunM); if(irpN<0)irpN=0;
+  const lordaA=r2(irpefLorda(s.RC,28000,50000)), tiA=tiAnnuo(s.RC,lordaA,0), tiM=r2(tiA*s.ggMese/365);
+  const seSpetta=s.RC<=20000, sePerc=seSpetta?percSE(s.RC):0, seM=seSpetta?r2(impFisc*sePerc/100):0;
   let rataReg,rataCom,rataAcc,addReg25=0,addCom25=0,saldoCom25=0,accCom26=0;
   if(s.rateDate){rataReg=s.rateDate.reg;rataCom=s.rateDate.com;rataAcc=s.rateDate.acc;}
   else{addReg25=addRegMarche(s.red25);addCom25=r2(s.red25*s.arCom/100);saldoCom25=r2(addCom25-s.accCom25);accCom26=r2(addCom25*0.30);
@@ -464,10 +475,10 @@ function solveCed(s){
   const rimb730=s.c730>0?s.c730:0, deb730=s.c730<0?-s.c730:0;
   const compCash=r2(s.lordo-trattMal-p104+s.festiv+s.straord+integr+indINPS+p104+trasfTot+rimb730);
   const tratTot=r2(contributi+s.contribFondo+irpN+addTot+deb730+(s.cessione||0));
-  const netto=r2(compCash-tratTot);
+  const netto=r2(compCash-tratTot+tiM+seM);
   const tfrLordo=r2(s.lordo*s.mens/13.5/12), tfr=r2(tfrLordo-r2(impPrevArr*0.005));
   const inail=s.tassoInail?r2(impPrev*s.tassoInail/1000):0;
-  return {trattMal,integr,indINPS,p104,trasfTot,trasfEs,trasfImp,sogliaFringe,fringeImp,buoniTot,buoniEs,buoniEcc,impPrev,impPrevArr,contributiBase,ivsThr,ivsExtra,contributi,impFisc,irpL,detrA,b65,detrM,cun,cunM,irpN,
+  return {trattMal,integr,indINPS,p104,trasfTot,trasfEs,trasfImp,sogliaFringe,fringeImp,buoniTot,buoniEs,buoniEcc,impPrev,impPrevArr,contributiBase,ivsThr,ivsExtra,contributi,impFisc,irpL,detrA,b65,detrM,cun,cunM,irpN,lordaA,tiA,tiM,seSpetta,sePerc,seM,
     rataReg,rataCom,rataAcc,addReg25,addCom25,saldoCom25,accCom26,addTot,rimb730,deb730,compCash,tratTot,netto,tfrLordo,tfr,inail,s1m:28000/12};
 }
 
@@ -487,8 +498,10 @@ function cedFields(s){
   F.push({k:'detrM',l:'Detrazione lavoro dipendente del mese',h:'art. 13 &times; giorni/365, + 65/12 tra 25.000 e 35.000',cat:'tax'});
   F.push({k:'cunM',l:'Ulteriore detrazione del mese (L. 207/2024)',h:'&times; giorni/365',cat:'tax'});
   F.push({k:'irpN',l:'IRPEF netta del mese',h:'lorda &minus; detrazioni',cat:'tax'});
+  F.push({k:'tiM',l:'Trattamento integrativo del mese (D.L. 3/2020)',h:'reddito fino a 15.000 e imposta lorda annua &gt; detrazione &minus; 75: 1.200 &times; giorni/365; altrimenti 0',cat:'tax'});
+  F.push({k:'seM',l:'Somma esente del cuneo del mese (L. 207/2024, c. 4)',h:'reddito fino a 20.000: imponibile fiscale del mese &times; 7,1 / 5,3 / 4,8% (una sola percentuale); altrimenti 0',cat:'tax'});
   F.push({k:'addTot',l:'Rate addizionali trattenute nel mese',h:'regionale 2025 + saldo comunale 2025 + acconto comunale 2026',cat:'add'});
-  F.push({k:'netto',l:'Netto in busta',h:'competenze in denaro &minus; trattenute',cat:'add'});
+  F.push({k:'netto',l:'Netto in busta',h:'competenze in denaro &minus; trattenute + trattamento integrativo + somma esente',cat:'add'});
   if(!s.noTfr)F.push({k:'tfr',l:'Quota TFR netta del mese',h:'retribuzione &times; mensilit&agrave; / 13,5 / 12 &minus; 0,50% dell\'imponibile',cat:'add'});
   if(s.tassoInail)F.push({k:'inail',l:'Premio INAIL c/ditta (stima mensile)',h:'imponibile &times; tasso',cat:'add'});
   return F;
@@ -580,11 +593,15 @@ function cedCalc(k){const s=CED.scn,o=CED.sol,m=s.mal;const s1=o.s1m,s2=50000/12
   case 'impFisc':{let t=`${fmt(o.impPrev)} − ${fmt(o.contributi)}`;if(s.contribFondo)t+=` − ${fmt(s.contribFondo)} (fondo)`;if(o.indINPS)t+=` + ${fmt(o.indINPS)} (ind. malattia INPS)`;if(o.p104)t+=` + ${fmt(o.p104)} (ind. L. 104)`;return t+` = ${fmt(o.impFisc)}`;}
   case 'irpL':{const q1=Math.min(o.impFisc,s1);let parts=[`${fmt(r2(q1))}×23%`];let x=o.impFisc;if(x>s1){parts.push(`${fmt(r2(Math.min(x,s2)-s1))}×33%`);}if(x>s2){parts.push(`${fmt(r2(x-s2))}×43%`);}return parts.join(' + ')+` = ${fmt(o.irpL)}`;}
   case 'detrM':{if(o.detrA<=0)return `reddito ${fmt(s.RC)} > 50.000 → 0,00`;return `annua ${fmt(r2(detrBase(s.RC)))} × ${s.ggMese}/365${o.b65?` + 65/12`:``} = ${fmt(o.detrM)} (rapporto troncato alla 4ª cifra)`;}
-  case 'cunM':return o.cun.imp>0?`annua ${fmt(r2(o.cun.imp))} × ${s.ggMese}/365 = ${fmt(o.cunM)}`:`reddito ${fmt(s.RC)} > 40.000 → 0,00`;
+  case 'cunM':return o.cun.imp>0?`annua ${fmt(r2(o.cun.imp))} × ${s.ggMese}/365 = ${fmt(o.cunM)}`:(s.RC<=20000?`reddito ${fmt(s.RC)} ≤ 20.000 → niente ulteriore detrazione (spetta la somma esente): 0,00`:`reddito ${fmt(s.RC)} > 40.000 → 0,00`);
+  case 'tiM':{if(s.RC>28000)return `reddito ${fmt(s.RC)} > 28.000 → mai: 0,00`;
+    if(s.RC<=15000)return o.tiA>0?`imposta lorda annua ${fmt(o.lordaA)} > ${fmt(r2(detrBase(s.RC)-75))} (detrazione − 75) → 1.200 × ${s.ggMese}/365 = ${fmt(o.tiM)}`:`imposta lorda annua ${fmt(o.lordaA)} ≤ ${fmt(r2(detrBase(s.RC)-75))} (detrazione − 75): incapiente → 0,00`;
+    return o.tiA>0?`detrazioni ${fmt(r2(detrBase(s.RC)))} > imposta lorda ${fmt(o.lordaA)} → differenza ${fmt(o.tiA)} × ${s.ggMese}/365 = ${fmt(o.tiM)}`:`reddito tra 15.000 e 28.000: detrazione ${fmt(r2(detrBase(s.RC)))} ≤ imposta lorda annua ${fmt(o.lordaA)} → 0,00`;}
+  case 'seM':return o.seSpetta?`reddito ${fmt(s.RC)} ≤ 20.000 → percentuale ${fmt(o.sePerc)}% (una sola, su tutto il reddito): ${fmt(o.impFisc)} × ${fmt(o.sePerc)}% = ${fmt(o.seM)}`:`reddito ${fmt(s.RC)} > 20.000 → niente somma esente: 0,00`;
   case 'irpN':return `${fmt(o.irpL)} − ${fmt(o.detrM)} − ${fmt(o.cunM)} = ${fmt(o.irpN)}`;
   case 'addTot':return s.rateDate?`rate date: ${fmt(s.rateDate.reg)} + ${fmt(s.rateDate.com)} + ${fmt(s.rateDate.acc)} = ${fmt(o.addTot)}`
     :`regionale ${addRegMarcheTxt(s.red25)} = ${fmt(o.addReg25)} / 11 = ${fmt(o.rataReg)}; comunale ${fmt0(s.red25)} × ${fmt(s.arCom)}% = ${fmt(o.addCom25)} − acconto ${fmt(s.accCom25)} = saldo ${fmt(o.saldoCom25)} / 11 = ${fmt(o.rataCom)}; acconto 2026 ${fmt(o.accCom26)} / 9 = ${fmt(o.rataAcc)}${o.rataAcc?'':' (solo da marzo)'}; totale ${fmt(o.addTot)}`;
-  case 'netto':return `competenze in denaro ${fmt(o.compCash)}${o.rimb730?` (incl. rimborso 730 ${fmt(o.rimb730)})`:''} − trattenute ${fmt(o.tratTot)} [contributi ${fmt(o.contributi)}${s.contribFondo?` + fondo ${fmt(s.contribFondo)}`:''} + IRPEF ${fmt(o.irpN)} + addizionali ${fmt(o.addTot)}${o.deb730?` + 730 ${fmt(o.deb730)}`:''}${s.cessione?` + cessione ${fmt(s.cessione)}`:''}] = ${fmt(o.netto)}`;
+  case 'netto':return `competenze in denaro ${fmt(o.compCash)}${o.rimb730?` (incl. rimborso 730 ${fmt(o.rimb730)})`:''}${o.tiM?` + trattamento integrativo ${fmt(o.tiM)}`:''}${o.seM?` + somma esente ${fmt(o.seM)}`:''} − trattenute ${fmt(o.tratTot)} [contributi ${fmt(o.contributi)}${s.contribFondo?` + fondo ${fmt(s.contribFondo)}`:''} + IRPEF ${fmt(o.irpN)} + addizionali ${fmt(o.addTot)}${o.deb730?` + 730 ${fmt(o.deb730)}`:''}${s.cessione?` + cessione ${fmt(s.cessione)}`:''}] = ${fmt(o.netto)}`;
   case 'tfr':return `${fmt(s.lordo)} × ${s.mens} / 13,5 / 12 = ${fmt(o.tfrLordo)} − 0,50% × ${fmt0(o.impPrevArr)} = ${fmt(o.tfr)} (art. 2120 c.c.; in malattia base piena)`;
   case 'inail':return `${fmt(o.impPrev)} × ${s.tassoInail}/1000 = ${fmt(o.inail)}`;
 } return '';}
@@ -602,7 +619,9 @@ const CED_WHY={
   impFisc:'Dal previdenziale si tolgono contributi e fondo sanitario (deducibili) e si aggiungono le indennità INPS, che sono reddito sostitutivo (art. 6, c. 2, TUIR).',
   irpL:'Gli scaglioni annui 2026 divisi per 12: 23% fino a 2.333,33 €, 33% fino a 4.166,67 €, 43% oltre.',
   detrM:'La detrazione annua (art. 13 TUIR) sul reddito presunto si ragguaglia ai giorni del mese; la maggiorazione di 65 € non si ragguaglia e qui si ripartisce in dodicesimi.',
-  cunM:'L. 207/2024: 1.000 € annui tra 20.000 e 32.000 di reddito, decrescenti fino a 40.000, rapportati al periodo.',
+  cunM:'L. 207/2024, c. 6: 1.000 € annui tra 20.000 e 32.000 di reddito, decrescenti fino a 40.000, rapportati al periodo. Fino a 20.000 non spetta: al suo posto c\'è la somma esente.',
+  tiM:'Denaro in più per i redditi bassi, non tassato e senza contributi: il datore lo anticipa e lo recupera in F24 (codice 1701). Fino a 15.000 € spetta 1.200 € annui se il lavoratore paga un po\' di IRPEF (imposta lorda > detrazione − 75); tra 15.000 e 28.000 solo se le detrazioni superano l\'imposta; oltre 28.000 mai.',
+  seM:'Fino a 20.000 € di reddito complessivo: una sola percentuale (7,1% fino a 8.500; 5,3% fino a 15.000; 4,8% oltre), scelta sul reddito annuo e applicata a tutto il reddito di lavoro dipendente; non è tassata e si aggiunge al netto. Si somma al trattamento integrativo.',
   irpN:'È la ritenuta IRPEF da versare con F24 (codice 1001) entro il 16 del mese successivo.',
   addTot:'Le addizionali dell\'anno precedente si trattengono a rate: regionale e saldo comunale in max 11 rate, acconto comunale in max 9 rate da marzo.',
   netto:'Si sommano le somme pagate in denaro (non buoni pasto né benefit in natura) e si tolgono tutte le trattenute.',
@@ -636,6 +655,8 @@ function prospettoCed(){
   add('Contributi INPS c/dipendente',`${fmt0(o.impPrevArr)} × ${fmt(s.aliq)}%${o.ivsExtra?` + 1% oltre 4.685 (${fmt(o.ivsExtra)})`:''}`,null,o.contributi,'Calcolati sull\'imponibile previdenziale arrotondato all\'euro.');
   if(s.contribFondo)add('Fondo assistenza sanitaria c/dip','dato',null,s.contribFondo,'Trattenuta deducibile dall\'imponibile IRPEF fino a 3.615,20 €/anno (art. 51, c. 2, lett. a), TUIR).');
   add('IRPEF netta',`lorda ${fmt(o.irpL)} (${fmt(o.impFisc)} a scaglioni) − detrazione ${fmt(o.detrM)} − ulteriore ${fmt(o.cunM)}`,null,o.irpN,'Ritenuta d\'acconto del sostituto d\'imposta sull\'imponibile fiscale del mese.');
+  if(o.tiM)add('Trattamento integrativo (D.L. 3/2020)',`1.200 × ${s.ggMese}/365`,o.tiM,null,'Non tassato, senza contributi; il datore lo recupera in F24 riducendo le ritenute.');
+  if(o.seM)add('Somma esente cuneo (L. 207/2024, c. 4)',`${fmt(o.impFisc)} × ${fmt(o.sePerc)}%`,o.seM,null,'Non concorre al reddito: si aggiunge al netto.');
   if(s.rateDate){
     add('Addizionale regionale anno precedente (rata)','dato',null,o.rataReg,'Determinata al conguaglio dell\'anno precedente, trattenuta a rate.');
     add('Addizionale comunale anno precedente (rata)','dato',null,o.rataCom,'Saldo dell\'anno precedente, a rate.');
@@ -680,7 +701,7 @@ function detrConiuge(RC){let d;
 function genCU(){
   let s,o,n=0;
   do{
-    const b=genLivello();
+    let b=genLivello();if(chance(PT_PROB))b=applyPT(b,pick(PT_PERC));
     const lordoA=r2(b.lordo*b.mens), contribA=r2(lordoA*b.aliq/100);
     const fondoDip=chance(0.5)?pick([24,60,120,156]):0, fondoDat=fondoDip?pick([0,0,96,120]):0;
     const impFiscA=r2(lordoA-contribA-fondoDip);
@@ -694,7 +715,7 @@ function genCU(){
       dataAss:`${String(Math.floor(rnd(1,28))).padStart(2,'0')}/${String(Math.floor(rnd(1,13))).padStart(2,'0')}/${2025-anni}`,
       matricola:String(Math.floor(rnd(1e9,9e9))),pat:String(Math.floor(rnd(1e9,9e9))),comuneInail:'A271 (Ancona)'};
     o=solveCU(s);n++;
-  }while((s.impFiscA<=20000||s.lordoA>54000||o.tiSpetta)&&n<300);
+  }while(s.lordoA>54000&&n<300);   // dalla Beta 1.6 anche redditi fino a 20.000: trattamento integrativo (390-391) e somma esente (724-725)
   return s;
 }
 function solveCU(s){
@@ -703,13 +724,14 @@ function solveCU(s){
   const p362=s.coniuge?r2(detrConiuge(punto1)):0;
   const p367=r2(detrLavDip(punto1)), p368=r2(cuneo(punto1).imp);
   const p374=r2(p362+p367+p368), p375=r2(Math.max(0,p361-p374));
-  const tiSpetta=punto1<=28000&&(p362+p367)>p361;                      // trattamento integrativo: fuori perimetro del generatore
+  const tiA=tiAnnuo(punto1,p361,p362), tiSpetta=tiA>0;                   // trattamento integrativo (D.L. 3/2020)
+  const seSpetta=punto1<=20000, p725=seSpetta?r2(punto1*percSE(punto1)/100):0; // somma esente (L. 207/2024, c. 4-5)
   const addComDov=r2(punto1*s.aliqCom/100);
   const p22=addRegMarche(punto1);
   const p26=s.p26dato!=null?s.p26dato:r2(s.red24*s.aliqCom/100*0.30);
   const p27=r2(addComDov-p26), p29=r2(addComDov*0.30);
   return {punto1,giorni:365,p361,p362,p367,p368,p374,p375,p21:p375,p22,p26,p27,p29,p121:s.acc1||0,p122:s.acc2||0,
-    p390:2,p441:s.fondoTot||0,p718:1,p719:punto1,p721:365,p724:2,p801:0,p920:s.impSostTFR||0,
+    p390:tiSpetta?1:2,p391:tiA,p441:s.fondoTot||0,p718:1,p719:punto1,p721:365,p724:seSpetta?1:2,p725,p801:0,p920:s.impSostTFR||0,
     inps4:s.lordoA,inps6:s.contribA,redRif:punto1,addComDov,tiSpetta};
 }
 const CU_FIELDS=[
@@ -729,12 +751,14 @@ const CU_FIELDS=[
   {k:'p374',l:'Punto 374 — Totale detrazioni',h:'362 + 367 + 368',cat:'tax'},
   {k:'p375',l:'Punto 375 — Imposta netta',h:'361 &minus; 374',cat:'tax'},
   {k:'p390',l:'Punto 390 — Trattamento integrativo: codice',h:'1 riconosciuto ed erogato · 2 non riconosciuto o non erogato',int:true,cat:'cu'},
+  {k:'p391',l:'Punto 391 — Trattamento integrativo erogato',h:'0 se non spetta',cat:'tax'},
   {k:'p441',l:'Punto 441 — Contributi sanitari che non hanno concorso al reddito',h:'versati dal sostituto e/o dal lavoratore, entro 3.615,20',cat:'cu'},
   {k:'redRif',l:'Punto 449 — Reddito di riferimento per le agevolazioni',h:'',cat:'cu'},
   {k:'p718',l:'Punto 718 — Codice (redditi di lavoro dipendente agevolabili L. 207/2024)',h:'1 o 2',int:true,cat:'cu'},
   {k:'p719',l:'Punto 719 — Reddito di lavoro dipendente (art. 49 TUIR)',h:'compreso nei punti 1 e 2',cat:'cu'},
   {k:'p721',l:'Punto 721 — Giorni di lavoro dipendente',h:'obbligatorio con 718 = 1',int:true,cat:'cu'},
   {k:'p724',l:'Punto 724 — Somma esente: codice',h:'obbligatorio con 718 = 1',int:true,cat:'cu'},
+  {k:'p725',l:'Punto 725 — Somma esente erogata',h:'reddito fino a 20.000: una sola percentuale × reddito; altrimenti 0',cat:'tax'},
   {k:'p801',l:'Punto 801 — TFR e indennit&agrave; erogati nell\'anno',h:'attenzione al TFR solo maturato',cat:'cu'},
   {k:'p920',l:'Punto 920 — Imposta sostitutiva sulle rivalutazioni del TFR',h:'',cat:'cu'},
   {k:'inps4',l:'Sez. INPS, punto 4 — Imponibile previdenziale',h:'',cat:'prev'},
@@ -754,7 +778,7 @@ function renderCU(){
       +R('Contributi al fondo sanitario integrativo',fmt(s.fondoTot))+R('TFR maturato al 31/12/2025, rimasto in azienda',`${fmt(s.tfrMat)} (di cui ante 2001 ${fmt(s.tfrAnte2001)})`)
       +R('Imposta sostitutiva rivalutazioni TFR',fmt(s.impSostTFR))+R('PAT INAIL · comune',`${s.pat} · ${s.comuneInail}`);
   }else{
-    righe=R('Retribuzione mensile',fmt(s.lordo))+R('Mensilit&agrave;',s.mens)+R('Retribuzione lorda annua',fmt(s.lordoA))+R('Aliquota INPS c/dip',fmt(s.aliq)+'%')
+    righe=R('Retribuzione mensile',fmt(s.lordo))+R('Mensilit&agrave;',s.mens)+(s.pt?R('Orario','part-time '+s.pt+'%'):'')+R('Retribuzione lorda annua',fmt(s.lordoA))+R('Aliquota INPS c/dip',fmt(s.aliq)+'%')
       +R('Contributi c/dipendente',fmt(s.contribA))+R('Data assunzione',s.dataAss)+R('Periodo','01/01 – 31/12/2025, in forza al 31/12')
       +R('Familiari a carico',s.coniuge?'coniuge, 12 mesi':'nessuno')
       +R('Fondo sanitario: c/dipendente (dedotto in busta) · c/datore',s.fondoTot?`${fmt(s.fondoDip)} · ${fmt(s.fondoDat)}`:'nessuno')
@@ -786,16 +810,19 @@ function cuCalc(k){const s=CU.scn,o=CU.sol;switch(k){
   case 'p361':{const x=o.punto1;let t;if(x>50000)t=`28.000×23% + 22.000×35% + ${fmt(r2(x-50000))}×43%`;else if(x>28000)t=`28.000×23% + ${fmt(r2(x-28000))}×35%`;else t=`${fmt(x)}×23%`;return t+` = ${fmt(o.p361)}`;}
   case 'p362':{if(!s.coniuge)return 'nessun familiare a carico: 0';const x=o.punto1;let t;if(x<=15000)t=`800 − 110 × ${String(t4(x/15000)).replace('.',',')}`;else if(x<=40000)t='690';else t=`690 × (80.000 − ${fmt(x)})/40.000 = 690 × ${String(t4((80000-x)/40000)).replace('.',',')}`;const inc=r2(detrConiuge(x)-(x<=15000?800-110*t4(x/15000):x<=40000?690:690*t4((80000-x)/40000)));return `coniuge, 12 mesi: ${t}${inc?` + ${inc} (art. 12, c. 1, lett. b)`:''} = ${fmt(o.p362)}`;}
   case 'p367':{const x=o.punto1,b65=add65(x);let t;if(x<=28000)t=`1.910 + 1.190 × ${String(t4((28000-x)/13000)).replace('.',',')}`;else if(x<=50000)t=`1.910 × ${String(t4((50000-x)/22000)).replace('.',',')}`;else t='0';return `${t}${b65?' + 65':''} = ${fmt(o.p367)}`;}
-  case 'p368':return o.p368>0?(o.punto1<=32000?`reddito tra 20.000 e 32.000: ${fmt(o.p368)}`:`1.000 × (40.000 − ${fmt(o.punto1)})/8.000 = ${fmt(o.p368)}`):`reddito oltre 40.000 → 0`;
+  case 'p368':return o.p368>0?(o.punto1<=32000?`reddito tra 20.000 e 32.000: ${fmt(o.p368)}`:`1.000 × (40.000 − ${fmt(o.punto1)})/8.000 = ${fmt(o.p368)}`):(o.punto1<=20000?'reddito fino a 20.000: niente ulteriore detrazione (spetta la somma esente) → 0':'reddito oltre 40.000 → 0');
   case 'p374':return `${fmt(o.p362)} + ${fmt(o.p367)} + ${fmt(o.p368)} = ${fmt(o.p374)}`;
   case 'p375':return `${fmt(o.p361)} − ${fmt(o.p374)} = ${fmt(o.p375)}`;
-  case 'p390':return `2: ${o.punto1>28000?'reddito oltre 28.000':'le detrazioni non superano l\'imposta lorda'}, trattamento non riconosciuto (sezione da compilare in presenza di redditi di lavoro dipendente)`;
+  case 'p390':return o.p390===1?`1: trattamento integrativo riconosciuto ed erogato (${fmt(o.p391)})`:`2: ${o.punto1>28000?'reddito oltre 28.000':(o.punto1<=15000?'imposta lorda non superiore alla detrazione − 75 (incapiente)':'le detrazioni non superano l\'imposta lorda')}, trattamento non riconosciuto (sezione da compilare sempre con redditi di lavoro dipendente)`;
+  case 'p391':{const x=o.punto1;if(x>28000)return 'reddito oltre 28.000: 0';if(x<=15000)return o.p391?`${fmt(o.p361)} > ${fmt(r2(detrBase(x)-75))} (detrazione − 75) → 1.200,00`:`${fmt(o.p361)} ≤ ${fmt(r2(detrBase(x)-75))} (detrazione − 75): incapiente → 0`;
+    const d=r2(detrBase(x)+o.p362);return o.p391?`tra 15.000 e 28.000: detrazioni ${fmt(r2(detrBase(x)))}${o.p362?` + ${fmt(o.p362)} (familiari)`:''} = ${fmt(d)} > imposta lorda ${fmt(o.p361)} → differenza ${fmt(o.p391)} (max 1.200)`:`tra 15.000 e 28.000: detrazioni ${fmt(d)} ≤ imposta lorda ${fmt(o.p361)} → 0`;}
   case 'p441':return o.p441?`contributi al fondo con fini esclusivamente assistenziali, non concorrenti al reddito = ${fmt(o.p441)}; codice fiscale del fondo al punto 443`:'nessun fondo: 0';
   case 'redRif':return `punti 1+2+3+4+5+13 (+652) = ${fmt(o.redRif)}`;
   case 'p718':return '1: nel punto 1 ci sono redditi di lavoro dipendente; la spettanza effettiva si esprime nei punti 724 e 368';
   case 'p719':return `reddito art. 49 TUIR compreso nel punto 1 = ${fmt(o.p719)}`;
   case 'p721':return 'giorni di lavoro dipendente = 365';
-  case 'p724':return '2: somma esente non riconosciuta, reddito complessivo oltre 20.000';
+  case 'p724':return o.p724===1?'1: somma esente riconosciuta ed erogata (reddito complessivo fino a 20.000)':'2: somma esente non riconosciuta, reddito complessivo oltre 20.000';
+  case 'p725':return o.p724===1?`${fmt(o.punto1)} × ${fmt(percSE(o.punto1))}% (una sola percentuale, su tutto il reddito) = ${fmt(o.p725)}`:'reddito oltre 20.000: 0';
   case 'p801':return `0: il TFR maturato (${fmt(s.tfrMat)}) non è stato erogato; i punti 801-813 si compilano solo all'erogazione`;
   case 'p920':return `imposta sostitutiva 17% sulla rivalutazione = ${fmt(o.p920)}: va indicata anche senza erogazione del TFR`;
   case 'inps4':return `imponibile previdenziale annuo = ${fmt(o.inps4)}`;
