@@ -153,7 +153,30 @@ function check(){
   res.innerHTML=items.length?`<div class="cum-res-h">Caselle da rivedere (clic per andare alla casella)</div>`+items.map(i=>`<button type="button" class="cum-it t-${i.kind}" data-go="${i.k}"><b>${lab[i.kind]} · ${esc(ptName(byKey[i.k]))}</b><span class="mono">tuo: ${esc(i.got||'—')} · atteso: ${esc(i.exp)}</span><span>${esc(i.why)}</span></button>`).join(''):'';
   res.classList.toggle('hidden',!items.length);
 }
-function solution(){reset();solutions().forEach(c=>{if(!els[c.k]||c.t==='e')return;setVal(c.k,c.t==='n'?fmt(c.v):String(c.v),true);els[c.k].dataset.tip=c.why+(c.soft?' (indicativo)':'')});}
+let backup=null;   // le tue risposte, messe da parte quando chiedi la soluzione
+/* controllo parziale: valuta solo le caselle già compilate, senza mostrare i valori giusti */
+function partial(){
+  clearMarks();const C=solutions().filter(c=>els[c.k]),exp={};C.forEach(c=>exp[c.k]=c);
+  let n=0,ok=0,ko=0,extra=0;const items=[];
+  C.forEach(c=>{const el=els[c.k],raw=String(vals[c.k]||'').trim();if(!raw)return;n++;
+    if(same(c,raw)===true){ok++;el.classList.add('ok');return}
+    ko++;el.classList.add('err');el.dataset.tip='Da correggere';items.push({k:c.k,kind:'err',got:raw})});
+  Object.keys(vals).forEach(k=>{if(exp[k]||!els[k]||!String(vals[k]||'').trim())return;if(!CU.scn.tracciaId&&/^(S_|D_|X|anno)/.test(k))return;
+    n++;extra++;els[k].classList.add('extra');els[k].dataset.tip='Con questi dati la casella resta vuota';items.push({k,kind:'extra',got:String(vals[k]).trim()})});
+  const ban=document.getElementById('cuBanner');ban.className='banner show '+((ko||extra)?'mid':'good');
+  ban.innerHTML=`Controllo parziale: caselle compilate corrette ${ok} su ${n}${ko?` · ${ko} da correggere`:''}${extra?` · ${extra} che dovevano restare vuote`:''}. Le caselle ancora vuote non sono valutate e i valori giusti non vengono mostrati. Con «Nascondi esito e riprendi» togli i colori e prosegui.`;
+  const lab={err:'Da correggere',extra:'Da lasciare vuota'};const res=document.getElementById('cumRes');
+  res.innerHTML=items.length?`<div class="cum-res-h">Caselle da rivedere (clic per andare alla casella)</div>`+items.map(i=>`<button type="button" class="cum-it t-${i.kind}" data-go="${i.k}"><b>${lab[i.kind]} · ${esc(ptName(byKey[i.k]))}</b><span class="mono">tuo: ${esc(i.got)}</span></button>`).join(''):'';
+  res.classList.toggle('hidden',!items.length);
+}
+/* nasconde esiti e soluzione; se era mostrata la soluzione, rimette le tue risposte */
+function hide(){
+  if(backup){const b=backup;backup=null;reset();Object.entries(b).forEach(([k,v])=>setVal(k,v,false));}
+  else clearMarks();
+  help.classList.add('hidden');tip.classList.add('hidden');
+  document.getElementById('cuBanner').className='banner';
+}
+function solution(){if(!backup)backup={...vals};reset();solutions().forEach(c=>{if(!els[c.k]||c.t==='e')return;setVal(c.k,c.t==='n'?fmt(c.v):String(c.v),true);els[c.k].dataset.tip=c.why+(c.soft?' (indicativo)':'')});}
 
 /* ---------- interfaccia pubblica per il simulatore ---------- */
 function apply(){
@@ -168,7 +191,9 @@ function apply(){
 window.cuModelActive=()=>view!=='elenco'&&!!DATA&&built===view;
 window.cuModelCheck=check;
 window.cuModelSolution=solution;
-window.cuModelRender=()=>{if(view!=='elenco'&&DATA&&built===view){reset();note()}};
+window.cuModelPartial=partial;
+window.cuModelHide=hide;
+window.cuModelRender=()=>{backup=null;if(view!=='elenco'&&DATA&&built===view){reset();note()}};
 document.addEventListener('DOMContentLoaded',()=>{});
 const wrap=document.getElementById('cuViewWrap');
 wrap.addEventListener('click',e=>{const bt=e.target.closest('[data-view]');if(!bt)return;view=bt.dataset.view;st.set('cdl:cuView',view);document.getElementById('cuBanner').className='banner';apply()});

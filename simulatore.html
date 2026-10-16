@@ -246,7 +246,9 @@
       <div id="cedFields"></div>
       <div class="actions">
         <button class="act primary" id="cedCheck">Controlla</button>
+        <button class="act ghost t3" id="cedPart" title="Valuta solo le caselle già compilate, senza mostrare i valori giusti">Controllo parziale</button>
         <button class="act ghost t3" id="cedSol">Mostra soluzione</button>
+        <button class="act ghost" id="cedHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="cedNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="cedBanner"></div>
@@ -266,7 +268,9 @@
       <div id="cuModel" class="hidden"></div>
       <div class="actions">
         <button class="act primary" id="cuCheck">Controlla</button>
+        <button class="act ghost t3" id="cuPart" title="Valuta solo le caselle già compilate, senza mostrare i valori giusti">Controllo parziale</button>
         <button class="act ghost t3" id="cuSol">Mostra soluzione</button>
+        <button class="act ghost" id="cuHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="cuNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="cuBanner"></div>
@@ -285,7 +289,9 @@
       <div id="congFields"></div>
       <div class="actions">
         <button class="act primary" id="congCheck">Controlla</button>
+        <button class="act ghost t3" id="congPart" title="Valuta solo le caselle già compilate, senza mostrare i valori giusti">Controllo parziale</button>
         <button class="act ghost t3" id="congSol">Mostra soluzione</button>
+        <button class="act ghost" id="congHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="congNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="congBanner"></div>
@@ -303,7 +309,9 @@
       <div id="fattFields"></div>
       <div class="actions">
         <button class="act primary" id="fattCheck">Controlla</button>
+        <button class="act ghost t3" id="fattPart" title="Valuta solo le caselle già compilate, senza mostrare i valori giusti">Controllo parziale</button>
         <button class="act ghost t3" id="fattSol">Mostra soluzione</button>
+        <button class="act ghost" id="fattHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="fattNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="fattBanner"></div>
@@ -329,7 +337,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -1155,6 +1163,29 @@ function buildDiag(errByCat){
   if(!keys.length) return '';
   return `<div class="diag"><b>Diagnosi:</b>`+keys.map(k=>`<div>• ${DIAGTXT[k]||k}</div>`).join('')+`</div>`;
 }
+/* controllo parziale: solo caselle compilate, nessun valore giusto mostrato, punteggio non aggiornato */
+function checkPartial(fields,sol,bannerId){
+  let ok=0,n=0;
+  fields.forEach(f=>{
+    const inp=document.querySelector(`#tab-${TAB} [data-in="${f.k}"]`),fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
+    inp.classList.remove('ok','warn','err');fb.className='fb';fb.innerHTML='';
+    if(inp.value.trim()==='')return;
+    n++;const val=parseNum(inp.value),correct=sol[f.k],tol=f.int?0.5:0.011;
+    if(!isNaN(val)&&Math.abs(val-correct)<=tol){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML='✓ Corretto.';}
+    else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=isNaN(val)?'✗ Valore non leggibile: scrivi un numero (es. 1.234,56).':'✗ Da correggere: ricontrolla il calcolo.';}
+  });
+  const b=document.getElementById(bannerId);
+  b.className='banner show '+(ok===n?'good':'mid');
+  b.innerHTML=`Controllo parziale: caselle compilate corrette ${ok} su ${n}; caselle ancora vuote, non valutate: ${fields.length-n}. I valori giusti non vengono mostrati e il punteggio non cambia. Con «Nascondi esito e riprendi» togli i colori e prosegui.`;
+}
+/* toglie colori, esiti e soluzioni mostrate; le risposte scritte restano */
+function hideEsito(tab){
+  document.querySelectorAll(`#tab-${tab} input[data-in]`).forEach(i=>i.classList.remove('ok','warn','err'));
+  document.querySelectorAll(`#tab-${tab} [data-fb]`).forEach(fb=>{fb.className='fb';fb.innerHTML='';});
+  const b=document.getElementById(tab+'Banner');if(b)b.className='banner';
+  if(tab==='ced'){const p=document.getElementById('cedProsp');p.innerHTML='';p.classList.add('hidden');}
+  if(tab==='cu'){document.getElementById('cuMemo').classList.add('hidden');if(window.cuModelActive&&cuModelActive())cuModelHide();}
+}
 function reveal(fields,calc){fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);fb.className='fb warn show';fb.innerHTML=`Soluzione: ${calc(f.k)}`;});}
 function updateScore(){document.getElementById('scEx').textContent=stats.ex;document.getElementById('scOk').textContent=`${stats.ok} / ${stats.tot}`;document.getElementById('scStreak').textContent=stats.streak;}
 /* cronometro */
@@ -1176,6 +1207,14 @@ function newFatt(){FATT=genFatt();renderFatt();resetTimer();applyMode();}
 document.getElementById('cedCheck').onclick=()=>{check(CED.fields,CED.sol,cedCalcWhy,'cedBanner');mostraProspetto();};
 document.getElementById('cedSol').onclick=()=>{reveal(CED.fields,cedCalcWhy);mostraProspetto();};
 document.getElementById('cedNew').onclick=()=>newCed();
+document.getElementById('cedPart').onclick=()=>checkPartial(CED.fields,CED.sol,'cedBanner');
+document.getElementById('cedHide').onclick=()=>hideEsito('ced');
+document.getElementById('cuPart').onclick=()=>{if(window.cuModelActive&&cuModelActive()){cuModelPartial();return;}checkPartial(CU_FIELDS,CU.sol,'cuBanner');};
+document.getElementById('cuHide').onclick=()=>hideEsito('cu');
+document.getElementById('congPart').onclick=()=>checkPartial(CONG_FIELDS,CONG.sol,'congBanner');
+document.getElementById('congHide').onclick=()=>hideEsito('cong');
+document.getElementById('fattPart').onclick=()=>checkPartial(FATT_FIELDS,FATT.sol,'fattBanner');
+document.getElementById('fattHide').onclick=()=>hideEsito('fatt');
 document.getElementById('cuCheck').onclick=()=>{if(window.cuModelActive&&cuModelActive()){cuModelCheck();return;}check(CU_FIELDS,CU.sol,cuCalc,'cuBanner');document.getElementById('cuMemo').classList.remove('hidden');};
 document.getElementById('cuSol').onclick=()=>{if(window.cuModelActive&&cuModelActive()){cuModelSolution();return;}reveal(CU_FIELDS,cuCalc);document.getElementById('cuMemo').classList.remove('hidden');};
 document.getElementById('cuNew').onclick=newCU;
