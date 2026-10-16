@@ -113,7 +113,7 @@ function reset(){clearMarks();Object.keys(els).forEach(k=>setVal(k,'',false));va
 function note(){
   const n=document.getElementById('cumNote');if(!n)return;
   const s=CU.scn;
-  n.innerHTML=(view==='sint'?'CU <b>sintetica</b>: mancano tra gli altri i punti 23, 25, 28, 52, 61-62, 459 e la tassazione del TFR (814 e seguenti), presenti solo nell\'ordinaria. ':'CU <b>ordinaria</b>: frontespizio, quadro CT e certificazione di lavoro dipendente. ')
+  n.innerHTML=(view==='sint'?'CU <b>sintetica</b>: mancano tra gli altri i punti 23-25, 28, 51-52, 61-62, 71-72, 81-82, 459 e la tassazione del TFR (814 e seguenti), presenti solo nell\'ordinaria. ':'CU <b>ordinaria</b>: frontespizio, quadro CT e certificazione di lavoro dipendente. ')
    +'Scrivi nelle caselle bianche come a penna; le caselle piccole si barrano con un clic. Cliccando su una casella compare cosa ci va (si spegne con «Suggerimenti sulle caselle» o in modalità Esame). Il controllo segnala anche le caselle riempite che dovevano restare vuote.'
    +(s.tracciaId?'':' Dati anagrafici e frontespizio non sono forniti dall\'esercizio e restano fuori dal controllo.');
 }

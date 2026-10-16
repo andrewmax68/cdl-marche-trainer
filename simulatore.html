@@ -629,7 +629,7 @@ function cedFields(s){
   F.push({k:'detrM',l:'Detrazione lavoro dipendente del mese',h:'art. 13 &times; giorni/365, + 65/12 tra 25.000 e 35.000',cat:'tax'});
   F.push({k:'cunM',l:'Ulteriore detrazione del mese (L. 207/2024)',h:'&times; giorni/365',cat:'tax'});
   F.push({k:'irpN',l:'IRPEF netta del mese',h:'lorda &minus; detrazioni',cat:'tax'});
-  F.push({k:'tiM',l:'Trattamento integrativo del mese (D.L. 3/2020)',h:'reddito fino a 15.000 e imposta lorda annua &gt; detrazione &minus; 75: 1.200 &times; giorni/365; altrimenti 0',cat:'tax'});
+  F.push({k:'tiM',l:'Trattamento integrativo del mese (D.L. 3/2020)',h:'fino a 15.000: 1.200 &times; giorni/365 se imposta lorda annua &gt; detrazione &minus; 75; tra 15.000 e 28.000 solo se le detrazioni superano l\'imposta lorda (per la differenza); oltre 28.000: 0',cat:'tax'});
   F.push({k:'seM',l:'Somma esente del cuneo del mese (L. 207/2024, c. 4)',h:'reddito fino a 20.000: imponibile fiscale del mese &times; 7,1 / 5,3 / 4,8% (una sola percentuale); altrimenti 0',cat:'tax'});
   F.push({k:'addTot',l:'Rate addizionali trattenute nel mese',h:'regionale 2025 + saldo comunale 2025 + acconto comunale 2026',cat:'add'});
   if(s.c730>0)F.push({k:'rimb730',l:'Rimborso IRPEF da 730-4 (si aggiunge al netto)',h:'importo del 730-4; non è reddito: niente contributi né IRPEF (art. 19 D.M. 164/1999)',cat:'add'});
