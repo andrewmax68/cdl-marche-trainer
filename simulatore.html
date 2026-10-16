@@ -165,6 +165,25 @@
     body:not(.nocm) .field .fb,body:not(.nocm) .field .cm-model{grid-column:1/4;}
   }
   .cm-tog{font-size:12px;}
+  /* Norme e pagine dei codici (Beta 1.8) */
+  .field .nr{grid-column:1/-1;margin-top:2px;}
+  .nr-b{border:1px dashed var(--line);background:#fff;border-radius:6px;padding:2px 9px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);cursor:pointer;}
+  .nr-b:hover{border-style:solid;color:var(--ink);}
+  .nr-body{display:none;margin-top:3px;background:#F6F8FB;border-left:3px solid #5B6B85;border-radius:6px;padding:5px 9px;font-size:12px;line-height:1.45;}
+  .nr-l{margin:2px 0;}
+  .nr-c{display:inline-block;min-width:118px;margin-right:6px;padding:0 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;text-align:center;}
+  .nr-c.T{background:#E3ECF8;color:#1F4E8C;}
+  .nr-c.L{background:#E4F2E7;color:#24693A;}
+  .nr-c.dv{background:#FBF0D9;color:#8A5A00;}
+  .nr-c.no{background:#F8E3E1;color:#9B2C22;}
+  .nr-n{font-weight:600;}
+  .nr-x{color:var(--ink-soft);}
+  body.nr-off .field .nr,body.nr-off .nr-src{display:none;}
+  body.nr-cover .field .nr.open .nr-body{display:block;}
+  body.nr-on .field .nr .nr-body{display:block;}
+  body.nr-on .field .nr.shut .nr-body{display:none;}
+  .nr-src{font-size:11px;color:var(--ink-soft);margin-top:6px;}
+  .nr-tog select{font-family:inherit;font-size:12px;margin-left:4px;}
   @media print{.field .cm textarea{border:none;background:none;}}
   .cum-hint{font-size:12px;}
   .cum-help{position:fixed;z-index:60;width:min(380px,calc(100vw - 16px));background:#fff;color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--t3);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:10px 12px;font-size:12.5px;line-height:1.45;pointer-events:none;}
@@ -181,7 +200,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.7</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.8</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -278,9 +297,11 @@
         <button class="act ghost t3" id="cedSol">Mostra soluzione</button>
         <button class="act ghost t3" id="cedCm" title="Scrive sotto ogni casella il commento del simulatore; puoi cancellarlo">Commenti del simulatore</button>
         <label class="evchk cm-tog"><input type="checkbox" class="cm-on" checked> Commenti ai passaggi</label>
+        <label class="evchk nr-tog" title="Sotto ogni casella: norma, codice e pagina dove la trovi">Norme nei codici<select id="nrMode" aria-label="Norme e pagine dei codici"><option value="off">nascoste</option><option value="cover">coperte (apri a clic)</option><option value="on">sempre visibili</option></select></label>
         <button class="act ghost" id="cedHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="cedNew">Nuovo esercizio</button>
       </div>
+      <div class="nr-src">Norme nei codici: <b>SEAC</b> = Codice Tributario (con Codice civile) SEAC; <b>La Tribuna</b> = Codice del Lavoro 2026. Pagine dal tuo indice delle norme (v4 del 9/10/2026). <b>Da verificare</b> = pagina letta dall'indice, da controllare sul volume; <b>Non nei codici</b> = in aula non la trovi: va ricordata (o la dà la traccia).</div>
       <div class="banner" id="cedBanner"></div>
       <div class="note" id="cedNote"></div>
       <div id="cedProsp" class="scn hidden"></div>
@@ -373,7 +394,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.8 · 16 ottobre 2026 · busta paga: sotto ogni casella norma, codice (SEAC o La Tribuna) e pagina, oppure «non nei codici» con dove trovarla; nascoste, coperte (apri a clic) o sempre visibili · Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -682,6 +703,7 @@ function renderCedolino(){
     </div>
     ${s.rateDate?'':`<div class="k" style="font-size:11px;margin-top:4px">${MARCHE_TXT} (scaglioni 2025).</div>`}`;
   buildFields('cedFields',CED.fields);
+  fillNorme('ced',CED.fields,s);
   document.getElementById('cedBanner').className='banner';
   const pr=document.getElementById('cedProsp');pr.innerHTML='';pr.classList.add('hidden');
   document.getElementById('cedNote').innerHTML=s.tracciaId
@@ -745,6 +767,82 @@ const CED_WHY={
   inail:'Il premio INAIL è a carico del datore: imponibile × tasso della voce di tariffa, per mille. Non è una trattenuta e non tocca il netto: si paga con l\'autoliquidazione annuale.'
 };
 function cedCalcWhy(k){const t=cedCalc(k),w=CED_WHY[k];return w?`${t}<br><span style="font-family:inherit;opacity:.85">Perché: ${w}</span>`:t;}
+
+/* ===== CEDOLINO: norma e pagina nei due codici (Beta 1.8) =====
+   T = Codice Tributario e Civile SEAC; L = Codice del Lavoro La Tribuna 2026; pagine da P2_Indice_norme_codici v4 (9/10/2026).
+   tipo: 'T' | 'L' | 'dv' (pagina da verificare, codice in .c) | 'no' (non nei codici) | 'nc' (pagina non ancora trovata) */
+const L207='L. 30/12/2024 n. 207 (legge di bilancio 2025): testo su Normattiva o G.U. n. 305 del 31/12/2024; in libreria 207_2024.pdf. L\'estratto di La Tribuna (p. 1755) parte dal c. 169, il SEAC non la riporta';
+const L1531969='Nell\'indice di La Tribuna non l\'hai trovata: cerca «1969» nell\'indice cronologico; se manca, citala così: art. 12 L. 153/1969, sostituito dall\'art. 6 D.Lgs. 314/1997, che rinvia all\'art. 51 TUIR';
+const CED_NORME={
+  trattMal:[['T','1885','Art. 2110 c.c.','malattia: conservazione del posto e trattamento economico'],
+    ['L','131','Artt. 1-2 D.L. 663/1979','indennità di malattia c/INPS anticipata dal datore e conguagliata con i contributi'],
+    ['no','','Divisore 26, carenza, % di integrazione','CCNL applicato: li dà la traccia'],
+    ['no','','Indennità INPS 50% dal 4° al 20° giorno, 66,66% dal 21°','prassi INPS: di solito l\'importo è dato']],
+  trasfImp:[['T','68','Art. 51, c. 5, TUIR','trasferte fuori del comune: esenti 46,48 €/giorno in Italia, 77,47 € all\'estero (nel testo in lire: 90.000 e 150.000); ridotte di 1/3 o 2/3 con vitto o alloggio'],
+    ['nc','','Art. 12 L. 153/1969','stessa regola per i contributi. '+L1531969]],
+  fringeImp:[['T','67','Art. 51, c. 3, TUIR','fringe benefit: il testo riporta la soglia ordinaria di 258,23 €, superata la quale è imponibile tutto il valore'],
+    ['no','','L. 207/2024, art. 1, c. 390','soglie 2025-2027: 1.000 €; 2.000 € con figli a carico. '+L207]],
+  buoniEcc:[['T','64','Art. 51, c. 2, lett. c), TUIR','buoni pasto esenti fino a 4 € cartacei e 10 € elettronici (testo 2026; nel 2025 erano 8 €)']],
+  impPrev:[['nc','','Art. 12 L. 153/1969','imponibile contributivo = redditi dell\'art. 51 TUIR, per competenza. '+L1531969],
+    ['T','64-68','Art. 51 TUIR','base comune a fisco e contributi: onnicomprensività e voci escluse (buoni pasto, trasferte, fringe)'],
+    ['L','1414','Art. 7 D.L. 463/1983','minimale contributivo giornaliero (importo in circolare INPS)'],
+    ['no','','Esclusione delle indennità c/INPS (contribuzione figurativa); arrotondamento all\'euro','prassi INPS']],
+  contributiBase:[['no','','Aliquota c/dipendente (di regola 9,19%)','circolari INPS: la dà la traccia'],
+    ['no','','Arrotondamento dell\'imponibile all\'euro','prassi INPS'],
+    ['L','1526','Art. 2, c. 18, L. 335/1995','massimale annuo (iscritti dal 1996; importo 2026 in circolare INPS): solo se la retribuzione è molto alta']],
+  ivsExtra:[['L','1507','Art. 3-ter D.L. 384/1992','contributo aggiuntivo 1% oltre la prima fascia di retribuzione pensionabile'],
+    ['no','','Soglia 4.685 €/mese (56.224 € annui) nel 2026','circ. INPS 6/2026: non nel codice']],
+  contributi:[['L','1507','Art. 3-ter D.L. 384/1992','contributo aggiuntivo 1%'],
+    ['T','64','Art. 51, c. 2, lett. a), TUIR','i contributi previdenziali c/dipendente non concorrono al reddito: si tolgono nell\'imponibile fiscale']],
+  impFisc:[['T','62','Art. 49 TUIR','nozione di reddito di lavoro dipendente'],
+    ['T','64','Art. 51, c. 1 e c. 2, lett. a), TUIR','onnicomprensività; esclusi i contributi previdenziali e quelli ai fondi sanitari (max 3.615,20 €)'],
+    ['T','7','Art. 6, c. 2, TUIR','le indennità sostitutive (malattia c/INPS, L. 104) sono reddito della stessa categoria']],
+  irpL:[['T','12','Art. 11, c. 1, TUIR','scaglioni e aliquote 23 / 33 / 43% (il testo riporta il 33% del 2026)'],
+    ['T','427','Art. 23, c. 2, lett. a), D.P.R. 600/1973','ritenuta del mese con gli scaglioni ragguagliati al periodo di paga (annui / 12)']],
+  detrM:[['T','16','Art. 13, c. 1, TUIR','formule della detrazione; «rapportata al periodo di lavoro» → × giorni / 365'],
+    ['T','16','Art. 13, c. 1.1, TUIR','maggiorazione di 65 € tra 25.000 e 35.000'],
+    ['T','17','Art. 13, c. 6, TUIR','rapporto troncato alla quarta cifra decimale'],
+    ['no','','65 € non ragguagliati ai giorni','prassi AdE (circ. 4/E/2022)']],
+  cunM:[['no','','L. 207/2024, art. 1, c. 6 (recupero: c. 7; reddito: c. 9)','ulteriore detrazione 1.000 € tra 20.000 e 32.000, decrescente fino a 40.000. '+L207+'. Da ricordare']],
+  irpN:[['T','427','Art. 23 D.P.R. 600/1973','ritenuta del sostituto: imposta del mese meno le detrazioni'],
+    ['T','1273','Art. 17 D.Lgs. 241/1997','versamento unitario in F24 entro il 16 del mese dopo (codice tributo 1001: risoluzione AdE, non nel codice)']],
+  tiM:[['L','849','Art. 1 D.L. 3/2020','trattamento integrativo: testo vigente con la riduzione di 75 € (L. 207/2024, c. 3); recupero in 8 rate se oltre 60 €'],
+    ['no','','Codice tributo 1701 per il recupero in F24','risoluzione AdE, non nel codice']],
+  seM:[['no','','L. 207/2024, art. 1, c. 4-5 (recupero: c. 7-8)','somma esente 7,1 / 5,3 / 4,8% fino a 20.000 €. '+L207+'. Da ricordare']],
+  addTot:[['T','240','Art. 50 D.Lgs. 446/1997','addizionale regionale: base, dovuta solo se c\'è IRPEF netta, rate fino a novembre, cessazione in unica soluzione'],
+    ['T','245','Art. 1 D.Lgs. 360/1998','addizionale comunale: aliquota fino allo 0,8%, saldo e acconto del 30% (rate da marzo)'],
+    ['dv','242','Art. 6 D.Lgs. 68/2011','aliquote regionali: base, maggiorazioni, scaglioni (pagina letta dall\'indice SEAC)'],
+    ['no','','Aliquote Marche 1,23 / 1,53 / 1,70 / 1,73%','legge regionale Marche (L.R. 5/2022) e pagina del MEF Dipartimento Finanze: di solito le dà la traccia']],
+  rimb730:[['T','1312','Art. 19 D.M. 164/1999','conguagli da 730-4 dal mese successivo al ricevimento'],
+    ['T','1273','Art. 17 D.Lgs. 241/1997','il datore recupera il rimborso compensandolo con le ritenute in F24']],
+  deb730:[['T','1312','Art. 19 D.M. 164/1999','conguagli da 730-4: saldo e primo acconto dal mese successivo al ricevimento, secondo acconto a novembre']],
+  netto:[['L','1759','Art. 1 L. 4/1953','contenuto obbligatorio del prospetto paga'],
+    ['L','1869','Art. 11, c. 2, D.L. 62/2026','dal 2026 nel prospetto il codice alfanumerico unico (CNEL) del CCNL'],
+    ['L','1113','Art. 39 D.L. 112/2008','libro unico del lavoro']],
+  tfr:[['T','1888','Art. 2120 c.c.','quota annua = retribuzione annua / 13,5; rivalutazione 1,5% + 75% ISTAT'],
+    ['L','1823','Art. 3 L. 297/1982','contributo 0,50% al Fondo di garanzia, detratto dalla quota TFR']],
+  inail:[['L','509','D.P.R. 1124/1965','testo unico INAIL: premio = retribuzione imponibile × tasso; i numeri degli articoli su premi e autoliquidazione non sono nel tuo indice, cercali nel testo'],
+    ['no','','Tasso per mille della voce di tariffa','tariffe dei premi INAIL (D.I. 27/2/2019): non nel codice, lo dà la traccia']]
+};
+function cedNorme(k,s){const a=(CED_NORME[k]||[]).slice();
+  if(k==='netto'&&s.cessione)a.push(['nc','','D.P.R. 180/1950 (cessione del quinto)','non è nel tuo indice: cercalo nell\'indice cronologico di La Tribuna (1950); in traccia basta l\'importo, che è una trattenuta solo sul netto']);
+  if(k==='impFisc'&&s.contribFondo)a.push(['T','64','Art. 51, c. 2, lett. a), TUIR','contributo al fondo sanitario: escluso fino a 3.615,20 € annui (riduce il fiscale, non il previdenziale)']);
+  return a;}
+const NR_LAB={T:p=>`SEAC p. ${p}`,L:p=>`La Tribuna p. ${p}`,dv:p=>`SEAC p. ${p} · da verificare`,no:()=>'Non nei codici',nc:()=>'Pagina da trovare'};
+function fillNorme(tab,fields,s){
+  fields.forEach(f=>{const box=document.querySelector(`#tab-${tab} [data-nr="${f.k}"]`);if(!box)return;
+    const a=cedNorme(f.k,s);if(!a.length){box.remove();return;}
+    box.innerHTML=`<button type="button" class="nr-b" data-nrb aria-expanded="false">§ Norma e pagina nei codici</button><div class="nr-body">${a.map(([t,p,n,x])=>`<div class="nr-l"><span class="nr-c ${t==='nc'?'dv':t}">${NR_LAB[t](p)}</span><span class="nr-n">${n}</span> <span class="nr-x">— ${x}</span></div>`).join('')}</div>`;});
+  syncNrButtons();}
+function nrMode(){return document.body.classList.contains('nr-on')?'on':document.body.classList.contains('nr-cover')?'cover':'off';}
+function syncNrButtons(){const m=nrMode();document.querySelectorAll('.field .nr').forEach(n=>{const b=n.querySelector('[data-nrb]');if(!b)return;
+  const open=m==='on'?!n.classList.contains('shut'):n.classList.contains('open');
+  b.textContent=open?'§ Nascondi norma e pagina':'§ Norma e pagina nei codici';b.setAttribute('aria-expanded',open?'true':'false');});}
+function setNrMode(m){document.body.classList.remove('nr-off','nr-cover','nr-on');document.body.classList.add('nr-'+m);
+  document.querySelectorAll('.field .nr').forEach(n=>n.classList.remove('open','shut'));
+  const sel=document.getElementById('nrMode');if(sel)sel.value=m;try{localStorage.setItem('cdl_norme',m)}catch(e){}syncNrButtons();}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-nrb]');if(!b)return;const n=b.closest('.nr');
+  if(nrMode()==='on')n.classList.toggle('shut');else n.classList.toggle('open');syncNrButtons();});
 
 /* ===== CEDOLINO: prospetto paga svolto voce per voce ===== */
 function prospettoCed(){
@@ -1163,7 +1261,7 @@ function buildFields(boxId,fields){
       <div class="fb" data-fb="${f.k}"></div>
       <div class="cm"><textarea data-cmin="${f.k}" rows="2" aria-label="Commento al passaggio: ${String(f.l).replace(/<[^>]+>/g,'').replace(/"/g,'')}" placeholder="Commento al passaggio: cosa calcoli, con quali dati e perché (come nell'elaborato d'esame)"></textarea>
       </div>
-      <div class="cm-model hidden" data-cmm="${f.k}"></div></div>`));
+      <div class="cm-model hidden" data-cmm="${f.k}"></div>${boxId==='cedFields'?`<div class="nr" data-nr="${f.k}"></div>`:''}</div>`));
 }
 /* commenti del simulatore: uno per casella, cancellabili; i tuoi commenti non vengono toccati */
 const CALC_BY_TAB={ced:()=>cedCalcWhy,cu:()=>cuCalc,cong:()=>congCalc,fatt:()=>fattCalc};
@@ -1236,7 +1334,7 @@ function hideEsito(tab){
   document.querySelectorAll(`#tab-${tab} [data-fb]`).forEach(fb=>{fb.className='fb';fb.innerHTML='';});
   const b=document.getElementById(tab+'Banner');if(b)b.className='banner';
   clearModelComments(tab);
-  if(tab==='ced'){const p=document.getElementById('cedProsp');p.innerHTML='';p.classList.add('hidden');}
+  if(tab==='ced'){const p=document.getElementById('cedProsp');p.innerHTML='';p.classList.add('hidden');document.querySelectorAll('#tab-ced .field .nr').forEach(n=>n.classList.remove('open'));syncNrButtons();}
   if(tab==='cu'){document.getElementById('cuMemo').classList.add('hidden');if(window.cuModelActive&&cuModelActive())cuModelHide();}
 }
 function reveal(fields,calc){fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);fb.className='fb warn show';fb.innerHTML=`Soluzione: ${calc(f.k)}`;});}
@@ -1267,6 +1365,8 @@ document.getElementById('cuCm').onclick=()=>{if(window.cuModelActive&&cuModelAct
 document.getElementById('congCm').onclick=()=>showModelComments('cong',CONG_FIELDS);
 document.getElementById('fattCm').onclick=()=>showModelComments('fatt',FATT_FIELDS);
 try{setCommenti(localStorage.getItem('cdl_commenti')!=='0');}catch(e){setCommenti(true);}
+try{const m=localStorage.getItem('cdl_norme');setNrMode(['off','cover','on'].includes(m)?m:'cover');}catch(e){setNrMode('cover');}
+document.getElementById('nrMode').onchange=e=>setNrMode(e.target.value);
 document.getElementById('cuPart').onclick=()=>{if(window.cuModelActive&&cuModelActive()){cuModelPartial();return;}checkPartial(CU_FIELDS,CU.sol,'cuBanner');};
 document.getElementById('cuHide').onclick=()=>hideEsito('cu');
 document.getElementById('congPart').onclick=()=>checkPartial(CONG_FIELDS,CONG.sol,'congBanner');
