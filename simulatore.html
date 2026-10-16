@@ -319,7 +319,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -420,9 +420,12 @@ const ANNO_CED=2026;
 const NOMI_MESI=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
 const MESI_IDX=[0,1,2,3,4,5,6,8,9,10];                 // esclusi agosto e dicembre (ferie collettive / tredicesima)
 const GSET=['dom','lun','mar','mer','gio','ven','sab'];
-function calMese(idx,anno){anno=anno||ANNO_CED;const n=new Date(anno,idx+1,0).getDate();const g=[];
-  for(let d=1;d<=n;d++)g.push({d,dow:new Date(anno,idx,d).getDay()});
-  return {gg:n,giorni:g,lav:g.filter(x=>x.dow>=1&&x.dow<=5).length};}
+// Festività nazionali 2026 (L. 260/1949 e successive; Pasqua 5 aprile 2026): non sono giorni di presenza (niente buoni pasto)
+const FESTE_2026={0:[1,6],3:[6,25],4:[1],5:[2],7:[15],10:[1],11:[8,25,26]};
+function calMese(idx,anno){anno=anno||ANNO_CED;const n=new Date(anno,idx+1,0).getDate();const g=[];const fe=(anno===2026&&FESTE_2026[idx])||[];
+  for(let d=1;d<=n;d++)g.push({d,dow:new Date(anno,idx,d).getDay(),fest:fe.includes(d)});
+  const feste=g.filter(x=>x.fest&&x.dow>=1&&x.dow<=5).map(x=>x.d);
+  return {gg:n,giorni:g,feste,lav:g.filter(x=>x.dow>=1&&x.dow<=5&&!x.fest).length};}
 // Regione Marche, addizionale regionale IRPEF 2025 a scaglioni. Riscontro: traccia n. 2 ITL Ancona 2025 (589,11 € ricalcolato al centesimo)
 // e fonti secondarie concordi; DA VERIFICARE sul sito del Dipartimento delle Finanze. Per i redditi 2026 si assumono gli stessi scaglioni.
 const MARCHE_SCAGLIONI=[[15000,1.23],[28000,1.53],[50000,1.70],[Infinity,1.73]];
@@ -451,25 +454,30 @@ function genCedolino(forceAv){
     elementi:[['Paga base'+(b.pt?` (part-time ${b.pt}%)`:''),b.pagaBase],['Contingenza',b.conting],[`Scatti di anzianità (n. ${b.nScatti})`,b.scattiTot]],
     mal:null,regolaMal:null,n104:0,p104:0,permGiorno:0,permOre:0,festiv:0,straord:0,oreStr:0,maggStr:0,buonoU:pick([8,10]),contribFondo:0,cessione:0,
     trasfGG:0,trasfU:0,fringe:0,fringeFigli:false,c730:0,tassoInail:b.inailTasso,rateDate:null,tracciaId:null,noTfr:false};
-  let liberi=cal.giorni.filter(x=>x.dow>=1&&x.dow<=5).map(x=>x.d);
+  let liberi=cal.giorni.filter(x=>x.dow>=1&&x.dow<=5&&!x.fest).map(x=>x.d);
+  s.feste=cal.feste;
   const togli=arr=>{liberi=liberi.filter(d=>!arr.includes(d));};
   let assLav=0;   // giorni lun-ven di assenza (per i buoni pasto)
   if(av){
-    if(EVENTI.malattia){
+    if(EVENTI.malattia&&!(b.q==='Quadro'&&b.ccnlKey==='commercio')){
       const L=Math.floor(rnd(3,11));                                  // giorni di calendario
-      const starts=liberi.filter(d=>d+L-1<=cal.gg);
+      const starts=liberi.filter(d=>d+L-1<=cal.gg&&!cal.giorni.slice(d-1,d-1+L).some(x=>x.fest));   // periodo senza festività
       const d0=pick(starts.length?starts:[1]);
       const days=[];for(let d=d0;d<d0+L&&d<=cal.gg;d++)days.push(cal.giorni[d-1]);
       const n26=days.filter(x=>x.dow!==0).length;
       const nC=days.slice(0,3).filter(x=>x.dow!==0).length, nD=days.slice(3).filter(x=>x.dow!==0).length;
-      const nINPS=Math.max(0,days.length-3);
-      const R=REGOLA_MAL[b.ccnlKey]||REGOLA_MAL.metalmecc;
+      // INPS: indennità agli operai dell'industria e a operai e impiegati del terziario (guida INPS «Tutela previdenziale della malattia»);
+      // impiegati e quadri dell'industria: nessuna indennità INPS, retribuzione a carico del datore secondo il CCNL
+      const inpsMal=b.ccnlKey==='commercio'||b.q==='Operaio';
+      const nINPS=inpsMal?Math.max(0,days.length-3):0;
+      const R0=REGOLA_MAL[b.ccnlKey]||REGOLA_MAL.metalmecc;
+      const R=inpsMal?R0:{car:100,dopo:100,txt:'Impiegati e quadri dell\'industria: niente indennità INPS di malattia (la tutela INPS riguarda gli operai dell\'industria e operai e impiegati del terziario); la retribuzione dei giorni di malattia è a carico del datore secondo il CCNL (dato di traccia: 100%)'};
       const garantito=r2(r2(nC*g*R.car/100)+r2(nD*g*R.dopo/100));
       const rmg=b.lordo*b.mens/12/30;
       const indINPS=r2(rmg*0.5*nINPS);
       const lordizz=r2(indINPS*b.aliq/(100-b.aliq));
       const integr=Math.max(0,r2(garantito-indINPS-lordizz));
-      s.mal={dal:days[0],al:days[days.length-1],L:days.length,n26,nC,nD,nINPS,g,garantito,rmg,indINPS,lordizz,integr,tratt:r2(n26*g),car:R.car,dopo:R.dopo,dato:false};
+      s.mal={dal:days[0],al:days[days.length-1],L:days.length,n26,nC,nD,nINPS,g,garantito,rmg,indINPS,lordizz,integr,tratt:r2(n26*g),car:R.car,dopo:R.dopo,dato:false,inps:inpsMal};
       s.regolaMal=R;
       const lav=days.filter(x=>x.dow>=1&&x.dow<=5).map(x=>x.d);assLav+=lav.length;togli(lav);
     }
@@ -561,9 +569,10 @@ function vociCed(s,o){const V=[];
   if(s.permOre)V.push([`Permesso retribuito (${s.permOre} h, giorno ${s.permGiorno})`,null,'inf']);
   if(s.mal){
     V.push([`Malattia: trattenuta dei giorni non lavorati (da calcolare)`,null,'neg']);
-    V.push(['Integrazione malattia c/ditta (dato)',s.mal.integr,'imp']);
+    if(s.mal.inps===false){V.push(['Malattia retribuita c/ditta (dato)',s.mal.integr,'imp']);}
+    else{V.push(['Integrazione malattia c/ditta (dato)',s.mal.integr,'imp']);
     V.push(['Indennit&agrave; malattia c/INPS (dato)',s.mal.indINPS,'fis']);
-    V.push(['Lordizzazione dell\'indennit&agrave; INPS (dato di calcolo)',s.mal.lordizz,'inf']);
+    V.push(['Lordizzazione dell\'indennit&agrave; INPS (dato di calcolo)',s.mal.lordizz,'inf']);}
   }
   if(s.n104){V.push([`Permessi L. 104/1992: trattenuta ${s.n104} gg &times; ${fmt(r2(s.lordo/26))}`,-s.p104,'neg']);V.push([`Indennit&agrave; permessi L. 104/1992 c/INPS`,s.p104,'fis']);}
   if(s.festiv)V.push(['Festivit&agrave; non goduta',s.festiv,'imp']);
@@ -584,7 +593,8 @@ function renderCedolino(){
   const voci=vociCed(s).map(([d,v,n])=>`<div class="voce"><span class="vd">${d}</span><span class="nt ${n==='neg'||n==='inf'||n==='tras'||n==='nat'||n==='mista'||n==='n730'?'fis':n}">${NAT[n]}</span><span class="vv">${v==null?'—':fmt(v)}</span></div>`).join('');
   const elem=(s.elementi||[]).map(([k,v])=>`<div><span class="k">${k}</span><span class="v">${fmt(v)}</span></div>`).join('');
   const eventi=[];
-  if(m)eventi.push(`<b>Malattia</b> dal ${dd(m.dal)} al ${dd(m.al)} ${s.mese} (${m.L} giorni di calendario). ${s.regolaMal?s.regolaMal.txt:''}. Dati forniti: indennit&agrave; INPS ${fmt(m.indINPS)}; lordizzazione ${fmt(m.lordizz)}; integrazione c/ditta ${fmt(m.integr)}.`);
+  if(m)eventi.push(`<b>Malattia</b> dal ${dd(m.dal)} al ${dd(m.al)} ${s.mese} (${m.L} giorni di calendario). ${s.regolaMal?s.regolaMal.txt:''}. ${m.inps===false?`Dato fornito: malattia retribuita c/ditta ${fmt(m.integr)}.`:`Dati forniti: indennit&agrave; INPS ${fmt(m.indINPS)}; lordizzazione ${fmt(m.lordizz)}; integrazione c/ditta ${fmt(m.integr)}.`}`);
+  if(s.feste&&s.feste.length)eventi.push(`<b>Festivit&agrave; nazionali</b> nel mese (giorni feriali): ${s.feste.join(', ')} ${s.mese}: non sono giorni di presenza.`);
   if(s.n104)eventi.push(`<b>Permessi L. 104/1992</b>: ${s.n104} giorni${s.gg104?` (${s.gg104.join(', ')} ${s.mese})`:''}, indennit&agrave; anticipata dal datore e recuperata dall'INPS; divisore 26.`);
   if(s.permOre)eventi.push(`<b>Permesso retribuito</b> di ${s.permOre} ore il giorno ${s.permGiorno}.`);
   if(s.trasfGG)eventi.push(`<b>Trasferta</b> fuori del comune: ${s.trasfGG} giorni a indennit&agrave; forfettaria di ${fmt(s.trasfU)} &euro;, senza rimborso di vitto e alloggio.`);
@@ -629,7 +639,8 @@ function renderCedolino(){
 
 /* ===== CEDOLINO: spiegazione di ogni campo ===== */
 function cedCalc(k){const s=CED.scn,o=CED.sol,m=s.mal;const s1=o.s1m,s2=50000/12;switch(k){
-  case 'trattMal':return `${m.n26} giorni (dal ${m.dal.d} al ${m.al.d}, domeniche escluse) × ${fmt(m.g)} (= ${fmt(s.lordo)}/26) = ${fmt(o.trattMal)}. Controprova dell'integrazione: garantito ${m.nC} gg × ${m.car}% + ${m.nD} gg × ${m.dopo}% = ${fmt(m.garantito)}; − INPS ${fmt(m.indINPS)} − lordizzazione ${fmt(m.lordizz)} = integrazione ${fmt(m.integr)}`;
+  case 'trattMal':if(m.inps===false)return `${m.n26} giorni (dal ${m.dal.d} al ${m.al.d}, domeniche escluse) × ${fmt(m.g)} (= ${fmt(s.lordo)}/26) = ${fmt(o.trattMal)}; impiegato dell'industria: nessuna indennità INPS, i giorni sono ripagati per intero dal datore (${fmt(m.integr)})`;
+    return `${m.n26} giorni (dal ${m.dal.d} al ${m.al.d}, domeniche escluse) × ${fmt(m.g)} (= ${fmt(s.lordo)}/26) = ${fmt(o.trattMal)}. Controprova dell'integrazione: garantito ${m.nC} gg × ${m.car}% + ${m.nD} gg × ${m.dopo}% = ${fmt(m.garantito)}; − INPS ${fmt(m.indINPS)} − lordizzazione ${fmt(m.lordizz)} = integrazione ${fmt(m.integr)}`;
   case 'trasfImp':return `${s.trasfGG} gg × (${fmt(s.trasfU)} − 46,48) = ${fmt(o.trasfImp)}${o.trasfImp===0?' (indennità entro la franchigia)':''}`;
   case 'fringeImp':return o.fringeImp?`${fmt(s.fringe)} > soglia ${fmt0(o.sogliaFringe)} → imponibile per intero = ${fmt(o.fringeImp)} (anche contributi)`:`${fmt(s.fringe)} ≤ soglia ${fmt0(o.sogliaFringe)}${s.fringeFigli?' (figli a carico)':''} → esente: 0,00`;
   case 'buoniEcc':return o.buoniEcc>0?`(${fmt(s.buonoU)} − 10) × ${s.ggPasto} gg = ${fmt(o.buoniEcc)}`:`buono ${fmt(s.buonoU)} ≤ 10 → nessuna eccedenza (0,00)`;
@@ -690,8 +701,9 @@ function prospettoCed(){
   if(s.permOre)add(`Permesso retribuito ${s.permOre} h (giorno ${s.permGiorno})`,'già compreso nella retribuzione',null,null,'Neutro: è retribuito dal datore, non cambia lordo né imponibili.');
   if(m){
     add(`Trattenuta malattia (${m.dal.d}-${m.al.d})`,`${m.n26} gg (domeniche escluse) × ${fmt(g)}`,null,o.trattMal,'Si tolgono le giornate non lavorate col divisore 26; la copertura arriva dalle due voci successive.');
-    add('Indennità malattia c/INPS',m.dato?`dato di traccia (50% × ${fmt(r2(s.lordo*s.mens/12/30))} × ${m.nINPS} gg dal 4°)`:`50% × ${fmt(r2(m.rmg))} (retrib. × ${s.mens}/12/30) × ${m.nINPS} gg di calendario dal 4°`,o.indINPS,null,'Anticipata dal datore e recuperata dall\'INPS: soggetta a IRPEF, non a contributi.');
-    add('Integrazione malattia c/ditta',`garantito ${m.nC} gg × ${m.car}% + ${m.nD} gg × ${m.dopo}% = ${fmt(m.garantito)} − INPS ${fmt(m.indINPS)} − lordizz. ${fmt(m.lordizz)}`,o.integr,null,'A carico ditta, imponibile pieno. La lordizzazione (INPS × aliquota/(100 − aliquota)) non si paga: serve a non far pagare contributi sulla quota coperta dall\'INPS.');
+    if(m.inps!==false)add('Indennità malattia c/INPS',m.dato?`dato di traccia (50% × ${fmt(r2(s.lordo*s.mens/12/30))} × ${m.nINPS} gg dal 4°)`:`50% × ${fmt(r2(m.rmg))} (retrib. × ${s.mens}/12/30) × ${m.nINPS} gg di calendario dal 4°`,o.indINPS,null,'Anticipata dal datore e recuperata dall\'INPS: soggetta a IRPEF, non a contributi.');
+    if(m.inps===false)add('Malattia retribuita c/ditta',`${m.n26} gg × ${fmt(g)} × 100%`,o.integr,null,'Impiegati e quadri dell\'industria: niente indennità INPS; il datore paga i giorni di malattia secondo il CCNL. Imponibile pieno.');
+    else add('Integrazione malattia c/ditta',`garantito ${m.nC} gg × ${m.car}% + ${m.nD} gg × ${m.dopo}% = ${fmt(m.garantito)} − INPS ${fmt(m.indINPS)} − lordizz. ${fmt(m.lordizz)}`,o.integr,null,'A carico ditta, imponibile pieno. La lordizzazione (INPS × aliquota/(100 − aliquota)) non si paga: serve a non far pagare contributi sulla quota coperta dall\'INPS.');
   }
   if(s.n104){
     add(`Trattenuta permessi L. 104 (${s.n104} gg)`,`${s.n104} × ${fmt(g)}`,null,o.p104,'Giornate di permesso tolte dalla retribuzione mensile.');
@@ -706,7 +718,7 @@ function prospettoCed(){
   add('Contributi INPS c/dipendente',`${fmt0(o.impPrevArr)} × ${fmt(s.aliq)}%${o.ivsExtra?` + 1% oltre 4.685 (${fmt(o.ivsExtra)})`:''}`,null,o.contributi,'Calcolati sull\'imponibile previdenziale arrotondato all\'euro.');
   if(s.contribFondo)add('Fondo assistenza sanitaria c/dip','dato',null,s.contribFondo,'Trattenuta deducibile dall\'imponibile IRPEF fino a 3.615,20 €/anno (art. 51, c. 2, lett. a), TUIR).');
   add('IRPEF netta',`lorda ${fmt(o.irpL)} (${fmt(o.impFisc)} a scaglioni) − detrazione ${fmt(o.detrM)} − ulteriore ${fmt(o.cunM)}`,null,o.irpN,'Ritenuta d\'acconto del sostituto d\'imposta sull\'imponibile fiscale del mese.');
-  if(o.tiM)add('Trattamento integrativo (D.L. 3/2020)',`1.200 × ${s.ggMese}/365`,o.tiM,null,'Non tassato, senza contributi; il datore lo recupera in F24 riducendo le ritenute.');
+  if(o.tiM)add('Trattamento integrativo (D.L. 3/2020)',`${fmt(o.tiA)} × ${s.ggMese}/365`,o.tiM,null,'Non tassato, senza contributi; il datore lo recupera in F24 riducendo le ritenute.');
   if(o.seM)add('Somma esente cuneo (L. 207/2024, c. 4)',`${fmt(o.impFisc)} × ${fmt(o.sePerc)}%`,o.seM,null,'Non concorre al reddito: si aggiunge al netto.');
   if(s.rateDate){
     add('Addizionale regionale anno precedente (rata)','dato',null,o.rataReg,'Determinata al conguaglio dell\'anno precedente, trattenuta a rate.');
