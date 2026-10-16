@@ -138,6 +138,19 @@
   .cum-tip{position:fixed;z-index:50;max-width:320px;background:var(--ink);color:#fff;font-size:12px;padding:6px 9px;border-radius:6px;pointer-events:none;}
   .cum-tip.hidden{display:none;}
   @media(prefers-reduced-motion:reduce){.cf.flash{animation:none;}}
+  /* Traccia sempre visibile (Beta 1.7): schermi larghi = traccia fissa a sinistra; schermi stretti = pulsante «Traccia» */
+  @media(min-width:1180px){
+    .wrap{max-width:1480px;}
+    #tab-ced:not(.hidden),#tab-cu:not(.hidden),#tab-cong:not(.hidden),#tab-fatt:not(.hidden){display:grid;grid-template-columns:minmax(340px,430px) minmax(0,1fr);gap:16px;align-items:start;}
+    #tab-ced>section:first-child,#tab-cu>section:first-child,#tab-cong>section:first-child,#tab-fatt>section:first-child{position:sticky;top:8px;max-height:calc(100vh - 16px);overflow:auto;margin-bottom:0;}
+    #tab-ced>section:first-child .scn .row,#tab-cu>section:first-child .scn .row,#tab-cong>section:first-child .scn .row,#tab-fatt>section:first-child .scn .row{grid-template-columns:1fr;}
+    #trBtn{display:none!important;}
+  }
+  #trBtn{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:70;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;padding:10px 14px;border-radius:999px;border:1.5px solid var(--t1);background:var(--t1);color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.2);cursor:pointer;}
+  #trPanel{position:fixed;z-index:71;right:max(8px,env(safe-area-inset-right,0px));left:max(8px,env(safe-area-inset-left,0px));bottom:max(64px,calc(env(safe-area-inset-bottom,0px) + 64px));max-height:70vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.22);padding:12px 14px;}
+  @media(min-width:640px){#trPanel{left:auto;width:560px;}}
+  #trPanel .tr-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+  #trPanel .tr-h button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 9px;cursor:pointer;font-family:inherit;font-size:11px;}
   .cum-hint{font-size:12px;}
   .cum-help{position:fixed;z-index:60;width:min(380px,calc(100vw - 16px));background:#fff;color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--t3);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:10px 12px;font-size:12.5px;line-height:1.45;pointer-events:none;}
   .cum-help.hidden{display:none;}
@@ -337,7 +350,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -1264,6 +1277,23 @@ document.getElementById('evNone').onclick=()=>{
 };
 
 newCed(); newCU(); newCong(); newFatt(); updateScore();
+/* pulsante «Traccia» per gli schermi stretti: mostra i dati dell'esercizio senza tornare su */
+(function(){
+  const btn=document.createElement('button');btn.id='trBtn';btn.type='button';btn.textContent='Traccia';btn.setAttribute('aria-expanded','false');
+  const pan=document.createElement('div');pan.id='trPanel';pan.hidden=true;pan.setAttribute('role','dialog');pan.setAttribute('aria-label','Dati della traccia');
+  document.body.append(btn,pan);
+  function close(){pan.hidden=true;btn.setAttribute('aria-expanded','false');btn.textContent='Traccia';}
+  function open(){
+    const sec=document.querySelector(`#tab-${TAB}>section:first-child`);if(!sec)return;
+    const c=sec.cloneNode(true);c.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+    pan.innerHTML='<div class="tr-h"><span>Dati della traccia</span><button type="button" id="trClose">Chiudi</button></div>';
+    pan.appendChild(c);pan.hidden=false;btn.setAttribute('aria-expanded','true');btn.textContent='Chiudi traccia';
+    pan.querySelector('#trClose').onclick=close;
+  }
+  btn.onclick=()=>pan.hidden?open():close();
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&!pan.hidden)close();});
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',close));
+})();
 </script>
 <script src="cu-modelli/cu-modello.js"></script>
 </body>
