@@ -4,7 +4,7 @@
 (function(){
 const W=595.276,H=841.89,BASE='cu-modelli/';
 const TOGGLES=new Set(['F_10','P_2','P_3','P_7','P_96']);
-let DATA=null,view='ord',zoom=1,els={},byKey={},vals={},built=null,loading=null;
+let DATA=null,NOTE={},view='ord',zoom=1,els={},byKey={},vals={},built=null,loading=null,hintOn=true;
 const st={get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const strip=s=>String(s).replace(/<[^>]+>/g,'');
@@ -61,7 +61,8 @@ function solutions(){
 /* ---------- costruzione del modello ---------- */
 function load(){
   if(DATA)return Promise.resolve(DATA);
-  if(!loading)loading=fetch(BASE+'campi.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>DATA=d);
+  if(!loading){fetch(BASE+'note.json').then(r=>r.ok?r.json():{}).then(d=>NOTE=d).catch(()=>{});
+    loading=fetch(BASE+'campi.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>DATA=d);}
   return loading;
 }
 const isTog=f=>f.chk||TOGGLES.has(f.k)||(f.w<=14&&f.h<=14);
@@ -77,6 +78,7 @@ function build(){
   els={};byKey={};M.fields.forEach(f=>byKey[f.k]=f);
   b.innerHTML=`<div class="cum-bar">
       <div class="cum-nav">${M.pages.map(p=>`<a href="#cum-${view}-${p.n}"><b>${p.n}</b>${esc(p.short)}</a>`).join('')}</div>
+      <label class="evchk cum-hint"><input type="checkbox" id="cumHint" ${hintOn?'checked':''}> Suggerimenti sulle caselle</label>
       <div class="cum-zoom"><button type="button" class="diffbtn" data-z="-1" aria-label="Riduci">−</button><span id="cumZ">${Math.round(zoom*100)}%</span><button type="button" class="diffbtn" data-z="1" aria-label="Ingrandisci">+</button></div>
     </div>
     <div class="cum-note" id="cumNote"></div>
@@ -112,7 +114,7 @@ function note(){
   const n=document.getElementById('cumNote');if(!n)return;
   const s=CU.scn;
   n.innerHTML=(view==='sint'?'CU <b>sintetica</b>: mancano tra gli altri i punti 23, 25, 28, 52, 61-62, 459 e la tassazione del TFR (814 e seguenti), presenti solo nell\'ordinaria. ':'CU <b>ordinaria</b>: frontespizio, quadro CT e certificazione di lavoro dipendente. ')
-   +'Scrivi nelle caselle bianche come a penna; le caselle piccole si barrano con un clic. Il controllo segnala anche le caselle riempite che dovevano restare vuote.'
+   +'Scrivi nelle caselle bianche come a penna; le caselle piccole si barrano con un clic. Cliccando su una casella compare cosa ci va (si spegne con «Suggerimenti sulle caselle» o in modalità Esame). Il controllo segnala anche le caselle riempite che dovevano restare vuote.'
    +(s.tracciaId?'':' Dati anagrafici e frontespizio non sono forniti dall\'esercizio e restano fuori dal controllo.');
 }
 /* ---------- confronto ---------- */
@@ -177,10 +179,35 @@ box().addEventListener('click',e=>{
   const t=e.target.closest('button.cf');if(t){const k=t.dataset.k;setVal(k,vals[k]?'':'X');t.classList.remove('ok','err','miss','extra');delete t.dataset.tip}
 });
 const tip=document.createElement('div');tip.className='cum-tip hidden';document.body.appendChild(tip);
-box().addEventListener('pointerover',e=>{const el=e.target.closest('.cf');if(!el||!el.dataset.tip){tip.classList.add('hidden');return}tip.textContent=el.dataset.tip;tip.classList.remove('hidden');const r=el.getBoundingClientRect();tip.style.left=Math.max(8,Math.min(innerWidth-330,r.left))+'px';tip.style.top=(r.bottom+6)+'px'});
+/* ---------- suggerimenti sulla casella (modalità Guidata) ---------- */
+const help=document.createElement('div');help.className='cum-help hidden';help.setAttribute('role','note');document.body.appendChild(help);
+const hintsActive=()=>hintOn&&(typeof MODE==='undefined'||MODE!=='exam');
+function showHelp(el){
+  if(!hintsActive()){help.classList.add('hidden');return}
+  const k=el.dataset.k,f=byKey[k],N=NOTE[k]||{};
+  const lab=(f.lab&&!k.startsWith('X')&&!k.startsWith('fam')&&k!=='anno'&&k!=='note')?` — ${esc(f.lab)}`:'';
+  let h=`<div class="ch-t">${esc(ptName(f))}${lab}</div>`;
+  if(N.c)h+=`<div class="ch-r"><b>Cosa ci va</b>${esc(N.c)}</div>`;
+  if(N.k)h+=`<div class="ch-r"><b>Come si fa</b>${esc(N.k)}</div>`;
+  if(N.i)h+=`<div class="ch-i"><b>Istruzioni CU 2026</b>«${esc(N.i)}»</div>`;
+  if(!N.c&&!N.i)h+=`<div class="ch-r">Casella non usata negli esercizi del simulatore: con i dati di un normale rapporto di lavoro dipendente di solito resta vuota.</div>`;
+  if(el.dataset.tip)h+=`<div class="ch-e">${esc(el.dataset.tip)}</div>`;
+  help.innerHTML=h;help.classList.remove('hidden');
+  const r=el.getBoundingClientRect(),W=innerWidth,Hh=help.offsetHeight;
+  if(W<700){help.classList.add('sheet');help.style.left='';help.style.top='';return}
+  help.classList.remove('sheet');
+  const left=Math.max(8,Math.min(W-help.offsetWidth-8,r.left));
+  let top=r.bottom+8; if(top+Hh>innerHeight-8)top=Math.max(8,r.top-Hh-8);
+  help.style.left=left+'px';help.style.top=top+'px';
+}
+box().addEventListener('focusin',e=>{const el=e.target.closest('.cf');if(el){tip.classList.add('hidden');showHelp(el)}});
+box().addEventListener('focusout',e=>{if(e.target.closest('.cf'))setTimeout(()=>{if(!document.activeElement||!document.activeElement.closest||!document.activeElement.closest('#cuModel .cf'))help.classList.add('hidden')},60)});
+box().addEventListener('change',e=>{if(e.target.id==='cumHint'){hintOn=e.target.checked;st.set('cdl:cuHint',hintOn);if(!hintOn)help.classList.add('hidden')}});
+addEventListener('scroll',()=>{const a=document.activeElement;if(!help.classList.contains('hidden')&&a&&a.classList&&a.classList.contains('cf'))showHelp(a)},{passive:true});
+box().addEventListener('pointerover',e=>{const el=e.target.closest('.cf');if(!el||!el.dataset.tip||el===document.activeElement){tip.classList.add('hidden');return}tip.textContent=el.dataset.tip;tip.classList.remove('hidden');const r=el.getBoundingClientRect();tip.style.left=Math.max(8,Math.min(innerWidth-330,r.left))+'px';tip.style.top=(r.bottom+6)+'px'});
 box().addEventListener('pointerout',e=>{if(e.target.closest('.cf'))tip.classList.add('hidden')});
 addEventListener('scroll',()=>tip.classList.add('hidden'),{passive:true});
-zoom=st.get('cdl:cuZoom')||1;
+zoom=st.get('cdl:cuZoom')||1;{const h=st.get('cdl:cuHint');hintOn=h===null?true:!!h;}
 const v0=st.get('cdl:cuView');view=['elenco','ord','sint'].includes(v0)?v0:'ord';
 apply();
 })();

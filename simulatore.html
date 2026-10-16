@@ -138,6 +138,16 @@
   .cum-tip{position:fixed;z-index:50;max-width:320px;background:var(--ink);color:#fff;font-size:12px;padding:6px 9px;border-radius:6px;pointer-events:none;}
   .cum-tip.hidden{display:none;}
   @media(prefers-reduced-motion:reduce){.cf.flash{animation:none;}}
+  .cum-hint{font-size:12px;}
+  .cum-help{position:fixed;z-index:60;width:min(380px,calc(100vw - 16px));background:#fff;color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--t3);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:10px 12px;font-size:12.5px;line-height:1.45;pointer-events:none;}
+  .cum-help.hidden{display:none;}
+  .cum-help.sheet{left:8px!important;right:8px;bottom:max(8px,env(safe-area-inset-bottom,0px));top:auto!important;width:auto;max-height:45vh;overflow:auto;}
+  .cum-help .ch-t{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;margin-bottom:6px;color:var(--t1);}
+  .cum-help .ch-r{margin-top:4px;}
+  .cum-help .ch-r b,.cum-help .ch-i b{display:block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);}
+  .cum-help .ch-i{margin-top:7px;padding-top:6px;border-top:1px dotted var(--line);color:var(--ink-soft);font-size:11.5px;font-style:italic;}
+  .cum-help .ch-i b{font-style:normal;color:var(--ink-soft);}
+  .cum-help .ch-e{margin-top:7px;padding:5px 7px;border-radius:5px;background:var(--warn-bg);color:var(--warn);font-family:'IBM Plex Mono',monospace;font-size:11.5px;}
 </style>
 </head>
 <body>
@@ -319,7 +329,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
