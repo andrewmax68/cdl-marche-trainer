@@ -103,12 +103,47 @@
   .hidden{display:none;}
   @media(max-width:580px){.scn .row{grid-template-columns:1fr;}.field{grid-template-columns:1fr 120px;}.diff{margin-left:0;}}
   @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+  /* CU sul modello fedele (Beta 1.7) */
+  #cuViewWrap{margin-left:auto;}
+  .cum-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .cum-nav{display:flex;flex-wrap:wrap;gap:5px;}
+  .cum-nav a{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:2px 9px;background:#fff;}
+  .cum-nav a b{color:var(--t4);margin-right:4px;}
+  .cum-zoom{display:flex;align-items:center;gap:4px;background:#E1E6EB;border-radius:9px;padding:3px;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+  .cum-zoom span{min-width:40px;text-align:center;}
+  .cum-note{font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
+  .cum-pages{overflow-x:auto;display:flex;flex-direction:column;gap:18px;padding-bottom:4px;}
+  .cum-h{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px;}
+  .cum-h b{color:var(--t4);margin-right:6px;}
+  .cum-paper{position:relative;width:calc(100% * var(--cz,1));aspect-ratio:595.276/841.89;background:#fff;container-type:inline-size;box-shadow:0 1px 2px rgba(0,0,0,.18),0 6px 18px rgba(0,0,0,.08);scroll-margin-top:16px;}
+  .cum-paper img{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none;user-select:none;}
+  .cf{position:absolute;border:0;margin:0;background:transparent;color:#1b3d8f;font-family:'IBM Plex Mono',monospace;font-size:1.12cqw;line-height:1;padding:.62cqw .25cqw 0 1.15cqw;font-weight:500;border-radius:1px;}
+  .cf:hover{background:rgba(27,61,143,.05);}
+  .cf:focus{outline:none;background:rgba(255,226,120,.55);box-shadow:0 0 0 .18cqw #1b3d8f;}
+  textarea.cf{resize:none;padding:2cqw;font-size:1.4cqw;line-height:1.4;}
+  .cf.tog{cursor:pointer;padding:0;display:grid;place-items:center;font-size:1.6cqw;font-weight:700;}
+  .cf.sol{color:var(--t3);}
+  .cf.ok{background:rgba(31,122,69,.14);box-shadow:inset 0 0 0 .16cqw var(--ok);}
+  .cf.err{background:rgba(190,51,32,.13);box-shadow:inset 0 0 0 .2cqw var(--err);}
+  .cf.miss{background:rgba(154,106,30,.18);box-shadow:inset 0 0 0 .2cqw var(--warn);}
+  .cf.extra{background:rgba(106,63,160,.14);box-shadow:inset 0 0 0 .2cqw #6a3fa0;}
+  .cf.flash{animation:cumflash 1.2s ease-out;}
+  @keyframes cumflash{0%{box-shadow:0 0 0 .8cqw rgba(255,226,120,.9)}100%{box-shadow:0 0 0 0 transparent}}
+  .cum-res{margin-top:12px;display:flex;flex-direction:column;gap:6px;max-height:60vh;overflow:auto;}
+  .cum-res-h{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .cum-it{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:7px 10px;border-radius:6px;background:#F6F8FA;border-left:4px solid var(--line);font-size:12px;}
+  .cum-it:focus-visible{outline:2px solid var(--t3);}
+  .cum-it .mono{font-size:11.5px;}
+  .cum-it.t-err{border-left-color:var(--err);}.cum-it.t-miss{border-left-color:var(--warn);}.cum-it.t-extra{border-left-color:#6a3fa0;}.cum-it.t-soft{border-left-color:var(--ink-soft);}
+  .cum-tip{position:fixed;z-index:50;max-width:320px;background:var(--ink);color:#fff;font-size:12px;padding:6px 9px;border-radius:6px;pointer-events:none;}
+  .cum-tip.hidden{display:none;}
+  @media(prefers-reduced-motion:reduce){.cf.flash{animation:none;}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.6.6</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.7</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -216,15 +251,16 @@
       <div class="scn" id="cuScn"></div>
     </section>
     <section>
-      <div class="sec-h"><span class="n">B</span><h3>Compila i punti della CU 2026</h3><span class="tag">modello ordinario</span></div>
+      <div class="sec-h"><span class="n">B</span><h3>Compila la CU 2026</h3><div class="diff" id="cuViewWrap" role="group" aria-label="Modalità di compilazione"><button type="button" class="diffbtn" data-view="elenco">Elenco punti</button><button type="button" class="diffbtn active" data-view="ord">Modello ordinario</button><button type="button" class="diffbtn" data-view="sint">Modello sintetico</button></div></div>
       <div id="cuFields"></div>
+      <div id="cuModel" class="hidden"></div>
       <div class="actions">
         <button class="act primary" id="cuCheck">Controlla</button>
         <button class="act ghost t3" id="cuSol">Mostra soluzione</button>
         <button class="act ghost" id="cuNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="cuBanner"></div>
-      <div class="note">Punti riscontrati sulle istruzioni CU 2026 (periodo d'imposta 2025): 1, 6, 21, 22, 26, 27, 29, 121, 122, 361, 362, 367, 368, 374, 375, 390, 391, 441, 449, 718, 719, 721, 724, 725, 801, 920; sezione INPS, punti 4 e 6. Dalla Beta 1.6 anche redditi bassi (part-time): trattamento integrativo (390-391) e somma esente (724-725). Fuori perimetro: oneri, figli, altri redditi.</div>
+      <div class="note">Punti riscontrati sulle istruzioni CU 2026 (periodo d'imposta 2025): 1, 6, 21, 22, 26, 27, 29, 121, 122, 361, 362, 367, 368, 374, 375, 390, 391, 441, 449, 718, 719, 721, 724, 725, 801, 920; sezione INPS, punti 4 e 6. Sul modello (Beta 1.7) anche 8, 10, 722, 809, 810, familiari, sezione INPS 1, 2, 5, 7 e INAIL 92, 95. Dalla Beta 1.6 anche redditi bassi (part-time): trattamento integrativo (390-391) e somma esente (724-725). Fuori perimetro: oneri, figli, altri redditi.</div>
       <div class="note hidden" id="cuMemo"></div>
     </section>
   </div>
@@ -283,7 +319,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.7 · 16 ottobre 2026 · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -811,6 +847,7 @@ function renderCU(){
   buildFields('cuFields',CU_FIELDS);
   document.getElementById('cuBanner').className='banner';
   const memo=document.getElementById('cuMemo');memo.innerHTML=CU_PROMEMORIA;memo.classList.add('hidden');
+  if(window.cuModelRender)cuModelRender();
 }
 function cuCalc(k){const s=CU.scn,o=CU.sol;switch(k){
   case 'punto1':return s.tracciaId?`imponibile fiscale fornito = ${fmt(o.punto1)} (non quadra di 2,45 € con lordo − contributi: si usa il dato coerente con ritenute e detrazioni)`
@@ -839,7 +876,7 @@ function cuCalc(k){const s=CU.scn,o=CU.sol;switch(k){
   case 'p721':return 'giorni di lavoro dipendente = 365';
   case 'p724':return o.p724===1?'1: somma esente riconosciuta ed erogata (reddito complessivo fino a 20.000)':'2: somma esente non riconosciuta, reddito complessivo oltre 20.000';
   case 'p725':return o.p724===1?`${fmt(o.punto1)} × ${fmt(percSE(o.punto1))}% (una sola percentuale, su tutto il reddito) = ${fmt(o.p725)}`:'reddito oltre 20.000: 0';
-  case 'p801':return `0: il TFR maturato (${fmt(s.tfrMat)}) non è stato erogato; i punti 801-813 si compilano solo all'erogazione`;
+  case 'p801':return `0: il TFR maturato (${fmt(s.tfrMat)}) non è stato erogato; i punti 801-808 si compilano solo all'erogazione, mentre i punti 809-813 (TFR maturato) vanno compilati sempre`;
   case 'p920':return `imposta sostitutiva 17% sulla rivalutazione = ${fmt(o.p920)}: va indicata anche senza erogazione del TFR`;
   case 'inps4':return `imponibile previdenziale annuo = ${fmt(o.inps4)}`;
   case 'inps6':return s.tracciaId?`dato = ${fmt(o.inps6)}`:`${fmt(o.inps4)} × ${fmt(s.aliq)}% = ${fmt(o.inps6)}`;
@@ -1117,8 +1154,8 @@ function newFatt(){FATT=genFatt();renderFatt();resetTimer();applyMode();}
 document.getElementById('cedCheck').onclick=()=>{check(CED.fields,CED.sol,cedCalcWhy,'cedBanner');mostraProspetto();};
 document.getElementById('cedSol').onclick=()=>{reveal(CED.fields,cedCalcWhy);mostraProspetto();};
 document.getElementById('cedNew').onclick=()=>newCed();
-document.getElementById('cuCheck').onclick=()=>{check(CU_FIELDS,CU.sol,cuCalc,'cuBanner');document.getElementById('cuMemo').classList.remove('hidden');};
-document.getElementById('cuSol').onclick=()=>{reveal(CU_FIELDS,cuCalc);document.getElementById('cuMemo').classList.remove('hidden');};
+document.getElementById('cuCheck').onclick=()=>{if(window.cuModelActive&&cuModelActive()){cuModelCheck();return;}check(CU_FIELDS,CU.sol,cuCalc,'cuBanner');document.getElementById('cuMemo').classList.remove('hidden');};
+document.getElementById('cuSol').onclick=()=>{if(window.cuModelActive&&cuModelActive()){cuModelSolution();return;}reveal(CU_FIELDS,cuCalc);document.getElementById('cuMemo').classList.remove('hidden');};
 document.getElementById('cuNew').onclick=newCU;
 document.getElementById('congCheck').onclick=()=>check(CONG_FIELDS,CONG.sol,congCalc,'congBanner');
 document.getElementById('congSol').onclick=()=>reveal(CONG_FIELDS,congCalc);
@@ -1167,5 +1204,6 @@ document.getElementById('evNone').onclick=()=>{
 
 newCed(); newCU(); newCong(); newFatt(); updateScore();
 </script>
+<script src="cu-modelli/cu-modello.js"></script>
 </body>
 </html>
