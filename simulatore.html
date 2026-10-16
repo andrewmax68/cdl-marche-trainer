@@ -773,7 +773,7 @@ function cedCalcWhy(k){const t=cedCalc(k),w=CED_WHY[k];return w?`${t}<br><span s
    tipo: 'T' | 'L' | 'dv' (pagina da verificare, codice in .c) | 'no' (non nei codici) | 'nc' (pagina non ancora trovata) */
 const L207='L. 30/12/2024 n. 207 (legge di bilancio 2025): testo su Normattiva o G.U. n. 305 del 31/12/2024; in libreria 207_2024.pdf. L\'estratto di La Tribuna (p. 1755) parte dal c. 169, il SEAC non la riporta';
 const L1531969='Non è in nessuno dei due codici: citala così, art. 12 L. 153/1969, sostituito dall\'art. 6 D.Lgs. 314/1997, che rinvia all\'art. 51 TUIR (SEAC p. 64)';
-const DPR29='stessa regola per il premio INAIL, che puoi aprire in aula: «Costituiscono redditi di lavoro dipendente ai fini contributivi quelli di cui all\'articolo 46, comma 1» del TUIR (oggi art. 49; la determinazione è l\'ex art. 48, oggi art. 51), con l\'elenco tassativo delle esclusioni. Sezione da p. 509: cerca la pagina dell\'art. 29';
+const DPR29='stessa regola per il premio INAIL, che puoi aprire in aula: «Costituiscono redditi di lavoro dipendente ai fini contributivi quelli di cui all\'articolo 46, comma 1» del TUIR (oggi art. 49; la determinazione è l\'ex art. 48, oggi art. 51), con l\'elenco tassativo delle esclusioni.';
 const CED_NORME={
   trattMal:[['T','1885','Art. 2110 c.c.','malattia: conservazione del posto e trattamento economico'],
     ['L','131','Artt. 1-2 D.L. 663/1979','indennità di malattia c/INPS anticipata dal datore e conguagliata con i contributi'],
@@ -785,7 +785,7 @@ const CED_NORME={
     ['no','','L. 207/2024, art. 1, c. 390','soglie 2025-2027: 1.000 €; 2.000 € con figli a carico. '+L207]],
   buoniEcc:[['T','64','Art. 51, c. 2, lett. c), TUIR','buoni pasto esenti fino a 4 € cartacei e 10 € elettronici (testo 2026; nel 2025 erano 8 €)']],
   impPrev:[['no','','Art. 12 L. 153/1969','imponibile contributivo = redditi dell\'art. 51 TUIR, per competenza. '+L1531969],
-    ['Ldv','509 ss.','Art. 29 D.P.R. 1124/1965 (appiglio nel codice)',DPR29],
+    ['L','518','Art. 29 D.P.R. 1124/1965 (appiglio nel codice)',DPR29],
     ['T','64-68','Art. 51 TUIR','base comune a fisco e contributi: onnicomprensività e voci escluse (buoni pasto, trasferte, fringe)'],
     ['L','1414','Art. 7 D.L. 463/1983','minimale contributivo giornaliero (importo in circolare INPS)'],
     ['no','','Esclusione delle indennità c/INPS (contribuzione figurativa); arrotondamento all\'euro','prassi INPS']],
@@ -824,7 +824,7 @@ const CED_NORME={
   tfr:[['T','1888','Art. 2120 c.c.','quota annua = retribuzione annua / 13,5; rivalutazione 1,5% + 75% ISTAT'],
     ['L','1823','Art. 3 L. 297/1982','contributo 0,50% al Fondo di garanzia, detratto dalla quota TFR']],
   inail:[['Ldv','509 ss.','Art. 41 D.P.R. 1124/1965','il premio si calcola applicando il tasso di tariffa alle retribuzioni effettive (tassi «riferiti a mille lire di retribuzione»: oggi per mille euro)'],
-    ['Ldv','509 ss.','Art. 29 D.P.R. 1124/1965','retribuzione imponibile: stessa nozione dei contributi INPS (rinvio al TUIR, esclusioni tassative)'],
+    ['L','518','Art. 29 D.P.R. 1124/1965','retribuzione imponibile: stessa nozione dei contributi INPS (rinvio al TUIR, esclusioni tassative)'],
     ['Ldv','509 ss.','Art. 28 D.P.R. 1124/1965','premio anticipato sulle retribuzioni presunte e regolazione su quelle effettive: è il meccanismo dell\'autoliquidazione'],
     ['Ldv','509 ss.','Artt. 40 e 44 D.P.R. 1124/1965','tariffe approvate con decreto e tassi al rischio medio nazionale (art. 40); scadenze di pagamento e rate (art. 44): le date leggile nel testo vigente del tuo codice'],
     ['no','','Tasso per mille della voce di tariffa','tariffe dei premi INAIL (D.I. 27/2/2019): non nel codice, lo dà la traccia']]
