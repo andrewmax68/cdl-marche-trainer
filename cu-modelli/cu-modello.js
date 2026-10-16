@@ -70,7 +70,7 @@ function ptName(f){
   if(k==='anno')return 'Anno';if(k==='note')return 'Annotazioni';if(k.startsWith('fam'))return f.lab;
   if(k.startsWith('X'))return (f.p===1?'Frontespizio':'Quadro CT')+(f.lab?' · '+f.lab:'');
   if(k.startsWith('N_'))return 'Annotazioni · codice '+k.slice(2);
-  return 'Punto '+f.n+(k.startsWith('S_')?' (sostituto)':k.startsWith('D_')?' (dipendente)':k.startsWith('P_')?' (sez. previdenziale)':'')+' · pag. '+f.p;
+  return 'Punto '+f.n+(k.startsWith('S_')?' (sostituto)':k.startsWith('D_')?' (dipendente)':k.startsWith('P_')?' (sez. previdenziale)':k.startsWith('AU_')?' (assegno unico)':'')+' · pag. '+f.p;
 }
 function build(){
   const M=DATA[view],b=box();
