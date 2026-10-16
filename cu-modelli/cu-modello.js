@@ -133,7 +133,7 @@ function check(){
   clearMarks();const C=solutions().filter(c=>els[c.k]),exp={};C.forEach(c=>exp[c.k]=c);
   const items=[];let ok=0,err=0,miss=0,extra=0;
   C.forEach(c=>{const el=els[c.k],raw=vals[c.k]||'',r=same(c,raw);
-    if(r===true){if(!c.soft)ok++;if(c.t!=='e'||raw.trim())el.classList.add('ok');return}
+    if(r===true){if(!c.soft)ok++;if(c.t!=='e'||raw.trim()){el.classList.add('ok');el.dataset.tip='Corretto — '+c.why}return}
     let kind=c.soft?'soft':(r===null?'miss':'err');if(kind==='miss')miss++;else if(kind==='err')err++;
     el.classList.add(r===null?'miss':'err');el.dataset.tip='Atteso: '+show(c.v,c.t)+' — '+c.why;
     items.push({k:c.k,kind,got:raw.trim(),exp:show(c.v,c.t),why:c.why})});
@@ -150,9 +150,14 @@ function check(){
     :`Tutto corretto sul modello — ${ok}/${scored} · tempo ${formatTime(tSec)}. Serie perfette: ${stats.streak}.`;
   const lab={err:'Sbagliato',miss:'Mancante',extra:'Non previsto',soft:'Indicativo'};
   const res=document.getElementById('cumRes');
-  res.innerHTML=items.length?`<div class="cum-res-h">Caselle da rivedere (clic per andare alla casella)</div>`+items.map(i=>`<button type="button" class="cum-it t-${i.kind}" data-go="${i.k}"><b>${lab[i.kind]} · ${esc(ptName(byKey[i.k]))}</b><span class="mono">tuo: ${esc(i.got||'—')} · atteso: ${esc(i.exp)}</span><span>${esc(i.why)}</span></button>`).join(''):'';
-  res.classList.toggle('hidden',!items.length);
+  res.innerHTML=(items.length?`<div class="cum-res-h">Caselle da rivedere (clic per andare alla casella)</div>`+items.map(i=>`<button type="button" class="cum-it t-${i.kind}" data-go="${i.k}"><b>${lab[i.kind]} · ${esc(ptName(byKey[i.k]))}</b><span class="mono">tuo: ${esc(i.got||'—')} · atteso: ${esc(i.exp)}</span><span>${esc(i.why)}</span></button>`).join(''):'')+commenti(C);
+  res.classList.remove('hidden');
 }
+/* commenti del simulatore casella per casella (dopo controllo o soluzione): il modello ufficiale non ha spazio per scriverli */
+function commenti(C){
+  const L=C.filter(c=>c.t!=='e'&&c.why).sort((a,b)=>byKey[a.k].p-byKey[b.k].p||byKey[a.k].y-byKey[b.k].y||byKey[a.k].x-byKey[b.k].x);
+  if(!L.length)return'';
+  return `<div class="cum-res-h cm">Commenti del simulatore, casella per casella (clic per andare alla casella)</div>`+L.map(c=>`<button type="button" class="cum-it t-cm" data-go="${c.k}"><b>${esc(ptName(byKey[c.k]))}</b><span class="mono">${esc(show(c.v,c.t))}${c.soft?' (indicativo)':''}</span><span>${esc(c.why)}</span></button>`).join('');}
 let backup=null;   // le tue risposte, messe da parte quando chiedi la soluzione
 /* controllo parziale: valuta solo le caselle già compilate, senza mostrare i valori giusti */
 function partial(){
@@ -176,7 +181,8 @@ function hide(){
   help.classList.add('hidden');tip.classList.add('hidden');
   document.getElementById('cuBanner').className='banner';
 }
-function solution(){if(!backup)backup={...vals};reset();solutions().forEach(c=>{if(!els[c.k]||c.t==='e')return;setVal(c.k,c.t==='n'?fmt(c.v):String(c.v),true);els[c.k].dataset.tip=c.why+(c.soft?' (indicativo)':'')});}
+function solution(){if(!backup)backup={...vals};reset();const C=solutions().filter(c=>els[c.k]);C.forEach(c=>{if(c.t==='e')return;setVal(c.k,c.t==='n'?fmt(c.v):String(c.v),true);els[c.k].dataset.tip=c.why+(c.soft?' (indicativo)':'')});
+  const res=document.getElementById('cumRes');if(res){res.innerHTML=commenti(C);res.classList.toggle('hidden',!res.innerHTML);}}
 
 /* ---------- interfaccia pubblica per il simulatore ---------- */
 function apply(){

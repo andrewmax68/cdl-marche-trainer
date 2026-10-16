@@ -130,11 +130,14 @@
   .cf.flash{animation:cumflash 1.2s ease-out;}
   @keyframes cumflash{0%{box-shadow:0 0 0 .8cqw rgba(255,226,120,.9)}100%{box-shadow:0 0 0 0 transparent}}
   .cum-res{margin-top:12px;display:flex;flex-direction:column;gap:6px;max-height:60vh;overflow:auto;}
+  .cum-res.hidden{display:none;}
   .cum-res-h{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
   .cum-it{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:7px 10px;border-radius:6px;background:#F6F8FA;border-left:4px solid var(--line);font-size:12px;}
   .cum-it:focus-visible{outline:2px solid var(--t3);}
   .cum-it .mono{font-size:11.5px;}
   .cum-it.t-err{border-left-color:var(--err);}.cum-it.t-miss{border-left-color:var(--warn);}.cum-it.t-extra{border-left-color:#6a3fa0;}.cum-it.t-soft{border-left-color:var(--ink-soft);}
+  .cum-it.t-cm{border-left-color:var(--t3);background:var(--t3-bg);}
+  .cum-res-h.cm{margin-top:10px;color:var(--t3);}
   .cum-tip{position:fixed;z-index:50;max-width:320px;background:var(--ink);color:#fff;font-size:12px;padding:6px 9px;border-radius:6px;pointer-events:none;}
   .cum-tip.hidden{display:none;}
   @media(prefers-reduced-motion:reduce){.cf.flash{animation:none;}}
@@ -394,7 +397,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.8 · 16 ottobre 2026 · busta paga: sotto ogni casella norma, codice (SEAC o La Tribuna) e pagina, oppure «non nei codici» con dove trovarla; nascoste, coperte (apri a clic) o sempre visibili; premio INAIL con gli articoli del D.P.R. 1124/1965 e art. 29 come appiglio per l'imponibile · Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.8 · 16 ottobre 2026 · busta paga: sotto ogni casella norma, codice (SEAC o La Tribuna) e pagina, oppure «non nei codici» con dove trovarla; nascoste, coperte (apri a clic) o sempre visibili; «Controlla» e «Mostra soluzione» scrivono anche il commento del simulatore sotto ogni casella (sul modello CU in un elenco casella per casella) e la norma della singola casella; premio INAIL con gli articoli del D.P.R. 1124/1965 e art. 29 come appiglio per l'imponibile · Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -1270,8 +1273,8 @@ function buildFields(boxId,fields){
 }
 /* commenti del simulatore: uno per casella, cancellabili; i tuoi commenti non vengono toccati */
 const CALC_BY_TAB={ced:()=>cedCalcWhy,cu:()=>cuCalc,cong:()=>congCalc,fatt:()=>fattCalc};
-function showModelComments(tab,fields){
-  const calc=CALC_BY_TAB[tab]();
+function showModelComments(tab,fields,calcFn){
+  const calc=calcFn||CALC_BY_TAB[tab]();
   fields.forEach(f=>{const box=document.querySelector(`#tab-${tab} [data-cmm="${f.k}"]`);if(!box)return;
     box.innerHTML=`<div class="cm-mh"><span>Commento del simulatore</span><button type="button" class="cm-x" data-cmx="${f.k}" aria-label="Cancella questo commento">× cancella</button></div><div>${calc(f.k)}</div>`;
     box.classList.remove('hidden');});
@@ -1288,14 +1291,15 @@ function check(fields,sol,calc,bannerId){
     const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
     const correct=sol[f.k]; let val=parseNum(inp.value); if(isNaN(val)&&correct===0)val=0;
     const cat=f.cat||'tax';
-    const norma=NORMA[cat]?`<span class="norma">Norma: ${NORMA[cat]}</span>`:'';
+    const norma=normaLine(f,cat);
     inp.classList.remove('ok','warn','err');
     if(isNaN(val)){fb.className='fb err show';fb.innerHTML=`Da compilare — corretto: ${f.int?correct:fmt(correct)}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
     const diff=Math.abs(val-correct), tol=f.int?0.5:0.011, tolW=f.int?0.5:1.0;
-    if(diff<=tol){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML=`✓ Corretto. ${calc(f.k)}${norma}`;}
-    else if(diff<=tolW){ok++;inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML=`≈ Corretto (arrotondamento). ${calc(f.k)}${norma}`;}
-    else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=`✗ Corretto: ${f.int?correct:fmt(correct)} — ${calc(f.k)}${norma}`;errByCat[cat]=(errByCat[cat]||0)+1;}
+    if(diff<=tol){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML=`✓ Corretto.${norma}`;}
+    else if(diff<=tolW){ok++;inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML=`≈ Corretto (arrotondamento): ${f.int?correct:fmt(correct)}.${norma}`;}
+    else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=`✗ Corretto: ${f.int?correct:fmt(correct)}${norma}`;errByCat[cat]=(errByCat[cat]||0)+1;}
   });
+  showModelComments(TAB,fields,calc);
   stats.ex++; stats.ok+=ok; stats.tot+=fields.length;
   for(const c in errByCat) stats.err[c]=(stats.err[c]||0)+errByCat[c];
   stats.streak=ok===fields.length?stats.streak+1:0; stopTimer(); updateScore();
@@ -1342,7 +1346,13 @@ function hideEsito(tab){
   if(tab==='ced'){const p=document.getElementById('cedProsp');p.innerHTML='';p.classList.add('hidden');document.querySelectorAll('#tab-ced .field .nr').forEach(n=>n.classList.remove('open'));syncNrButtons();}
   if(tab==='cu'){document.getElementById('cuMemo').classList.add('hidden');if(window.cuModelActive&&cuModelActive())cuModelHide();}
 }
-function reveal(fields,calc){fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);fb.className='fb warn show';fb.innerHTML=`Soluzione: ${calc(f.k)}`;});}
+function reveal(fields,calc){const sol={ced:()=>CED.sol,cu:()=>CU.sol,cong:()=>CONG.sol,fatt:()=>FATT.sol}[TAB]();
+  fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);const v=sol&&sol[f.k];fb.className='fb warn show';fb.innerHTML=`Soluzione: ${v==null?'—':(f.int?v:fmt(v))}${normaLine(f,f.cat||'tax')}`;});
+  showModelComments(TAB,fields,calc);}
+/* riga «Norma» dell'esito: nel cedolino quella della singola casella (con pagina), altrove quella della categoria */
+function normaLine(f,cat){
+  if(TAB==='ced'&&CED){const a=cedNorme(f.k,CED.scn);if(a.length)return `<span class="norma">Norma: ${a.map(([t,p,n])=>`${n.replace(' (appiglio nel codice)','')} (${t==='no'?'non nei codici':t==='nc'?'pagina da trovare':(t==='T'||t==='dv'?'SEAC':'La Tribuna')+' p. '+p})`).join(' · ')}</span>`;}
+  return NORMA[cat]?`<span class="norma">Norma: ${NORMA[cat]}</span>`:'';}
 function updateScore(){document.getElementById('scEx').textContent=stats.ex;document.getElementById('scOk').textContent=`${stats.ok} / ${stats.tot}`;document.getElementById('scStreak').textContent=stats.streak;}
 /* cronometro */
 function formatTime(s){s=Math.max(0,Math.floor(s));const h=String(Math.floor(s/3600)).padStart(2,'0'),m=String(Math.floor((s%3600)/60)).padStart(2,'0'),x=String(s%60).padStart(2,'0');return `${h}:${m}:${x}`;}
