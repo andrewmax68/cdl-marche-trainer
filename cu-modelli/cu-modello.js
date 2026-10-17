@@ -205,7 +205,7 @@ const wrap=document.getElementById('cuViewWrap');
 wrap.addEventListener('click',e=>{const bt=e.target.closest('[data-view]');if(!bt)return;view=bt.dataset.view;st.set('cdl:cuView',view);document.getElementById('cuBanner').className='banner';apply()});
 box().addEventListener('input',e=>{const k=e.target.dataset.k;if(!k)return;vals[k]=e.target.value;e.target.classList.remove('sol','ok','err','miss','extra');delete e.target.dataset.tip});
 box().addEventListener('click',e=>{
-  const z=e.target.closest('[data-z]');if(z){zoom=Math.min(3,Math.max(1,zoom+.25*Number(z.dataset.z)));box().style.setProperty('--cz',zoom);document.getElementById('cumZ').textContent=Math.round(zoom*100)+'%';st.set('cdl:cuZoom',zoom);return}
+  const z=e.target.closest('[data-z]');if(z){zoom=Math.min(4,Math.max(1,zoom+.25*Number(z.dataset.z)));box().style.setProperty('--cz',zoom);document.getElementById('cumZ').textContent=Math.round(zoom*100)+'%';st.set('cdl:cuZoom',zoom);return}
   const go=e.target.closest('[data-go]');if(go){const el=els[go.dataset.go];el.scrollIntoView({block:'center',behavior:'smooth'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');if(el.tagName!=='BUTTON')el.focus({preventScroll:true});return}
   const t=e.target.closest('button.cf');if(t){const k=t.dataset.k;setVal(k,vals[k]?'':'X');t.classList.remove('ok','err','miss','extra');delete t.dataset.tip}
 });
@@ -238,7 +238,7 @@ addEventListener('scroll',()=>{const a=document.activeElement;if(!help.classList
 box().addEventListener('pointerover',e=>{const el=e.target.closest('.cf');if(!el||!el.dataset.tip||el===document.activeElement){tip.classList.add('hidden');return}tip.textContent=el.dataset.tip;tip.classList.remove('hidden');const r=el.getBoundingClientRect();tip.style.left=Math.max(8,Math.min(innerWidth-330,r.left))+'px';tip.style.top=(r.bottom+6)+'px'});
 box().addEventListener('pointerout',e=>{if(e.target.closest('.cf'))tip.classList.add('hidden')});
 addEventListener('scroll',()=>tip.classList.add('hidden'),{passive:true});
-zoom=st.get('cdl:cuZoom')||1;{const h=st.get('cdl:cuHint');hintOn=h===null?true:!!h;}
+zoom=st.get('cdl:cuZoom')||((typeof innerWidth!=='undefined'&&innerWidth<700)?2.5:1); // sui telefoni si parte ingranditi: le caselle a 100% sono alte circa 6 px{const h=st.get('cdl:cuHint');hintOn=h===null?true:!!h;}
 const v0=st.get('cdl:cuView');view=['elenco','ord','sint'].includes(v0)?v0:'ord';
 apply();
 })();

@@ -131,6 +131,7 @@
   @keyframes cumflash{0%{box-shadow:0 0 0 .8cqw rgba(255,226,120,.9)}100%{box-shadow:0 0 0 0 transparent}}
   .cum-res{margin-top:12px;display:flex;flex-direction:column;gap:6px;max-height:60vh;overflow:auto;}
   .cum-res.hidden{display:none;}
+body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog{display:none!important;}
   .cum-res-h{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
   .cum-it{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:7px 10px;border-radius:6px;background:#F6F8FA;border-left:4px solid var(--line);font-size:12px;}
   .cum-it:focus-visible{outline:2px solid var(--t3);}
@@ -203,7 +204,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.8</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.9</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -353,7 +354,7 @@
         <button class="act ghost" id="congNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="congBanner"></div>
-      <div class="note">Somma i due redditi &rarr; IRPEF sul <b>cumulato</b> &rarr; detrazioni ai <b>giorni totali</b> &rarr; sottrai <b>tutte</b> le ritenute gi&agrave; operate. Positivo = <b>a debito</b>. Trattamento integrativo non richiesto.</div>
+      <div class="note metodo">Somma i due redditi &rarr; IRPEF sul <b>cumulato</b> &rarr; detrazioni ai <b>giorni totali</b> &rarr; sottrai <b>tutte</b> le ritenute gi&agrave; operate. Positivo = <b>a debito</b>. Trattamento integrativo non richiesto.</div>
     </section>
   </div>
 
@@ -375,7 +376,7 @@
         <button class="act ghost" id="fattNew">Nuovo esercizio</button>
       </div>
       <div class="banner" id="fattBanner"></div>
-      <div class="note">Parametri: contributo integrativo ENPACL 4% (soggetto a IVA, escluso dalla base della ritenuta), IVA 22%, ritenuta 20% sul solo onorario se il committente &egrave; sostituto d'imposta e il professionista &egrave; in regime ordinario; forfettario senza IVA n&eacute; ritenuta; bollo 2 &euro; se le somme non soggette a IVA superano 77,47 &euro;. Il trattamento del riaddebito del bollo al cliente non &egrave; esercitato qui (DA VERIFICARE).</div>
+      <div class="note metodo">Parametri: contributo integrativo ENPACL 4% (soggetto a IVA, escluso dalla base della ritenuta), IVA 22%, ritenuta 20% sul solo onorario se il committente &egrave; sostituto d'imposta e il professionista &egrave; in regime ordinario; forfettario senza IVA n&eacute; ritenuta; bollo 2 &euro; se le somme non soggette a IVA superano 77,47 &euro;. Il trattamento del riaddebito del bollo al cliente non &egrave; esercitato qui (DA VERIFICARE).</div>
     </section>
   </div>
 
@@ -397,7 +398,7 @@
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.8 · 16 ottobre 2026 · busta paga: sotto ogni casella norma, codice (SEAC o La Tribuna) e pagina, oppure «non nei codici» con dove trovarla; nascoste, coperte (apri a clic) o sempre visibili; «Controlla» e «Mostra soluzione» scrivono anche il commento del simulatore sotto ogni casella (sul modello CU in un elenco casella per casella) e la norma della singola casella; premio INAIL con gli articoli del D.P.R. 1124/1965 e art. 29 come appiglio per l'imponibile · Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 1.9 · 17 ottobre 2026 · correzioni dopo revisione esterna: confronto esatto al centesimo («quasi» solo fino a 5 centesimi nel cedolino e nel conguaglio, mezzo punto; nella fattura e nella CU nessuna tolleranza); caselle vuote non più contate giuste (scrivi 0); «2.080» letto come duemilaottanta; modalità Esame senza note di metodo né norme; fattura con la norma di ogni casella e la pagina SEAC; CU sul modello ingrandita sui telefoni · Beta 1.8 · 16 ottobre 2026 · busta paga: sotto ogni casella norma, codice (SEAC o La Tribuna) e pagina, oppure «non nei codici» con dove trovarla; nascoste, coperte (apri a clic) o sempre visibili; «Controlla» e «Mostra soluzione» scrivono anche il commento del simulatore sotto ogni casella (sul modello CU in un elenco casella per casella) e la norma della singola casella; premio INAIL con gli articoli del D.P.R. 1124/1965 e art. 29 come appiglio per l'imponibile · Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -414,7 +415,9 @@
 const r2=x=>Math.round(Number((x*100).toPrecision(12)))/100; // arrotondamento al centesimo senza errori di virgola mobile (es. 2.737,175 → 2.737,18)
 const fmt=x=>x.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
 const fmt0=x=>x.toLocaleString('it-IT');
-function parseNum(s){if(s==null)return NaN;s=String(s).trim().replace(/[€\s]/g,'');if(s==='')return NaN;if(s.indexOf(',')>=0)s=s.replace(/\./g,'').replace(',','.');return parseFloat(s);}
+function parseNum(s){if(s==null)return NaN;s=String(s).trim().replace(/[€\s]/g,'').replace(/[−–]/g,'-');if(s==='')return NaN;if(/^[-—]$/.test(s))return 0;
+  if(s.indexOf(',')>=0)s=s.replace(/\./g,'').replace(',','.');else if((s.match(/\./g)||[]).length>1)s=s.replace(/\./g,'');else if(/^-?\d{1,3}\.\d{3}$/.test(s))s=s.replace('.','');
+  return /^-?\d+(\.\d+)?$/.test(s)?parseFloat(s):NaN;} // il punto seguito da tre cifre separa le migliaia (2.080 = 2080); «-» o «—» valgono zero
 const rnd=(a,b)=>a+Math.random()*(b-a);const pick=a=>a[Math.floor(Math.random()*a.length)];
 const round10=x=>Math.round(x/10)*10;const chance=p=>Math.random()<p;
 
@@ -1193,7 +1196,7 @@ const FATT_FIELDS=[
   {k:'impIva',l:'Imponibile IVA',h:'onorario + integrativo (0 nel forfettario)',cat:'fatt'},
   {k:'iva',l:'IVA',h:'22% dell\'imponibile (0 nel forfettario)',cat:'fatt'},
   {k:'totDoc',l:'Totale documento',h:'onorario + integrativo + IVA + anticipazioni art. 15',cat:'fatt'},
-  {k:'rit',l:'Ritenuta d\'acconto',h:'20% del solo onorario, se dovuta',cat:'fatt'},
+  {k:'rit',l:'Ritenuta d\'acconto',h:'20% del solo onorario, se dovuta (scrivi l\'importo positivo)',cat:'fatt'},
   {k:'netto',l:'Netto a pagare',h:'totale documento &minus; ritenuta',cat:'fatt'},
   {k:'bollo',l:'Imposta di bollo dovuta',h:'2 € se le somme non soggette a IVA superano 77,47 €',cat:'fatt'}
 ];
@@ -1218,7 +1221,7 @@ function fattCalc(k){const s=FATT.scn,o=FATT.sol;const ord=s.regime==='ordinario
   case 'totDoc':return `${fmt(s.onorario)} + ${fmt(o.integr)} + ${fmt(o.iva)} + ${fmt(s.antic)} = ${fmt(o.totDoc)}`;
   case 'rit':return o.rit>0?`${fmt(s.onorario)} × 20% = ${fmt(o.rit)} (integrativo e anticipazioni esclusi)`:(ord?`cliente non sostituto d'imposta → nessuna ritenuta`:`forfettario: nessuna ritenuta (art. 1, c. 67, L. 190/2014)`);
   case 'netto':return `${fmt(o.totDoc)} − ${fmt(o.rit)} = ${fmt(o.netto)}`;
-  case 'bollo':return `somme non soggette a IVA: ${fmt(s.nonIva)} ${s.nonIva>77.47?'> 77,47 → 2,00':'≤ 77,47 → 0,00'}${ord&&s.antic?' (dovuto anche se la fattura contiene importi con IVA; non dovuto se le somme anticipate sono imposte o tasse dovute dal cliente: art. 5 Tabella B D.P.R. 642/1972, risposta AdE n. 491/2021)':''}`;
+  case 'bollo':return `somme non soggette a IVA: ${fmt(s.nonIva)} ${s.nonIva>77.47?'> 77,47 → 2,00':'≤ 77,47 → 0,00'}${ord&&s.antic&&s.nonIva>77.47?' (dovuto anche se la fattura contiene importi con IVA; non dovuto se le somme anticipate sono imposte o tasse dovute dal cliente: art. 5 Tabella B D.P.R. 642/1972, risposta AdE n. 491/2021)':''}`;
 } return '';}
 
 /* ===== ESTRAZIONE DELLA PROVA (pesi didattici, indicazioni informali) ===== */
@@ -1284,19 +1287,23 @@ document.addEventListener('click',e=>{const x=e.target.closest('[data-cmx]');if(
 /* commenti accesi/spenti (preferenza ricordata nel browser) */
 function setCommenti(on){document.body.classList.toggle('nocm',!on);document.querySelectorAll('.cm-on').forEach(c=>c.checked=on);try{localStorage.setItem('cdl_commenti',on?'1':'0')}catch(e){}}
 document.addEventListener('change',e=>{if(e.target.classList&&e.target.classList.contains('cm-on'))setCommenti(e.target.checked);});
+/* confronto unico per «Controlla» e «Controllo parziale»: esatto al centesimo; «quasi» fino a 5 centesimi (mezzo punto) solo dove gli arrotondamenti intermedi possono legittimamente differire */
+function cmpVal(f,val,correct){if(f.k==='rit'&&TAB==='fatt')val=Math.abs(val);const d=Math.abs(val-correct);
+  if(d<=(f.int?0.5:0.011))return 'ok';if(!f.int&&TAB!=='fatt'&&TAB!=='cu'&&d<=0.05)return 'warn';return 'err';}
 function check(fields,sol,calc,bannerId){
   let ok=0; const errByCat={};
   fields.forEach(f=>{
     const inp=document.querySelector(`#tab-${TAB} [data-in="${f.k}"]`);
     const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
-    const correct=sol[f.k]; let val=parseNum(inp.value); if(isNaN(val)&&correct===0)val=0;
+    const correct=sol[f.k]; const raw=inp.value.trim(); const val=parseNum(raw);
     const cat=f.cat||'tax';
     const norma=normaLine(f,cat);
     inp.classList.remove('ok','warn','err');
-    if(isNaN(val)){fb.className='fb err show';fb.innerHTML=`Da compilare — corretto: ${f.int?correct:fmt(correct)}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
-    const diff=Math.abs(val-correct), tol=f.int?0.5:0.011, tolW=f.int?0.5:1.0;
-    if(diff<=tol){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML=`✓ Corretto.${norma}`;}
-    else if(diff<=tolW){ok++;inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML=`≈ Corretto (arrotondamento): ${f.int?correct:fmt(correct)}.${norma}`;}
+    if(raw===''){fb.className='fb err show';fb.innerHTML=`Da compilare — corretto: ${f.int?correct:fmt(correct)}${correct===0?' (se la voce non spetta scrivi 0 e motiva nel commento)':''}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
+    if(isNaN(val)){fb.className='fb err show';fb.innerHTML=`Valore non leggibile (scrivi un numero, es. 1.234,56) — corretto: ${f.int?correct:fmt(correct)}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
+    const esito=cmpVal(f,val,correct);
+    if(esito==='ok'){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML=`✓ Corretto.${norma}`;}
+    else if(esito==='warn'){ok+=0.5;inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML=`≈ Quasi: differenza di ${fmt(Math.abs(val-correct))} € (corretto ${fmt(correct)}). Controlla gli arrotondamenti intermedi: vale mezzo punto.${norma}`;}
     else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=`✗ Corretto: ${f.int?correct:fmt(correct)}${norma}`;errByCat[cat]=(errByCat[cat]||0)+1;}
   });
   showModelComments(TAB,fields,calc);
@@ -1329,8 +1336,9 @@ function checkPartial(fields,sol,bannerId){
     const inp=document.querySelector(`#tab-${TAB} [data-in="${f.k}"]`),fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
     inp.classList.remove('ok','warn','err');fb.className='fb';fb.innerHTML='';
     if(inp.value.trim()==='')return;
-    n++;const val=parseNum(inp.value),correct=sol[f.k],tol=f.int?0.5:0.011;
-    if(!isNaN(val)&&Math.abs(val-correct)<=tol){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML='✓ Corretto.';}
+    n++;const val=parseNum(inp.value),correct=sol[f.k],es=isNaN(val)?'err':cmpVal(f,val,correct);
+    if(es==='ok'){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML='✓ Corretto.';}
+    else if(es==='warn'){inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML='≈ Quasi: differenza di pochi centesimi, controlla gli arrotondamenti intermedi.';}
     else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=isNaN(val)?'✗ Valore non leggibile: scrivi un numero (es. 1.234,56).':'✗ Da correggere: ricontrolla il calcolo.';}
   });
   const b=document.getElementById(bannerId);
@@ -1350,7 +1358,15 @@ function reveal(fields,calc){const sol={ced:()=>CED.sol,cu:()=>CU.sol,cong:()=>C
   fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);const v=sol&&sol[f.k];fb.className='fb warn show';fb.innerHTML=`Soluzione: ${v==null?'—':(f.int?v:fmt(v))}${normaLine(f,f.cat||'tax')}`;});
   showModelComments(TAB,fields,calc);}
 /* riga «Norma» dell'esito: nel cedolino quella della singola casella (con pagina), altrove quella della categoria */
+const NORMA_FATT={integr:'Regolamento ENPACL, art. 38, c. 2 (4% su tutti i compensi, ripetibile verso il cliente): non nei codici',
+ impIva:'art. 13 D.P.R. 633/1972 (base imponibile); anticipazioni escluse: art. 15, c. 1, n. 3 (SEAC p. 541); forfettario: art. 1, c. 58, L. 190/2014 (SEAC p. 338)',
+ iva:'art. 16 D.P.R. 633/1972 (aliquota 22%)',
+ totDoc:'art. 21 D.P.R. 633/1972 (contenuto della fattura, SEAC p. 553)',
+ rit:'art. 25, c. 1, D.P.R. 600/1973 (SEAC p. 430); contributo integrativo escluso: art. 54, c. 2, lett. a), TUIR; forfettario: art. 1, c. 67, L. 190/2014 (SEAC p. 338)',
+ netto:'art. 25 D.P.R. 600/1973 (la ritenuta si trattiene all\'atto del pagamento)',
+ bollo:'D.P.R. 642/1972: tariffa all. A, parte I, art. 13 (SEAC p. 1039); tabella all. B, art. 6 e art. 5 (SEAC p. 1060); 2 € ex art. 7-bis D.L. 43/2013 (DA VERIFICARE); risposta AdE 491/2021'};
 function normaLine(f,cat){
+  if(TAB==='fatt'&&NORMA_FATT[f.k])return `<span class="norma">Norma: ${NORMA_FATT[f.k]}</span>`;
   if(TAB==='ced'&&CED){const a=cedNorme(f.k,CED.scn);if(a.length)return `<span class="norma">Norma: ${a.map(([t,p,n])=>`${n.replace(' (appiglio nel codice)','')} (${t==='no'?'non nei codici':t==='nc'?'pagina da trovare':(t==='T'||t==='dv'?'SEAC':'La Tribuna')+' p. '+p})`).join(' · ')}</span>`;}
   return NORMA[cat]?`<span class="norma">Norma: ${NORMA[cat]}</span>`:'';}
 function updateScore(){document.getElementById('scEx').textContent=stats.ex;document.getElementById('scOk').textContent=`${stats.ok} / ${stats.tot}`;document.getElementById('scStreak').textContent=stats.streak;}
@@ -1361,6 +1377,7 @@ function stopTimer(){if(tHandle){clearInterval(tHandle);tHandle=null;}}
 function resetTimer(){stopTimer();tSec=0;document.getElementById('timerDisp').textContent='00:00:00';}
 /* modalità: in Esame nascondi i suggerimenti (hint) e il pulsante soluzione */
 function applyMode(){
+  document.body.classList.toggle('exam',MODE==='exam');
   document.querySelectorAll('.field .hint').forEach(h=>h.style.display=MODE==='exam'?'none':'block');
   document.querySelectorAll('.act.ghost.t3').forEach(btn=>btn.style.display=MODE==='exam'?'none':'inline-block');
 }
