@@ -257,6 +257,8 @@
   .cd-h{font:600 11px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--oxblood);margin:16px 0 4px}
   .cd-list{margin:0 0 6px;padding-left:20px;font-size:13px}
   .cd-note{font-size:12px;color:var(--muted);margin:10px 0 12px}
+  .cl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:0 14px}
+  #claudeBox .sim-actions{padding:0 14px 14px}
   .matrixline{font:500 11px/1.5 var(--mono);color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
   .copyok{font:600 11px/1 var(--mono);color:var(--ok);margin-left:8px}
   .livebox{border-left:4px solid var(--ink-2);background:#f4f7fb;padding:12px 14px;margin:14px 0;font-size:13px;color:var(--ink-2)}
@@ -380,6 +382,20 @@
         <p class="traccia-tit" id="tracciaTit"></p>
         <div class="traccia-body" id="tracciaBody"></div><div class="matrixline" id="matrixLine"></div>
         <details class="codici" id="codiciBox"><summary>Codici: dove cercare le norme di questa traccia</summary><p class="cd-note">Prima prova da solo, con i codici in mano e il cronometro: 10-15 minuti. Poi apri e confronta.</p><div id="codiciBody"></div></details>
+        <details class="codici" id="claudeBox"><summary>Svolgimento: chiedilo a Claude</summary>
+          <p class="cd-note">Prepara un pacchetto con la traccia, la mappa delle norme sui tuoi codici e le regole del progetto. Copialo e incollalo in una chat del progetto «Esame CdL»: Claude scrive lo svolgimento verificando le fonti in libreria. Meglio dopo aver scritto almeno la tua scaletta.</p>
+          <div class="cl-row"><span class="tier-lbl">Misura</span>
+            <div class="seg" id="segClTier" role="group" aria-label="Misura dello svolgimento">
+              <button data-cl="tre" aria-pressed="true">Tre facciate · 800–1000</button>
+              <button data-cl="completo">Completo · 1200–1500</button>
+              <button data-cl="appro">Approfondimento · 1700–2000</button>
+            </div></div>
+          <div class="sim-actions" style="margin-top:10px">
+            <button class="btn sm oxblood" id="btnCopyClaude">Copia pacchetto per Claude</button>
+            <button class="btn ghost sm" id="btnDownloadClaude">Scarica .txt</button>
+            <span class="copyok" id="claudeStatus"></span>
+          </div>
+        </details>
         <div class="draft">
           <label for="draftArea">Elaborato (facoltativo — puoi scrivere su carta e usare solo il timer; se scrivi qui, il motore misura la copertura)</label>
           <textarea id="draftArea" placeholder="Imposta la scaletta sui cinque livelli, poi sviluppa. Il testo resta solo in questa sessione."></textarea>
@@ -1205,6 +1221,55 @@ async function copySvol(){const txt=buildSvolgimentoPackage();try{await navigato
 function downloadSvol(){const blob=new Blob([buildSvolgimentoPackage()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Svolgimento_Modello_CdL_2026.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
 
 
+
+/* ---------- V5.5: SVOLGIMENTO A CURA DI CLAUDE (a richiesta) ---------- */
+let clTier='tre';
+const CL_TIER={tre:['800','1000','circa tre facciate A4 manoscritte'],completo:['1200','1500','quattro-cinque facciate'],appro:['1700','2000','sei facciate o più']};
+function codiciAsText(t){
+ const d=CODICI[t.id]; if(!d)return 'Mappa non disponibile per questo tema.';
+ const cod=c=>c==='L'?'La Tribuna':c==='S'?'SEAC':'—';
+ const all=[...CODICI_COMUNI.base.map(b=>{const m=d.norme.find(r=>r.n===b.n&&r.c===b.c);return m?Object.assign({},b,{a:m.a}):b}),...d.norme.filter(r=>!CODICI_COMUNI.base.some(b=>b.n===r.n&&b.c===r.c))];
+ const rows=all.map(r=>`- ${r.n}${r.a?', '+r.a:''} → ${cod(r.c)}${r.p?' p. '+r.p:''} [${ST_LBL[r.st]}] · ${r.v}`);
+ const tr=(d.trappole||[]).map(x=>'- '+x), mn=(d.mancano||[]).map(x=>'- '+x);
+ return rows.join('\n')+(tr.length?'\nTrappole degli indici:\n'+tr.join('\n'):'')+(mn.length?'\nNon presenti nei miei codici:\n'+mn.join('\n'):'');
+}
+function buildClaudePackage(){
+ const t=currentTema,r=CL_TIER[clTier]||CL_TIER.tre;
+ const grid=['Inquadramento: '+t.schema.cost.map(stripHtml).join(' | '),'Disciplina: '+t.schema.dett.map(stripHtml).join(' | '),'Adempimenti: '+t.schema.adem.map(stripHtml).join(' | '),'Ispettivo/sanzioni: '+t.schema.sanz.map(stripHtml).join(' | '),'Giurisprudenza/prassi: '+t.schema.giur.map(stripHtml).join(' | '),'Novità 2025-26: '+(t.aggior&&t.aggior.length?t.aggior.map(stripHtml).join(' | '):'—')].join('\n');
+ return `SVOLGIMENTO DELLA TRACCIA — richiesta a Claude, progetto «Esame CdL» (prima prova, Ancona 27/10/2026)
+
+Svolgi tu questa traccia come la svolgeresti all'esame. Applica le skill dossier-prima-prova-cdl e verifica-fonti-cdl: ogni norma, sentenza o prassi deve poggiare sulla libreria del progetto o su fonti ufficiali; ciò che non riesci a riscontrare va segnato DA VERIFICARE, non scritto come certo. Niente norme in itinere presentate come vigenti.
+
+TRACCIA ESTRATTA (svolgi esattamente questa)
+${currentTraccia}
+
+Tema del simulatore: ${t.titolo} · protocollo ${protocol} · livello ${diff==='alta'?'avanzato':'standard'}
+
+MISURA
+Da ${r[0]} a ${r[1]} parole (${r[2]}). Indicazione informale di Rausei: l'elaborato non deve essere lungo; tre facciate ben scritte, con forma, contenuti e collegamenti curati, sono già eccellenti.
+
+METODO
+- Seleziona: a fondo ciò che la traccia chiede, a cenno il resto.
+- Percorso: norma → obbligo → adempimento → controllo → responsabilità → sanzione → rimedio.
+- Usa soprattutto norme che posso aprire in aula nei miei due codici (mappa sotto). Per quelle assenti, cita gli estremi esatti come si fa a memoria.
+- Prosa continua da foglio d'esame, senza titoletti né elenchi.
+
+MAPPA DELLE NORME NEI MIEI CODICI (La Tribuna 2026 e SEAC 2026)
+${codiciAsText(t)}
+
+ANCORE DEL TEMA NEL SIMULATORE (seleziona il pertinente; sono un promemoria, non una fonte)
+${grid}
+
+OUTPUT
+A. SCALETTA DA 5 MINUTI: 6-8 righe, come la fisserei sul foglio di brutta.
+B. TEMA: il testo continuo, nella misura indicata.
+C. NORME DA APRIRE IN AULA: per ogni norma citata nel tema, codice e pagina (dalla mappa) oppure «assente: a memoria».
+D. SOGLIA 6 vs 7-9: cosa è indispensabile per la sufficienza e cosa porta al voto alto su questa traccia.
+E. RAPPORTO DI VERIFICA: fonti controllate e voci DA VERIFICARE.`;
+}
+async function copyClaude(){const txt=buildClaudePackage();const st=document.getElementById('claudeStatus');try{await navigator.clipboard.writeText(txt);st.textContent='Copiato: incollalo in una chat del progetto.';}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();st.textContent='Copiato: incollalo in una chat del progetto.';}}
+function downloadClaude(){const blob=new Blob([buildClaudePackage()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Svolgimento_Claude_CdL_2026.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+
 /* ============================================================
    V5 — MOTORE COMMISSIONE / ANTI-RIPETIZIONE / ADATTIVO
    ============================================================ */
@@ -1376,7 +1441,8 @@ function composeTraceV5(t,advanced=false){
   const f2=fo.length?choice(fo):null;
   const scenario=v.scenario[k.s], err=pick(p.error,k.e), insp=pick(p.inspect,k.i), rem=pick(p.remedy,k.r), cross=pick(p.cross,k.c), task=pick(v.task,k.t);
   sig=sigFor(t,f1,scenario,err,cross);
-  const rq=err?`, nel quale si riscontra ${err}`:'', em=err?`, nel quale emerge ${err}`:'';
+  const rel=/nel quale|nella quale/.test(scenario)?'in cui':'nel quale';
+  const rq=err?`, ${rel} si riscontra ${err}`:'', em=err?`, ${rel} emerge ${err}`:'';
   const ambito=`della disciplina in materia di ${cleanTitle(t)}`;
   const update=(t.aggior&&t.aggior.length)?' Tenga conto delle modifiche normative, di prassi e giurisprudenziali 2025–2026 pertinenti.':'';
   const rausei=` Ricostruisca il percorso norma → obbligo → controllo → responsabilità → sanzione → rimedio.`;
@@ -1489,7 +1555,7 @@ btnAvvia.addEventListener('click',async()=>{
   if(mode==='rausei26'&&HOOKS26[currentTema.id])currentTraccia+=HOOKS26[currentTema.id];
   setTimeout(openSheet,900);},850);
 });
-function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;renderCodici(currentTema);document.getElementById('codiciBox').open=false;document.getElementById('matrixLine').textContent='V5.4 · traccia per casi coerenti, anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
+function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;renderCodici(currentTema);document.getElementById('codiciBox').open=false;document.getElementById('claudeBox').open=false;document.getElementById('claudeStatus').textContent='';document.getElementById('matrixLine').textContent='V5.5 · traccia per casi coerenti, anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
 
 /* ---------- TIMER ---------- */
 let timerInt=null,remaining=0,paused=false;
@@ -1552,6 +1618,9 @@ document.getElementById('btnCopyAI').addEventListener('click',copyAIPackage);
 document.getElementById('btnDownloadAI').addEventListener('click',downloadAIPackage);
 document.getElementById('btnCopySvol').addEventListener('click',copySvol);
 document.getElementById('btnDownloadSvol').addEventListener('click',downloadSvol);
+document.getElementById('btnCopyClaude').addEventListener('click',copyClaude);
+document.getElementById('btnDownloadClaude').addEventListener('click',downloadClaude);
+(function(){const s=document.getElementById('segClTier');s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{s.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');clTier=b.dataset.cl;document.getElementById('claudeStatus').textContent='';}));})();
 (function(){const s=document.getElementById('segTier');s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{s.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');svolTier=b.dataset.tier;document.getElementById('svolStatus').textContent='';}));})();
 document.getElementById('btnTermina').addEventListener('click',reveal);
 document.getElementById('btnTermina2').addEventListener('click',reveal);
