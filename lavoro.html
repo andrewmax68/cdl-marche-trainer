@@ -813,25 +813,25 @@ const FONTI = [
 
 /* ---------- V4: MATRICE DI GENERAZIONE DINAMICA ---------- */
 const VARIANTI = {
- salariogiusto:{focus:['nozione di trattamento economico complessivo','individuazione del CCNL di riferimento','TEC e accesso ai benefici','rinnovi contrattuali e anticipazione IPCA-NEI','codice alfanumerico del CCNL e monitoraggio'],scenario:['un’impresa che applica un CCNL con minimi inferiori a quelli del contratto leader e intende fruire di un incentivo all’assunzione','un datore di un settore privo di contrattazione specifica','un lavoratore che lamenta l’esclusione dell’indennità fissa dal calcolo del trattamento','un CCNL scaduto da oltre nove mesi senza rinnovo'],task:['individui il parametro retributivo applicabile e le voci che lo compongono','valuti le conseguenze sui benefici e i rischi ispettivi','indichi gli adempimenti del consulente per prevenire il contenzioso']},
- ispezioni:{focus:['disposizione ex art. 14 d.lgs. 124/2004','diffida accertativa per crediti patrimoniali','diffida a regolarizzare e verbale unico','sospensione dell’attività imprenditoriale','prescrizione obbligatoria','conciliazione monocratica'],scenario:['un accesso ispettivo che rileva differenze retributive rispetto al contratto di riferimento','un cantiere con lavoratori non comunicati','un’irregolarità non sanzionata da alcuna norma specifica','un appalto nel quale l’appaltatore non ha pagato le retribuzioni'],task:['distingua presupposti, effetti e rimedi dei poteri esercitabili','indichi le scelte difensive e conciliative del datore assistito dal consulente','ricostruisca le conseguenze retributive, contributive e sanzionatorie']},
- trasparenza:{focus:['trasparenza retributiva prima dell’assunzione','diritto di informazione dei lavoratori','comunicazione dei dati sul divario retributivo','valutazione congiunta delle retribuzioni','lavoro di pari valore e criteri neutri'],scenario:['un avviso di selezione privo di indicazioni retributive','un colloquio nel quale si chiede la retribuzione percepita in precedenza','una lavoratrice che chiede i livelli retributivi medi della propria categoria','un’impresa con 180 dipendenti e un divario medio del 6% in una categoria'],task:['individui obblighi, soglie e scadenze applicabili','indichi gli strumenti di tutela e le conseguenze delle violazioni','coordini la disciplina con gli obblighi informativi già vigenti']},
- piattaforme:{focus:['qualificazione del rapporto dei lavoratori tramite piattaforma','presunzione di subordinazione dell’art. 12 d.l. 62/2026','tutele minime del capo V-bis','trasparenza dei sistemi algoritmici','obblighi del committente e vigilanza'],scenario:['un rider pagato a consegna e disattivato dopo alcuni rifiuti','una piattaforma che assegna turni e valuta le prestazioni tramite algoritmo','un account utilizzato da persona diversa dal titolare','un committente che non ha tenuto il libro unico dei rider'],task:['qualifichi il rapporto e individui la disciplina applicabile','indichi obblighi informativi e documentali del committente','ricostruisca poteri di vigilanza e sanzioni']},
- sicurezza:{focus:['DVR e obblighi non delegabili','datore, dirigente, preposto e delega di funzioni','formazione, addestramento e tracciabilità','DUVRI e coordinamento negli appalti','patente a crediti e vigilanza nei cantieri'],scenario:['un appalto interno con interferenze non adeguatamente valutate','un infortunio con contestazione sulla reale vigilanza del preposto','una verifica ispettiva che rileva formazione incompleta','un cantiere nel quale opera un soggetto privo dei requisiti richiesti'],task:['distingua obblighi, responsabilità e rimedi','individui gli adempimenti preventivi del datore e del consulente','ricostruisca poteri di vigilanza e conseguenze sanzionatorie']},
- retribuzione:{focus:['art. 36 Cost. e giusta retribuzione','scelta del CCNL e dumping contrattuale','struttura della retribuzione e TEC','parità e trasparenza retributiva','criteri di progressione economica'],scenario:['un’impresa che applica minimi inferiori a quelli del contratto collettivo di riferimento','una procedura di selezione priva di indicazioni retributive','un divario retributivo tra lavoratori comparabili','una contestazione sull’assorbibilità del superminimo'],task:['valuti il parametro retributivo utilizzabile e i rischi di contenzioso','indichi gli obblighi informativi e le conseguenze delle violazioni','colleghi disciplina individuale, collettiva e antidiscriminatoria']},
- licenziamento:{focus:['licenziamento disciplinare e art. 7 Statuto','GMO e fatto posto a base del recesso','doppio binario art. 18 / D.Lgs. 23/2015','soglie dimensionali e tutele','licenziamento nullo o discriminatorio'],scenario:['un lavoratore assunto dopo il 7 marzo 2015 in una piccola impresa','una contestazione disciplinare generica e tardiva','un recesso per ragioni organizzative successivamente contestate','un licenziamento intimato durante una situazione protetta'],task:['individui il regime di tutela applicabile','distingua vizi procedurali, sostanziali e nullità','valuti gli effetti della più recente giurisprudenza costituzionale']},
- contrattazione:{focus:['efficacia soggettiva del CCNL','contrattazione aziendale e di prossimità','rappresentatività e costituzione delle RSA','art. 51 D.Lgs. 81/2015 e CCNL qualificato','rapporti tra art. 36 e contrattazione'],scenario:['un accordo aziendale che deroga alla disciplina legale','un’impresa che applica un CCNL scarsamente rappresentativo','una sigla sindacale non firmataria che chiede di costituire RSA','una controversia sui minimi retributivi'],task:['precisi condizioni di efficacia e limiti delle deroghe','individui i criteri di rappresentatività rilevanti','colleghi la disciplina alla prevenzione del dumping contrattuale']},
- appalto:{focus:['genuinità dell’appalto','responsabilità solidale','somministrazione fraudolenta','distacco e interesse del distaccante','sicurezza e appalto'],scenario:['l’appaltatore privo di reale autonomia organizzativa','l’utilizzatore che impartisce direttamente ordini ai dipendenti dell’appaltatore','crediti retributivi e contributivi rimasti insoluti','un distacco privo di un interesse concretamente dimostrabile'],task:['qualifichi correttamente il rapporto','individui responsabilità solidali e conseguenze dell’illecito','indichi i controlli preventivi che dovrebbe svolgere il consulente']},
- individuale:{focus:['subordinazione e indici qualificatori','obblighi informativi del D.Lgs. 104/2022','lettera di assunzione, UNILAV e LUL','trasparenza retributiva preassuntiva','mansioni e inquadramento'],scenario:['un collaboratore formalmente autonomo ma inserito stabilmente nell’organizzazione','una lettera di assunzione incompleta','una selezione nella quale viene chiesta la retribuzione precedente','una modifica delle mansioni non adeguatamente formalizzata'],task:['distingua qualificazione formale e sostanziale','individui gli adempimenti e il regime sanzionatorio','colleghi gli obblighi informativi alle novità del 2026']},
- termine:{focus:['causali e durata massima','proroghe e rinnovi','diritto di precedenza','periodo di prova','stagionalità e contrattazione'],scenario:['una successione di contratti oltre la durata complessiva consentita','un rinnovo senza corretta gestione della causale','un periodo di prova sproporzionato alla durata del contratto','un’attività qualificata come stagionale dal datore'],task:['ricostruisca limiti e conseguenze dell’illegittimità','indichi gli adempimenti documentali e comunicativi','precisi il ruolo della contrattazione collettiva']},
- dimissioni:{focus:['dimissioni telematiche','fatti concludenti e assenza ingiustificata','risoluzione consensuale','effetti sulla NASpI','scelta tra fatti concludenti e licenziamento disciplinare'],scenario:['un lavoratore assente senza giustificazione per un periodo prolungato','una cessazione comunicata senza preventiva verifica dei presupposti','un lavoratore che contesta che l’assenza sia imputabile alla propria volontà'],task:['ricostruisca presupposti e procedura','individui i rischi per il datore e gli effetti previdenziali','distingua l’istituto dal licenziamento disciplinare']},
- sospensione:{focus:['malattia e comporto','infortunio e tutela INAIL','maternità e paternità','congedi e divieti di licenziamento','dimissioni nel periodo protetto'],scenario:['un superamento contestato del periodo di comporto','un infortunio con assenza prolungata','dimissioni rese durante il periodo protetto','un recesso datoriale durante una tutela di genitorialità'],task:['distingua conservazione del posto e trattamento economico','indichi gli adempimenti previdenziali e datoriali','valuti la validità del recesso o delle dimissioni']},
- disabili:{focus:['quote di riserva','base di computo','convenzioni ed esoneri','prospetto informativo','sanzioni per scopertura'],scenario:['un datore che supera la soglia occupazionale rilevante','un prospetto informativo omesso','una richiesta di esonero non adeguatamente motivata'],task:['calcoli logicamente l’obbligo occupazionale','indichi procedure e strumenti di assolvimento','ricostruisca il regime sanzionatorio']},
- previdenza:{focus:['obbligazione contributiva','rapporto assicurativo INAIL','prestazioni previdenziali','omissione ed evasione contributiva','previdenza complementare'],scenario:['contributi non versati per lavoratori regolarmente denunciati','una contestazione sulla qualificazione previdenziale del rapporto','un evento tutelato dall’assicurazione obbligatoria'],task:['distingua obblighi del datore e diritti del lavoratore','individui enti, adempimenti e conseguenze dell’inadempimento','colleghi contribuzione e prestazioni']},
- agile:{focus:['accordo individuale di lavoro agile','potere direttivo e organizzazione','sicurezza del lavoratore agile','comunicazioni obbligatorie','recesso dall’accordo'],scenario:['un rapporto gestito in modalità agile senza accordo coerente','una modifica unilaterale delle giornate da remoto','un infortunio durante una giornata di lavoro agile'],task:['individui contenuti dell’accordo e adempimenti','colleghi organizzazione, sicurezza e poteri datoriali','precisi le conseguenze delle irregolarità']}
+ salariogiusto:{focus:['la nozione di trattamento economico complessivo','l’individuazione del CCNL di riferimento','il rapporto tra TEC e accesso ai benefici','la disciplina dei rinnovi contrattuali e dell’anticipazione IPCA-NEI','il codice alfanumerico del CCNL e il monitoraggio retributivo'],scenario:['un’impresa che applica un CCNL con minimi inferiori a quelli del contratto leader e intende fruire di un incentivo all’assunzione','un datore di un settore privo di contrattazione specifica','un lavoratore che lamenta l’esclusione dell’indennità fissa dal calcolo del trattamento','un CCNL scaduto da oltre nove mesi senza rinnovo'],task:['individui il parametro retributivo applicabile e le voci che lo compongono','valuti le conseguenze sui benefici e i rischi ispettivi','indichi gli adempimenti del consulente per prevenire il contenzioso']},
+ ispezioni:{focus:['la disposizione ex art. 14 d.lgs. 124/2004','la diffida accertativa per crediti patrimoniali','la diffida a regolarizzare e il verbale unico','la sospensione dell’attività imprenditoriale','la prescrizione obbligatoria','la conciliazione monocratica'],scenario:['un accesso ispettivo che rileva differenze retributive rispetto al contratto di riferimento','un cantiere con lavoratori non comunicati','un’irregolarità non sanzionata da alcuna norma specifica','un appalto nel quale l’appaltatore non ha pagato le retribuzioni'],task:['distingua presupposti, effetti e rimedi dei poteri esercitabili','indichi le scelte difensive e conciliative del datore assistito dal consulente','ricostruisca le conseguenze retributive, contributive e sanzionatorie']},
+ trasparenza:{focus:['la trasparenza retributiva prima dell’assunzione','il diritto di informazione dei lavoratori','la comunicazione dei dati sul divario retributivo','la valutazione congiunta delle retribuzioni','la nozione di lavoro di pari valore e i criteri neutri'],scenario:['un avviso di selezione privo di indicazioni retributive','un colloquio nel quale si chiede la retribuzione percepita in precedenza','una lavoratrice che chiede i livelli retributivi medi della propria categoria','un’impresa con 180 dipendenti e un divario medio del 6% in una categoria'],task:['individui obblighi, soglie e scadenze applicabili','indichi gli strumenti di tutela e le conseguenze delle violazioni','coordini la disciplina con gli obblighi informativi già vigenti']},
+ piattaforme:{focus:['la qualificazione del rapporto dei lavoratori tramite piattaforma','la presunzione di subordinazione dell’art. 12 d.l. 62/2026','le tutele minime del capo V-bis','la trasparenza dei sistemi algoritmici','gli obblighi del committente e la vigilanza'],scenario:['un rider pagato a consegna e disattivato dopo alcuni rifiuti','una piattaforma che assegna turni e valuta le prestazioni tramite algoritmo','un account utilizzato da persona diversa dal titolare','un committente che non ha tenuto il libro unico dei rider'],task:['qualifichi il rapporto e individui la disciplina applicabile','indichi obblighi informativi e documentali del committente','ricostruisca poteri di vigilanza e sanzioni']},
+ sicurezza:{focus:['il DVR e gli obblighi non delegabili','le posizioni di datore, dirigente e preposto e la delega di funzioni','la formazione, l’addestramento e la loro tracciabilità','il DUVRI e il coordinamento negli appalti','la patente a crediti e la vigilanza nei cantieri'],scenario:['un appalto interno con interferenze non adeguatamente valutate','un infortunio con contestazione sulla reale vigilanza del preposto','una verifica ispettiva che rileva formazione incompleta','un cantiere nel quale opera un soggetto privo dei requisiti richiesti'],task:['distingua obblighi, responsabilità e rimedi','individui gli adempimenti preventivi del datore e del consulente','ricostruisca poteri di vigilanza e conseguenze sanzionatorie']},
+ retribuzione:{focus:['il principio della giusta retribuzione (art. 36 Cost.)','la scelta del CCNL e il dumping contrattuale','la struttura della retribuzione e il TEC','la parità e la trasparenza retributiva','i criteri di progressione economica'],scenario:['un’impresa che applica minimi inferiori a quelli del contratto collettivo di riferimento','una procedura di selezione priva di indicazioni retributive','un divario retributivo tra lavoratori comparabili','una contestazione sull’assorbibilità del superminimo'],task:['valuti il parametro retributivo utilizzabile e i rischi di contenzioso','indichi gli obblighi informativi e le conseguenze delle violazioni','colleghi disciplina individuale, collettiva e antidiscriminatoria']},
+ licenziamento:{focus:['il licenziamento disciplinare e l’art. 7 dello Statuto','il giustificato motivo oggettivo e il fatto posto a base del recesso','il doppio binario tra art. 18 St. lav. e D.Lgs. 23/2015','le soglie dimensionali e le tutele','il licenziamento nullo o discriminatorio'],scenario:['un lavoratore assunto dopo il 7 marzo 2015 in una piccola impresa','una contestazione disciplinare generica e tardiva','un recesso per ragioni organizzative successivamente contestate','un licenziamento intimato durante una situazione protetta'],task:['individui il regime di tutela applicabile','distingua vizi procedurali, sostanziali e nullità','valuti gli effetti della più recente giurisprudenza costituzionale']},
+ contrattazione:{focus:['l’efficacia soggettiva del CCNL','la contrattazione aziendale e di prossimità','la rappresentatività e la costituzione delle RSA','l’art. 51 D.Lgs. 81/2015 e il CCNL qualificato','i rapporti tra art. 36 Cost. e contrattazione'],scenario:['un accordo aziendale che deroga alla disciplina legale','un’impresa che applica un CCNL scarsamente rappresentativo','una sigla sindacale non firmataria che chiede di costituire RSA','una controversia sui minimi retributivi'],task:['precisi condizioni di efficacia e limiti delle deroghe','individui i criteri di rappresentatività rilevanti','colleghi la disciplina alla prevenzione del dumping contrattuale']},
+ appalto:{focus:['la genuinità dell’appalto','la responsabilità solidale','la somministrazione fraudolenta','il distacco e l’interesse del distaccante','la sicurezza negli appalti'],scenario:['un appaltatore privo di reale autonomia organizzativa','un utilizzatore che impartisce direttamente ordini ai dipendenti dell’appaltatore','crediti retributivi e contributivi rimasti insoluti','un distacco privo di un interesse concretamente dimostrabile'],task:['qualifichi correttamente il rapporto','individui responsabilità solidali e conseguenze dell’illecito','indichi i controlli preventivi che dovrebbe svolgere il consulente']},
+ individuale:{focus:['la subordinazione e gli indici qualificatori','gli obblighi informativi del D.Lgs. 104/2022','la lettera di assunzione, l’UNILAV e il LUL','la trasparenza retributiva preassuntiva','le mansioni e l’inquadramento'],scenario:['un collaboratore formalmente autonomo ma inserito stabilmente nell’organizzazione','una lettera di assunzione incompleta','una selezione nella quale viene chiesta la retribuzione precedente','una modifica delle mansioni non adeguatamente formalizzata'],task:['distingua qualificazione formale e sostanziale','individui gli adempimenti e il regime sanzionatorio','colleghi gli obblighi informativi alle novità del 2026']},
+ termine:{focus:['le causali e la durata massima','le proroghe e i rinnovi','il diritto di precedenza','il periodo di prova','la stagionalità e il ruolo della contrattazione'],scenario:['una successione di contratti oltre la durata complessiva consentita','un rinnovo senza corretta gestione della causale','un periodo di prova sproporzionato alla durata del contratto','un’attività qualificata come stagionale dal datore'],task:['ricostruisca limiti e conseguenze dell’illegittimità','indichi gli adempimenti documentali e comunicativi','precisi il ruolo della contrattazione collettiva']},
+ dimissioni:{focus:['le dimissioni telematiche','le dimissioni per fatti concludenti e l’assenza ingiustificata','la risoluzione consensuale','gli effetti sulla NASpI','la scelta tra fatti concludenti e licenziamento disciplinare'],scenario:['un lavoratore assente senza giustificazione per un periodo prolungato','una cessazione comunicata senza preventiva verifica dei presupposti','un lavoratore che contesta che l’assenza sia imputabile alla propria volontà'],task:['ricostruisca presupposti e procedura','individui i rischi per il datore e gli effetti previdenziali','distingua l’istituto dal licenziamento disciplinare']},
+ sospensione:{focus:['la malattia e il periodo di comporto','l’infortunio e la tutela INAIL','la maternità e la paternità','i congedi e i divieti di licenziamento','le dimissioni nel periodo protetto'],scenario:['un superamento contestato del periodo di comporto','un infortunio con assenza prolungata','dimissioni rese durante il periodo protetto','un recesso datoriale durante una tutela di genitorialità'],task:['distingua conservazione del posto e trattamento economico','indichi gli adempimenti previdenziali e datoriali','valuti la validità del recesso o delle dimissioni']},
+ disabili:{focus:['le quote di riserva','la base di computo','le convenzioni e gli esoneri','il prospetto informativo','le sanzioni per la scopertura'],scenario:['un datore che supera la soglia occupazionale rilevante','un prospetto informativo omesso','una richiesta di esonero non adeguatamente motivata'],task:['calcoli logicamente l’obbligo occupazionale','indichi procedure e strumenti di assolvimento','ricostruisca il regime sanzionatorio']},
+ previdenza:{focus:['l’obbligazione contributiva','il rapporto assicurativo INAIL','le prestazioni previdenziali','l’omissione e l’evasione contributiva','la previdenza complementare'],scenario:['contributi non versati per lavoratori regolarmente denunciati','una contestazione sulla qualificazione previdenziale del rapporto','un evento tutelato dall’assicurazione obbligatoria','un lavoratore neoassunto che, nei sei mesi dall’assunzione, non esprime alcuna scelta sulla destinazione del TFR'],task:['distingua obblighi del datore e diritti del lavoratore','individui enti, adempimenti e conseguenze dell’inadempimento','colleghi contribuzione e prestazioni']},
+ agile:{focus:['l’accordo individuale di lavoro agile','il potere direttivo e l’organizzazione','la sicurezza del lavoratore agile','le comunicazioni obbligatorie','il recesso dall’accordo'],scenario:['un rapporto gestito in modalità agile senza accordo coerente','una modifica unilaterale delle giornate da remoto','un infortunio durante una giornata di lavoro agile'],task:['individui contenuti dell’accordo e adempimenti','colleghi organizzazione, sicurezza e poteri datoriali','precisi le conseguenze delle irregolarità']}
 };
 function choice(a){return a[Math.floor(Math.random()*a.length)];}
-function cleanTitle(t){return t.titolo.replace(/:.*/, '').toLowerCase();}
+function cleanTitle(t){const x=t.titolo.replace(/:.*/,'').replace(/\s*\([^)]*\)\s*$/,'').trim();return x.charAt(0).toLowerCase()+x.slice(1);}
 function composeTrace(t,advanced=false){
  const v=VARIANTI[t.id]; if(!v)return choice(t.tracce);
  const f1=choice(v.focus),sc=choice(v.scenario),tk=choice(v.task),others=v.focus.filter(x=>x!==f1),f2=others.length?choice(others):f1;
@@ -976,102 +976,126 @@ const COMMISSION_FACTORS={
 
 const TRACE_PARTS={
  salariogiusto:{
-  error:['trattamento individuale inferiore al TEC del contratto di riferimento','esclusione dal calcolo di indennità fisse e continuative','incentivo fruito senza il requisito dell’art. 7, c. 5','codice del CCNL assente dall’informativa e dal prospetto paga'],
+  error:['un trattamento individuale inferiore al TEC del contratto di riferimento','l’esclusione dal calcolo di indennità fisse e continuative','la fruizione di un incentivo senza il requisito dell’art. 7, c. 5','l’assenza del codice del CCNL dall’informativa e dal prospetto paga'],
   inspect:['accertamento ispettivo sulle differenze retributive','verifica INPS dei requisiti per gli incentivi','controllo sul CCNL dichiarato nei flussi'],
   remedy:['riallineamento retributivo e contributivo','restituzione dei benefici indebiti','revisione del CCNL applicato e delle informative'],
   cross:['contrattazione di prossimità','diffida accertativa','trasparenza retributiva']
  },
  ispezioni:{
-  error:['crediti retributivi non corrisposti','lavoratori non comunicati al momento dell’accesso','irregolarità non coperta da sanzione specifica','gravi violazioni in materia di sicurezza'],
+  error:['il mancato pagamento di crediti retributivi','la presenza di lavoratori non comunicati al momento dell’accesso','un’irregolarità non coperta da sanzione specifica','la presenza di gravi violazioni in materia di sicurezza'],
   inspect:['accesso ispettivo con verbale di primo accesso','verbale unico di accertamento e notificazione','provvedimento di sospensione'],
   remedy:['regolarizzazione e pagamento in misura minima','conciliazione o ricorso contro la diffida accertativa','revoca della sospensione'],
   cross:['salario giusto e TEC','responsabilità solidale negli appalti','sicurezza sul lavoro']
  },
  trasparenza:{
-  error:['avviso privo della retribuzione iniziale o della fascia','richiesta della retribuzione pregressa al candidato','mancata risposta alla richiesta di informazioni','divario non giustificato da criteri oggettivi'],
+  error:['un avviso privo della retribuzione iniziale o della relativa fascia','la richiesta al candidato della retribuzione pregressa','la mancata risposta alla richiesta di informazioni','un divario non giustificato da criteri oggettivi'],
   inspect:['richiesta di chiarimenti da parte dell’Ispettorato o degli organismi per la parità','azione giudiziale antidiscriminatoria','verifica dei dati comunicati sul divario'],
   remedy:['revisione dei criteri retributivi','valutazione congiunta con le rappresentanze','correzione delle procedure di selezione'],
   cross:['salario giusto','obblighi informativi del d.lgs. 152/1997','codice pari opportunità']
  },
  piattaforme:{
-  error:['pagamento a consegna in assenza di CCNL','disattivazione per rifiuto delle prestazioni','informazioni sui sistemi algoritmici non fornite','libro unico non tenuto'],
+  error:['un compenso a consegna in assenza di CCNL','la disattivazione dell’account per rifiuto delle prestazioni','la mancata informazione sui sistemi algoritmici','la mancata tenuta del libro unico'],
   inspect:['accertamento sulla qualificazione del rapporto','acquisizione dei dati conservati dalla piattaforma','verifica degli obblighi INAIL e di sicurezza'],
   remedy:['riqualificazione del rapporto e recupero contributivo','adeguamento di contratti e informative','regolarizzazione del LUL e della formazione'],
   cross:['subordinazione ed etero-organizzazione','poteri ispettivi','privacy e controlli a distanza']
  },
  sicurezza:{
-  error:['DVR redatto in modo generico e non aggiornato','preposto nominato solo formalmente ma privo di effettivi poteri','formazione obbligatoria non completata o non tracciabile','DUVRI assente nonostante rischi interferenziali','impresa operante in cantiere con criticità sulla patente a crediti'],
+  error:['un DVR generico e non aggiornato','un preposto nominato solo formalmente e privo di effettivi poteri','una formazione obbligatoria incompleta o non tracciabile','l’assenza del DUVRI nonostante rischi interferenziali','l’operatività in cantiere di un’impresa con criticità sulla patente a crediti'],
   inspect:['accesso ispettivo con verifica documentale e delle posizioni di garanzia','infortunio dal quale emerge un possibile deficit organizzativo','controllo sulla formazione e sull’effettività della vigilanza'],
   remedy:['prescrizione e regolarizzazione ove applicabili','revisione del sistema prevenzionistico e della catena delle responsabilità','misure organizzative idonee a prevenire reiterazione e contenzioso'],
   cross:['appalto e responsabilità del committente','potere disciplinare verso il lavoratore inadempiente','organizzazione aziendale e delega di funzioni']
  },
  retribuzione:{
-  error:['applicazione di un CCNL scarsamente rappresentativo con minimi inferiori','mancata indicazione della fascia retributiva nella fase preassuntiva','differenza retributiva non supportata da criteri oggettivi','superminimo gestito senza chiarezza sulla sua assorbibilità'],
+  error:['l’applicazione di un CCNL scarsamente rappresentativo con minimi inferiori','la mancata indicazione della fascia retributiva nella fase preassuntiva','una differenza retributiva non supportata da criteri oggettivi','un superminimo gestito senza chiarezza sulla sua assorbibilità'],
   inspect:['verifica contributiva collegata alla base imponibile e ai minimi','contenzioso individuale ex art. 36 Cost.','accertamento di una possibile discriminazione retributiva'],
   remedy:['riallineamento retributivo e contributivo','revisione dei criteri retributivi e delle informative','ricostruzione del corretto CCNL-parametro'],
   cross:['contrattazione collettiva e rappresentatività','parità di trattamento e discriminazioni','benefici normativi e contributivi']
  },
  licenziamento:{
-  error:['contestazione disciplinare generica o tardiva','GMO basato su un fatto organizzativo non dimostrato','scelta errata del regime di tutela in relazione alla data di assunzione','errata applicazione delle soglie dimensionali','recesso durante una situazione protetta'],
+  error:['una contestazione disciplinare generica o tardiva','un GMO fondato su un fatto organizzativo non dimostrato','la scelta errata del regime di tutela rispetto alla data di assunzione','un’errata applicazione delle soglie dimensionali','un recesso intimato durante una situazione protetta'],
   inspect:['verifica documentale del procedimento disciplinare','contenzioso sull’insussistenza del fatto','contestazione della natura discriminatoria o nulla del recesso'],
   remedy:['revoca o rinnovazione degli atti ove consentita','corretta gestione dell’impugnazione e del rischio economico','valutazione preventiva di proporzionalità e prova del fatto'],
   cross:['malattia e comporto','procedimento disciplinare','trasferimento d’azienda e continuità del rapporto']
  },
  contrattazione:{
-  error:['accordo aziendale che pretende di derogare oltre i limiti consentiti','applicazione di CCNL privo di adeguata rappresentatività','esclusione di una sigla sindacale dalla costituzione di RSA senza corretta verifica','confusione tra efficacia obbligatoria ed efficacia soggettiva'],
+  error:['un accordo aziendale che pretende di derogare oltre i limiti consentiti','l’applicazione di un CCNL privo di adeguata rappresentatività','l’esclusione di una sigla sindacale dalla costituzione di RSA senza corretta verifica','la confusione tra efficacia obbligatoria ed efficacia soggettiva'],
   inspect:['verifica del CCNL utilizzato per benefici e istituti legali','contenzioso sull’efficacia dell’accordo aziendale','contestazione sindacale ex art. 28 Statuto'],
   remedy:['verifica dei soggetti stipulanti e del perimetro derogatorio','riallineamento al CCNL qualificato','revisione dell’accordo nel rispetto dei limiti costituzionali e UE'],
   cross:['salario giusto e art. 36 Cost.','orario di lavoro','contratti flessibili e rinvii all’art. 51 D.Lgs. 81/2015']
  },
  appalto:{
-  error:['appaltatore privo di autonoma organizzazione e rischio d’impresa','committente che esercita direttamente il potere direttivo','mancata verifica di regolarità contributiva','distacco privo di interesse concreto del distaccante'],
+  error:['un appaltatore privo di autonoma organizzazione e di rischio d’impresa','un committente che esercita direttamente il potere direttivo','la mancata verifica della regolarità contributiva','un distacco privo di interesse concreto del distaccante'],
   inspect:['accesso ispettivo volto a verificare la genuinità dell’appalto','azione del lavoratore per la costituzione del rapporto','richiesta di crediti retributivi e contributivi in solidarietà'],
   remedy:['riqualificazione corretta dei rapporti e revisione del contratto','presidi documentali e organizzativi per la genuinità','garanzie e controlli preventivi sul contraente'],
   cross:['sicurezza e DUVRI','responsabilità solidale','somministrazione e distacco']
  },
  individuale:{
-  error:['lavoro autonomo formalmente dichiarato ma sostanzialmente eterodiretto','lettera di assunzione incompleta','UNILAV tardivo o incoerente','richiesta al candidato della retribuzione pregressa'],
+  error:['un lavoro formalmente autonomo ma sostanzialmente eterodiretto','una lettera di assunzione incompleta','un UNILAV tardivo o incoerente','la richiesta al candidato della retribuzione pregressa'],
   inspect:['riqualificazione ispettiva del rapporto','verifica degli obblighi informativi','contenzioso su mansioni e inquadramento'],
   remedy:['regolarizzazione del rapporto e degli adempimenti','integrazione delle informative','riallineamento tra contratto, LUL e comunicazioni'],
   cross:['retribuzione e trasparenza','mansioni ex art. 2103 c.c.','orario e organizzazione del lavoro']
  },
  termine:{
-  error:['superamento della durata massima','rinnovo gestito senza corretta causale','periodo di prova sproporzionato','violazione del diritto di precedenza'],
-  inspect:['verifica sulla successione dei rapporti','contenzioso sulla trasformazione a tempo indeterminato','controllo sui limiti quantitativi'],
-  remedy:['corretto computo della durata complessiva','revisione delle clausole e delle causali','gestione preventiva del diritto di precedenza'],
+  error:['il superamento della durata massima','un rinnovo privo di corretta causale','un periodo di prova sproporzionato','la violazione del diritto di precedenza'],
+  inspect:['verifica sulla successione dei rapporti','contenzioso sulla trasformazione a tempo indeterminato','controllo sui limiti quantitativi','contestazione del recesso intimato durante il periodo di prova'],
+  remedy:['corretto computo della durata complessiva','revisione delle clausole e delle causali','gestione preventiva del diritto di precedenza','riproporzionamento della clausola di prova alla durata del contratto'],
   cross:['contrattazione collettiva','somministrazione a termine','lavoro stagionale']
  },
  dimissioni:{
-  error:['cessazione per fatti concludenti senza presupposti','conteggio errato dell’assenza ingiustificata','omessa comunicazione all’ITL','uso dell’istituto per eludere un licenziamento disciplinare'],
+  error:['una cessazione per fatti concludenti senza i presupposti','un conteggio errato dell’assenza ingiustificata','l’omessa comunicazione all’ITL','l’uso dell’istituto per eludere un licenziamento disciplinare'],
   inspect:['verifica ITL sulla genuinità dell’assenza','contestazione del lavoratore sulla causa dell’assenza','verifica degli effetti sulla NASpI'],
   remedy:['corretta sequenza procedurale e documentazione','scelta motivata tra fatti concludenti e licenziamento','ripristino del rapporto se i presupposti vengono meno'],
   cross:['procedimento disciplinare','NASpI','dimissioni protette']
  },
  sospensione:{
-  error:['licenziamento prima del superamento del comporto','errata gestione dell’infortunio','violazione del divieto di licenziamento in maternità','dimissioni non convalidate nel periodo protetto'],
+  error:['un licenziamento intimato prima del superamento del comporto','un’errata gestione dell’infortunio','la violazione del divieto di licenziamento in maternità','la mancata convalida delle dimissioni rese nel periodo protetto'],
   inspect:['verifica dei periodi di assenza e delle certificazioni','contenzioso sulla conservazione del posto','controllo INPS/INAIL sul trattamento economico'],
   remedy:['corretto computo del comporto','regolarizzazione degli adempimenti previdenziali','rispetto delle procedure di convalida'],
   cross:['licenziamento','INPS e INAIL','discriminazioni connesse alla genitorialità']
  },
  disabili:{
-  error:['base di computo calcolata in modo errato','prospetto informativo omesso','quota di riserva scoperta','esonero applicato senza requisiti'],
+  error:['una base di computo calcolata in modo errato','l’omissione del prospetto informativo','una quota di riserva scoperta','un esonero applicato senza i requisiti'],
   inspect:['verifica sul rispetto della L. 68/1999','controllo della base di computo','contestazione della scopertura'],
   remedy:['richiesta di assunzione o convenzione','regolarizzazione del prospetto','verifica di esoneri e compensazioni'],
   cross:['benefici e regolarità','organizzazione dell’organico','divieti di discriminazione']
  },
  previdenza:{
-  error:['contributi denunciati ma non versati','errata qualificazione contributiva del rapporto','omessa denuncia di elementi retributivi','gestione incoerente della posizione assicurativa INAIL'],
-  inspect:['accertamento contributivo INPS','verifica ispettiva sulla base imponibile','accertamento INAIL sul rischio assicurato'],
-  remedy:['regolarizzazione contributiva','ricostruzione dell’imponibile','correzione delle denunce e gestione delle sanzioni civili'],
+  error:['l’omesso versamento di contributi regolarmente denunciati','un’errata qualificazione contributiva del rapporto','l’omessa denuncia di elementi retributivi','una gestione incoerente della posizione assicurativa INAIL','il TFR maturando trattenuto in azienda nonostante il conferimento tacito alla forma pensionistica collettiva'],
+  inspect:['accertamento contributivo INPS','verifica ispettiva sulla base imponibile','accertamento INAIL sul rischio assicurato','contestazione del lavoratore sulla destinazione del TFR'],
+  remedy:['regolarizzazione contributiva','ricostruzione dell’imponibile','correzione delle denunce e gestione delle sanzioni civili','versamento alla forma pensionistica del TFR maturato'],
   cross:['retribuzione','qualificazione del rapporto','prestazioni previdenziali']
  },
  agile:{
-  error:['lavoro agile senza accordo coerente','mancata comunicazione','assenza di adeguata informativa sui rischi','recesso dall’accordo gestito irregolarmente'],
+  error:['lo svolgimento di lavoro agile senza un accordo coerente','la mancata comunicazione obbligatoria','l’assenza di un’adeguata informativa sui rischi','un recesso dall’accordo gestito irregolarmente'],
   inspect:['verifica degli obblighi documentali','contenzioso sull’organizzazione della prestazione','infortunio durante attività resa da remoto'],
   remedy:['revisione dell’accordo individuale','regolarizzazione delle comunicazioni','coordinamento con sicurezza e privacy'],
   cross:['orario e disconnessione','sicurezza','potere direttivo']
  }
 };
+
+/* ---------- V5.3: CASI COERENTI ----------
+   Ogni caso lega uno scenario ai soli focus, errori, verifiche, rimedi, collegamenti e compiti
+   che hanno senso insieme (indici negli array di VARIANTI e TRACE_PARTS). Evita tracce incoerenti
+   prodotte dalla combinazione libera degli elementi. */
+const CASI={
+ salariogiusto:[{s:0,f:[0,1,2],e:[0,2],i:[0,1],r:[0,1],c:[0,1],t:[0,1,2]},{s:1,f:[0,1,4],e:[0,3],i:[0,2],r:[0,2],c:[0,1,2],t:[0,2]},{s:2,f:[0],e:[],i:[0],r:[0],c:[1,2],t:[0,2]},{s:3,f:[3,0],e:[0],i:[0],r:[0],c:[0,1],t:[0,2]}],
+ ispezioni:[{s:0,f:[0,1,5],e:[0],i:[0,1],r:[1],c:[0],t:[0,1,2]},{s:1,f:[2,3,4],e:[3],i:[0,2],r:[0,2],c:[2],t:[0,1,2]},{s:2,f:[0],e:[],i:[0,1],r:[0],c:[0],t:[0,1]},{s:3,f:[1,5],e:[0],i:[0,1],r:[1],c:[1],t:[0,1,2]}],
+ trasparenza:[{s:0,f:[0],e:[],i:[0,1],r:[2],c:[1,2],t:[0,1,2]},{s:1,f:[0],e:[],i:[0,1],r:[2],c:[1,2],t:[0,1]},{s:2,f:[1,4],e:[2],i:[0,1],r:[0],c:[0,2],t:[0,1]},{s:3,f:[2,3,4],e:[3],i:[1,2],r:[0,1],c:[0,2],t:[0,1]}],
+ piattaforme:[{s:0,f:[0,1,2],e:[2],i:[0,1],r:[0,1],c:[0,2],t:[0,1]},{s:1,f:[0,1,3],e:[1,2],i:[0,1],r:[0,1],c:[0,2],t:[0,1,2]},{s:2,f:[0,4],e:[0],i:[0,1,2],r:[0,2],c:[0,1],t:[0,2]},{s:3,f:[4,2],e:[],i:[1,2],r:[2],c:[1],t:[1,2]}],
+ sicurezza:[{s:0,f:[3,0],e:[3,0],i:[0,1],r:[0,1],c:[0],t:[0,1,2]},{s:1,f:[1,0],e:[1,0],i:[1,2],r:[1,2],c:[2,1],t:[0,1,2]},{s:2,f:[2,1],e:[],i:[0,2],r:[0,1],c:[2,1],t:[0,1,2]},{s:3,f:[4,3],e:[4],i:[0],r:[0,2],c:[0],t:[0,2]}],
+ retribuzione:[{s:0,f:[0,1,2],e:[0],i:[0,1],r:[0,2],c:[0,2],t:[0,2]},{s:1,f:[3],e:[],i:[2],r:[1],c:[1],t:[1,2]},{s:2,f:[3,4,0],e:[2],i:[1,2],r:[1],c:[1],t:[1,2]},{s:3,f:[2,0],e:[],i:[1],r:[0],c:[0],t:[0]}],
+ licenziamento:[{s:0,f:[2,3,1],e:[2,3],i:[1],r:[1],c:[2,1],t:[0,2]},{s:1,f:[0],e:[],i:[0,1],r:[0,1],c:[1],t:[1,2]},{s:2,f:[1,2],e:[1],i:[1],r:[1,2],c:[2],t:[0,1,2]},{s:3,f:[4],e:[],i:[2],r:[1,2],c:[0],t:[1,0]}],
+ contrattazione:[{s:0,f:[1,0,3],e:[0,3],i:[1],r:[0,2],c:[1,2],t:[0]},{s:1,f:[3,4,0],e:[],i:[0],r:[1],c:[0],t:[1,2]},{s:2,f:[2],e:[2],i:[2],r:[0],c:[0],t:[1]},{s:3,f:[4,0],e:[1,3],i:[0,1],r:[1],c:[0],t:[1,2]}],
+ appalto:[{s:0,f:[0,2,4],e:[1],i:[0,1],r:[0,1],c:[1,2,0],t:[0,1,2]},{s:1,f:[0,2],e:[0],i:[0,1],r:[0,1],c:[2,1],t:[0,1]},{s:2,f:[1],e:[2],i:[2],r:[2],c:[0],t:[1,2]},{s:3,f:[3],e:[],i:[0,1],r:[0],c:[1],t:[0,1]}],
+ individuale:[{s:0,f:[0],e:[],i:[0],r:[0],c:[0,2],t:[0,1]},{s:1,f:[1,2],e:[2],i:[1],r:[1,2],c:[0,1],t:[1,2]},{s:2,f:[3],e:[],i:[1],r:[1],c:[0],t:[1,2]},{s:3,f:[4],e:[1],i:[2],r:[2],c:[0,2],t:[0,1]}],
+ termine:[{s:0,f:[0,1],e:[],i:[0,1],r:[0],c:[1,0],t:[0,1]},{s:1,f:[0,1],e:[],i:[1],r:[1],c:[0],t:[0,2]},{s:2,f:[3],e:[],i:[3],r:[3],c:[0],t:[0,2]},{s:3,f:[4,2],e:[3,0],i:[0,2],r:[2,0],c:[0],t:[2,0]}],
+ dimissioni:[{s:0,f:[1,4,3],e:[1,2],i:[0],r:[0,1],c:[0,1],t:[0,1,2]},{s:1,f:[1,0],e:[0,2],i:[0,1],r:[0,2],c:[1,2],t:[0,1]},{s:2,f:[1,4],e:[0,3],i:[1,0],r:[2,1],c:[0,2],t:[2,0]}],
+ sospensione:[{s:0,f:[0],e:[0],i:[0,1],r:[0],c:[0],t:[0,2]},{s:1,f:[1,0],e:[1],i:[0,2],r:[1],c:[1,0],t:[0,1]},{s:2,f:[4,2],e:[3],i:[1],r:[2],c:[2,1],t:[2,1]},{s:3,f:[2,3],e:[2],i:[1],r:[1],c:[2,0],t:[2,0]}],
+ disabili:[{s:0,f:[0,1,4],e:[0,2],i:[1,2],r:[0],c:[0,1],t:[0,1,2]},{s:1,f:[3,4],e:[],i:[0],r:[1],c:[0],t:[1,2]},{s:2,f:[2,4],e:[],i:[0,2],r:[2,0],c:[0,1],t:[1,2]}],
+ previdenza:[{s:0,f:[3,0],e:[],i:[0],r:[0,2],c:[2,0],t:[0,1]},{s:1,f:[0,1],e:[1,3],i:[0,1,2],r:[1,2],c:[0,2],t:[0,1]},{s:2,f:[2,1],e:[3,2],i:[2],r:[2],c:[0,1],t:[2,0]},{s:3,f:[4],e:[4],i:[3],r:[3],c:[0,2],t:[0,1]}],
+ agile:[{s:0,f:[0,3],e:[1],i:[0],r:[0,1],c:[0,2],t:[0,2]},{s:1,f:[1,0,4],e:[0,3],i:[1],r:[0],c:[0,2],t:[1,2]},{s:2,f:[2,1],e:[2],i:[2],r:[2],c:[0,2],t:[1,2]}]
+};
+function pick(arr,idx){return idx&&idx.length?arr[choice(idx)]:'';}
 
 function commissionIndex(t){
  const f=COMMISSION_FACTORS[t.id]||{hist:50,rec:50,nov:50,op:50,sys:50};
@@ -1084,24 +1108,30 @@ function saveTraceSig(sig){let a=traceHistory();a.unshift(sig);a=[...new Set(a)]
 function sigFor(t,a,b,c,d){return [t.id,a,b,c,d].join('|');}
 
 function composeTraceV5(t,advanced=false){
- const v=VARIANTI[t.id],p=TRACE_PARTS[t.id];
- if(!v||!p)return composeTrace(t,advanced);
+ const v=VARIANTI[t.id],p=TRACE_PARTS[t.id],casi=CASI[t.id];
+ if(!v||!p||!casi)return composeTrace(t,advanced);
  let attempt=0,out=null,sig='';
  const history=traceHistory();
  do{
-  const f1=choice(v.focus), f2=choice(v.focus.filter(x=>x!==f1).length?v.focus.filter(x=>x!==f1):v.focus);
-  const scenario=choice(v.scenario), err=choice(p.error), insp=choice(p.inspect), rem=choice(p.remedy), cross=choice(p.cross), task=choice(v.task);
+  const k=choice(casi);
+  const f1=pick(v.focus,k.f);
+  const fo=k.f.map(x=>v.focus[x]).filter(x=>x!==f1);
+  const f2=fo.length?choice(fo):null;
+  const scenario=v.scenario[k.s], err=pick(p.error,k.e), insp=pick(p.inspect,k.i), rem=pick(p.remedy,k.r), cross=pick(p.cross,k.c), task=pick(v.task,k.t);
   sig=sigFor(t,f1,scenario,err,cross);
+  const rq=err?`, nel quale si riscontra ${err}`:'', em=err?`, nel quale emerge ${err}`:'';
+  const ambito=`della disciplina in materia di ${cleanTitle(t)}`;
   const update=(t.aggior&&t.aggior.length)?' Tenga conto delle modifiche normative, di prassi e giurisprudenziali 2025–2026 pertinenti.':'';
   const rausei=` Ricostruisca il percorso norma → obbligo → controllo → responsabilità → sanzione → rimedio.`;
   if(protocol==='week'){
-    out=`Il candidato, con esposizione essenziale ma completa, tratti ${f1} con particolare riferimento a ${err}. Individui le norme-cardine, ${task} e indichi i principali profili di ${insp}, concludendo sulle cautele professionali e su ${rem}.${update}`;
+    out=`Il candidato, con esposizione essenziale ma completa, tratti ${f1} nell'ambito ${ambito}, con particolare riferimento al caso di ${scenario}${rq}. Individui le norme-cardine, ${task} e precisi i profili connessi all'ipotesi di ${insp}, concludendo sulle cautele professionali e sulle misure correttive, quali ${rem}.${update}`;
   } else if(protocol==='rausei'){
-    out=`Il candidato esamini ${f1} nell'ambito di ${cleanTitle(t)}. Muovendo dal caso di ${scenario}, nel quale emerge ${err}, ${task}. Valuti ${insp}, le responsabilità coinvolte e ${rem}; colleghi inoltre la fattispecie a ${cross}.${update}${rausei}`;
+    out=`Il candidato esamini ${f1} nell'ambito ${ambito}. Muovendo dal caso di ${scenario}${em}, ${task}. Valuti l'ipotesi di ${insp}, le responsabilità coinvolte e le misure correttive, quali ${rem}; colleghi inoltre la fattispecie al tema di ${cross}.${update}${rausei}`;
   } else if(advanced){
-    out=`Il candidato esamini criticamente ${f1} e i rapporti con ${f2}. In una fattispecie caratterizzata da ${scenario} e da ${err}, ricostruisca la disciplina applicabile e ${task}. Valuti anche ${insp}, le responsabilità e i rimedi, collegando il tema a ${cross} e indicando le cautele del consulente per prevenire il contenzioso.${update}`;
+    const rapp=f2?` e i rapporti con ${f2}`:'';
+    out=`Il candidato esamini criticamente ${f1}${rapp}. Muovendo dal caso di ${scenario}${rq}, ricostruisca la disciplina applicabile e ${task}. Valuti anche l'ipotesi di ${insp}, le responsabilità e i rimedi, collegando la fattispecie al tema di ${cross} e indicando le cautele del consulente per prevenire il contenzioso.${update}`;
   } else {
-    out=`Il candidato, premesso il necessario inquadramento costituzionale e civilistico, illustri ${f1} nell'ambito di ${cleanTitle(t)}. Con riferimento al caso di ${scenario}, nel quale si riscontra ${err}, ${task}. Si soffermi su ${insp}, sugli adempimenti del consulente del lavoro e su ${rem}.${update}`;
+    out=`Il candidato, premesso il necessario inquadramento costituzionale e civilistico, illustri ${f1} nell'ambito ${ambito}. Con riferimento al caso di ${scenario}${rq}, ${task}. Si soffermi sull'ipotesi di ${insp}, sugli adempimenti del consulente del lavoro e sulle misure correttive, quali ${rem}.${update}`;
   }
   attempt++;
  }while(history.includes(sig)&&attempt<20);
@@ -1202,7 +1232,7 @@ btnAvvia.addEventListener('click',async()=>{
   if(mode==='rausei26'&&HOOKS26[currentTema.id])currentTraccia+=HOOKS26[currentTema.id];
   setTimeout(openSheet,900);},850);
 });
-function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;document.getElementById('matrixLine').textContent='V5 · traccia combinatoria anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
+function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;document.getElementById('matrixLine').textContent='V5.3 · traccia per casi coerenti, anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
 
 /* ---------- TIMER ---------- */
 let timerInt=null,remaining=0,paused=false;
