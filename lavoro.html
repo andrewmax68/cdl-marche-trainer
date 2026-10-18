@@ -96,6 +96,7 @@
   .clock small{display:block;font:600 10px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
   .timerbar .meta{font:500 12px/1.4 var(--ui);color:rgba(255,255,255,.8);max-width:44ch}
   .timerbar .actions{display:flex;gap:8px;flex-shrink:0}
+  @media (max-width:560px){.timerbar{flex-wrap:wrap}.timerbar .actions{flex-shrink:1;flex-wrap:wrap}}
   .timerbar .btn.ghost{color:#fff;border-color:rgba(255,255,255,.3);background:transparent}
   .timerbar .btn.ghost:hover{background:rgba(255,255,255,.1)}
 
@@ -238,6 +239,24 @@
   .ai-actions{border:1px solid rgba(38,50,74,.28);background:#f4f7fb;border-radius:3px;padding:16px 18px;margin:14px 0}
   .ai-actions h4{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 7px}
   .ai-actions p{font-size:13px;color:var(--ink-2);margin:0 0 12px}
+  .codici{margin-top:18px;border:1px solid var(--line);background:var(--surface);border-radius:2px}
+  .codici summary{cursor:pointer;font:600 12.5px/1.3 var(--ui);letter-spacing:.02em;padding:12px 14px;color:var(--oxblood)}
+  .codici[open] summary{border-bottom:1px solid var(--line-2)}
+  .codici>p,.codici #codiciBody{padding:0 14px}
+  .cd-steps{margin:12px 0 14px;padding-left:20px;font-size:13.5px;color:var(--ink-2)}
+  .cd-steps li{margin:3px 0}
+  .cd-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .cd-tab{border-collapse:collapse;width:100%;min-width:640px;font-size:12.5px}
+  .cd-tab th{font:600 10.5px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;border-bottom:1px solid var(--line);padding:6px 6px}
+  .cd-tab td{border-bottom:1px solid var(--line-2);padding:7px 6px;vertical-align:top}
+  .cd-tab .cd-p{font-family:var(--mono);white-space:nowrap}
+  .cd-art{color:var(--ink-2)} .cd-x{color:var(--oxblood);font-size:11.5px}
+  .cd-dot{display:inline-block;width:12px;height:12px;border-radius:2px;border:1px solid rgba(0,0,0,.25);margin-top:2px}
+  .cd-st{font:600 10px/1 var(--mono);padding:3px 5px;border-radius:2px;white-space:nowrap}
+  .cd-v{background:var(--ok-2);color:var(--ok)} .cd-i{background:#f3ead2;color:#7a5a12} .cd-d{background:#f6dede;color:var(--oxblood)}
+  .cd-h{font:600 11px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--oxblood);margin:16px 0 4px}
+  .cd-list{margin:0 0 6px;padding-left:20px;font-size:13px}
+  .cd-note{font-size:12px;color:var(--muted);margin:10px 0 12px}
   .matrixline{font:500 11px/1.5 var(--mono);color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
   .copyok{font:600 11px/1 var(--mono);color:var(--ok);margin-left:8px}
   .livebox{border-left:4px solid var(--ink-2);background:#f4f7fb;padding:12px 14px;margin:14px 0;font-size:13px;color:var(--ink-2)}
@@ -360,6 +379,7 @@
         <div class="stamp"><span>Traccia estratta · da svolgere</span><span>Diritto del lavoro e legislazione sociale</span></div>
         <p class="traccia-tit" id="tracciaTit"></p>
         <div class="traccia-body" id="tracciaBody"></div><div class="matrixline" id="matrixLine"></div>
+        <details class="codici" id="codiciBox"><summary>Codici: dove cercare le norme di questa traccia</summary><p class="cd-note">Prima prova da solo, con i codici in mano e il cronometro: 10-15 minuti. Poi apri e confronta.</p><div id="codiciBody"></div></details>
         <div class="draft">
           <label for="draftArea">Elaborato (facoltativo — puoi scrivere su carta e usare solo il timer; se scrivi qui, il motore misura la copertura)</label>
           <textarea id="draftArea" placeholder="Imposta la scaletta sui cinque livelli, poi sviluppa. Il testo resta solo in questa sessione."></textarea>
@@ -840,6 +860,243 @@ function composeTrace(t,advanced=false){
  return `Il candidato esamini criticamente ${f1} e i suoi rapporti con ${f2}. Muovendo dall’ipotesi di ${sc}, ricostruisca la disciplina applicabile, ${tk}. Valuti inoltre le conseguenze di una qualificazione o gestione non corretta dell’istituto, distinguendo responsabilità, rimedi e tutele, e indichi le cautele professionali idonee a prevenire il contenzioso.${upd}`;
 }
 
+/* ---------- V5.4: CONSULTAZIONE DEI CODICI ----------
+   L = Codice del lavoro La Tribuna 2026 (33ª ed.); S = Codice tributario e civile SEAC 2026.
+   p = pagina del codice dove si apre la norma; v = dove trovarla negli indici (pagine 15-40 = indice sommario
+   di La Tribuna; 1899-1915 = indice analitico). st: 'v' verificata sul codice, 'i' letta dall'indice (conferma
+   la pagina), 'd' da leggere o da verificare. col = colore della linguetta. */
+const CODICI_COMUNI={
+ percorso:[
+  'Sottolinea nella traccia 3-4 istituti (es. «diffida accertativa», «TEC», «appalto»): sono le parole da cercare.',
+  'Indice analitico di La Tribuna (pp. 1899-1915): la parola-tema ti dà norma e articolo, non la pagina.',
+  'Indice sommario (pp. 15-40) o linguetta: dalla norma alla pagina dell’estratto. Attenzione agli atti spezzati in più estratti.',
+  'Aperta la pagina, leggi la rubrica dell’articolo: conferma che sei nel punto giusto.',
+  'Codice civile e testo completo della L. 689/1981: solo nel SEAC (Sezione II e p. 2932).',
+  'Norma assente dai codici: testo stampato, se autorizzato dalla commissione, oppure citazione a memoria con estremi esatti.',
+  'Tempo: 10-15 minuti di caccia alla norma, poi la scaletta. Non oltre: il tema si vince scrivendo.'
+ ],
+ base:[
+  {n:'Costituzione',a:'artt. 1-47 (35-41 per il lavoro)',c:'L',p:'43',v:'sommario p. 15 · Costituzione',col:'rosa',st:'v',x:'Arriva solo all’art. 47; il testo intero è nel SEAC, Sezione II'},
+  {n:'Codice civile, Libro V, Titolo II',a:'artt. 2082 ss. (lavoro nell’impresa)',c:'S',p:'1879',v:'indice generale SEAC · Libro V',col:'arancio',st:'v',x:'In La Tribuna il codice civile non c’è'}
+ ]
+};
+const CODICI={
+ salariogiusto:{
+  norme:[
+   {n:'D.L. 62/2026 conv. L. 112/2026',a:'artt. 7, 7-bis, 10, 11',c:'L',p:'1863',v:'sommario p. 40 · Modifiche intervenute in corso di stampa',col:'rosa',st:'v'},
+   {n:'L. 144/2025 (delega su retribuzione e contrattazione)',a:'',c:'L',p:'271',v:'sommario p. 19 · Contratti collettivi, n. 4',col:'rosa',st:'i'},
+   {n:'D.L. 138/2011',a:'art. 8 (prossimità)',c:'L',p:'270',v:'sommario p. 19 · Contratti collettivi, n. 2',col:'rosa',st:'v'},
+   {n:'D.Lgs. 81/2015',a:'art. 51 (CCNL qualificato)',c:'L',p:'1781',v:'sommario p. 38 · Somministrazione',col:'rosa',st:'v'},
+   {n:'L. 296/2006',a:'art. 1, c. 1175 (benefici e rispetto del CCNL)',c:'L',p:'',v:'sommario p. 36 · Pensioni e previdenza sociale, n. 88',col:'verde',st:'d'},
+   {n:'L. 4/1953',a:'art. 1 (prospetto paga e codice CCNL)',c:'L',p:'1759',v:'sommario p. 38 · Prospetti paga',col:'verde',st:'v'},
+   {n:'D.Lgs. 124/2004',a:'artt. 12 e 14 (diffida accertativa, disposizione)',c:'L',p:'1843',v:'sommario p. 40 · Vigilanza',col:'giallo',st:'v'},
+   {n:'Codice civile',a:'art. 2099 (retribuzione)',c:'S',p:'',v:'SEAC, tra p. 1884 e p. 1888',col:'arancio',st:'d'}
+  ],
+  mancano:['Giurisprudenza (Cass. 27711/2023; Corte cost. 221/2012): mai nei codici, si cita a memoria','Art. 1 D.L. 338/1989 (minimale contrattuale): non trovato nei tuoi codici, da stampare o citare a memoria'],
+  trappole:['Il D.L. 62/2026 non sta sotto «Retribuzione» ma sotto «Modifiche intervenute in corso di stampa».','Nell’analitico la voce «Salario giusto» (p. 1914) rimanda al D.L. 62/2026.']
+ },
+ ispezioni:{
+  norme:[
+   {n:'D.Lgs. 124/2004',a:'artt. 11-15 (art. 11 a p. 1847, art. 14 a p. 1849)',c:'L',p:'1843',v:'sommario p. 40 · Vigilanza in materia di lavoro',col:'giallo',st:'v'},
+   {n:'D.Lgs. 758/1994',a:'artt. 20-25 (prescrizione obbligatoria)',c:'L',p:'1841',v:'sommario p. 39 · Vigilanza',col:'giallo',st:'v'},
+   {n:'L. 689/1981',a:'artt. 13-14 (accertamento, contestazione)',c:'S',p:'2932',v:'indice generale SEAC · Sanzioni amministrative (art. 14 a p. 2935)',col:'giallo',st:'v'},
+   {n:'D.Lgs. 81/2008',a:'art. 14 (sospensione)',c:'L',p:'629',v:'sommario p. 23 · Infortuni e sicurezza sul lavoro',col:'blu',st:'v'},
+   {n:'D.L. 12/2002',a:'art. 3 (maxisanzione per lavoro nero)',c:'L',p:'',v:'sommario p. 40 · Vigilanza',col:'giallo',st:'d'},
+   {n:'D.Lgs. 149/2015 (INL)',a:'',c:'L',p:'',v:'sommario p. 40 · Vigilanza',col:'giallo',st:'d'},
+   {n:'D.L. 19/2024',a:'art. 29 (appalto e somministrazione illeciti)',c:'L',p:'',v:'sommario p. 40 · Vigilanza',col:'giallo',st:'d'}
+  ],
+  mancano:['D.Lgs. 103/2024, art. 6 (diffida amministrativa): fuori dai codici, da stampare','Prassi INL (circ. 5/2020, nota 4539/2020) e Consiglio di Stato: si citano a memoria'],
+  trappole:['In La Tribuna la L. 689/1981 a p. 1403 contiene solo gli artt. 32-38: il testo completo è nel SEAC a p. 2932.','Nell’analitico la voce «Diffida» porta all’art. 16 D.P.R. 1124/1965 (INAIL), non alla diffida accertativa.']
+ },
+ trasparenza:{
+  norme:[
+   {n:'D.Lgs. 96/2026',a:'artt. 5, 9, 12',c:'L',p:'1089',v:'sommario p. 29 · Lavoro delle donne e pari opportunità',col:'rosa',st:'v'},
+   {n:'D.Lgs. 198/2006',a:'artt. 25-28, 37-41 (art. 25 a p. 1069)',c:'L',p:'1061',v:'sommario p. 29 · Lavoro delle donne',col:'rosa',st:'v'},
+   {n:'D.Lgs. 215/2003 e 216/2003',a:'discriminazioni',c:'L',p:'1327 · 1330',v:'sommario p. 33 · Parità di trattamento',col:'rosa',st:'i'},
+   {n:'D.Lgs. 152/1997',a:'artt. 1 e 4 (informativa)',c:'L',p:'180',v:'sommario p. 18 · Avviamento al lavoro',col:'rosa',st:'v'},
+   {n:'D.Lgs. 91/2026 (organismi per la parità)',a:'',c:'L',p:'',v:'indice cronologico, anno 2026',col:'rosa',st:'d',x:'Se manca, stampa il testo da Normattiva'}
+  ],
+  mancano:['Dir. (UE) 2023/970: fonte europea, basta citarla'],
+  trappole:['Nessuna voce «Trasparenza» negli indici: cerca «Lavoro delle donne» nel sommario, «Retribuzione» o «Discriminazione» nell’analitico.']
+ },
+ piattaforme:{
+  norme:[
+   {n:'D.Lgs. 81/2015',a:'capo V-bis, artt. 47-bis ss. (rider)',c:'L',p:'1016 / 1019',v:'sommario p. 28 · Lavoro autonomo e occasionale',col:'arancio',st:'d',x:'Controlla in quale estratto cade l’art. 47-bis'},
+   {n:'D.Lgs. 81/2015',a:'art. 2 (etero-organizzazione)',c:'L',p:'360',v:'sommario p. 21 · Impiego privato',col:'arancio',st:'v'},
+   {n:'D.L. 62/2026',a:'artt. 11-bis–15 (piattaforme)',c:'L',p:'1863',v:'sommario p. 40 · Modifiche in corso di stampa',col:'rosa',st:'v'},
+   {n:'D.Lgs. 152/1997',a:'art. 1-bis (sistemi automatizzati)',c:'L',p:'180',v:'sommario p. 18 · Avviamento al lavoro',col:'rosa',st:'v'},
+   {n:'L. 300/1970',a:'art. 4 (controlli a distanza)',c:'L',p:'1803',v:'sommario p. 39 · Statuto dei lavoratori',col:'arancio',st:'v'},
+   {n:'D.Lgs. 196/2003',a:'dati personali',c:'L',p:'299',v:'sommario p. 19 · Dati personali',col:'arancio',st:'i'},
+   {n:'Codice penale',a:'art. 603-bis (caporalato)',c:'L',p:'61',v:'sommario p. 15 · Appalto e intermediazione',col:'giallo',st:'d',x:'Verifica che l’estratto contenga l’art. 603-bis'},
+   {n:'L. 132/2025 (intelligenza artificiale)',a:'',c:'L',p:'',v:'sommario p. 26 · Intelligenza artificiale',col:'arancio',st:'d'}
+  ],
+  mancano:['Dir. (UE) 2024/2831: in recepimento (schema in itinere), si cita solo come fonte europea'],
+  trappole:['L’analitico non ha voci «rider» o «piattaforme»: l’unica porta è il sommario p. 28.']
+ },
+ sicurezza:{
+  norme:[
+   {n:'D.Lgs. 81/2008',a:'artt. 14 (p. 629), 16 (p. 631), 19 (p. 634), 28 (p. 640), 37 (p. 647), 47 (p. 653), 55 (p. 657)',c:'L',p:'611',v:'sommario p. 23 · Infortuni e sicurezza sul lavoro',col:'blu',st:'v'},
+   {n:'D.Lgs. 81/2008',a:'art. 26 (appalti, DUVRI)',c:'L',p:'64',v:'sommario p. 15 · Appalto e intermediazione',col:'blu',st:'v'},
+   {n:'Codice civile',a:'art. 2087',c:'S',p:'1880',v:'SEAC · Libro V, Titolo II',col:'blu',st:'v'},
+   {n:'D.Lgs. 758/1994',a:'art. 20 (prescrizione)',c:'L',p:'1841',v:'sommario p. 39 · Vigilanza',col:'giallo',st:'v'},
+   {n:'D.P.R. 1124/1965',a:'assicurazione INAIL',c:'L',p:'509',v:'sommario p. 23 · Infortuni sul lavoro',col:'verde',st:'v'},
+   {n:'L. 81/2017',a:'art. 22 (sicurezza nel lavoro agile)',c:'L',p:'732',v:'sommario p. 23 · Infortuni e sicurezza, n. 2',col:'blu',st:'i'}
+  ],
+  mancano:['Accordi Stato-Regioni sulla formazione e D.M. attuativi della patente a crediti: non sono leggi, si citano a memoria'],
+  trappole:['L’art. 2087 c.c. è solo nel SEAC.','La patente a crediti (art. 27 D.Lgs. 81/2008) è poco prima di p. 640: verificala.']
+ },
+ retribuzione:{
+  norme:[
+   {n:'Costituzione',a:'artt. 36 e 37',c:'L',p:'43',v:'sommario p. 15',col:'rosa',st:'v'},
+   {n:'D.L. 62/2026',a:'art. 7 (salario giusto, TEC)',c:'L',p:'1863',v:'sommario p. 40 · Modifiche in corso di stampa',col:'rosa',st:'v'},
+   {n:'L. 144/2025',a:'',c:'L',p:'271',v:'sommario p. 19 · Contratti collettivi',col:'rosa',st:'i'},
+   {n:'D.Lgs. 96/2026',a:'trasparenza retributiva',c:'L',p:'1089',v:'sommario p. 29 · Lavoro delle donne',col:'rosa',st:'v'},
+   {n:'D.Lgs. 198/2006',a:'parità di retribuzione',c:'L',p:'1061',v:'sommario p. 29',col:'rosa',st:'v'},
+   {n:'L. 4/1953',a:'prospetto paga',c:'L',p:'1759',v:'sommario p. 38 · Prospetti paga',col:'verde',st:'v'},
+   {n:'Codice civile',a:'artt. 2099-2103',c:'S',p:'1883',v:'SEAC · Libro V (art. 2103 a p. 1883)',col:'arancio',st:'v'}
+  ],
+  mancano:['Art. 1 D.L. 338/1989 (minimale contrattuale) e giurisprudenza sull’art. 36 Cost.: a memoria o testo stampato'],
+  trappole:['La disciplina della retribuzione è sparsa: parti da Cost. art. 36 e D.L. 62/2026, poi segui i rinvii.']
+ },
+ licenziamento:{
+  norme:[
+   {n:'L. 604/1966',a:'artt. 1-8',c:'L',p:'1119',v:'sommario p. 30 · Licenziamenti individuali',col:'arancio',st:'v'},
+   {n:'L. 300/1970',a:'artt. 7 e 18 (art. 18 a p. 1806)',c:'L',p:'1803',v:'sommario p. 39 · Statuto dei lavoratori',col:'arancio',st:'v'},
+   {n:'D.Lgs. 23/2015',a:'artt. 1-10 (tutele crescenti)',c:'L',p:'357',v:'sommario p. 21 · Impiego privato',col:'arancio',st:'v'},
+   {n:'L. 223/1991',a:'artt. 4, 5, 24 (licenziamenti collettivi)',c:'L',p:'1184',v:'sommario p. 31 · Mobilità della manodopera e licenziamenti collettivi',col:'arancio',st:'i'},
+   {n:'L. 183/2010',a:'art. 32 (impugnazione)',c:'L',p:'297',v:'sommario p. 19 · Controversie individuali',col:'arancio',st:'i'},
+   {n:'D.Lgs. 151/2001',a:'art. 54 (divieto in maternità)',c:'L',p:'circa 1133',v:'sommario p. 30 · Maternità e paternità',col:'arancio',st:'d'},
+   {n:'Codice civile',a:'artt. 2118-2119',c:'S',p:'',v:'SEAC · Libro V, dopo p. 1888',col:'arancio',st:'d'}
+  ],
+  mancano:['Corte cost. 194/2018, 150/2020, 22/2024, 128 e 129/2024, 118/2025: a memoria, con anno e principio'],
+  trappole:['Doppio binario per data di assunzione (7/3/2015): art. 18 St. lav. o D.Lgs. 23/2015, due estratti diversi.']
+ },
+ contrattazione:{
+  norme:[
+   {n:'Costituzione',a:'artt. 39-40',c:'L',p:'43',v:'sommario p. 15',col:'rosa',st:'v'},
+   {n:'D.L. 138/2011',a:'art. 8 (prossimità)',c:'L',p:'270',v:'sommario p. 19 · Contratti collettivi',col:'rosa',st:'v'},
+   {n:'D.L. 62/2026',a:'art. 7-bis (modifiche all’art. 8)',c:'L',p:'1863',v:'sommario p. 40 · Modifiche in corso di stampa',col:'rosa',st:'v'},
+   {n:'L. 144/2025',a:'',c:'L',p:'271',v:'sommario p. 19 · Contratti collettivi',col:'rosa',st:'i'},
+   {n:'D.Lgs. 81/2015',a:'art. 51',c:'L',p:'1781',v:'sommario p. 38 · Somministrazione',col:'rosa',st:'v'},
+   {n:'L. 300/1970',a:'artt. 19 (p. 1808) e 28',c:'L',p:'1803',v:'sommario p. 39 · Statuto dei lavoratori',col:'arancio',st:'v'}
+  ],
+  mancano:['Testo unico sulla rappresentanza 2014: accordo interconfederale, non legge','Corte cost. 231/2013, 221/2012, 156/2025: a memoria'],
+  trappole:['L’analitico non ha la voce «Prossimità»: l’art. 8 si trova solo dal sommario p. 19.']
+ },
+ appalto:{
+  norme:[
+   {n:'D.Lgs. 276/2003',a:'art. 29 (appalto, solidarietà)',c:'L',p:'62',v:'sommario p. 15 · Appalto e intermediazione',col:'arancio',st:'v'},
+   {n:'D.Lgs. 276/2003',a:'art. 18 (sanzioni)',c:'L',p:'197',v:'sommario p. 18 · Avviamento al lavoro',col:'giallo',st:'v'},
+   {n:'D.Lgs. 81/2015',a:'artt. 30-40 (somministrazione)',c:'L',p:'1778',v:'sommario p. 38 · Somministrazione',col:'arancio',st:'v'},
+   {n:'D.Lgs. 276/2003',a:'art. 30 (distacco)',c:'L',p:'',v:'sommario p. 20 · Distacco di lavoratori',col:'arancio',st:'d'},
+   {n:'D.Lgs. 81/2008',a:'art. 26',c:'L',p:'64',v:'sommario p. 15',col:'blu',st:'v'},
+   {n:'D.L. 19/2024',a:'art. 29',c:'L',p:'',v:'sommario p. 40 · Vigilanza',col:'giallo',st:'d'},
+   {n:'Codice civile',a:'artt. 1655, 1676',c:'S',p:'',v:'SEAC · Libro IV (obbligazioni)',col:'arancio',st:'d'}
+  ],
+  mancano:[],
+  trappole:['Il D.Lgs. 276/2003 è spezzato in tre estratti (pp. 62, 185-197, 1773): la riga del sommario dipende dall’articolo.','A p. 1773 c’è il D.Lgs. 276/2003 dall’art. 20: per la somministrazione vigente usa il D.Lgs. 81/2015 (p. 1778).']
+ },
+ individuale:{
+  norme:[
+   {n:'Codice civile',a:'artt. 2094 (p. 1881), 2103 (p. 1883), 2222 (da p. 1904)',c:'S',p:'1881',v:'SEAC · Libro V',col:'arancio',st:'v'},
+   {n:'D.Lgs. 81/2015',a:'art. 2',c:'L',p:'360',v:'sommario p. 21 · Impiego privato',col:'arancio',st:'v'},
+   {n:'D.Lgs. 152/1997',a:'artt. 1, 1-bis, 4 (informativa)',c:'L',p:'180',v:'sommario p. 18 · Avviamento al lavoro',col:'rosa',st:'v'},
+   {n:'D.Lgs. 96/2026',a:'art. 5 (trasparenza preassuntiva)',c:'L',p:'1089',v:'sommario p. 29',col:'rosa',st:'v'},
+   {n:'D.L. 112/2008',a:'artt. 39-40 (LUL)',c:'L',p:'1113',v:'sommario p. 29 · Libro unico del lavoro',col:'verde',st:'v'},
+   {n:'D.Lgs. 276/2003',a:'artt. 75 ss. (certificazione)',c:'L',p:'265',v:'sommario p. 19 · Certificazione dei contratti',col:'arancio',st:'i'},
+   {n:'D.L. 510/1996',a:'art. 9-bis (comunicazioni obbligatorie)',c:'L',p:'',v:'sommario p. 18 · Avviamento al lavoro, n. 1',col:'arancio',st:'d'}
+  ],
+  mancano:[],
+  trappole:['Gli obblighi informativi del D.Lgs. 104/2022 sono dentro il D.Lgs. 152/1997 (p. 180), non in un atto a parte.']
+ },
+ termine:{
+  norme:[
+   {n:'D.Lgs. 81/2015',a:'artt. 19-29',c:'L',p:'1002',v:'sommario p. 27 · Lavoro a tempo determinato',col:'arancio',st:'v'},
+   {n:'L. 203/2024',a:'periodo di prova nel contratto a termine',c:'L',p:'298',v:'sommario p. 19 · Controversie individuali',col:'arancio',st:'i'},
+   {n:'D.Lgs. 81/2015',a:'art. 51 (rinvio ai CCNL)',c:'L',p:'1781',v:'sommario p. 38',col:'rosa',st:'v'},
+   {n:'D.Lgs. 81/2015',a:'artt. 30-40 (somministrazione a termine)',c:'L',p:'1778',v:'sommario p. 38',col:'arancio',st:'v'}
+  ],
+  mancano:['D.L. 95/2025, art. 14, c. 6-bis (causali delle parti fino al 31/12/2026): verifica nell’indice cronologico, altrimenti a memoria'],
+  trappole:['Il D.Lgs. 81/2015 è spezzato in più estratti (pp. 360, 1002, 1016, 1778): scegli la riga giusta.']
+ },
+ dimissioni:{
+  norme:[
+   {n:'D.Lgs. 151/2015',a:'art. 26 (c. 7-bis: fatti concludenti)',c:'L',p:'316',v:'sommario p. 19 · Dimissioni del prestatore di lavoro',col:'arancio',st:'i'},
+   {n:'L. 203/2024',a:'art. 19',c:'L',p:'298',v:'sommario p. 19 · Controversie individuali',col:'arancio',st:'i'},
+   {n:'D.Lgs. 151/2001',a:'art. 55 (convalida)',c:'L',p:'circa 1133',v:'sommario p. 30 · Maternità e paternità',col:'arancio',st:'d'},
+   {n:'D.Lgs. 22/2015',a:'NASpI',c:'L',p:'797',v:'sommario p. 25 · Integrazione dei salari',col:'verde',st:'i'},
+   {n:'L. 300/1970',a:'art. 7',c:'L',p:'1803',v:'sommario p. 39',col:'arancio',st:'v'},
+   {n:'Codice civile',a:'artt. 2118-2119',c:'S',p:'',v:'SEAC · Libro V, dopo p. 1888',col:'arancio',st:'d'}
+  ],
+  mancano:['Circ. MLPS 6/2025 e nota INL 579/2025: prassi, a memoria'],
+  trappole:['Le dimissioni per fatti concludenti sono un comma (7-bis) dell’art. 26 D.Lgs. 151/2015, inserito dalla L. 203/2024.']
+ },
+ sospensione:{
+  norme:[
+   {n:'Codice civile',a:'art. 2110',c:'S',p:'1885',v:'SEAC · Libro V',col:'verde',st:'v'},
+   {n:'D.L. 663/1979',a:'art. 2 (malattia, certificato)',c:'L',p:'131',v:'sommario p. 17 · Assistenza sanitaria',col:'verde',st:'i'},
+   {n:'D.P.R. 1124/1965',a:'infortunio',c:'L',p:'509',v:'sommario p. 23 · Infortuni sul lavoro',col:'verde',st:'v'},
+   {n:'D.Lgs. 151/2001',a:'artt. 16 ss., 54-55',c:'L',p:'circa 1133',v:'sommario p. 30 · Maternità e paternità',col:'arancio',st:'d'},
+   {n:'L. 104/1992',a:'art. 33',c:'L',p:'1145',v:'indice cronologico',col:'verde',st:'v'},
+   {n:'L. 300/1970',a:'art. 5 (controlli sanitari)',c:'L',p:'1803',v:'sommario p. 39',col:'arancio',st:'v'}
+  ],
+  mancano:['Comporto: lo fissa il CCNL, non la legge'],
+  trappole:['L’art. 2110 c.c. è nel SEAC; tutto il resto in La Tribuna.']
+ },
+ previdenza:{
+  norme:[
+   {n:'Costituzione',a:'art. 38',c:'L',p:'43',v:'sommario p. 15',col:'rosa',st:'v'},
+   {n:'Codice civile',a:'artt. 2114-2117 (previdenza, contributi, automaticità)',c:'S',p:'',v:'SEAC · Libro V, tra p. 1885 e p. 1888',col:'verde',st:'d'},
+   {n:'D.Lgs. 252/2005',a:'previdenza complementare (art. 8: TFR)',c:'L',p:'',v:'sommario p. 36 · Pensioni e previdenza sociale, n. 86',col:'verde',st:'d'},
+   {n:'D.P.R. 1124/1965',a:'artt. 1-4, 9-14, 28-29 (art. 29 a p. 518)',c:'L',p:'509',v:'sommario p. 23 · Infortuni sul lavoro',col:'verde',st:'v'},
+   {n:'D.L. 463/1983',a:'art. 7 (minimale giornaliero)',c:'L',p:'1414',v:'sommario pp. 33-37 · Pensioni e previdenza sociale',col:'verde',st:'v'},
+   {n:'L. 335/1995',a:'art. 2, c. 26 (gestione separata); art. 3, c. 9 (prescrizione)',c:'L',p:'1521',v:'sommario p. 35 · Pensioni',col:'verde',st:'v'},
+   {n:'D.Lgs. 148/2015 · D.Lgs. 22/2015',a:'CIG · NASpI',c:'L',p:'805 · 797',v:'sommario p. 25 · Integrazione dei salari',col:'verde',st:'v'},
+   {n:'D.Lgs. 124/2004',a:'art. 13 (verbale unico)',c:'L',p:'1843',v:'sommario p. 40 · Vigilanza',col:'giallo',st:'v'},
+   {n:'TUIR',a:'art. 51 (armonizzazione dell’imponibile)',c:'S',p:'64',v:'indice generale SEAC',col:'blu',st:'v'},
+   {n:'L. 689/1981',a:'art. 14',c:'S',p:'2932',v:'indice generale SEAC',col:'giallo',st:'v'}
+  ],
+  mancano:['Art. 12 L. 153/1969 (imponibile contributivo): da stampare o citare con l’art. 6 D.Lgs. 314/1997','Art. 1 D.L. 338/1989 (minimale contrattuale): da stampare','L. 12/1979 (professione del CdL): cercala nell’indice cronologico, altrimenti stampala','Art. 116, c. 8, L. 388/2000 (sanzioni civili): verifica nell’indice cronologico'],
+  trappole:['Il codice civile della previdenza (artt. 2114-2117) è solo nel SEAC.']
+ },
+ disabili:{
+  norme:[
+   {n:'L. 68/1999',a:'artt. 3-5, 7, 9, 15',c:'L',p:'151',v:'sommario p. 17 · Assunzioni obbligatorie, n. 6',col:'arancio',st:'i'},
+   {n:'D.P.R. 333/2000 (regolamento)',a:'',c:'L',p:'',v:'sommario p. 18 · Assunzioni obbligatorie, n. 9',col:'arancio',st:'d'},
+   {n:'D.Lgs. 151/2015',a:'modifiche alla L. 68/1999',c:'L',p:'361',v:'sommario p. 21 · Impiego privato',col:'arancio',st:'i'},
+   {n:'Costituzione',a:'artt. 3 e 38',c:'L',p:'43',v:'sommario p. 15',col:'rosa',st:'v'}
+  ],
+  mancano:['Importi aggiornati delle sanzioni per scopertura: decreti ministeriali, a memoria'],
+  trappole:['La voce del sommario è «Assunzioni obbligatorie», non «Disabili».']
+ },
+ agile:{
+  norme:[
+   {n:'L. 81/2017',a:'artt. 18-23 (lavoro agile)',c:'L',p:'',v:'sommario p. 28 · Lavoro autonomo e occasionale',col:'arancio',st:'d'},
+   {n:'L. 81/2017',a:'art. 22 (sicurezza)',c:'L',p:'732',v:'sommario p. 23 · Infortuni e sicurezza, n. 2',col:'blu',st:'i'},
+   {n:'D.L. 104/2020 · D.Lgs. 80/2015',a:'',c:'L',p:'1817 · 1815',v:'sommario p. 39 · Telelavoro e smart working',col:'arancio',st:'i'},
+   {n:'L. 300/1970',a:'art. 4',c:'L',p:'1803',v:'sommario p. 39',col:'arancio',st:'v'},
+   {n:'D.Lgs. 81/2008',a:'art. 3 (campo di applicazione)',c:'L',p:'611',v:'sommario p. 23',col:'blu',st:'v'}
+  ],
+  mancano:['Protocollo nazionale sul lavoro agile 2021: accordo, non legge'],
+  trappole:['Il lavoro agile non ha voce propria nel sommario: sta sotto «Lavoro autonomo e occasionale» (L. 81/2017) e «Telelavoro e smart working».']
+ }
+};
+const COL_HEX={rosa:'#f4b6c2',arancio:'#f8cbad',blu:'#9dc3e6',giallo:'#ffe699',verde:'#a9d18e'};
+const ST_LBL={v:'verificata',i:'dall’indice',d:'da leggere'};
+function renderCodici(t){
+ const box=document.getElementById('codiciBody'); if(!box)return;
+ const d=CODICI[t.id];
+ if(!d){box.innerHTML='<p class="cd-note">Mappa non ancora disponibile per questo tema.</p>';return;}
+ const cod=c=>c==='L'?'La Tribuna':c==='S'?'SEAC':'—';
+ const row=r=>`<tr><td><span class="cd-dot" style="background:${COL_HEX[r.col]||'#ddd'}" title="linguetta ${r.col}"></span></td><td><b>${r.n}</b>${r.a?`<br><span class="cd-art">${r.a}</span>`:''}${r.x?`<br><span class="cd-x">${r.x}</span>`:''}</td><td>${cod(r.c)}</td><td class="cd-p">${r.p||'—'}</td><td>${r.v}</td><td><span class="cd-st cd-${r.st}">${ST_LBL[r.st]}</span></td></tr>`;
+ const all=[...CODICI_COMUNI.base.map(b=>{const m=d.norme.find(r=>r.n===b.n&&r.c===b.c);return m?Object.assign({},b,{a:m.a}):b}),...d.norme.filter(r=>!CODICI_COMUNI.base.some(b=>b.n===r.n&&b.c===r.c))];
+ box.innerHTML=`<ol class="cd-steps">${CODICI_COMUNI.percorso.map(s=>`<li>${s}</li>`).join('')}</ol>
+  <div class="cd-wrap"><table class="cd-tab"><thead><tr><th></th><th>Norma e articoli</th><th>Codice</th><th>Pagina</th><th>Dove trovarla</th><th>Stato</th></tr></thead><tbody>${all.map(row).join('')}</tbody></table></div>
+  ${d.trappole&&d.trappole.length?`<p class="cd-h">Trappole degli indici</p><ul class="cd-list">${d.trappole.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+  ${d.mancano&&d.mancano.length?`<p class="cd-h">Non nei tuoi codici</p><ul class="cd-list">${d.mancano.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+  <p class="cd-note">«Verificata» = pagina controllata sul tuo codice; «dall’indice» = letta dalle foto degli indici, confermala; «da leggere» = pagina da annotare tu. Sul codice scrivi solo il riferimento di legge, mai la materia.</p>`;
+}
+
 /* ---------- V4: PACCHETTO CORREZIONE AI ---------- */
 function stripHtml(s){const d=document.createElement('div');d.innerHTML=s;return d.textContent||d.innerText||'';}
 function buildAIPackage(){
@@ -1232,7 +1489,7 @@ btnAvvia.addEventListener('click',async()=>{
   if(mode==='rausei26'&&HOOKS26[currentTema.id])currentTraccia+=HOOKS26[currentTema.id];
   setTimeout(openSheet,900);},850);
 });
-function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;document.getElementById('matrixLine').textContent='V5.3 · traccia per casi coerenti, anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
+function openSheet(){document.getElementById('tracciaTit').textContent=currentTema.titolo;document.getElementById('tracciaBody').innerHTML=currentTraccia;renderCodici(currentTema);document.getElementById('codiciBox').open=false;document.getElementById('matrixLine').textContent='V5.4 · traccia per casi coerenti, anti-ripetizione · Indice Commissione '+commissionIndex(currentTema)+'/100 · '+(diff==='alta'?'avanzata':'standard')+' · protocollo '+protocol;document.getElementById('draftArea').value='';document.getElementById('correction').classList.remove('on');document.getElementById('scoreSel').value='';document.getElementById('copyStatus').textContent='';document.getElementById('wordCount').textContent='0 parole';sheet.style.display='block';sheet.scrollIntoView({behavior:'smooth',block:'start'});startTimer(durataMin*60);}
 
 /* ---------- TIMER ---------- */
 let timerInt=null,remaining=0,paused=false;
