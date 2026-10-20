@@ -189,6 +189,15 @@ body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog
   .nr-src{font-size:11px;color:var(--ink-soft);margin-top:6px;}
   .nr-tog select{font-family:inherit;font-size:12px;margin-left:4px;}
   @media print{.field .cm textarea{border:none;background:none;}}
+  /* Nascondi diciture: al posto del nome della casella compare «Passaggio n»; la descrizione la scrivi tu */
+  .field .pnum{display:none;font-weight:600;color:var(--ink-soft);}
+  body.nodic .field .pnum{display:inline;}
+  body.nodic .field .ltxt{display:none;}
+  body.nodic .field.revealed .ltxt{display:block;}
+  body.nodic .field .cm{display:block!important;}
+  body.nodic .field .nr{display:none!important;}
+  .fb .dsc{display:block;margin-top:3px;font-weight:600;}
+  .dic-tog{white-space:nowrap;}
   .cum-hint{font-size:12px;}
   .cum-help{position:fixed;z-index:60;width:min(380px,calc(100vw - 16px));background:#fff;color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--t3);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:10px 12px;font-size:12.5px;line-height:1.45;pointer-events:none;}
   .cum-help.hidden{display:none;}
@@ -204,7 +213,7 @@ body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 1.9</div>
+    <div class="kicker"><a href="index.html" style="color:inherit;text-decoration:none;opacity:.85;">&larr; Home</a> &nbsp;·&nbsp; <a href="lavoro.html" style="color:inherit;text-decoration:none;opacity:.85;">Prova I &middot; Lavoro &rarr;</a> &nbsp;·&nbsp; CdL Marche Trainer · Beta 2.0</div>
     <h1>Simulatore Cedolino · CU · Conguaglio · Fattura 2026</h1>
     <p>Motore fiscale verificato + estrazione della prova, modalità Esame, cronometro e diagnosi per errore.</p>
   </header>
@@ -301,6 +310,7 @@ body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog
         <button class="act ghost t3" id="cedSol">Mostra soluzione</button>
         <button class="act ghost t3" id="cedCm" title="Scrive sotto ogni casella il commento del simulatore; puoi cancellarlo">Commenti del simulatore</button>
         <label class="evchk cm-tog"><input type="checkbox" class="cm-on" checked> Commenti ai passaggi</label>
+        <label class="evchk dic-tog" title="Nasconde il nome e la guida di ogni casella: descrivi tu il passaggio nel commento; il simulatore controlla numero e descrizione. Nella CU vale per la vista a elenco"><input type="checkbox" class="dic-on"> Nascondi diciture</label>
         <label class="evchk nr-tog" title="Sotto ogni casella: norma, codice e pagina dove la trovi">Norme nei codici<select id="nrMode" aria-label="Norme e pagine dei codici"><option value="off">nascoste</option><option value="cover">coperte (apri a clic)</option><option value="on">sempre visibili</option></select></label>
         <button class="act ghost" id="cedHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="cedNew">Nuovo esercizio</button>
@@ -327,6 +337,7 @@ body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog
         <button class="act ghost t3" id="cuSol">Mostra soluzione</button>
         <button class="act ghost t3" id="cuCm" title="Scrive sotto ogni casella il commento del simulatore; puoi cancellarlo">Commenti del simulatore</button>
         <label class="evchk cm-tog"><input type="checkbox" class="cm-on" checked> Commenti ai passaggi</label>
+        <label class="evchk dic-tog" title="Nasconde il nome e la guida di ogni casella: descrivi tu il passaggio nel commento; il simulatore controlla numero e descrizione. Nella CU vale per la vista a elenco"><input type="checkbox" class="dic-on"> Nascondi diciture</label>
         <button class="act ghost" id="cuHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="cuNew">Nuovo esercizio</button>
       </div>
@@ -350,6 +361,7 @@ body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog
         <button class="act ghost t3" id="congSol">Mostra soluzione</button>
         <button class="act ghost t3" id="congCm" title="Scrive sotto ogni casella il commento del simulatore; puoi cancellarlo">Commenti del simulatore</button>
         <label class="evchk cm-tog"><input type="checkbox" class="cm-on" checked> Commenti ai passaggi</label>
+        <label class="evchk dic-tog" title="Nasconde il nome e la guida di ogni casella: descrivi tu il passaggio nel commento; il simulatore controlla numero e descrizione. Nella CU vale per la vista a elenco"><input type="checkbox" class="dic-on"> Nascondi diciture</label>
         <button class="act ghost" id="congHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="congNew">Nuovo esercizio</button>
       </div>
@@ -372,6 +384,7 @@ body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog
         <button class="act ghost t3" id="fattSol">Mostra soluzione</button>
         <button class="act ghost t3" id="fattCm" title="Scrive sotto ogni casella il commento del simulatore; puoi cancellarlo">Commenti del simulatore</button>
         <label class="evchk cm-tog"><input type="checkbox" class="cm-on" checked> Commenti ai passaggi</label>
+        <label class="evchk dic-tog" title="Nasconde il nome e la guida di ogni casella: descrivi tu il passaggio nel commento; il simulatore controlla numero e descrizione. Nella CU vale per la vista a elenco"><input type="checkbox" class="dic-on"> Nascondi diciture</label>
         <button class="act ghost" id="fattHide" title="Toglie colori, esiti e soluzioni; le tue risposte restano">Nascondi esito e riprendi</button>
         <button class="act ghost" id="fattNew">Nuovo esercizio</button>
       </div>
@@ -398,7 +411,7 @@ body.exam .note.metodo,body.exam #cedNote,body.exam .field .nr,body.exam .nr-tog
 
   <footer class="foot">
     <div class="foot-main">A cura di <b>Andrea Marziali</b> — esercitazione per la II prova scritta dell'Esame di Stato di Consulente del Lavoro.</div>
-    <div class="foot-meta">Beta 1.9 · 17 ottobre 2026 · correzioni dopo revisione esterna: confronto esatto al centesimo («quasi» solo fino a 5 centesimi nel cedolino e nel conguaglio, mezzo punto; nella fattura e nella CU nessuna tolleranza); caselle vuote non più contate giuste (scrivi 0); «2.080» letto come duemilaottanta; modalità Esame senza note di metodo né norme; fattura con la norma di ogni casella e la pagina SEAC; CU sul modello ingrandita sui telefoni · Beta 1.8 · 16 ottobre 2026 · busta paga: sotto ogni casella norma, codice (SEAC o La Tribuna) e pagina, oppure «non nei codici» con dove trovarla; nascoste, coperte (apri a clic) o sempre visibili; «Controlla» e «Mostra soluzione» scrivono anche il commento del simulatore sotto ogni casella (sul modello CU in un elenco casella per casella) e la norma della singola casella; premio INAIL con gli articoli del D.P.R. 1124/1965 e art. 29 come appiglio per l'imponibile · Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
+    <div class="foot-meta">Beta 2.0 · 20 ottobre 2026 · nuova opzione «Nascondi diciture»: al posto del nome di ogni casella compare «Passaggio n», la descrizione la scrivi tu e il simulatore ne controlla la sostanza (controllo completo e parziale; descrizione mancante o errata: la casella vale metà, incompleta tre quarti). Beta 1.9 · 17 ottobre 2026 · correzioni dopo revisione esterna: confronto esatto al centesimo («quasi» solo fino a 5 centesimi nel cedolino e nel conguaglio, mezzo punto; nella fattura e nella CU nessuna tolleranza); caselle vuote non più contate giuste (scrivi 0); «2.080» letto come duemilaottanta; modalità Esame senza note di metodo né norme; fattura con la norma di ogni casella e la pagina SEAC; CU sul modello ingrandita sui telefoni · Beta 1.8 · 16 ottobre 2026 · busta paga: sotto ogni casella norma, codice (SEAC o La Tribuna) e pagina, oppure «non nei codici» con dove trovarla; nascoste, coperte (apri a clic) o sempre visibili; «Controlla» e «Mostra soluzione» scrivono anche il commento del simulatore sotto ogni casella (sul modello CU in un elenco casella per casella) e la norma della singola casella; premio INAIL con gli articoli del D.P.R. 1124/1965 e art. 29 come appiglio per l'imponibile · Beta 1.7 · 16 ottobre 2026 · commento al passaggio sotto ogni casella (tuo e, a richiesta, del simulatore, cancellabile) · traccia sempre visibile (a lato sugli schermi larghi, pulsante «Traccia» sugli schermi stretti) · controllo parziale (solo caselle compilate, senza valori giusti) e «Nascondi esito e riprendi» in tutte le schede · CU sul modello: suggerimento su cosa va in ogni casella al clic (modalità Guidata), spento in modalità Esame · conguaglio e fattura verificati con ricalcolo indipendente; fattura: bollo sulle anticipazioni con riferimento alla risposta AdE 491/2021 · cedolino: niente indennità INPS di malattia per impiegati e quadri dell'industria; festività nazionali 2026 escluse dai giorni di presenza e dai buoni pasto · CU sul modello ufficiale ordinario e sintetico, con controllo casella per casella e caselle da lasciare vuote; punti 809-813 sempre compilati; arrotondamento al centesimo e troncamento alla quarta cifra decimale corretti nei casi limite (errori di virgola mobile); esercizi anche con TFR maturato prima del 2001 · Beta 1.6.6 · 13 ottobre 2026 · pesi dell'estrazione ricalibrati sulle tracce di Ancona; part-time meno frequente · scelta del tipo di prova da estrarre · campo del 730-4 nel prospetto quando la traccia lo prevede · esito del campo azzerato quando lo modifichi · rimborso e debito da 730-4 nel netto · addizionali solo se l'IRPEF è dovuta · trattamento integrativo e somma esente del cuneo, part-time · prospetto paga svolto voce per voce · tracce reali ITL Ancona 2025 riparametrate · addizionale regionale Marche a scaglioni · malattia con lordizzazione, L. 104, fringe, trasferte, 730 · CU estesa · tre CCNL (Commercio H011 · Metalmeccanica C011 · Calzature D121) · CU sui punti delle istruzioni 2026 · fattura del CdL · estrazione della prova.</div>
     <div class="foot-disc">Strumento didattico. Non sostituisce un software paghe, le istruzioni dell'Agenzia delle Entrate o le circolari INPS/INAIL, né la verifica del CCNL applicabile. Prima dell'uso come materiale formativo condiviso è opportuna la validazione di un esperto paghe.</div>
   </footer>
 </div>
@@ -1260,17 +1273,135 @@ function estraiProva(){
   box.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+/* ===== «Nascondi diciture»: descrizione del passaggio scritta dall'utente e controllata dal simulatore =====
+   Ogni casella ha uno o più gruppi di concetti (r = tutti necessari; any = insiemi alternativi) e,
+   se serve, un filtro (n) che riconosce la descrizione di un'altra casella. Il filtro si applica alla
+   «testa» della descrizione (il testo prima di «:», «=» o «(»): scrivi prima che cosa calcoli, poi come. */
+const DESC={
+ ced:{
+  trattMal:{r:[/malatt/]},
+  trasfImp:{r:[/trasfert/,/imponib|ecced|oltre|supera|46|tassat|soggett|quota/]},
+  fringeImp:{r:[/fringe|benefit|beni e servizi|welfare|in natura|auto aziendal|51 c ?3/]},
+  buoniEcc:{r:[/buon|ticket|pasto|mensa/,/ecced|oltre|supera|\b10\b|imponib|differenz|quota|tassat/],n:/previd|contribut|fiscal|irpef/},
+  impPrev:{r:[/imponib|base|retribuz|lordo/,/previd|contribut|inps/],n:/aliquot|fiscal|irpef|^ (i )?contribut|total/},
+  contributiBase:{r:[/contribut|trattenut|ritenut/,/previd|inps|ivs|dipendent|lavorator|\bdip\b|carico/],n:/aggiuntiv|total|imponib|\b1 ?%/},
+  ivsExtra:{r:[/aggiuntiv|\bivs\b|\b1 ?(00 )?%|uno per cento|1 per cento|4 ?685|prima fascia|fascia/],n:/total|imponib|esent|cuneo|somma/},
+  contributi:{r:[/contribut|trattenut|ritenut/,/total|tutti|somma|complessiv|compres|insieme|piu/],n:/imponib|aggiuntiv|\bivs\b/},
+  impFisc:{r:[/imponib|base|reddito/,/fiscal|irpef|tassab|impost|tributar/],n:/lord|nett|aliquot|scaglion/},
+  irpL:{r:[/irpef|impost|tass/,/lord|scaglion|aliquot|\b23\b|\b33\b|\b43\b|prima delle detraz|senza detraz/],n:/nett|meno (le )?detraz|al netto|imponib/},
+  detrM:{r:[/detraz|detrarre|sconto/,/lavoro|dipendent|\blav\b|\bdip\b|art 13|13 tuir/],n:/ulterior|cuneo|207|carich|famil|irpef|impost/},
+  cunM:{r:[/ulterior|cuneo|207|1 ?000|taglio/,/ulterior|detraz|207|1 ?000|sconto|riduz/],n:/esent|somma|percentual|integrativ|irpef|impost/},
+  irpN:{r:[/irpef|impost/,/nett|meno (le )?detraz|al netto|detratt|dedott|sottratt|tolte/],n:/lord|imponib|rimbors|debit|730/},
+  tiM:{r:[/integrativ|ex bonus|bonus 100|100 euro|1 ?200|bonus renzi|3 2020/],n:/esent|cuneo/},
+  seM:{any:[[/esent/],[/cuneo/,/somma|percentual|indennit|bonus|import/]],n:/ulterior|detraz|integrativ/},
+  addTot:{r:[/addizional|\badd\b|regional|comunal/]},
+  rimb730:{r:[/rimbors|credit|restitu|a favore|730/],n:/debit|versar|saldo|tratten/},
+  deb730:{r:[/debit|da versare|saldo|tratten|730/,/730|irpef|impost|assistenza fiscal|debit/],n:/rimbors|credit/},
+  netto:{r:[/nett|liquid|da pagare|bonific|spettant|incass|percepit/],n:/irpef|impost|tfr|fondo|malatt|esent|cuneo|rimbors|730|debit|contribut|addizional/},
+  tfr:{r:[/tfr|fine rapporto|liquidazion|accantonament|13 5/]},
+  inail:{r:[/inail|premio|infortun|assicurativ/]}
+ },
+ cu:{
+  punto1:{r:[/reddit|imponib|compens|retribuz/,/dipend|tempo indeterminat|punto 1|\b1\b|fiscal|annu|complessiv|lavoro/],n:/riferiment|449|719|agevol|207|cuneo|previd|inps|codic/,nf:/207|cuneo|agevol|719|718|codic|art 49/},
+  giorni:{r:[/giorn/,/detraz|spett|punto 6|\b6\b/],n:/721|207|cuneo/},
+  p21:{r:[/ritenut|tratten|versat|operat/,/irpef|impost|fiscal|21/],n:/addizional|acconto|accont|121|122|sostitut/},
+  p22:{r:[/addizional|\badd\b/,/regional|region|marche/]},
+  p26:{r:[/comunal|comune/,/accont/],nf:/2026|successiv|prossim|30 ?%|futur|anno dopo/},
+  p27:{r:[/comunal|comune/,/saldo|differenz|residu|conguagl/]},
+  p29:{r:[/comunal|comune/,/accont/,/2026|successiv|prossim|\b30\b|futur|anno dopo|nuovo anno/]},
+  p121:{r:[/accont/,/prim|\b1\b|121|giugno|luglio/],n:/second|unico|122|novembre|comunal|addizional/},
+  p122:{r:[/accont/,/second|unico|122|novembre/],n:/comunal|addizional/},
+  p361:{r:[/impost|irpef/,/lord|scaglion|361|aliquot/],n:/nett|meno (le )?detraz|al netto/},
+  p362:{r:[/carich|famil|figl|coniug|art 12|12 tuir|362/]},
+  p367:{r:[/detraz/,/lavoro|dipendent|\blav\b|\bdip\b|art 13|13 tuir|367/],n:/ulterior|cuneo|207|carich|famil|total/},
+  p368:{r:[/ulterior|cuneo|207|1 ?000|368/,/ulterior|detraz|368|1 ?000/],n:/esent|somma|codic|total/},
+  p374:{r:[/total|somma|tutte|complessiv|insieme|374/,/detraz/]},
+  p375:{r:[/impost|irpef/,/nett|meno (le |delle )?detraz|al netto|dovut|375/],n:/lord/},
+  p390:{r:[/codic|\bcod\b/,/integrativ|bonus|390/]},
+  p391:{r:[/integrativ|bonus|391/],n:/codic|\bcod\b/,nf:/codic|\bcod\b/},
+  p441:{r:[/sanitar|fondi? (di )?assist|cass[ae] (di )?assist|441/]},
+  redRif:{r:[/riferiment|449/]},
+  p718:{r:[/codic|\bcod\b/,/207|agevol|cuneo|718|lavoro dipend/],n:/esent|724|integrativ|390/},
+  p719:{r:[/reddit|import/,/207|agevol|cuneo|719|art 49|49 tuir/],n:/riferiment|codic/,nf:/riferiment|449/},
+  p721:{r:[/giorn/,/721|207|cuneo|agevol|lavoro|dipend/],n:/detraz/},
+  p724:{r:[/codic|\bcod\b/,/esent|724|somma/]},
+  p725:{r:[/esent|725|7 1|5 3|4 8/],n:/codic|\bcod\b/,nf:/codic|\bcod\b/},
+  p801:{r:[/tfr|fine rapporto|liquidaz|indennit/],n:/sostitut|rivalut/},
+  p920:{r:[/sostitut|rivalut|920/]},
+  inps4:{r:[/imponib|base|retribuz/,/previd|inps|contribut|\b4\b/]},
+  inps6:{r:[/contribut|tratten|ritenut/,/lavorator|dipend|carico|inps|previd|\b6\b/],n:/imponib|base/}
+ },
+ cong:{
+  tot:{r:[/reddit|imponib|total|cumul|complessiv/],n:/irpef|impost|addizional|detraz/},
+  irpLA:{r:[/irpef|impost/,/lord|scaglion/],n:/nett|dovut|tratten|gia/},
+  detrA:{r:[/detraz/,/lavoro|dipend|\blav\b|\bdip\b|art 13|13 tuir/],n:/ulterior|cuneo|207/},
+  cunA:{r:[/ulterior|cuneo|207|1 ?000/]},
+  irpDov:{r:[/irpef|impost/,/nett|dovut|meno (le )?detraz|al netto/],n:/tratten|gia|conguagl|lord/},
+  giaTratt:{r:[/tratten|gia|versat|ritenut|operat|prelev|pagat/,/irpef|impost|ritenut|tratten/],n:/dovut|conguagl|nett/},
+  cong:{r:[/conguagl|differenz|saldo|debit|credit|restitu|rimbors|a conguaglio/]},
+  addReg:{r:[/regional|region|marche/]},
+  addCom:{r:[/comunal|comune/]}
+ },
+ fatt:{
+  integr:{r:[/integrativ|enpacl|\bcassa\b|\b4 ?%|rivalsa|contributo previd/],n:/\biva\b|ritenut|imponib/},
+  impIva:{r:[/imponib|base/,/\biva\b/],n:/^ (l )?iva |total/},
+  iva:{r:[/\biva\b|valore aggiunto/],n:/imponib|base|totale/},
+  totDoc:{r:[/total|complessiv|fattura|documento|lordo/],n:/nett|ritenut|imponib/},
+  rit:{r:[/ritenut|acconto|\b20 ?%/],n:/nett|totale/},
+  netto:{r:[/nett|da pagare|a pagare|incass|bonific|liquid|ricev|paga|versa|corrispond/],n:/ritenut|total|imponib|\biva\b/},
+  bollo:{r:[/bollo|marca/]}
+ }
+};
+function descNorm(s){return ' '+String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/%/g,' % ').replace(/[^a-z0-9% ]+/g,' ').replace(/\s+/g,' ').trim()+' ';}
+/* senza «:» la testa è l'inizio della frase, fino al primo collegamento (su, del, meno, più…) o numero, al massimo 5 parole */
+const DESC_STOP=new Set(['su','sul','sull','sulla','sui','sugli','dell','della','del','dei','degli','delle','di','da','dal','dalla','meno','piu','per','pari','x','come','cioe','ovvero','con','oltre','sopra','sotto','fino','entro']);
+function descHead(full){const w=full.trim().split(' ');const h=[];for(const x of w){if(h.length&&(DESC_STOP.has(x)||/^\d/.test(x)||x==='%'))break;h.push(x);if(h.length>=5)break;}return ' '+h.join(' ')+' ';}
+/* esito della descrizione: ok, warn (incompleta o ambigua), err (non corrisponde), empty */
+function descCheck(tab,k,raw){
+  const sp=DESC[tab]&&DESC[tab][k]; const txt=String(raw||'').trim();
+  if(!txt)return {st:'empty'};
+  if(!sp)return {st:'ok'};
+  const full=descNorm(txt);
+  const cut=txt.search(/[:=(]/); const sep=cut>0; const head=sep?descNorm(txt.slice(0,cut)):descHead(full);
+  const sets=sp.any||[sp.r]; let best=0;
+  for(const set of sets){const m=set.filter(re=>re.test(full)).length/set.length; if(m>best)best=m;}
+  if(best===0)return {st:'err',msg:'non vi riconosco la sostanza di questo passaggio'};
+  if(best<1)return {st:'warn',msg:'incompleta: manca un elemento che identifichi con certezza il passaggio'};
+  if(sp.n&&sp.n.test(head)){
+    if(sep)return {st:'err',msg:'prima dei due punti descrivi un passaggio diverso da questo'};
+    return {st:'warn',msg:'ambigua: l\'inizio richiama un altro passaggio. Scrivi prima che cosa calcoli, poi «:» e come (es. «Imponibile fiscale: …»)'};
+  }
+  if(sp.nf&&sp.nf.test(full))return {st:'warn',msg:'ambigua: richiama anche un passaggio vicino. Precisa che cosa indichi in questa casella'};
+  return {st:'ok'};
+}
+function descOn(){return document.body.classList.contains('nodic');}
+function descText(tab,k){const t=document.querySelector(`#tab-${tab} [data-cmin="${k}"]`);return t?t.value:'';}
+const DESC_FACT={ok:1,warn:0.75,err:0.5,empty:0.5};
+function descLine(d,label,showLabel){
+  const lab=showLabel?` Il passaggio era: <b>${label}</b>.`:'';
+  if(d.st==='ok')return `<span class="dsc ok">Descrizione: ✓ sostanza riconosciuta.${lab}</span>`;
+  if(d.st==='empty')return `<span class="dsc err">Descrizione: ✗ mancante (con «Nascondi diciture» la descrizione vale quanto il numero).${lab}</span>`;
+  return `<span class="dsc ${d.st}">Descrizione: ${d.st==='warn'?'≈':'✗'} ${d.msg}.${lab}</span>`;
+}
+const DIC_PH_ON="Descrivi il passaggio: che cosa calcoli, poi come (es. «Imponibile fiscale: …»)";
+const DIC_PH_OFF="Commento al passaggio: cosa calcoli, con quali dati e perché (come nell'elaborato d'esame)";
+function setDiciture(on){document.body.classList.toggle('nodic',on);if(on&&document.body.classList.contains('nocm'))setCommenti(true);document.querySelectorAll('.dic-on').forEach(c=>c.checked=on);
+  document.querySelectorAll('.field .cm textarea').forEach(t=>t.placeholder=on?DIC_PH_ON:DIC_PH_OFF);
+  if(!on)document.querySelectorAll('.field.revealed').forEach(f=>f.classList.remove('revealed'));
+  try{localStorage.setItem('cdl_diciture',on?'1':'0')}catch(e){}}
+document.addEventListener('change',e=>{if(e.target.classList&&e.target.classList.contains('dic-on'))setDiciture(e.target.checked);});
+
 /* ===== infrastruttura ===== */
 // quando si modifica un campo già controllato, il vecchio esito sparisce (evita esiti «Da compilare» rimasti dopo aver scritto)
 document.addEventListener('input',e=>{const k=e.target&&e.target.dataset&&e.target.dataset.in;if(!k)return;e.target.classList.remove('ok','warn','err');const f=e.target.closest('.field');const fb=f&&f.querySelector('[data-fb]');if(fb){fb.className='fb';fb.innerHTML='';}});
 function buildFields(boxId,fields){
   const box=document.getElementById(boxId); box.innerHTML='';
-  fields.forEach(f=>box.insertAdjacentHTML('beforeend',
+  fields.forEach((f,i)=>box.insertAdjacentHTML('beforeend',
     `<div class="field ${f.int?'noeuro':''}" data-k="${f.k}">
-      <label>${f.l}<span class="hint">${f.h}</span></label>
+      <label><span class="pnum">Passaggio ${i+1}</span><span class="ltxt">${f.l}<span class="hint">${f.h}</span></span></label>
       <div class="inbox"><input type="text" inputmode="decimal" autocomplete="off" data-in="${f.k}"></div>
       <div class="fb" data-fb="${f.k}"></div>
-      <div class="cm"><textarea data-cmin="${f.k}" rows="2" aria-label="Commento al passaggio: ${String(f.l).replace(/<[^>]+>/g,'').replace(/"/g,'')}" placeholder="Commento al passaggio: cosa calcoli, con quali dati e perché (come nell'elaborato d'esame)"></textarea>
+      <div class="cm"><textarea data-cmin="${f.k}" rows="2" aria-label="Commento al passaggio: ${String(f.l).replace(/<[^>]+>/g,'').replace(/"/g,'')}" placeholder="${descOn()?DIC_PH_ON:DIC_PH_OFF}"></textarea>
       </div>
       <div class="cm-model hidden" data-cmm="${f.k}"></div>${boxId==='cedFields'?`<div class="nr" data-nr="${f.k}"></div>`:''}</div>`));
 }
@@ -1291,29 +1422,34 @@ document.addEventListener('change',e=>{if(e.target.classList&&e.target.classList
 function cmpVal(f,val,correct){if(f.k==='rit'&&TAB==='fatt')val=Math.abs(val);const d=Math.abs(val-correct);
   if(d<=(f.int?0.5:0.011))return 'ok';if(!f.int&&TAB!=='fatt'&&TAB!=='cu'&&d<=0.05)return 'warn';return 'err';}
 function check(fields,sol,calc,bannerId){
-  let ok=0; const errByCat={};
+  let ok=0; const errByCat={}; const dic=descOn(); let dOk=0;
   fields.forEach(f=>{
     const inp=document.querySelector(`#tab-${TAB} [data-in="${f.k}"]`);
     const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
     const correct=sol[f.k]; const raw=inp.value.trim(); const val=parseNum(raw);
     const cat=f.cat||'tax';
     const norma=normaLine(f,cat);
+    const d=dic?descCheck(TAB,f.k,descText(TAB,f.k)):null; if(d&&d.st==='ok')dOk++;
+    const dl=d?descLine(d,f.l,true):'';
+    if(dic){const fe=fb.closest('.field');if(fe)fe.classList.add('revealed');}
     inp.classList.remove('ok','warn','err');
-    if(raw===''){fb.className='fb err show';fb.innerHTML=`Da compilare — corretto: ${f.int?correct:fmt(correct)}${correct===0?' (se la voce non spetta scrivi 0 e motiva nel commento)':''}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
-    if(isNaN(val)){fb.className='fb err show';fb.innerHTML=`Valore non leggibile (scrivi un numero, es. 1.234,56) — corretto: ${f.int?correct:fmt(correct)}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
-    const esito=cmpVal(f,val,correct);
-    if(esito==='ok'){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML=`✓ Corretto.${norma}`;}
-    else if(esito==='warn'){ok+=0.5;inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML=`≈ Quasi: differenza di ${fmt(Math.abs(val-correct))} € (corretto ${fmt(correct)}). Controlla gli arrotondamenti intermedi: vale mezzo punto.${norma}`;}
-    else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=`✗ Corretto: ${f.int?correct:fmt(correct)}${norma}`;errByCat[cat]=(errByCat[cat]||0)+1;}
+    if(raw===''){fb.className='fb err show';fb.innerHTML=`Da compilare — corretto: ${f.int?correct:fmt(correct)}${correct===0?' (se la voce non spetta scrivi 0 e motiva nel commento)':''}${dl}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
+    if(isNaN(val)){fb.className='fb err show';fb.innerHTML=`Valore non leggibile (scrivi un numero, es. 1.234,56) — corretto: ${f.int?correct:fmt(correct)}${dl}${norma}`;inp.classList.add('err');errByCat[cat]=(errByCat[cat]||0)+1;return;}
+    const esito=cmpVal(f,val,correct); const fact=d?DESC_FACT[d.st]:1; const dBad=d&&d.st!=='ok';
+    if(esito==='ok'){ok+=fact;inp.classList.add('ok');fb.className='fb '+(dBad?'warn':'ok')+' show';fb.innerHTML=`✓ Numero corretto.${dl}${norma}`;}
+    else if(esito==='warn'){ok+=0.5*fact;inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML=`≈ Quasi: differenza di ${fmt(Math.abs(val-correct))} € (corretto ${fmt(correct)}). Controlla gli arrotondamenti intermedi: vale mezzo punto.${dl}${norma}`;}
+    else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=`✗ Corretto: ${f.int?correct:fmt(correct)}${dl}${norma}`;errByCat[cat]=(errByCat[cat]||0)+1;}
   });
+  ok=Math.round(ok*100)/100;
   showModelComments(TAB,fields,calc);
   stats.ex++; stats.ok+=ok; stats.tot+=fields.length;
   for(const c in errByCat) stats.err[c]=(stats.err[c]||0)+errByCat[c];
   stats.streak=ok===fields.length?stats.streak+1:0; stopTimer(); updateScore();
   const b=document.getElementById(bannerId);
   const diag=buildDiag(errByCat);
-  if(ok===fields.length){b.className='banner good show';b.innerHTML=`Tutto corretto — ${ok}/${fields.length} · tempo ${formatTime(tSec)}. Serie perfette: ${stats.streak}.`;}
-  else{b.className='banner mid show';b.innerHTML=`${ok}/${fields.length} corretti · tempo ${formatTime(tSec)}. Rivedi i campi in rosso.${diag}`;}
+  const dTxt=dic?` · descrizioni riconosciute ${dOk}/${fields.length} (descrizione mancante o errata: la casella vale metà; incompleta: tre quarti)`:'';
+  if(ok===fields.length){b.className='banner good show';b.innerHTML=`Tutto corretto — ${ok}/${fields.length}${dTxt} · tempo ${formatTime(tSec)}. Serie perfette: ${stats.streak}.`;}
+  else{b.className='banner mid show';b.innerHTML=`${ok}/${fields.length} punti${dTxt} · tempo ${formatTime(tSec)}. Rivedi i campi in rosso e in giallo.${diag}`;}
 }
 const DIAGTXT={
   prev:'Imponibile previdenziale: verifica la soglia €10 dei buoni e che l\'indennità INPS non entri nel previdenziale.',
@@ -1331,19 +1467,28 @@ function buildDiag(errByCat){
 }
 /* controllo parziale: solo caselle compilate, nessun valore giusto mostrato, punteggio non aggiornato */
 function checkPartial(fields,sol,bannerId){
-  let ok=0,n=0;
+  let ok=0,n=0; const dic=descOn(); let dn=0,dOk=0;
   fields.forEach(f=>{
     const inp=document.querySelector(`#tab-${TAB} [data-in="${f.k}"]`),fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);
     inp.classList.remove('ok','warn','err');fb.className='fb';fb.innerHTML='';
-    if(inp.value.trim()==='')return;
-    n++;const val=parseNum(inp.value),correct=sol[f.k],es=isNaN(val)?'err':cmpVal(f,val,correct);
-    if(es==='ok'){ok++;inp.classList.add('ok');fb.className='fb ok show';fb.innerHTML='✓ Corretto.';}
-    else if(es==='warn'){inp.classList.add('warn');fb.className='fb warn show';fb.innerHTML='≈ Quasi: differenza di pochi centesimi, controlla gli arrotondamenti intermedi.';}
-    else{inp.classList.add('err');fb.className='fb err show';fb.innerHTML=isNaN(val)?'✗ Valore non leggibile: scrivi un numero (es. 1.234,56).':'✗ Da correggere: ricontrolla il calcolo.';}
+    const filled=inp.value.trim()!=='';
+    const d=dic?descCheck(TAB,f.k,descText(TAB,f.k)):null;
+    if(!filled&&!(d&&d.st!=='empty'))return;
+    let msg='',cls='';
+    if(filled){
+      n++;const val=parseNum(inp.value),correct=sol[f.k],es=isNaN(val)?'err':cmpVal(f,val,correct);
+      if(es==='ok'){ok++;inp.classList.add('ok');cls='ok';msg='✓ Numero corretto.';}
+      else if(es==='warn'){inp.classList.add('warn');cls='warn';msg='≈ Quasi: differenza di pochi centesimi, controlla gli arrotondamenti intermedi.';}
+      else{inp.classList.add('err');cls='err';msg=isNaN(val)?'✗ Valore non leggibile: scrivi un numero (es. 1.234,56).':'✗ Da correggere: ricontrolla il calcolo.';}
+    } else {cls='warn';msg='Numero non ancora scritto.';}
+    if(d&&d.st==='empty'){msg+='<span class="dsc">Descrizione non ancora scritta.</span>';}
+    else if(d){dn++;if(d.st==='ok')dOk++;msg+=descLine(d,'',false);if(d.st!=='ok'&&cls==='ok')cls='warn';if(d.st==='err'&&cls!=='err')cls='err';}
+    fb.className='fb '+cls+' show';fb.innerHTML=msg;
   });
   const b=document.getElementById(bannerId);
-  b.className='banner show '+(ok===n?'good':'mid');
-  b.innerHTML=`Controllo parziale: caselle compilate corrette ${ok} su ${n}; caselle ancora vuote, non valutate: ${fields.length-n}. I valori giusti non vengono mostrati e il punteggio non cambia. Con «Nascondi esito e riprendi» togli i colori e prosegui.`;
+  b.className='banner show '+(ok===n&&dOk===dn?'good':'mid');
+  const dTxt=dic?` Descrizioni scritte riconosciute: ${dOk} su ${dn}.`:'';
+  b.innerHTML=`Controllo parziale: caselle compilate corrette ${ok} su ${n}; caselle ancora vuote, non valutate: ${fields.length-n}.${dTxt} I valori giusti non vengono mostrati e il punteggio non cambia. Con «Nascondi esito e riprendi» togli i colori e prosegui.`;
 }
 /* toglie colori, esiti e soluzioni mostrate; le risposte scritte restano */
 function hideEsito(tab){
@@ -1351,11 +1496,12 @@ function hideEsito(tab){
   document.querySelectorAll(`#tab-${tab} [data-fb]`).forEach(fb=>{fb.className='fb';fb.innerHTML='';});
   const b=document.getElementById(tab+'Banner');if(b)b.className='banner';
   clearModelComments(tab);
+  document.querySelectorAll(`#tab-${tab} .field.revealed`).forEach(x=>x.classList.remove('revealed'));
   if(tab==='ced'){const p=document.getElementById('cedProsp');p.innerHTML='';p.classList.add('hidden');document.querySelectorAll('#tab-ced .field .nr').forEach(n=>n.classList.remove('open'));syncNrButtons();}
   if(tab==='cu'){document.getElementById('cuMemo').classList.add('hidden');if(window.cuModelActive&&cuModelActive())cuModelHide();}
 }
 function reveal(fields,calc){const sol={ced:()=>CED.sol,cu:()=>CU.sol,cong:()=>CONG.sol,fatt:()=>FATT.sol}[TAB]();
-  fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);const v=sol&&sol[f.k];fb.className='fb warn show';fb.innerHTML=`Soluzione: ${v==null?'—':(f.int?v:fmt(v))}${normaLine(f,f.cat||'tax')}`;});
+  fields.forEach(f=>{const fb=document.querySelector(`#tab-${TAB} [data-fb="${f.k}"]`);const v=sol&&sol[f.k];const fe=fb.closest('.field');if(fe)fe.classList.add('revealed');fb.className='fb warn show';fb.innerHTML=`Soluzione: ${v==null?'—':(f.int?v:fmt(v))}${descOn()?` — passaggio: <b>${f.l}</b>`:''}${normaLine(f,f.cat||'tax')}`;});
   showModelComments(TAB,fields,calc);}
 /* riga «Norma» dell'esito: nel cedolino quella della singola casella (con pagina), altrove quella della categoria */
 const NORMA_FATT={integr:'Regolamento ENPACL, art. 38, c. 2 (4% su tutti i compensi, ripetibile verso il cliente): non nei codici',
@@ -1397,6 +1543,7 @@ document.getElementById('cuCm').onclick=()=>{if(window.cuModelActive&&cuModelAct
 document.getElementById('congCm').onclick=()=>showModelComments('cong',CONG_FIELDS);
 document.getElementById('fattCm').onclick=()=>showModelComments('fatt',FATT_FIELDS);
 try{setCommenti(localStorage.getItem('cdl_commenti')!=='0');}catch(e){setCommenti(true);}
+try{setDiciture(localStorage.getItem('cdl_diciture')==='1');}catch(e){setDiciture(false);}
 try{const m=localStorage.getItem('cdl_norme');setNrMode(['off','cover','on'].includes(m)?m:'cover');}catch(e){setNrMode('cover');}
 document.getElementById('nrMode').onchange=e=>setNrMode(e.target.value);
 document.getElementById('cuPart').onclick=()=>{if(window.cuModelActive&&cuModelActive()){cuModelPartial();return;}checkPartial(CU_FIELDS,CU.sol,'cuBanner');};
