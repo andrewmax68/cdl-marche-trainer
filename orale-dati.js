@@ -1,6 +1,6 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
-   Versione dati: 1.1 del 30/10/2026 (lotto 2: deontologia)
+   Versione dati: 1.2 del 30/10/2026 (lotto 2: deontologia; DEO-21 rivista)
    - Domande: 23 buste ufficiali ITL Ancona, sessione 2025 (8 per busta)
      + integrazioni 2026 (stima, non domande ufficiali).
    - Risposte modello: solo dove le fonti sono state verificate
@@ -850,16 +850,16 @@ window.ORALE = (function () {
     },
 
     'DEO-21': {
-      sintesi: 'La pubblicità informativa è ammessa con ogni mezzo, anche social network, su attività, specializzazioni, titoli, struttura dello studio e compensi, purché veritiera, corretta e funzionale all\'oggetto (art. 35 Codice; art. 4 D.P.R. 137/2012).',
+      sintesi: 'Il consulente può farsi pubblicità con ogni mezzo, anche sui social, purché sia informativa: su attività, specializzazioni, titoli, struttura dello studio e compensi, funzionale all\'oggetto, veritiera e corretta, rispettosa del segreto e mai equivoca, ingannevole o denigratoria (art. 4 D.P.R. 137/2012; art. 35 Codice deontologico).',
       punti: [
-        ['Oggetto ammesso: attività, specializzazioni, titoli attinenti, struttura dello studio, compensi richiesti (art. 35, c. 1).', ['specializzazion','titoli','struttura','compensi']],
-        ['Anche tramite mass media e social network: funzionale all\'oggetto, veritiera e corretta, rispettosa del segreto, non equivoca, ingannevole o denigratoria (art. 35, c. 2).', ['social','veritiera','ingannevol','denigrator']],
-        ['Trasparenza verificata dall\'Ordine; informazione completa con titolo professionale e denominazione dello studio (art. 35, c. 3-4).', ['ordine','titolo professionale','denominazione']],
-        ['Vietato associare la propria immagine a società commerciali o enti per aggirare le regole (art. 35, c. 5).', ['societa commercial','eludere']],
-        ['Nei rapporti con i media: equilibrio, misura, discrezione e riservatezza (art. 10, c. 4).', ['media','equilibrio','misura']]
+        ['Fondamento: il D.L. 223/2006, conv. L. 248/2006 (art. 2, c. 1, lett. b), ha abrogato i divieti di pubblicità informativa; oggi la regola è l\'art. 4, c. 1, D.P.R. 137/2012, ripresa dall\'art. 35, c. 1, del Codice.', ['248/2006','223/2006','bersani','137/2012','abroga']],
+        ['Oggetto ammesso: attività, specializzazioni, titoli attinenti alla professione, struttura dello studio, compensi richiesti; titoli e specializzazioni vanno indicati e comunicati per trasparenza verso l\'utenza (art. 1, c. 152, L. 124/2017).', ['specializzazion','titoli','struttura','compensi','124/2017']],
+        ['Limiti, anche su mass media e social network: funzionale all\'oggetto, veritiera e corretta, rispettosa del segreto professionale, non equivoca, ingannevole o denigratoria; completa di titolo professionale e denominazione dello studio; trasparenza verificata dall\'Ordine (art. 35, c. 2-4).', ['social','veritiera','segreto','ingannevol','denigrator','denominazione']],
+        ['Vietato aggirare le regole associando, anche indirettamente, la propria immagine a società commerciali o enti terzi; vale anche per il consulente che amministra società di servizi (art. 35, c. 5-6, e art. 20). Con gli organi di informazione: equilibrio e misura (art. 10, c. 4).', ['societa commercial','enti terzi','elud','aggira','media','equilibrio']],
+        ['Conseguenze: la violazione dei limiti è illecito disciplinare e insieme violazione del Codice del consumo (D.Lgs. 206/2005) e della disciplina della pubblicità ingannevole (D.Lgs. 145/2007) (art. 4, c. 3, D.P.R. 137/2012); usare titoli non conseguiti è rilevante anche ex art. 15, c. 3, Codice.', ['illecito disciplinare','206/2005','145/2007','consumo','titoli non conseguiti']]
       ],
-      aggancio: 'Tema caro all\'Ordine di Ancona, che ne ha discusso in convegno (social media e deontologia, 2022): un post con nomi di clienti o casi riconoscibili viola il segreto.',
-      fonti: 'Codice deontologico, artt. 10 e 35; D.P.R. 137/2012, art. 4; edotto.com, 4/5/2022 (convegno dell\'Ordine di Ancona).'
+      aggancio: 'Esempio: un post su LinkedIn con titolo, studio, servizi e compenso per cedolino è lecito; non lo è raccontare il caso di un cliente riconoscibile (segreto, art. 25), screditare un collega o vantare entrature presso l\'Ispettorato (concorrenza sleale, art. 14, c. 2, lett. a ed e). Tema trattato dall\'Ordine di Ancona in un convegno su social media e deontologia (2022).',
+      fonti: 'D.P.R. 7/8/2012 n. 137 (G.U. 14/8/2012 n. 189), art. 4, su copia del testo pubblicata da unipg.it e Simone p. 1237; D.L. 4/7/2006 n. 223 conv. L. 4/8/2006 n. 248, art. 2, c. 1, lett. b (allegato alla legge di conversione, cliclavoro.gov.it); L. 124/2017, art. 1, c. 152, come riportato da Simone p. 1237 ed edotto.com (testo non letto in originale); Codice deontologico, artt. 10, 14, 15, 20, 25, 35 (Simone pp. 1248-1254); convegno Ordine di Ancona da edotto.com, 4/5/2022. DA VERIFICARE su Normattiva: testo vigente dell\'art. 4 D.P.R. 137/2012 (non consultabile da qui; nessuna modifica nota).'
     },
 
     'DEO-X1': {
@@ -910,7 +910,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.1 · 30/10/2026',
+    versione: '1.2 · 30/10/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
