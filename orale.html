@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prova orale — CdL Marche 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161d29;--ink-2:#26324a;--paper:#eae7de;--surface:#f4f2eb;--surface-2:#fbfaf6;
+    --line:#cdc7ba;--line-2:#ded9cd;--oxblood:#7c2b2b;--oxblood-2:#9a4040;--brass:#9a7a34;
+    --muted:#6a6656;--ok:#2f6b3f;--ok-bg:#e3efe4;--warn:#9a6a1e;--warn-bg:#f4ecdd;--err:#a3352b;--err-bg:#f6e2df;
+    --shadow:0 1px 0 rgba(0,0,0,.04),0 10px 30px -16px rgba(22,29,41,.35);
+    --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --serif:"Spectral",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:var(--ui);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--oxblood)}
+  button{font-family:inherit}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+
+  header.top{border-bottom:2px solid var(--ink);background:var(--surface)}
+  .masthead{padding:22px 0 14px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  .eyebrow{font:600 11px/1.3 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--oxblood);margin:0 0 6px}
+  .eyebrow a{color:inherit;text-decoration:none}
+  h1.title{font:600 clamp(24px,4vw,34px)/1.08 var(--serif);margin:0}
+  .sub{font-size:13.5px;color:var(--muted);margin:6px 0 0;max-width:62ch}
+  .audiobox{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface-2);border-radius:4px;padding:10px 12px}
+  .switch{position:relative;width:46px;height:26px;flex:none}
+  .switch input{opacity:0;width:0;height:0}
+  .switch .sl{position:absolute;inset:0;background:#bdb7a8;border-radius:999px;transition:.2s;cursor:pointer}
+  .switch .sl::before{content:'';position:absolute;width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+  .switch input:checked + .sl{background:var(--oxblood)}
+  .switch input:checked + .sl::before{transform:translateX(20px)}
+  .switch input:focus-visible + .sl{outline:3px solid var(--brass);outline-offset:2px}
+  .audiobox .lbl{font-size:13px;font-weight:600}
+  .audiobox .st{font:500 11px/1.3 var(--mono);color:var(--muted)}
+
+  nav.tabs{display:flex;gap:2px;flex-wrap:wrap;margin-top:6px}
+  nav.tabs button{border:1px solid var(--line);border-bottom:none;background:var(--line-2);padding:9px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;border-radius:4px 4px 0 0}
+  nav.tabs button[aria-selected="true"]{background:var(--paper);color:var(--oxblood);border-color:var(--ink);position:relative;top:2px}
+
+  main{padding:22px 0 40px}
+  section.pane{display:none}
+  section.pane.on{display:block}
+  .box{border:1px solid var(--line);background:var(--surface-2);border-radius:4px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}
+  h2{font:600 22px/1.2 var(--serif);margin:0 0 6px}
+  h3{font:600 17px/1.25 var(--serif);margin:0 0 6px}
+  .muted{color:var(--muted)}
+  .small{font-size:12.5px}
+  .mono{font-family:var(--mono)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .grow{flex:1}
+  select,input[type=search],input[type=number],textarea{font:inherit;font-size:14px;border:1px solid var(--line);background:#fff;border-radius:3px;padding:8px 10px;color:var(--ink)}
+  textarea{width:100%;min-height:120px;resize:vertical;line-height:1.5}
+  .btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:9px 14px;border-radius:3px;font-size:13.5px;font-weight:600;cursor:pointer}
+  .btn:hover{background:var(--ink-2)}
+  .btn.alt{background:var(--surface-2);color:var(--ink)}
+  .btn.alt:hover{background:var(--line-2)}
+  .btn.red{background:var(--oxblood);border-color:var(--oxblood)}
+  .btn.red:hover{background:var(--oxblood-2)}
+  .btn.sm{padding:6px 10px;font-size:12.5px}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+  .btn.rec{background:var(--err);border-color:var(--err);animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(163,53,43,.5)}50%{box-shadow:0 0 0 7px rgba(163,53,43,0)}}
+  .chip{display:inline-block;font:600 10.5px/1 var(--mono);letter-spacing:.04em;padding:4px 7px;border-radius:2px;border:1px solid var(--line);background:var(--surface);color:var(--muted);white-space:nowrap}
+  .chip.ok{background:var(--ok-bg);border-color:#b9d3bd;color:var(--ok)}
+  .chip.warn{background:var(--warn-bg);border-color:#e3cfa6;color:var(--warn)}
+  .chip.err{background:var(--err-bg);border-color:#e4bab4;color:var(--err)}
+  .chip.ox{background:rgba(124,43,43,.06);border-color:rgba(124,43,43,.35);color:var(--oxblood)}
+
+  /* progress */
+  .prog{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:12px}
+  .prog .p{border:1px solid var(--line-2);background:var(--surface);border-radius:3px;padding:8px 10px;cursor:pointer}
+  .prog .p:hover{border-color:var(--oxblood)}
+  .prog .p b{font-size:12.5px}
+  .bar{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--line-2);margin-top:6px}
+  .bar i{display:block;height:100%}
+  .bar .s{background:var(--ok)} .bar .r{background:var(--warn)}
+
+  /* list */
+  .qlist{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+  .q{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line-2);background:#fff;border-radius:3px;padding:10px 12px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
+  .q:hover{border-color:var(--oxblood)}
+  .q .t{flex:1;font-size:14px}
+  .q .meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+
+  /* question detail */
+  .qcard{border:1px solid var(--ink);background:#fff;border-radius:4px;padding:20px;box-shadow:var(--shadow)}
+  .who{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .avatar{width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px/1 var(--mono);flex:none}
+  .who .n{font-weight:600;font-size:14px}
+  .who .r{font-size:12px;color:var(--muted)}
+  .qtext{font:500 21px/1.35 var(--serif);margin:4px 0 12px}
+  .timer{font:600 18px/1 var(--mono);color:var(--ink-2)}
+  .timer.over{color:var(--err)}
+  .ans{margin-top:14px}
+  .model{margin-top:16px;border-top:2px solid var(--ink);padding-top:14px}
+  .model .sint{font:500 16px/1.45 var(--serif);margin:0 0 10px}
+  .model ol{margin:0 0 10px;padding-left:22px}
+  .model li{margin-bottom:7px;font-size:14px}
+  .model li .hit{margin-left:6px}
+  .aggancio{border-left:3px solid var(--brass);background:var(--warn-bg);padding:9px 12px;font-size:13.5px;margin:10px 0}
+  .fonti{font-size:12px;color:var(--muted)}
+  .approf{margin-top:12px;border:1px dashed var(--line);border-radius:3px;padding:10px 12px;background:var(--surface)}
+  .approf ul{margin:6px 0 0;padding-left:18px;font-size:13px}
+  .approf code{font-family:var(--mono);font-size:12px;background:#fff;border:1px solid var(--line-2);padding:1px 4px;border-radius:2px}
+  .grade{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+  .grade .btn.on{outline:3px solid var(--brass);outline-offset:1px}
+  .notice{border:1px solid #e3cfa6;background:var(--warn-bg);color:#5d4313;border-radius:3px;padding:9px 12px;font-size:13px;margin:10px 0}
+
+  /* busta */
+  .steps{display:flex;gap:4px;margin:8px 0 14px;flex-wrap:wrap}
+  .steps span{flex:1;min-width:30px;height:7px;border-radius:2px;background:var(--line-2)}
+  .steps span.done{background:var(--ok)} .steps span.cur{background:var(--oxblood)}
+  table.sum{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}
+  table.sum th,table.sum td{border-bottom:1px solid var(--line-2);padding:8px 6px;text-align:left;vertical-align:top}
+  table.sum th{font:600 11px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .big{font:600 34px/1 var(--mono);color:var(--oxblood)}
+
+  /* commissione */
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+  .cm{border:1px solid var(--line);background:#fff;border-radius:4px;padding:14px}
+  .cm .r{font-size:12.5px;color:var(--muted)}
+  .cm p{font-size:13.5px;margin:8px 0 0}
+
+  dialog{border:1px solid var(--ink);border-radius:4px;padding:0;max-width:760px;width:calc(100vw - 20px);max-height:calc(100vh - 30px)}
+  dialog::backdrop{background:rgba(22,29,41,.45)}
+  .dlg{padding:18px;overflow:auto;max-height:calc(100vh - 32px)}
+  .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:3px;font-size:13px;z-index:99;opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.on{opacity:1}
+  footer{border-top:1px solid var(--line);padding:18px 0 34px;font-size:12px;color:var(--muted)}
+  @media (max-width:640px){.qtext{font-size:18px}.qcard{padding:14px}.box{padding:14px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="masthead">
+      <div>
+        <p class="eyebrow"><a href="index.html">← CdL Marche 2026</a> · Prova orale</p>
+        <h1 class="title">Prova orale — allenamento e studio</h1>
+        <p class="sub">Le 23 buste di Ancona 2025 (8 domande, una per materia) più integrazioni 2026. Studia con le risposte modello e le fonti in libreria, oppure estrai una busta e rispondi alla commissione simulata, anche a voce.</p>
+      </div>
+      <div class="audiobox">
+        <label class="switch" title="Modalità audio"><input type="checkbox" id="audioOn"><span class="sl"></span></label>
+        <div><div class="lbl">Modalità audio</div><div class="st" id="audioSt">spenta</div></div>
+        <button class="btn alt sm" id="audioCfg" type="button" aria-label="Impostazioni audio">⚙</button>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="studio" aria-selected="true">Studio</button>
+      <button role="tab" data-tab="sim" aria-selected="false">Simulazione busta</button>
+      <button role="tab" data-tab="comm" aria-selected="false">Commissione</button>
+      <button role="tab" data-tab="guida" aria-selected="false">Guida</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <!-- ================= STUDIO ================= -->
+  <section class="pane on" id="pane-studio">
+    <div class="box">
+      <h2>Studio per domanda</h2>
+      <p class="muted small" id="studioStat"></p>
+      <div class="prog" id="prog"></div>
+    </div>
+    <div class="box">
+      <div class="row">
+        <select id="fMat" aria-label="Materia"></select>
+        <select id="fGrp" aria-label="Gruppo"></select>
+        <select id="fSt" aria-label="Stato">
+          <option value="">Tutti gli stati</option>
+          <option value="nuova">Non ancora viste</option>
+          <option value="rip">Da ripassare</option>
+          <option value="so">Le so</option>
+        </select>
+        <label class="small row" style="gap:5px"><input type="checkbox" id="fRisp"> solo con risposta modello</label>
+        <input type="search" id="fTxt" class="grow" placeholder="Cerca nel testo…" aria-label="Cerca">
+      </div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn sm red" id="btnRandom" type="button">Domanda a caso dal filtro</button>
+        <span class="small muted" id="fCount"></span>
+      </div>
+      <div class="qlist" id="qlist"></div>
+    </div>
+  </section>
+
+  <!-- ================= SIMULAZIONE ================= -->
+  <section class="pane" id="pane-sim">
+    <div class="box" id="simSetup">
+      <h2>Simulazione: estrai una busta</h2>
+      <p class="small muted">Una domanda per materia (due di diritto del lavoro), nell'ordine della busta 2025. Ogni domanda la pone il commissario che, per ruolo, più probabilmente la farebbe: è una <b>stima</b>, non un dato. Tempo indicativo: 3 minuti per risposta.</p>
+      <div class="row" style="margin-top:10px">
+        <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="uff" checked> Busta ufficiale 2025</label>
+        <select id="nBusta" aria-label="Numero busta"></select>
+        <label class="small row" style="gap:6px;margin-left:10px"><input type="radio" name="tipo" value="mix"> Busta mista 2026 (a caso, comprese le integrazioni)</label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="small row" style="gap:6px"><input type="checkbox" id="simNoModel"> Nascondi la risposta modello fino alla fine della busta (più realistico)</label>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn red" id="btnStart" type="button">Estrai e inizia</button>
+        <span class="small muted" id="simHist"></span>
+      </div>
+    </div>
+    <div id="simRun"></div>
+  </section>
+
+  <!-- ================= COMMISSIONE ================= -->
+  <section class="pane" id="pane-comm">
+    <div class="box">
+      <h2>La commissione 2026</h2>
+      <p class="small muted">Decreto del Direttore ITL Ancona n. 15 del 7/10/2026. Le aree indicate sono una stima per ruolo; i profili pubblici sono stati cercati il 30/10/2026. In simulazione i commissari sono <b>ruoli simulati</b> a scopo di allenamento: la voce è sintetica e non rappresenta le persone reali.</p>
+    </div>
+    <div class="cgrid" id="cgrid"></div>
+  </section>
+
+  <!-- ================= GUIDA ================= -->
+  <section class="pane" id="pane-guida">
+    <div class="box">
+      <h2>Come usarlo</h2>
+      <ol class="small">
+        <li><b>Studio.</b> Filtra per materia o gruppo, apri una domanda, prova a rispondere (a voce o per iscritto), poi apri la risposta modello. Segna «La so» o «Da ripassare»: il progresso resta salvato su questo dispositivo.</li>
+        <li><b>Simulazione.</b> Estrai una busta ufficiale o mista. Rispondi alle 8 domande; alla fine ottieni la tabella, una stima del voto in base alla tua autovalutazione e il <b>pacchetto per Claude</b> da incollare nella chat dedicata per la correzione vera.</li>
+        <li><b>Modalità audio</b> (interruttore in alto): la domanda viene letta dal «commissario» e puoi rispondere col microfono; la trascrizione resta modificabile. Spegnendola, tutto funziona per iscritto.</li>
+      </ol>
+      <h3 style="margin-top:14px">Limiti, da sapere</h3>
+      <ul class="small">
+        <li><b>Risposte modello:</b> presenti solo dove le fonti sono state verificate (<span id="gRisp"></span>). Per le altre trovi l'approfondimento in libreria e il pulsante per chiedere a Claude la risposta modello.</li>
+        <li><b>Riscontro automatico:</b> cerca nella tua risposta le parole chiave di ciascun punto. Non valuta la correttezza né l'esposizione: serve solo a vedere cosa hai toccato. Il giudizio è tuo o di Claude.</li>
+        <li><b>Microfono:</b> la dettatura usa il riconoscimento vocale del browser (Chrome ed Edge su computer e Android, Safari su iPhone e Mac). Firefox non la supporta. La pagina deve poter usare il microfono: il browser lo chiede la prima volta. In Chrome l'audio è elaborato dai server del browser.</li>
+        <li><b>Domande:</b> quelle «Ancona 2025» sono ufficiali ma della commissione 2025; quelle «Integrazione 2026» sono stime.</li>
+      </ul>
+      <p class="small muted">Dati: <span class="mono" id="gVer"></span>. Commissione: decreto ITL Ancona n. 15/2026. Domande: buste ufficiali ITL Ancona, sessione 2025.</p>
+      <div class="row"><button class="btn alt sm" id="btnReset" type="button">Azzera progressi e storico su questo dispositivo</button></div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer><div class="wrap">Strumento di allenamento. Norme e risposte vanno sempre riscontrate sulle fonti ufficiali e sui codici; le voci «DA VERIFICARE» sono segnalate nelle fonti di ciascuna risposta.</div></footer>
+
+<dialog id="dlgQ"><div class="dlg" id="dlgBody"></div></dialog>
+<dialog id="dlgAudio"><div class="dlg">
+  <h3>Impostazioni audio</h3>
+  <p class="small muted" id="audioSupport"></p>
+  <div class="row" style="margin-top:8px"><label class="small">Voce</label><select id="voiceSel" class="grow"></select></div>
+  <div class="row" style="margin-top:8px"><label class="small">Velocità</label><input type="range" id="rateSel" min="0.7" max="1.3" step="0.05" value="1"><span class="mono small" id="rateLbl">1.00</span></div>
+  <div class="row" style="margin-top:8px"><label class="small row" style="gap:6px"><input type="checkbox" id="autoRead" checked> Leggi la domanda appena compare</label></div>
+  <div class="row" style="margin-top:8px"><label class="small row" style="gap:6px"><input type="checkbox" id="autoMic"> Avvia il microfono dopo la lettura</label></div>
+  <div class="row" style="margin-top:14px"><button class="btn alt sm" id="testVoice" type="button">Prova la voce</button><button class="btn sm" id="closeAudio" type="button">Chiudi</button></div>
+</div></dialog>
+<div class="toast" id="toast"></div>
+
+<script src="orale-dati.js"></script>
+<script>
+(function(){
+  'use strict';
+  var O = window.ORALE;
+  var MAT = {}; O.materie.forEach(function(m){ MAT[m.k] = m; });
+  var C = O.commissione;
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+
+  /* ---------- storage (try/catch: può non essere disponibile) ---------- */
+  var KEY = 'cdl-orale-v1';
+  var S = { stato:{}, storico:[], audio:{ on:false, voice:'', rate:1, autoRead:true, autoMic:false } };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
+
+  function toast(t){ var el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(function(){ el.classList.remove('on'); }, 2200); }
+  function copy(text){
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(function(){ toast('Copiato negli appunti'); }, function(){ fallbackCopy(text); }); }
+    else fallbackCopy(text);
+  }
+  function fallbackCopy(text){ var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); toast('Copiato negli appunti'); } catch(e){ toast('Copia non riuscita: seleziona e copia a mano'); } ta.remove(); }
+
+  /* ---------- tabs ---------- */
+  document.querySelectorAll('nav.tabs button').forEach(function(b){
+    b.addEventListener('click', function(){ showTab(b.dataset.tab); });
+  });
+  function showTab(t){
+    document.querySelectorAll('nav.tabs button').forEach(function(x){ x.setAttribute('aria-selected', x.dataset.tab === t ? 'true' : 'false'); });
+    document.querySelectorAll('section.pane').forEach(function(p){ p.classList.toggle('on', p.id === 'pane-' + t); });
+    stopAll();
+  }
+
+  /* =====================================================
+     AUDIO: sintesi vocale + dettatura (Web Speech API)
+     ===================================================== */
+  var synth = window.speechSynthesis || null;
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+  var voices = [];
+  function loadVoices(){
+    if (!synth) return;
+    voices = synth.getVoices().filter(function(v){ return /^it/i.test(v.lang); });
+    var sel = $('#voiceSel'); sel.innerHTML = '<option value="">Automatica (per commissario)</option>' +
+      voices.map(function(v){ return '<option value="'+esc(v.name)+'"'+(v.name===S.audio.voice?' selected':'')+'>'+esc(v.name)+' ('+esc(v.lang)+')</option>'; }).join('');
+  }
+  if (synth) { loadVoices(); if (typeof synth.onvoiceschanged !== 'undefined') synth.onvoiceschanged = loadVoices; }
+
+  var FEM = /(alice|federica|elsa|paola|silvia|isabella|carla|chiara|giulia|female|donna)/i;
+  var MAS = /(luca|cosimo|diego|giorgio|roberto|paolo|riccardo|giuseppe|male|uomo)/i;
+  function pickVoice(gen){
+    if (S.audio.voice) { var f = voices.filter(function(v){ return v.name === S.audio.voice; })[0]; if (f) return f; }
+    if (!voices.length) return null;
+    var re = gen === 'f' ? FEM : MAS;
+    return voices.filter(function(v){ return re.test(v.name); })[0] || voices[0];
+  }
+  function speak(text, comm, onEnd){
+    if (!synth || !S.audio.on) { if (onEnd) onEnd(); return; }
+    synth.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'it-IT';
+    var cv = comm && C[comm] ? C[comm].voce : { pitch:1, rate:1, gen:'m' };
+    var v = pickVoice(cv.gen); if (v) u.voice = v;
+    u.pitch = cv.pitch; u.rate = Math.max(.5, Math.min(1.6, cv.rate * (S.audio.rate||1)));
+    u.onend = function(){ if (onEnd) onEnd(); };
+    u.onerror = function(){ if (onEnd) onEnd(); };
+    synth.speak(u);
+  }
+
+  /* dettatura: un solo riconoscitore attivo, legato a una textarea */
+  var rec = null, active = null, recWanted = false, recTarget = null, recBase = '', recBtn = null;
+  function micSupported(){ return !!SR; }
+  function startMic(textarea, btn){
+    if (!SR) { toast('Dettatura non disponibile in questo browser: usa Chrome, Edge o Safari'); return; }
+    stopMic();
+    if (synth) synth.cancel();
+    recTarget = textarea; recBtn = btn; recWanted = true;
+    recBase = textarea.value ? textarea.value.replace(/\s*$/, ' ') : '';
+    var me = new SR(); rec = me; active = me;
+    rec.lang = 'it-IT'; rec.interimResults = true;
+    try { rec.continuous = true; } catch(e){}
+    rec.onresult = function(ev){
+      if (active !== me) return; /* i risultati finali arrivano anche dopo stop() */
+      var fin = '', inter = '';
+      for (var i = ev.resultIndex; i < ev.results.length; i++) {
+        var t = ev.results[i][0].transcript;
+        if (ev.results[i].isFinal) fin += t; else inter += t;
+      }
+      if (fin) recBase += fin.trim() + ' ';
+      recTarget.value = recBase + inter;
+      recTarget.dispatchEvent(new Event('input'));
+    };
+    rec.onerror = function(ev){
+      if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') { toast('Microfono non autorizzato: consenti l\'accesso nelle impostazioni del browser'); recWanted = false; }
+      else if (ev.error === 'no-speech') { /* riparte da onend */ }
+      else if (ev.error !== 'aborted') toast('Dettatura: ' + ev.error);
+    };
+    rec.onend = function(){
+      if (active !== me) return; /* riconoscitore vecchio: ignora */
+      if (recWanted) { try { me.start(); return; } catch(e){} }
+      setRecBtn(false);
+    };
+    try { rec.start(); setRecBtn(true); } catch(e){ toast('Impossibile avviare il microfono'); }
+  }
+  function stopMic(){ recWanted = false; var old = rec; rec = null; if (old) { try { old.stop(); } catch(e){} } setRecBtn(false); }
+  function afterMic(fn){ var was = recWanted; stopMic(); setTimeout(fn, was ? 600 : 0); }
+  function setRecBtn(on){ if (recBtn) { recBtn.classList.toggle('rec', on); recBtn.textContent = on ? '■ Ferma microfono' : '🎙 Rispondi a voce'; } }
+  function stopAll(){ stopMic(); if (synth) synth.cancel(); stopTimer(); }
+
+  /* interruttore audio */
+  var aOn = $('#audioOn');
+  aOn.checked = !!S.audio.on;
+  function audioStatus(){
+    var parts = [];
+    if (!S.audio.on) { $('#audioSt').textContent = 'spenta'; return; }
+    parts.push(synth ? 'voce sì' : 'voce non disponibile');
+    parts.push(SR ? 'microfono sì' : 'microfono non disponibile');
+    $('#audioSt').textContent = parts.join(' · ');
+  }
+  aOn.addEventListener('change', function(){
+    S.audio.on = aOn.checked; save(); audioStatus();
+    if (!aOn.checked) stopAll();
+    else if (!SR) toast('Il microfono non è supportato da questo browser: puoi comunque ascoltare le domande');
+    rerenderOpen();
+  });
+  audioStatus();
+  $('#audioSupport').textContent = 'Sintesi vocale: ' + (synth ? 'disponibile' : 'non disponibile') + ' · Dettatura: ' + (SR ? 'disponibile' : 'non disponibile in questo browser (usa Chrome, Edge o Safari)') + '.';
+  $('#audioCfg').addEventListener('click', function(){ loadVoices(); $('#dlgAudio').showModal(); });
+  $('#closeAudio').addEventListener('click', function(){ $('#dlgAudio').close(); });
+  $('#voiceSel').addEventListener('change', function(e){ S.audio.voice = e.target.value; save(); });
+  var rs = $('#rateSel'); rs.value = S.audio.rate || 1; $('#rateLbl').textContent = Number(rs.value).toFixed(2);
+  rs.addEventListener('input', function(){ S.audio.rate = Number(rs.value); $('#rateLbl').textContent = Number(rs.value).toFixed(2); save(); });
+  $('#autoRead').checked = S.audio.autoRead !== false; $('#autoRead').addEventListener('change', function(e){ S.audio.autoRead = e.target.checked; save(); });
+  $('#autoMic').checked = !!S.audio.autoMic; $('#autoMic').addEventListener('change', function(e){ S.audio.autoMic = e.target.checked; save(); });
+  $('#testVoice').addEventListener('click', function(){ var was = S.audio.on; S.audio.on = true; speak('Buongiorno. Mi parli, per favore, del decreto-legge.', 'terzoni', function(){ S.audio.on = was; }); });
+
+  /* =====================================================
+     RISCONTRO AUTOMATICO (parole chiave)
+     ===================================================== */
+  function norm(s){
+    return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+      .replace(/(\d)[.\s](?=\d{3}\b)/g,'$1').replace(/[’`]/g,"'").replace(/\s+/g,' ');
+  }
+  function hits(r, text){
+    var t = norm(text);
+    if (!t.trim()) return null;
+    return r.punti.map(function(p){ return p[1].some(function(k){ return t.indexOf(norm(k)) >= 0; }); });
+  }
+
+  /* =====================================================
+     RENDER DI UNA DOMANDA (riusato in studio e simulazione)
+     ===================================================== */
+  function commOf(d){ return C[MAT[d.m].comm] ? MAT[d.m].comm : 'rausei'; }
+  function initials(n){ return n.split(' ').map(function(x){ return x[0]; }).join('').slice(0,2); }
+  function whoHtml(d){
+    var ck = commOf(d), c = C[ck];
+    return '<div class="who"><div class="avatar">'+esc(initials(c.nome))+'</div><div><div class="n">'+esc(c.titolo+' '+c.nome)+' <span class="chip">ruolo simulato</span></div><div class="r">'+esc(c.ruolo)+' · '+esc(MAT[d.m].nome)+'</div></div></div>';
+  }
+  function approfHtml(d){
+    if (!d.approf || !d.approf.length) return '';
+    return '<div class="approf"><b class="small">Dove approfondire (libreria del progetto)</b><ul>' + d.approf.map(function(a){
+      return '<li><code>'+esc(a[0])+'</code>' + (a[1] ? ' — cerca: ' + esc(a[1]) : '') + '</li>';
+    }).join('') + '</ul></div>';
+  }
+  function modelHtml(d, text){
+    if (!d.r) {
+      return '<div class="model"><div class="notice">Risposta modello non ancora inserita per questa domanda. Studia sulle fonti indicate sotto, oppure chiedi a Claude di prepararla.</div>' +
+        approfHtml(d) + '<div class="row" style="margin-top:10px"><button class="btn alt sm" data-act="askModel" type="button">Copia richiesta per Claude</button></div></div>';
+    }
+    var h = hits(d.r, text);
+    var n = h ? h.filter(Boolean).length : 0;
+    return '<div class="model"><h3>Risposta migliore</h3>' +
+      (h ? '<p class="small muted">Riscontro automatico: '+n+' punti su '+d.r.punti.length+' toccati (parole chiave, non valuta la correttezza).</p>' : '') +
+      '<p class="sint">'+esc(d.r.sintesi)+'</p><ol>' +
+      d.r.punti.map(function(p, i){ return '<li>'+esc(p[0]) + (h ? (h[i] ? ' <span class="chip ok hit">toccato</span>' : ' <span class="chip warn hit">mancante</span>') : '') + '</li>'; }).join('') +
+      '</ol><div class="aggancio"><b>Aggancio al lavoro:</b> '+esc(d.r.aggancio)+'</div>' +
+      '<div class="fonti"><b>Fonti:</b> '+esc(d.r.fonti)+'</div>' + approfHtml(d) + '</div>';
+  }
+  function askModelText(d){
+    return 'Prepara la risposta modello per l\'orale (2-3 minuti) alla domanda «' + d.testo + '» (id ' + d.id + ', ' + MAT[d.m].nome + ', ' + d.fonte + '), ' +
+      'nel formato di orale-dati.js: sintesi in una frase, 4-5 punti con parole chiave, aggancio al lavoro e fonti verificate (libreria o fonti ufficiali), segnalando ciò che è DA VERIFICARE. Poi aggiornala nel simulatore.';
+  }
+
+  /* ---------- timer ---------- */
+  var tmr = null, tStart = 0, tEl = null, LIM = 180;
+  function startTimer(el){ stopTimer(); tEl = el; tStart = Date.now(); tick(); tmr = setInterval(tick, 500); }
+  function tick(){ if (!tEl) return; var s = Math.floor((Date.now() - tStart)/1000); var r = LIM - s; var a = Math.abs(r);
+    tEl.textContent = (r < 0 ? '+' : '') + Math.floor(a/60) + ':' + String(a%60).padStart(2,'0'); tEl.classList.toggle('over', r < 0); }
+  function stopTimer(){ if (tmr) clearInterval(tmr); tmr = null; }
+  function elapsed(){ return tStart ? Math.floor((Date.now() - tStart)/1000) : 0; }
+
+  /* =====================================================
+     STUDIO
+     ===================================================== */
+  var fMat = $('#fMat'), fGrp = $('#fGrp');
+  fMat.innerHTML = '<option value="">Tutte le materie</option>' + O.materie.map(function(m){ return '<option value="'+m.k+'">'+esc(m.nome)+'</option>'; }).join('');
+  function fillGroups(){
+    var m = fMat.value, seen = {}, opts = ['<option value="">Tutti i gruppi</option>'];
+    O.domande.forEach(function(d){ if ((!m || d.m === m) && !seen[d.gruppo]) { seen[d.gruppo] = 1; opts.push('<option>'+esc(d.gruppo)+'</option>'); } });
+    fGrp.innerHTML = opts.join('');
+  }
+  fillGroups();
+  function filtered(){
+    var m = fMat.value, g = fGrp.value, st = $('#fSt').value, onlyR = $('#fRisp').checked, q = norm($('#fTxt').value);
+    return O.domande.filter(function(d){
+      if (m && d.m !== m) return false;
+      if (g && d.gruppo !== g) return false;
+      if (onlyR && !d.r) return false;
+      var s = S.stato[d.id] || 'nuova';
+      if (st && s !== st) return false;
+      if (q && norm(d.testo).indexOf(q) < 0) return false;
+      return true;
+    });
+  }
+  function statoChip(id){ var s = S.stato[id]; return s === 'so' ? '<span class="chip ok">la so</span>' : s === 'rip' ? '<span class="chip warn">da ripassare</span>' : ''; }
+  function renderList(){
+    var L = filtered();
+    $('#fCount').textContent = L.length + ' domande';
+    $('#qlist').innerHTML = L.map(function(d){
+      return '<button class="q" type="button" data-id="'+d.id+'"><div class="t">'+esc(d.testo)+'<div class="meta"><span class="chip ox">'+esc(MAT[d.m].corto)+'</span><span class="chip">'+esc(d.gruppo)+'</span><span class="chip">'+esc(d.ufficiale ? 'busta '+d.busta : 'integrazione 2026')+'</span>'+(d.r ? '<span class="chip ok">risposta modello</span>' : '')+statoChip(d.id)+'</div></div></button>';
+    }).join('') || '<p class="muted small">Nessuna domanda con questi filtri.</p>';
+  }
+  function renderProg(){
+    var tot = O.domande.length, so = 0, rip = 0, conR = O.domande.filter(function(d){ return d.r; }).length;
+    var html = O.materie.map(function(m){
+      var D = O.domande.filter(function(d){ return d.m === m.k; });
+      var s = D.filter(function(d){ return S.stato[d.id] === 'so'; }).length, r = D.filter(function(d){ return S.stato[d.id] === 'rip'; }).length;
+      so += s; rip += r;
+      return '<div class="p" data-mat="'+m.k+'" role="button" tabindex="0"><b>'+esc(m.corto)+'</b> <span class="small muted">'+s+'/'+D.length+'</span>' +
+        '<div class="bar"><i class="s" style="width:'+(100*s/D.length)+'%"></i><i class="r" style="width:'+(100*r/D.length)+'%"></i></div></div>';
+    }).join('');
+    $('#prog').innerHTML = html;
+    $('#studioStat').textContent = tot + ' domande (' + O.domande.filter(function(d){return d.ufficiale;}).length + ' ufficiali 2025, ' + O.domande.filter(function(d){return !d.ufficiale;}).length + ' integrazioni 2026) · risposte modello: ' + conR + ' · le so: ' + so + ' · da ripassare: ' + rip + '.';
+    $('#gRisp').textContent = conR + ' su ' + tot;
+  }
+  ['change','input'].forEach(function(ev){ [fMat, fGrp, $('#fSt'), $('#fRisp'), $('#fTxt')].forEach(function(el){ el.addEventListener(ev, function(){ if (el === fMat) fillGroups(); renderList(); }); }); });
+  $('#prog').addEventListener('click', function(e){ var p = e.target.closest('.p'); if (!p) return; fMat.value = p.dataset.mat; fillGroups(); renderList(); });
+  $('#prog').addEventListener('keydown', function(e){ if (e.key === 'Enter') { var p = e.target.closest('.p'); if (p) { fMat.value = p.dataset.mat; fillGroups(); renderList(); } } });
+  $('#qlist').addEventListener('click', function(e){ var b = e.target.closest('.q'); if (b) openQ(b.dataset.id); });
+  $('#btnRandom').addEventListener('click', function(){ var L = filtered(); if (!L.length) return toast('Nessuna domanda nel filtro'); openQ(L[Math.floor(Math.random()*L.length)].id); });
+
+  var openId = null;
+  function byId(id){ return O.domande.filter(function(d){ return d.id === id; })[0]; }
+  function openQ(id){
+    var d = byId(id); if (!d) return;
+    openId = id;
+    var body = $('#dlgBody');
+    body.innerHTML = '<div class="qcard">' + whoHtml(d) +
+      '<div class="row small muted"><span>'+esc(d.fonte)+' · '+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="qTimer">3:00</span></div>' +
+      '<p class="qtext">'+esc(d.testo)+'</p>' +
+      '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" data-act="read" type="button">🔊 Ascolta</button>' : '') +
+        (S.audio.on && micSupported() ? '<button class="btn sm" data-act="mic" type="button">🎙 Rispondi a voce</button>' : '') +
+        '<button class="btn alt sm" data-act="timer" type="button">Avvia cronometro</button></div>' +
+      '<div class="ans"><textarea id="qAns" placeholder="La tua risposta (facoltativa): scrivi qui o detta col microfono. Serve al riscontro con la risposta migliore."></textarea></div>' +
+      '<div class="row" style="margin-top:10px"><button class="btn red" data-act="show" type="button">Mostra la risposta migliore</button><span class="grow"></span>' +
+      '<button class="btn alt sm" data-act="so" type="button">✓ La so</button><button class="btn alt sm" data-act="rip" type="button">↺ Da ripassare</button><button class="btn sm" data-act="close" type="button">Chiudi</button></div>' +
+      '<div id="qModel"></div></div>';
+    $('#dlgQ').showModal();
+    if (S.audio.on && S.audio.autoRead !== false) readQ(d, body);
+  }
+  function readQ(d, scope){
+    var c = C[commOf(d)];
+    speak((c.titolo === 'prof.ssa' ? 'Professoressa ' : 'Dottor ') + c.nome.split(' ').slice(-1)[0] + '. ' + d.testo + '.', commOf(d), function(){
+      if (S.audio.on && S.audio.autoMic && micSupported()) { var b = scope.querySelector('[data-act=mic]'); var ta = scope.querySelector('textarea'); if (b && ta) startMic(ta, b); }
+    });
+  }
+  function rerenderOpen(){ if ($('#dlgQ').open && openId) { var v = ($('#qAns')||{}).value; openQ(openId); if (v) $('#qAns').value = v; } }
+  $('#dlgQ').addEventListener('close', function(){ stopAll(); openId = null; renderList(); renderProg(); });
+  $('#dlgQ').addEventListener('click', function(e){
+    var a = e.target.closest('[data-act]'); if (!a) return;
+    var d = byId(openId); if (!d) return;
+    var act = a.dataset.act;
+    if (act === 'read') readQ(d, $('#dlgBody'));
+    else if (act === 'mic') { if (recWanted) stopMic(); else startMic($('#qAns'), a); }
+    else if (act === 'timer') startTimer($('#qTimer'));
+    else if (act === 'show') { stopTimer(); afterMic(function(){ if ($('#qModel')) $('#qModel').innerHTML = modelHtml(d, $('#qAns').value); }); }
+    else if (act === 'so' || act === 'rip') { S.stato[d.id] = act; save(); toast(act === 'so' ? 'Segnata come «la so»' : 'Segnata da ripassare'); }
+    else if (act === 'askModel') copy(askModelText(d));
+    else if (act === 'close') $('#dlgQ').close();
+  });
+
+  /* =====================================================
+     SIMULAZIONE BUSTA
+     ===================================================== */
+  var nb = $('#nBusta');
+  nb.innerHTML = '<option value="0">a caso</option>' + Array.from({length:O.buste}, function(_, i){ return '<option value="'+(i+1)+'">n. '+(i+1)+'</option>'; }).join('');
+  var ORD = ['DL','DL','INPS','INAIL','TRIB','RAG','PPP','DEO'];
+  function bustaUff(n){
+    var q = O.domande.filter(function(d){ return d.ufficiale && d.busta === n; });
+    var out = [], used = {};
+    ORD.forEach(function(k){ var x = q.filter(function(d){ return d.m === k && !used[d.id]; })[0]; if (x) { used[x.id] = 1; out.push(x); } });
+    return out;
+  }
+  function bustaMix(){
+    var out = [], used = {};
+    ORD.forEach(function(k){
+      var pool = O.domande.filter(function(d){ return d.m === k && !used[d.id]; });
+      var x = pool[Math.floor(Math.random()*pool.length)]; used[x.id] = 1; out.push(x);
+    });
+    return out;
+  }
+  var run = null;
+  function simHist(){
+    var h = S.storico.slice(-3).reverse();
+    $('#simHist').textContent = h.length ? 'Ultime: ' + h.map(function(x){ return x.data + ' ' + x.titolo + ' → ' + x.stima; }).join(' · ') : '';
+  }
+  simHist();
+  $('#btnStart').addEventListener('click', function(){
+    var tipo = document.querySelector('input[name=tipo]:checked').value;
+    var n = Number(nb.value) || (1 + Math.floor(Math.random()*O.buste));
+    var Q = tipo === 'uff' ? bustaUff(n) : bustaMix();
+    run = { titolo: tipo === 'uff' ? 'Busta 2025 n. ' + n : 'Busta mista 2026', Q: Q, i: 0, ans: [], voto: [], tempi: [], hide: $('#simNoModel').checked };
+    $('#simSetup').style.display = 'none';
+    renderStep();
+  });
+  function renderStep(){
+    stopAll();
+    var i = run.i, d = run.Q[i];
+    var steps = run.Q.map(function(_, k){ return '<span class="'+(k < i ? 'done' : k === i ? 'cur' : '')+'"></span>'; }).join('');
+    $('#simRun').innerHTML = '<div class="box"><div class="row"><b>'+esc(run.titolo)+'</b><span class="small muted">· domanda '+(i+1)+' di '+run.Q.length+'</span><span class="grow"></span><button class="btn alt sm" id="simQuit" type="button">Interrompi</button></div><div class="steps">'+steps+'</div>' +
+      '<div class="qcard">' + whoHtml(d) +
+      '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="grow"></span><span class="timer mono" id="sTimer">3:00</span></div>' +
+      '<p class="qtext">'+esc(d.testo)+'</p>' +
+      '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" id="sRead" type="button">🔊 Riascolta</button>' : '') +
+        (S.audio.on && micSupported() ? '<button class="btn sm" id="sMic" type="button">🎙 Rispondi a voce</button>' : '') + '</div>' +
+      '<div class="ans"><textarea id="sAns" placeholder="Rispondi come davanti alla commissione: per iscritto o col microfono (Modalità audio). Restano modificabili."></textarea></div>' +
+      '<div class="row" style="margin-top:10px"><button class="btn red" id="sDone" type="button">Ho finito di rispondere</button><button class="btn alt sm" id="sSkip" type="button">Non la so, passo</button></div>' +
+      '<div id="sAfter"></div></div></div>';
+    startTimer($('#sTimer'));
+    $('#simQuit').onclick = function(){ if (confirm('Interrompere la simulazione? Le risposte date finora vanno perse.')) { stopAll(); run = null; $('#simRun').innerHTML = ''; $('#simSetup').style.display = ''; } };
+    if ($('#sRead')) $('#sRead').onclick = function(){ readSim(d); };
+    if ($('#sMic')) $('#sMic').onclick = function(){ if (recWanted) stopMic(); else startMic($('#sAns'), $('#sMic')); };
+    $('#sDone').onclick = function(){ finishQ(false); };
+    $('#sSkip').onclick = function(){ finishQ(true); };
+    if (S.audio.on && S.audio.autoRead !== false) readSim(d);
+  }
+  function readSim(d){
+    var c = C[commOf(d)];
+    var intro = run.i === 0 ? 'Buongiorno. Cominciamo. ' : '';
+    speak(intro + (c.titolo === 'prof.ssa' ? 'Sono la professoressa ' : 'Sono il dottor ') + c.nome.split(' ').slice(-1)[0] + '. ' + d.testo + '.', commOf(d), function(){
+      if (S.audio.on && S.audio.autoMic && micSupported() && $('#sMic')) startMic($('#sAns'), $('#sMic'));
+    });
+  }
+  function finishQ(skipped){
+    stopTimer(); if (synth) synth.cancel();
+    $('#sDone').disabled = true; $('#sSkip').disabled = true;
+    afterMic(function(){ finishQ2(skipped); });
+  }
+  function finishQ2(skipped){
+    var d = run.Q[run.i];
+    var text = skipped ? '' : $('#sAns').value.trim();
+    run.ans[run.i] = text; run.tempi[run.i] = elapsed();
+    $('#sAns').readOnly = true; $('#sDone').disabled = true; $('#sSkip').disabled = true;
+    if ($('#sMic')) $('#sMic').disabled = true;
+    var after = '';
+    if (!run.hide) after += modelHtml(d, text);
+    after += '<div class="grade"><span class="small" style="align-self:center"><b>Autovalutazione:</b></span>' +
+      '<button class="btn alt sm" data-v="2" type="button">Bene</button><button class="btn alt sm" data-v="1" type="button">Parziale</button><button class="btn alt sm" data-v="0" type="button">Scoperta</button>' +
+      '<span class="grow"></span><button class="btn sm" id="sNext" type="button" disabled>'+(run.i < run.Q.length - 1 ? 'Domanda successiva →' : 'Vedi il riepilogo →')+'</button></div>';
+    var box = $('#sAfter'); box.innerHTML = after;
+    if (skipped) { run.voto[run.i] = 0; box.querySelector('[data-v="0"]').classList.add('on'); $('#sNext').disabled = false; }
+    box.querySelectorAll('[data-v]').forEach(function(b){ b.onclick = function(){ run.voto[run.i] = Number(b.dataset.v); box.querySelectorAll('[data-v]').forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on'); $('#sNext').disabled = false; }; });
+    box.addEventListener('click', function(e){ var a = e.target.closest('[data-act=askModel]'); if (a) copy(askModelText(d)); });
+    $('#sNext').onclick = function(){ if (run.i < run.Q.length - 1) { run.i++; renderStep(); window.scrollTo(0, $('#simRun').offsetTop - 10); } else summary(); };
+  }
+  function lab(v){ return v === 2 ? '<span class="chip ok">bene</span>' : v === 1 ? '<span class="chip warn">parziale</span>' : '<span class="chip err">scoperta</span>'; }
+  function summary(){
+    stopAll();
+    var tot = run.voto.reduce(function(a, b){ return a + b; }, 0);
+    var stima = Math.round(tot / (2 * run.Q.length) * 100) / 10;
+    var data = new Date().toLocaleDateString('it-IT');
+    S.storico.push({ data: data, titolo: run.titolo, stima: stima.toFixed(1) + '/10', ids: run.Q.map(function(d){ return d.id; }), voti: run.voto });
+    if (S.storico.length > 50) S.storico = S.storico.slice(-50);
+    run.Q.forEach(function(d, k){ if (run.voto[k] < 2) S.stato[d.id] = 'rip'; });
+    save();
+    var rows = run.Q.map(function(d, k){
+      return '<tr><td>'+(k+1)+'</td><td><b>'+esc(MAT[d.m].corto)+'</b><br><span class="small muted">'+esc(C[commOf(d)].nome)+'</span></td><td>'+esc(d.testo)+'</td><td>'+lab(run.voto[k])+'<br><span class="small muted mono">'+Math.floor((run.tempi[k]||0)/60)+'′'+String((run.tempi[k]||0)%60).padStart(2,'0')+'″</span></td><td><button class="btn alt sm" data-open="'+d.id+'" type="button">Rivedi</button></td></tr>';
+    }).join('');
+    $('#simRun').innerHTML = '<div class="box"><h2>Riepilogo — '+esc(run.titolo)+'</h2>' +
+      '<div class="row"><div class="big">'+stima.toFixed(1)+'</div><div class="small muted">stima su 10 dalla tua autovalutazione (bene = 2, parziale = 1, scoperta = 0). Per l\'abilitazione serve almeno 6/10. Non è il voto della commissione: per una correzione vera usa il pacchetto per Claude.</div></div>' +
+      '<table class="sum"><thead><tr><th>#</th><th>Materia</th><th>Domanda</th><th>Esito</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>' +
+      '<p class="small muted">Le domande non segnate «bene» sono state messe tra quelle da ripassare nello Studio.</p>' +
+      '<div class="row" style="margin-top:12px"><button class="btn red" id="pkt" type="button">Copia pacchetto per Claude</button><button class="btn alt" id="again" type="button">Nuova busta</button></div></div>';
+    $('#pkt').onclick = function(){ copy(pacchetto(data, stima)); };
+    $('#again').onclick = function(){ run = null; $('#simRun').innerHTML = ''; $('#simSetup').style.display = ''; simHist(); };
+    $('#simRun').querySelectorAll('[data-open]').forEach(function(b){ b.onclick = function(){ openQ(b.dataset.open); var k = run.Q.map(function(d){ return d.id; }).indexOf(b.dataset.open); if (k >= 0 && run.ans[k]) $('#qAns').value = run.ans[k]; }; });
+    simHist();
+  }
+  function pacchetto(data, stima){
+    var out = ['PACCHETTO ORALE — CdL Marche 2026 — richiesta di correzione',
+      'Data: ' + data + ' · ' + run.titolo + ' · stima da autovalutazione: ' + stima.toFixed(1) + '/10',
+      'Valuta ogni risposta come la commissione d\'esame (sufficiente o no, cosa manca, errori), con fonti verificate; indica cosa ripassare e dove in libreria.', ''];
+    run.Q.forEach(function(d, k){
+      out.push((k+1) + ') [' + MAT[d.m].nome + '] — commissario simulato: ' + C[commOf(d)].nome + ' — ' + d.testo + ' (id ' + d.id + ', ' + d.fonte + ')');
+      out.push('Mia risposta: ' + (run.ans[k] ? run.ans[k] : '(nessuna risposta)'));
+      out.push('Autovalutazione: ' + (['scoperta','parziale','bene'][run.voto[k]] || '—') + ' · tempo: ' + Math.floor((run.tempi[k]||0)/60) + ' min ' + ((run.tempi[k]||0)%60) + ' s');
+      out.push('');
+    });
+    return out.join('\n');
+  }
+
+  /* =====================================================
+     COMMISSIONE
+     ===================================================== */
+  var cOrder = ['rausei','terzoni','gallotta','sassi','diiulio','morganti','bucchini'];
+  $('#cgrid').innerHTML = cOrder.map(function(k){
+    var c = C[k];
+    var mats = O.materie.filter(function(m){ return m.comm === k; }).map(function(m){ return m.k; });
+    return '<div class="cm"><div class="who" style="margin:0"><div class="avatar">'+esc(initials(c.nome))+'</div><div><div class="n">'+esc(c.titolo+' '+c.nome)+'</div><div class="r">'+esc(c.ruolo)+'</div></div></div>' +
+      '<p><b>Aree probabili:</b> '+esc(c.aree)+'</p><p class="small muted">'+esc(c.nota)+'</p>' +
+      (mats.length ? '<div class="row" style="margin-top:8px">' + mats.map(function(m){ return '<button class="btn alt sm" data-gomat="'+m+'" type="button">Studia: '+esc(MAT[m].corto)+'</button>'; }).join('') + '</div>' : '') + '</div>';
+  }).join('');
+  $('#cgrid').addEventListener('click', function(e){ var b = e.target.closest('[data-gomat]'); if (!b) return; showTab('studio'); fMat.value = b.dataset.gomat; fillGroups(); renderList(); });
+
+  /* ---------- guida ---------- */
+  $('#gVer').textContent = 'versione ' + O.versione;
+  $('#btnReset').addEventListener('click', function(){ if (confirm('Azzerare progressi e storico salvati su questo dispositivo?')) { S.stato = {}; S.storico = []; save(); renderList(); renderProg(); simHist(); toast('Azzerato'); } });
+
+  renderProg(); renderList();
+})();
+</script>
+</body>
+</html>
