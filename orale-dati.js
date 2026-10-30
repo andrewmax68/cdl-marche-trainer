@@ -1,6 +1,6 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
-   Versione dati: 1.0 del 30/10/2026
+   Versione dati: 1.1 del 30/10/2026 (lotto 2: deontologia)
    - Domande: 23 buste ufficiali ITL Ancona, sessione 2025 (8 per busta)
      + integrazioni 2026 (stima, non domande ufficiali).
    - Risposte modello: solo dove le fonti sono state verificate
@@ -563,6 +563,329 @@ window.ORALE = (function () {
       ],
       aggancio: 'Collegamento col potere disciplinare: la violazione della procedura dell\'art. 7 St. lav. nel licenziamento disciplinare, per i vecchi assunti sopra soglia, porta all\'indennità di 6-12 mensilità (art. 18, c. 6).',
       fonti: 'Simone, Diritto del lavoro 2026, §§ 9.2-9.4, pp. 242-244, e p. 236. Art. 9 D.Lgs. 23/2015 dopo Corte cost. 118/2025: DA VERIFICARE.'
+    },
+    /* ===== Lotto 2 — Ordinamento e deontologia (30/10/2026) ===== */
+
+    'DEO-1': {
+      sintesi: 'Il consulente del lavoro svolge, per conto di qualsiasi datore di lavoro, tutti gli adempimenti previsti dalle norme vigenti per l\'amministrazione del personale dipendente, oltre a funzioni affini, connesse e conseguenti (art. 2 L. 12/1979).',
+      punti: [
+        ['Oggetto tipico (art. 2): adempimenti di lavoro, previdenza e assistenza per l\'amministrazione del personale: buste paga, LUL, comunicazioni obbligatorie, denunce contributive e fiscali, calcolo del costo del lavoro e del TFR.', ['adempimenti','amministrazione del personale','buste paga','libro unico','comunicazioni obbligatorie']],
+        ['Anche assistenza fiscale ai contribuenti senza redditi di lavoro autonomo o d\'impresa (730) e, su delega, ogni funzione affine, connessa e conseguente (art. 2).', ['730','assistenza fiscale','affine','connessa']],
+        ['Responsabilità personale: il consulente si avvale solo di propri dipendenti per i compiti esecutivi (principio di professionalità specifica).', ['responsabilita personale','propri dipendenti','professionalita specifica']],
+        ['Titolo riservato a chi è abilitato e iscritto all\'albo (art. 1, c. 3).', ['iscritto','albo','abilitat','titolo']],
+        ['Altri ambiti: certificazione dei contratti presso le commissioni dei Consigli provinciali (art. 76 D.Lgs. 276/2003), assistenza in conciliazione, CTU, Asse.Co., funzioni nelle procedure della crisi d\'impresa (artt. 37-40 Codice deontologico).', ['certificazione','conciliazione','asseverazione','crisi']]
+      ],
+      aggancio: 'Il datore di lavoro resta comunque responsabile degli obblighi di legge anche se affida gli adempimenti al consulente (art. 7 L. 12/1979).',
+      fonti: 'L. 12/1979, artt. 1, 2, 7 (art. 1 su Normattiva; altri articoli su consolidato Certifico vigente al 24/5/2022, fonte secondaria); Codice deontologico, artt. 37-40; Simone, Deontologia, pp. 1221, 1233-1234, 1238.'
+    },
+
+    'DEO-2': {
+      sintesi: 'Gli adempimenti di lavoro, previdenza e assistenza dei dipendenti, se non li cura direttamente il datore di lavoro, possono essere affidati solo ai consulenti del lavoro iscritti all\'albo e a pochi altri professionisti indicati dalla legge (art. 1, c. 1, L. 12/1979).',
+      punti: [
+        ['Soggetti ammessi (art. 1, c. 1): consulenti del lavoro; avvocati, dottori commercialisti, ragionieri e periti commerciali, che devono darne comunicazione all\'Ispettorato del lavoro.', ['avvocati','commercialisti','ragionieri','comunicazione','ispettorato']],
+        ['Imprese artigiane e piccole imprese, anche cooperative (c. 4): possono affidarli ai servizi o ai centri di assistenza delle associazioni di categoria, organizzabili tramite consulenti del lavoro.', ['artigian','piccole imprese','associazioni di categoria']],
+        ['CED (c. 5): solo calcolo e stampa e attività strumentali e accessorie, sempre assistiti da iscritti agli albi; le imprese con oltre 250 addetti possono affidare le stesse operazioni a CED, anche propri o esterni, sempre assistiti da iscritti.', ['ced','calcolo e stampa','250','assistiti']],
+        ['Restano riservate le attività valutative: inquadramento, scelta del CCNL, assunzioni e cessazioni, comunicazioni obbligatorie, tenuta del LUL (nota INL n. 4304 del 12/5/2025, riportata da dottrinalavoro.it).', ['valutativ','lul','4304','inquadramento']],
+        ['Chi esercita senza titolo commette il delitto di esercizio abusivo della professione (art. 348 c.p.).', ['348','abusiv']]
+      ],
+      aggancio: 'La riserva tutela il lavoratore e l\'interesse pubblico alla regolarità contributiva: è anche il fondamento della lotta all\'abusivismo condotta da INL e Ordini (protocollo INL-CNO del 29/3/2023).',
+      fonti: 'L. 12/1979, art. 1 (Normattiva); nota INL n. 4304/2025 riportata da dottrinalavoro.it (testo integrale della nota non letto); Simone, Deontologia, p. 1221.'
+    },
+
+    'DEO-3': {
+      sintesi: 'L\'iscrizione all\'albo è incompatibile con alcuni rapporti di lavoro e professioni indicati dall\'art. 4 L. 12/1979.',
+      punti: [
+        ['Dipendenti di Stato, Regioni, Province, Comuni e altri enti pubblici.', ['pubblic','stato','comuni','enti pubblici']],
+        ['Dipendenti di istituti di patronato o di associazioni sindacali dei lavoratori.', ['patronat','sindacal']],
+        ['Esattori di tributi, notai, giornalisti professionisti.', ['esattor','notai','giornalist']],
+        ['Conseguenza: cancellazione dall\'albo disposta dal Consiglio provinciale (art. 10); cessata l\'incompatibilità si può chiedere la reiscrizione, conservando l\'anzianità al netto dell\'interruzione.', ['cancellazione','reiscrizione','anzianita']],
+        ['Il lavoro subordinato privato non è di per sé incompatibile: il Codice deontologico regola chi esercita la professione in un rapporto subordinato (artt. 4 e 36).', ['subordinat','privato','36']]
+      ],
+      aggancio: 'La ratio è evitare conflitti d\'interesse: chi controlla o rappresenta i lavoratori (enti pubblici, patronati, sindacati) non può gestire gli adempimenti dei datori di lavoro.',
+      fonti: 'L. 12/1979, artt. 4 e 10 (consolidato Certifico al 24/5/2022, fonte secondaria); Codice deontologico, artt. 4 e 36; Simone, Deontologia, p. 1227.'
+    },
+
+    'DEO-4': {
+      sintesi: 'L\'albo dei consulenti del lavoro è tenuto in ogni provincia dal Consiglio provinciale; l\'iscritto può esercitare in tutto il territorio nazionale (art. 8 L. 12/1979).',
+      punti: [
+        ['Albo provinciale, nessuna iscrizione contemporanea in più albi; riporta dati anagrafici, titolo, residenza, domicilio professionale, data d\'iscrizione ed estremi dell\'abilitazione; l\'anzianità decorre dall\'iscrizione (art. 8).', ['provincial','territorio nazionale','piu albi','anzianita']],
+        ['Requisiti e documenti (art. 9): cittadinanza, abilitazione, titolo di studio, casellario e buona condotta, godimento dei diritti civili, contributo, domicilio professionale.', ['cittadinanza','abilitazione','diritti civili','casellario','domicilio']],
+        ['Non può iscriversi chi ha riportato condanne che comportano la radiazione (art. 9).', ['condanna','radiazione']],
+        ['Il Consiglio provinciale decide entro 2 mesi; il rigetto si pronuncia solo dopo aver sentito l\'interessato ed è impugnabile davanti al Consiglio nazionale entro 30 giorni.', ['due mesi','2 mesi','30 giorni','consiglio nazionale']],
+        ['Gli albi territoriali formano l\'albo unico nazionale, pubblico, con i provvedimenti disciplinari (art. 3 D.P.R. 137/2012).', ['albo unico','nazionale','137']]
+      ],
+      aggancio: 'L\'iscrizione è ciò che dà il titolo e la riserva di attività: dopo l\'abilitazione, senza iscrizione non si può esercitare.',
+      fonti: 'L. 12/1979, artt. 8-9 (consolidato Certifico, fonte secondaria); D.P.R. 137/2012, art. 3; Simone, Deontologia, pp. 1227, 1229-1230.'
+    },
+
+    'DEO-5': {
+      sintesi: 'Il DUI, documento unico di identificazione, è il tesserino professionale del consulente del lavoro, predisposto dal Consiglio nazionale e rilasciato dal Consiglio provinciale.',
+      punti: [
+        ['È documento di riconoscimento valido nel territorio nazionale ai sensi dell\'art. 1, lett. c), D.P.R. 445/2000.', ['riconoscimento','445']],
+        ['Contiene la firma digitale o il certificato di sottoscrizione con ruolo, per firmare digitalmente i documenti informatici.', ['firma digitale','ruolo']],
+        ['È associato a una casella di posta elettronica certificata, nata con l\'obbligo di PEC per i professionisti (L. 2/2009).', ['pec','posta elettronica certificata']],
+        ['Serve a identificare il consulente nei servizi telematici degli enti (INPS, INAIL, Ministero), dove opera su delega scritta dei datori di lavoro.', ['telematic','delega','inps']]
+      ],
+      aggancio: 'Con l\'informatizzazione degli adempimenti il consulente è diventato interlocutore privilegiato degli enti: l\'identificazione certa è il presupposto per operare per conto dei clienti.',
+      fonti: 'Simone, Deontologia, p. 1235 (unica fonte letta: estremi del DUI da riscontrare sul sito del Consiglio nazionale).'
+    },
+
+    'DEO-6': {
+      sintesi: 'Il consulente che commette abusi o mancanze nell\'esercizio della professione, o fatti non conformi alla dignità e al decoro, è sottoposto a procedimento disciplinare; le pene sono censura, sospensione fino a due anni e radiazione (artt. 26-27 L. 12/1979).',
+      punti: [
+        ['Avvio (art. 26): d\'ufficio, su richiesta del pubblico ministero o dell\'interessato; oggi istruisce e decide il Consiglio di disciplina territoriale (art. 8 D.P.R. 137/2012).', ['d\'ufficio','pubblico ministero','consiglio di disciplina']],
+        ['Censura (art. 28): biasimo formale per mancanze di non lieve entità che non ledono decoro e dignità.', ['censura','biasimo']],
+        ['Sospensione (art. 29): fino a 2 anni per abusi o mancanze gravi; di diritto in alcuni casi, tra cui l\'interdizione dai pubblici uffici fino a 3 anni e la morosità oltre 12 mesi nei contributi; almeno un mese se un censurato ricade nella violazione.', ['sospensione','due anni','2 anni','morosita']],
+        ['Radiazione (artt. 30-31): per grave compromissione della reputazione e della dignità; di diritto per condanne per alcuni delitti; riammissione dopo almeno 6 anni e, se da condanna, con la riabilitazione (art. 38).', ['radiazione','di diritto','sei anni','6 anni','riabilitazione']],
+        ['Proporzionalità e unicità: sanzione adeguata alla gravità e alla reiterazione; una sola sanzione per più infrazioni contestate nello stesso procedimento (artt. 44-45 Codice).', ['proporzion','unica','reiterazione']]
+      ],
+      aggancio: 'Il procedimento penale per lo stesso fatto comporta anche quello disciplinare, salvo proscioglimento perché il fatto non sussiste o l\'imputato non l\'ha commesso (art. 32 L. 12/1979).',
+      fonti: 'L. 12/1979, artt. 26-32 e 38 (consolidato Certifico, fonte secondaria); D.P.R. 137/2012, art. 8; Codice deontologico, artt. 44-45; Simone, Deontologia, p. 1244.'
+    },
+
+    'DEO-22': {
+      sintesi: 'La potestà disciplinare non è più esercitata dal Consiglio provinciale, che la aveva in origine (art. 14 L. 12/1979): dal D.P.R. 137/2012 la esercitano i Consigli di disciplina territoriali istituiti presso ogni Consiglio provinciale.',
+      punti: [
+        ['Consiglio di disciplina territoriale (art. 8 D.P.R. 137/2012): tanti componenti quanti i consiglieri provinciali, nominati dal Presidente del Tribunale su un elenco di nomi doppio proposto dal Consiglio provinciale; incompatibili con le cariche consiliari.', ['consiglio di disciplina','presidente del tribunale','elenco','doppio']],
+        ['Decide in collegi di tre; lo presiede il componente con maggiore anzianità d\'iscrizione.', ['collegi di tre','anzianita']],
+        ['Il Consiglio provinciale diventa parte: se apprende fatti disciplinarmente rilevanti li segnala subito al Consiglio di disciplina.', ['parte','segnala']],
+        ['Procedimento: fascicolo, delibera motivata di avvio notificata all\'incolpato, conclusione entro 60 giorni prorogabili di altri 60, discussione con almeno 20 giorni di preavviso, diritto di difesa.', ['60 giorni','20 giorni','difesa','istruttori']],
+        ['Impugnazioni: ricorso al Consiglio di disciplina nazionale entro 30 giorni dalla notifica; contro questa decisione, Tribunale di Roma entro 60 giorni.', ['30 giorni','nazionale','tribunale di roma']]
+      ],
+      aggancio: 'La separazione tra funzione amministrativa (Consiglio provinciale) e funzione disciplinare (Consiglio di disciplina) garantisce terzietà: la regola vale per tutti gli ordini professionali dopo la riforma del 2012.',
+      fonti: 'D.P.R. 137/2012, art. 8 (copia unito.it); L. 12/1979, art. 14; Simone, Deontologia, pp. 1244-1246 (che riporta il Regolamento dei Consigli di disciplina, delibera CNO n. 44/2024, e il Regolamento delle procedure, delibera n. 60/2024 modificata dalla n. 122/2024: testi non letti).'
+    },
+
+    'DEO-23': {
+      sintesi: 'La formazione continua è un obbligo giuridico e deontologico di tutti gli iscritti: ogni professionista deve curare l\'aggiornamento della propria competenza e la violazione è illecito disciplinare (art. 7 D.P.R. 137/2012).',
+      punti: [
+        ['Fonte: art. 7 D.P.R. 137/2012; art. 9, c. 4, Codice deontologico; Regolamento del Consiglio nazionale, delibera n. 117 del 24/10/2024, in vigore dal 1° gennaio 2025.', ['137','117','regolamento','2025']],
+        ['Vale per tutti gli iscritti, anche se non esercitano e anche se sospesi; i crediti si riproporzionano in casi come malattia, infortunio, maternità o paternità.', ['tutti gli iscritti','sospesi','riproporzion','maternita']],
+        ['Periodo di riferimento biennale con un numero minimo di crediti; corsi, seminari, convegni e formazione a distanza, gestiti sulla piattaforma del Consiglio nazionale (il numero dei crediti va letto sul Regolamento).', ['biennal','crediti','webinar','distanza','piattaforma']],
+        ['Organizzatori: Consigli provinciali, Consiglio nazionale, università e altri soggetti autorizzati.', ['consigli provinciali','universita','autorizzat']],
+        ['Il Consiglio provinciale segnala l\'inadempiente al Consiglio di disciplina per il procedimento.', ['illecito disciplinare','segnal','consiglio di disciplina']]
+      ],
+      aggancio: 'Nel lavoro le regole cambiano di continuo (nel 2026: D.L. 62/2026, D.Lgs. 96/2026, legge di bilancio): la formazione è la condizione per il dovere di competenza verso il cliente.',
+      fonti: 'D.P.R. 137/2012, art. 7; Codice deontologico, art. 9; Simone, Deontologia, pp. 1235-1236. Numero minimo di crediti del biennio: DA VERIFICARE sul Regolamento CNO.'
+    },
+
+    'DEO-7': {
+      sintesi: 'Il Codice deontologico (delibera del Consiglio nazionale n. 101 del 14/7/2021, modificata con delibera n. 49 del 21/3/2024) serve a tutelare la legalità e la dignità del lavoro e l\'affidamento della collettività e dei clienti nella professione.',
+      punti: [
+        ['Il consulente tutela in ogni sede la legalità e la dignità del lavoro, dato il rilievo costituzionale della professione; promuove i diritti dell\'uomo e il diritto al lavoro (art. 1).', ['legalita','dignita del lavoro','diritto al lavoro','costituzion']],
+        ['Le norme deontologiche garantiscono affidamento della collettività e della clientela, correttezza, trasparenza, qualità della prestazione e il ruolo di sussidiarietà della professione (art. 1, c. 4).', ['affidamento','trasparenza','qualita','sussidiarieta']],
+        ['Scopo dichiarato (art. 2): garantire gli interessi generali, tutelare l\'affidamento della clientela, assicurare decoro, dignità e rispetto della legalità.', ['interessi generali','decoro']],
+        ['Le regole specifiche sono esemplificazioni: non limitano i principi generali (art. 46).', ['esemplificaz','principi generali']],
+        ['Si applica anche alle condotte precedenti all\'entrata in vigore se più favorevole all\'incolpato, salvo sanzione definitiva (art. 47).', ['piu favorevol','entrata in vigore']]
+      ],
+      aggancio: 'La violazione del Codice è il presupposto del procedimento disciplinare (art. 44): il Codice è la «misura» del comportamento professionale.',
+      fonti: 'Codice deontologico, artt. 1, 2, 44, 46, 47 (testo nel Simone pp. 1247-1257, riscontrato sulla copia pubblicata dall\'Ordine di Milano).'
+    },
+
+    'DEO-8': {
+      sintesi: 'Il Codice deontologico si applica ai consulenti del lavoro e alle società tra professionisti iscritte all\'albo; i praticanti vi conformano la condotta per quanto compatibile (art. 2).',
+      punti: [
+        ['Consulenti del lavoro iscritti all\'albo, in forma individuale, associata o societaria (artt. 2-3).', ['iscritti','individuale','associat']],
+        ['Società tra professionisti iscritte all\'albo (STP): rispondono anche in concorso con il professionista se la violazione dipende da loro direttive.', ['societa tra professionisti','stp']],
+        ['Praticanti iscritti al registro, per quanto compatibili (art. 2, c. 3; art. 23).', ['praticant','per quanto compatibil']],
+        ['Anche chi esercita in un rapporto di lavoro subordinato (art. 4): se gli si chiede una condotta contraria al Codice deve comunicare per iscritto il proprio dissenso (art. 36).', ['subordinat','dissenso','36']],
+        ['Anche il consulente amministratore o socio di società che erogano servizi nel settore, per i fatti che non impedisce (art. 20).', ['amministratore','societa','20']]
+      ],
+      aggancio: 'Il Codice segue la persona in ogni forma di esercizio: non si può aggirarlo spostando l\'attività in una società di servizi.',
+      fonti: 'Codice deontologico, artt. 2-4, 20, 23, 36; Simone, Deontologia, pp. 1238, 1243.'
+    },
+
+    'DEO-9': {
+      sintesi: 'Il dovere di dignità e decoro impone di osservare probità, dignità e decoro in ogni contesto, non solo al lavoro, per salvaguardare la propria reputazione e l\'immagine della professione (art. 4 Codice).',
+      punti: [
+        ['Vale nell\'attività individuale, associata, societaria e nel lavoro subordinato, e in ogni contesto anche privato.', ['ogni contesto','probita','reputazione']],
+        ['Professionalità specifica: il consulente risponde personalmente dei servizi resi e si avvale solo di propri dipendenti per i compiti esecutivi (art. 2 L. 12/1979).', ['professionalita specifica','personalmente','propri dipendenti']],
+        ['L\'attività va resa sotto la propria direzione e responsabilità personale (art. 7, c. 3, Codice).', ['direzione','responsabilita personale']],
+        ['Uso del titolo: l\'attività va esercitata indicando il titolo; usare titoli non conseguiti viola i doveri di decoro, lealtà e corretta informazione (art. 15).', ['titolo','non conseguit']]
+      ],
+      aggancio: 'Le mancanze contro dignità e decoro sono anche il presupposto generale della responsabilità disciplinare (art. 26 L. 12/1979).',
+      fonti: 'Codice deontologico, artt. 4, 7, 15; L. 12/1979, artt. 2 e 26; Simone, Deontologia, pp. 1234, 1243.'
+    },
+
+    'DEO-10': {
+      sintesi: 'Lealtà, correttezza, fedeltà e indipendenza sono doveri generali del Codice deontologico (artt. 5-7): regolano i rapporti con cliente, terzi, colleghi e istituzioni e garantiscono l\'autonomia di giudizio.',
+      punti: [
+        ['Lealtà e correttezza verso il cliente e i terzi coinvolti nel rapporto professionale, e verso colleghi e istituzioni di categoria (art. 5).', ['lealta','correttezza','terzi','colleghi']],
+        ['Fedeltà: il consulente antepone gli interessi del cliente ai propri, nel rispetto della legge e del Codice (art. 6).', ['fedelta','anteporre','interessi del cliente']],
+        ['Indipendenza: autonomia di giudizio tecnico e intellettuale, difesa da condizionamenti esterni (art. 7, c. 1).', ['indipendenza','autonomia','condizionament']],
+        ['Diligenza: coscienza e diligenza, qualità della prestazione (art. 7, c. 2).', ['diligenza','qualita']],
+        ['Limite della fedeltà: non si suggeriscono atti nulli, illeciti o fraudolenti e si rifiuta l\'incarico che concorre a un\'operazione illecita (art. 24).', ['illecit','fraudolent','rifiut']]
+      ],
+      aggancio: 'Esempio pratico: il cliente chiede di mascherare lavoro irregolare con un part-time fittizio; la fedeltà al cliente si ferma davanti alla legalità (artt. 1 e 24).',
+      fonti: 'Codice deontologico, artt. 1, 5-7, 24.'
+    },
+
+    'DEO-11': {
+      sintesi: 'Il consulente è tenuto al segreto professionale su tutti i dati e le informazioni del cliente, anche dopo la fine dell\'incarico (art. 6 L. 12/1979; art. 25 Codice), e deve garantire la riservatezza anche dei suoi collaboratori (art. 8 Codice).',
+      punti: [
+        ['Segreto su dati e informazioni forniti dal cliente o appresi per il mandato; permane anche a incarico concluso (art. 25).', ['segreto','permane','concluso']],
+        ['Riservatezza: il consulente deve vigilare perché la mantengano anche dipendenti, soci, praticanti e chiunque operi nello studio (art. 8).', ['riservatezza','dipendenti','praticanti','vigilare']],
+        ['Rilievo penale: rivelazione di segreto professionale (art. 622 c.p.); facoltà di astenersi dal testimoniare su quanto conosciuto per ragione della professione (art. 200 c.p.p.), come riporta il Simone.', ['622','200','testimon']],
+        ['Privacy (Reg. UE 2016/679): il consulente è titolare del trattamento per i propri dati e clienti persone fisiche, responsabile quando tratta i dati dei dipendenti dei clienti su incarico (Garante, nota del 22/1/2019, riportata dal Simone).', ['titolare','responsabile','garante','gdpr','privacy']]
+      ],
+      aggancio: 'Il segreto riguarda anche i social e la pubblicità: la pubblicità informativa non deve violare il segreto professionale (art. 35).',
+      fonti: 'L. 12/1979, art. 6 (consolidato Certifico, fonte secondaria); Codice deontologico, artt. 8, 25, 35; Simone, Deontologia, p. 1234.'
+    },
+
+    'DEO-12': {
+      sintesi: 'Il dovere di competenza vieta di accettare incarichi che non si sanno svolgere e impone organizzazione e aggiornamento; il dovere di informativa impone di spiegare al cliente l\'incarico, il compenso e la polizza (artt. 9, 10, 27, 30 Codice).',
+      punti: [
+        ['Non accettare incarichi che si sa di non poter svolgere con la necessaria competenza (art. 9, c. 1).', ['non accettare','necessaria competenza']],
+        ['Organizzazione adeguata e aggiornamento costante, secondo il Regolamento sulla formazione continua (art. 9).', ['organizzazione','aggiornament','formazione continua']],
+        ['Informazione sull\'attività e sullo studio secondo correttezza e verità, entro la natura e i limiti dell\'obbligazione (art. 10).', ['verita','natura e i limiti']],
+        ['Al cliente: oggetto, natura, compensi e polizza per iscritto (art. 27); elementi essenziali dell\'incarico spiegati con chiarezza (art. 30); preventivo con le voci di costo (art. 9 D.L. 1/2012, riportato dal Simone).', ['per iscritto','preventivo','compens','polizza']],
+        ['Se la prestazione diventa troppo complessa, il consulente informa il cliente e chiede di essere sostituito o affiancato (art. 31, c. 4).', ['sostituito','affiancato']]
+      ],
+      aggancio: 'Competenza e informativa sono anche le basi della responsabilità civile verso il cliente e della polizza obbligatoria (art. 11).',
+      fonti: 'Codice deontologico, artt. 9, 10, 11, 27, 30, 31; Simone, Deontologia, pp. 1236-1237.'
+    },
+
+    'DEO-13': {
+      sintesi: 'Il consulente deve avere una polizza per i danni causati al cliente e comunicarne gli estremi (art. 11 Codice; art. 5 D.P.R. 137/2012); la pubblicità è ammessa con ogni mezzo, purché informativa, veritiera e corretta (art. 35 Codice; art. 4 D.P.R. 137/2012).',
+      punti: [
+        ['Polizza per i danni al cliente, comprese la custodia di documenti e valori (art. 11).', ['polizza','assicurazione','custodia']],
+        ['Estremi, massimale e variazioni comunicati al cliente all\'assunzione dell\'incarico; esercitare senza copertura è illecito disciplinare.', ['massimale','illecito disciplinare','estremi']],
+        ['Pubblicità informativa con ogni mezzo, anche social: attività, specializzazioni, titoli, struttura dello studio, compensi.', ['ogni mezzo','social','specializzazion']],
+        ['Funzionale all\'oggetto, veritiera e corretta; non equivoca, ingannevole o denigratoria; rispetto del segreto; titolo e denominazione dello studio sempre indicati (art. 35).', ['veritiera','ingannevole','denigratoria','titolo']],
+        ['La violazione è illecito disciplinare e rileva anche per il Codice del consumo (art. 4 D.P.R. 137/2012).', ['codice del consumo','206']]
+      ],
+      aggancio: 'Vietato aggirare le regole pubblicizzando lo studio tramite società commerciali o enti terzi (art. 35, c. 5).',
+      fonti: 'Codice deontologico, artt. 11 e 35; D.P.R. 137/2012, artt. 4-5 (copia unito.it).'
+    },
+
+    'DEO-14': {
+      sintesi: 'Nei rapporti con colleghi e altri professionisti il Codice chiede correttezza, riservatezza e il passaggio dall\'Ordine prima del conflitto; vieta di lavorare con soggetti non abilitati (artt. 12-13).',
+      punti: [
+        ['Divieto di accettare incarichi insieme a soggetti non abilitati per prestazioni riservate, o di favorirne l\'attività (art. 12).', ['non abilitat','riservat','favorir']],
+        ['Prima di agire in giudizio contro un collega per fatti professionali, si interessa il Consiglio provinciale (art. 13, c. 1).', ['consiglio provinciale','giudizio','prima di']],
+        ['Vietato registrare telefonate con un collega e divulgare la corrispondenza riservata; vietate espressioni sconvenienti od offensive (art. 13).', ['registrare','corrispondenza','offensiv']],
+        ['Le stesse regole valgono con altri professionisti se i loro codici le prevedono in reciprocità (art. 13, c. 4).', ['reciprocita','altri professionisti']],
+        ['Incarico congiunto: informazione reciproca, strategia condivisa, compensi concordati prima con il cliente (art. 28).', ['incarico congiunto','informati','compenso']]
+      ],
+      aggancio: 'Il divieto dell\'art. 12 è il versante deontologico della lotta all\'abusivismo: il consulente non può «coprire» un CED o un soggetto non abilitato.',
+      fonti: 'Codice deontologico, artt. 12, 13, 28.'
+    },
+
+    'DEO-15': {
+      sintesi: 'La concorrenza tra professionisti deve svolgersi secondo i principi dell\'ordinamento integrati dal Codice; l\'art. 14 elenca i comportamenti che possono costituire concorrenza sleale.',
+      punti: [
+        ['Diffondere notizie o giudizi idonei a screditare un professionista.', ['discredito','screditar','denigra']],
+        ['Compiere atti diretti soltanto a danneggiare l\'attività di un altro professionista.', ['pregiudizio','danneggiar']],
+        ['Usare segni distintivi dello studio che creano confusione con un altro professionista.', ['segni distintivi','confusione']],
+        ['Sottrarre i clienti del collega sospeso o impedito che si sta sostituendo.', ['sostituire','sospeso','distrazione']],
+        ['Vantare parentele o influenze presso le istituzioni per trarne utilità.', ['vanto','influenza','istituzioni']]
+      ],
+      aggancio: 'Il consulente sospeso che continua a lavorare fa concorrenza sleale: deve farsi sostituire e non può accettare incarichi (art. 24, c. 3 e 5; Simone p. 1244).',
+      fonti: 'Codice deontologico, artt. 14, 16, 24; Simone, Deontologia, p. 1244.'
+    },
+
+    'DEO-16': {
+      sintesi: 'I rapporti con i colleghi si basano su lealtà e correttezza (art. 5) e su regole precise per il subentro, la sostituzione e l\'incarico congiunto (artt. 13, 16, 17, 27, 28).',
+      punti: [
+        ['Prima del contenzioso con un collega, passaggio dal Consiglio provinciale; niente registrazioni né divulgazione di corrispondenza riservata (art. 13).', ['consiglio provinciale','registra','riservat']],
+        ['Subentro: il nuovo consulente comunica subito la propria nomina al collega sostituito (art. 17); non accetta incarichi della stessa natura da un cliente del collega senza informarlo e verifica che il cliente abbia receduto (art. 27, c. 3).', ['subentr','informare','recedut','nomina']],
+        ['Il consulente sostituito collabora con il subentrante perché il cliente non subisca pregiudizio (art. 27, c. 4).', ['collabora','subentrante','pregiudizio']],
+        ['Niente controlli su clienti di un collega senza che questo sia stato preavvisato dal cliente (art. 27, c. 5).', ['controlli','preavvisat']],
+        ['Sostituzione del collega deceduto, sospeso o impedito: particolare diligenza verso eredi, clienti e collaboratori e comunicazione al Consiglio provinciale (art. 16).', ['deceduto','sostituzione','eredi']]
+      ],
+      aggancio: 'Sono le regole che contano di più nella pratica quotidiana di uno studio, per esempio quando un cliente cambia consulente a metà anno.',
+      fonti: 'Codice deontologico, artt. 5, 13, 16, 17, 27, 28.'
+    },
+
+    'DEO-17': {
+      sintesi: 'Verso praticanti, collaboratori e dipendenti il consulente ha doveri di formazione, trasparenza, correttezza ed equo compenso (art. 22 Codice).',
+      punti: [
+        ['Al praticante: addestramento teorico e pratico, comprese le regole deontologiche; partecipazione ai corsi per l\'esame (art. 22, c. 1-2).', ['addestramento','regole deontologiche','corsi']],
+        ['Rapporto chiaro e trasparente, opportunamente scritto con il patto formativo; attestazione veritiera della pratica (art. 22, c. 3-4).', ['patto formativo','veridicita','trasparen']],
+        ['Rimborso spese forfettario obbligatorio dopo i primi sei mesi di tirocinio (art. 22, c. 5).', ['rimborso','sei mesi','6 mesi']],
+        ['Dipendenti e collaboratori: comportamento corretto, idonee condizioni di lavoro, formazione, equo compenso (art. 22, c. 6-8).', ['equo compenso','condizioni di lavoro','collaborator']],
+        ['Tirocinio: 18 mesi, affidatario con almeno 5 anni d\'iscrizione, di regola non più di 3 praticanti (art. 6 D.P.R. 137/2012).', ['18 mesi','cinque anni','5 anni','tre praticanti']]
+      ],
+      aggancio: 'Il praticante osserva gli stessi doveri deontologici, per quanto compatibili (art. 23): anche lui risponde disciplinarmente.',
+      fonti: 'Codice deontologico, artt. 22-23; D.P.R. 137/2012, art. 6; Simone, Deontologia, pp. 1223-1224.'
+    },
+
+    'DEO-18': {
+      sintesi: 'L\'incarico si conferisce con le modalità di legge, specificando per iscritto oggetto, natura, compensi ed estremi della polizza (art. 27 Codice).',
+      punti: [
+        ['Forma scritta con oggetto, natura, compensi e polizza; l\'incarico verbale va confermato per iscritto, anche per le modifiche (art. 27, c. 1-2).', ['per iscritto','oggetto','compensi','polizza','conferma']],
+        ['Prima di accettare: identità di chi conferisce l\'incarico e del titolare effettivo (art. 27, c. 6).', ['identita','titolare effettivo']],
+        ['Cliente già assistito da un collega: informarlo e verificare il recesso dal precedente rapporto (art. 27, c. 3).', ['collega','recesso']],
+        ['Rifiutare l\'incarico se l\'attività può concorrere a un\'operazione illecita (art. 24, c. 4) o in conflitto di interessi (art. 26); accettarlo solo se si ha la competenza (art. 9).', ['illecit','conflitto di interessi','competenza']],
+        ['Compenso concordato liberamente (art. 2233 c.c.), senza tariffe minime; nei rapporti soggetti alla L. 49/2023 deve essere equo; preventivi opportunamente scritti (art. 29).', ['2233','equo compenso','49/2023','preventiv']]
+      ],
+      aggancio: 'La lettera d\'incarico è anche la tutela del consulente: delimita la responsabilità e prova il compenso.',
+      fonti: 'Codice deontologico, artt. 9, 24, 26, 27, 29.'
+    },
+
+    'DEO-19': {
+      sintesi: 'Nell\'esecuzione dell\'incarico il consulente usa la diligenza e la perizia richieste dalle norme del rapporto professionale e informa con chiarezza il cliente (art. 30 Codice).',
+      punti: [
+        ['Diligenza e perizia richieste dalle norme che regolano il rapporto, nel luogo e nel tempo in cui si svolge (art. 30, c. 1).', ['diligenza','perizia']],
+        ['Informare il cliente con semplicità e chiarezza sugli elementi essenziali, perché sia consapevole della prestazione (art. 30, c. 2).', ['informa','chiarezza','consapevol']],
+        ['Rettificare errori, inesattezze od omissioni, a proprio carico se imputabili (art. 30).', ['rettific','errori','omission']],
+        ['Non consigliare azioni inutilmente gravose né atti nulli, illeciti o fraudolenti (art. 24, c. 2); la trascuratezza intenzionale degli interessi del cliente è illecito disciplinare (art. 32).', ['inutilmente gravos','trascuratezza']],
+        ['Acconti e rendiconto: può chiedere acconti proporzionati e deve consegnare, su richiesta, la nota dettagliata di spese e acconti (art. 34).', ['acconti','rendiconto','nota dettagliata']]
+      ],
+      aggancio: 'Esempio: un errore in un F24 o in un UniLav va corretto subito, con ravvedimento se serve, informando il cliente; se l\'errore è suo, il costo è del consulente (art. 30).',
+      fonti: 'Codice deontologico, artt. 24, 30, 32, 34.'
+    },
+
+    'DEO-20': {
+      sintesi: 'Quando il cliente lo chiede, il consulente deve restituirgli senza indugio i documenti relativi all\'incarico; può trattenerne solo una copia, e solo per il compenso o per tutelarsi (art. 33 Codice).',
+      punti: [
+        ['Restituzione senza indugio dei documenti su richiesta del cliente (art. 33, c. 1).', ['restitu','senza indugio']],
+        ['Copia trattenibile anche senza consenso solo per liquidare il compenso, fino al saldo, o per tutelare la propria posizione (art. 33, c. 2).', ['copia','saldo','tutela']],
+        ['Cessazione: avvisare tempestivamente e interrompere con un preavviso adeguato, senza pregiudizio per il cliente (art. 31, c. 3).', ['preavviso','pregiudizio','cessazione']],
+        ['Collaborazione con il collega subentrante (art. 27, c. 4) e segreto che continua dopo l\'incarico (art. 25, c. 2).', ['subentrante','segreto']],
+        ['Prima di agire in giudizio contro il cliente, il consulente rinuncia all\'incarico (art. 31, c. 5).', ['rinunci','giudizio']]
+      ],
+      aggancio: 'Il mancato pagamento non autorizza a trattenere gli originali del cliente: si trattiene al più una copia, e solo fino al saldo.',
+      fonti: 'Codice deontologico, artt. 25, 27, 31, 33.'
+    },
+
+    'DEO-21': {
+      sintesi: 'La pubblicità informativa è ammessa con ogni mezzo, anche social network, su attività, specializzazioni, titoli, struttura dello studio e compensi, purché veritiera, corretta e funzionale all\'oggetto (art. 35 Codice; art. 4 D.P.R. 137/2012).',
+      punti: [
+        ['Oggetto ammesso: attività, specializzazioni, titoli attinenti, struttura dello studio, compensi richiesti (art. 35, c. 1).', ['specializzazion','titoli','struttura','compensi']],
+        ['Anche tramite mass media e social network: funzionale all\'oggetto, veritiera e corretta, rispettosa del segreto, non equivoca, ingannevole o denigratoria (art. 35, c. 2).', ['social','veritiera','ingannevol','denigrator']],
+        ['Trasparenza verificata dall\'Ordine; informazione completa con titolo professionale e denominazione dello studio (art. 35, c. 3-4).', ['ordine','titolo professionale','denominazione']],
+        ['Vietato associare la propria immagine a società commerciali o enti per aggirare le regole (art. 35, c. 5).', ['societa commercial','eludere']],
+        ['Nei rapporti con i media: equilibrio, misura, discrezione e riservatezza (art. 10, c. 4).', ['media','equilibrio','misura']]
+      ],
+      aggancio: 'Tema caro all\'Ordine di Ancona, che ne ha discusso in convegno (social media e deontologia, 2022): un post con nomi di clienti o casi riconoscibili viola il segreto.',
+      fonti: 'Codice deontologico, artt. 10 e 35; D.P.R. 137/2012, art. 4; edotto.com, 4/5/2022 (convegno dell\'Ordine di Ancona).'
+    },
+
+    'DEO-X1': {
+      sintesi: 'Esercita abusivamente chi svolge senza titolo gli adempimenti riservati dall\'art. 1 L. 12/1979; i CED possono solo calcolare, stampare e svolgere attività accessorie, sempre assistiti da un professionista abilitato.',
+      punti: [
+        ['Riserva (art. 1, c. 1): consulenti del lavoro e, con comunicazione all\'Ispettorato, avvocati, commercialisti, ragionieri e periti commerciali.', ['riserva','comunicazione','avvocati']],
+        ['CED (art. 1, c. 5): calcolo e stampa e attività strumentali e accessorie, assistiti da iscritti agli albi.', ['calcolo e stampa','assistit','ced']],
+        ['Restano riservate le attività valutative: CCNL e inquadramento, assunzioni e cessazioni, comunicazioni obbligatorie, LUL, assistenza nelle ispezioni (nota INL n. 4304 del 12/5/2025, riportata da dottrinalavoro.it).', ['valutativ','lul','4304','inquadramento']],
+        ['Sanzioni: delitto di esercizio abusivo (art. 348 c.p., reclusione da 6 mesi a 3 anni e multa da 10.000 a 50.000 euro secondo la stessa fonte); l\'ispettore può anche usare la disposizione (art. 14 D.Lgs. 124/2004).', ['348','reclusione','disposizione','124']],
+        ['Deontologia: il consulente non può lavorare con soggetti non abilitati (art. 12 Codice) e collabora con l\'Ordine contro l\'abusivismo (art. 18).', ['non abilitat','abusivismo','18']]
+      ],
+      aggancio: 'È il terreno d\'incontro tra il Presidente (vigilanza INL) e i tre commissari dell\'Ordine: protocollo INL-Consiglio nazionale del 29/3/2023 per mappare i CED.',
+      fonti: 'L. 12/1979, art. 1 (Normattiva); nota INL n. 4304/2025 e art. 348 c.p. come riportati da dottrinalavoro.it (testi non letti in originale); Codice deontologico, artt. 12 e 18.'
+    },
+
+    'DEO-X2': {
+      sintesi: 'L\'Asse.Co. è l\'asseverazione di conformità dei rapporti di lavoro: un sistema terzo, indipendente e qualificato con cui un consulente accreditato verifica la regolarità retributiva e contributiva di un datore di lavoro (Protocollo Ministero del lavoro-Consiglio nazionale del 15/1/2014, rinnovato il 4/3/2016).',
+      punti: [
+        ['Regolarità retributiva (rispetto del CCNL applicato) e contributiva (denunce e versamenti) verificata sui 12 mesi precedenti; il certificato vale 12 mesi se i requisiti permangono.', ['retributiva','contributiva','12 mesi','dodici mesi']],
+        ['Regolamento del Consiglio nazionale approvato il 23/7/2025 (delibera n. 225), in vigore dal 15/9/2025; datore «asseverabile» con almeno un rapporto di lavoro da almeno 6 mesi.', ['225','2025','sei mesi','6 mesi']],
+        ['Consulente asseveratore accreditato dal Consiglio nazionale: non dipendente, iscritto da almeno 24 mesi, corso specifico, nessuna sanzione disciplinare definitiva negli ultimi 24 mesi, formazione in regola.', ['accreditat','24 mesi','corso']],
+        ['Procedura sulla piattaforma telematica: istruttoria del Comitato di asseverazione, delibera del Consiglio nazionale, notizia all\'INL per la pubblicazione; divieto di altri incarichi dal datore asseverato per 3 anni se cliente di altro consulente.', ['piattaforma','comitato','inl','tre anni','3 anni']],
+        ['Il consulente rilascia una dichiarazione di responsabilità ai sensi del D.P.R. 445/2000; la mendacità è illecito disciplinare (art. 38 Codice).', ['445','dichiarazione di responsabilita','mendac']]
+      ],
+      aggancio: 'Attualità: il TAR Lazio ha respinto il ricorso dei commercialisti contro il diniego dell\'INL di estendere loro l\'asseverazione (sentenza n. 12539 del 9/7/2026, estremi da edotto.com, fonte secondaria).',
+      fonti: 'Simone, Deontologia, pp. 1238-1241 (riporta Protocolli e Regolamento Asse.Co.: testi non letti); Codice deontologico, art. 38; TAR Lazio 12539/2026 da edotto.com e fiscal-focus.it.'
     }
   };
 
@@ -587,7 +910,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.0 · 30/10/2026',
+    versione: '1.1 · 30/10/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
