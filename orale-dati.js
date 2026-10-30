@@ -1,6 +1,6 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
-   Versione dati: 1.2 del 30/10/2026 (lotto 2: deontologia; DEO-21 rivista)
+   Versione dati: 1.3 del 30/10/2026 (DEO-21 rivista; + 135 argomenti ufficiali 2022 di altra sede)
    - Domande: 23 buste ufficiali ITL Ancona, sessione 2025 (8 per busta)
      + integrazioni 2026 (stima, non domande ufficiali).
    - Risposte modello: solo dove le fonti sono state verificate
@@ -59,6 +59,7 @@ window.ORALE = (function () {
     'DL.Vigilanza e illeciti':[['P1/P1_Mappe_Poteri_ispettivi.md', 'lo strumento richiesto'], ['P1_Cap03_Poteri_ispettivi.docx', ''], ['124_2004.pdf', 'artt. 11-14']],
     'DL.Salute e sicurezza':  [['P1_Cap04_Sicurezza_vigilanza.docx', ''], ['81_2008_ESTRATTO_TitoloI_XII.md', 'artt. 15, 17, 28-29']],
     'DL.Diritto sindacale':   [['P1_Cap05_Prossimita.docx', 'per la prossimità'], ['P1_Cap01_DL62_2026.docx', 'efficacia dei CCNL'], [SIMONE_DL, '«sciopero»']],
+    'DL.Cessazione del rapporto':[[SIMONE_DL, '«dimissioni», «licenziamento» (tutele pp. 242-244)'], ['Statuto Lavoratori 300_1970.pdf', 'artt. 7 e 18']],
     'DL.Rinunce e conciliazioni':[[SIMONE_DL, '«rinunce e transazioni», «sede protetta»'], ['NORMA_Codice_civile_lavoro.md', 'art. 2113 c.c.']],
     'DL.Integrazione 2026':   [['ORALE/ORALE_02_Commissione_2026_temi.md', 'sezione «Rausei»']],
     'INPS.Ammortizzatori e sostegno al reddito':[[SIMONE_LS, '«CIGO», «CIGS», «NASpI»'], ['ORALE/ORALE_02_Commissione_2026_temi.md', 'novità 2026 (Gallotta)']],
@@ -329,6 +330,156 @@ window.ORALE = (function () {
     'DEO-X1': [['ORALE/ORALE_02_Commissione_2026_temi.md', '«Abusivismo e CED»'], ['ORALE/ORALE_Simone_Deontologia_OCR.md', '«attività riservate»']],
     'DEO-X2': [['ORALE/ORALE_Simone_Deontologia_OCR.md', '«ASSE.CO»'], ['ORALE/ORALE_02_Commissione_2026_temi.md', 'attualità della professione']]
   };
+
+  /* ---------- Altra sede, sessione 2022: elenco ufficiale «Argomenti della prova orale» ----------
+     Fonte: ispettorato.gov.it/files/2022/11/DOMANDE-DEFINITIVE-DA-PUBBLICARE-2022.pdf (135 argomenti;
+     sede non indicata nel documento, NON è Ancona: ad Ancona nel 2022 le domande erano 39 per materia).
+     Formulazione sintetica degli argomenti; normativa al 2022 (verificare le novità successive).
+     Ultimo campo: id della domanda equivalente, di cui si riusano risposta modello e approfondimenti. */
+  var S22 = [
+    // Diritto del lavoro (30)
+    ['DL',1,'Vigilanza e illeciti','La costituzione e la documentazione del rapporto di lavoro subordinato; la sanzione per il lavoro sommerso (art. 3 D.L. 12/2002)',null],
+    ['DL',2,'Contratti flessibili','I diritti di precedenza e la loro incidenza sugli incentivi alle assunzioni',null],
+    ['DL',3,'Contratti flessibili','L\'assunzione in prova: disciplina di legge e di contratto','DL-3a'],
+    ['DL',4,'Contratti flessibili','L\'assunzione a tempo determinato','DL-1b'],
+    ['DL',5,'Contratti flessibili','L\'assunzione a tempo parziale','DL-2b'],
+    ['DL',6,'Tutele specifiche','L\'assunzione di lavoratori stranieri, comunitari e non comunitari',null],
+    ['DL',7,'Contratti flessibili','Il contratto di apprendistato','DL-21a'],
+    ['DL',8,'Contratti flessibili','Il tirocinio formativo',null],
+    ['DL',9,'Contratti flessibili','Il lavoro intermittente','DL-3b'],
+    ['DL',10,'Contratti flessibili','Il lavoro occasionale: PrestO e Libretto famiglia',null],
+    ['DL',11,'Qualificazione','Lavoro autonomo professionale e occasionale; le collaborazioni coordinate e continuative',null],
+    ['DL',12,'Contratti flessibili','La somministrazione di lavoro','DL-10a'],
+    ['DL',13,'Vigilanza e illeciti','Appalto e distacco genuini e non genuini (artt. 29-30 D.Lgs. 276/2003)',null],
+    ['DL',14,'Qualificazione','La certificazione dei contratti di lavoro','DL-5a'],
+    ['DL',15,'Svolgimento e retribuzione','Le mansioni del lavoratore e i limiti allo ius variandi','DL-13a'],
+    ['DL',16,'Svolgimento e retribuzione','L\'orario di lavoro e i tempi di riposo','DL-16a'],
+    ['DL',17,'Tutele specifiche','La tutela dei minori sul lavoro','DL-12a'],
+    ['DL',18,'Tutele specifiche','La tutela della maternità e della paternità',null],
+    ['DL',19,'Tutele specifiche','Le misure per l\'occupazione dei lavoratori disabili','DL-10b'],
+    ['DL',20,'Svolgimento e retribuzione','La retribuzione, il prospetto paga e la prescrizione dei diritti del lavoratore',null],
+    ['DL',21,'Svolgimento e retribuzione','La sospensione del rapporto per impossibilità temporanea del lavoratore',null],
+    ['DL',22,'Svolgimento e retribuzione','La sospensione del rapporto per impossibilità temporanea del datore di lavoro',null],
+    ['DL',23,'Cessazione del rapporto','Le dimissioni e la risoluzione consensuale',null],
+    ['DL',24,'Cessazione del rapporto','Il licenziamento disciplinare e l\'art. 7 dello Statuto dei lavoratori',null],
+    ['DL',25,'Cessazione del rapporto','Il licenziamento per giustificato motivo oggettivo e la procedura dell\'art. 7 L. 604/1966',null],
+    ['DL',26,'Cessazione del rapporto','Il licenziamento illegittimo: tutela obbligatoria, tutela reale, tutele crescenti','DL-X1'],
+    ['DL',27,'Cessazione del rapporto','Le conseguenze dei vizi procedurali nei licenziamenti individuali e collettivi',null],
+    ['DL',28,'Rinunce e conciliazioni','Rinunce, transazioni e conciliazione delle vertenze','DL-13b'],
+    ['DL',29,'Rinunce e conciliazioni','Il tentativo di conciliazione facoltativo, obbligatorio e incentivato',null],
+    ['DL',30,'Vigilanza e illeciti','Le ispezioni del lavoro, il ruolo del consulente e la diffida',null],
+    // Legislazione sociale INPS (15)
+    ['INPS',1,'Prestazioni','Il sistema previdenziale: le gestioni e le principali pensioni',null],
+    ['INPS',2,'Prestazioni','I requisiti pensionistici diversi da quelli ordinari',null],
+    ['INPS',3,'Prestazioni','I sistemi di calcolo della pensione',null],
+    ['INPS',4,'Adempimenti','Il contenzioso amministrativo nei confronti dell\'INPS',null],
+    ['INPS',5,'Adempimenti','Il sistema UniEmens',null],
+    ['INPS',6,'Prestazioni','L\'indennità di malattia','INPS-17'],
+    ['INPS',7,'Ammortizzatori e sostegno al reddito','La NASpI','INPS-6'],
+    ['INPS',8,'Ammortizzatori e sostegno al reddito','La cassa integrazione guadagni ordinaria','INPS-1'],
+    ['INPS',9,'Ammortizzatori e sostegno al reddito','La cassa integrazione guadagni straordinaria','INPS-2'],
+    ['INPS',10,'Adempimenti','La Comunicazione Unica per la nascita dell\'impresa',null],
+    ['INPS',11,'Contribuzione','Le modalità di pagamento dei contributi INPS per lavoratori subordinati e autonomi',null],
+    ['INPS',12,'Contribuzione','Il principio di automaticità delle prestazioni: subordinati e autonomi','INPS-23'],
+    ['INPS',13,'Prestazioni','L\'assegno unico e universale',null],
+    ['INPS',14,'Ammortizzatori e sostegno al reddito','I fondi di solidarietà bilaterali e il Fondo di integrazione salariale (FIS)',null],
+    ['INPS',15,'Contribuzione','La dilazione del pagamento dei contributi previdenziali','INPS-13'],
+    // Legislazione sociale INAIL (15)
+    ['INAIL',1,'Infortunio e malattia professionale','L\'infortunio in itinere (art. 12 D.Lgs. 38/2000)','INAIL-9'],
+    ['INAIL',2,'Prestazioni e azioni','L\'automaticità delle prestazioni INAIL e le sue eccezioni','INAIL-18'],
+    ['INAIL',3,'Infortunio e malattia professionale','Gli elementi dell\'infortunio: lesione, causa violenta, occasione di lavoro','INAIL-19'],
+    ['INAIL',4,'Prestazioni e azioni','L\'indennizzo INAIL: danno biologico e danno patrimoniale',null],
+    ['INAIL',5,'Obbligo, premi e adempimenti','Il contenzioso amministrativo INAIL (artt. 27-28 delle Modalità di applicazione delle tariffe)',null],
+    ['INAIL',6,'Obbligo, premi e adempimenti','Il DURC','INAIL-1'],
+    ['INAIL',7,'Obbligo, premi e adempimenti','La costituzione del rapporto assicurativo e gli adempimenti del datore di lavoro','INAIL-2'],
+    ['INAIL',8,'Obbligo, premi e adempimenti','La tariffa dei premi: gestioni tariffarie, inquadramento e classificazione','INAIL-23'],
+    ['INAIL',9,'Obbligo, premi e adempimenti','L\'oscillazione del tasso di premio','INAIL-5'],
+    ['INAIL',10,'Obbligo, premi e adempimenti','Il calcolo e il pagamento del premio','INAIL-3'],
+    ['INAIL',11,'Obbligo, premi e adempimenti','Il sostegno alla prevenzione: incentivi ISI e oscillazione per prevenzione (OT23)',null],
+    ['INAIL',12,'Obbligo, premi e adempimenti','L\'obbligo assicurativo: requisiti soggettivi e oggettivi','INAIL-16'],
+    ['INAIL',13,'Infortunio e malattia professionale','Infortunio sul lavoro e malattia professionale: definizioni e differenze','INAIL-22'],
+    ['INAIL',14,'Infortunio e malattia professionale','La malattia professionale: sistema tabellare e sistema misto','INAIL-13'],
+    ['INAIL',15,'Infortunio e malattia professionale','Gli adempimenti del datore e del lavoratore dopo un infortunio o una malattia professionale',null],
+    // Diritto tributario (20)
+    ['TRIB',1,'Parte generale e procedimento','Imposte e tasse: definizione e differenze','TRIB-19'],
+    ['TRIB',2,'Lavoro dipendente','La ritenuta alla fonte: nozione e tipologie',null],
+    ['TRIB',3,'Parte generale e procedimento','L\'IRPEF: nozione, soggetti passivi e base imponibile',null],
+    ['TRIB',4,'Parte generale e procedimento','L\'IRAP: nozione, soggetti, base imponibile e costo del personale','TRIB-18'],
+    ['TRIB',5,'Parte generale e procedimento','Le agevolazioni e semplificazioni IVA per i piccoli contribuenti',null],
+    ['TRIB',6,'Lavoro dipendente','Le addizionali regionale e comunale all\'IRPEF: base imponibile e versamento',null],
+    ['TRIB',7,'Parte generale e procedimento','Il ravvedimento operoso','TRIB-22'],
+    ['TRIB',8,'Parte generale e procedimento','Il reddito professionale: base imponibile e deducibilità delle spese',null],
+    ['TRIB',9,'Parte generale e procedimento','I redditi da lavoro autonomo occasionale: definizione, tassazione e obblighi',null],
+    ['TRIB',10,'Parte generale e procedimento','La dichiarazione dei redditi (ex Modello Unico): soggetti obbligati',null],
+    ['TRIB',11,'Lavoro dipendente','La Certificazione Unica e gli obblighi del sostituto d\'imposta','TRIB-X1'],
+    ['TRIB',12,'Parte generale e procedimento','La compensazione in F24: verticale, orizzontale e limiti',null],
+    ['TRIB',13,'Lavoro dipendente','La tassazione separata dei redditi di lavoro dipendente diversi dal TFR',null],
+    ['TRIB',14,'Lavoro dipendente','Il trattamento di fine rapporto: natura, formazione e tassazione',null],
+    ['TRIB',15,'Lavoro dipendente','Gli oneri detraibili e deducibili delle persone fisiche','TRIB-3'],
+    ['TRIB',16,'Lavoro dipendente','Le detrazioni per familiari a carico','TRIB-4'],
+    ['TRIB',17,'Lavoro dipendente','I fringe benefit: valore convenzionale e tassazione',null],
+    ['TRIB',18,'Lavoro dipendente','Il regime fiscale di vitto, mensa, prestazioni e indennità sostitutive',null],
+    ['TRIB',19,'Lavoro dipendente','Trasferta, trasfertismo e trasferimento: regime fiscale delle indennità','TRIB-7'],
+    ['TRIB',20,'Lavoro dipendente','Il welfare aziendale nel reddito di lavoro dipendente',null],
+    // Elementi di ragioneria (10)
+    ['RAG',1,'Contabilità e documenti','Azienda, ditta, insegna e marchio',null],
+    ['RAG',2,'Contabilità e documenti','I libri contabili obbligatori; contabilità ordinaria e semplificata','RAG-18'],
+    ['RAG',3,'Costo del lavoro in contabilità','La rilevazione contabile del costo del personale',null],
+    ['RAG',4,'Bilancio','Il bilancio civilistico e fiscale: stato patrimoniale e conto economico','RAG-10'],
+    ['RAG',5,'Bilancio','L\'ammortamento',null],
+    ['RAG',6,'Contabilità e documenti','Fatturazione elettronica e corrispettivi telematici: soggetti obbligati ed esclusi','RAG-20'],
+    ['RAG',7,'Bilancio','Le scritture di assestamento: ratei e risconti',null],
+    ['RAG',8,'Bilancio','L\'inventario e la rilevazione contabile dell\'ammortamento',null],
+    ['RAG',9,'Bilancio','Plusvalenze e minusvalenze: definizione e rilevazione',null],
+    ['RAG',10,'Costo del lavoro in contabilità','La denuncia salari INAIL: le rilevazioni contabili',null],
+    // Diritto privato, pubblico e penale (30)
+    ['PPP',1,'Privato','Persona fisica e persona giuridica',null],
+    ['PPP',2,'Privato','Capacità giuridica e capacità d\'agire','PPP-9'],
+    ['PPP',3,'Privato','La proprietà e i modi di acquisto','PPP-11'],
+    ['PPP',4,'Privato','Possesso e detenzione',null],
+    ['PPP',5,'Privato','L\'obbligazione: fonti ed elementi',null],
+    ['PPP',6,'Privato','L\'obbligazione: adempimento e inadempimento','PPP-14'],
+    ['PPP',7,'Privato','Il contratto: elementi essenziali','PPP-10'],
+    ['PPP',8,'Privato','Il contratto: nullità, annullabilità, risoluzione',null],
+    ['PPP',9,'Privato','L\'imprenditore: piccolo, agricolo, commerciale','PPP-17'],
+    ['PPP',10,'Privato','Società di persone e società di capitali',null],
+    ['PPP',11,'Pubblico e costituzionale','I principi fondamentali della Costituzione',null],
+    ['PPP',12,'Pubblico e costituzionale','Il Parlamento',null],
+    ['PPP',13,'Pubblico e costituzionale','Il Governo','PPP-2'],
+    ['PPP',14,'Pubblico e costituzionale','Il Presidente della Repubblica','PPP-8'],
+    ['PPP',15,'Pubblico e costituzionale','Il procedimento di formazione delle leggi','PPP-1'],
+    ['PPP',16,'Pubblico e costituzionale','La Corte costituzionale','PPP-6'],
+    ['PPP',17,'Pubblico e costituzionale','Gli istituti di democrazia diretta',null],
+    ['PPP',18,'Pubblico e costituzionale','Gli enti pubblici territoriali',null],
+    ['PPP',19,'Pubblico e costituzionale','I principi costituzionali della Pubblica Amministrazione',null],
+    ['PPP',20,'Pubblico e costituzionale','La magistratura ordinaria e amministrativa',null],
+    ['PPP',21,'Penale','La riserva di legge in materia penale e l\'art. 25 della Costituzione','PPP-19'],
+    ['PPP',22,'Penale','L\'irretroattività della norma penale','PPP-21'],
+    ['PPP',23,'Penale','L\'elemento oggettivo del reato: delitti e contravvenzioni','PPP-23'],
+    ['PPP',24,'Penale','L\'elemento soggettivo: dolo, colpa, preterintenzione','PPP-22'],
+    ['PPP',25,'Penale','La responsabilità penale personale e l\'art. 27 della Costituzione','PPP-20'],
+    ['PPP',26,'Penale','Denuncia, esposto e querela',null],
+    ['PPP',27,'Penale','Omicidio colposo e lesioni colpose per violazione delle norme di sicurezza sul lavoro',null],
+    ['PPP',28,'Penale','La responsabilità penale del datore per l\'omesso versamento delle ritenute previdenziali e assistenziali',null],
+    ['PPP',29,'Penale','L\'oblazione nelle contravvenzioni',null],
+    ['PPP',30,'Penale','Le conseguenze civili del reato',null],
+    // Ordinamento e deontologia (15)
+    ['DEO',1,'Codice deontologico','Il dovere di fedeltà e la trascuratezza degli interessi del cliente (artt. 6 e 32 Codice)',null],
+    ['DEO',2,'Codice deontologico','I rapporti con altri professionisti e l\'incarico congiunto (artt. 12 e 28 Codice)','DEO-14'],
+    ['DEO',3,'Codice deontologico','L\'accettazione dell\'incarico (artt. 27 e 29 Codice)','DEO-18'],
+    ['DEO',4,'Codice deontologico','La cessazione dell\'incarico e la documentazione del cliente (artt. 31 e 33 Codice)','DEO-20'],
+    ['DEO',5,'Codice deontologico','La concorrenza leale e sleale (art. 14 Codice)','DEO-15'],
+    ['DEO',6,'Codice deontologico','Il consulente del lavoro asseveratore (art. 38 Codice)','DEO-X2'],
+    ['DEO',7,'Codice deontologico','La pubblicità informativa e l\'uso dei social (art. 35 Codice)','DEO-21'],
+    ['DEO',8,'Codice deontologico','I doveri generali del consulente del lavoro (artt. 3-11 Codice)',null],
+    ['DEO',9,'Codice deontologico','La responsabilità patrimoniale (art. 11 Codice)','DEO-13'],
+    ['DEO',10,'Codice deontologico','Il segreto professionale (art. 8 Codice e art. 6 L. 12/1979)','DEO-11'],
+    ['DEO',11,'Ordinamento','Le sanzioni disciplinari (artt. 27-31 L. 12/1979)','DEO-6'],
+    ['DEO',12,'Ordinamento','L\'esercizio della professione (art. 1 L. 12/1979; art. 30 Codice)',null],
+    ['DEO',13,'Codice deontologico','Il dovere di competenza e l\'obbligo di formazione (art. 9 Codice)',null],
+    ['DEO',14,'Codice deontologico','La partecipazione a società e le collaborazioni con imprese di servizi (art. 20 Codice)',null],
+    ['DEO',15,'Codice deontologico','Il consulente del lavoro nel rapporto di lavoro subordinato (art. 36 Codice)',null]
+  ];
 
   /* ---------- Risposte modello (lotto 1, 30/10/2026) ----------
      punti: [testo, [parole chiave per il riscontro automatico]]
@@ -900,17 +1051,25 @@ window.ORALE = (function () {
   }
   RAW.forEach(function (r) {
     var id = chiave(r[0], r[1]);
-    DOMANDE.push({ id: id, m: r[0], busta: r[1], gruppo: r[2], testo: r[3], fonte: 'Ancona 2025, busta ' + r[1], ufficiale: true,
+    DOMANDE.push({ id: id, m: r[0], busta: r[1], gruppo: r[2], testo: r[3], fonte: 'Ancona 2025, busta ' + r[1], ufficiale: true, serie: 'A25', etichetta: 'busta ' + r[1],
       approf: APPROF_SPEC[id] || APPROF[r[0] + '.' + r[2]] || [], r: RISPOSTE[id] || null });
   });
   EXTRA.forEach(function (r) {
     var id = r[0] + '-' + r[1];
-    DOMANDE.push({ id: id, m: r[0], busta: null, gruppo: r[2], testo: r[3], fonte: 'Integrazione 2026 (stima, non domanda ufficiale)', ufficiale: false,
+    DOMANDE.push({ id: id, m: r[0], busta: null, gruppo: r[2], testo: r[3], fonte: 'Integrazione 2026 (stima, non domanda ufficiale)', ufficiale: false, serie: 'X26', etichetta: 'integrazione 2026',
       approf: APPROF_EXTRA[id] || APPROF[r[0] + '.' + r[2]] || [], r: RISPOSTE[id] || null });
+  });
+  var BYID = {};
+  DOMANDE.forEach(function (d) { BYID[d.id] = d; });
+  S22.forEach(function (r) {
+    var id = 'S22-' + r[0] + '-' + r[1], eq = r[4] ? BYID[r[4]] : null;
+    DOMANDE.push({ id: id, m: r[0], busta: null, gruppo: r[2], testo: r[3], serie: 'S22', etichetta: 'altra sede 2022',
+      fonte: 'Altra sede, sessione 2022 (elenco ufficiale di argomenti, non Ancona; normativa al 2022)', ufficiale: false,
+      vedi: eq ? eq.id : null, approf: eq ? eq.approf : (APPROF[r[0] + '.' + r[2]] || []), r: eq ? eq.r : null });
   });
 
   return {
-    versione: '1.2 · 30/10/2026',
+    versione: '1.3 · 30/10/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
