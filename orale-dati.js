@@ -1,6 +1,8 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
-   Versione dati: 1.6 del 1/11/2026 (+ risposte modello di ragioneria, lotto 4)
+   Versione dati: 1.7 del 1/11/2026 (+ risposte modello di diritto tributario, lotto 5)
+   Versione 1.6.1 del 1/11/2026: correzioni INPS e INAIL dopo revisione indipendente
+   Versione 1.6 del 1/11/2026: + risposte modello di ragioneria, lotto 4
    Versione 1.5 del 1/11/2026: + risposte modello INPS e INAIL, lotto 3
    Versione 1.4 del 1/11/2026: + DL-X6 crisi d'impresa, con risposta modello
    Versione 1.3 del 30/10/2026: DEO-21 rivista; + 135 argomenti ufficiali 2022 di altra sede
@@ -1945,6 +1947,292 @@ window.ORALE = (function () {
       ],
       aggancio: "Dal 2027 queste regole confluiscono nel testo unico adempimenti e accertamento (D.Lgs. 141/2026, art. 23 per la semplificata), ma all'esame si cita ancora il D.P.R. 600/1973.",
       fonti: "Simone, Ragioneria, pp. 1055, 1116 (art. 2214 c.c.); soglie da ecnews.it (28/12/2023) e dall'art. 23 D.Lgs. 141/2026 su miolegale.it (fonti secondarie). Artt. 14 e 18 D.P.R. 600/1973, art. 66 TUIR e decorrenza del testo unico dal 2027: DA VERIFICARE sui testi."
+    },
+
+    "TRIB-1": {
+      sintesi: "Il reddito di lavoro dipendente nasce da un rapporto di lavoro alle dipendenze e sotto la direzione di altri (art. 49 TUIR) ed è formato da tutto ciò che il lavoratore percepisce nell'anno in relazione al rapporto (art. 51, c. 1).",
+      punti: [
+        ["Presupposto: rapporto di lavoro subordinato con qualsiasi qualifica, compreso il lavoro a domicilio quando è subordinato; sono redditi di lavoro dipendente anche le pensioni e le somme dell'art. 429 c.p.c. (art. 49).", ["49", "subordinat", "pensioni", "dipendenze"]],
+        ["Onnicomprensività: concorrono tutte le somme e i valori, a qualunque titolo, anche come erogazioni liberali, percepiti in relazione al rapporto (art. 51, c. 1).", ["onnicomprensiv", "qualunque titolo", "erogazioni liberali"]],
+        ["Criterio di cassa allargata: le somme pagate entro il 12 gennaio si considerano percepite nell'anno precedente.", ["cassa", "12 gennaio"]],
+        ["Eccezioni e soglie: contributi obbligatori, fondi sanitari fino a 3.615,20 euro, mensa e buoni pasto, welfare per la generalità, fringe benefit entro soglia, trasferte (art. 51, c. 2-5).", ["3.615,20", "buoni pasto", "fringe", "trasfert", "welfare"]],
+        ["Redditi sostitutivi (indennità di malattia, cassa integrazione) sono della stessa categoria (art. 6, c. 2); i redditi assimilati sono nell'art. 50.", ["sostitutiv", "assimilat", "50"]]
+      ],
+      aggancio: "È la base di ogni busta paga: imponibile fiscale = retribuzione imponibile meno i contributi a carico del lavoratore e le voci escluse dall'art. 51.",
+      fonti: "Artt. 6, 49, 50 e 51 TUIR (917_1986_TUIR in libreria, vigente al 4/10/2026); P2_Mod04, scaletta B; P2_00_PARAMETRI § 6."
+    },
+
+    "TRIB-2": {
+      sintesi: "Il modello 730 è la dichiarazione semplificata dei lavoratori dipendenti, dei pensionati e di chi ha redditi assimilati: si presenta entro il 30 settembre al sostituto d'imposta, a un CAF o a un professionista abilitato, oppure direttamente in precompilata.",
+      punti: [
+        ["Possono usarlo dipendenti, pensionati, percettori di indennità sostitutive, soci di cooperative, collaboratori coordinati e continuativi e altri assimilati, anche con redditi fondiari, di capitale, autonomi occasionali e alcuni redditi a tassazione separata (art. 13 D.M. 164/1999).", ["dipendenti", "pensionati", "assimilat", "164/1999"]],
+        ["Lavoratori a termine: tramite CAF se il contratto dura almeno dal mese di presentazione al terzo mese successivo.", ["tempo determinato", "terzo mese", "termine"]],
+        ["Esclusi: chi ha redditi d'impresa o di lavoro autonomo professionale abituale, e chi dichiara per conto di altri (deceduti, minori, interdetti).", ["esclus", "impresa", "professional"]],
+        ["Termine: 30 settembre dell'anno successivo; integrativo entro il 10 novembre se a favore del contribuente; precompilata disponibile dal 30 aprile (dal 2026 entro il 20 maggio).", ["30 settembre", "10 novembre", "precompilat"]],
+        ["Dal 2024 anche chi ha un sostituto può scegliere di ricevere il rimborso dall'Agenzia o pagare con F24 (art. 2 D.Lgs. 1/2024); con sostituto, conguaglio dal mese successivo al ricevimento del 730-4.", ["730-4", "conguagli", "1/2024", "f24"]]
+      ],
+      aggancio: "Il consulente del lavoro è tra i professionisti abilitati all'assistenza fiscale e appone il visto di conformità; come intermediario del datore gestisce i 730-4 in busta paga.",
+      fonti: "Simone, Diritto tributario, pp. 485-486 (modello 730, art. 19 D.M. 164/1999) e pp. 491-492 (art. 13 D.M. 164/1999, soggetti ed esclusi)."
+    },
+
+    "TRIB-3": {
+      sintesi: "Gli oneri deducibili riducono il reddito complessivo prima del calcolo dell'IRPEF (art. 10 TUIR); gli oneri detraibili riducono l'imposta lorda, di regola del 19% della spesa (art. 15 TUIR).",
+      punti: [
+        ["Deducibili (art. 10): contributi previdenziali obbligatori e volontari, assegni periodici al coniuge separato, spese mediche e di assistenza dei disabili, contributi alla previdenza complementare, contributi a fondi sanitari fino a 3.615,20 euro, alcune erogazioni liberali.", ["deducibil", "10", "previdenza complementare", "assegni"]],
+        ["Detraibili al 19% (art. 15): interessi del mutuo per l'abitazione principale fino a 4.000 euro, spese sanitarie sulla parte oltre 129,11 euro, istruzione, attività sportive dei figli, assicurazioni vita e infortuni, spese funebri e veterinarie.", ["19%", "detraibil", "129,11", "4.000", "mutuo"]],
+        ["Effetto diverso: la deduzione vale di più per chi ha l'aliquota marginale più alta; la detrazione vale la stessa percentuale per tutti.", ["aliquota marginale", "effetto"]],
+        ["Tracciabilità: dal 2020 la detrazione al 19% spetta solo con pagamenti tracciabili, salvo medicinali, dispositivi medici e prestazioni di strutture pubbliche o accreditate (L. 160/2019, c. 679).", ["tracciabil", "160/2019"]],
+        ["Limiti per redditi alti: oltre 75.000 euro le detrazioni sono ammesse entro 14.000 o 8.000 euro per un coefficiente legato ai figli, escluse le spese sanitarie (art. 16-ter).", ["75.000", "16-ter", "14.000"]]
+      ],
+      aggancio: "In busta paga il sostituto riconosce solo gli oneri che passano da lui (fondo pensione, fondo sanitario contrattuale): gli altri si fanno valere con il 730.",
+      fonti: "Artt. 10, 15 e 16-ter TUIR (917_1986_TUIR in libreria; all'art. 15, c. 1, il file riportava per errore «22 per cento», corretto in 19 il 1/11/2026 su Brocardi). Tracciabilità: L. 160/2019, c. 679, da fonti secondarie (DA VERIFICARE il testo)."
+    },
+
+    "TRIB-4": {
+      sintesi: "Le detrazioni per carichi di famiglia (art. 12 TUIR) spettano per il coniuge, per i figli dai 21 ai 29 anni (o disabili dai 30) e per gli ascendenti conviventi, se il familiare ha un reddito non superiore a 2.840,51 euro (4.000 per i figli fino a 24 anni).",
+      punti: [
+        ["Coniuge: 800 euro meno 110 per reddito/15.000 fino a 15.000 euro; 690 euro tra 15.000 e 40.000; poi decrescente fino ad azzerarsi a 80.000 (art. 12, c. 1, lett. a).", ["coniuge", "800", "690", "80.000"]],
+        ["Figli: dal 2022 sotto i 21 anni c'è l'assegno unico; la detrazione di 950 euro resta per i figli dai 21 ai 29 anni e per i figli disabili dai 30, decrescente fino a 95.000 euro, ripartita al 50% tra i genitori salvo accordo (lett. c).", ["950", "21", "95.000", "assegno unico", "50%"]],
+        ["Altri familiari: dal 2025 solo gli ascendenti conviventi, 750 euro decrescenti fino a 80.000 euro (lett. d).", ["ascendenti", "750", "convivent"]],
+        ["Limite di reddito del familiare: 2.840,51 euro lordi; 4.000 euro per i figli fino a 24 anni (art. 12, c. 2).", ["2.840,51", "4.000", "24 anni"]],
+        ["Non spettano per i familiari residenti all'estero dei contribuenti non cittadini UE o SEE (c. 2-bis); in busta paga il lavoratore le chiede con dichiarazione al sostituto.", ["2-bis", "estero", "dichiarazione"]]
+      ],
+      aggancio: "Ogni anno il consulente raccoglie le dichiarazioni dei carichi di famiglia: un familiare che supera il limite fa recuperare tutta la detrazione al conguaglio.",
+      fonti: "Art. 12 TUIR (917_1986_TUIR in libreria); L. 207/2024, c. 11 (c. 2-bis); P2_Mod07 v6.1 (regole per fascia)."
+    },
+
+    "TRIB-6": {
+      sintesi: "La base imponibile del lavoratore dipendente è il reddito determinato con l'art. 51 TUIR, al netto dei contributi previdenziali a suo carico e degli oneri deducibili riconosciuti dal sostituto; su di essa si applica l'IRPEF a scaglioni.",
+      punti: [
+        ["Si parte dalla retribuzione imponibile: tutte le somme e i valori percepiti in relazione al rapporto, con cassa allargata al 12 gennaio (art. 51, c. 1).", ["retribuzione", "12 gennaio", "51"]],
+        ["Si tolgono i contributi previdenziali obbligatori a carico del lavoratore (art. 51, c. 2, lett. a) e le voci escluse o esenti (buoni pasto, welfare, fringe entro soglia).", ["contributi", "esclus", "esent"]],
+        ["Si tolgono gli oneri deducibili che passano dal sostituto: previdenza complementare, contributi ai fondi sanitari contrattuali (art. 10 TUIR).", ["oneri deducibili", "previdenza complementare", "10"]],
+        ["Si applicano gli scaglioni IRPEF (2026: 23% fino a 28.000, 33% fino a 50.000, 43% oltre) e poi le detrazioni (artt. 12 e 13 TUIR, ulteriore detrazione L. 207/2024).", ["23%", "33%", "43%", "detrazioni"]],
+        ["Restano fuori dall'IRPEF ordinaria i redditi a tassazione separata (TFR, arretrati) e quelli a imposta sostitutiva.", ["tassazione separata", "sostitutiv", "tfr"]]
+      ],
+      aggancio: "Nella busta paga la catena è: imponibile previdenziale, contributi a carico del lavoratore, imponibile fiscale, IRPEF lorda, detrazioni, IRPEF netta.",
+      fonti: "Artt. 10, 11, 51 TUIR (917_1986_TUIR in libreria, art. 11 vigente al 4/10/2026: 23/33/43%); P2_Mod04, scaletta B; P2_00_PARAMETRI §§ 1-6."
+    },
+
+    "TRIB-7": {
+      sintesi: "La trasferta è lo spostamento temporaneo del dipendente fuori dalla sede di lavoro: le indennità e i rimborsi hanno un regime fiscale di favore fuori dal comune, mentre nel comune sono imponibili salvo i rimborsi di trasporto documentati (art. 51, c. 5, TUIR).",
+      punti: [
+        ["Indennità forfettaria fuori comune: esente fino a 46,48 euro al giorno in Italia e 77,47 all'estero.", ["46,48", "77,47", "forfettari"]],
+        ["Se sono rimborsati o forniti gratuitamente vitto o alloggio, la quota esente scende di un terzo; se sono rimborsati entrambi, di due terzi.", ["un terzo", "due terzi", "vitto", "alloggio"]],
+        ["Rimborso analitico a piè di lista: non è reddito; dal 2025 vitto, alloggio, viaggio e taxi in Italia solo se pagati con mezzi tracciabili; altre spese non documentabili fino a 15,49 euro al giorno (25,82 all'estero).", ["analitic", "tracciabil", "15,49"]],
+        ["Rimborso misto: indennità ridotta più rimborso documentato delle spese.", ["misto"]],
+        ["Trasferta nel comune della sede: indennità e rimborsi imponibili, salvo i rimborsi delle spese di trasporto documentate.", ["comune", "imponibil", "trasporto"]]
+      ],
+      aggancio: "Va distinta dal trasfertismo (art. 51, c. 6: lavoratori senza sede fissa, indennità imponibile al 50%) e dal trasferimento della sede.",
+      fonti: "Art. 51, c. 5 e 6, TUIR (917_1986_TUIR in libreria); P2_00_PARAMETRI § 6 (L. 207/2024, c. 81 e 83; D.L. 84/2025)."
+    },
+
+    "TRIB-10": {
+      sintesi: "La detrazione per lavoro dipendente (art. 13 TUIR) riduce l'imposta lorda in misura decrescente al crescere del reddito complessivo e si rapporta ai giorni di lavoro dell'anno; si affiancano l'ulteriore detrazione del cuneo e il trattamento integrativo.",
+      punti: [
+        ["Fino a 15.000 euro: 1.955 euro (minimo 690; 1.380 per i contratti a termine).", ["1.955", "15.000", "690"]],
+        ["Da 15.000 a 28.000: 1.910 + 1.190 × (28.000 − reddito)/13.000; da 28.000 a 50.000: 1.910 × (50.000 − reddito)/22.000; oltre 50.000 zero.", ["1.910", "28.000", "50.000"]],
+        ["Maggiorazione di 65 euro tra 25.000 e 35.000 euro (art. 13, c. 1.1), non ragguagliata ai giorni.", ["65", "25.000", "35.000"]],
+        ["Ulteriore detrazione dal 2025 (L. 207/2024, c. 6): 1.000 euro tra 20.000 e 32.000, decrescente fino a 40.000; sotto 20.000 c'è una somma esente in percentuale del reddito.", ["ulteriore detrazione", "1.000", "20.000", "40.000"]],
+        ["Trattamento integrativo fino a 1.200 euro per redditi fino a 15.000 se c'è capienza (D.L. 3/2020).", ["trattamento integrativo", "1.200"]]
+      ],
+      aggancio: "In busta paga la detrazione è stimata mese per mese sul reddito annuo presunto: il conguaglio di fine anno la ricalcola sul reddito effettivo.",
+      fonti: "Art. 13 TUIR (917_1986_TUIR in libreria); P2_00_PARAMETRI §§ 2-4 (L. 207/2024, c. 4-9; D.L. 3/2020; circ. AdE 4/E/2022)."
+    },
+
+    "TRIB-11": {
+      sintesi: "Il conguaglio fiscale è il ricalcolo, da parte del sostituto, dell'imposta dovuta sull'intero reddito corrisposto nell'anno, confrontata con le ritenute già operate: si fa entro il 28 febbraio dell'anno successivo o alla cessazione del rapporto (art. 23, c. 3, D.P.R. 600/1973).",
+      punti: [
+        ["Si ricalcolano imposta lorda annua, detrazioni sui giorni effettivi e sui familiari, spettanza di cuneo e trattamento integrativo.", ["ricalcol", "detrazioni", "annu"]],
+        ["Se il lavoratore lo chiede consegnando la CU entro il 12 gennaio, si tiene conto anche dei redditi di altri rapporti dell'anno (art. 23, c. 4).", ["12 gennaio", "altri rapporti", "cu"]],
+        ["Benefici non spettanti: trattamento integrativo recuperato in 8 rate e cuneo in 10 rate se superano 60 euro.", ["8 rate", "10 rate", "60"]],
+        ["Si determinano le addizionali: regionale e saldo comunale in massimo 11 rate dell'anno dopo; acconto comunale del 30% in massimo 9 rate da marzo.", ["addizional", "11 rate", "30%"]],
+        ["Incapienza: il lavoratore versa la differenza o autorizza il prelievo sulle retribuzioni successive con interesse dello 0,50% mensile; gli esiti confluiscono nella CU.", ["incapienza", "0,50%"]]
+      ],
+      aggancio: "C'è anche il conguaglio da 730: il sostituto esegue il 730-4 sulla prima retribuzione utile e comunque su quella del mese successivo al ricevimento (art. 19 D.M. 164/1999).",
+      fonti: "Art. 23, c. 3 e 4, D.P.R. 600/1973 (da fonti secondarie, come in P2_Mod04, scaletta D); Simone, Diritto tributario, p. 485 (art. 19 D.M. 164/1999); P2_00_PARAMETRI § 7."
+    },
+
+    "TRIB-12": {
+      sintesi: "I redditi assimilati a quelli di lavoro dipendente (art. 50 TUIR) nascono da rapporti diversi dalla subordinazione ma sono tassati con le stesse regole: ritenuta del sostituto, detrazioni, conguaglio.",
+      punti: [
+        ["Collaborazioni coordinate e continuative e uffici di amministratore, sindaco o revisore di società, salvo che rientrino nell'attività professionale del contribuente (lett. c-bis).", ["collaborazion", "amministratore", "c-bis"]],
+        ["Compensi dei soci lavoratori di cooperative entro i salari correnti maggiorati del 20% (lett. a).", ["cooperativ", "20"]],
+        ["Borse di studio e assegni per studio o addestramento a chi non è dipendente dell'ente erogatore (lett. c).", ["borse di studio", "addestramento"]],
+        ["Indennità per cariche pubbliche elettive e pubbliche funzioni, compensi ai giudici tributari, remunerazioni dei sacerdoti (lett. d, f, g).", ["cariche", "pubbliche funzioni", "sacerdoti"]],
+        ["Prestazioni della previdenza complementare, lavori socialmente utili, rendite vitalizie e altri assegni periodici (lett. h-bis, i, l).", ["previdenza complementare", "socialmente utili", "rendite"]]
+      ],
+      aggancio: "Il caso più frequente in studio è il compenso dell'amministratore di s.r.l.: assimilato per il fisco, contributi alla gestione separata INPS.",
+      fonti: "Art. 50 TUIR (917_1986_TUIR in libreria). Gestione separata per gli amministratori: art. 2, c. 26, L. 335/1995 (non riletto)."
+    },
+
+    "TRIB-15": {
+      sintesi: "Il modello 770 è la dichiarazione annuale dei sostituti d'imposta: riepiloga ritenute operate, versamenti, compensazioni e dati non già trasmessi con la Certificazione Unica; si presenta per via telematica entro il 31 ottobre (art. 4 D.P.R. 322/1998).",
+      punti: [
+        ["Chi lo presenta: i soggetti dell'art. 23 D.P.R. 600/1973 che hanno corrisposto redditi soggetti a ritenuta (datori di lavoro, imprese, professionisti, condomini, enti).", ["sostituti", "23", "datori"]],
+        ["Contenuto: ritenute su lavoro dipendente, autonomo, redditi di capitale e altri; versamenti con F24 e crediti compensati; i dati dei singoli percipienti sono già nella CU.", ["ritenute", "versamenti", "compensa", "cu"]],
+        ["Termine: 31 ottobre dell'anno successivo a quello in cui sono state operate le ritenute.", ["31 ottobre"]],
+        ["Funzione di controllo: incrocio tra ritenute certificate, ritenute dichiarate e versamenti.", ["incrocio", "controllo"]],
+        ["Sanzioni: omessa o infedele dichiarazione del sostituto (D.Lgs. 471/1997); ritenute certificate e non versate oltre 150.000 euro per periodo d'imposta: reato dell'art. 10-bis D.Lgs. 74/2000.", ["150.000", "10-bis", "sanzion"]]
+      ],
+      aggancio: "Lo studio del consulente lo predispone e trasmette come intermediario, partendo dalle CU e dagli F24 dell'anno.",
+      fonti: "P2_Mod04, scaletta A (art. 4 D.P.R. 322/1998; art. 10-bis D.Lgs. 74/2000 dopo C. cost. 175/2022, testo vigente DA VERIFICARE). Misura delle sanzioni per l'omessa dichiarazione del sostituto: DA VERIFICARE."
+    },
+
+    "TRIB-9": {
+      sintesi: "Con il principio di cassa un componente conta nell'anno in cui è incassato o pagato; con quello di competenza nell'anno in cui matura, a prescindere dal pagamento. Il TUIR usa la cassa per i redditi di lavoro e la competenza per il reddito d'impresa.",
+      punti: [
+        ["Lavoro dipendente: cassa allargata, le somme pagate entro il 12 gennaio valgono per l'anno precedente (art. 51, c. 1).", ["cassa", "12 gennaio", "dipendente"]],
+        ["Lavoro autonomo: cassa, compensi percepiti e spese sostenute nel periodo (art. 54, c. 1); dal 2025 le somme pagate dal sostituto nell'anno successivo si imputano all'anno dell'obbligo di ritenuta.", ["autonom", "54", "percepit"]],
+        ["Reddito d'impresa: competenza, salvo i componenti non ancora certi o determinabili, che concorrono quando lo diventano (art. 109, c. 1-2).", ["competenza", "109", "impresa"]],
+        ["Bilancio civilistico: competenza economica, indipendentemente dalla data di incasso o pagamento (art. 2423-bis c.c.).", ["bilancio", "2423-bis"]],
+        ["Contributi previdenziali: competenza, retribuzioni maturate nel periodo; il regime forfettario segue invece la cassa.", ["contribut", "maturat", "forfettari"]]
+      ],
+      aggancio: "Il caso classico in busta paga: la tredicesima pagata il 10 gennaio è reddito fiscale dell'anno prima (cassa allargata) e contributivamente dell'anno in cui è maturata.",
+      fonti: "Artt. 51, 54 e 109 TUIR (917_1986_TUIR in libreria); art. 2423-bis c.c. (non nell'estratto in libreria: citazione da riscontrare); P2_Mod04, scaletta B (fisco a cassa, contributi a competenza)."
+    },
+
+    "TRIB-13": {
+      sintesi: "Il regime forfettario (L. 190/2014, c. 54-89) è riservato alle persone fisiche che esercitano impresa, arti o professioni con ricavi o compensi non superiori a 85.000 euro e senza cause di esclusione: il reddito si determina con un coefficiente e paga un'imposta sostitutiva del 15% (5% per le nuove attività).",
+      punti: [
+        ["Requisiti: ricavi o compensi dell'anno precedente fino a 85.000 euro; spese per lavoro dipendente e collaboratori fino a 20.000 euro lordi.", ["85.000", "20.000", "persone fisiche"]],
+        ["Uscita: dall'anno dopo se si superano 85.000 euro; nello stesso anno se si superano 100.000 euro.", ["100.000", "uscita"]],
+        ["Cause ostative: partecipazioni in società di persone o controllo di s.r.l. con attività riconducibili; attività svolta prevalentemente verso l'ex datore di lavoro dei due anni precedenti; redditi di lavoro dipendente o pensione oltre 30.000 euro (35.000 per il 2025 e il 2026).", ["ex datore", "35.000", "partecipazion", "ostativ"]],
+        ["Determinazione: ricavi incassati per il coefficiente di redditività dell'attività (per esempio 78% per i professionisti), meno i contributi versati; imposta sostitutiva del 15%, 5% per i primi cinque anni se l'attività è nuova.", ["coefficiente", "15%", "5%", "cinque anni"]],
+        ["Niente IVA in fattura e niente ritenuta d'acconto subita; esonero dall'IRAP.", ["iva", "ritenuta", "irap"]]
+      ],
+      aggancio: "Il forfettario che assume dipendenti resta sostituto d'imposta e deve operare le ritenute; il limite dei 20.000 euro di spese per personale va monitorato.",
+      fonti: "L. 207/2024, c. 12 (35.000 euro per il 2025 e il 2026: testo in libreria); requisiti, soglie e aliquote da fonti secondarie aggiornate al 2026 (centrofiscale.com): testo della L. 190/2014, c. 54-57 e 64-69, DA VERIFICARE."
+    },
+
+    "TRIB-14": {
+      sintesi: "Il TUIR classifica i redditi delle persone fisiche in sei categorie (art. 6): fondiari, di capitale, di lavoro dipendente, di lavoro autonomo, d'impresa e diversi; ogni categoria ha le proprie regole di determinazione e la somma forma il reddito complessivo.",
+      punti: [
+        ["Fondiari: redditi di terreni e fabbricati, determinati di regola su base catastale.", ["fondiari", "catastal"]],
+        ["Di capitale (interessi, dividendi) e di lavoro dipendente e assimilati.", ["capitale", "dipendente"]],
+        ["Di lavoro autonomo (arti e professioni) e d'impresa.", ["autonomo", "impresa"]],
+        ["Diversi: categoria residuale (plusvalenze, attività commerciali o di lavoro autonomo occasionali, redditi di natura fondiaria non altrimenti classificabili).", ["diversi", "residual", "occasional"]],
+        ["Regole di confine: i proventi sostitutivi di redditi e gli interessi moratori seguono la categoria del reddito sostituito (art. 6, c. 2); i redditi di s.n.c. e s.a.s. sono sempre d'impresa (c. 3); i proventi illeciti rientrano nelle categorie o tra i diversi.", ["sostitutiv", "interessi moratori", "illecit"]]
+      ],
+      aggancio: "Esempio in busta paga: l'indennità di malattia pagata dall'INPS sostituisce la retribuzione e quindi è reddito di lavoro dipendente.",
+      fonti: "Art. 6 TUIR e nota di aggiornamento sull'art. 14, c. 4, L. 537/1993 (917_1986_TUIR in libreria)."
+    },
+
+    "TRIB-16": {
+      sintesi: "L'autotutela è il potere dell'Amministrazione finanziaria di annullare o rinunciare ai propri atti illegittimi o infondati; dal 2024 lo Statuto del contribuente distingue un'autotutela obbligatoria (art. 10-quater) e una facoltativa (art. 10-quinquies), introdotte dal D.Lgs. 219/2023.",
+      punti: [
+        ["Obbligatoria, anche senza istanza, in pendenza di giudizio o su atti definitivi, per errori manifesti: errore di persona, di calcolo, sul tributo, sul presupposto, errore materiale del contribuente, pagamenti ignorati, documenti poi sanati.", ["obbligatori", "10-quater", "errore"]],
+        ["Limiti: non c'è obbligo se c'è un giudicato favorevole all'Amministrazione o dopo un anno dalla definitività dell'atto non impugnato.", ["giudicato", "un anno", "definitiv"]],
+        ["Facoltativa: fuori da quei casi, l'Amministrazione può comunque annullare o rinunciare se l'atto è illegittimo o infondato (art. 10-quinquies).", ["facoltativ", "10-quinquies", "illegittim"]],
+        ["Impugnabili davanti alla Corte di giustizia tributaria il rifiuto espresso o tacito sull'autotutela obbligatoria e il rifiuto espresso sulla facoltativa (art. 19 D.Lgs. 546/1992).", ["impugn", "546/1992", "rifiuto"]],
+        ["La responsabilità contabile dei funzionari per le valutazioni di fatto è limitata al dolo.", ["dolo", "responsabilita contabile"]]
+      ],
+      aggancio: "Per lo studio è la via più rapida contro un avviso palesemente sbagliato, per esempio ritenute versate ma non considerate; i termini per il ricorso però continuano a correre.",
+      fonti: "Simone, Diritto tributario, pp. 473-474 (artt. 10-quater e 10-quinquies L. 212/2000; art. 19 D.Lgs. 546/1992)."
+    },
+
+    "TRIB-18": {
+      sintesi: "L'IRAP è l'imposta regionale sulle attività produttive (D.Lgs. 446/1997): colpisce il valore della produzione netta delle attività autonomamente organizzate di società, enti e amministrazioni pubbliche; dal 2022 non la pagano le persone fisiche.",
+      punti: [
+        ["Presupposto: esercizio abituale di un'attività autonomamente organizzata diretta alla produzione o allo scambio di beni o servizi.", ["autonomamente organizzat", "presupposto"]],
+        ["Soggetti: società di capitali e di persone, enti commerciali e non commerciali, amministrazioni pubbliche; esclusi dal 2022 imprenditori individuali e professionisti persone fisiche, e i forfettari.", ["societa", "enti", "persone fisiche", "2022"]],
+        ["Base imponibile: valore della produzione netta; per le società di capitali la differenza tra valore e costi della produzione, senza dedurre costo del personale, svalutazioni, accantonamenti e interessi (art. 5).", ["valore della produzione", "base imponibile", "personale"]],
+        ["Costo del lavoro: deducibile per intero quello dei dipendenti a tempo indeterminato (art. 11, c. 4-octies); per i contratti a termine solo deduzioni specifiche (per esempio 1.850 euro per dipendente fino a 5, con ricavi fino a 400.000, e il 70% per gli stagionali).", ["tempo indeterminato", "4-octies", "1.850", "stagional"]],
+        ["Aliquota ordinaria del 3,9% (art. 16), che le Regioni possono variare entro i limiti di legge; gettito destinato alle Regioni.", ["3,9%", "regioni", "aliquota"]]
+      ],
+      aggancio: "Per il consulente il tema tocca la scelta del contratto: l'assunzione a tempo indeterminato riduce l'IRAP, il contratto a termine no.",
+      fonti: "Edotto, «Il costo del lavoro nel modello Irap 2025» (28/8/2025) e MEF, Dipartimento Finanze, novità normative IRAP 2022 (fonti secondaria e ufficiale). Aliquota del 3,9% e art. 5: testo del D.Lgs. 446/1997 non riletto, DA VERIFICARE."
+    },
+
+    "TRIB-19": {
+      sintesi: "Il tributo è la prestazione patrimoniale imposta dallo Stato o da un ente pubblico per finanziare la spesa pubblica (artt. 23 e 53 Cost.); si distingue in imposte, tasse e contributi.",
+      punti: [
+        ["Imposta: prestazione coattiva dovuta senza alcuna controprestazione dell'ente, al verificarsi del presupposto stabilito dalla legge (per esempio IRPEF, IVA).", ["imposta", "controprestazione", "presupposto"]],
+        ["Classificazioni: dirette e indirette; personali e reali; proporzionali, progressive e regressive.", ["dirette", "indirette", "progressiv"]],
+        ["Tassa: dovuta da chi chiede un servizio pubblico speciale e divisibile, senza corrispondenza con il costo del servizio (per esempio tasse scolastiche o di concessione).", ["tassa", "servizio", "divisibil"]],
+        ["Contributo: dovuto da chi trae un vantaggio particolare da un'opera o attività pubblica (contributi di miglioria) o ne provoca una maggiore spesa (contributi di utenza).", ["contributo", "vantaggio", "miglioria"]],
+        ["Principi costituzionali: riserva di legge relativa (art. 23), capacità contributiva e progressività del sistema (art. 53), divieto di referendum sulle leggi tributarie (art. 75).", ["23", "53", "riserva di legge", "capacita contributiva"]]
+      ],
+      aggancio: "Attenzione al lessico: i contributi previdenziali INPS non sono tributi in senso stretto ma prestazioni patrimoniali imposte destinate alla previdenza (art. 38 Cost.).",
+      fonti: "Simone, Diritto tributario, pp. 451-453. Natura dei contributi previdenziali: inquadramento dottrinale, citare con cautela."
+    },
+
+    "TRIB-8": {
+      sintesi: "La cedolare secca è un regime facoltativo con cui il proprietario persona fisica tassa i canoni di locazione abitativa con un'imposta sostitutiva, al posto dell'IRPEF e delle addizionali (art. 3 D.Lgs. 23/2011).",
+      punti: [
+        ["Chi e che cosa: persone fisiche che locano immobili abitativi (categorie da A/1 a A/11, esclusa A/10) e relative pertinenze, fuori dall'attività d'impresa o professionale.", ["persone fisiche", "abitativ", "a/10"]],
+        ["Aliquote: 21% sul canone annuo; 10% per i contratti a canone concordato nei comuni ad alta tensione abitativa o colpiti da calamità.", ["21%", "10%", "concordato"]],
+        ["Sostituisce IRPEF e addizionali sul canone, l'imposta di registro e il bollo sul contratto (registrazione, risoluzioni e proroghe).", ["irpef", "addizional", "registro", "bollo"]],
+        ["Contropartita: per tutta la durata dell'opzione il locatore rinuncia agli aggiornamenti del canone, anche ISTAT.", ["rinuncia", "aggiornament", "istat"]],
+        ["I canoni restano fuori dal reddito complessivo ai fini della progressività, ma contano per i familiari a carico, le detrazioni e l'ISEE.", ["progressivita", "familiari a carico", "isee"]]
+      ],
+      aggancio: "Per il consulente pesa sul 730 del dipendente proprietario: il reddito da cedolare non fa salire lo scaglione ma può far perdere lo status di familiare a carico.",
+      fonti: "Art. 3 D.Lgs. 23/2011 come riportato da EC News (6/12/2019, aggiornato al 18/1/2026), fonte secondaria: testo vigente DA VERIFICARE su Normattiva. Non nel manuale in libreria."
+    },
+
+    "TRIB-5": {
+      sintesi: "Le società di persone commerciali producono reddito d'impresa che è tassato in capo ai soci per trasparenza (art. 5 TUIR); le società di capitali sono soggetti IRES e pagano l'imposta sul proprio reddito (artt. 73 e 77 TUIR).",
+      punti: [
+        ["Società di persone (s.n.c., s.a.s.): reddito d'impresa qualunque sia l'oggetto (art. 6, c. 3); imputato a ciascun socio in proporzione alla quota di utili, anche se non percepito (art. 5).", ["trasparenza", "quota", "non percepit", "5"]],
+        ["Società semplice: produce redditi delle varie categorie (non d'impresa), anch'essi imputati ai soci; associazioni professionali equiparate (art. 5, c. 3).", ["societa semplice", "categorie", "associazioni professionali"]],
+        ["Società di capitali (s.p.a., s.r.l., s.a.p.a., cooperative): soggetti IRES con aliquota del 24%; gli utili distribuiti sono poi tassati in capo ai soci come dividendi.", ["ires", "24", "dividend"]],
+        ["Le s.r.l. a ristretta base proprietaria possono optare per la trasparenza (artt. 115-116 TUIR).", ["opzione", "115", "ristretta"]],
+        ["Entrambe sono soggette all'IRAP sul valore della produzione netta e, se hanno dipendenti, agli obblighi del sostituto d'imposta.", ["irap", "sostituto"]]
+      ],
+      aggancio: "Per il consulente cambia il trattamento dei soci che lavorano: il socio di s.n.c. è un imprenditore per i contributi (gestione artigiani o commercianti), l'amministratore di s.r.l. può avere un compenso assimilato al lavoro dipendente.",
+      fonti: "Artt. 5, 6, 73 e 77 TUIR (917_1986_TUIR in libreria). Artt. 115-116 TUIR non riletti. Contributi dei soci: DA VERIFICARE caso per caso."
+    },
+
+    "TRIB-20": {
+      sintesi: "L'impresa familiare è l'impresa individuale in cui collaborano in modo continuativo il coniuge, i parenti entro il terzo grado e gli affini entro il secondo (art. 230-bis c.c.); ai fini fiscali fino al 49% del reddito può essere imputato ai familiari collaboratori (art. 5, c. 4, TUIR).",
+      punti: [
+        ["Diritti civilistici del familiare: mantenimento, partecipazione agli utili, ai beni acquistati con essi e agli incrementi dell'azienda in proporzione al lavoro prestato; decisioni straordinarie a maggioranza; prelazione.", ["mantenimento", "utili", "maggioranza", "prelazione"]],
+        ["È un istituto residuale: si applica salvo che sia configurabile un diverso rapporto (per esempio lavoro subordinato o società).", ["residual", "diverso rapporto"]],
+        ["Fisco: l'imprenditore resta titolare; il reddito si imputa ai familiari fino al 49% del reddito dichiarato, in proporzione alle quote (art. 5, c. 4, TUIR).", ["49", "imputat", "titolare"]],
+        ["Condizioni fiscali: atto pubblico o scrittura privata autenticata anteriore all'inizio del periodo d'imposta, attestazione delle quote nella dichiarazione dell'imprenditore e lavoro continuativo e prevalente di ciascun familiare.", ["atto pubblico", "scrittura privata", "prevalent"]],
+        ["Familiari ai fini fiscali: coniuge, parenti entro il terzo grado, affini entro il secondo (art. 5, c. 5); per il convivente di fatto c'è l'art. 230-ter c.c.", ["coniuge", "terzo grado", "convivente"]]
+      ],
+      aggancio: "Per il consulente il punto delicato è distinguere il familiare collaboratore, iscritto alla gestione INPS dell'imprenditore, dal familiare assunto come dipendente.",
+      fonti: "Art. 230-bis c.c. (filodiritto.com, testo vigente; non nell'estratto in libreria); art. 5, c. 4 e 5, TUIR (917_1986_TUIR in libreria). Art. 230-ter c.c. e Corte cost. 148/2024 sul convivente: DA VERIFICARE."
+    },
+
+    "TRIB-21": {
+      sintesi: "Il codice civile distingue le società di persone (società semplice, in nome collettivo, in accomandita semplice), le società di capitali (per azioni, a responsabilità limitata, in accomandita per azioni) e le società cooperative.",
+      punti: [
+        ["Società di persone: autonomia patrimoniale imperfetta, i soci rispondono delle obbligazioni sociali con il proprio patrimonio (società semplice art. 2251, s.n.c. art. 2291, s.a.s. art. 2313).", ["persone", "autonomia patrimoniale imperfetta", "2291"]],
+        ["Società semplice: solo attività non commerciali, tipicamente agricole o di gestione immobiliare.", ["societa semplice", "non commercial", "agricol"]],
+        ["Società di capitali: personalità giuridica e autonomia patrimoniale perfetta, per le obbligazioni risponde solo la società (s.p.a. art. 2325, s.r.l. art. 2462, s.a.p.a. art. 2452).", ["capitali", "personalita giuridica", "perfetta", "2462"]],
+        ["S.r.l. anche unipersonale o semplificata; s.a.p.a. con soci accomandatari illimitatamente responsabili.", ["unipersonal", "semplificata", "s.a.p.a"]],
+        ["Cooperative: scopo mutualistico anziché lucrativo (art. 2511), con regole proprie sui soci lavoratori.", ["cooperativ", "mutualistic", "2511"]]
+      ],
+      aggancio: "La forma della società decide chi è il datore di lavoro, come si tassano i soci che lavorano e a quale gestione INPS sono iscritti.",
+      fonti: "Articoli del codice civile citati da fonti secondarie (studiocataldi.it e manuali); non nell'estratto in libreria: riscontro su Normattiva consigliato. Fisco delle società: TRIB-5."
+    },
+
+    "TRIB-23": {
+      sintesi: "Nella società in accomandita semplice convivono due categorie di soci: gli accomandatari, che amministrano e rispondono illimitatamente e solidalmente delle obbligazioni sociali, e gli accomandanti, che rispondono nei limiti della quota conferita (art. 2313 c.c.).",
+      punti: [
+        ["Accomandatari: responsabilità solidale e illimitata; l'amministrazione spetta solo a loro (art. 2318).", ["accomandatari", "illimitat", "amministrazione"]],
+        ["Accomandanti: responsabilità limitata alla quota conferita.", ["accomandanti", "limitata", "quota"]],
+        ["Divieto di immistione: l'accomandante che compie atti di amministrazione o tratta affari in nome della società senza procura speciale perde il beneficio e risponde illimitatamente verso i terzi; può essere escluso (art. 2320).", ["immistione", "2320", "procura speciale"]],
+        ["L'accomandante può dare autorizzazioni e pareri e ha diritto di ricevere il bilancio e controllarlo.", ["pareri", "bilancio"]],
+        ["Ragione sociale: almeno il nome di un accomandatario; l'accomandante che vi consente il proprio nome risponde illimitatamente (art. 2314).", ["ragione sociale", "2314"]]
+      ],
+      aggancio: "Ai fini contributivi l'accomandatario che lavora nell'impresa si iscrive di regola alla gestione artigiani o commercianti; per l'accomandante che presta lavoro va verificato il rapporto (DA VERIFICARE caso per caso).",
+      fonti: "Artt. 2313, 2314, 2318 e 2320 c.c. come riportati da studiocataldi.it (fonte secondaria; non nell'estratto in libreria). Fisco: art. 5 TUIR (TRIB-5)."
+    },
+
+    "TRIB-X1": {
+      sintesi: "Il sostituto d'imposta è chi, per legge, è obbligato al pagamento di imposte in luogo di altri, per fatti o situazioni a questi riferibili, anche a titolo d'acconto, e deve esercitare la rivalsa (art. 64 D.P.R. 600/1973); nel lavoro dipendente è il datore di lavoro.",
+      punti: [
+        ["Soggetti: società ed enti, società di persone, persone fisiche che esercitano imprese o arti e professioni, condomini e gli altri soggetti dell'art. 23 D.P.R. 600/1973 quando corrispondono redditi di lavoro dipendente.", ["23", "societa", "condomini"]],
+        ["Ritenuta d'acconto mensile: aliquote per scaglioni ragguagliate al periodo di paga e detrazioni rapportate al periodo; versamento con F24 entro il 16 del mese successivo.", ["ritenuta", "acconto", "16", "f24"]],
+        ["Adempimenti annuali: conguaglio entro il 28 febbraio o alla cessazione; CU al lavoratore e all'Agenzia entro il 16 marzo; modello 770 entro il 31 ottobre; esecuzione dei 730-4.", ["28 febbraio", "16 marzo", "31 ottobre", "770"]],
+        ["Sanzioni: omesso versamento 25% (art. 13 D.Lgs. 471/1997), omessa ritenuta 20% (art. 14); CU omessa o errata 100 euro ciascuna; reato oltre 150.000 euro di ritenute certificate non versate (art. 10-bis D.Lgs. 74/2000).", ["25%", "20%", "150.000", "10-bis"]],
+        ["Il sostituito risponde in solido solo per le ritenute a titolo d'imposta non operate né versate (art. 35 D.P.R. 602/1973; Cass. S.U. 10378/2019).", ["solido", "35", "10378"]]
+      ],
+      aggancio: "È il terreno su cui il consulente lavora ogni mese: cedolini, F24, CU e 770 sono adempimenti del sostituto che lo studio esegue come intermediario.",
+      fonti: "P2_Mod04, scaletta A (artt. 23 e 64 D.P.R. 600/1973; art. 35 D.P.R. 602/1973; artt. 13-14 D.Lgs. 471/1997 e art. 10-bis D.Lgs. 74/2000, testi vigenti DA VERIFICARE nel codice); P2_00_PARAMETRI § 8."
     }
 
   };
@@ -1978,7 +2266,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.6.1 · 1/11/2026',
+    versione: '1.7 · 1/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
