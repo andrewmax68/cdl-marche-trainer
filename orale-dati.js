@@ -1,6 +1,8 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
-   Versione dati: 1.4 del 1/11/2026 (+ DL-X6 crisi d'impresa, con risposta modello)
+   Versione dati: 1.6 del 1/11/2026 (+ risposte modello di ragioneria, lotto 4)
+   Versione 1.5 del 1/11/2026: + risposte modello INPS e INAIL, lotto 3
+   Versione 1.4 del 1/11/2026: + DL-X6 crisi d'impresa, con risposta modello
    Versione 1.3 del 30/10/2026: DEO-21 rivista; + 135 argomenti ufficiali 2022 di altra sede
    - Domande: 23 buste ufficiali ITL Ancona, sessione 2025 (8 per busta)
      + integrazioni 2026 (stima, non domande ufficiali).
@@ -1053,7 +1055,898 @@ window.ORALE = (function () {
       ],
       aggancio: 'Attualità: il TAR Lazio ha respinto il ricorso dei commercialisti contro il diniego dell\'INL di estendere loro l\'asseverazione (sentenza n. 12539 del 9/7/2026, estremi da edotto.com, fonte secondaria).',
       fonti: 'Simone, Deontologia, pp. 1238-1241 (riporta Protocolli e Regolamento Asse.Co.: testi non letti); Codice deontologico, art. 38; TAR Lazio 12539/2026 da edotto.com e fiscal-focus.it.'
+    },
+
+    /* ===== Lotto 3 — Legislazione sociale INPS (1/11/2026) ===== */
+
+    'INPS-1': {
+      sintesi: "La CIGO integra la retribuzione dei dipendenti delle imprese industriali (e assimilate) in caso di sospensione o riduzione dell'attività per eventi transitori non imputabili o per situazioni temporanee di mercato (artt. 10-18 D.Lgs. 148/2015).",
+      punti: [
+        ["Campo di applicazione (art. 10): imprese industriali manifatturiere, di trasporti, estrattive, impiantistiche, edili e lapidee, alcune cooperative; causali: eventi transitori non imputabili all'impresa o ai lavoratori, incluse le intemperie, e situazioni temporanee di mercato, con prevedibile ripresa dell'attività (D.M. 95442/2016).", ["industrial","transitor","temporane","non imputabil","intemperie"]],
+        ["Beneficiari: subordinati, apprendisti compresi, esclusi i dirigenti, con almeno 30 giorni di effettivo lavoro nell'unità produttiva (art. 1). Misura: 80% della retribuzione globale per le ore non lavorate, entro un massimale mensile aggiornato ogni anno (art. 3, c. 5-bis, D.Lgs. 148/2015; 2026: 1.423,69 euro lordi, circ. INPS 4/2026).", ["30 giorni","80%","dirigenti","massimale","1.423"]],
+        ["Durata: 13 settimane continuative, prorogabili fino a 52; limite di 52 settimane nel biennio mobile e di un terzo delle ore lavorabili; dentro la durata massima complessiva di 24 mesi nel quinquennio mobile per CIGO e CIGS insieme (art. 4).", ["13 settimane","52 settimane","biennio mobile","24 mesi","quinquennio"]],
+        ["Procedura: informazione e consultazione sindacale (art. 14), da esaurire in 25 giorni (10 fino a 50 dipendenti); domanda telematica all'INPS entro 15 giorni dall'inizio della sospensione (art. 15).", ["consultazione","sindacal","15 giorni","25 giorni","domanda"]],
+        ["Finanziamento: contributo ordinario (1,70% fino a 50 dipendenti, 2% oltre, nell'industria) e contributo addizionale in caso di utilizzo (9%, 12%, 15% secondo l'uso nel quinquennio; dal 2025 ridotto al 6% e al 9% per chi non ha usato integrazioni nei 24 mesi precedenti, art. 5, c. 1-ter, D.Lgs. 148/2015). Pagamento di regola anticipato dal datore in busta e conguagliato con UniEmens (art. 7).", ["contributo ordinario","addizional","9%","conguagli","uniemens"]]
+      ],
+      aggancio: "Per lo studio: la CIGO si anticipa in busta con la retribuzione e si recupera a conguaglio; se l'impresa presenta la domanda in ritardo e i lavoratori perdono il trattamento, deve pagare loro l'equivalente (art. 15, c. 4).",
+      fonti: "Simone, Legislazione sociale 2026, pp. 355-362; importo massimo 2026 riscontrato sul testo della circ. INPS 4 del 28/1/2026."
+    },
+
+    'INPS-2': {
+      sintesi: "La CIGS sostiene il reddito in caso di riorganizzazione, crisi aziendale o contratto di solidarietà, per i datori non coperti dai fondi di solidarietà che nel semestre precedente hanno occupato mediamente più di 15 dipendenti (artt. 19-25-ter D.Lgs. 148/2015).",
+      punti: [
+        ["Campo (art. 20): tutti i settori, datori con più di 15 dipendenti medi nel semestre non coperti dai fondi di solidarietà; a prescindere dal numero, trasporto aereo e partiti politici. Contributo ordinario 0,90%, di cui 0,30% a carico del lavoratore.", ["15 dipendenti","semestre","fondi di solidarieta","0,90"]],
+        ["Causali e durata (artt. 21-22): riorganizzazione, anche per processi di transizione, fino a 24 mesi; crisi aziendale fino a 12 mesi; contratto di solidarietà fino a 24 mesi nel quinquennio mobile.", ["riorganizzazione","crisi aziendale","solidarieta","24 mesi","12 mesi"]],
+        ["Sospensioni autorizzabili, per riorganizzazione e crisi, entro l'80% delle ore lavorabili nell'unità produttiva (art. 22, c. 4).", ["80%","ore lavorabili"]],
+        ["Procedura: comunicazione ai sindacati ed esame congiunto sul programma, criteri di scelta e rotazione (art. 24), entro 25 giorni (10 fino a 50 dipendenti); domanda al Ministero del Lavoro entro 7 giorni dalla consultazione; decreto di autorizzazione, di regola entro 90 giorni.", ["esame congiunto","programma","rotazione","ministero","decreto"]],
+        ["Strumenti collegati: accordo di ricollocazione per gli esuberi (art. 24-bis); condizionalità, con obbligo di formazione pena decurtazione o decadenza (art. 25-ter).", ["ricollocazione","condizionalita","formazione","decadenza"]]
+      ],
+      aggancio: "Il mancato rispetto dei criteri di rotazione è tra le violazioni per cui Rausei indica la disposizione dell'ispettore (art. 14 D.Lgs. 124/2004): collegamento con i poteri ispettivi.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 362-365; P1_Cap06 § 3.7 (rotazione, Cass. 1378/2019, riportata)."
+    },
+
+    'INPS-4': {
+      sintesi: "Gli ammortizzatori sociali sono le misure di politica passiva che tutelano il reddito del lavoratore e si distinguono in strumenti in costanza di rapporto e strumenti per la disoccupazione.",
+      punti: [
+        ["In costanza di rapporto (sospensione o riduzione): CIGO e CIGS (D.Lgs. 148/2015), fondi di solidarietà bilaterali e FIS con l'assegno di integrazione salariale, contratti di solidarietà.", ["costanza","cigo","cigs","fis","fondi"]],
+        ["In caso di cessazione del rapporto: NASpI per i subordinati e DIS-COLL per i collaboratori (D.Lgs. 22/2015); disoccupazione agricola.", ["naspi","dis-coll","disoccupazione","cessazione"]],
+        ["Per gli autonomi: ISCRO, l'indennità straordinaria di continuità reddituale e operativa per gli iscritti alla gestione separata.", ["iscro","autonom","gestione separata"]],
+        ["Ammortizzatori in deroga: proroghe della CIGS oltre i limiti, previo accordo in sede governativa, per imprese di rilevanza strategica.", ["deroga","proroga"]],
+        ["Accanto alle politiche passive ci sono quelle attive (ricollocazione, formazione), collegate dal principio di condizionalità.", ["politiche attive","condizionalita","passiv"]]
+      ],
+      aggancio: "Chiedersi sempre prima se l'azienda rientra in CIGO, CIGS, fondo bilaterale o FIS: dipende da settore e dimensione, ed è la prima verifica dello studio in caso di crisi.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 355, 365-371, 377-380."
+    },
+
+    'INPS-5': {
+      sintesi: "Gli ammortizzatori in costanza di rapporto richiedono requisiti di lavoratore, di datore e di causale, e incontrano limiti di misura e di durata fissati dal D.Lgs. 148/2015.",
+      punti: [
+        ["Lavoratore: subordinato, apprendisti e lavoranti a domicilio compresi, esclusi i dirigenti, con 30 giorni di effettivo lavoro nell'unità produttiva (art. 1).", ["30 giorni","dirigenti","subordinat"]],
+        ["Datore e organico: rileva il settore (CIGO) e la media dei dipendenti del semestre (CIGS oltre 15; FIS per chi ha almeno un dipendente); nel computo rientrano anche dirigenti e apprendisti (art. 2-bis).", ["semestre","organico","15","almeno un dipendente"]],
+        ["Misura: 80% della retribuzione per le ore non lavorate entro il massimale mensile aggiornato ogni anno (art. 3, c. 5-bis).", ["80%","massimale"]],
+        ["Durata massima complessiva: 24 mesi nel quinquennio mobile per unità produttiva, 30 per edilizia e lapidei, fino a 36 con il contratto di solidarietà (art. 4).", ["24 mesi","quinquennio mobile","30 mesi","36"]],
+        ["Incompatibilità: per i giorni di altra attività lavorativa non spetta il trattamento; omessa comunicazione preventiva all'INPS comporta la decadenza (art. 8).", ["attivita lavorativa","comunicazione","decadenza"]]
+      ],
+      aggancio: "Il quinquennio mobile si calcola a ritroso dall'ultimo giorno di trattamento richiesto: in studio è il primo conteggio da fare prima di una nuova domanda.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 355-359 (circ. Min. Lav. 17/2017 e 1/2022, riportate)."
+    },
+
+    'INPS-6': {
+      sintesi: "La NASpI è l'indennità mensile di disoccupazione per i lavoratori subordinati che hanno perso involontariamente il lavoro (D.Lgs. 22/2015).",
+      punti: [
+        ["Disoccupazione involontaria: licenziamento, anche disciplinare; dimissioni per giusta causa o nel periodo tutelato di maternità; risoluzione consensuale in conciliazione per giustificato motivo oggettivo o per rifiuto di trasferimento oltre 50 km.", ["involontari","giusta causa","licenziamento","risoluzione consensuale"]],
+        ["Requisito: almeno 13 settimane di contribuzione nei 4 anni precedenti (art. 3). Dal 2025, se nei 12 mesi prima ci sono state dimissioni o risoluzione consensuale da un tempo indeterminato, le 13 settimane vanno maturate dopo quella cessazione (L. 207/2024).", ["13 settimane","4 anni","quattro anni","dimissioni"]],
+        ["Misura: 75% della retribuzione media mensile fino alla soglia (2026: 1.456,72 euro), più 25% della parte eccedente, entro il massimale (2026: 1.584,70 euro); riduzione del 3% al mese dal sesto mese (dall'ottavo per chi ha almeno 55 anni).", ["75%","25%","1.456","1.584","3%"]],
+        ["Durata: metà delle settimane contributive degli ultimi 4 anni, al netto di quelle già indennizzate (art. 5): massimo 2 anni.", ["meta","settimane","durata","2 anni","due anni"]],
+        ["Domanda telematica entro 68 giorni dalla cessazione; contribuzione figurativa; condizionalità con il patto di servizio; liquidazione anticipata per avviare un'attività, dal 2026 in due rate (70% e 30%).", ["68 giorni","figurativ","condizionalita","liquidazione anticipata"]]
+      ],
+      aggancio: "Domanda tipica del cliente al momento della cessazione: dimissioni volontarie senza giusta causa non danno NASpI; per chi licenzia c'è il contributo di licenziamento (ticket).",
+      fonti: "Simone, Legislazione sociale 2026, pp. 371-374; soglia e massimale 2026 riscontrati sul testo della circ. INPS 4 del 28/1/2026. Termine di 68 giorni a pena di decadenza: art. 6, c. 1, D.Lgs. 22/2015 (Simone, p. 374)."
+    },
+
+    'INPS-11': {
+      sintesi: "Le misure a sostegno del reddito dei lavoratori si dividono tra integrazioni durante il rapporto e indennità dopo la cessazione, con regole diverse per subordinati, collaboratori e autonomi.",
+      punti: [
+        ["Durante il rapporto: CIGO e CIGS; fondi di solidarietà bilaterali e FIS con l'assegno di integrazione salariale (13 o 26 settimane nel biennio mobile secondo che i dipendenti siano fino a 5 o di più).", ["cigo","cigs","fis","assegno di integrazione","13","26"]],
+        ["Dopo la cessazione: NASpI per i subordinati; DIS-COLL per i collaboratori iscritti alla gestione separata; disoccupazione agricola.", ["naspi","dis-coll","agricol"]],
+        ["Per gli autonomi in gestione separata: ISCRO, indennità straordinaria di continuità reddituale e operativa.", ["iscro","autonom"]],
+        ["Strumenti di accompagnamento: assegni straordinari dei fondi bilaterali per l'esodo, accordo di ricollocazione nella CIGS.", ["esodo","ricollocazione","assegni straordinari"]],
+        ["Tutte le prestazioni sono condizionate alla partecipazione alle politiche attive (principio di condizionalità).", ["condizionalita","politiche attive"]]
+      ],
+      aggancio: "Il FIS copre anche i piccoli datori del terziario con almeno un dipendente: è la tutela più frequente per i clienti di uno studio di provincia.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 355, 367-374, 377-380."
+    },
+
+    'INPS-21': {
+      sintesi: "Durante la NASpI il lavoro non fa automaticamente perdere l'indennità: conta il tipo di attività, la sua durata e il reddito previsto (artt. 9-10 D.Lgs. 22/2015).",
+      punti: [
+        ["Lavoro subordinato con reddito annuo superiore al limite esente da imposta: decadenza; se il contratto non supera 6 mesi, la NASpI è solo sospesa d'ufficio per la durata del rapporto (art. 9).", ["sei mesi","6 mesi","sospes","decadenza"]],
+        ["Lavoro subordinato con reddito inferiore al limite esente: la NASpI resta ma è ridotta dell'80% del reddito previsto, a condizione di comunicare all'INPS il reddito annuo previsto entro 30 giorni dall'inizio.", ["ridott","30 giorni","reddito annuo"]],
+        ["Più rapporti brevi consecutivi che superano complessivamente i 6 mesi fanno decadere (msg. INPS 1162/2018); il lavoro intermittente sospende per la durata o per le sole giornate lavorate.", ["intermittent","consecutiv","1162"]],
+        ["Attività autonoma o d'impresa individuale (art. 10): stessa logica di decadenza, perdita o riduzione in funzione del reddito, con comunicazione all'INPS.", ["autonom","impresa individuale","comunicazione"]],
+        ["DIS-COLL: sospensione se il lavoro subordinato dura fino a 5 giorni, decadenza oltre.", ["dis-coll","5 giorni","cinque giorni"]]
+      ],
+      aggancio: "In studio si verifica sempre la NASpI di chi si assume: la comunicazione UniLav vale anche verso l'INPS, ma il reddito previsto lo deve comunicare il lavoratore.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 379-380 (msg. INPS 1162/2018, riportato). Riduzione pari all'80% del reddito annuo previsto, ripartito fino alla fine dell'indennità o, se prima, fino al 31/12 (art. 9, c. 2, che rinvia all'art. 10; Brocardi e leggeinchiaro, fonti secondarie)."
+    },
+
+    'INPS-3': {
+      sintesi: "La contribuzione obbligatoria finanzia le assicurazioni sociali dei lavoratori: l'assicurazione generale obbligatoria per invalidità, vecchiaia e superstiti, le cosiddette assicurazioni minori e le forme sostitutive o esclusive.",
+      punti: [
+        ["IVS: finanzia le pensioni; per la generalità dei dipendenti l'aliquota del Fondo pensioni lavoratori dipendenti è 33%, di cui 23,81% a carico del datore e 9,19% del lavoratore.", ["ivs","invalidita","vecchiaia","33%","9,19"]],
+        ["Assicurazioni minori: malattia, maternità, disoccupazione (NASpI), cassa integrazione, assegni per il nucleo familiare (CUAF), Fondo di garanzia del TFR.", ["minori","malattia","maternita","disoccupazione","cuaf"]],
+        ["Dipendenti pubblici: la gestione ex INPDAP è confluita nell'INPS dal 2012, con proprie casse pensionistiche.", ["inpdap","pubblic","2012"]],
+        ["Autonomi: gestioni speciali di artigiani, commercianti e coltivatori diretti; gestione separata per collaboratori e professionisti senza cassa (L. 335/1995).", ["artigian","commercianti","gestione separata","335"]],
+        ["Liberi professionisti iscritti agli albi: casse private con autonomia (D.Lgs. 509/1994), con contributo soggettivo, integrativo e di maternità. Per i consulenti del lavoro è l'ENPACL.", ["casse","509","soggettivo","integrativo","enpacl"]]
+      ],
+      aggancio: "Il consulente del lavoro vive tutti e due i lati: gestisce le aliquote INPS dei clienti e versa i propri contributi all'ENPACL, applicando in fattura il contributo integrativo.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 256-258, 330-332. Soppressione di INPDAP ed ENPALS e confluenza nell'INPS dal 2012: art. 21 D.L. 201/2011; circ. INPS 3 del 13/1/2012."
+    },
+
+    'INPS-8': {
+      sintesi: "L'unità produttiva è la sede dotata di autonomia organizzativa capace di svolgere l'intero ciclo produttivo o una sua fase; l'unità operativa è il luogo dove si svolge stabilmente il lavoro dei dipendenti.",
+      punti: [
+        ["Posizione contributiva unica: il datore ha di regola una sola matricola INPS per tutti i lavoratori, ovunque operino (circ. INPS 172/2010 e 65/2015).", ["unica","matricola","posizione contributiva"]],
+        ["Unità operativa: luogo in cui uno o più dipendenti lavorano stabilmente, o sezione produttiva omogenea; può coincidere con la sede legale se vi lavorano dipendenti.", ["unita operativa","stabil","sede legale"]],
+        ["Unità produttiva (msg. INPS 1444/2017): autonomia finanziaria o tecnico-funzionale, idoneità a realizzare l'intero ciclo produttivo o una sua fase completa, maestranze adibite in via continuativa.", ["unita produttiva","autonomia","ciclo produttivo","fase completa","maestranze"]],
+        ["Rilevanza: gli ammortizzatori (anzianità di 30 giorni, durata massima, CIGO) si misurano per unità produttiva; per questo le unità vanno comunicate all'iscrizione.", ["ammortizzator","30 giorni","durata"]],
+        ["Nel diritto del lavoro l'unità produttiva rileva anche per le soglie di tutela (art. 18 St. lav.) e per il trasferimento del lavoratore (art. 2103 c.c.).", ["18","2103","trasferimento"]]
+      ],
+      aggancio: "Esempio: un'impresa con sede a Fermo e un laboratorio a Macerata con propri addetti stabili apre due unità produttive, e ogni domanda di cassa integrazione va riferita alla singola unità.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 263-264, 356 (circ. INPS 9/2017, 56/2017, msg. 1444/2017, riportati)."
+    },
+
+    'INPS-12': {
+      sintesi: "I contributi previdenziali e assistenziali si prescrivono in cinque anni; una volta prescritti non possono più essere versati (art. 3, c. 9, L. 335/1995).",
+      punti: [
+        ["Termine unico di 5 anni per il Fondo pensioni lavoratori dipendenti, le altre gestioni pensionistiche obbligatorie e tutte le altre contribuzioni, compresi i premi INAIL.", ["cinque anni","5 anni","quinquennal"]],
+        ["Principio di irricevibilità: i contributi prescritti non possono essere versati nemmeno spontaneamente.", ["irricevibil","prescritt"]],
+        ["Se il lavoratore o i superstiti presentano denuncia, il termine diventa di 10 anni.", ["denuncia","10 anni","dieci anni"]],
+        ["Conseguenza: l'automaticità delle prestazioni (art. 2116 c.c.) opera solo nei limiti della prescrizione; oltre, il datore risponde del danno al lavoratore.", ["automaticita","2116","danno"]],
+        ["Il lavoratore danneggiato può chiedere la costituzione della rendita vitalizia (art. 13 L. 1338/1962).", ["rendita vitalizia","1338"]]
+      ],
+      aggancio: "In un contenzioso o in un'ispezione la prima verifica è il quinquennio: i periodi più vecchi non si recuperano con i contributi ma solo con la rendita vitalizia o il risarcimento.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 259-260, 301-302; art. 2116 c.c. (NORMA_Codice_civile_lavoro). Rendita vitalizia (art. 13 L. 1338/1962): Simone, p. 302."
+    },
+
+    'INPS-13': {
+      sintesi: "I debiti contributivi verso l'INPS non ancora affidati all'agente della riscossione possono essere rateizzati: dal 2025 la legge consente fino a 60 rate mensili (art. 2, c. 11 e 11-bis, D.L. 338/1989).",
+      punti: [
+        ["Base: art. 2, c. 11, D.L. 338/1989; il c. 11-bis, introdotto dall'art. 23 della L. 203/2024 (collegato lavoro), consente fino a 60 rate; attuato dal decreto interministeriale del 24/10/2025 e dal regolamento INPS (circ. INPS 60 del 21/5/2026).", ["338","60 rate","sessanta","203/2024","collegato"]],
+        ["La dilazione richiede una dichiarazione di temporanea difficoltà economico-finanziaria: fino a 36 rate per debiti fino a 500.000 euro, fino a 60 rate oltre (D.I. 24/10/2025).", ["36","500.000","difficolta","60 rate"]],
+        ["Debiti ammessi: contributi e accessori non ancora affidati all'agente della riscossione (prima dell'avviso di addebito); esclusi quelli contestati.", ["agente della riscossione","avviso di addebito","contestat"]],
+        ["Sulle rate si applicano gli interessi di dilazione; la sanzione civile ridotta è subordinata al pagamento della prima rata.", ["interessi","prima rata","sanzione civile"]],
+        ["Revoca per mancato pagamento di tre rate, anche non consecutive, o per perdita della correntezza contributiva; decadenza se l'impresa accede a uno strumento di regolazione della crisi.", ["revoca","tre rate","correntezza","crisi"]]
+      ],
+      aggancio: "Durante la dilazione regolare il DURC resta positivo: è spesso la ragione pratica per cui lo studio la chiede.",
+      fonti: "Simone, Legislazione sociale 2026, p. 445; circ. INPS 60 del 21/5/2026 (testo letto). DURC regolare in pendenza di rateazione dopo il pagamento della prima rata (D.M. 30/1/2015, art. 3, c. 2, lett. a; circ. INPS 60/2026)."
+    },
+
+    'INPS-14': {
+      sintesi: "L'inquadramento è la classificazione del datore di lavoro in un settore previdenziale, fatta dall'INPS in via esclusiva in base all'attività svolta (art. 49 L. 88/1989); da esso dipendono aliquote e prestazioni.",
+      punti: [
+        ["Settori dell'art. 49 L. 88/1989: industria, artigianato, agricoltura, terziario, credito e assicurazioni.", ["49","88/1989","industria","artigianato","terziario"]],
+        ["L'inquadramento vale a tutti gli effetti previdenziali e assistenziali e vincola anche l'INAIL (D.Lgs. 38/2000).", ["tutti gli effetti","inail","vincol"]],
+        ["Iscrizione telematica con il codice ATECO; dal 1/4/2025 l'INPS usa la classificazione ATECO 2025 (circ. INPS 71/2025).", ["ateco","2025","iscrizione"]],
+        ["Inquadramento automatizzato sulla base dell'autocertificazione e di un questionario; per le attività complesse lo fa l'INPS dopo istruttoria.", ["automatizzat","autocertificazione","questionario"]],
+        ["Posizione contributiva unica con una matricola per tutti i dipendenti; le variazioni dell'attività vanno comunicate.", ["matricola","posizione contributiva","variazion"]]
+      ],
+      aggancio: "Un inquadramento sbagliato si porta dietro aliquote, CIG e fondi sbagliati: il caso classico è l'impresa agricola che trasforma i propri prodotti, al confine tra agricoltura e industria (art. 2135 c.c.).",
+      fonti: "Simone, Legislazione sociale 2026, pp. 263-266 (circ. INPS 71/2025; comunicato INPS 9/10/2025, riportati)."
+    },
+
+    'INPS-15': {
+      sintesi: "I contributi si calcolano su una retribuzione non inferiore a quella dei contratti collettivi nazionali e, se ci sono più contratti, a quella dei contratti comparativamente più rappresentativi; in ogni caso non sotto il minimale giornaliero di legge.",
+      punti: [
+        ["Minimale contrattuale (art. 1, c. 1, D.L. 338/1989): la base imponibile non può essere inferiore alla retribuzione dei CCNL delle organizzazioni più rappresentative, anche per chi non li applica.", ["338","minimale","ccnl","non applica"]],
+        ["Con più contratti per la stessa categoria vale quello stipulato dalle organizzazioni comparativamente più rappresentative (art. 2, c. 25, L. 549/1995).", ["comparativamente","549","pluralita"]],
+        ["Minimale giornaliero di legge: 9,50% del trattamento minimo di pensione; per il 2026 58,13 euro (circ. INPS 6/2026).", ["giornalier","9,50","58,13","trattamento minimo"]],
+        ["Senza CCNL per il settore si può usare quello di un settore affine (Cass. 22357/2019, riportata dal Simone).", ["affine","22357"]],
+        ["Collegamento 2026: il D.L. 62/2026 (art. 7) assume il trattamento economico complessivo dei CCNL comparativamente più rappresentativi come parametro del salario giusto e come condizione per i benefici.", ["62/2026","trattamento economico complessivo","salario giusto"]]
+      ],
+      aggancio: "L'impresa che applica un contratto «pirata» paga comunque i contributi sul CCNL leader: in ispezione scatta il recupero delle differenze contributive.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 270-271 (circ. INPS 6/2026, riportata); P1_Cap01 (art. 7 D.L. 62/2026)."
+    },
+
+    'INPS-18': {
+      sintesi: "Omissione ed evasione contributiva sono le due forme di mancato versamento sanzionate con sanzioni civili dall'art. 116, c. 8, L. 388/2000; l'omesso versamento delle ritenute ha anche una sanzione penale o amministrativa.",
+      punti: [
+        ["Omissione (lett. a): contributi non pagati o pagati in ritardo ma risultanti da denunce e registrazioni. Sanzione: tasso BCE più 5,5 punti all'anno, solo tasso BCE se si paga spontaneamente entro 120 giorni; tetto 40%.", ["omission","denunce","5,5","120 giorni","40%"]],
+        ["Evasione (lett. b): denunce omesse o non veritiere con intenzione di non versare, occultando rapporti o retribuzioni. Sanzione: 30% annuo con tetto del 60%.", ["evasion","occult","30%","60%"]],
+        ["Ravvedimento nell'evasione: denuncia spontanea entro 12 mesi e pagamento entro 30 giorni (BCE + 5,5) o 90 giorni (BCE + 7,5), tetto 40% (riforma del D.L. 19/2024, dal 1/9/2024).", ["12 mesi","7,5","ravvedimento","19/2024"]],
+        ["Dopo un accertamento d'ufficio o ispettivo la sanzione è ridotta al 50% se si paga entro 30 giorni dalla contestazione.", ["50%","30 giorni","ispettiv"]],
+        ["Ritenute previdenziali trattenute e non versate (art. 2, c. 1-bis, D.L. 463/1983): oltre 10.000 euro annui reclusione fino a 3 anni e multa fino a 1.032 euro; sotto, sanzione amministrativa da 1,5 a 4 volte l'omesso; non punibile chi paga entro 3 mesi dalla contestazione.", ["ritenute","10.000","reclusione","tre mesi","3 mesi"]]
+      ],
+      aggancio: "La distinzione conta in ispezione: il lavoratore in nero è evasione, il ritardo su UniEmens regolarmente inviato è omissione. Dal 2026 operano anche gli indici ISAC.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 443-448 (circ. INPS 90/2024, circ. INAIL 31/2024 e 32/2022, riportate)."
+    },
+
+    'INPS-20': {
+      sintesi: "Il DURC attesta, con un'unica interrogazione telematica sul codice fiscale, la regolarità contributiva verso INPS, INAIL e, per l'edilizia, Casse edili (art. 4 D.L. 34/2014; D.M. 30/1/2015).",
+      punti: [
+        ["Verifica on line in tempo reale; possono chiederla stazioni appaltanti, amministrazioni, l'impresa stessa e, per delega, il consulente del lavoro.", ["telematic","codice fiscale","stazioni appaltanti","consulente"]],
+        ["Esito regolare se non ci sono debiti per contributi o sanzioni civili; il documento vale 120 giorni dalla richiesta.", ["120 giorni","regolar","sanzioni civili"]],
+        ["In caso di irregolarità l'ente invia via PEC l'invito a regolarizzare; si hanno 15 giorni per farlo, altrimenti si genera il documento di non regolarità.", ["invito","15 giorni","pec","non regolarita"]],
+        ["Serve per appalti pubblici, pagamenti della pubblica amministrazione e per tutte le agevolazioni: il codice degli incentivi lo richiede già all'accesso (D.Lgs. 184/2025, art. 9).", ["appalti","agevolazion","benefici","184/2025"]],
+        ["Nel settore edile si aggiunge il DURC di congruità sull'incidenza della manodopera.", ["congruita","edil"]]
+      ],
+      aggancio: "Senza DURC regolare l'impresa perde esoneri e incentivi assunzionali: per questo lo studio controlla l'invito a regolarizzare appena arriva.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 281-283 (circ. INPS 126/2015, riportata)."
+    },
+
+    'INPS-22': {
+      sintesi: "Il rapporto di lavoro subordinato fa sorgere per legge il rapporto contributivo: il datore versa i contributi anche per la quota del lavoratore e ne risponde in via esclusiva (artt. 2114-2116 c.c.).",
+      punti: [
+        ["Art. 2114 c.c.: le leggi speciali fissano casi, forme, contributi e prestazioni della previdenza obbligatoria.", ["2114","leggi speciali"]],
+        ["Art. 2115 c.c.: datore e lavoratore contribuiscono, salvo diverse disposizioni; il datore è responsabile del versamento anche per la parte del lavoratore, con diritto di rivalsa tramite trattenuta.", ["2115","responsabile","rivalsa","trattenuta"]],
+        ["È nullo qualsiasi patto diretto a eludere gli obblighi previdenziali (art. 2115, c. 3).", ["nullo","patto","eludere"]],
+        ["Il contributo si calcola applicando l'aliquota del settore alla retribuzione imponibile (art. 12 L. 153/1969, in armonia con l'art. 51 TUIR), mai sotto i minimali.", ["aliquota","imponibile","minimal"]],
+        ["Tipi di contributi: obbligatori, figurativi (malattia, maternità, CIG), volontari, da riscatto (laurea, D.Lgs. 184/1997).", ["obbligatori","figurativ","volontari","riscatto"]]
+      ],
+      aggancio: "Per questo il lavoratore non risponde mai dell'omissione del datore: la tutela gli arriva per automaticità (art. 2116) o, se prescritta, come risarcimento.",
+      fonti: "Artt. 2114-2116 c.c. (NORMA_Codice_civile_lavoro); Simone, Legislazione sociale 2026, pp. 257-259."
+    },
+
+    'INPS-23': {
+      sintesi: "Per il principio di automaticità le prestazioni previdenziali spettano al lavoratore subordinato anche se il datore non ha versato i contributi (art. 2116 c.c.), nei limiti della prescrizione.",
+      punti: [
+        ["Fondamento: art. 2116, c. 1, c.c.; il rischio dell'inadempimento è spostato dal lavoratore all'ente.", ["2116","anche quando","non ha versato"]],
+        ["Limite: opera solo per i contributi non prescritti; oltre i 5 anni l'ente non paga e il datore risponde del danno (art. 2116, c. 2).", ["prescri","5 anni","cinque anni","danno"]],
+        ["Vale per i rapporti di lavoro subordinato, non per autonomi e professionisti, che versano per sé.", ["subordinat","autonomi","professionisti"]],
+        ["Non vale nemmeno per i collaboratori della gestione separata, anche se versa il committente; eccezione: l'indennità di maternità (art. 64-ter D.Lgs. 151/2001).", ["gestione separata","collaborator","maternita","64-ter"]],
+        ["Nato nell'assicurazione infortuni, oggi è applicato dalla generalità dei regimi.", ["infortuni","generalita"]]
+      ],
+      aggancio: "Esempio: il dipendente in nero che si ammala ha diritto all'indennità INPS; l'INPS poi recupera dal datore contributi e sanzioni.",
+      fonti: "Simone, Legislazione sociale 2026, p. 301; art. 2116 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    'INPS-7': {
+      sintesi: "Il Fondo di garanzia dell'INPS paga al lavoratore il TFR e le ultime retribuzioni non corrisposte quando il datore è insolvente (art. 2 L. 297/1982; D.Lgs. 80/1992).",
+      punti: [
+        ["Datore soggetto a procedure concorsuali: servono cessazione del rapporto, apertura della procedura (liquidazione giudiziale, concordato, LCA) e credito insoluto, di regola ammesso al passivo.", ["concorsual","liquidazione giudiziale","insoluto","cessazione"]],
+        ["Datore non fallibile: oltre alla cessazione, serve aver tentato l'esecuzione forzata con esito insufficiente.", ["esecuzione forzata","insufficien","non assoggettabil"]],
+        ["Copre anche le retribuzioni degli ultimi 3 mesi del rapporto, se rientrano nei 12 mesi precedenti la procedura o l'esecuzione (art. 2 D.Lgs. 80/1992).", ["ultimi 3 mesi","tre mesi","12 mesi","retribuzioni"]],
+        ["Finanziato con un contributo dello 0,20% delle retribuzioni (0,40% per i dirigenti industriali); domanda telematica del lavoratore, pagamento entro 60 giorni su conto corrente.", ["0,20","domanda","60 giorni"]],
+        ["Interviene anche nei trasferimenti d'azienda in procedura liquidatoria, dove il TFR diventa esigibile verso il cedente (art. 47, c. 5-bis, L. 428/1990).", ["trasferimento","47","cedente"]]
+      ],
+      aggancio: "Collegamento con la crisi d'impresa: con l'art. 189 CCII TFR e preavviso sono crediti anteriori ammessi al passivo, e il Fondo li paga al posto del datore (scheda ORALE_05).",
+      fonti: "Simone, Legislazione sociale 2026, pp. 388-389, 410-411 (circ. INPS 70/2023, riportata)."
+    },
+
+    'INPS-10': {
+      sintesi: "Il congedo parentale è il diritto di ciascun genitore di astenersi dal lavoro nei primi 14 anni del figlio, con un'indennità INPS in parte all'80% e in parte al 30% (artt. 32-35 D.Lgs. 151/2001).",
+      punti: [
+        ["Durata: fino a 6 mesi per la madre e 6 per il padre (7 se ne fruisce almeno 3), 10 mesi di coppia, 11 se il padre ne fruisce almeno 3; 11 mesi al genitore solo.", ["6 mesi","sei mesi","10 mesi","11 mesi"]],
+        ["Età del figlio: 14 anni dal 1/1/2026 per i lavoratori dipendenti (L. 199/2025, c. 219; msg. INPS 251/2026); 12 anni restano per la gestione separata.", ["14 anni","quattordici","199/2025","dipendenti"]],
+        ["Indennità: 9 mesi indennizzati al 30% (3 non trasferibili per genitore più 3 alternativi); entro i 6 anni del figlio 3 mesi all'80%; oltre i 9 mesi il 30% solo sotto una soglia di reddito.", ["30%","80%","9 mesi","nove mesi","6 anni"]],
+        ["Fruizione giornaliera o oraria; preavviso di almeno 5 giorni (2 per quella oraria).", ["oraria","preavviso","5 giorni"]],
+        ["Contribuzione figurativa per i periodi di congedo (art. 35); il licenziamento causato dalla domanda o dalla fruizione del congedo è nullo.", ["figurativ","nullo","licenziamento"]]
+      ],
+      aggancio: "L'indennità è anticipata in busta e conguagliata con l'INPS: in studio conta il conteggio dei mesi già usati da entrambi i genitori.",
+      fonti: "Simone, Diritto del lavoro 2026, pp. 121-122; P1_Cap09 § 3.4 (D.Lgs. 151/2001 consolidato; msg. INPS 251/2026). I 3 mesi all'80% sono complessivi per la coppia (o per il genitore solo), alternativi, entro i 6 anni del figlio, per chi termina il congedo di maternità o paternità dopo il 31/12/2024 (art. 34, c. 1, D.Lgs. 151/2001, mod. L. 207/2024, c. 217; circ. INPS 95/2025, da fonte secondaria)."
+    },
+
+    'INPS-16': {
+      sintesi: "La previdenza complementare è il secondo pilastro volontario che integra la pensione pubblica attraverso fondi pensione finanziati soprattutto dal TFR (D.Lgs. 252/2005).",
+      punti: [
+        ["Forme: fondi negoziali (istituiti dai contratti collettivi), fondi aperti, PIP assicurativi, fondi preesistenti; iscritti all'albo COVIP, di regola a contribuzione definita.", ["negozial","aperti","pip","covip","contribuzione definita"]],
+        ["Fino al 30/6/2026: entro 6 mesi dall'assunzione il lavoratore sceglie; se tace, il TFR va al fondo del contratto collettivo (silenzio-assenso).", ["sei mesi","6 mesi","silenzio","tacit"]],
+        ["Dal 1/7/2026 (L. 199/2025, c. 204-205): il lavoratore del settore privato alla prima assunzione aderisce automaticamente (art. 8, c. 7 e 7-quater, D.Lgs. 252/2005) se entro 60 giorni non rinuncia; restano esclusi i domestici.", ["1 luglio 2026","60 giorni","adesione automatica","199/2025"]],
+        ["In mancanza di fondo contrattuale il TFR va al fondo residuale COMETA; il datore deve informare il lavoratore su accordi, meccanismo e scelte (art. 8, c. 8).", ["cometa","informativa","residual"]],
+        ["Con l'adesione affluiscono TFR, contributo del lavoratore e contributo del datore previsto dal contratto; la contribuzione del lavoratore non è obbligatoria se la retribuzione annua è inferiore all'assegno sociale.", ["contributo del datore","tfr","assegno sociale"]]
+      ],
+      aggancio: "Dal luglio 2026 lo studio deve gestire per ogni assunto il termine dei 60 giorni e l'informativa scritta: è un adempimento nuovo e verificabile in ispezione.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 390-394 (Dossier Legge di bilancio 2026, riportato); Simone, Ragioneria, p. 1112."
+    },
+
+    'INPS-17': {
+      sintesi: "La malattia sospende il rapporto con conservazione del posto per il periodo di comporto (art. 2110 c.c.); per molte categorie il reddito è garantito da un'indennità INPS integrata dal datore.",
+      punti: [
+        ["Tutela: conservazione del posto per il comporto fissato dai CCNL; i giorni contano nell'anzianità; indennità o retribuzione secondo legge e contratto.", ["2110","comporto","conservazione del posto"]],
+        ["Indennità INPS per operai di industria, artigianato e agricoltura, operai e impiegati del commercio e del terziario: dal 4° giorno (i primi 3 di carenza a carico del datore se il CCNL lo prevede) fino a 180 giorni l'anno.", ["quarto giorno","4","carenza","180"]],
+        ["Misura: 50% della retribuzione media giornaliera dal 4° al 20° giorno, 66,66% dal 21° al 180°; i CCNL prevedono integrazioni del datore. Per gli impiegati dell'industria paga interamente il datore.", ["50%","66,66","impiegati","integrazion"]],
+        ["Adempimenti: il medico invia il certificato telematico all'INPS; il lavoratore avvisa il datore e indica l'indirizzo di reperibilità.", ["certificato","telematic","reperibilita"]],
+        ["Visite di controllo: fasce di reperibilità dalle 10 alle 12 e dalle 17 alle 19, anche festivi; esonero per terapie salvavita o invalidità almeno del 67% (D.M. 11/1/2016).", ["10","12","17","19","fasce"]]
+      ],
+      aggancio: "L'indennità INPS è anticipata dal datore in busta e conguagliata in UniEmens; i periodi sono coperti da contribuzione figurativa.",
+      fonti: "Simone, Diritto del lavoro 2026, pp. 196-199 e 204; percentuali riscontrate sulla Guida INPS «Tutela previdenziale della malattia» (settembre 2024)."
+    },
+
+    'INPS-19': {
+      sintesi: "La L. 104/1992 riconosce permessi retribuiti al lavoratore con disabilità grave e a chi assiste un familiare con disabilità grave non ricoverato a tempo pieno (art. 33).",
+      punti: [
+        ["Lavoratore con disabilità grave: 2 ore di permesso al giorno o, in alternativa, 3 giorni al mese (art. 33, c. 6).", ["2 ore","due ore","3 giorni","tre giorni"]],
+        ["Assistenza a un familiare: 3 giorni al mese, anche continuativi, per coniuge, unito civilmente, convivente di fatto, parenti e affini entro il secondo grado; il terzo grado solo se mancano o sono anziani o invalidi i più vicini (art. 33, c. 3).", ["familiare","secondo grado","terzo grado","coniuge"]],
+        ["Il diritto può essere riconosciuto a più familiari in alternativa tra loro, entro il limite dei 3 giorni (è venuto meno il «referente unico»).", ["alternativa","piu familiari"]],
+        ["Genitori di figli con disabilità grave fino a 3 anni: prolungamento del congedo parentale, oppure 2 ore al giorno o 3 giorni al mese; congedo straordinario fino a 2 anni (art. 42 D.Lgs. 151/2001).", ["prolungamento","congedo straordinario","2 anni","42"]],
+        ["Tutele collegate: scelta della sede più vicina e divieto di trasferimento senza consenso (art. 33, c. 5); permessi indennizzati dall'INPS e coperti da contribuzione figurativa.", ["sede","trasferimento","consenso","figurativ"]]
+      ],
+      aggancio: "L'uso dei permessi per finalità diverse dall'assistenza può giustificare il licenziamento: tema frequente nel contenzioso e nei controlli.",
+      fonti: "Simone, Diritto del lavoro 2026, pp. 180, 192-193. Più familiari possono fruire dei permessi in alternativa tra loro, fermo il limite di 3 giorni (art. 33, c. 3, L. 104/1992, mod. D.Lgs. 105/2022). Indennizzo INPS: DA VERIFICARE."
+    },
+
+    'INPS-9': {
+      sintesi: "L'UniLav è il modello telematico unificato con cui tutti i datori di lavoro, pubblici e privati, comunicano assunzioni, proroghe, trasformazioni e cessazioni dei rapporti di lavoro.",
+      punti: [
+        ["Si usa per instaurazione, proroga, trasformazione, cessazione, distacco e trasferimento; lo possono inviare il datore o i soggetti abilitati, come il consulente del lavoro.", ["instaurazione","proroga","trasformazione","cessazione"]],
+        ["L'assunzione si comunica entro il giorno precedente l'inizio del rapporto; proroghe, trasformazioni e cessazioni entro 5 giorni.", ["giorno precedente","5 giorni","cinque giorni"]],
+        ["Comunicazione pluriefficace: vale verso centri per l'impiego, INPS, INAIL e Ministero del Lavoro.", ["pluriefficac","inps","inail"]],
+        ["Modelli collegati: UniSomm per le agenzie di somministrazione; UniUrg per le urgenze, con UniLav entro il primo giorno utile e comunque non oltre 5 giorni; VarDatori per le variazioni del datore.", ["unisomm","uniurg","vardatori"]],
+        ["Dal 1/1/2026 l'assunzione si può comunicare anche tramite il SIISL (art. 14, c. 2, D.L. 159/2025, conv. L. 198/2025).", ["siisl","159/2025","2026"]]
+      ],
+      aggancio: "L'omessa comunicazione preventiva è il presupposto del lavoro nero ai fini della maxisanzione: per lo studio è l'adempimento da non mancare mai.",
+      fonti: "Simone, Diritto del lavoro 2026, pp. 75-78: assunzione entro il giorno precedente (art. 9-bis, c. 2, D.L. 510/1996); variazioni entro 5 giorni (art. 4-bis, c. 5, D.Lgs. 181/2000); cessazione entro 5 giorni (art. 21, c. 1, L. 264/1949)."
+    },
+
+    'INPS-X1': {
+      sintesi: "Le novità 2025-2026 riguardano soprattutto l'accesso alla NASpI dopo dimissioni e la sua liquidazione anticipata, e l'estensione a 14 anni del congedo parentale dei dipendenti.",
+      punti: [
+        ["NASpI dal 2025: chi nei 12 mesi precedenti si è dimesso o ha risolto consensualmente un rapporto a tempo indeterminato deve maturare le 13 settimane dopo quella cessazione (L. 207/2024, art. 1, c. 171).", ["13 settimane","dimissioni","207/2024","12 mesi"]],
+        ["Liquidazione anticipata della NASpI dal 2026 in due rate: 70% subito e 30% alla fine del periodo teorico, entro 6 mesi, se il beneficiario non si è rioccupato.", ["70%","30%","due rate","liquidazione anticipata"]],
+        ["Importi 2026 della NASpI: soglia di 1.456,72 euro e massimale di 1.584,70 euro (circ. INPS 4/2026).", ["1.456","1.584","massimale"]],
+        ["Congedo parentale: dal 1/1/2026 fruibile fino ai 14 anni del figlio per i dipendenti (L. 199/2025, c. 219; msg. INPS 251/2026), con 3 mesi all'80% entro i 6 anni.", ["14 anni","199/2025","80%","6 anni"]],
+        ["Previdenza complementare: dal 1/7/2026 adesione automatica dei neoassunti salvo rinuncia entro 60 giorni (L. 199/2025, c. 204-205).", ["adesione automatica","60 giorni"]]
+      ],
+      aggancio: "Domanda probabile del commissario INPS: aspettarsi un rilancio sul calcolo dell'importo NASpI con il décalage del 3%.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 371-374, 393-394; P1_Cap09; circ. INPS 4 del 28/1/2026. Liquidazione anticipata in due rate: art. 8, c. 3-bis, D.Lgs. 22/2015, inserito dall'art. 1, c. 176, L. 199/2025, per le domande dal 1/1/2026 (msg. INPS 1215 del 7/4/2026); il Simone scrive per refuso «D.Lgs. 148/2015»."
+    },
+
+    /* ===== Lotto 3 — Legislazione sociale INAIL (1/11/2026) ===== */
+
+    'INAIL-1': {
+      sintesi: "La regolarità verso l'INAIL significa aver denunciato le attività e pagato correttamente i premi; si attesta con il DURC, che verifica insieme INPS, INAIL e Casse edili.",
+      punti: [
+        ["Presupposti: denuncia di esercizio e delle variazioni, autoliquidazione corretta entro il 16 febbraio con dichiarazione delle retribuzioni, pagamento dei premi o delle rate.", ["denuncia","autoliquidazione","16 febbraio","premi"]],
+        ["Verifica: DURC on line su codice fiscale, valido 120 giorni; in caso di debito l'INAIL invia via PEC l'invito a regolarizzare entro 15 giorni.", ["durc","120 giorni","15 giorni","invito"]],
+        ["Ritardi e omissioni generano sanzioni civili (art. 116, c. 8, L. 388/2000), uguali per INPS e INAIL; i premi si prescrivono in 5 anni.", ["sanzioni civili","388","5 anni","prescri"]],
+        ["Si può rateizzare il debito non ancora iscritto a ruolo (art. 2, c. 11, D.L. 338/1989), mantenendo la regolarità.", ["rateizz","rateazione","ruolo"]],
+        ["La regolarità è condizione per le riduzioni del tasso (oscillazione), per gli incentivi alla prevenzione e per ogni agevolazione.", ["oscillazione","riduzion","incentiv"]]
+      ],
+      aggancio: "Nel 2025 la domanda di busta parlava di «regolarità contributiva INAIL»: il commissario INAIL apprezza il collegamento fra regolarità e accesso alle riduzioni del premio.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 259-260, 281-283, 341-344, 443-445."
+    },
+
+    'INAIL-2': {
+      sintesi: "Chi avvia un'attività soggetta all'obbligo assicurativo, o apre una nuova sede, deve fare telematicamente la denuncia di esercizio all'INAIL, che costituisce il rapporto assicurativo e calcola il premio (art. 12 T.U. D.P.R. 1124/1965; D.I. 27/2/2019).",
+      punti: [
+        ["Denuncia di iscrizione contestuale all'inizio dell'attività, con lavorazioni svolte e retribuzioni presunte per ogni sede; se l'urgenza non lo consente, entro 5 giorni motivando il ritardo (art. 12, c. 2).", ["denuncia di esercizio","iscrizione","contestual","5 giorni","retribuzioni presunte"]],
+        ["L'INAIL attribuisce codice ditta, una PAT per ogni sede, la voce di tariffa e il tasso; entro 30 giorni rilascia il certificato di assicurazione con il premio e la scadenza.", ["codice ditta","pat","posizione assicurativa territoriale","certificato","30 giorni"]],
+        ["Il primo premio si paga in via anticipata sulle retribuzioni presunte, poi si regola con l'autoliquidazione.", ["anticipat","presunt","autoliquidazione"]],
+        ["Nuova sede o nuova lavorazione: denuncia entro 30 giorni (art. 12, c. 3-4) e, per una sede nuova, una nuova PAT.", ["nuova sede","30 giorni","variazion"]],
+        ["La tutela del lavoratore decorre comunque dall'inizio dell'attività, anche senza denuncia, per l'automaticità delle prestazioni (art. 67 T.U.).", ["automaticita","67","inizio"]]
+      ],
+      aggancio: "Per una nuova impresa la denuncia INAIL passa dalla Comunicazione Unica (ComUnica) insieme a registro imprese, INPS e Agenzia delle Entrate.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 263, 336, 338-339."
+    },
+
+    'INAIL-4': {
+      sintesi: "Ogni variazione dell'attività assicurata, del titolare, della sede o delle lavorazioni va denunciata telematicamente all'INAIL entro 30 giorni (art. 12, c. 3-4, T.U.; art. 14 D.I. 27/2/2019).",
+      punti: [
+        ["Oggetto: cessazione o avvio di lavorazioni, cambi di titolare, domicilio, residenza o sede dell'azienda.", ["variazion","lavorazion","titolare","sede"]],
+        ["Termine: 30 giorni, con modalità esclusivamente telematica.", ["30 giorni","trenta giorni","telematic"]],
+        ["La variazione incide sulla voce di tariffa e sul tasso applicato: se il rischio aumenta e la denuncia è tardiva o omessa, l'INAIL recupera la differenza di premio con le sanzioni civili.", ["tasso","premio","differenza","sanzioni civili"]],
+        ["Se il rischio diminuisce, la variazione tardiva non produce di regola effetti retroattivi a favore dell'impresa.", ["diminui","retroattiv"]],
+        ["Ai premi non pagati per effetto dell'omissione si applicano le sanzioni civili per omissione o evasione (art. 116 L. 388/2000), secondo che i dati risultassero o meno dalle denunce.", ["omission","evasion","116"]]
+      ],
+      aggancio: "In studio la variazione INAIL va fatta insieme all'aggiornamento della visura e dell'inquadramento INPS, per non avere tassi sbagliati in autoliquidazione.",
+      fonti: "Simone, Legislazione sociale 2026, p. 339 (art. 12 T.U.; art. 14 D.I. 2019); pp. 443-445. Effetti economici della variazione tardiva (aumento e diminuzione del rischio) e sanzione amministrativa per l'omessa denuncia: DA VERIFICARE sulle Modalità di applicazione delle tariffe 2019."
+    },
+
+    'INAIL-6': {
+      sintesi: "I premi INAIL non ancora iscritti a ruolo possono essere rateizzati con la stessa disciplina dei contributi INPS: dal 2025 la legge ammette fino a 60 rate mensili (art. 2, c. 11 e 11-bis, D.L. 338/1989).",
+      punti: [
+        ["Base: art. 2, c. 11, D.L. 338/1989; c. 11-bis introdotto dall'art. 23 L. 203/2024, con decreto interministeriale del 24/10/2025.", ["338","11-bis","203/2024","60 rate"]],
+        ["Riguarda i debiti per premi e accessori non ancora affidati all'agente della riscossione; per quelli a ruolo si segue la rateazione dell'agente.", ["non iscritti a ruolo","agente della riscossione","ruolo"]],
+        ["Serve una dichiarazione di temporanea difficoltà economico-finanziaria: fino a 36 rate per debiti fino a 500.000 euro, fino a 60 oltre (stesso D.I. per INPS e INAIL).", ["36","500.000","difficolta"]],
+        ["La sanzione civile ridotta è subordinata al pagamento della prima rata; il mancato pagamento delle rate successive fa applicare la sanzione ordinaria.", ["prima rata","sanzione civile"]],
+        ["La rateazione regolarmente onorata consente di mantenere la regolarità contributiva.", ["regolarita","durc"]]
+      ],
+      aggancio: "Lo stesso debito d'autoliquidazione si può anche pagare in 4 rate trimestrali senza chiedere nulla: la rateazione serve per il debito già scaduto.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 343-345, 445; circ. INPS 60/2026 per la disciplina comune. D.I. 24/10/2025 comune a INPS e INAIL (ecnews, fonte secondaria); regolamento del CdA INAIL non letto."
+    },
+
+    'INAIL-16': {
+      sintesi: "L'obbligo assicurativo INAIL nasce quando ricorrono insieme un requisito oggettivo, l'attività pericolosa, e uno soggettivo, il lavoratore protetto (artt. 1 e 4 T.U. D.P.R. 1124/1965).",
+      punti: [
+        ["Requisito oggettivo (art. 1): lavori con macchine, apparecchi a pressione, impianti elettrici o termici, o in ambienti organizzati in cui questi sono usati; più 28 lavorazioni pericolose elencate; in agricoltura tutte le attività.", ["macchine","pericolos","28","ambiente organizzato"]],
+        ["Rischio ambientale: sono assicurati anche gli addetti a lavori complementari che entrano in contatto con il rischio.", ["rischio ambientale","complementar"]],
+        ["Requisito soggettivo (art. 4): chi presta opera manuale retribuita alle dipendenze altrui, ma la giurisprudenza include gli impiegati esposti al rischio e chi sovrintende al lavoro altrui; compresi dirigenti, parasubordinati in attività pericolose, artigiani, sportivi, giornalisti subordinati.", ["manuale","dipendenze","dirigenti","parasubordinat","artigian"]],
+        ["Premio a carico del datore (art. 27); per i parasubordinati 1/3 lavoratore e 2/3 committente.", ["carico del datore","27","un terzo"]],
+        ["L'assicurazione opera anche se il datore non ha adempiuto: automaticità delle prestazioni (art. 67), esclusa per gli autonomi.", ["automaticita","67"]]
+      ],
+      aggancio: "Il D.Lgs. 38/2000 ha esteso tutela e soggetti protetti: è la riforma da citare insieme al T.U.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 335-337, 340."
+    },
+
+    'INAIL-23': {
+      sintesi: "La tariffa ordinaria dei premi INAIL, approvata con decreto interministeriale del 27/2/2019 e in vigore dal 2019, fissa per ogni lavorazione una voce e un tasso medio, distinti per gestione tariffaria.",
+      punti: [
+        ["Quattro gestioni nell'industria (D.Lgs. 38/2000): industria, artigianato, terziario, altre attività; l'agricoltura ha regole proprie.", ["quattro gestioni","industria","artigianato","terziario","altre attivita"]],
+        ["Il datore è inquadrato nella gestione secondo la classificazione INPS (art. 49 L. 88/1989); le singole lavorazioni denunciate sono classificate nelle voci del nomenclatore.", ["classificazione","nomenclatore","voce","49"]],
+        ["Premio ordinario = retribuzioni imponibili × tasso della voce (per mille), per ogni PAT.", ["retribuzion","tasso","per mille","pat"]],
+        ["Novità 2019: oscillazione per andamento infortunistico basata sulla gravità degli eventi e calcolata sull'intera PAT, non più sulla singola voce.", ["oscillazione","gravita","andamento"]],
+        ["Accanto ai premi ordinari esistono premi speciali unitari per alcune categorie (art. 42 T.U.), aggiornati con decreti del 2019 e del 2022.", ["premi speciali","42"]]
+      ],
+      aggancio: "Un inquadramento sbagliato della lavorazione sposta il tasso per tutti i dipendenti: è la prima cosa da controllare quando un cliente contesta il premio.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 336, 339-341 (circ. INAIL 28/2021 e 45/2022, riportate)."
+    },
+
+    'INAIL-8': {
+      sintesi: "L'infortunio sul lavoro è la lesione causata da una causa violenta in occasione di lavoro, da cui derivi la morte o un'inabilità permanente, oppure un'inabilità temporanea assoluta di oltre tre giorni (art. 2 T.U.).",
+      punti: [
+        ["Lesione: ogni alterazione dell'organismo fisico o psichico; conseguenze rilevanti la morte e l'inabilità.", ["lesione","morte","inabilita"]],
+        ["Causa violenta: fattore esterno che agisce in modo rapido e concentrato; il concorso di cause preesistenti non esclude l'infortunio.", ["causa violenta","rapid","concorso"]],
+        ["Occasione di lavoro: nesso tra attività e evento, che dipende da un rischio inerente o connesso al lavoro.", ["occasione di lavoro","nesso"]],
+        ["Inabilità: temporanea (sempre assoluta) oltre 3 giorni; permanente assoluta o parziale, indennizzata come danno biologico.", ["temporanea","permanente","tre giorni","3 giorni"]],
+        ["Indennizzabilità: rischio specifico e rischio generico aggravato sì, rischio elettivo no.", ["rischio specifico","generico aggravato","elettivo"]]
+      ],
+      aggancio: "Dal 2000 è compreso anche l'infortunio in itinere: collegare la definizione alle sue estensioni mostra padronanza.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 345-346."
+    },
+
+    'INAIL-9': {
+      sintesi: "L'infortunio in itinere è quello che avviene nel normale percorso tra abitazione e lavoro, tra due luoghi di lavoro o verso il luogo abituale dei pasti se manca la mensa (art. 2 T.U., come modificato dall'art. 12 D.Lgs. 38/2000).",
+      punti: [
+        ["Tre percorsi tutelati: casa-lavoro e ritorno; tra due luoghi di lavoro per chi ha più rapporti; lavoro-luogo dei pasti senza mensa aziendale.", ["casa","abitazione","due luoghi","pasti","mensa"]],
+        ["Esclusi interruzioni e deviazioni non necessitate; sono necessitate quelle per forza maggiore, esigenze essenziali e improrogabili o obblighi penalmente rilevanti.", ["interruzion","deviazion","necessitat","forza maggiore"]],
+        ["Mezzo privato tutelato se necessario per distanza o mancanza di mezzi pubblici, tenendo conto anche delle esigenze familiari; la bicicletta è sempre considerata necessitata.", ["mezzo privato","necessari","bicicletta","velocipede"]],
+        ["Dal 2025 la tutela copre anche gli studenti nel tragitto da e verso il luogo dei percorsi di formazione scuola-lavoro (art. 7 D.L. 159/2025, conv. L. 198/2025).", ["studenti","scuola-lavoro","159/2025"]],
+        ["Restano i requisiti di base: lesione e causa violenta; nel rischio elettivo la tutela viene meno.", ["elettivo","causa violenta"]]
+      ],
+      aggancio: "Domanda tipica di rilancio: la sosta al bar o per accompagnare i figli a scuola è deviazione necessitata? Dipende dal caso: va spiegato il criterio delle esigenze essenziali.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 346-347 (circ. INAIL 1/2026, riportata)."
+    },
+
+    'INAIL-10': {
+      sintesi: "La distinzione tra rischio specifico, generico ed elettivo serve a stabilire se c'è occasione di lavoro e quindi se l'infortunio è indennizzabile.",
+      punti: [
+        ["Rischio specifico: legato alla mansione svolta; l'infortunio è indennizzabile.", ["specifico","mansione"]],
+        ["Rischio generico: quello che corre chiunque; non indennizzabile, salvo che sia aggravato dalle circostanze del lavoro (Cass. 32473/2021).", ["generico","aggravato","chiunque"]],
+        ["Rischio improprio: attività preparatorie o strumentali al lavoro, anch'esse indennizzabili (Cass. 16417/2005).", ["improprio","strumental","preparator"]],
+        ["Rischio elettivo: scelta arbitraria del lavoratore per fini personali, che rompe il nesso con il lavoro; esclude l'indennizzo.", ["elettivo","arbitrari","personal"]],
+        ["Requisiti del rischio elettivo: atto volontario e abnorme, motivi personali, nessun nesso con il lavoro.", ["abnorme","volontari"]]
+      ],
+      aggancio: "In agricoltura l'occasione di lavoro si presume fino a prova contraria: utile se il commissario chiede del settore agricolo.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 345-346 (giurisprudenza riportata; istruzione operativa INAIL 1/3/2021)."
+    },
+
+    'INAIL-19': {
+      sintesi: "Perché ci sia infortunio indennizzabile devono coesistere tre elementi: la lesione, la causa violenta e l'occasione di lavoro (art. 2 T.U.).",
+      punti: [
+        ["Lesione: alterazione dell'organismo fisico o psichico, con morte o inabilità.", ["lesione","organismo"]],
+        ["Causa violenta: fatto esterno, rapido e concentrato nel tempo, che produce la lesione; è ciò che distingue l'infortunio dalla malattia professionale, a causa lenta.", ["causa violenta","rapid","lenta"]],
+        ["Il concorso di condizioni preesistenti o sopravvenute non esclude la causa violenta.", ["concorso","preesistent"]],
+        ["Occasione di lavoro: nesso tra prestazione ed evento, legato al rischio dell'attività (Cass. 29300/2022); è il requisito più delicato.", ["occasione di lavoro","nesso","rischio"]],
+        ["Esclusione per rischio elettivo; nessuna esclusione per semplice colpa del lavoratore.", ["elettivo","colpa"]]
+      ],
+      aggancio: "Nella risposta conviene dire che la colpa del lavoratore non toglie l'indennizzo: lo esclude solo il rischio elettivo o il dolo.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 345-346."
+    },
+
+    'INAIL-11': {
+      sintesi: "Il datore di lavoro deve denunciare all'INAIL, in via telematica, ogni infortunio non guaribile entro tre giorni: entro 2 giorni dalla ricezione dei dati del certificato, entro 24 ore se mortale o con pericolo di morte (art. 53 T.U.).",
+      punti: [
+        ["Il lavoratore avvisa subito il datore, anche per infortuni lievi; il medico trasmette il certificato all'INAIL in via telematica.", ["avvisa","certificato","medico","telematic"]],
+        ["Denuncia entro 2 giorni, che decorrono dal giorno successivo a quello in cui il datore ha ricevuto il numero identificativo del certificato (circ. INAIL 24/2021).", ["2 giorni","due giorni","numero identificativo"]],
+        ["Infortunio mortale o con pericolo di morte: denuncia entro 24 ore.", ["24 ore","mortal","pericolo di morte"]],
+        ["Comunicazione a fini statistici (SINP) entro 48 ore per gli infortuni con assenza di almeno un giorno oltre quello dell'evento (art. 18, c. 1, lett. r, D.Lgs. 81/2008).", ["comunicazione","48 ore","sinp","un giorno"]],
+        ["Dal marzo 2025 il registro infortuni telematico raccoglie denunce e comunicazioni ed è consultabile da ispettori, datori e consulenti delegati.", ["registro infortuni","telematico"]]
+      ],
+      aggancio: "Denuncia e comunicazione sono due adempimenti diversi, con soglie diverse (oltre 3 giorni e almeno 1 giorno): confonderle è l'errore tipico.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 348-349 (circ. INAIL 24/2021, 25/2022, 33/2019, riportate). Sanzioni per omessa o tardiva denuncia: DA VERIFICARE."
+    },
+
+    'INAIL-12': {
+      sintesi: "La malattia professionale va comunicata dal lavoratore al datore entro 15 giorni dalla manifestazione, e il datore la denuncia all'INAIL in via telematica nei 5 giorni successivi (artt. 52-53 T.U.).",
+      punti: [
+        ["Il lavoratore informa il datore entro 15 giorni dalla manifestazione della malattia.", ["15 giorni","quindici giorni"]],
+        ["Il datore presenta la denuncia telematica entro 5 giorni, con il riferimento al certificato medico.", ["5 giorni","cinque giorni","denuncia","certificato"]],
+        ["Si applicano le stesse modalità della denuncia di infortunio.", ["stesse modalita","infortunio"]],
+        ["Per le malattie tabellate la denuncia entro il periodo massimo di indennizzabilità consente la presunzione del nesso causale.", ["tabellat","periodo massimo","presunzione"]],
+        ["Il medico che riconosce una malattia professionale ha un autonomo obbligo di denuncia (art. 139 T.U.).", ["medico","139"]]
+      ],
+      aggancio: "Le malattie dell'apparato muscolo-scheletrico sono oggi le più denunciate: tema concreto per la valutazione dei rischi e il premio.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 347-349. Obbligo di denuncia del medico: art. 139 T.U. (Brocardi). Dato sulle denunce più frequenti: DA VERIFICARE."
+    },
+
+    'INAIL-13': {
+      sintesi: "Il sistema delle malattie professionali è misto: per quelle tabellate il nesso con il lavoro si presume, per quelle non tabellate il lavoratore deve provarlo (art. 3 T.U.; Corte cost. 179/1988; art. 10, c. 4, D.Lgs. 38/2000).",
+      punti: [
+        ["Malattia professionale (tecnopatia): patologia contratta nell'esercizio e a causa di lavorazioni, per esposizione prolungata a fattori di rischio.", ["tecnopatia","esposizione","lavorazion"]],
+        ["Tabellate: indicate nelle tabelle di industria e agricoltura insieme alla lavorazione e al periodo massimo di indennizzabilità; presunzione legale del nesso se si prova l'adibizione e la malattia.", ["tabellat","presunzione","periodo massimo"]],
+        ["Oltre il periodo massimo la presunzione cade, ma il lavoratore può provare l'origine professionale.", ["oltre","prova"]],
+        ["Non tabellate: tutelate dopo Corte cost. 179/1988 e l'art. 10, c. 4, D.Lgs. 38/2000, con onere della prova a carico del lavoratore su malattia, esposizione e nesso.", ["non tabellat","179/1988","38/2000","onere della prova"]],
+        ["La distinzione rileva quindi solo sul piano della prova del nesso causale (Cass. S.U. 1919/1990).", ["prova del nesso","1919"]]
+      ],
+      aggancio: "Per il datore conta anche l'effetto sul premio: le malattie professionali incidono sull'andamento della PAT e quindi sull'oscillazione del tasso.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 347-348 (circ. INAIL 35/1992, riportata). Corte cost. 10-18/2/1988 n. 179 (cortecostituzionale.it): illegittimità parziale dell'art. 3, c. 1, T.U."
+    },
+
+    'INAIL-20': {
+      sintesi: "La colpa del lavoratore non esclude l'indennizzo dell'infortunio: lo escludono solo il rischio elettivo e il dolo, che consente anche l'azione di regresso dell'INAIL contro l'infortunato.",
+      punti: [
+        ["L'assicurazione copre anche gli infortuni dovuti a negligenza, imprudenza o imperizia del lavoratore: è una tutela sociale, non una responsabilità per colpa.", ["colpa","negligenza","imprudenza"]],
+        ["Il rischio elettivo, cioè un comportamento volontario, abnorme e per fini personali estraneo al lavoro, rompe l'occasione di lavoro ed esclude l'indennizzo.", ["elettivo","abnorme","personal"]],
+        ["Se l'infortunio è causato dolosamente dal lavoratore, accertato con sentenza penale, l'INAIL può agire in regresso contro di lui (art. 11, c. 4, T.U.).", ["dolo","regresso","sentenza penale"]],
+        ["Sul piano della responsabilità del datore, la colpa del lavoratore non lo esonera se l'evento era prevedibile e non ha adottato le misure di sicurezza dovute (art. 2087 c.c.).", ["2087","misure di sicurezza","prevedibil"]],
+        ["Il comportamento abnorme del lavoratore può interrompere il nesso causale anche ai fini della responsabilità del datore.", ["nesso","abnorme"]]
+      ],
+      aggancio: "Domanda insidiosa perché mescola due piani: indennizzo INAIL e responsabilità civile o penale del datore. Distinguerli subito vale metà del voto.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 345-346; Simone, Diritto del lavoro 2026, pp. 174-175. Regresso contro l'infortunato per dolo: art. 11, c. 4, T.U. (Brocardi). Esclusione dell'indennizzo per infortunio doloso (art. 65 T.U.): non letto, DA VERIFICARE."
+    },
+
+    'INAIL-22': {
+      sintesi: "Infortunio e malattia professionale hanno la stessa tutela e gli stessi presupposti assicurativi, ma si distinguono per la causa: violenta e concentrata nel primo, lenta e progressiva nella seconda.",
+      punti: [
+        ["Causa: violenta, esterna e rapida nell'infortunio; lenta, diluita nel tempo, per esposizione prolungata nella malattia professionale.", ["violenta","lenta","progressiva","esposizione"]],
+        ["Nesso: occasione di lavoro per l'infortunio; per la malattia la lavorazione deve esserne la causa, con presunzione per le tabellate.", ["occasione di lavoro","causa","tabellat"]],
+        ["Termini: denuncia dell'infortunio entro 2 giorni (24 ore se mortale); malattia comunicata dal lavoratore entro 15 giorni e denunciata dal datore entro 5.", ["2 giorni","15 giorni","5 giorni"]],
+        ["Stesse prestazioni: inabilità temporanea, danno biologico, rendita, prestazioni ai superstiti.", ["prestazioni","danno biologico","rendita"]],
+        ["L'in itinere esiste solo per l'infortunio.", ["itinere"]]
+      ],
+      aggancio: "Esempio pratico: la lombalgia da sollevamento improvviso è infortunio; quella da movimentazione ripetuta negli anni è malattia professionale.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 345-349."
+    },
+
+    'INAIL-7': {
+      sintesi: "L'INAIL eroga prestazioni economiche (indennità temporanea, indennizzo del danno biologico, rendite, prestazioni ai superstiti), sanitarie e socio-sanitarie per il recupero e il reinserimento.",
+      punti: [
+        ["Inabilità temporanea assoluta: indennità dal 4° giorno, 60% fino al 90° giorno e 75% dal 91° alla guarigione (art. 68 T.U.; la carenza a carico del datore è nell'art. 73).", ["60%","75%","quarto giorno","inabilita temporanea"]],
+        ["Danno biologico (art. 13 D.Lgs. 38/2000): dal 6% al 15% indennizzo in capitale; dal 16% rendita che copre anche le conseguenze patrimoniali; sotto il 6% franchigia.", ["danno biologico","6%","16%","capitale","rendita"]],
+        ["In caso di morte: rendita ai superstiti e assegno funerario (art. 85 T.U.).", ["superstiti","assegno funerario","85"]],
+        ["Prestazioni accessorie: assegno per assistenza personale continuativa, assegno di incollocabilità.", ["assistenza personale","incollocabilita"]],
+        ["Prestazioni sanitarie (cure, protesi, ausili) e reinserimento lavorativo con progetti personalizzati.", ["sanitari","protesi","reinserimento"]]
+      ],
+      aggancio: "Il giorno dell'infortunio è a carico del datore al 100% e i tre giorni successivi al 60%, salvo migliori condizioni del CCNL.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 349-351. Misura: art. 68 T.U.; carenza: art. 73 (Brocardi). Il Simone cita l'art. 73 anche per la misura: impreciso."
+    },
+
+    'INAIL-14': {
+      sintesi: "Per gli eventi dal 25/7/2000 l'inabilità permanente si indennizza come danno biologico: in capitale dal 6% al 15%, in rendita dal 16% al 100% (art. 13 D.Lgs. 38/2000).",
+      punti: [
+        ["Il grado di menomazione si accerta con la tabella delle menomazioni; si usano poi la tabella dell'indennizzo del danno biologico e quella dei coefficienti.", ["tabella","menomazion","coefficienti"]],
+        ["Dal 6% al 15%: indennizzo in capitale, senza quota per le conseguenze patrimoniali.", ["6%","15%","capitale"]],
+        ["Dal 16% al 100%: rendita, con una quota per il danno biologico (non legata al reddito) e una quota per le conseguenze patrimoniali calcolata sulla retribuzione.", ["16%","rendita","patrimonial","retribuzione"]],
+        ["Sotto il 6% nessun indennizzo (franchigia).", ["franchigia","6%"]],
+        ["Per gli eventi precedenti il 25/7/2000 valeva la rendita per inabilità permanente (dall'11%), legata alla capacità di guadagno.", ["25 luglio 2000","2000","11%","capacita di guadagno"]]
+      ],
+      aggancio: "Il danno biologico INAIL è «areddituale» nella quota biologica: è il punto che distingue l'indennizzo INAIL dal risarcimento civile, da cui deriva il danno differenziale.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 349-350 (circ. INAIL 57/2000, riportata)."
+    },
+
+    'INAIL-15': {
+      sintesi: "Se l'infortunio o la malattia professionale causano la morte, l'INAIL paga una rendita ai superstiti e un assegno funerario (art. 85 T.U.).",
+      punti: [
+        ["Beneficiari: coniuge o unito civilmente; figli fino a 18 anni, 21 se studenti delle superiori, 26 se universitari, o inabili; in mancanza, ascendenti se a carico, fratelli e sorelle se conviventi e a carico (art. 85 T.U.).", ["coniuge","figli","18","26","ascendenti"]],
+        ["Quote: 50% della retribuzione al coniuge, 20% per ogni figlio (40% se orfano di entrambi i genitori), 20% per ascendenti e collaterali; il totale non supera il 100% della retribuzione.", ["50%","20%","40%","100%"]],
+        ["La vivenza a carico per ascendenti e collaterali si valuta con criteri di reddito fissati dalla legge (circ. INAIL 35/2019).", ["vivenza a carico","reddito"]],
+        ["Assegno funerario una tantum ai familiari o, in mancanza, a chi ha sostenuto le spese.", ["assegno funerario","una tantum","spese"]],
+        ["La rendita del coniuge cessa con un nuovo matrimonio, con il pagamento di un'indennità una tantum.", ["nuovo matrimonio"]]
+      ],
+      aggancio: "Il caso si collega alla responsabilità penale del datore per omicidio colposo: la rendita la paga sempre l'INAIL, che poi agisce in regresso.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 349-350 (circ. INAIL 35/2019, riportata). Quote, limite complessivo e tre annualità al coniuge che si risposa: art. 85 T.U. (Brocardi). Figli: 21 anni se studenti di scuola media o professionale, 26 se universitari."
+    },
+
+    'INAIL-17': {
+      sintesi: "L'assicurazione INAIL esonera il datore dalla responsabilità civile, salvo che l'infortunio derivi da un reato perseguibile d'ufficio; in quel caso l'INAIL paga e poi agisce in regresso verso i responsabili (artt. 10-11 T.U.).",
+      punti: [
+        ["Esonero (art. 10, c. 1): le prestazioni sono pagate dall'INAIL indipendentemente dalla colpa del datore.", ["esonero","10","responsabilita civile"]],
+        ["Eccezione: condanna penale per reato perseguibile d'ufficio commesso dal datore o da un suo dipendente (Corte cost. 22/1967): il lavoratore può chiedere il risarcimento.", ["reato","d'ufficio","condanna","22/1967"]],
+        ["Il lavoratore ottiene solo il danno differenziale, cioè la parte del danno civile che supera l'indennizzo INAIL (art. 10, c. 6-7).", ["danno differenziale","differenzial"]],
+        ["Regresso (art. 11): l'INAIL recupera dai responsabili civili le prestazioni pagate e le spese; può agire anche contro l'infortunato se l'evento è dovuto a suo dolo accertato con sentenza penale.", ["regresso","11","recupera","dolo"]],
+        ["Accanto al regresso verso il datore esiste la surroga verso il terzo responsabile estraneo al rapporto (art. 1916 c.c.).", ["surroga","terzo","1916"]]
+      ],
+      aggancio: "Esempio: infortunio per mancanza di protezioni sui macchinari, con condanna per lesioni colpose: l'INAIL indennizza e poi chiede al datore il rimborso di quanto pagato.",
+      fonti: "Simone, Diritto del lavoro 2026, pp. 174-175. Surroga verso il terzo estraneo ex art. 1916 c.c.: Cass. S.U. 3288/1997 (massima su Brocardi)."
+    },
+
+    'INAIL-18': {
+      sintesi: "Le prestazioni INAIL spettano al lavoratore anche se il datore non ha denunciato l'attività o non ha pagato il premio: è il principio di automaticità (art. 67 T.U.).",
+      punti: [
+        ["Il lavoratore è tutelato dall'inizio dell'attività assicurata, anche senza denuncia di esercizio.", ["inizio","senza denuncia","tutelat"]],
+        ["Il principio è nato proprio nell'assicurazione infortuni e poi esteso agli altri regimi.", ["nato","esteso"]],
+        ["Eccezioni: non vale per i lavoratori autonomi (art. 59, c. 19, L. 449/1997) né per l'assicurazione degli infortuni domestici (art. 9, c. 3, L. 493/1999).", ["autonomi","449/1997","domestic"]],
+        ["L'INAIL recupera dal datore inadempiente premi, sanzioni civili e, se c'è responsabilità, le prestazioni.", ["recupera","sanzioni","premi"]],
+        ["Differenza con l'INPS: qui l'automaticità è piena per i subordinati, mentre per l'INPS opera nei limiti della prescrizione dei contributi.", ["prescrizione","inps"]]
+      ],
+      aggancio: "Esempio: l'apprendista assunto in nero si infortuna al primo giorno; l'INAIL indennizza, e il datore paga premi, sanzioni e maxisanzione.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 301, 336, 352-353. Infortuni domestici: L. 3/12/1999 n. 493 (G.U. n. 303 del 28/12/1999); «L. 93/1999» nel Simone è un refuso."
+    },
+
+    'INAIL-21': {
+      sintesi: "L'indennità per inabilità temporanea assoluta sostituisce la retribuzione quando l'infortunio o la malattia professionale impediscono totalmente il lavoro: spetta dal quarto giorno fino alla guarigione clinica (art. 68 T.U.).",
+      punti: [
+        ["Decorrenza: dal quarto giorno successivo all'infortunio o alla manifestazione della malattia.", ["quarto giorno","4"]],
+        ["Misura: 60% della retribuzione giornaliera fino al 90° giorno; 75% dal 91° giorno fino alla guarigione clinica.", ["60%","75%","90","91"]],
+        ["Carenza: il datore paga l'intera retribuzione del giorno dell'infortunio e il 60% dei tre giorni successivi, salvo migliori condizioni del CCNL (art. 73).", ["giorno dell'infortunio","100%","60%","tre giorni","73"]],
+        ["L'indennità è anticipata dal datore se previsto dal CCNL, altrimenti la paga direttamente l'INAIL; molti contratti integrano fino al 100%.", ["anticipat","integr","ccnl"]],
+        ["La durata non ha un limite fisso: dura quanto l'inabilità che impedisce totalmente il lavoro.", ["guarigione","durata"]]
+      ],
+      aggancio: "In busta paga è la voce più frequente in caso di infortunio: il consulente deve distinguere i giorni di carenza a carico azienda dall'indennità INAIL.",
+      fonti: "Simone, Legislazione sociale 2026, p. 349; artt. 68 (misura e decorrenza) e 73 (carenza) T.U. riscontrati su Brocardi. Anticipazione da parte del datore: DA VERIFICARE."
+    },
+
+    /* ===== Lotto 4 — Elementi di ragioneria (1/11/2026) ===== */
+
+    'RAG-1': {
+      sintesi: "In bilancio l'indennità di malattia a carico dell'INPS, anticipata dal datore in busta paga, non è un costo dell'impresa ma un credito verso l'INPS da recuperare a conguaglio; è costo solo la parte a carico del datore.",
+      punti: [
+        ["Quota INPS (dal 4° giorno, per le categorie indennizzate): il datore la paga al lavoratore per conto dell'Istituto e se ne rivale compensandola con i contributi dovuti nella denuncia UniEmens.", ["inps","anticipa","conguaglio","uniemens","compens"]],
+        ["Scrittura: in dare un credito verso l'INPS (o in diminuzione del debito verso istituti previdenziali) per la quota anticipata; in avere il debito verso il dipendente.", ["credito","istituti previdenziali","dare","avere"]],
+        ["Quota a carico del datore (carenza dei primi 3 giorni, integrazione prevista dal CCNL, malattia degli impiegati dell'industria): è costo del personale, voce B9 a) retribuzioni del conto economico (art. 2425 c.c.).", ["carenza","integrazion","b9","salari","retribuzioni"]],
+        ["Sulla parte a carico INPS non si versano contributi effettivi: il periodo è coperto da contribuzione figurativa; sull'integrazione del datore i contributi sono dovuti.", ["figurativ","contributi"]],
+        ["Ai fini del TFR i periodi di malattia si computano con la retribuzione figurativa che sarebbe spettata (art. 2120, c. 3, c.c.).", ["2120","tfr","figurativ"]]
+      ],
+      aggancio: "È la stessa logica degli assegni anticipati per conto dell'INPS che il manuale contabilizza in dare del conto «Istituti previdenziali»: l'impresa fa solo da cassa.",
+      fonti: "Simone, Ragioneria, pp. 1094-1095 (scrittura degli importi anticipati per l'INPS, per analogia); Simone, Diritto del lavoro 2026, pp. 197-198; artt. 2120 e 2425 c.c. Classificazione nei principi contabili (OIC 12): DA VERIFICARE."
+    },
+
+    'RAG-2': {
+      sintesi: "L'indennità di maternità (80% della retribuzione a carico dell'INPS) è anticipata dal datore in busta e recuperata a conguaglio: in bilancio è un credito verso l'INPS, mentre l'eventuale integrazione fino al 100% prevista dal CCNL è costo del personale.",
+      punti: [
+        ["Indennità INPS: 80% della retribuzione media per tutto il congedo di maternità, anticipata dal datore e conguagliata con i contributi (art. 22 D.Lgs. 151/2001; art. 1 D.L. 663/1979).", ["80%","anticipa","conguagli","151"]],
+        ["Scrittura: la quota INPS va in dare di un credito verso l'INPS (o a riduzione del debito verso istituti previdenziali), non tra i costi.", ["credito","inps","non","costi"]],
+        ["Integrazione al 100% prevista da molti CCNL: è costo dell'impresa in B9 a) retribuzioni, con i relativi contributi in B9 b).", ["integrazion","100%","b9"]],
+        ["Il periodo conta nell'anzianità anche per tredicesima e ferie, ed è coperto da contribuzione figurativa per la parte INPS.", ["anzianita","tredicesima","ferie","figurativ"]],
+        ["Ai fini del TFR la maternità rientra nelle sospensioni dell'art. 2110: si accantona sulla retribuzione che sarebbe spettata (art. 2120, c. 3, c.c.).", ["tfr","2120","2110"]]
+      ],
+      aggancio: "I ratei di tredicesima e ferie maturati durante la maternità restano a carico dell'impresa: in assestamento si stanziano come per i periodi lavorati.",
+      fonti: "P1_Cap09 § 3.2 (art. 22 D.Lgs. 151/2001); Simone, Ragioneria, pp. 1094-1095 (per analogia); artt. 2110, 2120 c.c. Classificazione OIC: DA VERIFICARE."
+    },
+
+    'RAG-5': {
+      sintesi: "I contributi a carico del datore sono un costo del personale, voce B9 b) oneri sociali del conto economico; quelli liquidati e non ancora pagati sono un debito, voce D 13) debiti verso istituti di previdenza e di sicurezza sociale dello stato patrimoniale.",
+      punti: [
+        ["Conto economico (art. 2425 c.c.): B9 a) salari e stipendi; B9 b) oneri sociali (contributi INPS e premi INAIL a carico del datore); B9 c) trattamento di fine rapporto.", ["b9","oneri sociali","2425","inail"]],
+        ["Stato patrimoniale (art. 2424 c.c.): i contributi da versare, comprese le quote trattenute ai dipendenti, sono in D 13) debiti verso istituti di previdenza e di sicurezza sociale.", ["d 13","d13","debiti verso istituti","2424"]],
+        ["Scrittura di liquidazione: in dare Oneri sociali (quota datore) e, per la quota del lavoratore, il dipendente; in avere Istituti previdenziali c/contributi.", ["liquidazione","oneri sociali","istituti previdenziali"]],
+        ["Al pagamento con F24 entro il 16 del mese successivo si chiude il debito; crediti per indennità anticipate per conto dell'INPS si compensano nella denuncia.", ["f24","16","compens"]],
+        ["Premio INAIL: acconto e regolazione; a fine anno l'assestamento imputa il costo di competenza in B9 b) e iscrive il debito (D 13) o il credito per il conguaglio.", ["inail","assestamento","competenza","acconto"]]
+      ],
+      aggancio: "Le ritenute IRPEF trattenute ai dipendenti non vanno in D 13 ma in D 12) debiti tributari: confonderle è l'errore classico.",
+      fonti: "Artt. 2424 e 2425 c.c. (testo vigente su miolegale.it, dichiarato verificato su Normattiva al 10/10/2026); Simone, Ragioneria, pp. 1093-1097."
+    },
+
+    'RAG-6': {
+      sintesi: "Il costo del lavoro dipendente si compone di retribuzione diretta, oneri contrattuali e differiti (mensilità aggiuntive, ferie, TFR) e oneri sociali; in bilancio è la voce B9 del conto economico.",
+      punti: [
+        ["Retribuzione diretta: minimo contrattuale, scatti, superminimi, indennità e straordinari corrisposti mese per mese.", ["retribuzione diretta","minimo","scatti","straordinar"]],
+        ["Oneri contrattuali e differiti: tredicesima e quattordicesima, ferie e permessi maturati e non goduti, premi, quota annua di TFR.", ["tredicesima","quattordicesima","ferie","tfr"]],
+        ["Oneri sociali: contributi INPS e premio INAIL a carico del datore; il TFR non è base contributiva.", ["oneri sociali","inps","inail"]],
+        ["Schema dell'art. 2425 c.c.: B9 a) salari e stipendi, b) oneri sociali, c) trattamento di fine rapporto, d) trattamento di quiescenza e simili, e) altri costi.", ["b9","salari e stipendi","quiescenza","altri costi"]],
+        ["Restano fuori dalla B9 i costi per servizi legati al personale esterno, come collaboratori, amministratori e lavoro somministrato, che vanno in B7.", ["b7","servizi","somministra","amministratori"]]
+      ],
+      aggancio: "Per il cliente il costo orario reale è quasi il doppio del netto in busta: è il calcolo che lo studio fa per i preventivi di assunzione.",
+      fonti: "Simone, Ragioneria, pp. 1012-1013, 1093-1094 (cita anche l'indennità di contingenza, ormai conglobata nei minimi); art. 2425 c.c. (miolegale.it, verificato su Normattiva al 10/10/2026). Collocazione del lavoro somministrato in B7: DA VERIFICARE su OIC 12."
+    },
+
+    'RAG-7': {
+      sintesi: "Alla cessazione il TFR accumulato viene pagato al lavoratore: in contabilità si chiude il fondo TFR per la quota maturata, si rileva la quota dell'anno in corso e si trattengono le imposte come sostituto d'imposta.",
+      punti: [
+        ["Si calcola la quota dell'ultimo anno (retribuzione/13,5 meno lo 0,50%) e la rivalutazione per la frazione d'anno, che si iscrivono a costo B9 c) e ad incremento del fondo.", ["13,5","0,50","frazione","rivalutazione"]],
+        ["Liquidazione: in dare Fondo TFR (passivo C dello stato patrimoniale) per l'intero importo; in avere un debito verso il dipendente c/liquidazione TFR.", ["fondo tfr","dare","debito","liquidazione"]],
+        ["Imposte: il TFR è a tassazione separata (artt. 17 e 19 TUIR); la ritenuta va in avere a Erario c/ritenute e si versa con F24, il netto si paga al lavoratore.", ["tassazione separata","17","19","erario","ritenut"]],
+        ["Se il TFR è stato versato a un fondo pensione o al Fondo di Tesoreria INPS, per quelle quote paga il fondo o l'INPS, non l'impresa.", ["fondo pensione","tesoreria","inps"]],
+        ["Anticipazioni già erogate (art. 2120 c.c.: dopo 8 anni, fino al 70%) si detraggono dal TFR finale.", ["anticipazion","70%","8 anni","detratt"]]
+      ],
+      aggancio: "In caso di insolvenza del datore il TFR lo paga il Fondo di garanzia INPS: collegamento con la legislazione sociale.",
+      fonti: "Art. 2120 c.c. (NORMA_Codice_civile_lavoro); Simone, Ragioneria, pp. 1110-1114; P2_00_PARAMETRI § 10."
+    },
+
+    'RAG-9': {
+      sintesi: "Il conto «Personale c/retribuzioni» (o Dipendenti c/retribuzioni) è un conto finanziario di debito che accoglie in avere le retribuzioni lorde maturate e in dare le trattenute, gli acconti e il pagamento del netto.",
+      punti: [
+        ["Natura: debito di regolamento verso i dipendenti, rilevato nella sezione avere quando matura la retribuzione.", ["debito","avere","matura"]],
+        ["Rilevazione della paga: in dare Salari e stipendi (costo B9 a), in avere Personale c/retribuzioni per il lordo.", ["salari e stipendi","lordo","b9"]],
+        ["In dare si chiudono: le ritenute previdenziali a carico del lavoratore (contro Istituti previdenziali), l'IRPEF trattenuta (contro Erario c/ritenute), gli acconti già pagati.", ["ritenute","istituti previdenziali","erario","acconti"]],
+        ["Il saldo residuo è il netto in busta, che si paga con banca: dopo il pagamento il conto si chiude a zero.", ["netto","banca","zero","pagamento"]],
+        ["Se il pagamento avviene il mese successivo, il saldo a fine esercizio va in stato patrimoniale tra i debiti, voce D 14) altri debiti.", ["d 14","d14","altri debiti","fine esercizio"]]
+      ],
+      aggancio: "Per lo studio paghe è il ponte tra cedolino e contabilità: il riepilogo del libro unico dà i totali di lordo, trattenute e netto da registrare.",
+      fonti: "Simone, Ragioneria, pp. 1094-1095; art. 2424 c.c. (voce D 14)."
+    },
+
+    'RAG-17': {
+      sintesi: "I compensi ad amministratori e sindaci non sono costi del personale dipendente ma costi per servizi (voce B7 del conto economico); per gli amministratori sono fiscalmente deducibili nell'esercizio in cui sono pagati (art. 95, c. 5, TUIR).",
+      punti: [
+        ["Classificazione civilistica: B7 costi per servizi, compresi i contributi alla gestione separata INPS a carico della società.", ["b7","servizi","gestione separata"]],
+        ["Amministratori: il compenso, se non professionale, è reddito assimilato a quello di lavoro dipendente (art. 50, c. 1, lett. c-bis, TUIR) con ritenute come per i dipendenti; contributi in gestione separata, 2/3 a carico della società e 1/3 dell'amministratore.", ["assimilat","50","c-bis","due terzi","2/3"]],
+        ["Deducibilità: per cassa, nell'esercizio in cui sono corrisposti (art. 95, c. 5, TUIR); il compenso di competenza non pagato si riprende in aumento in dichiarazione.", ["95","corrisposti","cassa","deducibil"]],
+        ["Sindaci e revisori: se professionisti, emettono fattura; il costo è in B7 per competenza.", ["sindaci","fattura","competenza"]],
+        ["Il compenso deve essere deliberato dall'assemblea o previsto dallo statuto (art. 2389 c.c.).", ["2389","assemblea","statuto"]]
+      ],
+      aggancio: "Il CdL gestisce il cedolino dell'amministratore e il flusso UniEmens della gestione separata, ma il costo non va mai in B9.",
+      fonti: "Art. 95, c. 5, TUIR (917_1986_TUIR.md in libreria); art. 2425 c.c. Collocazione in B7 (OIC 12), art. 50, c. 1, lett. c-bis, TUIR e art. 2389 c.c.: DA VERIFICARE sui testi."
+    },
+
+    'RAG-21': {
+      sintesi: "«Salari e stipendi» è il conto economico di costo che accoglie le retribuzioni lorde di competenza dei dipendenti; confluisce nella voce B9 a) del conto economico.",
+      punti: [
+        ["Natura: conto di reddito acceso a un costo; si movimenta in dare quando matura la retribuzione, in contropartita al debito verso i dipendenti.", ["costo","dare","matura","debito"]],
+        ["Contenuto: retribuzione lorda (minimi, scatti, superminimi, straordinari, indennità), mensilità aggiuntive, ferie e permessi maturati.", ["lorda","mensilita","straordinar","ferie"]],
+        ["Restano fuori: contributi a carico del datore (Oneri sociali, B9 b), quota TFR (B9 c), indennità pagate per conto dell'INPS.", ["oneri sociali","tfr","per conto"]],
+        ["In assestamento si integra con i ratei di tredicesima, quattordicesima e ferie maturati e non ancora pagati.", ["assestamento","ratei","tredicesima"]],
+        ["A fine esercizio si chiude al conto economico; nel bilancio è esposto in B9 a) salari e stipendi (art. 2425 c.c.).", ["b9","2425","conto economico"]]
+      ],
+      aggancio: "Distinguere sempre il costo lordo (Salari e stipendi) dal debito netto verso i dipendenti (Personale c/retribuzioni).",
+      fonti: "Simone, Ragioneria, pp. 1094-1095, 1110-1111; art. 2425 c.c."
+    },
+
+    'RAG-22': {
+      sintesi: "Il fondo TFR è la passività che accoglie il TFR maturato dai dipendenti e rimasto in azienda (voce C del passivo, art. 2424 c.c.): aumenta con le quote annue e le rivalutazioni, diminuisce con l'imposta sostitutiva, le anticipazioni e le liquidazioni.",
+      punti: [
+        ["Natura e iscrizione: debito certo verso i dipendenti, iscritto per l'importo calcolato a norma dell'art. 2120 c.c. (art. 2424-bis c.c.).", ["2424-bis","2120","debito","passivo"]],
+        ["Incrementi: quota annua (retribuzione/13,5, meno lo 0,50% recuperato dall'INPS) e rivalutazione al 31/12 (1,5% fisso più 75% dell'aumento ISTAT) sul fondo dell'anno precedente.", ["quota annua","13,5","1,5","75%","rivalutazione"]],
+        ["Decrementi: imposta sostitutiva del 17% sulla rivalutazione (acconto 16 dicembre, saldo 16 febbraio); anticipazioni; liquidazioni alla cessazione.", ["17%","imposta sostitutiva","anticipazion","liquidazion"]],
+        ["Quote destinate a fondi pensione o al Fondo di Tesoreria INPS: sono costo B9 c) ma non incrementano il fondo; diventano un debito da versare.", ["fondo pensione","tesoreria","debito"]],
+        ["Nel conto economico il costo dell'esercizio (quota più rivalutazione) è in B9 c).", ["b9","conto economico"]]
+      ],
+      aggancio: "Dal 2007 nelle imprese con 50 o più dipendenti il TFR non destinato ai fondi va al Fondo di Tesoreria INPS: in quelle imprese il fondo TFR resta solo per le quote ante 2007.",
+      fonti: "Artt. 2120, 2424, 2424-bis c.c.; Simone, Ragioneria, pp. 1110-1114; P2_00_PARAMETRI § 10 (imposta sostitutiva 17%: L. 190/2014 da fonte secondaria). Soglia di 50 dipendenti e novità L. 199/2025 sul Fondo di Tesoreria: DA VERIFICARE."
+    },
+
+    'RAG-23': {
+      sintesi: "La quota annua di TFR è pari alla retribuzione dell'anno divisa per 13,5, ridotta dello 0,50% della retribuzione imponibile versato all'INPS (art. 2120 c.c.; L. 297/1982).",
+      punti: [
+        ["Calcolo: retribuzione annua utile ÷ 13,5; frazioni di mese di almeno 15 giorni contano come mese intero.", ["13,5","15 giorni","retribuzione annua"]],
+        ["Retribuzione utile: tutte le somme corrisposte a titolo non occasionale, comprese le prestazioni in natura, esclusi i rimborsi spese, salvo diversa previsione dei contratti collettivi.", ["non occasional","rimborsi spese","contratti collettivi","natura"]],
+        ["Nei periodi di malattia, infortunio, maternità e cassa integrazione si computa la retribuzione che sarebbe spettata (art. 2120, c. 3).", ["malattia","maternita","cassa integrazione","sarebbe spettata"]],
+        ["Dalla quota si detrae il contributo dello 0,50% già versato all'INPS (art. 3 L. 297/1982).", ["0,50","297"]],
+        ["Contabilmente: in dare Accantonamento TFR (B9 c), in avere Fondo TFR o, se destinata altrove, debito verso fondo pensione o INPS.", ["accantonamento","b9","fondo tfr"]]
+      ],
+      aggancio: "Esempio: retribuzione annua 27.000 euro → 27.000 / 13,5 = 2.000 euro, meno 0,50% di 27.000 = 135 euro: quota netta 1.865 euro.",
+      fonti: "Art. 2120 c.c. (NORMA_Codice_civile_lavoro); Simone, Ragioneria, pp. 1110-1113; P2_00_PARAMETRI § 10."
+    },
+
+    'RAG-3': {
+      sintesi: "Il bene strumentale è il bene destinato a essere utilizzato durevolmente nell'attività dell'impresa: si iscrive tra le immobilizzazioni al costo e si ammortizza in base alla residua possibilità di utilizzazione (artt. 2424-bis e 2426 c.c.).",
+      punti: [
+        ["Definizione: elementi patrimoniali destinati a essere utilizzati durevolmente (art. 2424-bis, c. 1); è la destinazione, non la natura del bene, a fare l'immobilizzazione.", ["durevolmente","2424-bis","destinazione"]],
+        ["Iscrizione al costo di acquisto, compresi gli oneri accessori (trasporto, montaggio, notaio), o al costo di produzione interno (art. 2426, n. 1).", ["costo","accessori","produzione","2426"]],
+        ["Ammortamento sistematico in relazione alla residua possibilità di utilizzazione (art. 2426, n. 2); inizia quando il bene è pronto per l'uso.", ["ammortamento","sistematic","residua possibilita","pronto per l'uso"]],
+        ["In stato patrimoniale: B II immobilizzazioni materiali, esposte al netto del fondo ammortamento; la quota annua va in B10 b) del conto economico.", ["b ii","fondo ammortamento","b10"]],
+        ["Alla cessione si elimina il valore netto contabile e la differenza con il prezzo è plusvalenza o minusvalenza.", ["plusvalenza","minusvalenza","valore netto contabile"]]
+      ],
+      aggancio: "Fiscalmente l'ammortamento segue i coefficienti ministeriali (art. 102 TUIR, D.M. 31/12/1988): può divergere da quello civilistico.",
+      fonti: "Artt. 2424-bis e 2426 c.c. (miolegale.it e filodiritto.com, testo vigente); Simone, Ragioneria, pp. 1072-1073, 1134-1138 (OIC 16). Art. 102 TUIR e D.M. 31/12/1988: DA VERIFICARE."
+    },
+
+    'RAG-4': {
+      sintesi: "I costi pluriennali sono costi sostenuti in un esercizio ma con utilità per più esercizi: si iscrivono tra le immobilizzazioni immateriali e si ripartiscono con l'ammortamento (art. 2426, n. 5, c.c.).",
+      punti: [
+        ["Esempi: costi di impianto e di ampliamento, costi di sviluppo, software, migliorie su beni di terzi.", ["impianto","ampliamento","sviluppo","migliorie"]],
+        ["Iscrizione nell'attivo con il consenso del collegio sindacale, ove esistente, solo se hanno utilità pluriennale (art. 2426, n. 5).", ["collegio sindacale","consenso","utilita pluriennale"]],
+        ["Ammortamento: impianto e ampliamento entro 5 anni; sviluppo secondo la vita utile o, se non stimabile, entro 5 anni.", ["5 anni","cinque anni","vita utile"]],
+        ["Finché non sono ammortizzati si possono distribuire dividendi solo se restano riserve disponibili sufficienti a coprirli.", ["dividendi","riserve"]],
+        ["Dal 2016 la pubblicità e la ricerca non sono più capitalizzabili (D.Lgs. 139/2015): vanno a costo dell'esercizio.", ["pubblicita","ricerca","139/2015"]]
+      ],
+      aggancio: "Esempio pratico: le spese notarili di costituzione di una S.r.l. cliente sono costi di impianto da ammortizzare in massimo 5 anni.",
+      fonti: "Art. 2426, n. 5, c.c. (miolegale.it, testo vigente dal 2016); art. 2424 c.c. (voce B I); Simone, Ragioneria, pp. 1012, 1073-1074 (che elenca ancora la pubblicità: dato superato). Non capitalizzabilità di pubblicità e ricerca (OIC 24): DA VERIFICARE."
+    },
+
+    'RAG-8': {
+      sintesi: "Le immobilizzazioni sono beni destinati a un uso durevole e si dividono in materiali, immateriali e finanziarie (art. 2424 c.c., voce B dell'attivo); le prime due si ammortizzano.",
+      punti: [
+        ["Materiali (B II): terreni e fabbricati, impianti e macchinari, attrezzature, altri beni, immobilizzazioni in corso; hanno consistenza fisica.", ["materiali","b ii","fabbricati","impianti"]],
+        ["Immateriali (B I): costi di impianto e ampliamento, costi di sviluppo, brevetti, concessioni, licenze e marchi, avviamento; prive di consistenza fisica.", ["immateriali","b i","brevetti","avviamento"]],
+        ["Valutazione al costo di acquisto o di produzione, con ammortamento sistematico (art. 2426, n. 1-2); svalutazione se il valore durevolmente si riduce.", ["costo","ammortamento","svalutazion"]],
+        ["Avviamento: iscrivibile solo se acquisito a titolo oneroso, con il consenso del collegio sindacale; ammortamento secondo la vita utile o, se non stimabile, entro 10 anni (art. 2426, n. 6).", ["titolo oneroso","10 anni","dieci anni","vita utile"]],
+        ["Le quote annue vanno in B10 a) e b) del conto economico.", ["b10","conto economico"]]
+      ],
+      aggancio: "Il terreno non si ammortizza: in un fabbricato acquistato va scorporato il valore dell'area.",
+      fonti: "Artt. 2424, 2424-bis, 2426 c.c. (testo vigente); Simone, Ragioneria, pp. 1072-1074, 1134-1137. Scorporo del terreno (OIC 16): DA VERIFICARE."
+    },
+
+    'RAG-10': {
+      sintesi: "Il bilancio d'esercizio è costituito da stato patrimoniale, conto economico, rendiconto finanziario e nota integrativa, e deve rappresentare in modo veritiero e corretto la situazione patrimoniale, finanziaria e il risultato dell'esercizio (art. 2423 c.c.).",
+      punti: [
+        ["Composizione (art. 2423, c. 1): stato patrimoniale (art. 2424), conto economico (art. 2425), rendiconto finanziario (art. 2425-ter), nota integrativa (art. 2427).", ["stato patrimoniale","conto economico","rendiconto finanziario","nota integrativa"]],
+        ["Clausola generale: chiarezza e rappresentazione veritiera e corretta (art. 2423, c. 2).", ["chiarezza","veritiera e corretta"]],
+        ["Principi di redazione (art. 2423-bis): prudenza, continuità aziendale, prevalenza della sostanza, competenza, valutazione separata, costanza dei criteri.", ["prudenza","continuita","sostanza","competenza"]],
+        ["Forma abbreviata (art. 2435-bis) se non si superano per due esercizi due di questi limiti: attivo 5.500.000 euro, ricavi 11.000.000 euro, 50 dipendenti medi; esonero dal rendiconto finanziario.", ["abbreviat","5.500.000","11.000.000","50"]],
+        ["Micro-imprese (art. 2435-ter): attivo 220.000 euro, ricavi 440.000 euro, 5 dipendenti; esonero anche dalla nota integrativa a certe condizioni.", ["micro","220.000","440.000","5 dipendenti"]]
+      ],
+      aggancio: "Il bilancio è redatto dagli amministratori, approvato dall'assemblea entro 120 giorni dalla chiusura dell'esercizio e depositato al registro delle imprese.",
+      fonti: "Artt. 2423, 2435-bis, 2435-ter c.c. (miolegale.it, testo in vigore dal 10/8/2025, verificato su Normattiva al 10/10/2026); Simone, Ragioneria, p. 1046. Testo dell'art. 2423-bis e termine di 120 giorni (art. 2364 c.c.): DA VERIFICARE."
+    },
+
+    'RAG-11': {
+      sintesi: "Il capitale netto (patrimonio netto) è la differenza tra attività e passività: rappresenta i mezzi propri dell'impresa ed è esposto nella voce A del passivo dello stato patrimoniale (art. 2424 c.c.).",
+      punti: [
+        ["Formula: patrimonio netto = attività − passività; se negativo si parla di deficit patrimoniale.", ["attivita","passivita","deficit"]],
+        ["Composizione (voce A, I-X): capitale, riserva da sovrapprezzo, riserve di rivalutazione, riserva legale, riserve statutarie, altre riserve, riserva per copertura di flussi, utili o perdite portati a nuovo, utile o perdita dell'esercizio, riserva negativa per azioni proprie.", ["capitale","riserva legale","riserve","utile"]],
+        ["Origine: esterna (conferimenti dei soci) o interna (utili non distribuiti, autofinanziamento).", ["conferimenti","utili non distribuiti","autofinanziamento"]],
+        ["Capitale minimo: 50.000 euro per S.p.A. e S.a.p.a.; per la S.r.l. il manuale indica 10.000 euro, ma la legge consente anche un capitale inferiore, da almeno 1 euro.", ["50.000","10.000","1 euro"]],
+        ["Le riserve si distinguono dai fondi rischi: le riserve sono parti del patrimonio netto, i fondi sono passività per oneri determinati (art. 2424-bis, c. 3).", ["fondi rischi","2424-bis","passivita"]]
+      ],
+      aggancio: "Collegamento con la crisi d'impresa: la riduzione del capitale per perdite oltre un terzo obbliga gli amministratori a convocare l'assemblea (artt. 2446 e 2482-bis c.c.).",
+      fonti: "Art. 2424 c.c. (testo vigente); Simone, Ragioneria, pp. 1022-1023. Capitale minimo della S.r.l. (art. 2463 c.c., capitale da 1 euro) e artt. 2446, 2482-bis c.c.: DA VERIFICARE."
+    },
+
+    'RAG-13': {
+      sintesi: "Lo stato patrimoniale rappresenta a fine esercizio attività, passività e patrimonio netto secondo lo schema obbligatorio a sezioni contrapposte dell'art. 2424 c.c.",
+      punti: [
+        ["Attivo: A crediti verso soci per versamenti dovuti; B immobilizzazioni (I immateriali, II materiali, III finanziarie); C attivo circolante (I rimanenze, II crediti, III attività finanziarie, IV disponibilità liquide); D ratei e risconti.", ["immobilizzazioni","attivo circolante","rimanenze","disponibilita liquide"]],
+        ["Passivo: A patrimonio netto; B fondi per rischi e oneri; C trattamento di fine rapporto di lavoro subordinato; D debiti; E ratei e risconti.", ["patrimonio netto","fondi per rischi","trattamento di fine rapporto","debiti"]],
+        ["Tra i debiti: 12) debiti tributari (anche le ritenute IRPEF), 13) debiti verso istituti di previdenza e di sicurezza sociale, 14) altri debiti (anche verso i dipendenti).", ["12","13","14","tributari","previdenza"]],
+        ["Crediti e debiti indicano separatamente gli importi esigibili oltre l'esercizio successivo.", ["esigibil","oltre l'esercizio"]],
+        ["Le immobilizzazioni sono esposte al netto dei fondi di ammortamento e svalutazione.", ["netto","ammortamento"]]
+      ],
+      aggancio: "Il consulente del lavoro alimenta tre voci: il fondo TFR (C), i debiti verso istituti previdenziali (D 13) e le ritenute da versare (D 12).",
+      fonti: "Art. 2424 c.c. (miolegale.it, testo in vigore dal 1/1/2016, verificato su Normattiva al 10/10/2026)."
+    },
+
+    'RAG-14': {
+      sintesi: "Il conto economico espone i costi e i ricavi di competenza dell'esercizio in forma scalare secondo l'art. 2425 c.c., fino al risultato d'esercizio.",
+      punti: [
+        ["A) valore della produzione: ricavi delle vendite e prestazioni, variazioni delle rimanenze, incrementi per lavori interni, altri ricavi e contributi in conto esercizio.", ["valore della produzione","ricavi","rimanenze"]],
+        ["B) costi della produzione: 6 materie, 7 servizi, 8 godimento beni di terzi, 9 personale (a salari e stipendi, b oneri sociali, c TFR, d quiescenza, e altri), 10 ammortamenti e svalutazioni, 11-14 rimanenze, accantonamenti, oneri diversi.", ["costi della produzione","personale","servizi","ammortamenti"]],
+        ["Differenza A − B: risultato della gestione caratteristica.", ["differenza","a - b","a-b"]],
+        ["C) proventi e oneri finanziari; D) rettifiche di valore di attività e passività finanziarie; risultato prima delle imposte; 20) imposte; 21) utile o perdita.", ["finanziari","rettifiche","imposte","utile"]],
+        ["Dal 2016 non esiste più l'area straordinaria (ex E): proventi e oneri straordinari sono distribuiti nelle altre voci (D.Lgs. 139/2015).", ["straordinari","139/2015","2016"]]
+      ],
+      aggancio: "Per l'orale basta saper collocare con sicurezza il costo del lavoro: B9 per i dipendenti, B7 per collaboratori e amministratori.",
+      fonti: "Art. 2425 c.c. (miolegale.it, testo in vigore dal 1/1/2016, verificato su Normattiva). Eliminazione dell'area straordinaria: implicita nello schema vigente, che non la prevede."
+    },
+
+    'RAG-16': {
+      sintesi: "Il piano dei conti è l'elenco ordinato e codificato dei conti che l'impresa usa per registrare i fatti di gestione, costruito in modo da produrre il bilancio e le informazioni per il controllo.",
+      punti: [
+        ["Funzioni: determinare reddito e capitale; seguire cassa, crediti e debiti; riclassificare i dati nello stato patrimoniale e nel conto economico.", ["reddito","capitale","riclassifica"]],
+        ["Classi: conti finanziari (attivi e passivi), conti economici di reddito (costi e ricavi d'esercizio, pluriennali, rimanenze), conti di patrimonio netto.", ["finanziari","economici","patrimonio netto"]],
+        ["Ogni conto ha un codice che ne indica il livello: mastro, conto, sottoconto.", ["codice","mastro","sottoconto"]],
+        ["Varia da azienda ad azienda, ma deve essere raccordato agli schemi degli artt. 2424 e 2425 c.c.", ["2424","2425","raccord"]],
+        ["Strumenti collegati: prima nota, libro giornale, libro mastro, bilanci di verifica (art. 2214 c.c.).", ["libro giornale","mastro","bilancio di verifica","2214"]]
+      ],
+      aggancio: "Per il costo del personale il piano dei conti separa salari, oneri sociali e TFR proprio per alimentare direttamente le sottovoci di B9.",
+      fonti: "Simone, Ragioneria, pp. 1049-1050, 1055-1056."
+    },
+
+    'RAG-19': {
+      sintesi: "Per il principio di competenza costi e ricavi si imputano all'esercizio a cui si riferiscono economicamente, indipendentemente da incasso e pagamento (art. 2423-bis, c. 1, n. 3, c.c.); il principio di cassa guarda invece al momento del movimento di denaro.",
+      punti: [
+        ["Competenza civilistica: si tiene conto dei proventi e degli oneri di competenza indipendentemente dalla data di incasso o di pagamento.", ["competenza","indipendentemente","incasso","pagamento"]],
+        ["Strumenti di competenza: ratei e risconti, fatture da emettere e da ricevere, accantonamenti, ammortamenti, rimanenze.", ["ratei","risconti","fatture da ricevere","accantonamenti"]],
+        ["Correlazione: i costi si imputano all'esercizio dei ricavi che hanno contribuito a produrre.", ["correlazione","ricavi"]],
+        ["Cassa: rileva solo incassi e pagamenti; è il criterio fiscale per il reddito di lavoro autonomo (art. 54 TUIR) e per alcune voci, come i compensi agli amministratori (art. 95, c. 5, TUIR).", ["cassa","54","lavoro autonomo","95"]],
+        ["Per il reddito d'impresa vale di regola la competenza fiscale (art. 109 TUIR).", ["109","reddito d'impresa"]]
+      ],
+      aggancio: "Esempio di lavoro: la tredicesima pagata a dicembre è competenza dell'anno, mentre gli straordinari di dicembre pagati a gennaio vanno stanziati a fine anno.",
+      fonti: "Simone, Ragioneria, pp. 1117-1124 (art. 2423-bis c.c., OIC 11); art. 95, c. 5, TUIR (libreria). Artt. 54 e 109 TUIR: in libreria, contenuto da riscontrare."
+    },
+
+    'RAG-12': {
+      sintesi: "La fattura deve contenere gli elementi dell'art. 21 D.P.R. 633/1972: data e numero progressivo, dati del cedente e del cessionario, natura e quantità dell'operazione, imponibile, aliquota e imposta.",
+      punti: [
+        ["Data e numero progressivo che la identifichi in modo univoco.", ["data","numero progressivo"]],
+        ["Dati del fornitore (ditta, residenza o domicilio, partita IVA) e del cliente (dati identificativi, partita IVA o codice fiscale).", ["partita iva","codice fiscale","cliente"]],
+        ["Natura, qualità e quantità dei beni o servizi; corrispettivi e altri dati per la base imponibile.", ["natura","quantita","corrispettiv","imponibile"]],
+        ["Aliquota, ammontare dell'imposta e, per le operazioni senza IVA, la norma di riferimento (forfettario, esenzione, non imponibilità).", ["aliquota","imposta","norma"]],
+        ["Per i servizi la fattura si emette al pagamento del corrispettivo (art. 6, c. 3); la fattura immediata va trasmessa entro 12 giorni dall'operazione.", ["pagamento","12 giorni"]]
+      ],
+      aggancio: "Nella fattura del CdL: onorario, contributo integrativo ENPACL 4%, IVA 22% su entrambi, ritenuta 20% sul solo onorario se il cliente è sostituto d'imposta.",
+      fonti: "P2/P2_Mod05_Fattura_CdL_v2 (lezioni 1-2, 7); art. 21 D.P.R. 633/1972 non in libreria: elenco degli elementi e termine di 12 giorni DA VERIFICARE sul testo (Codice SEAC, p. 553). Dal 2027 la materia confluisce nel testo unico IVA."
+    },
+
+    'RAG-20': {
+      sintesi: "Dal 1° gennaio 2019 la fattura tra operatori residenti è di regola elettronica: è un file XML trasmesso attraverso il Sistema di Interscambio (SdI) dell'Agenzia delle Entrate; dal 2024 l'obbligo riguarda anche i forfettari.",
+      punti: [
+        ["Obbligo generalizzato dal 1/1/2019 per le operazioni tra soggetti residenti, anche verso privati consumatori (L. 205/2017).", ["2019","obbligo","205/2017"]],
+        ["Formato XML e trasmissione obbligatoria tramite SdI, che controlla il file e lo recapita al cliente; la fattura si considera emessa solo se lo SdI la accetta.", ["xml","sistema di interscambio","sdi","recapit"]],
+        ["Forfettari: obbligati dal 1/7/2022 se con ricavi o compensi oltre 25.000 euro, e da tutti dal 1/1/2024 (D.L. 36/2022).", ["forfettari","25.000","2024","36/2022"]],
+        ["Termini: fattura immediata entro 12 giorni; differita entro il 15 del mese successivo; conservazione digitale a norma.", ["12 giorni","differita","15 del mese","conservazione"]],
+        ["Restano fuori dall'obbligo le operazioni con l'estero (per le quali si comunicano i dati) e, per ragioni di riservatezza, le prestazioni sanitarie inviate al Sistema tessera sanitaria.", ["estero","sanitari","tessera sanitaria"]]
+      ],
+      aggancio: "Il bollo sulla fattura elettronica senza IVA oltre 77,47 euro si paga in modo virtuale con F24, su calcolo trimestrale dell'Agenzia delle Entrate.",
+      fonti: "P2/P2_Mod05 (lezioni 1, 7); ORALE_Simone_Diritto_Tributario_OCR («fattura elettronica»). Estremi L. 205/2017 e D.L. 36/2022, soglia di 25.000 euro, termini di emissione e pagamento trimestrale del bollo: DA VERIFICARE sui testi."
+    },
+
+    'RAG-15': {
+      sintesi: "Chi esercita arti e professioni tiene scritture semplificate per cassa (art. 19 D.P.R. 600/1973), con facoltà di optare per la contabilità ordinaria; i forfettari sono esonerati dalla tenuta delle scritture contabili.",
+      punti: [
+        ["Regime naturale: contabilità semplificata con registri IVA integrati da incassi e pagamenti, oppure registro cronologico unico (art. 19 D.P.R. 600/1973).", ["semplificata","registri iva","incassi","art. 19"]],
+        ["Opzione per la contabilità ordinaria (registro cronologico e conti finanziari), vincolante per almeno un triennio.", ["ordinaria","opzione","triennio"]],
+        ["Il reddito di lavoro autonomo si determina per cassa: compensi incassati meno spese pagate (art. 54 TUIR).", ["cassa","54","compensi","spese"]],
+        ["Restano gli obblighi IVA: fattura elettronica, liquidazioni periodiche, dichiarazione annuale; il professionista con dipendenti è anche sostituto d'imposta.", ["iva","fattura elettronica","liquidazion","sostituto"]],
+        ["Forfettario (L. 190/2014): niente scritture contabili né IVA, ma conservazione dei documenti e fatturazione elettronica.", ["forfettario","190/2014","conservazione"]]
+      ],
+      aggancio: "È il regime contabile del consulente del lavoro stesso: un professionista in forfettario fattura con il 4% ENPACL ma senza IVA né ritenuta.",
+      fonti: "P2/P2_Mod05 (lezione 6); art. 54 TUIR (libreria). Art. 19 D.P.R. 600/1973 e vincolo triennale: DA VERIFICARE sul testo; dal 2027 la disciplina confluisce nel testo unico adempimenti e accertamento (D.Lgs. 141/2026, fonti secondarie)."
+    },
+
+    'RAG-18': {
+      sintesi: "La contabilità ordinaria (art. 14 D.P.R. 600/1973) è obbligatoria per le società di capitali e per le imprese oltre i limiti di ricavi; sotto i limiti le imprese individuali e le società di persone possono tenere la contabilità semplificata (art. 18).",
+      punti: [
+        ["Ordinaria: libro giornale, libro degli inventari, registri IVA, scritture di magazzino oltre certe soglie, registro dei beni ammortizzabili (artt. 14-16 D.P.R. 600/1973; art. 2214 c.c.).", ["libro giornale","inventari","registri iva","beni ammortizzabili"]],
+        ["Obbligatoria per società di capitali ed enti commerciali, a prescindere dai ricavi.", ["societa di capitali","obbligatori"]],
+        ["Semplificata: ammessa per imprese individuali e società di persone con ricavi annui fino a 500.000 euro per i servizi e 800.000 euro per le altre attività (soglie dal 2023, L. 197/2022).", ["500.000","800.000","semplificata","197/2022"]],
+        ["Nella semplificata il reddito si determina con criterio misto di cassa e competenza (art. 66 TUIR); si può sempre optare per l'ordinaria.", ["66","cassa","opzione"]],
+        ["Il superamento delle soglie fa passare all'ordinaria dall'anno successivo.", ["anno successivo","superamento"]]
+      ],
+      aggancio: "Dal 2027 queste regole confluiscono nel testo unico adempimenti e accertamento (D.Lgs. 141/2026, art. 23 per la semplificata), ma all'esame si cita ancora il D.P.R. 600/1973.",
+      fonti: "Simone, Ragioneria, pp. 1055, 1116 (art. 2214 c.c.); soglie da ecnews.it (28/12/2023) e dall'art. 23 D.Lgs. 141/2026 su miolegale.it (fonti secondarie). Artt. 14 e 18 D.P.R. 600/1973, art. 66 TUIR e decorrenza del testo unico dal 2027: DA VERIFICARE sui testi."
     }
+
   };
 
   /* ---------- Costruzione dell'elenco ---------- */
@@ -1085,7 +1978,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.4 · 1/11/2026',
+    versione: '1.6.1 · 1/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
