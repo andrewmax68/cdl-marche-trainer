@@ -1,0 +1,187 @@
+"""Genera un fascicolo PDF stampabile per materia dalla banca dati del simulatore orale.
+Uso: python3 fascicolo.py orale.json MATERIA output.pdf
+"""
+import json, sys, unicodedata, re
+from xml.sax.saxutils import escape
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import cm
+from reportlab.lib import colors
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.lib.enums import TA_LEFT
+from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, Table,
+                                TableStyle, KeepTogether, PageBreak, CondPageBreak)
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.lib.fonts import addMapping
+
+LIB = '/usr/share/fonts/truetype/liberation/'
+for name, f in [('Serif', 'LiberationSerif-Regular'), ('Serif-B', 'LiberationSerif-Bold'),
+                ('Serif-I', 'LiberationSerif-Italic'), ('Serif-BI', 'LiberationSerif-BoldItalic'),
+                ('Sans', 'LiberationSans-Regular'), ('Sans-B', 'LiberationSans-Bold')]:
+    pdfmetrics.registerFont(TTFont(name, LIB + f + '.ttf'))
+addMapping('Serif', 0, 0, 'Serif'); addMapping('Serif', 1, 0, 'Serif-B')
+addMapping('Serif', 0, 1, 'Serif-I'); addMapping('Serif', 1, 1, 'Serif-BI')
+addMapping('Sans', 0, 0, 'Sans'); addMapping('Sans', 1, 0, 'Sans-B')
+addMapping('Sans', 0, 1, 'Sans'); addMapping('Sans', 1, 1, 'Sans-B')
+
+INK = colors.HexColor('#1d1d1b')
+MUTED = colors.HexColor('#5f5e5a')
+ACCENT = colors.HexColor('#7a2e2a')      # rosso scuro, stampa bene anche in bianco e nero
+TINT = colors.HexColor('#f1efe8')
+RULE = colors.HexColor('#c9c6bc')
+
+S = {
+    'title': ParagraphStyle('t', fontName='Serif-B', fontSize=20, leading=24, textColor=INK, spaceAfter=4),
+    'sub': ParagraphStyle('s', fontName='Sans', fontSize=9.5, leading=13, textColor=MUTED, spaceAfter=10),
+    'h2': ParagraphStyle('h2', fontName='Sans-B', fontSize=10, leading=13, textColor=ACCENT, spaceBefore=8, spaceAfter=4),
+    'body': ParagraphStyle('b', fontName='Serif', fontSize=11, leading=14.5, textColor=INK),
+    'small': ParagraphStyle('sm', fontName='Sans', fontSize=8.5, leading=11, textColor=MUTED),
+    'cell': ParagraphStyle('c', fontName='Serif', fontSize=10, leading=12.5, textColor=INK),
+    'cellsm': ParagraphStyle('cs', fontName='Sans', fontSize=8, leading=10, textColor=MUTED),
+    'eyebrow': ParagraphStyle('e', fontName='Sans-B', fontSize=8, leading=10, textColor=ACCENT),
+    'q': ParagraphStyle('q', fontName='Serif-B', fontSize=14, leading=17.5, textColor=INK, spaceBefore=2, spaceAfter=6),
+    'sintesi': ParagraphStyle('si', fontName='Serif', fontSize=11, leading=14.5, textColor=INK),
+    'punto': ParagraphStyle('p', fontName='Serif', fontSize=11, leading=14.5, textColor=INK, leftIndent=16, firstLineIndent=-16, spaceAfter=4),
+    'aggancio': ParagraphStyle('a', fontName='Serif-I', fontSize=10.5, leading=14, textColor=INK, spaceBefore=4, spaceAfter=4),
+    'fonti': ParagraphStyle('f', fontName='Sans', fontSize=7.8, leading=10, textColor=MUTED),
+    'vuoto': ParagraphStyle('v', fontName='Serif-I', fontSize=10.5, leading=14, textColor=MUTED),
+}
+
+
+def norm(s):
+    """Minuscolo senza accenti, carattere per carattere (stessa lunghezza dell'originale)."""
+    out = []
+    for ch in s:
+        base = unicodedata.normalize('NFD', ch)[0].lower()
+        out.append(base if len(base) == 1 else ch)
+    return ''.join(out)
+
+
+def evidenzia(testo, chiavi):
+    """Mette in grassetto le parole chiave che il simulatore cerca nella risposta."""
+    n = norm(testo)
+    segni = [False] * len(testo)
+    for k in chiavi:
+        k = norm(k)
+        if not k:
+            continue
+        for m in re.finditer(re.escape(k), n):
+            a, b = m.start(), m.end()
+            # estende il grassetto alla parola intera (la chiave è spesso una radice: «abusiv»)
+            while a > 0 and n[a - 1].isalnum():
+                a -= 1
+            while b < len(n) and n[b].isalnum():
+                b += 1
+            for i in range(a, b):
+                segni[i] = True
+    out, aperto = [], False
+    for ch, s in zip(testo, segni):
+        if s and not aperto:
+            out.append('<b>'); aperto = True
+        if not s and aperto:
+            out.append('</b>'); aperto = False
+        out.append(escape(ch))
+    if aperto:
+        out.append('</b>')
+    return ''.join(out)
+
+
+def ordina(d):
+    b = d['busta']
+    return (0 if b is not None else 1, b if b is not None else 0, d['id'])
+
+
+def costruisci(dati, materia, out):
+    mat = next(m for m in dati['materie'] if m['k'] == materia)
+    comm = dati['commissione'].get(mat['comm'], {})
+    domande = sorted([d for d in dati['domande'] if d['m'] == materia], key=ordina)
+    con_r = [d for d in domande if d['r']]
+
+    def piede(canv, doc):
+        canv.saveState()
+        canv.setFont('Sans', 7.5); canv.setFillColor(MUTED)
+        canv.drawString(2.2 * cm, 1.2 * cm, 'Orale CdL 2026 · %s · dati simulatore %s' % (mat['nome'], dati['versione']))
+        canv.drawRightString(A4[0] - 2 * cm, 1.2 * cm, 'pag. %d' % doc.page)
+        canv.restoreState()
+
+    doc = BaseDocTemplate(out, pagesize=A4, title='Fascicolo orale — ' + mat['nome'],
+                          author='Andrea Marziali (con Claude)', leftMargin=2.2 * cm, rightMargin=2 * cm,
+                          topMargin=1.8 * cm, bottomMargin=2 * cm)
+    # Colonna di testo più stretta: a destra resta un margine per gli appunti a mano.
+    frame = Frame(2.2 * cm, 2 * cm, A4[0] - 2.2 * cm - 5.2 * cm, A4[1] - 3.8 * cm, id='f', leftPadding=0, rightPadding=0)
+    doc.addPageTemplates([PageTemplate(id='p', frames=[frame], onPage=piede)])
+
+    st = []
+    st.append(Paragraph('Fascicolo di studio — ' + escape(mat['nome']), S['title']))
+    st.append(Paragraph('Prova orale, Esame di Stato CdL 2026 (Marche). Commissario probabile (stima): %s, %s. '
+                        'Domande: %d, di cui %d con risposta modello.' %
+                        (escape(comm.get('nome', '—')), escape(comm.get('ruolo', '')), len(domande), len(con_r)), S['sub']))
+    st.append(Paragraph('Come usarlo', S['h2']))
+    for riga in [
+        '1. Leggi la scheda una volta, a voce alta. Le parole in <b>grassetto</b> sono quelle che il simulatore cerca nella tua risposta: sono il minimo da dire.',
+        '2. Copri la scheda e ripeti la risposta a voce in 2 minuti: prima la frase iniziale, poi la norma, poi i punti.',
+        '3. Ripassa dopo 1, 3 e 7 giorni usando l\'elenco qui sotto: segna una casella ogni volta che rispondi senza guardare.',
+        '4. Usa il margine destro per i tuoi appunti; le correzioni tornano poi nel simulatore, che resta la fonte unica.']:
+        st.append(Paragraph(riga, S['body']))
+        st.append(Spacer(1, 3))
+
+    st.append(Paragraph('Elenco per l\'autointerrogazione', S['h2']))
+    righe = [[Paragraph('<b>Codice</b>', S['cellsm']), Paragraph('<b>Domanda</b>', S['cellsm']),
+              Paragraph('<b>1 g</b>', S['cellsm']), Paragraph('<b>3 g</b>', S['cellsm']), Paragraph('<b>7 g</b>', S['cellsm'])]]
+    for d in domande:
+        etich = d['id'] + ('' if d['r'] else ' *')
+        righe.append([Paragraph(escape(etich), S['cellsm']), Paragraph(escape(d['testo']), S['cell']), '', '', ''])
+    w = A4[0] - 2.2 * cm - 5.2 * cm
+    t = Table(righe, colWidths=[1.7 * cm, w - 1.7 * cm - 3 * 0.9 * cm, 0.9 * cm, 0.9 * cm, 0.9 * cm], repeatRows=1)
+    stile = [('VALIGN', (0, 0), (-1, -1), 'MIDDLE'), ('LINEBELOW', (0, 0), (-1, -1), 0.3, RULE),
+             ('TOPPADDING', (0, 0), (-1, -1), 3), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]
+    for i in range(1, len(righe)):
+        for c in (2, 3, 4):
+            stile.append(('BOX', (c, i), (c, i), 0.6, MUTED))
+    t.setStyle(TableStyle(stile))
+    st.append(t)
+    if len(con_r) < len(domande):
+        st.append(Spacer(1, 4))
+        st.append(Paragraph('* risposta modello non ancora disponibile: la scheda indica dove studiarla per ora.', S['small']))
+
+    for d in domande:
+        st.append(CondPageBreak(7 * cm))
+        blocco = []
+        etichetta = '%s · %s · %s' % (d['id'], d['etichetta'], d['gruppo'])
+        blocco.append(Spacer(1, 10))
+        blocco.append(Paragraph(escape(etichetta).upper(), S['eyebrow']))
+        blocco.append(Paragraph(escape(d['testo']), S['q']))
+        r = d['r']
+        if r:
+            chiavi_tutte = [k for p in r['punti'] for k in p[1]]
+            box = Table([[Paragraph('<b>In una frase.</b> ' + evidenzia(r['sintesi'], chiavi_tutte), S['sintesi'])]],
+                        colWidths=[w])
+            box.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), TINT), ('LEFTPADDING', (0, 0), (-1, -1), 8),
+                                     ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('TOPPADDING', (0, 0), (-1, -1), 6),
+                                     ('BOTTOMPADDING', (0, 0), (-1, -1), 6), ('LINEBEFORE', (0, 0), (0, -1), 2, ACCENT)]))
+            blocco.append(box)
+            blocco.append(Spacer(1, 6))
+            st.append(KeepTogether(blocco))
+            for i, (testo, chiavi) in enumerate(r['punti'], 1):
+                st.append(Paragraph('%d.&nbsp;&nbsp;%s' % (i, evidenzia(testo, chiavi)), S['punto']))
+            if r.get('aggancio'):
+                st.append(Paragraph('<b>Aggancio:</b> ' + escape(r['aggancio']), S['aggancio']))
+            if r.get('fonti'):
+                st.append(Paragraph('Fonti: ' + escape(r['fonti']), S['fonti']))
+        else:
+            st.append(KeepTogether(blocco))
+            dove = '; '.join(escape(a[0]) + (' (' + escape(a[1]) + ')' if a[1] else '') for a in d['approf']) or '—'
+            st.append(Paragraph('Risposta modello in preparazione. Per ora studia su: ' + dove + '.', S['vuoto']))
+        st.append(Spacer(1, 4))
+        linea = Table([['']], colWidths=[w], rowHeights=[2])
+        linea.setStyle(TableStyle([('LINEBELOW', (0, 0), (-1, -1), 0.4, RULE)]))
+        st.append(linea)
+
+    doc.build(st)
+    return len(domande), len(con_r)
+
+
+if __name__ == '__main__':
+    dati = json.load(open(sys.argv[1], encoding='utf-8'))
+    n, r = costruisci(dati, sys.argv[2], sys.argv[3])
+    print(sys.argv[2], n, 'domande,', r, 'con risposta ->', sys.argv[3])
