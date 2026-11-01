@@ -1,6 +1,7 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
-   Versione dati: 1.3 del 30/10/2026 (DEO-21 rivista; + 135 argomenti ufficiali 2022 di altra sede)
+   Versione dati: 1.4 del 1/11/2026 (+ DL-X6 crisi d'impresa, con risposta modello)
+   Versione 1.3 del 30/10/2026: DEO-21 rivista; + 135 argomenti ufficiali 2022 di altra sede
    - Domande: 23 buste ufficiali ITL Ancona, sessione 2025 (8 per busta)
      + integrazioni 2026 (stima, non domande ufficiali).
    - Risposte modello: solo dove le fonti sono state verificate
@@ -312,6 +313,7 @@ window.ORALE = (function () {
     ['DL','X3','Integrazione 2026','Il «salario giusto» nel D.L. 62/2026'],
     ['DL','X4','Integrazione 2026','La trasparenza retributiva nel D.Lgs. 96/2026'],
     ['DL','X5','Integrazione 2026','Le dimissioni per fatti concludenti'],
+    ['DL','X6','Integrazione 2026','Il ruolo del consulente del lavoro nella crisi d\'impresa (D.Lgs. 14/2019)'],
     ['INPS','X1','Integrazione 2026','Le novità 2026 sulla NASpI e sul congedo parentale'],
     ['TRIB','X1','Integrazione 2026','Il sostituto d\'imposta: chi è, soggetti, obblighi'],
     ['PPP','X1','Integrazione 2026','La parità di genere nel lavoro: art. 37 Cost. e Codice delle pari opportunità'],
@@ -324,6 +326,7 @@ window.ORALE = (function () {
     'DL-X3': [['P1_Cap01_DL62_2026.docx', ''], ['P1/P1_Mappe_DL62_DLgs96.md', '']],
     'DL-X4': [['P1_Cap02_DLgs96_2026.docx', ''], ['P1/P1_Mappe_DL62_DLgs96.md', '']],
     'DL-X5': [['P1_Cap08_Schede_tradizionali.docx', 'scheda 5'], [SIMONE_DL, 'pp. 234-235']],
+    'DL-X6': [['ORALE/ORALE_05_Crisi_impresa_CdL_scheda.md', ''], ['P1_Cap06_Occupazione_crisi.docx', '§ 3.7'], ['NORMA_Codice_civile_lavoro.md', 'art. 2086 c.c.']],
     'INPS-X1': [['ORALE/ORALE_02_Commissione_2026_temi.md', 'sezione Gallotta'], ['P1/P1_Cap09_Genitorialita.md', '']],
     'TRIB-X1': [['P2/P2_Mod04_Sostituto_imposta_scalette_v1.1.md', 'scalette A-D']],
     'PPP-X1': [['198_2006.pdf', ''], ['P1_Cap02_DLgs96_2026.docx', ''], ['91_2026.pdf', '']],
@@ -715,6 +718,19 @@ window.ORALE = (function () {
       aggancio: 'Collegamento col potere disciplinare: la violazione della procedura dell\'art. 7 St. lav. nel licenziamento disciplinare, per i vecchi assunti sopra soglia, porta all\'indennità di 6-12 mensilità (art. 18, c. 6).',
       fonti: 'Simone, Diritto del lavoro 2026, §§ 9.2-9.4, pp. 242-244, e p. 236. Art. 9 D.Lgs. 23/2015 dopo Corte cost. 118/2025: DA VERIFICARE.'
     },
+
+    'DL-X6': {
+      sintesi: 'Il Codice della crisi chiede di riconoscere la crisi presto e di gestirla preservando la continuità: il CdL interviene prima (assetti adeguati e segnali di allarme), durante (consultazione sindacale e strumenti del lavoro nel piano) e dentro le procedure (esperto, curatore, rapporti di lavoro nella liquidazione giudiziale).',
+      punti: [
+        ['Prima: art. 2086, c. 2, c.c. e art. 3 CCII impongono assetti adeguati a rilevare tempestivamente la crisi e la sostenibilità dei debiti per i 12 mesi successivi; due segnali di allarme nascono dai dati del CdL: retribuzioni scadute da almeno 30 giorni per oltre metà del monte mensile e debiti oltre le soglie dell\'art. 25-novies.', ['2086','assetti','segnali','retribuzioni','dodici mesi','12 mesi']],
+        ['Segnalazioni dei creditori pubblici qualificati (art. 25-novies): INPS per ritardo oltre 90 giorni nei contributi superiore al 30% del dovuto dell\'anno precedente e a 15.000 euro (imprese con dipendenti); INAIL per premi scaduti da oltre 90 giorni oltre 5.000 euro; invito alla composizione negoziata.', ['25-novies','creditori pubblici','inps','inail','15.000','novanta giorni','90 giorni']],
+        ['Durante: art. 4, c. 3, CCII, il datore con più di 15 dipendenti informa per iscritto i sindacati delle determinazioni rilevanti sui rapporti di lavoro; incontro richiesto entro 3 giorni, avvio entro 5, consultazione esaurita dopo 10 giorni.', ['consultazione','informazione','sindaca','quindici','15 dipendenti','articolo 4']],
+        ['Strumenti del lavoro nel piano: ammortizzatori (D.Lgs. 148/2015), contratti di prossimità per la gestione delle crisi (art. 8 D.L. 138/2011), trasferimento d\'azienda con accordi in deroga all\'art. 2112 (art. 47 L. 428/1990, c. 4-bis e 5).', ['ammortizzator','cassa integrazione','prossimita','trasferimento','2112','47']],
+        ['Ruoli: esperto della composizione negoziata con 5 anni di iscrizione e almeno 3 casi documentati (art. 13, c. 3); curatore, commissario o liquidatore (art. 358), nomina in cui conta la presenza di lavoratori subordinati. Nella liquidazione giudiziale l\'art. 189 sospende i rapporti fino a subentro o recesso, con cessazione dopo 4 mesi (prorogabili fino a 8).', ['esperto','cinque anni','5 anni','tre casi','curatore','189','sospe']]
+      ],
+      aggancio: 'Chiusura deontologica: l\'art. 39 del Codice deontologico impone al CdL che opera nelle procedure della crisi indipendenza, diligenza e preparazione specifica.',
+      fonti: 'Art. 2086 c.c. (NORMA_Codice_civile_lavoro); artt. 3 e 4 CCII (miolegale.it, testo dichiarato riscontrato su Normattiva al 13/10/2026); artt. 13 e 25-novies CCII (Brocardi, agg. 12/8/2026); art. 189 CCII e art. 47 L. 428/1990 (P1_Cap06, § 3.7; Simone); art. 8 D.L. 138/2011 (estratto Normattiva); art. 358 CCII da fonti secondarie: testo DA VERIFICARE. Scheda: ORALE_05.'
+    },
     /* ===== Lotto 2 — Ordinamento e deontologia (30/10/2026) ===== */
 
     'DEO-1': {
@@ -1069,7 +1085,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.3 · 30/10/2026',
+    versione: '1.4 · 1/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
