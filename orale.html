@@ -214,6 +214,7 @@
       </div>
       <div class="row" style="margin-top:10px">
         <label class="small row" style="gap:6px"><input type="checkbox" id="simNoModel"> Nascondi la risposta modello fino alla fine della busta (più realistico)</label>
+        <label class="small row" style="gap:6px;margin-left:10px"><input type="checkbox" id="simSoloR" checked> Busta 2026 e mista: solo domande con risposta modello</label>
       </div>
       <div class="row" style="margin-top:14px">
         <button class="btn red" id="btnStart" type="button">Estrai e inizia</button>
@@ -566,17 +567,20 @@
     ORD.forEach(function(k){ var x = q.filter(function(d){ return d.m === k && !used[d.id]; })[0]; if (x) { used[x.id] = 1; out.push(x); } });
     return out;
   }
+  function soloR(){ var c = document.getElementById('simSoloR'); return c && c.checked; }
   var ORD26 = [['DL'], ['INPS','INAIL'], ['PPP'], ['TRIB','RAG'], ['DEO']];
   function busta2026(){
     return ORD26.map(function(ks){
-      var pool = O.domande.filter(function(d){ return ks.indexOf(d.m) >= 0; });
+      var pool = O.domande.filter(function(d){ return ks.indexOf(d.m) >= 0 && (!soloR() || d.r); });
+      if (!pool.length) pool = O.domande.filter(function(d){ return ks.indexOf(d.m) >= 0; });
       return pool[Math.floor(Math.random()*pool.length)];
     });
   }
   function bustaMix(){
     var out = [], used = {};
     ORD.forEach(function(k){
-      var pool = O.domande.filter(function(d){ return d.m === k && !used[d.id]; });
+      var pool = O.domande.filter(function(d){ return d.m === k && !used[d.id] && (!soloR() || d.r); });
+      if (!pool.length) pool = O.domande.filter(function(d){ return d.m === k && !used[d.id]; });
       var x = pool[Math.floor(Math.random()*pool.length)]; used[x.id] = 1; out.push(x);
     });
     return out;
