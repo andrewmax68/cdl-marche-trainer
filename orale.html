@@ -203,9 +203,12 @@
   <section class="pane" id="pane-sim">
     <div class="box" id="simSetup">
       <h2>Simulazione: estrai una busta</h2>
-      <p class="small muted">Una domanda per materia (due di diritto del lavoro), nell'ordine della busta 2025. Ogni domanda la pone il commissario che, per ruolo, più probabilmente la farebbe: è una <b>stima</b>, non un dato. Tempo indicativo: 3 minuti per risposta.</p>
+      <p class="small muted"><b>Busta 2026</b>: lo schema ufficiale inviato dal Presidente il 4/11/2026 ha <b>5 righe</b>, una per area del decreto (diritto del lavoro; legislazione sociale INPS-INAIL; privato, pubblico e penale; tributario e ragioneria; deontologia). La simulazione 2026 estrae quindi 5 domande: per legislazione sociale una a caso tra INPS e INAIL, per l'area tributaria una a caso tra tributario e ragioneria. Che ogni riga contenga una sola domanda è la lettura più probabile, non una certezza. <b>Busta 2025</b>: 8 domande, nell'ordine delle buste di Ancona 2025. Ogni domanda la pone il commissario che, per ruolo, più probabilmente la farebbe: è una <b>stima</b>, non un dato. Tempo indicativo: 3 minuti per risposta.</p>
       <div class="row" style="margin-top:10px">
-        <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="uff" checked> Busta ufficiale 2025</label>
+        <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="b26" checked> Busta 2026 (5 domande, schema ufficiale)</label>
+      </div>
+      <div class="row" style="margin-top:6px">
+        <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="uff"> Busta ufficiale 2025</label>
         <select id="nBusta" aria-label="Numero busta"></select>
         <label class="small row" style="gap:6px;margin-left:10px"><input type="radio" name="tipo" value="mix"> Busta mista (a caso da tutte le domande: Ancona 2025, integrazioni 2026, argomenti 2022)</label>
       </div>
@@ -235,7 +238,7 @@
       <h2>Come usarlo</h2>
       <ol class="small">
         <li><b>Studio.</b> Filtra per materia o gruppo, apri una domanda, prova a rispondere (a voce o per iscritto), poi apri la risposta modello. Segna «La so» o «Da ripassare»: il progresso resta salvato su questo dispositivo.</li>
-        <li><b>Simulazione.</b> Estrai una busta ufficiale o mista. Rispondi alle 8 domande; alla fine ottieni la tabella, una stima del voto in base alla tua autovalutazione e il <b>pacchetto per Claude</b> da incollare nella chat dedicata per la correzione vera.</li>
+        <li><b>Simulazione.</b> Estrai una busta ufficiale o mista. Rispondi alle domande (5 nella busta 2026, 8 nelle altre); alla fine ottieni la tabella, una stima del voto in base alla tua autovalutazione e il <b>pacchetto per Claude</b> da incollare nella chat dedicata per la correzione vera.</li>
         <li><b>Modalità audio</b> (interruttore in alto): la domanda viene letta dal «commissario» e puoi rispondere col microfono; la trascrizione resta modificabile. Spegnendola, tutto funziona per iscritto.</li>
       </ol>
       <h3 style="margin-top:14px">Limiti, da sapere</h3>
@@ -563,6 +566,13 @@
     ORD.forEach(function(k){ var x = q.filter(function(d){ return d.m === k && !used[d.id]; })[0]; if (x) { used[x.id] = 1; out.push(x); } });
     return out;
   }
+  var ORD26 = [['DL'], ['INPS','INAIL'], ['PPP'], ['TRIB','RAG'], ['DEO']];
+  function busta2026(){
+    return ORD26.map(function(ks){
+      var pool = O.domande.filter(function(d){ return ks.indexOf(d.m) >= 0; });
+      return pool[Math.floor(Math.random()*pool.length)];
+    });
+  }
   function bustaMix(){
     var out = [], used = {};
     ORD.forEach(function(k){
@@ -580,8 +590,8 @@
   $('#btnStart').addEventListener('click', function(){
     var tipo = document.querySelector('input[name=tipo]:checked').value;
     var n = Number(nb.value) || (1 + Math.floor(Math.random()*O.buste));
-    var Q = tipo === 'uff' ? bustaUff(n) : bustaMix();
-    run = { titolo: tipo === 'uff' ? 'Busta 2025 n. ' + n : 'Busta mista 2026', Q: Q, i: 0, ans: [], voto: [], tempi: [], hide: $('#simNoModel').checked };
+    var Q = tipo === 'uff' ? bustaUff(n) : tipo === 'b26' ? busta2026() : bustaMix();
+    run = { titolo: tipo === 'uff' ? 'Busta 2025 n. ' + n : tipo === 'b26' ? 'Busta 2026 (5 domande)' : 'Busta mista (8 domande)', Q: Q, i: 0, ans: [], voto: [], tempi: [], hide: $('#simNoModel').checked };
     $('#simSetup').style.display = 'none';
     renderStep();
   });
