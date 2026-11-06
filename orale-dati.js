@@ -345,7 +345,7 @@ window.ORALE = (function () {
      Ultimo campo: id della domanda equivalente, di cui si riusano risposta modello e approfondimenti. */
   var S22 = [
     // Diritto del lavoro (30)
-    ['DL',1,'Vigilanza e illeciti','La costituzione e la documentazione del rapporto di lavoro subordinato; la sanzione per il lavoro sommerso (art. 3 D.L. 12/2002)',null],
+    ['DL',1,'Vigilanza e illeciti','La costituzione e la documentazione del rapporto di lavoro subordinato; la sanzione per il lavoro sommerso (art. 3 D.L. 12/2002)','DL-20b'],
     ['DL',2,'Contratti flessibili','I diritti di precedenza e la loro incidenza sugli incentivi alle assunzioni',null],
     ['DL',3,'Contratti flessibili','L\'assunzione in prova: disciplina di legge e di contratto','DL-3a'],
     ['DL',4,'Contratti flessibili','L\'assunzione a tempo determinato','DL-1b'],
@@ -355,25 +355,25 @@ window.ORALE = (function () {
     ['DL',8,'Contratti flessibili','Il tirocinio formativo',null],
     ['DL',9,'Contratti flessibili','Il lavoro intermittente','DL-3b'],
     ['DL',10,'Contratti flessibili','Il lavoro occasionale: PrestO e Libretto famiglia',null],
-    ['DL',11,'Qualificazione','Lavoro autonomo professionale e occasionale; le collaborazioni coordinate e continuative',null],
+    ['DL',11,'Qualificazione','Lavoro autonomo professionale e occasionale; le collaborazioni coordinate e continuative','DL-6a'],
     ['DL',12,'Contratti flessibili','La somministrazione di lavoro','DL-10a'],
-    ['DL',13,'Vigilanza e illeciti','Appalto e distacco genuini e non genuini (artt. 29-30 D.Lgs. 276/2003)',null],
+    ['DL',13,'Vigilanza e illeciti','Appalto e distacco genuini e non genuini (artt. 29-30 D.Lgs. 276/2003)','DL-8b'],
     ['DL',14,'Qualificazione','La certificazione dei contratti di lavoro','DL-5a'],
     ['DL',15,'Svolgimento e retribuzione','Le mansioni del lavoratore e i limiti allo ius variandi','DL-13a'],
     ['DL',16,'Svolgimento e retribuzione','L\'orario di lavoro e i tempi di riposo','DL-16a'],
     ['DL',17,'Tutele specifiche','La tutela dei minori sul lavoro','DL-12a'],
-    ['DL',18,'Tutele specifiche','La tutela della maternità e della paternità',null],
+    ['DL',18,'Tutele specifiche','La tutela della maternità e della paternità','DL-5b'],
     ['DL',19,'Tutele specifiche','Le misure per l\'occupazione dei lavoratori disabili','DL-10b'],
-    ['DL',20,'Svolgimento e retribuzione','La retribuzione, il prospetto paga e la prescrizione dei diritti del lavoratore',null],
+    ['DL',20,'Svolgimento e retribuzione','La retribuzione, il prospetto paga e la prescrizione dei diritti del lavoratore','DL-19b'],
     ['DL',21,'Svolgimento e retribuzione','La sospensione del rapporto per impossibilità temporanea del lavoratore',null],
     ['DL',22,'Svolgimento e retribuzione','La sospensione del rapporto per impossibilità temporanea del datore di lavoro',null],
     ['DL',23,'Cessazione del rapporto','Le dimissioni e la risoluzione consensuale',null],
-    ['DL',24,'Cessazione del rapporto','Il licenziamento disciplinare e l\'art. 7 dello Statuto dei lavoratori',null],
+    ['DL',24,'Cessazione del rapporto','Il licenziamento disciplinare e l\'art. 7 dello Statuto dei lavoratori','DL-X2'],
     ['DL',25,'Cessazione del rapporto','Il licenziamento per giustificato motivo oggettivo e la procedura dell\'art. 7 L. 604/1966',null],
     ['DL',26,'Cessazione del rapporto','Il licenziamento illegittimo: tutela obbligatoria, tutela reale, tutele crescenti','DL-X1'],
-    ['DL',27,'Cessazione del rapporto','Le conseguenze dei vizi procedurali nei licenziamenti individuali e collettivi',null],
+    ['DL',27,'Cessazione del rapporto','Le conseguenze dei vizi procedurali nei licenziamenti individuali e collettivi','DL-X1'],
     ['DL',28,'Rinunce e conciliazioni','Rinunce, transazioni e conciliazione delle vertenze','DL-13b'],
-    ['DL',29,'Rinunce e conciliazioni','Il tentativo di conciliazione facoltativo, obbligatorio e incentivato',null],
+    ['DL',29,'Rinunce e conciliazioni','Il tentativo di conciliazione facoltativo, obbligatorio e incentivato','DL-21b'],
     ['DL',30,'Vigilanza e illeciti','Le ispezioni del lavoro, il ruolo del consulente e la diffida',null],
     // Legislazione sociale INPS (15)
     ['INPS',1,'Prestazioni','Il sistema previdenziale: le gestioni e le principali pensioni',null],
@@ -395,28 +395,28 @@ window.ORALE = (function () {
     ['INAIL',1,'Infortunio e malattia professionale','L\'infortunio in itinere (art. 12 D.Lgs. 38/2000)','INAIL-9'],
     ['INAIL',2,'Prestazioni e azioni','L\'automaticità delle prestazioni INAIL e le sue eccezioni','INAIL-18'],
     ['INAIL',3,'Infortunio e malattia professionale','Gli elementi dell\'infortunio: lesione, causa violenta, occasione di lavoro','INAIL-19'],
-    ['INAIL',4,'Prestazioni e azioni','L\'indennizzo INAIL: danno biologico e danno patrimoniale',null],
+    ['INAIL',4,'Prestazioni e azioni','L\'indennizzo INAIL: danno biologico e danno patrimoniale','INAIL-7'],
     ['INAIL',5,'Obbligo, premi e adempimenti','Il contenzioso amministrativo INAIL (artt. 27-28 delle Modalità di applicazione delle tariffe)',null],
     ['INAIL',6,'Obbligo, premi e adempimenti','Il DURC','INAIL-1'],
     ['INAIL',7,'Obbligo, premi e adempimenti','La costituzione del rapporto assicurativo e gli adempimenti del datore di lavoro','INAIL-2'],
     ['INAIL',8,'Obbligo, premi e adempimenti','La tariffa dei premi: gestioni tariffarie, inquadramento e classificazione','INAIL-23'],
     ['INAIL',9,'Obbligo, premi e adempimenti','L\'oscillazione del tasso di premio','INAIL-5'],
     ['INAIL',10,'Obbligo, premi e adempimenti','Il calcolo e il pagamento del premio','INAIL-3'],
-    ['INAIL',11,'Obbligo, premi e adempimenti','Il sostegno alla prevenzione: incentivi ISI e oscillazione per prevenzione (OT23)',null],
+    ['INAIL',11,'Obbligo, premi e adempimenti','Il sostegno alla prevenzione: incentivi ISI e oscillazione per prevenzione (OT23)','INAIL-5'],
     ['INAIL',12,'Obbligo, premi e adempimenti','L\'obbligo assicurativo: requisiti soggettivi e oggettivi','INAIL-16'],
     ['INAIL',13,'Infortunio e malattia professionale','Infortunio sul lavoro e malattia professionale: definizioni e differenze','INAIL-22'],
     ['INAIL',14,'Infortunio e malattia professionale','La malattia professionale: sistema tabellare e sistema misto','INAIL-13'],
-    ['INAIL',15,'Infortunio e malattia professionale','Gli adempimenti del datore e del lavoratore dopo un infortunio o una malattia professionale',null],
+    ['INAIL',15,'Infortunio e malattia professionale','Gli adempimenti del datore e del lavoratore dopo un infortunio o una malattia professionale','INAIL-11'],
     // Diritto tributario (20)
     ['TRIB',1,'Parte generale e procedimento','Imposte e tasse: definizione e differenze','TRIB-19'],
-    ['TRIB',2,'Lavoro dipendente','La ritenuta alla fonte: nozione e tipologie',null],
+    ['TRIB',2,'Lavoro dipendente','La ritenuta alla fonte: nozione e tipologie','TRIB-X1'],
     ['TRIB',3,'Parte generale e procedimento','L\'IRPEF: nozione, soggetti passivi e base imponibile',null],
     ['TRIB',4,'Parte generale e procedimento','L\'IRAP: nozione, soggetti, base imponibile e costo del personale','TRIB-18'],
-    ['TRIB',5,'Parte generale e procedimento','Le agevolazioni e semplificazioni IVA per i piccoli contribuenti',null],
+    ['TRIB',5,'Parte generale e procedimento','Le agevolazioni e semplificazioni IVA per i piccoli contribuenti','TRIB-13'],
     ['TRIB',6,'Lavoro dipendente','Le addizionali regionale e comunale all\'IRPEF: base imponibile e versamento',null],
     ['TRIB',7,'Parte generale e procedimento','Il ravvedimento operoso','TRIB-22'],
     ['TRIB',8,'Parte generale e procedimento','Il reddito professionale: base imponibile e deducibilità delle spese',null],
-    ['TRIB',9,'Parte generale e procedimento','I redditi da lavoro autonomo occasionale: definizione, tassazione e obblighi',null],
+    ['TRIB',9,'Parte generale e procedimento','I redditi da lavoro autonomo occasionale: definizione, tassazione e obblighi','DL-7a'],
     ['TRIB',10,'Parte generale e procedimento','La dichiarazione dei redditi (ex Modello Unico): soggetti obbligati',null],
     ['TRIB',11,'Lavoro dipendente','La Certificazione Unica e gli obblighi del sostituto d\'imposta','TRIB-X1'],
     ['TRIB',12,'Parte generale e procedimento','La compensazione in F24: verticale, orizzontale e limiti',null],
@@ -427,11 +427,11 @@ window.ORALE = (function () {
     ['TRIB',17,'Lavoro dipendente','I fringe benefit: valore convenzionale e tassazione',null],
     ['TRIB',18,'Lavoro dipendente','Il regime fiscale di vitto, mensa, prestazioni e indennità sostitutive',null],
     ['TRIB',19,'Lavoro dipendente','Trasferta, trasfertismo e trasferimento: regime fiscale delle indennità','TRIB-7'],
-    ['TRIB',20,'Lavoro dipendente','Il welfare aziendale nel reddito di lavoro dipendente',null],
+    ['TRIB',20,'Lavoro dipendente','Il welfare aziendale nel reddito di lavoro dipendente','DL-11a'],
     // Elementi di ragioneria (10)
     ['RAG',1,'Contabilità e documenti','Azienda, ditta, insegna e marchio',null],
     ['RAG',2,'Contabilità e documenti','I libri contabili obbligatori; contabilità ordinaria e semplificata','RAG-18'],
-    ['RAG',3,'Costo del lavoro in contabilità','La rilevazione contabile del costo del personale',null],
+    ['RAG',3,'Costo del lavoro in contabilità','La rilevazione contabile del costo del personale','RAG-6'],
     ['RAG',4,'Bilancio','Il bilancio civilistico e fiscale: stato patrimoniale e conto economico','RAG-10'],
     ['RAG',5,'Bilancio','L\'ammortamento',null],
     ['RAG',6,'Contabilità e documenti','Fatturazione elettronica e corrispettivi telematici: soggetti obbligati ed esclusi','RAG-20'],
@@ -440,23 +440,23 @@ window.ORALE = (function () {
     ['RAG',9,'Bilancio','Plusvalenze e minusvalenze: definizione e rilevazione',null],
     ['RAG',10,'Costo del lavoro in contabilità','La denuncia salari INAIL: le rilevazioni contabili',null],
     // Diritto privato, pubblico e penale (30)
-    ['PPP',1,'Privato','Persona fisica e persona giuridica',null],
+    ['PPP',1,'Privato','Persona fisica e persona giuridica','PPP-9'],
     ['PPP',2,'Privato','Capacità giuridica e capacità d\'agire','PPP-9'],
     ['PPP',3,'Privato','La proprietà e i modi di acquisto','PPP-11'],
-    ['PPP',4,'Privato','Possesso e detenzione',null],
-    ['PPP',5,'Privato','L\'obbligazione: fonti ed elementi',null],
+    ['PPP',4,'Privato','Possesso e detenzione','PPP-11'],
+    ['PPP',5,'Privato','L\'obbligazione: fonti ed elementi','PPP-14'],
     ['PPP',6,'Privato','L\'obbligazione: adempimento e inadempimento','PPP-14'],
     ['PPP',7,'Privato','Il contratto: elementi essenziali','PPP-10'],
-    ['PPP',8,'Privato','Il contratto: nullità, annullabilità, risoluzione',null],
+    ['PPP',8,'Privato','Il contratto: nullità, annullabilità, risoluzione','PPP-13'],
     ['PPP',9,'Privato','L\'imprenditore: piccolo, agricolo, commerciale','PPP-17'],
-    ['PPP',10,'Privato','Società di persone e società di capitali',null],
+    ['PPP',10,'Privato','Società di persone e società di capitali','PPP-18'],
     ['PPP',11,'Pubblico e costituzionale','I principi fondamentali della Costituzione',null],
     ['PPP',12,'Pubblico e costituzionale','Il Parlamento',null],
     ['PPP',13,'Pubblico e costituzionale','Il Governo','PPP-2'],
     ['PPP',14,'Pubblico e costituzionale','Il Presidente della Repubblica','PPP-8'],
     ['PPP',15,'Pubblico e costituzionale','Il procedimento di formazione delle leggi','PPP-1'],
     ['PPP',16,'Pubblico e costituzionale','La Corte costituzionale','PPP-6'],
-    ['PPP',17,'Pubblico e costituzionale','Gli istituti di democrazia diretta',null],
+    ['PPP',17,'Pubblico e costituzionale','Gli istituti di democrazia diretta','PPP-5'],
     ['PPP',18,'Pubblico e costituzionale','Gli enti pubblici territoriali',null],
     ['PPP',19,'Pubblico e costituzionale','I principi costituzionali della Pubblica Amministrazione',null],
     ['PPP',20,'Pubblico e costituzionale','La magistratura ordinaria e amministrativa',null],
@@ -471,19 +471,19 @@ window.ORALE = (function () {
     ['PPP',29,'Penale','L\'oblazione nelle contravvenzioni',null],
     ['PPP',30,'Penale','Le conseguenze civili del reato',null],
     // Ordinamento e deontologia (15)
-    ['DEO',1,'Codice deontologico','Il dovere di fedeltà e la trascuratezza degli interessi del cliente (artt. 6 e 32 Codice)',null],
+    ['DEO',1,'Codice deontologico','Il dovere di fedeltà e la trascuratezza degli interessi del cliente (artt. 6 e 32 Codice)','DEO-10'],
     ['DEO',2,'Codice deontologico','I rapporti con altri professionisti e l\'incarico congiunto (artt. 12 e 28 Codice)','DEO-14'],
     ['DEO',3,'Codice deontologico','L\'accettazione dell\'incarico (artt. 27 e 29 Codice)','DEO-18'],
     ['DEO',4,'Codice deontologico','La cessazione dell\'incarico e la documentazione del cliente (artt. 31 e 33 Codice)','DEO-20'],
     ['DEO',5,'Codice deontologico','La concorrenza leale e sleale (art. 14 Codice)','DEO-15'],
     ['DEO',6,'Codice deontologico','Il consulente del lavoro asseveratore (art. 38 Codice)','DEO-X2'],
     ['DEO',7,'Codice deontologico','La pubblicità informativa e l\'uso dei social (art. 35 Codice)','DEO-21'],
-    ['DEO',8,'Codice deontologico','I doveri generali del consulente del lavoro (artt. 3-11 Codice)',null],
+    ['DEO',8,'Codice deontologico','I doveri generali del consulente del lavoro (artt. 3-11 Codice)','DEO-9'],
     ['DEO',9,'Codice deontologico','La responsabilità patrimoniale (art. 11 Codice)','DEO-13'],
     ['DEO',10,'Codice deontologico','Il segreto professionale (art. 8 Codice e art. 6 L. 12/1979)','DEO-11'],
     ['DEO',11,'Ordinamento','Le sanzioni disciplinari (artt. 27-31 L. 12/1979)','DEO-6'],
-    ['DEO',12,'Ordinamento','L\'esercizio della professione (art. 1 L. 12/1979; art. 30 Codice)',null],
-    ['DEO',13,'Codice deontologico','Il dovere di competenza e l\'obbligo di formazione (art. 9 Codice)',null],
+    ['DEO',12,'Ordinamento','L\'esercizio della professione (art. 1 L. 12/1979; art. 30 Codice)','DEO-1'],
+    ['DEO',13,'Codice deontologico','Il dovere di competenza e l\'obbligo di formazione (art. 9 Codice)','DEO-12'],
     ['DEO',14,'Codice deontologico','La partecipazione a società e le collaborazioni con imprese di servizi (art. 20 Codice)',null],
     ['DEO',15,'Codice deontologico','Il consulente del lavoro nel rapporto di lavoro subordinato (art. 36 Codice)',null]
   ];
@@ -2477,7 +2477,7 @@ window.ORALE = (function () {
         ["Estensione ai non iscritti: adesione o richiamo nel contratto individuale; applicazione di fatto; uso giurisprudenziale dei minimi del CCNL come parametro della retribuzione sufficiente (art. 36 Cost. e art. 2099 c.c.).", ["non iscritti", "richiamo", "36 cost", "2099"]],
         ["Regole sindacali (accordi interconfederali del 2011, 2013 e Testo unico del 10/1/2014): per negoziare serve almeno il 5% di rappresentatività. Il CCNL è efficace ed esigibile se firmato da sindacati che rappresentano il 50% più uno e approvato dai lavoratori con consultazione certificata.", ["testo unico", "5%", "50%", "consultazione"]],
         ["Contratti aziendali: efficaci per tutti se approvati dalla maggioranza della RSU, o dalle RSA delle associazioni che hanno la maggioranza delle deleghe. Diverso è il contratto di prossimità (art. 8 D.L. 138/2011), che ha efficacia generale per legge.", ["rsu", "rsa", "maggioranza", "prossimita"]],
-        ["Il D.L. 62/2026 usa il CCNL leader come parametro del trattamento economico complessivo (TEC) per la retribuzione giusta e negli appalti.", ["62/2026", "tec"]]
+        ["Il D.L. 62/2026 (art. 7) usa il TEC del CCNL leader come parametro della retribuzione giusta; negli appalti l'art. 29, c. 1-bis, D.Lgs. 276/2003 rinvia già al CCNL comparativamente più rappresentativo del settore e della zona.", ["62/2026", "tec"]]
       ],
       aggancio: "Per il consulente la scelta del CCNL da applicare incide su minimi, contributi (minimale contributivo) e appalti: un CCNL poco rappresentativo espone a recuperi e diffide accertative. Per il D.L. 62/2026 vedi il dossier P1, Cap. 1.",
       fonti: "Simone, Diritto del lavoro, pp. 46-54; Cost. (testi Senato e Corte cost., verificati il 30/10/2026); P1_Cap01_DL62_2026 e P1_Cap05_Prossimita."
@@ -2585,6 +2585,162 @@ window.ORALE = (function () {
       ],
       aggancio: "La ratio è contrastare le assenze volute per farsi licenziare e ottenere la NASpI. Il consulente verifica il termine del CCNL, invia la comunicazione all'ITL e la comunicazione obbligatoria di cessazione.",
       fonti: "Simone, Diritto del lavoro, pp. 233-235 (art. 26 D.Lgs. 151/2015; art. 19 L. 203/2024; nota INL 579/2025; msg. INPS 639/2025; circ. Min. Lav. 6/2025; circ. INPS 154/2025); P1_Cap08, scheda 5."
+    },
+
+    "DL-9a": {
+      sintesi: "Il distacco si ha quando un datore di lavoro, per soddisfare un proprio interesse, mette temporaneamente uno o più lavoratori a disposizione di un altro soggetto per l'esecuzione di una determinata attività (art. 30 D.Lgs. 276/2003).",
+      punti: [
+        ["Requisiti: interesse specifico, concreto e persistente del distaccante per tutta la durata, anche non economico; temporaneità, intesa come non definitività e non come brevità (Cass. 23933/2010); attività determinata e funzionale a quell'interesse (interpello Min. Lav. 1/2011).", ["interesse", "temporaneita", "23933/2010"]],
+        ["Il rapporto resta con il distaccante, che continua a rispondere del trattamento economico e normativo; il distaccatario esercita il potere direttivo per la durata del distacco.", ["distaccante", "trattamento economico", "direttivo"]],
+        ["Garanzie: se cambiano le mansioni serve il consenso del lavoratore; il distacco in un'unità a più di 50 km è ammesso solo per comprovate ragioni tecniche, organizzative, produttive o sostitutive.", ["consenso", "50 km", "comprovate ragioni"]],
+        ["Distacco privo dei requisiti: è somministrazione illecita. Il lavoratore può chiedere il rapporto con chi ha utilizzato la prestazione (art. 30, c. 4-bis); c'è solidarietà retributiva e contributiva; utilizzatore e distaccante rispondono con l'arresto fino a un mese o l'ammenda di 60 euro per lavoratore e giornata, tra 5.000 e 60.000 euro.", ["somministrazione illecita", "4-bis", "60 euro", "5.000"]],
+        ["Novità del D.L. 62/2026 (art. 16-quater), in via sperimentale fino al 31/12/2029: previo accordo sindacale, il distacco è ammesso anche senza interesse proprio del distaccante e tra imprese di settori o CCNL diversi, se serve a salvaguardare l'occupazione o la continuità produttiva, o a evitare sospensioni, riduzioni d'orario, ammortizzatori o esuberi.", ["16-quater", "31/12/2029", "accordo sindacale", "occupazion"]]
+      ],
+      aggancio: "È lo strumento richiamato da Rausei per la gestione delle crisi senza licenziamenti. Il consulente documenta per iscritto l'interesse del distaccante e la durata; in ispezione il distacco senza interesse proprio, fuori dall'art. 16-quater, viene trattato come somministrazione illecita.",
+      fonti: "Simone, Diritto del lavoro, pp. 100-102; art. 16-quater D.L. 62/2026 conv. L. 112/2026 (62_2026 in libreria)."
+    },
+
+    "DL-10a": {
+      sintesi: "La somministrazione è la forma lecita di fornitura di manodopera: un'agenzia autorizzata mette a disposizione di un utilizzatore lavoratori propri dipendenti, che per tutta la missione lavorano nell'interesse e sotto la direzione e il controllo dell'utilizzatore (art. 30 D.Lgs. 81/2015).",
+      punti: [
+        ["Due contratti: quello commerciale di somministrazione tra agenzia e utilizzatore, in forma scritta con i contenuti dell'art. 33 (a pena di nullità: i lavoratori si considerano dipendenti dell'utilizzatore, art. 38); quello di lavoro tra agenzia e lavoratore, a tempo indeterminato o determinato.", ["commerciale", "forma scritta", "nullita", "38"]],
+        ["Limiti quantitativi, salvo CCNL dell'utilizzatore: somministrati a tempo indeterminato non oltre il 20% dei lavoratori a tempo indeterminato al 1° gennaio; a termine e somministrati a termine insieme non oltre il 30%, con le esenzioni previste (svantaggiati, stagionali, sostituzioni, over 50).", ["20%", "30%", "1° gennaio", "esenzioni"]],
+        ["Divieti (art. 32): sostituire scioperanti; unità con licenziamenti collettivi nei 6 mesi precedenti o con integrazione salariale per le stesse mansioni; imprese senza valutazione dei rischi.", ["32", "sciopera", "valutazione dei rischi"]],
+        ["Parità di trattamento con i dipendenti di pari livello dell'utilizzatore; solidarietà dell'utilizzatore per retribuzioni e contributi; potere direttivo all'utilizzatore, potere disciplinare all'agenzia.", ["parita", "solidarieta", "disciplinare"]],
+        ["Somministrazione irregolare (fuori dai limiti e requisiti): il lavoratore può chiedere il rapporto alle dipendenze dell'utilizzatore. Fraudolenta, se diretta a eludere norme inderogabili: arresto fino a 3 mesi o ammenda di 100 euro per lavoratore e giorno (art. 18, c. 5-ter, D.Lgs. 276/2003).", ["irregolare", "fraudolenta", "100 euro", "5-ter"]]
+      ],
+      aggancio: "Dal D.L. 62/2026 (art. 16-quinquies) i somministrati assunti a tempo indeterminato possono lavorare a termine presso lo stesso utilizzatore fino a 36 mesi complessivi, salvo diverso limite del CCNL dell'utilizzatore (art. 19, c. 2-bis, D.Lgs. 81/2015).",
+      fonti: "Simone, Diritto del lavoro, pp. 94-98; art. 16-quinquies D.L. 62/2026 (62_2026 in libreria)."
+    },
+
+    "DL-8b": {
+      sintesi: "L'appalto è genuino se l'appaltatore organizza i mezzi necessari, anche solo esercitando il potere organizzativo e direttivo sui lavoratori, e assume il rischio d'impresa (art. 1655 c.c.; art. 29, c. 1, D.Lgs. 276/2003). Se questi requisiti mancano, l'appalto è illecito: è una somministrazione abusiva di manodopera.",
+      punti: [
+        ["Indici di genuinità: chi dirige e organizza i lavoratori, di chi sono i mezzi, chi sopporta il rischio. Negli appalti ad alta intensità di manodopera l'organizzazione può ridursi alla direzione del personale.", ["dirige", "mezzi", "rischio"]],
+        ["Tutela del lavoratore: azione per la costituzione del rapporto alle dipendenze del committente che ha utilizzato la prestazione (art. 29, c. 3-bis); solidarietà di committente, appaltatore e subappaltatori per retribuzioni, TFR, contributi e premi (art. 29, c. 2).", ["3-bis", "committente", "solidarieta"]],
+        ["Sanzioni (art. 18, c. 5-bis): utilizzatore e pseudo-appaltatore puniti con l'arresto fino a un mese o l'ammenda di 60 euro per lavoratore e giornata, comunque tra 5.000 e 60.000 euro; più 20% se recidivi nel triennio (nota INL 1091/2024 sul cumulo con la maggiorazione della L. 145/2018).", ["5-bis", "60 euro", "60.000", "1091/2024"]],
+        ["Anche nell'appalto genuino: solidarietà entro 2 anni dalla cessazione per retribuzioni e contributi, esclusa per il committente persona fisica non imprenditore; trattamento non inferiore a quello del CCNL leader del settore e della zona (art. 29, c. 1-bis).", ["2 anni", "persona fisica", "1-bis"]],
+        ["Procedura: le contravvenzioni con pena alternativa si estinguono con la prescrizione obbligatoria del D.Lgs. 758/1994 (P1_Cap08, scheda 2).", ["prescrizione obbligatoria", "758/1994"]]
+      ],
+      aggancio: "Il c. 1-bis (introdotto dal D.L. 19/2024) è il precedente diretto del salario giusto dell'art. 7 D.L. 62/2026. In ispezione l'appalto non genuino porta a imputare i rapporti al committente, con recupero di retribuzioni e contributi; il consulente verifica contratto, mezzi, direzione del personale e DURC dell'appaltatore.",
+      fonti: "Simone, Diritto del lavoro, pp. 98-100; P1_Cap08, scheda 2."
+    },
+
+    "DL-13a": {
+      sintesi: "Le mansioni sono i compiti concreti che il lavoratore deve svolgere e che il datore può pretendere. Per l'art. 2103 c.c. il lavoratore va adibito alle mansioni per cui è stato assunto, a quelle del superiore inquadramento acquisito o a mansioni dello stesso livello e categoria legale delle ultime svolte: entro questi limiti il datore esercita lo ius variandi.",
+      punti: [
+        ["Mobilità orizzontale: mansioni dello stesso livello e della stessa categoria legale, con pari retribuzione.", ["orizzontale", "stesso livello", "categoria legale"]],
+        ["Mansioni superiori: spetta il trattamento corrispondente; l'assegnazione diventa definitiva dopo il periodo fissato dai CCNL o, in mancanza, dopo 6 mesi continuativi, salvo che sostituisca un lavoratore assente o che il lavoratore vi rinunci.", ["superiori", "definitiva", "6 mesi", "sostituisca"]],
+        ["Mansioni inferiori unilaterali: per modifica degli assetti organizzativi che incide sulla posizione del lavoratore, o nei casi previsti dai contratti collettivi; solo un livello sotto e nella stessa categoria legale; comunicazione scritta a pena di nullità; conservazione di livello e retribuzione, salvo le voci legate alle precedenti modalità di lavoro.", ["assetti organizzativi", "scritta", "nullita", "conservazione"]],
+        ["Patto di demansionamento: in sede protetta (art. 2113 c.c.: giudice, ITL, commissioni di certificazione), con l'assistenza anche di un consulente del lavoro, nell'interesse del lavoratore a conservare l'occupazione, acquisire un'altra professionalità o migliorare le condizioni di vita; si può modificare anche livello, categoria e retribuzione.", ["sede protetta", "2113", "consulente del lavoro", "conservare l'occupazione"]],
+        ["Casi di legge: lavoratrice in gravidanza e fino a 7 mesi dopo il parto spostata da mansioni pregiudizievoli (art. 7 D.Lgs. 151/2001); lavoratore divenuto inidoneo ricollocato anche in mansioni inferiori con la retribuzione precedente (art. 42 D.Lgs. 81/2008).", ["7 mesi", "inidone", "42"]]
+      ],
+      aggancio: "Ogni patto contrario all'art. 2103 è nullo. Il consulente cura la comunicazione scritta del demansionamento e, per l'accordo individuale, la sede protetta, che può essere la commissione di certificazione del proprio Ordine. Nella prossimità le mansioni sono derogabili (art. 8, c. 2, lett. b, D.L. 138/2011).",
+      fonti: "Art. 2103 c.c. (NORMA_Codice_civile_lavoro); Simone, Diritto del lavoro, pp. 105-108; P1_Cap05 (prossimità)."
+    },
+
+    "DL-8a": {
+      sintesi: "Il patto di non concorrenza è l'accordo con cui il lavoratore si obbliga a non svolgere attività in concorrenza con il datore per un periodo successivo alla fine del rapporto (art. 2125 c.c.). È diverso dal divieto di concorrenza dell'art. 2105, che vale solo durante il rapporto.",
+      punti: [
+        ["Requisiti a pena di nullità: atto scritto; corrispettivo a favore del lavoratore; limiti di oggetto, di tempo e di luogo.", ["atto scritto", "corrispettivo", "oggetto", "luogo"]],
+        ["Durata massima: 5 anni per i dirigenti, 3 anni per gli altri lavoratori; se è pattuita una durata maggiore, si riduce automaticamente a quella di legge.", ["5 anni", "3 anni", "riduce"]],
+        ["Durante il rapporto vale l'obbligo di fedeltà (art. 2105): divieto di trattare affari in concorrenza, per conto proprio o di terzi, e di divulgare notizie sull'organizzazione e sui metodi di produzione; la riservatezza dura anche dopo, per il tempo in cui l'interesse al segreto permane.", ["2105", "fedelta", "riservatezza"]],
+        ["Diverso dalla concorrenza sleale (art. 2598 c.c.): quella non presuppone un contratto e la responsabilità è extracontrattuale; la violazione del patto è invece un inadempimento contrattuale.", ["2598", "extracontrattuale", "inadempimento"]],
+        ["Tutela penale del segreto aziendale: artt. 621-623 c.p. (rivelazione di segreti professionali, scientifici o commerciali).", ["621", "segret"]]
+      ],
+      aggancio: "Il consulente redige il patto con corrispettivo congruo e limiti precisi: un corrispettivo simbolico o un ambito troppo esteso lo espongono alla nullità.",
+      fonti: "Art. 2125 c.c. come riportato da Simone, Diritto del lavoro, p. 110; art. 2105 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "DL-14a": {
+      sintesi: "All'assunzione il datore deve informare il lavoratore per iscritto sulle condizioni applicabili al contratto e al rapporto (art. 1 D.Lgs. 152/1997, riscritto dal Decreto trasparenza, D.Lgs. 104/2022).",
+      punti: [
+        ["Contenuto: identità delle parti; luogo di lavoro; inquadramento, livello e qualifica; data di inizio e tipologia; durata della prova e diritto alla formazione; ferie e congedi retribuiti; preavviso; retribuzione iniziale e modalità di pagamento; programmazione dell'orario e straordinario; CCNL applicato con le parti firmatarie; enti che ricevono i contributi.", ["identita", "inquadramento", "retribuzione", "ccnl", "contributi"]],
+        ["Lavoro con organizzazione imprevedibile: variabilità della programmazione, ore minime retribuite garantite, giorni e ore di riferimento, preavviso minimo.", ["imprevedibil", "ore minime", "preavviso"]],
+        ["Tempi e modi: consegna del contratto scritto o della copia della comunicazione di assunzione prima dell'inizio dell'attività; le informazioni mancanti per iscritto entro 7 giorni; alcune (ferie, congedi, CCNL) entro un mese; si può rinviare alla norma o al contratto collettivo.", ["prima dell'inizio", "7 giorni", "un mese", "rinviare"]],
+        ["Sistemi decisionali o di monitoraggio automatizzati (art. 1-bis): informazioni aggiuntive su scopi, logica, dati e misure di controllo, da dare anche alle RSA o alla RSU; per l'IA l'informativa deve essere chiara e tempestiva.", ["1-bis", "automatizzat", "rsa"]],
+        ["D.L. 62/2026: l'informativa deve indicare anche il codice del CCNL applicato (lett. q-bis), come il prospetto paga.", ["62/2026", "codice", "q-bis"]]
+      ],
+      aggancio: "È la lettera di assunzione che il consulente prepara ogni giorno. Il D.Lgs. 96/2026 sulla trasparenza retributiva usa la stessa informativa come canale ordinario per comunicare i criteri retributivi (P1_Mappe).",
+      fonti: "Simone, Diritto del lavoro, pp. 79-80 (art. 1 e 1-bis D.Lgs. 152/1997); 152_1997 in libreria; P1_Cap01 (lett. q-bis); P1/P1_Mappe_DL62_DLgs96."
+    },
+
+    "DL-15a": {
+      sintesi: "L'art. 4 St. lav. vieta che il controllo a distanza dei lavoratori sia l'unica finalità di impianti e strumenti. Impianti audiovisivi e altri strumenti da cui deriva anche un controllo a distanza sono ammessi solo per esigenze organizzative e produttive, per la sicurezza del lavoro o per la tutela del patrimonio, previo accordo sindacale o autorizzazione dell'ITL.",
+      punti: [
+        ["Procedura: accordo collettivo con RSA o RSU; in mancanza, autorizzazione dell'Ispettorato territoriale del lavoro.", ["accordo", "rsa", "autorizzazione"]],
+        ["Nessun accordo né autorizzazione per gli strumenti usati per rendere la prestazione (pc, telefono aziendale) e per quelli di rilevazione degli accessi e delle presenze.", ["strumenti", "prestazione", "presenze"]],
+        ["Le informazioni raccolte sono utilizzabili a tutti i fini del rapporto, anche disciplinari, solo se il lavoratore ha ricevuto adeguata informazione sulle modalità d'uso e sui controlli e nel rispetto della normativa privacy (D.Lgs. 196/2003 e GDPR).", ["informazione", "privacy", "disciplinar"]],
+        ["Gli altri limiti dello Statuto: guardie giurate solo a tutela del patrimonio (art. 2); nominativi del personale di vigilanza comunicati (art. 3); visite personali solo se indispensabili (art. 6); divieto di indagini sulle opinioni (art. 8).", ["guardie giurate", "visite", "opinioni"]],
+        ["Sanzioni: la violazione dell'art. 4 è punita penalmente con l'ammenda o l'arresto (art. 38 St. lav., richiamato dagli artt. 113-114 D.Lgs. 196/2003, come riportati da Simone p. 989).", ["38", "ammenda", "arresto"]]
+      ],
+      aggancio: "Nella prossimità gli impianti audiovisivi sono una delle materie derogabili (art. 8, c. 2, lett. a, D.L. 138/2011), fermi i limiti di privacy. Il consulente prepara l'istanza all'ITL e l'informativa ai lavoratori prima di installare telecamere o geolocalizzatori.",
+      fonti: "Simone, Diritto del lavoro, pp. 134 e 137 (Statuto e D.Lgs. 196/2003); Simone, Diritto penale, p. 989 (art. 38 St. lav.); P1_Cap05."
+    },
+
+    "DL-18a": {
+      sintesi: "Per l'art. 36 Cost. il lavoratore ha diritto a una retribuzione proporzionata alla quantità e qualità del suo lavoro e in ogni caso sufficiente ad assicurare a sé e alla famiglia un'esistenza libera e dignitosa. Proporzionalità e sufficienza sono requisiti inderogabili.",
+      punti: [
+        ["La norma è immediatamente precettiva: ogni patto contrario è nullo e il giudice determina la retribuzione (art. 2099, c. 2, c.c.), di regola usando come parametro i minimi del contratto collettivo di categoria.", ["precettiva", "nullo", "2099", "giudice"]],
+        ["Proporzionalità: equivalenza alla quantità e qualità del lavoro (orario, mansioni). Sufficienza: soglia minima per un'esistenza libera e dignitosa del lavoratore e della famiglia.", ["proporzional", "sufficien", "dignitosa"]],
+        ["Per l'art. 36 Cost. la giurisprudenza estende di fatto i minimi del CCNL anche ai non iscritti, perché l'art. 39 Cost. non è attuato e il contratto collettivo vincola solo gli iscritti.", ["non iscritti", "39 cost"]],
+        ["Salario giusto (art. 7 D.L. 62/2026): nessun salario minimo legale, ma rinvio al trattamento economico complessivo (TEC) del CCNL leader, cioè quello delle organizzazioni comparativamente più rappresentative; il c. 4-bis definisce le voci del TEC; nei settori senza CCNL si applica quello più connesso all'attività.", ["62/2026", "tec", "ccnl leader", "4-bis"]],
+        ["Il giudice conserva il controllo di sufficienza anche sul TEC del CCNL leader (Cass. 27711/2023); per il Consiglio di Stato l'ITL può contestare l'inadeguatezza della retribuzione con la disposizione (n. 4969/2026, riportata da Rausei).", ["27711/2023", "4969/2026", "disposizione"]]
+      ],
+      aggancio: "È il cuore dei temi del Presidente: in ispezione il confronto con il TEC del CCNL leader porta a diffida accertativa per le differenze e al recupero dei contributi sul minimale. Il consulente sceglie il CCNL e controlla il TEC prima di ogni assunzione.",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), art. 36; Simone, Diritto del lavoro, p. 141; P1_Cap01 (art. 7 D.L. 62/2026); P1/P1_Mappe_DL62_DLgs96; P1/P1_Scheda_Sentenze_Salario."
+    },
+
+    "DL-18b": {
+      sintesi: "La retribuzione si compone di elementi fissi stabiliti dal CCNL e di elementi accessori; il superminimo è la parte di retribuzione che supera i minimi tariffari, concessa individualmente (ad personam) o collettivamente.",
+      punti: [
+        ["Elementi fissi: paga base o minimo tabellare del livello, con gli scatti di anzianità fissati dai CCNL; elemento distinto della retribuzione (EDR) di 10,33 euro per 13 mensilità.", ["paga base", "scatti", "edr", "10,33"]],
+        ["Superminimo: incremento individuale o collettivo oltre i minimi; il contratto individuale può solo migliorare il CCNL (art. 2077 c.c.).", ["superminimo", "individuale", "2077"]],
+        ["Elementi accessori retributivi: maggiorazioni per straordinario, notturno e festivo; premi di produzione; gratifiche come la tredicesima; indennità per lavori disagiati, di turno, di cassa, di reperibilità; compensi per ferie e festività non godute. Se continuativi entrano nella retribuzione a ogni effetto (art. 2121 c.c.).", ["maggiorazioni", "tredicesima", "indennita", "2121"]],
+        ["Elementi non retributivi: rimborsi spese forfettari per trasferte e riunioni, salvo che compensino un disagio.", ["rimborsi spese", "trasferte"]],
+        ["Divieto di trattamenti economici collettivi discriminatori (art. 16 St. lav.): il datore è condannato a versare al Fondo pensioni lavoratori dipendenti una somma pari ai trattamenti di maggior favore illegittimi, per un massimo di un anno.", ["16", "discriminatori", "un anno"]]
+      ],
+      aggancio: "In busta paga le voci fisse formano la retribuzione ordinaria, base di calcolo per tredicesima, ferie, TFR e contributi. Il D.L. 62/2026 include nel TEC del CCNL leader anche voci accessorie: va verificato confrontando il trattamento in atto con quel parametro.",
+      fonti: "Simone, Diritto del lavoro, pp. 142-146; P1_Cap01 (TEC, art. 7, c. 4-bis, D.L. 62/2026)."
+    },
+
+    "DL-19b": {
+      sintesi: "Il prospetto paga è il documento analitico che il datore consegna a ogni pagamento, con le voci della retribuzione e tutte le ritenute (art. 1 L. 4/1953); il libro unico del lavoro (LUL) registra per ogni lavoratore dati del rapporto, presenze e trattamento economico (artt. 39-40 D.L. 112/2008).",
+      punti: [
+        ["Prospetto paga: voci retributive, ritenute fiscali e previdenziali; può consegnarlo il consulente del lavoro su delega. La firma del lavoratore sulla busta paga non prova il pagamento (art. 1, c. 912, L. 205/2017; Cass. 21699/2018).", ["ritenute", "firma", "912"]],
+        ["LUL obbligatorio per tutti i datori privati, escluso il datore domestico; vi si iscrivono subordinati, somministrati, lavoratori a domicilio e co.co.co.", ["obbligatorio", "domestico", "co.co.co"]],
+        ["Contenuto: dati anagrafici e del rapporto; dati economici (somme in denaro e in natura, rimborsi, straordinari, trattenute, detrazioni, prestazioni previdenziali); calendario delle presenze con le ore lavorate ogni giorno, straordinari, assenze, ferie e riposi.", ["anagrafici", "presenze", "straordinari"]],
+        ["Tempi: registrazione entro la fine del mese successivo; conservazione per 5 anni dall'ultima registrazione; tenuta solo meccanografica o informatica, con numerazione sequenziale.", ["fine del mese successivo", "5 anni", "numerazione"]],
+        ["Tenuta presso lo studio del consulente del lavoro, con comunicazione preventiva all'ITL; il consulente può usare un libro unificato per tutti i clienti, previa delega e autorizzazione INAIL.", ["consulente del lavoro", "itl", "unificato", "inail"]]
+      ],
+      aggancio: "Dal D.L. 62/2026 il prospetto paga deve indicare anche il codice del CCNL applicato (P1_Cap01). In ispezione il LUL è il primo documento richiesto: le registrazioni omesse o infedeli sono sanzionate (art. 39 D.L. 112/2008; importi DA VERIFICARE).",
+      fonti: "Simone, Diritto del lavoro, p. 147; Simone, Legislazione sociale, pp. 267-268; P1_Cap01."
+    },
+
+    "DL-20a": {
+      sintesi: "Dalla legge di bilancio 2018 è vietato pagare la retribuzione in contanti direttamente al lavoratore: i datori e i committenti devono usare strumenti tracciabili tramite banca o ufficio postale (art. 1, c. 910 ss., L. 205/2017).",
+      punti: [
+        ["Strumenti ammessi: bonifico sul conto del lavoratore identificato dall'IBAN; strumenti di pagamento elettronico; contanti allo sportello dove il datore ha un conto di tesoreria con mandato di pagamento; assegno consegnato direttamente al lavoratore.", ["bonifico", "iban", "elettronico", "assegno"]],
+        ["Ambito: ogni rapporto di lavoro subordinato, le collaborazioni coordinate e continuative e i rapporti con i soci di cooperativa.", ["subordinato", "coordinate", "soci"]],
+        ["Riguarda solo le somme dovute a titolo di retribuzione: le somme a diverso titolo, come vitto e alloggio, possono essere pagate in contanti (nota INL 7369/2018).", ["retribuzione", "diverso titolo", "7369/2018"]],
+        ["La firma del lavoratore sulla busta paga non costituisce prova del pagamento (c. 912): conta la tracciabilità.", ["firma", "prova"]],
+        ["La violazione è punita con una sanzione amministrativa pecuniaria (c. 913; importo DA VERIFICARE sul testo).", ["sanzione amministrativa", "913"]]
+      ],
+      aggancio: "Il consulente conserva le contabili dei bonifici con il prospetto paga: in ispezione e nelle vertenze sono la prova dell'avvenuto pagamento.",
+      fonti: "Simone, Diritto del lavoro, p. 147 (art. 1, c. 910-913, L. 205/2017)."
+    },
+
+    "DL-11a": {
+      sintesi: "Il welfare aziendale è l'insieme di beni, servizi e somme che il datore eroga ai dipendenti con finalità sociali (educazione, assistenza, salute, conciliazione vita-lavoro), in tutto o in parte esclusi dal reddito di lavoro dipendente e dai contributi (art. 51 TUIR).",
+      punti: [
+        ["Opere e servizi offerti alla generalità o a categorie di dipendenti e ai familiari per educazione, istruzione, ricreazione, assistenza sociale e sanitaria o culto, volontariamente o in base a contratto, accordo o regolamento (art. 51, c. 2, lett. f).", ["generalita", "categorie", "educazione", "assistenza"]],
+        ["Somme e servizi per l'istruzione dei figli (scuole, mense, centri estivi, borse di studio), per l'assistenza a familiari anziani o non autosufficienti, polizze per non autosufficienza e gravi patologie (lett. f-bis, f-ter, f-quater).", ["istruzione", "non autosufficien", "f-quater"]],
+        ["Fringe benefit: per il 2025-2027 esenti fino a 1.000 euro, 2.000 con figli a carico (L. 207/2024, c. 390); se si supera la soglia, tutto il valore è tassato.", ["fringe benefit", "1.000", "2.000", "tutto il valore"]],
+        ["Welfare di produttività: i premi di risultato previsti da contratti aziendali o territoriali possono essere convertiti in welfare esente, anziché subire l'imposta sostitutiva (L. 208/2015, c. 182 ss.; reddito di lavoro dipendente dell'anno prima fino a 80.000 euro).", ["premi di risultato", "convertit", "80.000"]],
+        ["Contributi: non sono imponibili le somme che non concorrono al reddito; per i premi di produttività esistono sgravi contributivi specifici (L. 247/2007; L. 208/2015, c. 189).", ["contribut", "sgravi"]]
+      ],
+      aggancio: "Il consulente struttura il piano con regolamento o accordo, rivolto alla generalità o a categorie di dipendenti, per non trasformare il welfare in retribuzione imponibile. Nella CU i fringe esenti vanno nei punti 474-475, non nel punto 1.",
+      fonti: "Simone, Diritto del lavoro, pp. 149-150; P2/P2_Mod07 (soglie fringe e premi 2025-2027); P2/P2_Mod01 (punti CU 474-475, 571-602); art. 51 TUIR (917_1986_TUIR)."
     }
 
   };
@@ -2614,7 +2770,7 @@ window.ORALE = (function () {
     var id = 'S22-' + r[0] + '-' + r[1], eq = r[4] ? BYID[r[4]] : null;
     DOMANDE.push({ id: id, m: r[0], busta: null, gruppo: r[2], testo: r[3], serie: 'S22', etichetta: 'altra sede 2022',
       fonte: 'Altra sede, sessione 2022 (elenco ufficiale di argomenti, non Ancona; normativa al 2022)', ufficiale: false,
-      vedi: eq ? eq.id : null, approf: eq ? eq.approf : (APPROF[r[0] + '.' + r[2]] || []), r: eq ? eq.r : null });
+      vedi: eq ? eq.id : null, approf: eq ? eq.approf : (APPROF[r[0] + '.' + r[2]] || []), r: eq ? eq.r : (RISPOSTE[id] || null) });
   });
 
   return {
