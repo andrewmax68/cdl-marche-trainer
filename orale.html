@@ -203,7 +203,7 @@
   <section class="pane" id="pane-sim">
     <div class="box" id="simSetup">
       <h2>Simulazione: estrai una busta</h2>
-      <p class="small muted"><b>Busta 2026</b>: lo schema ufficiale inviato dal Presidente il 4/11/2026 ha <b>5 righe</b>, una per area del decreto (diritto del lavoro; legislazione sociale INPS-INAIL; privato, pubblico e penale; tributario e ragioneria; deontologia). La simulazione 2026 estrae quindi 5 domande: per legislazione sociale una a caso tra INPS e INAIL, per l'area tributaria una a caso tra tributario e ragioneria. Che ogni riga contenga una sola domanda è la lettura più probabile, non una certezza. <b>Busta 2025</b>: 8 domande, nell'ordine delle buste di Ancona 2025. Ogni domanda la pone il commissario che, per ruolo, più probabilmente la farebbe: è una <b>stima</b>, non un dato. Tempo indicativo: 3 minuti per risposta.</p>
+      <p class="small muted"><b>Busta 2026</b>: lo schema ufficiale inviato dal Presidente il 4/11/2026 ha <b>5 righe</b>, una per area del decreto (diritto del lavoro; legislazione sociale INPS-INAIL; privato, pubblico e penale; tributario e ragioneria; deontologia). La simulazione 2026 estrae quindi 5 domande, una per riga: nei gruppi con più materie sceglie prima la materia, a pari probabilità (INPS o INAIL; tributario o ragioneria; privato, pubblico o penale), poi la domanda. Non ripete le domande delle ultime 3 buste e non pesca due volte lo stesso tema dagli argomenti 2022 equivalenti. Che ogni riga contenga una sola domanda è la lettura più probabile, non una certezza. <b>Busta 2025</b>: 8 domande, nell'ordine delle buste di Ancona 2025. Ogni domanda la pone il commissario che, per ruolo, più probabilmente la farebbe: è una <b>stima</b>, non un dato. Tempo indicativo: 3 minuti per risposta.</p>
       <div class="row" style="margin-top:10px">
         <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="b26" checked> Busta 2026 (5 domande, schema ufficiale)</label>
       </div>
@@ -215,6 +215,10 @@
       <div class="row" style="margin-top:10px">
         <label class="small row" style="gap:6px"><input type="checkbox" id="simNoModel"> Nascondi la risposta modello fino alla fine della busta (più realistico)</label>
         <label class="small row" style="gap:6px;margin-left:10px"><input type="checkbox" id="simSoloR" checked autocomplete="off"> Busta 2026 e mista: solo domande con risposta modello</label>
+      </div>
+      <div class="row" style="margin-top:6px">
+        <label class="small row" style="gap:6px"><input type="checkbox" id="sim26no22" autocomplete="off"> Busta 2026: escludi gli argomenti 2022 di altra sede (solo Ancona 2025 e integrazioni 2026)</label>
+        <label class="small row" style="gap:6px;margin-left:10px"><input type="checkbox" id="sim26rip" autocomplete="off"> Busta 2026: privilegia le domande segnate «da ripassare»</label>
       </div>
       <div class="row" style="margin-top:14px">
         <button class="btn red" id="btnStart" type="button">Estrai e inizia</button>
@@ -569,12 +573,27 @@
   }
   (function(){ var c = document.getElementById('simSoloR'); if (c) c.checked = true; var r = document.querySelector('input[name=tipo][value=b26]'); if (r) r.checked = true; })();
   function soloR(){ var c = document.getElementById('simSoloR'); return c && c.checked; }
-  var ORD26 = [['DL'], ['INPS','INAIL'], ['PPP'], ['TRIB','RAG'], ['DEO']];
+  var ORD26 = [['DL'], ['INPS','INAIL'], ['PPP:Privato','PPP:Pubblico e costituzionale','PPP:Penale'], ['TRIB','RAG'], ['DEO']];
+  function area26(d){ return d.m !== 'PPP' ? d.m : 'PPP:' + (d.gruppo === 'Integrazione 2026' ? 'Pubblico e costituzionale' : d.gruppo); }
   function busta2026(){
+    // Estrazione per riga: prima la materia del gruppo (a pari probabilità), poi la domanda.
+    // Esclude i doppioni (argomenti 2022 che rinviano a una domanda equivalente) e le domande delle ultime 3 buste.
+    var no22 = $('#sim26no22') && $('#sim26no22').checked;
+    var pRip = $('#sim26rip') && $('#sim26rip').checked;
+    var recenti = {};
+    S.storico.slice(-3).forEach(function(x){ (x.ids || []).forEach(function(id){ recenti[id] = 1; }); });
+    function pesca(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
     return ORD26.map(function(ks){
-      var pool = O.domande.filter(function(d){ return ks.indexOf(d.m) >= 0 && (!soloR() || d.r); });
-      if (!pool.length) pool = O.domande.filter(function(d){ return ks.indexOf(d.m) >= 0; });
-      return pool[Math.floor(Math.random()*pool.length)];
+      var mats = ks.slice(), x = null;
+      while (!x && mats.length) {
+        var m = pesca(mats); mats.splice(mats.indexOf(m), 1);
+        var base = O.domande.filter(function(d){ return area26(d) === m && !d.vedi && (!soloR() || d.r) && !(no22 && d.serie === 'S22'); });
+        var pool = base.filter(function(d){ return !recenti[d.id]; });
+        if (!pool.length) pool = base;
+        if (pRip) { var rip = pool.filter(function(d){ return S.stato[d.id] === 'rip'; }); if (rip.length && Math.random() < 0.7) pool = rip; }
+        if (pool.length) x = pesca(pool);
+      }
+      return x || pesca(O.domande.filter(function(d){ return ks.indexOf(area26(d)) >= 0; }));
     });
   }
   function bustaMix(){
