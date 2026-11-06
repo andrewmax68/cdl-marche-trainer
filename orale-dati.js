@@ -2233,6 +2233,124 @@ window.ORALE = (function () {
       ],
       aggancio: "È il terreno su cui il consulente lavora ogni mese: cedolini, F24, CU e 770 sono adempimenti del sostituto che lo studio esegue come intermediario.",
       fonti: "P2_Mod04, scaletta A (artt. 23 e 64 D.P.R. 600/1973; art. 35 D.P.R. 602/1973; artt. 13-14 D.Lgs. 471/1997 e art. 10-bis D.Lgs. 74/2000, testi vigenti DA VERIFICARE nel codice); P2_00_PARAMETRI § 8."
+    },
+
+    "PPP-9": {
+      sintesi: "La capacità giuridica è l'attitudine a essere titolari di diritti e doveri e si acquista con la nascita (art. 1 c.c.); la capacità di agire è l'idoneità a compiere da sé atti giuridici validi e si acquista con la maggiore età, a 18 anni (art. 2 c.c.).",
+      punti: [
+        ["Capacità giuridica: dalla nascita, purché il nato sia vivo, senza requisito di vitalità; si perde con la morte; se più persone muoiono nello stesso evento si presume la commorienza.", ["nascita", "vivo", "commorienza"]],
+        ["Capacità di agire: generale e piena a 18 anni; per atti particolari la legge fissa età diverse, per esempio il minore di 16 anni ammesso al matrimonio dal tribunale, che diventa emancipato.", ["18 anni", "emancipat", "matrimonio"]],
+        ["Incapacità legale: interdizione per abituale infermità di mente (incapacità totale, tutore, atti annullabili) e inabilitazione (incapacità parziale, curatore, solo ordinaria amministrazione da sé).", ["interdizione", "inabilitazione", "tutore", "curatore"]],
+        ["Incapacità naturale (art. 428): chi era incapace di intendere o di volere al momento dell'atto può farlo annullare; per i contratti serve anche la mala fede dell'altro contraente.", ["incapacita naturale", "428", "mala fede"]],
+        ["Amministrazione di sostegno: misura flessibile decisa dal giudice tutelare; il beneficiario conserva la capacità per tutti gli atti non riservati all'amministratore.", ["amministrazione di sostegno", "giudice tutelare", "conserva"]]
+      ],
+      aggancio: "L'art. 2, c. 3, c.c. fa salve le leggi speciali che fissano un'età inferiore per prestare lavoro: il minore che lavora esercita da sé i diritti e le azioni che nascono dal contratto di lavoro. È il ponte con l'età minima e il lavoro dei minori (Simone DL pp. 115-117).",
+      fonti: "Art. 2 c.c., testo letto su avvocato.it (fonte secondaria, 6/11/2026); artt. 1, 414, 428 c.c. come riportati da Simone, Diritto privato, pp. 699-704."
+    },
+
+    "PPP-10": {
+      sintesi: "Il contratto è l'accordo di due o più parti per costituire, regolare o estinguere tra loro un rapporto giuridico patrimoniale (art. 1321 c.c.); i suoi requisiti sono l'accordo, la causa, l'oggetto e la forma quando è prescritta a pena di nullità (art. 1325).",
+      punti: [
+        ["Accordo: incontro di proposta e accettazione; il contratto è concluso quando il proponente ha conoscenza dell'accettazione; nelle trattative le parti devono comportarsi secondo buona fede, a pena di responsabilità precontrattuale (art. 1337).", ["accordo", "proposta", "accettazione", "1337"]],
+        ["Causa: funzione economico-sociale del contratto; se manca o è illecita il contratto è nullo; i motivi individuali di regola non contano. Per l'autonomia contrattuale si possono fare anche contratti atipici, se meritevoli di tutela (art. 1322).", ["causa", "funzione", "1322", "atipic"]],
+        ["Oggetto: deve essere possibile, lecito, determinato o determinabile.", ["oggetto", "possibile", "lecito", "determinat"]],
+        ["Forma: vale la libertà di forma; la forma ad substantiam è richiesta a pena di nullità (per esempio per trasferire immobili), quella ad probationem solo per provare il contratto.", ["forma", "ad substantiam", "ad probationem"]],
+        ["Effetti: il contratto ha forza di legge tra le parti (art. 1372) e non produce effetti verso i terzi, salvo i casi previsti dalla legge come il contratto a favore di terzo (art. 1411).", ["forza di legge", "1372", "terzi"]]
+      ],
+      aggancio: "Il contratto di lavoro ha gli stessi requisiti, con una deroga importante sull'invalidità: la nullità o l'annullamento non producono effetto per il periodo in cui il rapporto è stato eseguito, salvo illiceità dell'oggetto o della causa (art. 2126 c.c.; Simone DL pp. 33-34).",
+      fonti: "Artt. 1321, 1322, 1325, 1337, 1372, 1411 c.c. come riportati da Simone, Diritto privato, pp. 741-749; art. 2126 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "PPP-12": {
+      sintesi: "Gli elementi accidentali sono clausole che le parti possono aggiungere al contratto per incidere sulla sua efficacia: la condizione, il termine e il modo (o onere).",
+      punti: [
+        ["Condizione: avvenimento futuro e incerto a cui le parti subordinano l'efficacia o la risoluzione del contratto (art. 1353); è sospensiva o risolutiva. Non la tollerano gli atti legittimi, come il matrimonio o l'accettazione dell'eredità.", ["condizione", "futuro e incerto", "sospensiva", "risolutiva"]],
+        ["La condizione sospensiva meramente potestativa, che dipende dalla mera volontà di una parte, rende nullo il contratto (art. 1355); la condizione illecita è contraria a norme imperative, ordine pubblico o buon costume (art. 1354).", ["meramente potestativa", "1355", "illecita"]],
+        ["Quando la condizione si avvera, gli effetti retroagiscono ex tunc al momento della conclusione del contratto.", ["retroag", "ex tunc"]],
+        ["Termine: avvenimento futuro e certo da cui dipende l'inizio (termine iniziale) o la fine (termine finale) degli effetti.", ["termine", "futuro e certo", "iniziale", "finale"]],
+        ["Modo o onere: si appone solo agli atti a titolo gratuito (donazione, testamento); se impossibile o illecito si considera non apposto, salvo che sia stato il solo motivo determinante.", ["modo", "onere", "gratuit"]]
+      ],
+      aggancio: "Nel lavoro l'elemento accidentale tipico è il termine finale: il contratto a tempo determinato (D.Lgs. 81/2015; Simone DL pp. 205-208), con limiti di durata e causali fissati dalla legge e non dalla sola volontà delle parti.",
+      fonti: "Art. 1353 c.c., testo letto su miolegale.it (fonte secondaria, 6/11/2026); artt. 1354-1355 c.c. come riportati da Simone, Diritto privato, pp. 743-744."
+    },
+
+    "PPP-13": {
+      sintesi: "Nullità e annullabilità sono le due forme di invalidità del contratto: la nullità colpisce i vizi più gravi ed è insanabile; l'annullabilità protegge una parte e il contratto produce effetti finché non è annullato.",
+      punti: [
+        ["Cause di nullità (art. 1418): contrasto con norme imperative; mancanza di un requisito dell'art. 1325; causa illecita o motivo illecito comune e determinante; oggetto impossibile, illecito o indeterminabile; altri casi previsti dalla legge.", ["1418", "norme imperative", "requisit"]],
+        ["Regime della nullità: nessun effetto; la fa valere chiunque vi abbia interesse; il giudice la rileva d'ufficio (art. 1421); l'azione è imprescrittibile (art. 1422); niente convalida (art. 1423). Può essere parziale (art. 1419) e il contratto nullo può convertirsi in un altro di cui ha i requisiti.", ["ufficio", "1421", "imprescrittibil", "convalida", "1419"]],
+        ["Cause di annullabilità: incapacità legale o naturale della parte (art. 1425) e vizi del consenso: errore essenziale e riconoscibile, violenza morale, dolo determinante (artt. 1427-1440).", ["1425", "errore", "violenza", "dolo"]],
+        ["Regime dell'annullabilità: la chiede solo la parte protetta (art. 1441); l'azione si prescrive in cinque anni (art. 1442); il contratto si può convalidare (art. 1444); l'annullamento non pregiudica i terzi di buona fede che hanno acquistato a titolo oneroso, salvo l'incapacità legale (art. 1445).", ["1441", "cinque anni", "convalid", "1445"]],
+        ["La sentenza è dichiarativa per la nullità e costitutiva per l'annullamento.", ["dichiarativa", "costitutiva"]]
+      ],
+      aggancio: "Nel lavoro: per il periodo in cui il rapporto è stato eseguito, la nullità non toglie retribuzione e diritti (art. 2126 c.c.); e i patti nulli perché contrari a norme imperative, come quelli che violano l'art. 2103 sulle mansioni, sono tipici casi di nullità parziale.",
+      fonti: "Artt. 1418-1445 c.c. come riportati da Simone, Diritto privato, pp. 751-753; artt. 2103 e 2126 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "PPP-14": {
+      sintesi: "L'obbligazione è il rapporto per cui il debitore deve al creditore una prestazione suscettibile di valutazione economica (art. 1174 c.c.); si estingue normalmente con l'adempimento, cioè con l'esatta esecuzione della prestazione.",
+      punti: [
+        ["Fonti (art. 1173): contratto, fatto illecito e ogni altro atto o fatto idoneo secondo l'ordinamento. Il debitore risponde con tutti i suoi beni presenti e futuri (art. 2740).", ["1173", "contratto", "fatto illecito", "2740"]],
+        ["Elementi: debito, credito e prestazione (art. 1174); debitore e creditore devono comportarsi secondo correttezza (art. 1175) e buona fede.", ["prestazione", "1174", "correttezza", "buona fede"]],
+        ["Adempimento: con la diligenza del buon padre di famiglia (art. 1176); può adempiere anche un terzo (art. 1180); luogo e tempo fissati dalle parti o dalla legge (artt. 1182-1183); con il consenso del creditore il debitore può liberarsi con una prestazione diversa, la datio in solutum (art. 1197).", ["diligenza", "1176", "buon padre", "1197"]],
+        ["Altri modi di estinzione: satisfattori (compensazione, confusione) e non satisfattori (novazione, remissione, impossibilità sopravvenuta per causa non imputabile, art. 1256).", ["compensazione", "confusione", "novazione", "remissione"]],
+        ["Inadempimento: il debitore risarcisce il danno se non prova che dipende da causa a lui non imputabile (art. 1218), cioè danno emergente e lucro cessante (art. 1223); la mora del debitore richiede di regola la costituzione in mora (art. 1219); c'è anche la mora del creditore che rifiuta senza motivo il pagamento (art. 1206).", ["1218", "danno emergente", "lucro cessante", "mora"]]
+      ],
+      aggancio: "Nel lavoro la diligenza è più precisa: il lavoratore deve usare quella richiesta dalla natura della prestazione e dall'interesse dell'impresa (art. 2104 c.c.), che è la stessa regola dell'art. 1176, c. 2, per le attività professionali (Simone DL p. 109).",
+      fonti: "Artt. 1173-1223, 1256, 2740 c.c. come riportati da Simone, Diritto privato, pp. 731-739; art. 2104 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "PPP-16": {
+      sintesi: "La rescissione tutela chi ha concluso un contratto a condizioni inique per stato di pericolo o di bisogno (artt. 1447-1448 c.c.); la risoluzione scioglie un contratto valido quando sopravvengono inadempimento, impossibilità o eccessiva onerosità.",
+      punti: [
+        ["Rescissione per stato di pericolo (art. 1447): condizioni inique accettate per salvare sé o altri da un pericolo attuale di danno grave alla persona, noto all'altra parte; il giudice può assegnare un equo compenso.", ["1447", "pericolo", "inique", "equo compenso"]],
+        ["Rescissione per lesione (art. 1448): sproporzione oltre la metà (lesione ultra dimidium), stato di bisogno e approfittamento; l'azione si prescrive in un anno (art. 1449) e il contratto non si può convalidare (art. 1451).", ["1448", "ultra dimidium", "bisogno", "un anno"]],
+        ["Risoluzione per inadempimento (art. 1453): nei contratti a prestazioni corrispettive la parte fedele sceglie tra adempimento e risoluzione, con il risarcimento; l'inadempimento non deve essere di scarsa importanza. Opera di diritto con la clausola risolutiva espressa, la diffida ad adempiere (termine di almeno 15 giorni) e il termine essenziale (art. 1457).", ["1453", "clausola risolutiva", "diffida", "15 giorni", "termine essenziale"]],
+        ["Impossibilità sopravvenuta: la parte liberata non può chiedere la controprestazione (art. 1463); se l'impossibilità è parziale, l'altra parte ha diritto a una riduzione.", ["impossibilita sopravvenuta", "1463", "riduzione"]],
+        ["Eccessiva onerosità: nei contratti di durata o a esecuzione differita, per avvenimenti straordinari e imprevedibili; la controparte può evitarla offrendo di modificare equamente il contratto (reductio ad aequitatem).", ["eccessiva onerosita", "straordinari", "imprevedibili", "equamente"]],
+        ["Autotutela: eccezione di inadempimento (art. 1460) e sospensione della prestazione se le condizioni patrimoniali dell'altra parte mettono in pericolo la controprestazione (art. 1461).", ["1460", "eccezione", "1461"]]
+      ],
+      aggancio: "Nel lavoro la risoluzione di diritto comune è sostituita da regole speciali: il licenziamento per giusta causa (art. 2119 c.c.) e quello disciplinare seguono l'art. 7 dello Statuto e il regime delle tutele, non l'art. 1453 (Simone DL pp. 235-246).",
+      fonti: "Artt. 1447-1463 c.c. come riportati da Simone, Diritto privato, pp. 753-755; art. 2119 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "PPP-17": {
+      sintesi: "È imprenditore chi esercita professionalmente un'attività economica organizzata al fine della produzione o dello scambio di beni o di servizi (art. 2082 c.c.).",
+      punti: [
+        ["Requisiti: attività economica (ricavi che coprono i costi; lo scopo di lucro non è necessario), organizzazione (anche solo di capitali e lavoro proprio), professionalità (abitualità, anche stagionale), esercizio in nome proprio con il relativo rischio.", ["economic", "organizzazione", "professionalita", "rischio"]],
+        ["Classificazioni: per oggetto, imprenditore agricolo (art. 2135) e commerciale (art. 2195); per dimensione, piccolo imprenditore (art. 2083: coltivatori diretti, artigiani, piccoli commercianti, prevalenza del lavoro proprio e dei familiari); per forma, individuale o collettivo.", ["2135", "2195", "2083", "piccolo"]],
+        ["Imprenditore agricolo: coltivazione del fondo, silvicoltura, allevamento e attività connesse; esonerato dalle scritture contabili; la figura dell'imprenditore agricolo professionale (IAP) è nel D.Lgs. 99/2004.", ["agricolo", "connesse", "iap", "99/2004"]],
+        ["Imprenditore commerciale: iscrizione nel registro delle imprese, scritture contabili (libro giornale e libro degli inventari, art. 2214), soggezione alla liquidazione giudiziale e alle altre procedure concorsuali.", ["registro delle imprese", "scritture contabili", "liquidazione giudiziale"]],
+        ["Doveri: l'imprenditore in forma societaria o collettiva deve istituire un assetto organizzativo, amministrativo e contabile adeguato, anche per rilevare tempestivamente la crisi (art. 2086, modificato dal Codice della crisi); ogni imprenditore tutela l'integrità fisica e la personalità morale dei collaboratori (art. 2087).", ["2086", "assetto", "crisi", "2087"]]
+      ],
+      aggancio: "L'art. 2087 c.c. è la norma madre della sicurezza sul lavoro; l'art. 2086 apre al ruolo del consulente nella crisi d'impresa (DL-X6 e ORALE_05). Per l'impresa familiare vedi l'art. 230-bis c.c. e TRIB-20.",
+      fonti: "Artt. 2082, 2083, 2086, 2087, 2135, 2195 c.c. come riportati da Simone, Diritto privato, pp. 782-787; art. 2214 c.c. come riportato da Simone, Ragioneria, p. 1055; D.Lgs. 99/2004 come riportato da Simone, Diritto privato, p. 783."
+    },
+
+    "PPP-18": {
+      sintesi: "L'impresa è l'attività dell'imprenditore e l'azienda è il complesso dei beni organizzati per esercitarla (art. 2555 c.c.); la società è il contratto con cui due o più persone conferiscono beni o servizi per l'esercizio in comune di un'attività economica allo scopo di dividerne gli utili (art. 2247 c.c.).",
+      punti: [
+        ["Impresa e azienda: l'impresa è l'attività, l'azienda lo strumento (beni materiali e immateriali); il maggior valore dei beni organizzati è l'avviamento.", ["azienda", "2555", "avviamento"]],
+        ["Contratto di società (art. 2247): conferimenti, esercizio in comune di un'attività economica, scopo di dividere gli utili; le cooperative hanno invece scopo mutualistico.", ["2247", "conferiscono", "utili", "mutualistic"]],
+        ["Società di persone (semplice, in nome collettivo, in accomandita semplice): autonomia patrimoniale imperfetta, i soci rispondono illimitatamente delle obbligazioni sociali, salvo gli accomandanti.", ["persone", "imperfetta", "illimitat", "accomandanti"]],
+        ["Società di capitali (per azioni, a responsabilità limitata, in accomandita per azioni): personalità giuridica e autonomia patrimoniale perfetta, per i debiti risponde solo la società.", ["capitali", "personalita giuridica", "perfetta"]],
+        ["Trasferimento d'azienda: prova scritta per le imprese soggette a registrazione (art. 2556); divieto di concorrenza dell'alienante per 5 anni (art. 2557); l'acquirente subentra nei contratti non personali (art. 2558) e risponde dei debiti risultanti dai libri contabili (art. 2560); per i dipendenti il rapporto continua con il cessionario (art. 2112).", ["2557", "2558", "2560", "2112", "cessionario"]]
+      ],
+      aggancio: "La forma della società decide chi è il datore di lavoro e come sono inquadrati i soci che lavorano (TRIB-5, TRIB-21, TRIB-23); nel trasferimento d'azienda il consulente gestisce il passaggio dei dipendenti ex art. 2112 c.c. e la solidarietà per i crediti di lavoro.",
+      fonti: "Art. 2247 c.c., testo letto su miolegale.it (fonte secondaria, 6/11/2026); artt. 2555-2560 e 2112 c.c. come riportati da Simone, Diritto privato, pp. 789-791; tipi di società: TRIB-21 (fonti secondarie). Le pagine del Simone sulle società (pp. 796-815) non sono in libreria."
+    },
+
+    "PPP-X1": {
+      sintesi: "L'art. 37 Cost. riconosce alla donna lavoratrice gli stessi diritti e, a parità di lavoro, le stesse retribuzioni del lavoratore; il Codice delle pari opportunità (D.Lgs. 198/2006) attua il principio con divieti di discriminazione, tutela giudiziaria rafforzata e strumenti di promozione.",
+      punti: [
+        ["Nozioni (art. 25): discriminazione diretta, cioè trattamento meno favorevole in ragione del sesso, anche verso i candidati in selezione; indiretta, cioè criteri o prassi apparentemente neutri che svantaggiano un sesso, salvo requisiti essenziali perseguiti con mezzi appropriati e necessari. Il c. 2-bis vi include i trattamenti legati a esigenze di cura, gravidanza, maternità o paternità.", ["diretta", "indiretta", "25", "2-bis"]],
+        ["Molestie e molestie sessuali sono discriminazioni (art. 26): gli atti conseguenti sono nulli; chi denuncia non può essere sanzionato, demansionato, licenziato o trasferito per la denuncia e il licenziamento ritorsivo è nullo (c. 3-bis).", ["molestie", "26", "ritorsiv", "nullo"]],
+        ["Divieti: nell'accesso al lavoro e nella selezione (art. 27); nella retribuzione per lo stesso lavoro o per un lavoro di pari valore (art. 28); nelle mansioni e nella carriera (art. 29). È nullo il licenziamento per causa di matrimonio, presunto dalla richiesta delle pubblicazioni a un anno dalle nozze (art. 35).", ["27", "28", "pari valore", "matrimonio"]],
+        ["Tutela: conciliazione e ricorso anche tramite la consigliera di parità (artt. 36-37); procedura sommaria in cui il giudice, entro due giorni, decide con decreto motivato immediatamente esecutivo (art. 38); onere della prova alleggerito: se il ricorrente porta elementi di fatto anche statistici, tocca al datore provare l'assenza di discriminazione (art. 40); revoca dei benefici pubblici (art. 41).", ["consigliera", "38", "40", "onere della prova"]],
+        ["Strumenti: rapporto biennale sul personale per le aziende con oltre 50 dipendenti, con sanzione da 1.000 a 5.000 euro se mendace o incompleto (art. 46); certificazione della parità di genere dal 2022 (art. 46-bis); trasparenza retributiva con il D.Lgs. 96/2026; nuovo Organismo per la parità con il D.Lgs. 91/2026.", ["46", "50 dipendenti", "46-bis", "96/2026"]]
+      ],
+      aggancio: "Per il consulente: rapporto biennale, inquadramenti neutri, annunci e selezioni senza riferimenti al sesso. La violazione dell'art. 28 era punita con l'ammenda (art. 41, c. 2), oggi sanzione amministrativa da 5.000 a 10.000 euro dopo la depenalizzazione del D.Lgs. 8/2016 (P1_Cap02).",
+      fonti: "Art. 37 Cost. (testi Senato e Corte cost., verificati il 30/10/2026); D.Lgs. 198/2006, artt. 25-46-bis (198_2006 in libreria, vigente al 27/9/2026); P1_Cap02 (D.Lgs. 96/2026; sanzioni dopo il D.Lgs. 8/2016); D.Lgs. 91/2026 (91_2026 in libreria)."
     }
 
   };
@@ -2266,7 +2384,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.7 · 1/11/2026',
+    versione: '1.8 · 6/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
