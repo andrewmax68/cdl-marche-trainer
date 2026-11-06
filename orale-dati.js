@@ -2244,7 +2244,7 @@ window.ORALE = (function () {
         ["Incapacità naturale (art. 428): chi era incapace di intendere o di volere al momento dell'atto può farlo annullare; per i contratti serve anche la mala fede dell'altro contraente.", ["incapacita naturale", "428", "mala fede"]],
         ["Amministrazione di sostegno: misura flessibile decisa dal giudice tutelare; il beneficiario conserva la capacità per tutti gli atti non riservati all'amministratore.", ["amministrazione di sostegno", "giudice tutelare", "conserva"]]
       ],
-      aggancio: "L'art. 2, c. 3, c.c. fa salve le leggi speciali che fissano un'età inferiore per prestare lavoro: il minore che lavora esercita da sé i diritti e le azioni che nascono dal contratto di lavoro. È il ponte con l'età minima e il lavoro dei minori (Simone DL pp. 115-117).",
+      aggancio: "L'art. 2 c.c. fa salve le leggi speciali che fissano un'età inferiore per prestare lavoro: il minore che lavora esercita da sé i diritti e le azioni che nascono dal contratto di lavoro. È il ponte con l'età minima e il lavoro dei minori (Simone DL pp. 115-117).",
       fonti: "Art. 2 c.c., testo letto su avvocato.it (fonte secondaria, 6/11/2026); artt. 1, 414, 428 c.c. come riportati da Simone, Diritto privato, pp. 699-704."
     },
 
@@ -2351,6 +2351,240 @@ window.ORALE = (function () {
       ],
       aggancio: "Per il consulente: rapporto biennale, inquadramenti neutri, annunci e selezioni senza riferimenti al sesso. La violazione dell'art. 28 era punita con l'ammenda (art. 41, c. 2), oggi sanzione amministrativa da 5.000 a 10.000 euro dopo la depenalizzazione del D.Lgs. 8/2016 (P1_Cap02).",
       fonti: "Art. 37 Cost. (testi Senato e Corte cost., verificati il 30/10/2026); D.Lgs. 198/2006, artt. 25-46-bis (198_2006 in libreria, vigente al 27/9/2026); P1_Cap02 (D.Lgs. 96/2026; sanzioni dopo il D.Lgs. 8/2016); D.Lgs. 91/2026 (91_2026 in libreria)."
+    },
+
+    "DL-1a": {
+      sintesi: "Per l'art. 2094 c.c. è prestatore di lavoro subordinato chi si obbliga, mediante retribuzione, a collaborare nell'impresa prestando il proprio lavoro intellettuale o manuale alle dipendenze e sotto la direzione dell'imprenditore. Gli elementi sono tre: collaborazione, onerosità ed eterodirezione.",
+      punti: [
+        ["Il cuore della fattispecie è il vincolo di subordinazione: soggezione personale del lavoratore al potere direttivo, di controllo e disciplinare del datore (artt. 2104 e 2106 c.c.).", ["subordinazione", "potere direttivo", "disciplinare"]],
+        ["Obblighi del lavoratore: diligenza richiesta dalla natura della prestazione e obbedienza alle disposizioni del datore (art. 2104); fedeltà, cioè divieto di concorrenza e di divulgare notizie riservate (art. 2105).", ["diligenza", "obbedienza", "fedelta", "2105"]],
+        ["Quando la subordinazione non è evidente, la giurisprudenza usa indici sussidiari da valutare insieme: collaborazione, continuità, orario determinato, retribuzione fissa a cadenze regolari, inserimento nell'organizzazione del datore, assenza di rischio e di struttura imprenditoriale (Cass. 25711/2018, 23816/2021, 1095/2023).", ["indici", "orario", "rischio", "25711/2018"]],
+        ["Il nomen iuris scelto dalle parti non è decisivo: prevale il concreto svolgimento del rapporto, e il nome conta solo in via sussidiaria nei casi incerti.", ["nomen iuris", "concreto"]],
+        ["Confini: lavoro autonomo (art. 2222 c.c.), collaborazioni coordinate e continuative (art. 409 c.p.c.) e collaborazioni etero-organizzate, alle quali si applica la disciplina del lavoro subordinato (art. 2, c. 1, D.Lgs. 81/2015).", ["2222", "409", "etero-organizzat"]]
+      ],
+      aggancio: "In ispezione il rapporto si qualifica per come si svolge: se è subordinato si recuperano differenze retributive e contributi. La maxisanzione per lavoro nero non si applica se gli adempimenti contributivi mostrano che il datore non voleva occultare il rapporto, anche se lo aveva qualificato in modo diverso (Simone LS p. 440). Per prevenire il contenzioso il consulente può ricorrere alla certificazione (artt. 75 ss. D.Lgs. 276/2003).",
+      fonti: "Artt. 2094, 2104, 2105, 2106 c.c. (NORMA_Codice_civile_lavoro); Simone, Diritto del lavoro, pp. 15-20; Simone, Legislazione sociale, p. 440."
+    },
+
+    "DL-4b": {
+      sintesi: "Le collaborazioni coordinate e continuative sono rapporti di lavoro autonomo che si concretano in una prestazione d'opera continuativa e prevalentemente personale, coordinata con il committente (art. 409, n. 3, c.p.c.): il collaboratore organizza da sé l'attività, nel rispetto delle modalità di coordinamento stabilite di comune accordo.",
+      punti: [
+        ["Requisiti della co.co.co. genuina: continuità, prevalente personalità, coordinamento concordato, autonomia nell'organizzare tempi e luoghi. Il collaboratore si coordina con l'organizzazione del committente, ma non è questi a stabilire il quando e il dove.", ["continuita", "personalita", "coordinamento", "autonom"]],
+        ["Collaborazioni etero-organizzate: se le modalità di esecuzione sono organizzate dal committente, anche tramite piattaforme digitali (per esempio i rider), si applica la disciplina del lavoro subordinato (art. 2, c. 1, D.Lgs. 81/2015).", ["etero-organizzat", "piattaform", "subordinato"]],
+        ["Eccezioni (art. 2, c. 2): tra le altre, le professioni intellettuali che richiedono l'iscrizione in albi. Le parti possono far certificare l'assenza di etero-organizzazione davanti alle commissioni di certificazione.", ["albi", "certificazione"]],
+        ["Previdenza e fisco: il collaboratore è iscritto alla gestione separata INPS (art. 2, c. 26, L. 335/1995); i compensi sono redditi assimilati a quelli di lavoro dipendente (art. 50, c. 1, lett. c-bis, TUIR).", ["gestione separata", "assimilat", "c-bis"]],
+        ["Processo: le controversie seguono il rito del lavoro, per l'estensione dell'art. 409 c.p.c. operata dalla L. 533/1973.", ["rito del lavoro", "533/1973"]]
+      ],
+      aggancio: "Il consulente verifica in concreto chi decide orari e luoghi: se li decide il committente, la co.co.co. è etero-organizzata e il rapporto va trattato come subordinato, con differenze retributive e contributive. Nel dubbio conviene certificare il contratto.",
+      fonti: "Art. 409 c.p.c. e art. 2 D.Lgs. 81/2015 come riportati da Simone, Diritto del lavoro, p. 20; art. 2, c. 26, L. 335/1995 come riportato da Simone, Legislazione sociale, p. 290; art. 50 TUIR (917_1986_TUIR, vigente al 4/10/2026)."
+    },
+
+    "DL-6a": {
+      sintesi: "Il lavoro autonomo ha il suo modello nel contratto d'opera: chi si obbliga a compiere, verso un corrispettivo, un'opera o un servizio, con lavoro prevalentemente proprio e senza vincolo di subordinazione verso il committente (art. 2222 c.c.).",
+      punti: [
+        ["Elementi: un'opera o un servizio come risultato dovuto; lavoro prevalentemente proprio; assenza di subordinazione; corrispettivo.", ["opera o un servizio", "prevalentemente proprio", "subordinazione", "corrispettivo"]],
+        ["Il prestatore decide tempi e modi dell'esecuzione e sopporta il rischio economico dell'attività; il committente può verificare il risultato, non dirigere la prestazione.", ["tempi e modi", "rischio"]],
+        ["Tutele della L. 81/2017 (art. 3): sono abusive e prive di effetto le clausole che consentono al committente di modificare da solo le condizioni o di recedere senza congruo preavviso, e quelle con termini di pagamento oltre 60 giorni; è abusivo anche il rifiuto della forma scritta; spetta il risarcimento dei danni.", ["81/2017", "abusiv", "60 giorni", "forma scritta"]],
+        ["Forme: lavoro autonomo abituale (redditi di lavoro autonomo, art. 53 TUIR, con cassa professionale o gestione separata); occasionale (redditi diversi, art. 67, c. 1, lett. l, TUIR); collaborazioni coordinate e continuative (art. 409 c.p.c.).", ["abituale", "occasionale", "53", "67"]],
+        ["Il confine con il lavoro subordinato si traccia con il vincolo di subordinazione e, nei casi dubbi, con gli indici sussidiari; il nome dato al contratto non basta.", ["vincolo di subordinazione", "indici"]]
+      ],
+      aggancio: "Per il consulente il rischio tipico è la falsa partita IVA: se il prestatore lavora con orario, mezzi e direttive del committente, l'ispezione riqualifica il rapporto come subordinato. Il contratto scritto con oggetto e risultato definiti, e senza direttive sui tempi, è la prima difesa.",
+      fonti: "Art. 2222 c.c. e L. 81/2017 come riportati da Simone, Diritto del lavoro, pp. 18-19; artt. 53 e 67 TUIR (917_1986_TUIR, vigente al 4/10/2026); Simone, Legislazione sociale, p. 290."
+    },
+
+    "DL-7a": {
+      sintesi: "Il lavoratore autonomo occasionale svolge un'opera o un servizio ex art. 2222 c.c. con lavoro prevalentemente proprio, senza subordinazione, senza coordinamento con il committente e in modo non abituale. Non va confuso con le prestazioni occasionali dell'art. 54-bis D.L. 50/2017, gestite sulla piattaforma INPS.",
+      punti: [
+        ["Caratteri (circ. INPS 103/2004): nessun coordinamento con l'attività del committente; nessun inserimento nell'organizzazione aziendale; episodicità; piena autonomia su tempo e modo della prestazione.", ["103/2004", "coordinamento", "episodic", "autonomia"]],
+        ["Obbligo del committente: comunicare l'avvio dell'attività all'ITL prima che inizi, con modalità informatiche (art. 14, c. 1, D.Lgs. 81/2008). Se la comunicazione è omessa o tardiva: sanzione da 500 a 2.500 euro per ciascun lavoratore, senza diffida. Sono escluse le attività intermediate dalle piattaforme digitali.", ["comunicazione", "itl", "500", "2.500", "diffida"]],
+        ["Fisco e contributi: il compenso è reddito diverso (art. 67, c. 1, lett. l, TUIR); la gestione separata INPS scatta solo per il reddito annuo oltre 5.000 euro.", ["reddito diverso", "67", "gestione separata", "5.000"]],
+        ["Limiti e rischi: se mancano i caratteri dell'occasionalità, l'ispezione riqualifica il rapporto. Gli autonomi occasionali inquadrati senza le condizioni di legge contano anche per la sospensione dell'attività, che scatta con almeno il 10% di lavoratori irregolari (art. 14, c. 1).", ["riqualific", "sospensione", "10%"]],
+        ["Prestazioni occasionali (art. 54-bis): tetti annui di 5.000 euro per prestatore, 10.000 per utilizzatore, 2.500 tra stesso prestatore e stesso utilizzatore, 280 ore; superati il tetto di 2.500 euro o le 280 ore, il rapporto si trasforma in subordinato a tempo pieno e indeterminato.", ["54-bis", "10.000", "280 ore", "trasforma"]]
+      ],
+      aggancio: "Il consulente prepara la lettera di incarico con oggetto e risultato, fa la comunicazione preventiva all'ITL, controlla la soglia dei 5.000 euro per la gestione separata e che l'incarico resti davvero episodico.",
+      fonti: "Art. 14, c. 1, D.Lgs. 81/2008 (81_2008_ESTRATTO_TitoloI_XII); Simone, Diritto del lavoro, pp. 19 e 23; art. 67 TUIR (917_1986_TUIR); Simone, Legislazione sociale, pp. 290-291; Rausei, slide Fermo 2026, p. 137 (dottrina)."
+    },
+
+    "DL-19a": {
+      sintesi: "La distinzione passa per il vincolo di subordinazione: il lavoratore subordinato mette a disposizione le proprie energie sotto la direzione del datore (art. 2094 c.c.); l'autonomo si obbliga a un'opera o a un servizio, con lavoro prevalentemente proprio e organizzando da sé tempi e modi (art. 2222 c.c.).",
+      punti: [
+        ["Subordinato: eterodirezione, cioè soggezione al potere direttivo, di controllo e disciplinare; rischio a carico del datore; retribuzione periodica.", ["eterodirezione", "potere direttivo", "retribuzione"]],
+        ["Autonomo: obbligo di risultato, autonomia organizzativa, rischio economico a carico del prestatore, corrispettivo pattuito per l'opera.", ["risultato", "autonomia", "rischio"]],
+        ["Nei casi dubbi decidono gli indici sussidiari valutati insieme: orario, continuità, retribuzione fissa, inserimento nell'organizzazione, assenza di struttura imprenditoriale (Cass. 25711/2018, 23816/2021, 1095/2023); il nomen iuris non è decisivo.", ["indici", "nomen iuris"]],
+        ["Zona intermedia: co.co.co. genuine (art. 409 c.p.c.) e collaborazioni etero-organizzate, a cui si applica la disciplina del lavoro subordinato (art. 2 D.Lgs. 81/2015).", ["409", "etero-organizzat"]],
+        ["Conseguenze: al subordinato spettano retribuzione minima (art. 36 Cost.), limiti all'orario, tutela contro il licenziamento, contribuzione INPS e INAIL a carico del datore; fiscalmente sono redditi di lavoro dipendente (art. 49 TUIR), mentre il lavoro autonomo abituale produce redditi di lavoro autonomo (art. 53 TUIR).", ["36 cost", "licenziamento", "49", "53"]]
+      ],
+      aggancio: "È il tema delle riqualificazioni ispettive e della certificazione dei contratti: il consulente deve saper spiegare perché un rapporto è autonomo guardando a come si svolge, non a come è stato chiamato.",
+      fonti: "Artt. 2094 e 2222 c.c. come riportati da Simone, Diritto del lavoro, pp. 15-20; artt. 49 e 53 TUIR (917_1986_TUIR); Cost. (testi Senato e Corte cost., verificati il 30/10/2026)."
+    },
+
+    "DL-2a": {
+      sintesi: "Il contratto di lavoro è un contratto di scambio tra prestazione di lavoro e retribuzione; i suoi requisiti sono quelli dell'art. 1325 c.c.: accordo delle parti, causa, oggetto e forma quando è prescritta.",
+      punti: [
+        ["Capacità: per lavorare servono 16 anni e l'assolvimento dell'obbligo di istruzione, salvo eccezioni di legge; il minore che può lavorare esercita i diritti e le azioni che nascono dal contratto (art. 2 c.c.).", ["16 anni", "obbligo di istruzione", "art. 2"]],
+        ["Accordo: incontro di proposta e accettazione (art. 1326 c.c.); causa: lo scambio tra lavoro e retribuzione; oggetto: la prestazione, che deve essere possibile, lecita, determinata o determinabile.", ["accordo", "1326", "causa", "scambio", "oggetto"]],
+        ["Forma: di regola libera. Fanno eccezione il patto di prova scritto (art. 2096 c.c.), il part-time scritto ai fini della prova (art. 5 D.Lgs. 81/2015) e il termine, che è privo di effetto se non risulta da atto scritto (art. 19, c. 4, D.Lgs. 81/2015).", ["forma", "libera", "2096", "ai fini della prova", "atto scritto"]],
+        ["Elementi accidentali: termine finale, condizione, patto di prova. Il datore deve inoltre fornire per iscritto le informazioni sul rapporto (D.Lgs. 152/1997).", ["accidentali", "termine", "152/1997"]],
+        ["Invalidità: per il periodo in cui il rapporto è stato eseguito la nullità non ha effetto, salvo illiceità dell'oggetto o della causa (art. 2126 c.c.).", ["2126", "illiceita"]]
+      ],
+      aggancio: "All'assunzione il consulente cura la lettera con le informazioni del D.Lgs. 152/1997, la comunicazione obbligatoria preventiva e la forma scritta dove serve; mancanze di forma su termine o part-time portano rispettivamente al tempo indeterminato e, su domanda del lavoratore, al tempo pieno.",
+      fonti: "Simone, Diritto del lavoro, pp. 29-31; artt. 2, 2096, 2126 c.c. (NORMA_Codice_civile_lavoro); D.Lgs. 81/2015, artt. 5 e 19 (81_2015 in libreria)."
+    },
+
+    "DL-3a": {
+      sintesi: "Il patto di prova subordina l'assunzione definitiva all'esito positivo di un esperimento, nel reciproco interesse delle parti (art. 2096 c.c.): il datore verifica capacità e idoneità del lavoratore, il lavoratore la convenienza del posto.",
+      punti: [
+        ["Forma: atto scritto, firmato da entrambe le parti, anteriore o al massimo contestuale all'inizio del rapporto; senza forma scritta il patto è nullo e l'assunzione è definitiva dall'inizio.", ["atto scritto", "anteriore", "contestuale"]],
+        ["Durata massima di 6 mesi, salvo durata inferiore prevista dai contratti collettivi (art. 7 D.Lgs. 104/2022). Nei contratti a termine, salvo CCNL più favorevole, un giorno di effettiva prestazione ogni 15 di calendario: da 2 a 15 giorni se il contratto dura fino a 6 mesi, non oltre 30 se dura tra 6 e 12 mesi (art. 13 L. 203/2024).", ["6 mesi", "104/2022", "15 giorni", "203/2024"]],
+        ["Nel rinnovo per le stesse mansioni non si può pattuire una nuova prova; malattia, infortunio, maternità e le altre assenze previste prolungano la prova per la durata dell'assenza.", ["rinnovo", "stesse mansioni", "prolungano"]],
+        ["Recesso: durante la prova ciascuna parte può recedere senza preavviso né indennità e senza motivazione, salvo che sia pattuita una durata minima.", ["recesso", "senza preavviso", "durata minima"]],
+        ["Compiuta la prova senza recesso, l'assunzione diventa definitiva e il periodo conta nell'anzianità; se il rapporto cessa, spettano comunque TFR e ferie maturate o la relativa indennità.", ["definitiva", "anzianita", "tfr", "ferie"]]
+      ],
+      aggancio: "Errori tipici da evitare nella lettera di assunzione: prova firmata dopo l'inizio del lavoro, durata superiore al CCNL, nuova prova nel rinnovo per le stesse mansioni. Le dimissioni in prova della lavoratrice in gravidanza vanno comunque convalidate all'ITL (Simone DL p. 234).",
+      fonti: "Art. 2096 c.c. (NORMA_Codice_civile_lavoro); Simone, Diritto del lavoro, pp. 31-32 e 234 (art. 7 D.Lgs. 104/2022, art. 13 L. 203/2024, nota Min. Lav. 14744/2025)."
+    },
+
+    "DL-4a": {
+      sintesi: "La prestazione di fatto è il lavoro eseguito in base a un contratto nullo o annullato: per l'art. 2126 c.c. la nullità o l'annullamento non producono effetto per il periodo in cui il rapporto ha avuto esecuzione, salvo che la nullità derivi dall'illiceità dell'oggetto o della causa.",
+      punti: [
+        ["Deroga al diritto comune: di regola la nullità travolge tutto ex tunc; nel lavoro, invece, per il periodo eseguito restano dovuti retribuzione e trattamenti, perché la prestazione non si può restituire.", ["deroga", "ex tunc", "retribuzione"]],
+        ["Eccezione: se il contratto è nullo per illiceità dell'oggetto o della causa (per esempio un'attività criminosa), la tutela non opera e resta solo l'azione di arricchimento senza causa (art. 2041 c.c.).", ["illiceita", "oggetto", "causa", "2041"]],
+        ["Contro-eccezione (art. 2126, c. 2): se il lavoro è stato prestato violando norme poste a tutela del lavoratore, la retribuzione spetta in ogni caso.", ["tutela del lavoratore", "in ogni caso"]],
+        ["Esempio tipico: il minore sotto l'età minima di ammissione al lavoro. Il contratto è nullo per contrasto con una norma imperativa, ma il minore ha comunque diritto alla retribuzione.", ["minore", "eta minima", "nullo"]],
+        ["Gli effetti cessano solo per il futuro: la sentenza o la scoperta della nullità chiudono il rapporto da quel momento.", ["futuro"]]
+      ],
+      aggancio: "In sede ispettiva, anche se il rapporto è nullo, il lavoratore ha diritto alle differenze retributive per il periodo lavorato, recuperabili con la diffida accertativa (art. 12 D.Lgs. 124/2004).",
+      fonti: "Art. 2126 c.c. (NORMA_Codice_civile_lavoro); Simone, Diritto del lavoro, pp. 33-34; art. 12 D.Lgs. 124/2004 (124_2004 in libreria)."
+    },
+
+    "DL-5a": {
+      sintesi: "La certificazione (artt. 75-81 D.Lgs. 276/2003) è una procedura volontaria con cui le parti fanno attestare da una commissione che il contratto con cui si scambia una prestazione di lavoro ha i requisiti di forma e contenuto richiesti dalla legge. Lo scopo è dare certezza alla qualificazione e ridurre il contenzioso.",
+      punti: [
+        ["Commissioni (art. 76): enti bilaterali, sedi territoriali dell'INL, università registrate nell'albo ministeriale, Consigli provinciali dei consulenti del lavoro (solo per i contratti instaurati nel loro territorio), Ministero del lavoro.", ["76", "enti bilaterali", "universita", "consulenti del lavoro"]],
+        ["Procedimento (art. 78): istanza scritta comune che indica gli effetti civili, amministrativi, previdenziali o fiscali richiesti; avvio comunicato all'ITL, che informa INPS, INAIL e Agenzia delle Entrate; conclusione entro 30 giorni; atto motivato con indicazione del termine e dell'autorità a cui ricorrere.", ["istanza", "30 giorni", "motivato"]],
+        ["Effetti (art. 79): permangono tra le parti e verso i terzi, compresi INPS e organi di vigilanza, fino a una sentenza che accolga l'impugnazione. L'ispettore può controllare, ma non può adottare provvedimenti fondati su una qualificazione diversa. Per i contratti in corso gli effetti retroagiscono all'inizio, se la commissione ha verificato che l'attuazione era conforme.", ["79", "terzi", "sentenza", "retroag"]],
+        ["Impugnazione (art. 80), davanti al giudice del lavoro, solo per tre motivi: erronea qualificazione, vizio del consenso (solo le parti), difformità tra programma certificato e attuazione. Prima occorre il tentativo di conciliazione davanti alla stessa commissione; per i vizi del procedimento si ricorre al TAR.", ["erronea qualificazione", "vizio del consenso", "difformita", "conciliazione", "tar"]],
+        ["Altri usi: rinunzie e transazioni (art. 2113 c.c.), appalti, regolamenti delle cooperative, co.co.co. senza etero-organizzazione, patti di demansionamento (art. 2103 c.c.), clausole elastiche, conciliazione nelle tutele crescenti, dimissioni.", ["2113", "appalt", "2103", "clausole elastiche"]]
+      ],
+      aggancio: "È uno strumento della professione: la commissione presso il Consiglio provinciale dell'Ordine certifica i contratti del proprio territorio. All'orale conviene citarla anche nelle domande su co.co.co., appalto e rinunzie.",
+      fonti: "Simone, Diritto del lavoro, pp. 34-37 (artt. 75-81 D.Lgs. 276/2003)."
+    },
+
+    "DL-9b": {
+      sintesi: "Il contratto collettivo nazionale è un contratto di diritto comune, perché l'art. 39 Cost., seconda parte, non è stato attuato: vincola solo gli iscritti alle associazioni firmatarie (art. 1372 c.c.). La sua efficacia si è allargata per altre vie.",
+      punti: [
+        ["Efficacia oggettiva: il contratto individuale non può derogare in peggio al CCNL; la clausola difforme è nulla ed è sostituita da quella collettiva, mentre le condizioni più favorevoli al lavoratore sono valide (derogabilità in melius).", ["in peggio", "sostituita", "in melius"]],
+        ["Estensione ai non iscritti: adesione o richiamo nel contratto individuale; applicazione di fatto; uso giurisprudenziale dei minimi del CCNL come parametro della retribuzione sufficiente (art. 36 Cost. e art. 2099 c.c.).", ["non iscritti", "richiamo", "36 cost", "2099"]],
+        ["Regole sindacali (accordi interconfederali del 2011, 2013 e Testo unico del 10/1/2014): per negoziare serve almeno il 5% di rappresentatività. Il CCNL è efficace ed esigibile se firmato da sindacati che rappresentano il 50% più uno e approvato dai lavoratori con consultazione certificata.", ["testo unico", "5%", "50%", "consultazione"]],
+        ["Contratti aziendali: efficaci per tutti se approvati dalla maggioranza della RSU, o dalle RSA delle associazioni che hanno la maggioranza delle deleghe. Diverso è il contratto di prossimità (art. 8 D.L. 138/2011), che ha efficacia generale per legge.", ["rsu", "rsa", "maggioranza", "prossimita"]],
+        ["Il D.L. 62/2026 usa il CCNL leader come parametro del trattamento economico complessivo (TEC) per la retribuzione giusta e negli appalti.", ["62/2026", "tec"]]
+      ],
+      aggancio: "Per il consulente la scelta del CCNL da applicare incide su minimi, contributi (minimale contributivo) e appalti: un CCNL poco rappresentativo espone a recuperi e diffide accertative. Per il D.L. 62/2026 vedi il dossier P1, Cap. 1.",
+      fonti: "Simone, Diritto del lavoro, pp. 46-54; Cost. (testi Senato e Corte cost., verificati il 30/10/2026); P1_Cap01_DL62_2026 e P1_Cap05_Prossimita."
+    },
+
+    "DL-12b": {
+      sintesi: "L'art. 8 D.L. 138/2011, convertito dalla L. 148/2011, consente a contratti aziendali o territoriali di derogare anche alla legge e ai CCNL, in materie tassative e per finalità tipiche, con efficacia verso tutti i lavoratori interessati. È una norma eccezionale (Corte cost. 221/2012).",
+      punti: [
+        ["Soggetti: associazioni dei lavoratori comparativamente più rappresentative sul piano nazionale o territoriale, o le loro rappresentanze in azienda; firma con criterio maggioritario, che dà l'efficacia generale.", ["comparativamente", "maggioritario", "efficacia"]],
+        ["Finalità da dichiarare e documentare: occupazione, qualità dei contratti, partecipazione, emersione, competitività e salario, gestione delle crisi, investimenti.", ["finalita", "occupazione", "crisi"]],
+        ["Materie (c. 2, elenco tassativo): impianti audiovisivi e nuove tecnologie; mansioni e inquadramento; contratti a termine, a orario ridotto, flessibile, somministrazione, solidarietà negli appalti; orario; assunzioni, disciplina del rapporto e conseguenze del recesso, esclusi i licenziamenti discriminatori e quelli per matrimonio, maternità, congedi, adozione.", ["tassativ", "mansioni", "orario", "discriminatori"]],
+        ["Limiti (c. 2-bis): Costituzione, vincoli europei e convenzioni internazionali. La retribuzione non è una materia derogabile: il mero contenimento retributivo non vi rientra (Corte cost. 52/2023).", ["costituzione", "europe", "52/2023"]],
+        ["Novità del D.L. 62/2026, art. 7-bis, in vigore dal 28/6/2026: deposito presso Ministero e CNEL; nelle imprese fino a 15 dipendenti le intese peggiorative si firmano presso l'ITL; informativa scritta ai lavoratori entro 3 giorni.", ["7-bis", "cnel", "15 dipendenti", "3 giorni"]]
+      ],
+      aggancio: "Non confonderlo con l'art. 51 D.Lgs. 81/2015, che consente ai contratti aziendali di integrare la legge solo dove questa rinvia. Il consulente redige l'intesa indicando finalità, norme derogate, durata, e cura firma presso l'ITL, informativa e deposito. Per Rausei (dottrina) l'ITL deve verificare che le riduzioni non siano sproporzionate e siano a tempo.",
+      fonti: "P1_Cap05_Prossimita v6 (art. 8 D.L. 138/2011 da 138_2011_ESTRATTO_art8; art. 7-bis D.L. 62/2026 da 62_2026; Corte cost. 221/2012 e 52/2023 lette su giurcost.org); Rausei, lezione 19/10/2026 (dottrina)."
+    },
+
+    "DL-16b": {
+      sintesi: "Lo sciopero è l'astensione collettiva e concertata dal lavoro per la tutela di interessi collettivi; è un diritto costituzionale (art. 40 Cost.) di titolarità individuale e di esercizio collettivo, che si esercita nell'ambito delle leggi che lo regolano.",
+      punti: [
+        ["Manca una legge generale: l'unica disciplina attuativa è la L. 146/1990 sui servizi pubblici essenziali (prestazioni indispensabili, preavviso, codici di autoregolamentazione, Commissione di garanzia).", ["146/1990", "servizi pubblici essenziali", "preavviso", "commissione di garanzia"]],
+        ["Finalità legittime: interessi economici in senso ampio, cioè tutti i rapporti economici degli artt. 35-47 Cost. (Corte cost. 1/1974); anche lo sciopero politico, se non mira a sovvertire l'ordinamento costituzionale (Corte cost. 290/1974); lo sciopero di solidarietà, se c'è comunanza di interessi (Cass. 2283/1963).", ["1/1974", "290/1974", "solidarieta", "2283/1963"]],
+        ["Effetti: sospende le due prestazioni principali; non è inadempimento né illecito disciplinare. È legittima la trattenuta proporzionale di retribuzione, tredicesima e ferie; restano le prestazioni previdenziali; non è coperto l'infortunio durante lo sciopero.", ["sospende", "disciplinare", "tredicesima", "ferie"]],
+        ["Forme anomale (a singhiozzo, a scacchiera): la loro legittimità resta controversa in dottrina e giurisprudenza.", ["singhiozzo", "scacchiera"]],
+        ["Serrata: la Costituzione non la prevede; la dottrina la ritiene lecita come espressione della libertà di iniziativa economica (art. 41 Cost.), ma non esiste un diritto di serrata.", ["serrata", "41"]]
+      ],
+      aggancio: "Per il datore: è vietato assumere a termine o con contratto intermittente per sostituire lavoratori in sciopero (artt. 20 e 14 D.Lgs. 81/2015); il comportamento che lede il diritto di sciopero è contrastabile con il ricorso per condotta antisindacale (art. 28 St. lav.).",
+      fonti: "Simone, Diritto del lavoro, pp. 54-56 e 205, 221; Cost. (testi Senato e Corte cost., verificati il 30/10/2026); art. 28 L. 300/1970 (Statuto Lavoratori 300_1970 in libreria)."
+    },
+
+    "DL-X2": {
+      sintesi: "Il potere disciplinare è la facoltà del datore di sanzionare il lavoratore che viola gli obblighi di diligenza, obbedienza e fedeltà (artt. 2104-2105 c.c.), secondo la gravità dell'infrazione (art. 2106 c.c.). L'art. 7 St. lav. ne fissa le garanzie sostanziali e procedurali.",
+      punti: [
+        ["Codice disciplinare: infrazioni, sanzioni e procedure devono essere portate a conoscenza dei lavoratori mediante affissione in luogo accessibile a tutti, applicando quanto stabilito dai contratti collettivi (art. 7, c. 1).", ["codice disciplinare", "affissione", "contratti collettivi"]],
+        ["Procedimento: contestazione scritta, specifica e immediata dell'addebito; audizione del lavoratore che la chiede, anche assistito da un sindacalista; nessuna sanzione più grave del rimprovero verbale prima di 5 giorni dalla contestazione (art. 7, c. 2, 3 e 5).", ["contestazione", "specifica", "sindaca", "5 giorni"]],
+        ["Limiti alle sanzioni: proporzionalità (art. 2106); niente mutamenti definitivi del rapporto; multa fino a 4 ore di retribuzione base; sospensione dal servizio e dalla retribuzione fino a 10 giorni; le sanzioni non contano più dopo 2 anni dalla loro applicazione (art. 7, c. 4 e 8).", ["proporzionalita", "4 ore", "10 giorni", "2 anni"]],
+        ["Impugnazione: ricorso al giudice, che non sospende la sanzione; oppure, entro 20 giorni, collegio di conciliazione e arbitrato tramite l'ITL, con sanzione sospesa fino alla pronuncia; se il datore non nomina il suo arbitro entro 10 giorni la sanzione non ha effetto (art. 7, c. 6-7).", ["20 giorni", "arbitrato", "sospesa", "10 giorni"]],
+        ["Licenziamento disciplinare: le garanzie dei commi 1-3 si applicano anche al licenziamento per motivi disciplinari (Corte cost. 204/1982).", ["licenziamento", "204/1982"]]
+      ],
+      aggancio: "Ricollegalo all'elaborato scritto: se il fatto contestato non sussiste o il CCNL lo punisce con una sanzione conservativa, l'art. 18 St. lav. prevede la reintegra; per gli assunti dal 7/3/2015 la reintegra è prevista per l'insussistenza del fatto materiale (art. 3, c. 2, D.Lgs. 23/2015). Il consulente cura codice affisso, contestazione e rispetto dei termini.",
+      fonti: "Art. 7 L. 300/1970 e nota su Corte cost. 204/1982 (Statuto Lavoratori 300_1970 in libreria); artt. 2104-2106 c.c. (NORMA_Codice_civile_lavoro); Simone, Diritto del lavoro, pp. 133-136; P1_Cap08, scheda 1."
+    },
+
+    "DL-1b": {
+      sintesi: "Il contratto a tempo determinato è un contratto di lavoro subordinato con un termine finale, alla cui scadenza il rapporto si estingue automaticamente. È disciplinato dagli artt. 19-29 D.Lgs. 81/2015; la forma comune resta il tempo indeterminato.",
+      punti: [
+        ["Durata: libera fino a 12 mesi; fino a 24 solo con una condizione: casi previsti dai contratti collettivi dell'art. 51; in loro assenza, entro il 31/12/2026, esigenze tecniche, organizzative o produttive individuate dalle parti; sostituzione di altri lavoratori. Tetto complessivo di 24 mesi tra le stesse parti per mansioni di pari livello, salvo CCNL; poi un ultimo contratto fino a 12 mesi presso l'ITL (art. 19).", ["12 mesi", "24 mesi", "31/12/2026", "sostituzione", "itl"]],
+        ["Forma: il termine è privo di effetto se non risulta da atto scritto, salvo rapporti fino a 12 giorni. Proroghe e rinnovi liberi nei primi 12 mesi, poi solo con le condizioni; massimo 4 proroghe in 24 mesi; tra un contratto e l'altro intervalli di 10 o 20 giorni, salvo stagionali (art. 21).", ["atto scritto", "12 giorni", "4 proroghe", "10", "20 giorni"]],
+        ["Divieti (art. 20): sostituire scioperanti; unità con licenziamenti collettivi nei 6 mesi precedenti o con integrazione salariale per le stesse mansioni; imprese senza valutazione dei rischi. Limite quantitativo del 20% dei lavoratori a tempo indeterminato al 1° gennaio, salvo CCNL ed esenzioni; la violazione comporta una sanzione amministrativa, non la trasformazione (art. 23).", ["sciopera", "valutazione dei rischi", "20%", "sanzione amministrativa"]],
+        ["Prosecuzione oltre la scadenza: fino a 30 giorni (contratti sotto 6 mesi) o 50 giorni, con maggiorazione del 20% fino al decimo giorno e del 40% dopo; oltre quei limiti il contratto diventa a tempo indeterminato (art. 22). Parità di trattamento con i comparabili a tempo indeterminato, in proporzione al periodo lavorato (art. 25).", ["30 giorni", "50 giorni", "40%", "25"]],
+        ["Precedenza nelle assunzioni a tempo indeterminato per chi ha lavorato più di 6 mesi, entro 12 mesi, se la chiede per iscritto entro 6 mesi (art. 24). Impugnazione entro 180 giorni dalla cessazione; con la conversione, indennità onnicomprensiva da 2,5 a 12 mensilità (art. 28).", ["precedenza", "180 giorni", "2,5", "12 mensilita"]]
+      ],
+      aggancio: "Dal D.L. 62/2026 (art. 16-quinquies) nel tetto dei 24 mesi si contano le missioni dei somministrati assunti a termine; i somministrati a tempo indeterminato hanno un limite proprio di 36 mesi presso lo stesso utilizzatore (art. 19, c. 2-bis). Il consulente controlla durata, proroghe, causali e percentuali prima di ogni rinnovo.",
+      fonti: "Simone, Diritto del lavoro, pp. 205-209; D.Lgs. 81/2015, art. 19 (81_2015 in libreria); P1_Cap08, scheda 3; art. 16-quinquies D.L. 62/2026 (62_2026 in libreria)."
+    },
+
+    "DL-2b": {
+      sintesi: "Il part-time è un rapporto di lavoro subordinato, a tempo indeterminato o determinato, con orario inferiore al tempo pieno (40 ore settimanali o il minore orario del CCNL). È disciplinato dagli artt. 4-12 D.Lgs. 81/2015.",
+      punti: [
+        ["Forma scritta ai fini della prova, con indicazione puntuale della durata e della collocazione dell'orario per giorno, settimana, mese e anno (art. 5). Se manca la durata, su domanda del lavoratore il giudice dichiara il tempo pieno; se manca solo la collocazione, la determina il giudice; in entrambi i casi spetta un risarcimento (art. 10).", ["ai fini della prova", "collocazione", "tempo pieno", "risarcimento"]],
+        ["Lavoro supplementare (oltre l'orario concordato ed entro il normale): se il CCNL non lo regola, fino al 25% delle ore settimanali, con maggiorazione del 15%; il lavoratore può rifiutarlo per comprovate esigenze di lavoro, salute, famiglia o formazione (art. 6, c. 2). Oltre l'orario normale si applica lo straordinario.", ["supplementare", "25%", "15%", "rifiut"]],
+        ["Clausole elastiche, per spostare la collocazione o aumentare la durata: accordo scritto; preavviso di almeno 2 giorni; compensazioni; senza disciplina del CCNL, patto davanti alle commissioni di certificazione, aumento entro il 25% della prestazione annua e maggiorazione del 15%. Il lavoratore malato oncologico, con figlio fino a 13 anni o con figlio disabile può revocare il consenso.", ["clausole elastiche", "2 giorni", "certificazione", "revoca"]],
+        ["Trattamento: non discriminazione (stessa retribuzione oraria, ferie, prova, maternità) e proporzionalità per gli istituti legati all'orario. Nel computo dei dipendenti il part-time conta in proporzione all'orario (art. 9).", ["non discriminazione", "proporzionalita", "computo"]],
+        ["Trasformazioni: il rifiuto del lavoratore di passare al part-time o al tempo pieno non è giustificato motivo di licenziamento (art. 8, c. 1); diritto al part-time per patologie oncologiche o cronico-degenerative; priorità per chi assiste familiari gravemente malati e, dal 2026, per i genitori con almeno 3 figli conviventi (L. 199/2025).", ["rifiuto", "oncologic", "priorita", "199/2025"]]
+      ],
+      aggancio: "In busta paga: maggiorazioni del supplementare e delle clausole elastiche, minimale contributivo orario (art. 11 D.Lgs. 81/2015) e retribuzione INAIL pari a quella tabellare del tempo pieno su base oraria. In ispezione, il part-time senza orario scritto o con ore di fatto superiori è una delle irregolarità più frequenti.",
+      fonti: "D.Lgs. 81/2015, artt. 5, 6, 10, 11 (81_2015 in libreria); Simone, Diritto del lavoro, pp. 215-219 (art. 1, c. 214, L. 199/2025)."
+    },
+
+    "DL-3b": {
+      sintesi: "Il lavoro intermittente, o a chiamata, è un contratto di lavoro subordinato, a tempo determinato o indeterminato, con cui il lavoratore si mette a disposizione del datore, che lo chiama quando ne ha bisogno (artt. 13-18 D.Lgs. 81/2015).",
+      punti: [
+        ["Causali (art. 13): oggettiva, per prestazioni discontinue o intermittenti individuate dai contratti collettivi o, in mancanza, da decreto ministeriale; soggettiva, con lavoratori con meno di 24 anni o più di 55. Limite di 400 giornate di effettivo lavoro in 3 anni solari tra le stesse parti, salvo turismo, pubblici esercizi e spettacolo; il superamento trasforma il rapporto in tempo pieno e indeterminato.", ["causali", "24 anni", "55", "400 giornate", "turismo"]],
+        ["Divieti (art. 14): sostituire scioperanti; unità con licenziamenti collettivi, sospensioni o riduzioni d'orario nei 6 mesi precedenti per le stesse mansioni; imprese senza valutazione dei rischi.", ["divieti", "sciopera", "valutazione dei rischi"]],
+        ["Forma scritta ai fini della prova, con contenuti obbligatori: durata e causali, luogo e modalità della disponibilità, trattamento e indennità, preavviso di chiamata (almeno un giorno lavorativo), misure di sicurezza (art. 15, c. 1).", ["forma scritta", "preavviso", "giorno lavorativo"]],
+        ["Comunicazione preventiva all'ITL prima di ogni prestazione o ciclo fino a 30 giorni; se omessa, sanzione da 400 a 2.400 euro per lavoratore, senza diffida (art. 15, c. 3). Informativa annuale alle RSA o alla RSU (art. 15, c. 2).", ["comunicazione", "30 giorni", "400", "2.400", "diffida"]],
+        ["Con obbligo di risposta spetta l'indennità mensile di disponibilità, fissata dai CCNL e non inferiore al minimo ministeriale, imponibile ai fini contributivi; il rifiuto ingiustificato può risolvere il contratto. Senza obbligo, nulla è dovuto per i periodi di attesa (art. 16). Nel computo dei dipendenti conta in proporzione all'orario svolto nel semestre (art. 18).", ["indennita", "disponibilita", "rifiuto", "semestre"]]
+      ],
+      aggancio: "Il consulente deve garantire le comunicazioni preventive a ogni chiamata e tenere il conto delle 400 giornate. In ispezione la mancanza della comunicazione si sanziona per ogni lavoratore, senza possibilità di diffida.",
+      fonti: "D.Lgs. 81/2015, artt. 15-16 (81_2015 in libreria); Simone, Diritto del lavoro, pp. 220-222; P1_Cap05, § 5 (art. 18)."
+    },
+
+    "DL-21a": {
+      sintesi: "L'apprendistato è un contratto di lavoro a tempo indeterminato finalizzato alla formazione e all'occupazione dei giovani, con causa mista: lavoro in cambio di retribuzione e formazione. Il professionalizzante (secondo livello) serve a conseguire una qualificazione professionale ai fini contrattuali (artt. 41-47 D.Lgs. 81/2015).",
+      punti: [
+        ["Soggetti e durata: giovani da 18 a 29 anni, da 17 se già in possesso di una qualifica professionale; tutti i settori privati e pubblici; durata formativa fissata dai CCNL entro 3 anni, 5 per i profili dell'artigianato (art. 44); durata minima di 6 mesi (art. 42, c. 2).", ["18", "29 anni", "17", "3 anni", "6 mesi"]],
+        ["Forma: contratto scritto ai fini della prova con piano formativo individuale anche sintetico; tutor o referente aziendale. Formazione interna secondo il CCNL, più l'offerta pubblica regionale per le competenze di base e trasversali, fino a 120 ore nel triennio.", ["ai fini della prova", "piano formativo", "tutor", "120 ore"]],
+        ["Limiti: 3 apprendisti ogni 2 qualificati; sotto 10 dipendenti rapporto del 100%; senza qualificati o con meno di 3, al massimo 3 apprendisti. Con almeno 50 dipendenti, nuove assunzioni solo se nei 36 mesi precedenti è stato stabilizzato almeno il 20% degli apprendisti (art. 42, c. 7-8).", ["ogni 2 qualificati", "100%", "50 dipendenti", "20%"]],
+        ["Retribuzione e inquadramento: fino a due livelli sotto quello di destinazione oppure retribuzione percentualizzata, in alternativa; divieto di cottimo. Gli apprendisti sono esclusi dal computo dei dipendenti (art. 47, c. 3) e hanno malattia INPS, maternità, NASpI e integrazioni salariali.", ["due livelli", "percentual", "cottimo", "computo"]],
+        ["Recesso: durante la formazione solo per giusta causa o giustificato motivo; al termine ciascuna parte può recedere con preavviso dalla fine del periodo formativo (art. 2118 c.c.), altrimenti il rapporto prosegue a tempo indeterminato ordinario (art. 42, c. 4).", ["giusta causa", "giustificato motivo", "preavviso", "2118"]]
+      ],
+      aggancio: "Se il datore non fa formazione per sua esclusiva responsabilità, restituisce la differenza tra contributi versati e dovuti al livello finale, maggiorata del 100%, senza trasformazione del contratto; per i contratti in corso l'ispettore adotta una disposizione con un termine per adempiere (art. 47, c. 1).",
+      fonti: "Simone, Diritto del lavoro, pp. 209-214 (artt. 41-47 D.Lgs. 81/2015)."
+    },
+
+    "DL-X5": {
+      sintesi: "Il Collegato lavoro (art. 19 L. 203/2024) ha aggiunto il c. 7-bis all'art. 26 D.Lgs. 151/2015: se l'assenza ingiustificata dura oltre il termine del CCNL o, in mancanza, oltre 15 giorni, il datore può comunicarla all'ITL e il rapporto si intende risolto per volontà del lavoratore, senza la procedura telematica delle dimissioni.",
+      punti: [
+        ["Regola generale: dimissioni e risoluzioni consensuali sono efficaci solo con i moduli telematici del Ministero, revocabili entro 7 giorni; sono esclusi tra gli altri i lavoratori in prova e i domestici; le dimissioni dei genitori nei primi 3 anni di vita del bambino si convalidano all'ITL.", ["moduli telematici", "7 giorni", "convalid"]],
+        ["Presupposti: assenza ingiustificata oltre il termine del CCNL o, se il CCNL tace, oltre 15 giorni; comunicazione del datore alla sede territoriale dell'INL, che può verificarne la veridicità.", ["assenza ingiustificata", "15 giorni", "comunicazione", "veridicita"]],
+        ["È una facoltà, non un obbligo del datore (circ. Min. Lav. 6/2025): in alternativa può procedere disciplinarmente, se il CCNL lo prevede.", ["facolta", "6/2025", "disciplinar"]],
+        ["L'effetto risolutivo non si produce se l'ITL accerta che la comunicazione non è veritiera, o se il lavoratore prova di non aver potuto comunicare i motivi dell'assenza per forza maggiore o per fatto del datore (nota INL 579/2025).", ["veritiera", "forza maggiore", "579/2025"]],
+        ["Conseguenze: niente NASpI, che spetta invece in caso di licenziamento o di dimissioni per giusta causa; le dimissioni per giusta causa presentate dal lavoratore prevalgono sulla procedura avviata dal datore (circ. INPS 154/2025).", ["naspi", "giusta causa", "154/2025"]]
+      ],
+      aggancio: "La ratio è contrastare le assenze volute per farsi licenziare e ottenere la NASpI. Il consulente verifica il termine del CCNL, invia la comunicazione all'ITL e la comunicazione obbligatoria di cessazione.",
+      fonti: "Simone, Diritto del lavoro, pp. 233-235 (art. 26 D.Lgs. 151/2015; art. 19 L. 203/2024; nota INL 579/2025; msg. INPS 639/2025; circ. Min. Lav. 6/2025; circ. INPS 154/2025); P1_Cap08, scheda 5."
     }
 
   };
@@ -2384,7 +2618,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.8 · 6/11/2026',
+    versione: '1.9 · 6/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
