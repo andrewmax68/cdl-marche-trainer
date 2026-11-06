@@ -3235,6 +3235,396 @@ window.ORALE = (function () {
       ],
       aggancio: "Il consulente calcola l'autoliquidazione e passa al contabile i dati per l'assestamento: premio di competenza, acconto versato e saldo. Il mancato o tardivo pagamento genera sanzioni civili e la perdita della regolarità contributiva (DURC).",
       fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), pp. 1095-1097; INAIL-3 del simulatore (autoliquidazione). Termini e rate: come riportati dal Simone; la scadenza della dichiarazione delle retribuzioni è DA VERIFICARE sulla guida INAIL dell'anno."
+    },
+
+    "S22-DL-2": {
+      sintesi: "Il diritto di precedenza è il diritto di un lavoratore a essere preferito ad altri nelle nuove assunzioni del datore. Nasce soprattutto dal contratto a termine (art. 24 D.Lgs. 81/2015) e dal part-time. Ha un effetto diretto sugli incentivi: l'assunzione che viola il diritto di precedenza di un altro lavoratore non dà diritto ai benefici (art. 31 D.Lgs. 150/2015).",
+      punti: [
+        ["Contratto a termine (art. 24): chi ha lavorato più di 6 mesi, con uno o più contratti a termine presso la stessa azienda, ha precedenza nelle assunzioni a tempo indeterminato entro i 12 mesi successivi alla cessazione, per le mansioni già svolte; i contratti collettivi possono disporre diversamente.", ["6 mesi", "12 mesi", "tempo indeterminato", "mansioni"]],
+        ["Lavoratrici: il congedo di maternità fruito durante il contratto a termine conta per i 6 mesi; hanno precedenza anche nelle nuove assunzioni a termine entro 12 mesi. Stagionali: precedenza nelle nuove assunzioni a termine per le stesse attività stagionali, senza requisito dei 6 mesi.", ["maternita", "stagional"]],
+        ["Forma e termini: il diritto va richiamato per iscritto nel contratto; il lavoratore lo esercita manifestando la volontà per iscritto entro 6 mesi dalla cessazione (3 mesi per gli stagionali).", ["richiamato", "per iscritto", "3 mesi"]],
+        ["Part-time: il lavoratore passato da tempo pieno a part-time ha precedenza nelle assunzioni a tempo pieno per mansioni uguali o di pari livello; non spetta a chi è stato assunto fin dall'origine a part-time.", ["part-time", "tempo pieno", "origine"]],
+        ["Incentivi (art. 31 D.Lgs. 150/2015): non spettano se l'assunzione viola il diritto di precedenza di un altro lavoratore, se attua un obbligo di legge o di contratto, se ci sono sospensioni in atto per crisi o riorganizzazione, o se riguarda lavoratori licenziati nei 6 mesi precedenti da un datore collegato; servono inoltre il DURC e il rispetto dei contratti collettivi (art. 1, c. 1175, L. 296/2006).", ["viola", "obbligo", "durc", "1175"]]
+      ],
+      aggancio: "Prima di chiedere un incentivo il consulente controlla l'elenco dei lavoratori a termine cessati negli ultimi 12 mesi che hanno esercitato la precedenza. Se la precedenza non è rispettata, l'ITL può intervenire con la disposizione (nota INL 4539/2020, riportata da Rausei) e il beneficio non spetta. Dal 1° aprile 2026, per chiedere benefici all'assunzione la posizione va pubblicata sul SIISL (art. 14 D.L. 159/2025).",
+      fonti: "Simone, Diritto del lavoro, pp. 88 e 208 (precedenza nel termine), 218-219 (part-time); P1/P1_Mappe_Poteri_ispettivi (disposizione)."
+    },
+
+    "S22-DL-6": {
+      sintesi: "L'assunzione di uno straniero segue regole diverse secondo la cittadinanza. Il cittadino UE gode della libera circolazione e si assume come un italiano. Il cittadino extra UE residente all'estero entra di regola nelle quote del decreto flussi, con nulla osta dello Sportello unico per l'immigrazione e contratto di soggiorno (D.Lgs. 286/1998, artt. 21-27).",
+      punti: [
+        ["Cittadini UE: libera circolazione e diritto di svolgere qualsiasi attività autonoma o subordinata, salvo quelle riservate ai cittadini italiani (art. 19 D.Lgs. 30/2007): nessuna autorizzazione, solo la comunicazione obbligatoria.", ["libera circolazione", "riservate", "comunicazione"]],
+        ["Extra UE dall'estero: verifica al centro per l'impiego dell'indisponibilità di lavoratori già presenti (8 giorni); richiesta nominativa di nulla osta allo Sportello unico, con proposta di contratto di soggiorno, alloggio e asseverazione di congruità del consulente o dell'associazione (art. 24-bis).", ["8 giorni", "nulla osta", "sportello unico", "asseverazione"]],
+        ["Il nulla osta si rilascia entro 60 giorni (silenzio-assenso se la Questura non segnala ostacoli, con eccezioni per i Paesi a rischio) e vale 6 mesi; poi visto d'ingresso e, entro 15 giorni dall'ingresso, firma del contratto di soggiorno.", ["60 giorni", "6 mesi", "15 giorni", "contratto di soggiorno"]],
+        ["Permesso di soggiorno per lavoro: fino a 9 mesi per lo stagionale, 1 anno per il tempo determinato, 2 anni per l'indeterminato; la perdita del lavoro non comporta la revoca. Lo straniero già regolarmente soggiornante con permesso che consente il lavoro si assume con la sola comunicazione obbligatoria.", ["9 mesi", "2 anni", "perdita del lavoro", "regolarmente"]],
+        ["Chi occupa stranieri senza permesso di soggiorno, o con permesso scaduto, revocato o annullato e non rinnovato, commette reato (art. 22, c. 12, D.Lgs. 286/1998): reclusione da 6 mesi a 3 anni e multa di 5.000 euro per ogni lavoratore, con aggravanti per più di tre lavoratori, minori o sfruttamento.", ["reato", "5.000", "minori"]]
+      ],
+      aggancio: "Ruolo del consulente: precompila le domande, assevera la congruità tra fabbisogno e capacità dell'impresa (art. 24-bis) e controlla il permesso prima di ogni assunzione, perché senza permesso valido il rapporto è penalmente rilevante. Collegamento con il caporalato: permesso speciale per le vittime che collaborano (art. 18-ter, D.L. 145/2024).",
+      fonti: "Simone, Diritto del lavoro, pp. 72-73 e 83-87; art. 22, c. 12, D.Lgs. 286/1998: pena riportata da fonte secondaria (money.it), testo da verificare su Normattiva."
+    },
+
+    "S22-DL-8": {
+      sintesi: "Il tirocinio è un percorso formativo di alternanza tra studio e lavoro, per l'orientamento e la formazione professionale; non è un rapporto di lavoro (art. 1, c. 720-726, L. 234/2021). È curriculare se serve a conseguire un titolo di studio; extracurriculare negli altri casi, con disciplina regionale sulla base di linee guida concordate tra Stato e Regioni.",
+      punti: [
+        ["Definizione (c. 720): alternanza tra studio e lavoro, finalità di orientamento e formazione; curriculare se funzionale a un titolo di studio riconosciuto, extracurriculare altrimenti.", ["alternanza", "curriculare", "titolo di studio"]],
+        ["Linee guida per gli extracurriculari (c. 721): soggetti con difficoltà di inclusione sociale, congrua indennità di partecipazione, durata massima, limiti numerici secondo le dimensioni dell'impresa, bilancio e certificazione delle competenze, misure contro l'uso distorto. Fino al recepimento valgono le discipline regionali.", ["indennita", "durata massima", "limiti numerici", "regional"]],
+        ["Sanzioni: mancata indennità, sanzione amministrativa da 1.000 a 6.000 euro (c. 722); tirocinio usato in modo fraudolento al posto del lavoro dipendente, ammenda di 50 euro per tirocinante e per giorno, estinguibile con la prescrizione obbligatoria (c. 723).", ["1.000", "6.000", "50 euro", "fraudolent"]],
+        ["Riqualificazione: su domanda del tirocinante il giudice può riconoscere un rapporto di lavoro subordinato dalla pronuncia giudiziale (c. 723).", ["subordinato", "pronuncia"]],
+        ["Obblighi del soggetto ospitante: comunicazione obbligatoria per i tirocini extracurriculari (c. 724); integrale rispetto del D.Lgs. 81/2008, perché il tirocinante è equiparato al lavoratore (c. 725). La trasformazione del tirocinio in rapporto di lavoro va comunicata entro 5 giorni.", ["comunicazione obbligatoria", "81/2008", "equiparato", "5 giorni"]]
+      ],
+      aggancio: "Da non confondere con il praticantato per l'esame da consulente del lavoro: è un tirocinio professionale di 18 mesi, regolato dall'Ordine, che non crea rapporto di lavoro subordinato (Simone, Deontologia, pp. 1222-1223). In ispezione, il tirocinio non comunicato e riqualificato come lavoro subordinato è trattato come lavoro nero.",
+      fonti: "Art. 1, c. 720-726, L. 234/2021, come sintetizzati dalla nota INL 21/3/2022 (prot. 530), ispettorato.gov.it; Simone, Diritto del lavoro, pp. 76-78 (comunicazioni) e 158 (equiparazione nel D.Lgs. 81/2008); Simone, Legislazione sociale (omessa comunicazione e riqualificazione in subordinato)."
+    },
+
+    "S22-DL-10": {
+      sintesi: "Le prestazioni occasionali (art. 54-bis D.L. 50/2017, conv. L. 96/2017) sono attività di ridotta entità entro limiti annui di compenso e di durata, gestite con la piattaforma INPS. Hanno due canali: il Libretto famiglia per le persone fisiche fuori dall'attività d'impresa o professionale, il contratto di prestazione occasionale (PrestO) per gli altri utilizzatori.",
+      punti: [
+        ["Limiti annui: ogni prestatore fino a 5.000 euro da tutti gli utilizzatori; ogni utilizzatore fino a 10.000 euro (15.000 in congressi, fiere, eventi, terme e parchi divertimento); tra lo stesso prestatore e lo stesso utilizzatore fino a 2.500 euro; massimo 280 ore. Se si superano 2.500 euro o 280 ore il rapporto diventa a tempo pieno e indeterminato.", ["5.000", "10.000", "2.500", "280 ore", "tempo pieno e indeterminato"]],
+        ["Divieto: non può lavorare in modo occasionale chi ha o ha avuto da meno di 6 mesi un rapporto subordinato o una co.co.co. con lo stesso utilizzatore.", ["6 mesi", "co.co.co"]],
+        ["Libretto famiglia: titoli da 10 euro per prestazioni fino a un'ora, solo per piccoli lavori domestici, assistenza a bambini, anziani, malati o disabili, insegnamento privato supplementare; comunicazione entro il giorno 3 del mese successivo.", ["10 euro", "domestic", "giorno 3"]],
+        ["PrestO: compenso minimo di 9 euro l'ora; dichiarazione all'INPS almeno un'ora prima dell'inizio, anche tramite il consulente; vietato a chi ha più di 10 dipendenti a tempo indeterminato (25 nei settori di congressi, fiere, eventi, terme e parchi) e alle imprese del settore agricolo.", ["9 euro", "un'ora prima", "10 dipendenti", "agricol"]],
+        ["Tutele: riposo giornaliero, pause e riposi settimanali; oneri contributivi e assicurativi (anche INAIL) pagati con la provvista versata sulla piattaforma; il compenso non fa perdere lo stato di disoccupazione.", ["riposo", "inail", "disoccupazione"]]
+      ],
+      aggancio: "Da distinguere dal lavoro autonomo occasionale dell'art. 2222 c.c. (DL-7a), che richiede la comunicazione preventiva all'ITL. Se la prestazione ha i caratteri della subordinazione e manca la comunicazione preventiva, o è inviata durante l'accesso ispettivo, o è revocata per una giornata effettivamente lavorata, si applica la maxisanzione per lavoro sommerso (Simone, Legislazione sociale, elenco dei casi di lavoro nero).",
+      fonti: "Simone, Diritto del lavoro, pp. 23-25 (art. 54-bis D.L. 50/2017); Simone, Legislazione sociale (casi di lavoro sommerso)."
+    },
+
+    "S22-DL-21": {
+      sintesi: "Quando il lavoratore non può lavorare per una causa che non gli è imputabile, il rapporto non si estingue ma resta sospeso. Le regole civilistiche dell'impossibilità sopravvenuta (artt. 1256 e 1463 c.c.) sono corrette dall'art. 2110 c.c.: conservazione del posto, anzianità e tutela economica per malattia, infortunio, gravidanza e puerperio.",
+      punti: [
+        ["Art. 2110 c.c.: diritto alla conservazione del posto per il periodo di comporto fissato dai contratti collettivi, durante il quale il lavoratore non può essere licenziato; i giorni di assenza contano nell'anzianità.", ["2110", "comporto", "anzianita"]],
+        ["Tutela economica: retribuzione o indennità a carico dell'INPS o dell'INAIL secondo i casi; per gli impiegati dell'industria il trattamento di malattia è tutto a carico del datore (art. 6 R.D.L. 1825/1924).", ["indennita", "inail", "1825/1924"]],
+        ["Malattia: sospende il rapporto solo se rende impossibile la prestazione, con incapacità concreta e attuale. Le ferie chieste durante la malattia interrompono il comporto (Cass. ord. 582/2024).", ["concreta", "attuale", "582/2024"]],
+        ["Altre cause: richiamo alle armi (art. 2111 c.c.), con divieto di licenziamento fino a 3 mesi dalla ripresa; congedi per gravi motivi familiari e per formazione (L. 53/2000), senza retribuzione e con conservazione del posto; maternità, paternità e congedi parentali (D.Lgs. 151/2001).", ["2111", "3 mesi", "53/2000", "151/2001"]],
+        ["Se l'impossibilità diventa definitiva (per esempio inidoneità permanente alla mansione), il rapporto non si risolve da solo: serve il licenziamento per giustificato motivo oggettivo, dopo aver verificato il repêchage, anche in mansioni inferiori.", ["definitiva", "licenziamento", "repechage"]]
+      ],
+      aggancio: "Il superamento del comporto è una causa autonoma di licenziamento, esclusa dalla procedura dell'art. 7 L. 604/1966 (art. 7, c. 6). Il consulente tiene il conteggio del comporto secondo il CCNL (secco o per sommatoria).",
+      fonti: "Simone, Diritto del lavoro, pp. 171 (inidoneità), 195-197, 230, 239-240 e 242; artt. 2110-2111 c.c. (NORMA_Codice_civile_lavoro); artt. 1256 e 1463 c.c. su Normattiva."
+    },
+
+    "S22-DL-22": {
+      sintesi: "Quando è il datore a non poter ricevere la prestazione, la regola di fondo è che il rischio dell'impresa resta a suo carico: se rifiuta la prestazione offerta senza un motivo legittimo è in mora (art. 1206 c.c.) e deve la retribuzione. Il rapporto può essere sospeso senza retribuzione solo per cause non imputabili, e il sostegno al reddito passa per la cassa integrazione o i fondi di solidarietà.",
+      punti: [
+        ["Regola civile e correttivo lavoristico: l'impossibilità sopravvenuta non estingue automaticamente il rapporto (Simone p. 230); se è temporanea, l'obbligato non risponde del ritardo finché dura (art. 1256, c. 2, c.c.). Esempi di forza maggiore: distruzione degli impianti per terremoto o inondazione.", ["non estingue", "temporanea", "forza maggiore"]],
+        ["Se la causa rientra nella sfera organizzativa del datore (calo di ordini, scelte gestionali, mancanza di materie prime evitabile), il datore che rifiuta la prestazione resta obbligato a pagare la retribuzione (mora del creditore, art. 1206 c.c.).", ["sfera organizzativa", "mora del creditore", "1206"]],
+        ["Strumento tipico: CIGO per eventi transitori non imputabili all'impresa o ai dipendenti, incluse le intemperie, e per situazioni temporanee di mercato; CIGS per crisi e riorganizzazione; FIS e fondi di solidarietà per i datori fuori dalla CIG.", ["cigo", "non imputabili", "cigs", "fis"]],
+        ["Ordine dell'autorità (factum principis): per esempio la sospensione disposta dall'ITL o un provvedimento amministrativo. Attenzione: nella sospensione ispettiva per lavoro irregolare o sicurezza retribuzione e contributi restano dovuti (art. 14 D.Lgs. 81/2008).", ["autorita", "sospensione", "restano dovuti"]],
+        ["Liquidazione giudiziale: i rapporti restano sospesi finché il curatore decide se subentrare o recedere; dopo 4 mesi senza subentro cessano dalla data di apertura (art. 189 D.Lgs. 14/2019); il lavoratore che si dimette nel periodo di sospensione ha giusta causa.", ["curatore", "4 mesi", "189", "giusta causa"]]
+      ],
+      aggancio: "Il consulente non sospende mai la retribuzione senza un titolo: prima la consultazione sindacale e la domanda di CIG o FIS, poi la sospensione. Collegamento con INPS-1 (CIGO), INPS-2 (CIGS) e S22-INPS-14 (fondi e FIS).",
+      fonti: "Simone, Diritto del lavoro, pp. 230, 232-233 (art. 189 CCII); Simone, Legislazione sociale, pp. 360-362 (causali CIGO); P1/P1_Mappe_Poteri_ispettivi (sospensione ispettiva); artt. 1206 e 1256 c.c. su Normattiva."
+    },
+
+    "S22-DL-23": {
+      sintesi: "Le dimissioni sono il recesso del lavoratore; la risoluzione consensuale è l'accordo tra le parti per chiudere il rapporto. Per entrambe vale, a pena di inefficacia, la procedura telematica dell'art. 26 D.Lgs. 151/2015, con 7 giorni per revocare. Le dimissioni richiedono il preavviso (art. 2118 c.c.), salvo la giusta causa (art. 2119 c.c.).",
+      punti: [
+        ["Procedura: moduli del Ministero del lavoro trasmessi al datore e all'ITL, anche tramite patronati, sindacati, enti bilaterali, commissioni di certificazione, consulenti del lavoro; entro 7 giorni il lavoratore può revocare con le stesse modalità.", ["moduli", "7 giorni", "revocare", "consulenti del lavoro"]],
+        ["Esclusi dalla procedura: lavoratrice in gravidanza e genitori nei primi 3 anni del bambino (convalida dell'ITL, art. 55, c. 4, D.Lgs. 151/2001, anche in prova); domestici; lavoratori in prova; pubblico impiego; marittimi; atti fatti in sede protetta o davanti alle commissioni di certificazione.", ["convalida", "3 anni", "domestic", "sede protetta"]],
+        ["Preavviso e giusta causa: chi si dimette deve il preavviso o la relativa indennità; non lo deve in caso di giusta causa, per esempio retribuzione non pagata, molestie, mobbing, demansionamento, trasferimento illegittimo (circ. INPS 163/2003). Con la giusta causa spetta la NASpI, che non spetta per le dimissioni semplici.", ["preavviso", "giusta causa", "163/2003", "naspi"]],
+        ["Dimissioni per fatti concludenti (art. 26, c. 7-bis, da L. 203/2024): assenza ingiustificata oltre il termine del CCNL o, in mancanza, oltre 15 giorni; il datore lo comunica all'ITL, che può verificare. Nessun effetto se l'ITL accerta che la comunicazione non è vera o se il lavoratore prova di non aver potuto comunicare i motivi.", ["fatti concludenti", "15 giorni", "non e vera"]],
+        ["Risoluzione consensuale: di norma niente NASpI, salvo tre casi: offerta di conciliazione delle tutele crescenti (art. 6 D.Lgs. 23/2015), rifiuto del trasferimento a più di 50 km dalla residenza o a 80 minuti o più con i mezzi pubblici, esito positivo della procedura dell'art. 7 L. 604/1966.", ["consensuale", "50 km", "80 minuti", "art. 7"]]
+      ],
+      aggancio: "Il consulente del lavoro può trasmettere i moduli, mentre agli altri professionisti della L. 12/1979 non è consentito (interpello 24/2016, riportato da Simone, Deontologia, p. 1235). Le dimissioni in bianco sono il fenomeno che la procedura telematica vuole impedire.",
+      fonti: "Simone, Diritto del lavoro, pp. 232-234 e 241; Simone, Legislazione sociale, pp. 312-314 e 371 (NASpI); Simone, Deontologia, p. 1235; artt. 2118-2119 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "S22-DL-25": {
+      sintesi: "Il giustificato motivo oggettivo comprende le ragioni inerenti all'attività produttiva, all'organizzazione del lavoro e al suo regolare funzionamento (art. 3 L. 604/1966). Il datore deve provare la ragione organizzativa effettiva, il nesso con il posto soppresso e l'impossibilità di ricollocare il lavoratore (repêchage). Nelle imprese con più di 15 dipendenti, per gli assunti prima del 7 marzo 2015, va prima esperita la procedura dell'art. 7 L. 604/1966 presso l'ITL.",
+      punti: [
+        ["Contenuto: soppressione del posto o del reparto per scelte effettive e non simulate, anche senza crisi (Cass. 24882/2017, 25201/2016): esternalizzazione, redistribuzione delle mansioni, innovazione tecnologica, migliore efficienza (Cass. 1514/2021). La scelta organizzativa è libera (art. 41 Cost.), il giudice controlla solo che sia reale.", ["soppressione", "simulate", "esternalizzazione", "41 cost"]],
+        ["Rientrano nel motivo oggettivo anche fatti del lavoratore non colpevoli che incidono sull'organizzazione: perdita di un titolo abilitante, inidoneità fisica permanente.", ["titolo", "inidoneita"]],
+        ["Repêchage: obbligo di creazione giurisprudenziale di verificare un'altra utilizzazione possibile del lavoratore prima di licenziarlo. Con 5 licenziamenti in 120 giorni si applica la disciplina dei licenziamenti collettivi (L. 223/1991).", ["repechage", "5 licenziamenti", "120 giorni"]],
+        ["Procedura dell'art. 7 L. 604/1966: comunicazione all'ITL, e per conoscenza al lavoratore, con i motivi e le misure di ricollocazione; convocazione davanti alla commissione provinciale di conciliazione entro 7 giorni; conclusione entro 20 giorni; parti assistite anche da un consulente del lavoro; sospensione fino a 15 giorni per impedimento documentato del lavoratore.", ["itl", "7 giorni", "20 giorni", "consulente del lavoro"]],
+        ["Esiti: la risoluzione consensuale raggiunta in sede di conciliazione dà diritto alla NASpI; se fallisce, il datore può licenziare e il licenziamento ha effetto dal giorno in cui è stata avviata la procedura. Esclusi: superamento del comporto, cambi d'appalto con riassunzione, fine cantiere nell'edilizia.", ["naspi", "effetto", "comporto", "cantiere"]]
+      ],
+      aggancio: "Per gli assunti dal 7 marzo 2015 (tutele crescenti) la procedura non si applica e il licenziamento per motivo oggettivo ingiustificato dà di regola solo l'indennità; per i vecchi assunti vale l'art. 18 St. lav. (vedi DL-X1). Il consulente documenta la riorganizzazione e la ricerca di posizioni alternative prima di intimare il recesso.",
+      fonti: "Simone, Diritto del lavoro, pp. 238-242; art. 7 L. 604/1966; vedi DL-X1 per le tutele."
+    },
+
+    "S22-DL-30": {
+      sintesi: "La vigilanza in materia di lavoro e legislazione sociale spetta principalmente all'INL, attraverso ITL e IAM (artt. 6-7 D.Lgs. 124/2004), con INPS e INAIL per i profili previdenziali e le ASL per la sicurezza. La logica del decreto è prima regolarizzare e poi sanzionare: la diffida è lo strumento centrale. Il consulente del lavoro è l'interlocutore qualificato degli ispettori.",
+      punti: [
+        ["Accesso e verbale di primo accesso (art. 13, c. 1): identificazione dei lavoratori presenti, attività svolte, dichiarazioni del datore o di chi lo assiste, richieste di documenti. Le dichiarazioni dei lavoratori si raccolgono senza la presenza del datore; il verbale fa piena prova solo per i fatti avvenuti davanti all'ispettore.", ["primo accesso", "dichiarazioni", "piena prova"]],
+        ["Diffida precettiva (art. 13, c. 2): per gli illeciti amministrativi materialmente sanabili, 30 giorni per regolarizzare e 15 per pagare il minimo o un quarto della sanzione fissa; estingue il procedimento. Diffida amministrativa (art. 6 D.Lgs. 103/2024): per illeciti fino a 5.000 euro, la prima volta nel quinquennio, 20 giorni e nessuna sanzione.", ["30 giorni", "minimo", "un quarto", "103/2024"]],
+        ["Diffida accertativa (art. 12): per i crediti retributivi certi, liquidi ed esigibili; entro 30 giorni conciliazione o ricorso al direttore (che sospende); altrimenti diventa titolo esecutivo, ma non giudicato (Cass. 20826/2025, riportata da Rausei).", ["accertativa", "titolo esecutivo", "20826/2025"]],
+        ["Altri strumenti: prescrizione per le contravvenzioni (pagamento di un quarto del massimo dell'ammenda), disposizione per le irregolarità senza sanzione, sospensione dell'attività per lavoro irregolare o gravi violazioni di sicurezza, conciliazione monocratica.", ["prescrizione", "disposizione", "sospensione", "monocratica"]],
+        ["Ruolo del consulente: assiste il datore durante l'accesso e nei rapporti con gli ispettori; può tenere il LUL e i documenti nel proprio studio, previa comunicazione all'ITL; valuta conciliazione o ricorso e i termini; cura la regolarizzazione.", ["assiste", "lul", "studio", "regolarizzazione"]]
+      ],
+      aggancio: "Per i ricorsi: art. 16 (direttore, 30 giorni), art. 17 (Comitato per i rapporti di lavoro, sulla qualificazione del rapporto), art. 18 L. 689/1981 (scritti difensivi). Collegamento con il D.L. 62/2026: le differenze rispetto al TEC si recuperano con diffida accertativa o disposizione.",
+      fonti: "P1/P1_Mappe_Poteri_ispettivi; D.Lgs. 124/2004 (124_2004.pdf in libreria), artt. 12-13; Simone, Legislazione sociale, pp. 268 (tenuta del LUL presso il consulente) e 430-431 (accertamento e verbali)."
+    },
+
+    "S22-INPS-1": {
+      sintesi: "Il sistema previdenziale pubblico è a ripartizione: i contributi dei lavoratori attivi pagano le pensioni in corso. L'INPS gestisce l'assicurazione generale obbligatoria (AGO) per i dipendenti privati (FPLD), le gestioni speciali degli autonomi (artigiani, commercianti, coltivatori diretti), la gestione separata e le gestioni ex INPDAP dei pubblici; i liberi professionisti ordinistici hanno le proprie Casse. Le due pensioni strutturali sono la vecchiaia e l'anticipata (riforma Fornero, art. 24 D.L. 201/2011).",
+      punti: [
+        ["Gestioni: FPLD per i dipendenti privati; tre gestioni speciali (coltivatori diretti e IAP, artigiani, commercianti); gestione separata per professionisti senza Cassa e collaboratori; Casse private per i professionisti iscritti agli albi.", ["fpld", "gestioni speciali", "gestione separata", "casse"]],
+        ["Finanziamento: primo pilastro pubblico a ripartizione, secondo pilastro complementare a capitalizzazione. Contributi obbligatori, figurativi, volontari, da riscatto; prescrizione in 5 anni.", ["ripartizione", "capitalizzazione", "figurativi", "5 anni"]],
+        ["Pensione di vecchiaia: 67 anni e almeno 20 anni di contributi fino al 31/12/2026; poi 67 anni e 1 mese dal 2027 e 67 anni e 3 mesi dal 2028 (art. 1, c. 185, L. 199/2025). Per i contributivi puri serve anche un importo almeno pari all'assegno sociale, salvo l'accesso a 71 anni con 5 anni di contributi effettivi.", ["67 anni", "20 anni", "199/2025", "assegno sociale", "71 anni"]],
+        ["Pensione anticipata ordinaria, a qualsiasi età: 42 anni e 10 mesi di contributi per gli uomini, 41 anni e 10 mesi per le donne fino al 2026; un mese in più dal 2027 e tre in più dal 2028.", ["42 anni e 10 mesi", "41 anni e 10 mesi", "qualsiasi eta"]],
+        ["Altre prestazioni: pensioni di invalidità e inabilità, pensione ai superstiti; il diritto alla pensione è imprescrittibile, i ratei si prescrivono in 5 anni. Per sommare i contributi di gestioni diverse: ricongiunzione, totalizzazione, cumulo gratuito.", ["inabilita", "superstiti", "imprescrittibile", "cumulo"]]
+      ],
+      aggancio: "Collegamento con l'automaticità delle prestazioni (art. 2116 c.c., INPS-23): per i dipendenti la pensione spetta anche se il datore non ha versato, nei limiti della prescrizione; dopo, resta la rendita vitalizia dell'art. 13 L. 1338/1962.",
+      fonti: "Simone, Legislazione sociale, pp. 301-305 e 309-311."
+    },
+
+    "S22-INPS-2": {
+      sintesi: "Accanto a vecchiaia e anticipata ordinaria esistono canali d'uscita con requisiti diversi: strutturali (anticipata contributiva, precoci, usuranti) o sperimentali e ormai a esaurimento (quota 103, opzione donna), oltre all'APE sociale. Il principio di cristallizzazione consente di usare un requisito maturato entro la scadenza anche dopo.",
+      punti: [
+        ["Pensione anticipata contributiva (solo contributivi puri): 64 anni, 20 anni di contributi, importo almeno pari a 3 volte l'assegno sociale (2,8 con un figlio, 2,6 con due o più figli; 3,2 volte dal 2030); fino all'età di vecchiaia importo massimo pari a 5 volte il minimo.", ["64 anni", "3 volte", "2,6", "3,2"]],
+        ["Precoci: con almeno 12 mesi di lavoro effettivo prima dei 19 anni, pensione con 41 anni di contributi se disoccupati, caregiver, invalidi almeno al 74%, addetti a lavori gravosi o usuranti (L. 232/2016).", ["12 mesi", "19 anni", "41 anni", "74%"]],
+        ["Quota 103 (62 anni e 41 di contributi) e opzione donna non sono state prorogate dalla L. 199/2025: restano solo per chi ha maturato i requisiti entro le scadenze (31/12/2025 per quota 103, 31/12/2024 per opzione donna), grazie alla cristallizzazione.", ["quota 103", "62 anni", "opzione donna", "cristallizzazione"]],
+        ["APE sociale: indennità ponte fino alla vecchiaia, da 63 anni e 5 mesi, per disoccupati, caregiver, invalidi e gravosi; prorogata per chi matura i requisiti entro il 31/12/2026; non cumulabile con redditi da lavoro salvo l'autonomo occasionale fino a 5.000 euro.", ["ape sociale", "63 anni e 5 mesi", "5.000"]],
+        ["Incentivo al posticipo: chi matura i requisiti dell'anticipata ordinaria entro il 31/12/2026 può restare al lavoro e ricevere in busta paga la quota di contributi a proprio carico (art. 1, c. 194, L. 199/2025). Gli usuranti sono esclusi dall'aumento dei requisiti per il 2027-2028.", ["posticipo", "busta paga", "194", "usuranti"]]
+      ],
+      aggancio: "Per il consulente l'incentivo al posticipo è un tema di busta paga: la quota IVS a carico del lavoratore non si versa e si eroga al dipendente. Verificare sempre i requisiti sull'estratto conto contributivo.",
+      fonti: "Simone, Legislazione sociale, pp. 303-304 e 309-314."
+    },
+
+    "S22-INPS-3": {
+      sintesi: "I sistemi di calcolo sono tre: retributivo (media delle ultime retribuzioni), contributivo (contributi versati in tutta la vita, introdotto dalla L. 335/1995) e misto. Quale si applica dipende dai contributi posseduti al 31/12/1995; dal 2012 tutti passano al contributivo per le anzianità successive (riforma Fornero).",
+      punti: [
+        ["Retributivo: retribuzione annua pensionabile per aliquota di rendimento per anni di contribuzione; l'importo annuo diviso 13 dà il rateo mensile.", ["retribuzione annua pensionabile", "rendimento", "13"]],
+        ["Contributivo: ogni anno si accantona il 33% della retribuzione imponibile (24% per artigiani e commercianti), rivalutato con la media quinquennale del PIL nominale; il montante si moltiplica per il coefficiente di trasformazione legato all'età (5,608% a 67 anni nel 2025-2026, D.M. 20/11/2024).", ["33%", "24%", "pil", "montante", "5,608%"]],
+        ["Chi rientra in quale sistema: nessun contributo al 31/12/1995, contributivo puro; meno di 18 anni, misto (retributivo fino al 1995, contributivo dopo); almeno 18 anni, retributivo fino al 2011 e contributivo dal 2012.", ["31/12/1995", "18 anni", "misto", "2012"]],
+        ["Opzione per il contributivo: per chi ha meno di 18 anni al 1995, con almeno 15 anni di contributi di cui 5 dopo il 1995 (art. 1, c. 23, L. 335/1995); di regola irrevocabile.", ["opzione", "15 anni", "irrevocabile"]],
+        ["Correttivi: adeguamento dei requisiti alla speranza di vita, con aumento massimo di 3 mesi per volta; coefficienti di trasformazione rivisti ogni due anni; dal 2025 i neoiscritti possono versare fino a 2 punti di aliquota in più (L. 207/2024).", ["speranza di vita", "3 mesi", "coefficienti", "2 punti"]]
+      ],
+      aggancio: "Nel contributivo la pensione dipende dai contributi effettivamente versati: per questo la regolarità contributiva e l'imponibile corretto in busta paga hanno effetto diretto sul futuro del lavoratore. Collegamento con il minimale settimanale per l'accredito (40% del trattamento minimo).",
+      fonti: "Simone, Legislazione sociale, pp. 302-309."
+    },
+
+    "S22-INPS-4": {
+      sintesi: "Prima di andare dal giudice, contro i provvedimenti dell'INPS si propone ricorso amministrativo ai Comitati dell'Istituto. Per le prestazioni dei dipendenti privati il ricorso al Comitato provinciale è condizione di procedibilità della domanda giudiziale (artt. 46-47 L. 88/1989). Le regole operative sono nel Regolamento dei ricorsi del 18/1/2023, illustrato dalla circolare INPS 48/2023.",
+      punti: [
+        ["Organi: Comitati provinciali e centrali per la gestione dei privati; Comitati di vigilanza delle gestioni autonome; Commissioni CISOA; Comitati dei fondi di solidarietà e del FIS; Comitato regionale per i rapporti di lavoro per i lavori usuranti.", ["comitati provinciali", "comitati di vigilanza", "cisoa", "fis"]],
+        ["Termini per ricorrere: di regola 90 giorni dal provvedimento; se l'INPS non risponde alla domanda, il termine decorre dal 121° giorno (silenzio-rigetto a 120 giorni, art. 7 L. 533/1973). 30 giorni per i Comitati di vigilanza, per i fondi di solidarietà e il FIS e per il rigetto della CIGO.", ["90 giorni", "121", "120 giorni", "30 giorni"]],
+        ["Decisione entro 90 giorni dalla ricezione; il ricorso si presenta solo in via telematica, direttamente o tramite patronato o intermediario (anche il consulente del lavoro).", ["telematica", "patronato", "intermediario"]],
+        ["Il ricorso non sospende automaticamente il recupero dei contributi ed è inammissibile se è già stato notificato un avviso di addebito sullo stesso oggetto; contro l'avviso di addebito o la cartella si fa opposizione al giudice del lavoro entro 40 giorni (art. 24 D.Lgs. 46/1999).", ["non sospende", "avviso di addebito", "40 giorni"]],
+        ["Rapporto con il giudizio: per i privati il decorso dei 90 giorni è condizione di procedibilità; per i Comitati di vigilanza il ricorso non è presupposto per agire in giudizio. Il processo previdenziale segue il rito del lavoro.", ["procedibilita", "rito del lavoro"]]
+      ],
+      aggancio: "Per i verbali ispettivi INPS vale anche il ricorso al Comitato per i rapporti di lavoro quando si contesta la qualificazione del rapporto (art. 17 D.Lgs. 124/2004). Il consulente valuta i termini, sempre brevi, e se conviene ricorrere o pagare.",
+      fonti: "Circ. INPS 48/2023 (Regolamento dei ricorsi amministrativi, delibera CdA 8 del 18/1/2023), letta su ance.it; artt. 46-47 L. 88/1989; P1/P1_Mappe_Poteri_ispettivi (art. 17). Argomento non trattato dal Simone in libreria."
+    },
+
+    "S22-INPS-5": {
+      sintesi: "UniEmens è il flusso telematico mensile con cui il datore di lavoro, o il consulente delegato, trasmette all'INPS i dati retributivi e contributivi individuali di ogni lavoratore (art. 44 D.L. 269/2003, conv. L. 326/2003). È la base del conto assicurativo del lavoratore e del calcolo dei contributi.",
+      punti: [
+        ["Contenuto: imponibile, contributi, eventi (malattia, maternità, CIG), conguagli di prestazioni anticipate, agevolazioni; dati per dipendenti e parasubordinati.", ["imponibile", "eventi", "conguagli", "parasubordinati"]],
+        ["Termine: entro l'ultimo giorno del mese successivo a quello di competenza; per i dipendenti conta il mese della busta paga, per i collaboratori il mese in cui il compenso è pagato; se l'ultimo giorno è festivo, primo giorno lavorativo del mese dopo.", ["ultimo giorno", "mese successivo", "busta paga", "festivo"]],
+        ["Principio di nettizzazione: i contributi si espongono e si versano al netto degli esoneri e degli sgravi spettanti, riducendo l'aliquota.", ["nettizzazione", "esoneri", "aliquota"]],
+        ["Collegamento con il versamento: i contributi esposti nel flusso si pagano con l'F24 entro il 16 del mese successivo al periodo di paga, mentre il flusso si invia entro la fine dello stesso mese.", ["f24", "16", "fine"]],
+        ["Funzioni: alimenta l'estratto conto contributivo e l'automaticità delle prestazioni, il DURC e i controlli sulle agevolazioni.", ["estratto conto", "durc", "agevolazioni"]]
+      ],
+      aggancio: "Errori tipici: imponibile non coincidente con il LUL, codice di agevolazione errato, eventi non esposti. Il consulente quadra ogni mese LUL, UniEmens e F24.",
+      fonti: "Simone, Legislazione sociale, pp. 266 e 293 (UniEmens per i collaboratori)."
+    },
+
+    "S22-INPS-10": {
+      sintesi: "La Comunicazione Unica (ComUnica) è la pratica telematica unica con cui chi avvia un'impresa assolve insieme gli adempimenti verso Registro delle imprese, Agenzia delle Entrate, INPS e INAIL (art. 9 D.L. 7/2007, conv. L. 40/2007). Si presenta all'ufficio del Registro delle imprese, che la smista agli enti.",
+      punti: [
+        ["Adempimenti assolti: dichiarazione di inizio attività IVA e codice fiscale o partita IVA; iscrizione al Registro delle imprese; denuncia di iscrizione all'INAIL; iscrizione all'INPS; iscrizione all'Albo delle imprese artigiane.", ["iva", "registro delle imprese", "inail", "albo delle imprese artigiane"]],
+        ["Forma: fascicolo elettronico firmato digitalmente, solo per via telematica.", ["fascicolo elettronico", "firma", "telematica"]],
+        ["Effetti: la ricevuta del Registro è titolo per avviare subito l'attività, se ci sono i presupposti di legge; gli enti comunicano poi i dati definitivi.", ["ricevuta", "avviare"]],
+        ["Risposte degli enti: l'INAIL comunica codice ditta e PAT ed emette il certificato di assicurazione; l'INPS comunica la matricola e l'inquadramento aziendale (art. 49 L. 88/1989), che vale per tutti gli effetti previdenziali e anche per l'INAIL.", ["pat", "matricola", "inquadramento", "49"]],
+        ["Inquadramento: di regola automatico sulla base dell'attività dichiarata (codice ATECO 2025 dal 1/4/2025); se le dichiarazioni erano inesatte, la variazione ha effetto retroattivo.", ["automatico", "ateco", "retroattivo"]]
+      ],
+      aggancio: "L'invio della ComUnica rientra tra gli adempimenti che il consulente del lavoro cura per il cliente (Simone, Deontologia, p. 1233). Per l'impresa con dipendenti seguono la comunicazione preventiva di assunzione e il primo UniEmens.",
+      fonti: "Simone, Legislazione sociale, pp. 263-265; Simone, Deontologia, p. 1233."
+    },
+
+    "S22-INPS-11": {
+      sintesi: "I contributi INPS si pagano con il modello F24, che consente anche la compensazione con crediti fiscali e previdenziali. Le scadenze cambiano secondo la categoria: per i dipendenti il giorno 16 del mese successivo al periodo di paga; per artigiani e commercianti rate fisse sul minimale e saldo e acconti con le imposte; per la gestione separata dipende da chi deve versare.",
+      punti: [
+        ["Dipendenti: il datore versa i contributi, anche la quota del lavoratore che trattiene in busta paga, entro il 16 del mese successivo; se il 16 è festivo o sabato, primo giorno lavorativo successivo.", ["16", "quota del lavoratore", "festivo"]],
+        ["Compensazione in F24: il credito per indennità anticipate per conto dell'INPS (malattia, maternità) o un credito fiscale può compensare i contributi (art. 17 D.Lgs. 241/1997); chi compensa deve usare i servizi telematici dell'Agenzia delle Entrate.", ["compensazione", "241/1997", "telematici"]],
+        ["Artigiani e commercianti: contributi sul minimale in quattro rate (per il 2026: 18 maggio, 20 agosto, 16 novembre, 16 febbraio 2027); contributi sul reddito eccedente il minimale con i termini delle imposte sui redditi, come saldo e acconti; aliquota IVS 2026 del 24%.", ["minimale", "quattro rate", "eccedente", "24%"]],
+        ["Gestione separata: per i collaboratori versa il committente entro il 16 del mese successivo al pagamento del compenso (2/3 a suo carico, 1/3 del collaboratore); i professionisti senza Cassa versano da sé con le scadenze delle imposte.", ["committente", "2/3", "1/3", "professionisti"]],
+        ["Mancato o tardivo pagamento: sanzioni civili; le ritenute previdenziali trattenute e non versate oltre la soglia annua sono reato (art. 2, c. 1-bis, D.L. 463/1983), con causa di non punibilità se si paga entro 3 mesi dalla contestazione.", ["sanzioni civili", "ritenute", "3 mesi"]]
+      ],
+      aggancio: "Le date esatte dell'anno si prendono dalla circolare INPS annuale (per il 2026 circ. INPS 14/2026). Collegamento con S22-TRIB-12 (compensazione in F24) e con S22-PPP-28 sull'omesso versamento delle ritenute.",
+      fonti: "Simone, Legislazione sociale, pp. 266, 288-289 e 293; soglia e non punibilità delle ritenute non versate: Simone, Legislazione sociale (già verificato nella risposta PPP sulle ritenute)."
+    },
+
+    "S22-INPS-13": {
+      sintesi: "L'assegno unico e universale (AUU, D.Lgs. 230/2021) è il sostegno economico mensile per i figli a carico, pagato direttamente dall'INPS su domanda. Ha sostituito assegni al nucleo familiare per chi ha figli, detrazioni per figli under 21 e altri bonus; l'importo dipende dall'ISEE.",
+      punti: [
+        ["Per chi: ogni figlio minorenne, e i nuovi nati dal settimo mese di gravidanza; i figli maggiorenni fino a 21 anni se studiano, fanno tirocinio o lavorano con reddito sotto 8.000 euro, sono disoccupati iscritti ai servizi per l'impiego o fanno servizio civile; i figli con disabilità senza limiti di età.", ["settimo mese", "21", "8.000", "disabilita"]],
+        ["Requisiti del richiedente: cittadinanza UE o permesso di lungo periodo o titoli equivalenti; pagare l'imposta sul reddito in Italia; residenza e domicilio in Italia; residenza da almeno 2 anni oppure contratto di lavoro di almeno 6 mesi.", ["lungo periodo", "residenza", "2 anni", "6 mesi"]],
+        ["Domanda telematica all'INPS dal 1° gennaio, per il periodo da marzo a febbraio; la domanda accolta prosegue d'ufficio negli anni successivi, salvo le variazioni; senza ISEE spetta l'importo minimo; DSU entro il 30 giugno per avere gli arretrati da marzo.", ["marzo", "febbraio", "d'ufficio", "importo minimo", "30 giugno"]],
+        ["Maggiorazioni: +50% per i figli sotto un anno; per i nuclei con 3 o più figli tra 1 e 3 anni; maggiorazioni per i figli dal terzo in poi, per i figli disabili, per madri sotto i 21 anni, se entrambi i genitori lavorano, per i nuclei vedovili; forfait per 4 o più figli.", ["50%", "entrambi i genitori", "4 o piu figli"]],
+        ["Pagamento: direttamente dall'INPS su IBAN o in contanti alla posta, diviso a metà tra i genitori o al genitore affidatario. Non passa in busta paga, a differenza dell'ANF, che resta solo per i nuclei senza figli e che il datore anticipa.", ["iban", "affidatario", "busta paga", "anf"]]
+      ],
+      aggancio: "In busta paga resta l'ANF solo per i nuclei senza figli (coniugi, fratelli, sorelle, nipoti), anticipato dal datore e conguagliato con l'INPS. Nella CU la detrazione per figli a carico resta solo per i figli dai 21 ai 29 anni e per i figli disabili dai 30 (vedi TRIB-4).",
+      fonti: "Simone, Legislazione sociale, pp. 330-333."
+    },
+
+    "S22-INPS-14": {
+      sintesi: "Per i datori di lavoro che non rientrano nella cassa integrazione ordinaria, la tutela in caso di sospensione o riduzione dell'attività è affidata ai fondi di solidarietà (D.Lgs. 148/2015, artt. 26 ss.): fondi bilaterali di settore istituiti dalla contrattazione collettiva, fondi alternativi (artigianato e somministrazione) e, in via residuale, il Fondo di integrazione salariale (FIS) presso l'INPS. Dal 2022 l'obbligo riguarda i datori con almeno un dipendente.",
+      punti: [
+        ["Fondi bilaterali: istituiti dai contratti collettivi presso l'INPS; obbligatori per i datori fuori dalla CIGO con almeno un dipendente; pagano l'assegno di integrazione salariale per le stesse causali di CIGO e CIGS.", ["contratti collettivi", "almeno un dipendente", "assegno di integrazione salariale"]],
+        ["Funzioni aggiuntive: prestazioni integrative della NASpI o della cassa, assegni straordinari per l'esodo di chi raggiunge la pensione entro 5 anni, formazione e riqualificazione, staffetta generazionale con contributi per chi va in pensione entro 3 anni e assunzione di giovani fino a 35 anni.", ["integrative", "esodo", "5 anni", "staffetta"]],
+        ["Finanziamento: aliquota fissata dal regolamento del fondo, per 2/3 a carico del datore e per 1/3 del lavoratore (art. 33 D.Lgs. 148/2015), più il contributo straordinario per l'esodo.", ["2/3", "1/3", "33"]],
+        ["Fondi alternativi: artigianato e somministrazione, non istituiti presso l'INPS, con prestazioni di misura e durata pari all'assegno di integrazione salariale.", ["artigianato", "somministrazione", "non istituiti"]],
+        ["FIS (art. 29): per i datori con almeno un dipendente, fuori dalla CIGO e senza un fondo; assegno per 13 settimane in un biennio mobile fino a 5 dipendenti, 26 settimane oltre 5; contributo ordinario dello 0,50% (0,30% per i piccoli che non lo usano da 24 mesi) o dello 0,80%, più il 4% della retribuzione persa se lo si usa; domanda sulla piattaforma OMNIA IS.", ["13 settimane", "26 settimane", "0,50%", "0,80%", "4%"]]
+      ],
+      aggancio: "Per gli studi professionali, compreso quello del consulente, c'è il Fondo di solidarietà bilaterale per le attività professionali (D.M. 21/5/2024). Il ricorso contro il rigetto dell'assegno del FIS va ai Comitati del fondo entro 30 giorni (circ. INPS 48/2023). Collegamento con INPS-4 e INPS-5.",
+      fonti: "Simone, Legislazione sociale, pp. 367-371; circ. INPS 48/2023 (termine di ricorso)."
+    },
+
+    "S22-INAIL-5": {
+      sintesi: "Contro i provvedimenti dell'INAIL in materia di tariffa dei premi il datore può proporre ricorso amministrativo (artt. 27-28 delle Modalità di applicazione delle tariffe, D.M. 27/2/2019, e D.P.R. 314/2001). Dal 12 gennaio 2025, per effetto dell'art. 2 L. 203/2024 (Collegato lavoro), i ricorsi non vanno più al Presidente o al Consiglio di amministrazione ma alle Direzioni regionali (circ. INAIL 4/2025).",
+      punti: [
+        ["Oggetto: classificazione delle lavorazioni, oscillazione del tasso medio per prevenzione, decorrenza dell'inquadramento, inquadramento diretto dei datori non classificati dall'INPS: competente la Direzione regionale (a Trento e Bolzano la Direzione provinciale, ad Aosta la sede regionale).", ["classificazione", "prevenzione", "decorrenza", "direzione regionale"]],
+        ["Oscillazione del tasso per andamento infortunistico: il ricorso resta alla sede territoriale che ha emesso il provvedimento.", ["andamento infortunistico", "sede territoriale"]],
+        ["Termini: ricorso solo telematico entro 30 giorni dalla ricezione del provvedimento; decisione entro 120 giorni (sede territoriale) o 180 giorni (Direzione regionale); se la decisione non arriva c'è silenzio-rigetto e non ci sono altri gradi amministrativi.", ["30 giorni", "120 giorni", "180 giorni", "silenzio-rigetto"]],
+        ["Effetto sospensivo: il ricorso tempestivo sospende il provvedimento impugnato; intanto il datore paga i premi con il tasso in vigore prima del provvedimento, salvo conguaglio con interessi (art. 45, c. 2, D.P.R. 1124/1965).", ["sospensivo", "tasso in vigore", "conguaglio"]],
+        ["Inammissibili: i ricorsi contro il verbale unico di accertamento invece che contro il provvedimento di variazione o rettifica, e quelli su imponibile, obbligo assicurativo o rapporti di lavoro che non riguardano anche classificazione o inquadramento. Resta sempre possibile l'annullamento in autotutela.", ["verbale unico", "imponibile", "autotutela"]]
+      ],
+      aggancio: "I ricorsi sulle prestazioni (indennità, rendite) seguono un'altra disciplina, che qui non si tratta. Il consulente controlla ogni anno la voce di tariffa e il tasso comunicati con l'autoliquidazione: l'errore di classificazione pesa su tutti i premi futuri.",
+      fonti: "Circ. INAIL 4/2025 (29/1/2025), testo riprodotto da studiocerbone.com (fonte secondaria; verificare su inail.it); art. 2 L. 203/2024; artt. 27-28 Modalità di applicazione delle tariffe (D.M. 27/2/2019). Argomento non trattato dal Simone in libreria."
+    },
+
+    "S22-DEO-14": {
+      sintesi: "L'art. 20 del Codice deontologico regola il consulente che partecipa a società commerciali o collabora con imprese che offrono servizi nel settore dell'amministrazione del personale, cioè i centri di elaborazione dati e i servizi delle associazioni di categoria dell'art. 1, c. 4 e 5, L. 12/1979. La regola di fondo: il consulente porta con sé il Codice anche dentro la società e ne risponde.",
+      punti: [
+        ["Il consulente amministratore di una società commerciale che eroga servizi nel settore dell'art. 1, c. 4 e 5, L. 12/1979 deve svolgere le sue funzioni nel rispetto del Codice (c. 1).", ["amministratore", "art. 1", "rispetto del codice"]],
+        ["Se la società compie atti rilevanti per il Codice, ne risponde il consulente che la amministra, salvo funzioni attribuite in concreto a un altro amministratore o fatti dolosi o esclusivi di terzi (c. 2).", ["ne risponde", "altro amministratore", "terzi"]],
+        ["Chi amministra o assiste queste imprese è responsabile se, conoscendo fatti rilevanti, non agisce per impedirli o attenuarne le conseguenze (c. 3); risponde anche il socio che ha autorizzato o concorso alla decisione (c. 4, con rinvio agli artt. 2364, 2468 e 2479 c.c.).", ["impedirli", "socio", "2364", "2479"]],
+        ["Deve assicurarsi che l'impresa comunichi il conferimento dell'incarico al Consiglio provinciale dell'Ordine e all'Ispettorato del lavoro competenti (c. 5).", ["comunichi", "consiglio provinciale", "ispettorato"]],
+        ["Le stesse regole valgono per chi opera in una STP; il socio di STP che altera la maggioranza dei due terzi dei soci professionisti e non la ripristina entro 6 mesi risponde disciplinarmente (c. 6-7, art. 10, c. 4, lett. b, L. 183/2011).", ["stp", "due terzi", "6 mesi"]]
+      ],
+      aggancio: "Collegamento con DEO-X1: i CED possono fare solo calcolo e stampa e devono essere assistiti da un professionista abilitato. Con l'art. 35, c. 6, anche la pubblicità di queste società deve rispettare il Codice: il consulente non può farsi pubblicità attraverso una società commerciale per aggirare le regole.",
+      fonti: "Simone, Deontologia (testo del Codice deontologico, delibera CNO 101/2021 modificata dalla 49/2024), pp. 1250-1251 (art. 20) e 1254 (art. 35, c. 6); Simone, Deontologia, p. 1221 (art. 1, c. 4-5, L. 12/1979)."
+    },
+
+    "S22-DEO-15": {
+      sintesi: "L'art. 36 del Codice deontologico riguarda il consulente iscritto all'Albo che lavora come dipendente, per esempio in un'azienda, in un'associazione di categoria o in uno studio. Il rapporto di subordinazione non lo esonera dal Codice: se gli si chiede una condotta contraria, deve dissentire per iscritto e prima.",
+      punti: [
+        ["Comma 1: il consulente dipendente a cui si chiede una condotta non conforme al Codice deve comunicare preventivamente e per iscritto il proprio dissenso a chi gli è gerarchicamente superiore.", ["dipendente", "preventivamente", "per iscritto", "dissenso"]],
+        ["Comma 2: è un'aggravante la condotta del consulente che ha preteso dai colleghi suoi subordinati comportamenti contrari al Codice.", ["aggravante", "subordinati"]],
+        ["Coordinamento con l'art. 4: dignità e decoro valgono anche nell'attività svolta nell'ambito del rapporto di lavoro subordinato.", ["art. 4", "dignita", "decoro"]],
+        ["Coordinamento con l'art. 14: la concorrenza sleale si valuta fatto salvo l'art. 36, cioè tenendo conto della posizione del dipendente.", ["art. 14", "concorrenza sleale"]],
+        ["Limiti esterni: l'iscrizione all'Albo è incompatibile con il lavoro alle dipendenze di enti pubblici, patronati e sindacati dei lavoratori (art. 4 L. 12/1979); il consulente dipendente di un'associazione di categoria può organizzare i servizi per le piccole imprese associate.", ["incompatibile", "enti pubblici", "patronati", "associazione di categoria"]]
+      ],
+      aggancio: "Il dipendente non può essere accreditato come asseveratore Asse.Co., che richiede di non svolgere lavoro dipendente (Reg. Asse.Co., art. 1, c. 4), né far parte del Consiglio di disciplina territoriale. Dottrina e prassi applicative sull'art. 36: DA VERIFICARE, il Simone riporta solo il testo.",
+      fonti: "Simone, Deontologia (testo del Codice deontologico, delibera CNO 101/2021 modificata dalla 49/2024), pp. 1247 (art. 4), 1249 (art. 14) e 1254 (art. 36); Simone, Deontologia, pp. 1221, 1227, 1239 e 1245."
+    },
+
+    "S22-TRIB-3": {
+      sintesi: "L'IRPEF è l'imposta personale e progressiva sul reddito delle persone fisiche (TUIR, D.P.R. 917/1986), espressione della capacità contributiva e della progressività dell'art. 53 Cost. Il presupposto è il possesso di redditi in denaro o in natura delle sei categorie dell'art. 6; la base imponibile è il reddito complessivo al netto degli oneri deducibili.",
+      punti: [
+        ["Presupposto (art. 1): possesso di redditi fondiari, di capitale, di lavoro dipendente, di lavoro autonomo, d'impresa e diversi (art. 6).", ["possesso", "art. 6", "diversi"]],
+        ["Soggetti passivi (art. 2): persone fisiche residenti e non residenti. Residente è chi per la maggior parte del periodo d'imposta ha in Italia la residenza civilistica, il domicilio (luogo delle relazioni personali e familiari) o vi è presente; si presume residente, salvo prova contraria, l'iscritto all'anagrafe. Il residente è tassato su tutti i redditi ovunque prodotti, il non residente solo su quelli prodotti in Italia.", ["residenti", "maggior parte", "domicilio", "anagrafe"]],
+        ["Base imponibile (art. 3): reddito complessivo al netto degli oneri deducibili (art. 10). Restano fuori i redditi esenti, quelli soggetti a ritenuta a titolo d'imposta o a imposta sostitutiva e quelli a tassazione separata (art. 17).", ["reddito complessivo", "oneri deducibili", "esenti", "tassazione separata"]],
+        ["Calcolo: imposta lorda per scaglioni (art. 11: nel 2026 23% fino a 28.000, 33% fino a 50.000, 43% oltre; nel 2025 la seconda aliquota era 35%), meno le detrazioni (artt. 12-16: carichi di famiglia, lavoro, oneri), meno crediti d'imposta e ritenute d'acconto.", ["23%", "33%", "43%", "detrazioni", "ritenute"]],
+        ["Periodo d'imposta: anno solare; obbligazione autonoma per ogni anno. Riscossione con ritenute del sostituto, acconti e saldo in dichiarazione; sull'IRPEF si calcolano le addizionali regionale e comunale.", ["anno solare", "sostituto", "acconti", "addizionali"]]
+      ],
+      aggancio: "Per il consulente l'IRPEF è il cuore del cedolino e del conguaglio (TRIB-11) e della CU (seconda prova). Attenzione alla regola dell'anno: CU 2026 sui redditi 2025 con aliquota del 35%; cedolini 2026 con il 33%.",
+      fonti: "Artt. 1-3, 6, 11 TUIR (917_1986_TUIR (testo vigente al 4/10/2026)); P2_00_PARAMETRI v5, § 1."
+    },
+
+    "S22-TRIB-6": {
+      sintesi: "Le addizionali regionale e comunale all'IRPEF sono tributi propri derivati che si applicano sulla stessa base dell'IRPEF: regionale art. 50 D.Lgs. 446/1997 (aliquote art. 6 D.Lgs. 68/2011), comunale art. 1 D.Lgs. 360/1998. Sono dovute solo se per lo stesso anno è dovuta l'IRPEF, cioè se l'imposta netta è positiva.",
+      punti: [
+        ["Base: reddito complessivo al netto degli oneri deducibili; per il sostituto, i redditi di lavoro dipendente e assimilati della CU, esclusi quelli a tassazione separata, a ritenuta a titolo d'imposta o a imposta sostitutiva.", ["reddito complessivo", "oneri deducibili", "tassazione separata"]],
+        ["Ente: Regione e Comune del domicilio fiscale al 1° gennaio dell'anno di riferimento.", ["domicilio fiscale", "1° gennaio"]],
+        ["Aliquote: regionale di base 1,23%, maggiorabile dalla Regione fino a 2,1 punti e articolabile per scaglioni (Marche: 1,23% fino a 15.000, 1,53% fino a 28.000, 1,70% fino a 50.000, 1,73% oltre); comunale fino allo 0,8%, con eventuale soglia di esenzione deliberata dal Comune.", ["1,23%", "2,1 punti", "1,73%", "0,8%", "soglia di esenzione"]],
+        ["Versamento tramite sostituto: regionale e saldo comunale si calcolano al conguaglio e si trattengono nell'anno successivo in massimo 11 rate (gennaio-novembre); l'acconto comunale è il 30% dell'addizionale sul reddito dell'anno precedente, in massimo 9 rate (marzo-novembre). Alla cessazione del rapporto si trattengono in un'unica soluzione.", ["11 rate", "30%", "9 rate", "unica soluzione"]],
+        ["F24 del sostituto: codici tributo 3802 (regionale), 3847 (acconto comunale), 3848 (saldo comunale). Chi presenta la dichiarazione le versa con saldo e acconti.", ["3802", "3847", "3848"]]
+      ],
+      aggancio: "Esercizio tipico della seconda prova: addizionale regionale Marche calcolata a fasce. In CU i punti 22, 26, 27 e 29. Aliquote dei singoli comuni: dato di traccia.",
+      fonti: "P2_00_PARAMETRI v5, § 7 (MEF, scheda addizionale regionale Marche; istruzioni CU 2026; Simone, Diritto tributario, pp. 687 e 693)."
+    },
+
+    "S22-TRIB-8": {
+      sintesi: "Il reddito di lavoro autonomo professionale (art. 54 TUIR, riformato dal D.Lgs. 192/2024) è la differenza tra tutte le somme percepite nel periodo d'imposta in relazione all'attività e le spese sostenute nello stesso periodo: vale il principio di cassa e quello di onnicomprensività. Le regole sulla deducibilità delle spese sono negli artt. 54-bis-54-octies.",
+      punti: [
+        ["Principio di cassa e onnicomprensività (art. 54, c. 1): conta ogni somma o valore percepito a qualunque titolo; le somme pagate da un sostituto d'imposta e incassate l'anno dopo si imputano all'anno in cui il sostituto doveva operare la ritenuta.", ["cassa", "qualunque titolo", "sostituto"]],
+        ["Non sono reddito (c. 2): i contributi previdenziali di legge a carico del committente (per il consulente, il contributo integrativo ENPACL del 4%) e i rimborsi di spese per l'incarico addebitati analiticamente; dal 2025 i rimborsi di vitto, alloggio, viaggio e taxi in Italia restano esclusi solo se pagati con mezzi tracciabili (c. 2-bis).", ["contributi previdenziali", "4%", "analiticamente", "tracciabili"]],
+        ["Beni strumentali (art. 54-quinquies): ammortamento con i coefficienti ministeriali, ridotti alla metà il primo anno; deduzione integrale per beni fino a 516,40 euro; beni e immobili a uso promiscuo al 50%.", ["ammortamento", "516,40", "promiscu", "50"]],
+        ["Altre spese (art. 54-septies): alberghi e ristoranti al 75% e comunque entro il 2% dei compensi; rappresentanza entro l'1% dei compensi e solo con pagamenti tracciabili; formazione, master e convegni fino a 10.000 euro l'anno; non deducibili i compensi a coniuge, figli minori o inabili e ascendenti.", ["75%", "2%", "1%", "10.000", "coniuge"]],
+        ["Ritenuta d'acconto del 20% sull'onorario se il committente è sostituto d'imposta (art. 25 D.P.R. 600/1973); alternativa per chi ha i requisiti: regime forfettario con coefficiente di redditività e imposta sostitutiva (TRIB-13).", ["20%", "sostituto", "forfettario"]]
+      ],
+      aggancio: "È il reddito del consulente del lavoro libero professionista: collegamento con la fattura del CdL (seconda prova), dove contributo integrativo, IVA, ritenuta e rimborsi spese hanno trattamenti diversi.",
+      fonti: "Artt. 54, 54-ter, 54-quinquies, 54-septies TUIR (917_1986_TUIR (testo vigente al 4/10/2026)); P2_00_PARAMETRI v5, § 11 (ritenuta e ENPACL)."
+    },
+
+    "S22-TRIB-10": {
+      sintesi: "La dichiarazione dei redditi è l'atto con cui il contribuente comunica all'Amministrazione redditi, imponibile e imposta per un periodo d'imposta (D.P.R. 600/1973 e D.P.R. 322/1998). Il modello Redditi (ex Unico) è obbligatorio per tutte le persone fisiche che hanno conseguito redditi, salvo i casi di esonero; chi ha solo redditi di lavoro dipendente, assimilati o pensione può usare il 730.",
+      punti: [
+        ["Obbligati: tutti i soggetti passivi che nel periodo d'imposta hanno conseguito redditi; gli obbligati alla tenuta delle scritture contabili anche in mancanza di reddito (società, imprenditori, professionisti).", ["soggetti passivi", "scritture contabili", "mancanza di reddito"]],
+        ["Esonerati (art. 1, c. 4, D.P.R. 600/1973): solo persone fisiche senza scritture contabili con specifici requisiti di reddito, per esempio chi ha solo redditi di lavoro dipendente da un unico sostituto che ha fatto il conguaglio; possono comunque presentarla per far valere un credito.", ["esonerati", "unico sostituto", "credito"]],
+        ["Termini e forma: modello Redditi PF per via telematica dal 30 aprile al 31 ottobre dell'anno successivo, direttamente o tramite intermediari abilitati; cartaceo solo per chi non può usare il 730 (senza datore di lavoro né pensione), dal 30 aprile al 30 giugno.", ["31 ottobre", "telematica", "intermediari", "30 giugno"]],
+        ["Modello 730: per dipendenti, pensionati e assimilati, tramite sostituto, CAF o professionista abilitato (anche il consulente del lavoro), entro il 30 settembre; visto di conformità; rimborso o trattenuta in busta paga.", ["730", "caf", "consulente del lavoro", "30 settembre"]],
+        ["Versamenti: saldo e primo acconto entro il 30 giugno (o 30 luglio con lo 0,40%), secondo acconto entro novembre. Dichiarazione integrativa entro i termini dell'accertamento; non è omessa quella presentata entro 90 giorni dalla scadenza, salvo sanzioni.", ["30 giugno", "0,40%", "novembre", "integrativa", "90 giorni"]]
+      ],
+      aggancio: "Dichiarazioni collegate per il sostituto d'imposta: CU e 770 (TRIB-15). Le società di persone presentano il modello Redditi SP e i redditi si imputano ai soci per trasparenza.",
+      fonti: "Simone, Diritto tributario, pp. 482-488."
+    },
+
+    "S22-TRIB-12": {
+      sintesi: "Con il modello F24 il contribuente può compensare crediti e debiti tributari e contributivi (art. 17 D.Lgs. 241/1997). La compensazione è verticale se il credito si usa per un debito della stessa imposta, orizzontale se si usa per tributi o contributi diversi. L'orizzontale ha limiti e controlli più stretti.",
+      punti: [
+        ["Verticale: credito e debito della stessa imposta (per esempio credito IVA contro IVA). Orizzontale: imposta diversa o contributi (credito IVA contro IRPEF o contributi INPS); è possibile anche tra enti impositori diversi.", ["verticale", "orizzontale", "enti"]],
+        ["Limite annuo: 2.000.000 di euro di crediti compensabili (art. 1, c. 72, L. 234/2021). Obbligo di usare i servizi telematici dell'Agenzia delle Entrate per presentare F24 con compensazioni.", ["2.000.000", "234/2021", "telematici"]],
+        ["Controlli: per i crediti IVA oltre 5.000 euro serve il visto di conformità; alcuni crediti si usano solo dal decimo giorno dopo la presentazione della dichiarazione da cui emergono.", ["5.000", "visto di conformita", "decimo giorno"]],
+        ["Blocco: chi ha debiti iscritti a ruolo oltre 100.000 euro scaduti e non sospesi non può compensare (L. 213/2023, c. 94); la legge di bilancio 2026 ha abbassato la soglia a 50.000 euro.", ["ruolo", "100.000", "50.000"]],
+        ["Datore di lavoro: se le indennità anticipate per conto dell'INPS (malattia, maternità) superano i contributi dovuti, il credito si recupera compensandolo in F24 con i tributi. L'uso di crediti non spettanti o inesistenti è sanzionato e, oltre certe soglie, è reato (art. 10-quater D.Lgs. 74/2000).", ["indennita anticipate", "inps", "inesistenti", "10-quater"]]
+      ],
+      aggancio: "Collegamento con S22-INPS-11. Per il consulente: prima di compensare verificare l'esistenza del credito, il visto, i termini e l'assenza di ruoli scaduti oltre soglia.",
+      fonti: "Simone, Legislazione sociale, p. 266 (art. 17 D.Lgs. 241/1997); Simone, Diritto tributario, pp. 500 e 545 (crediti non spettanti, art. 10-quater); limite annuo, visto, decimo giorno e blocco per ruoli: fonte secondaria (informazionefiscale.it), testi delle leggi DA VERIFICARE."
+    },
+
+    "S22-TRIB-13": {
+      sintesi: "Alcuni redditi di lavoro dipendente maturati in più anni o legati alla cessazione del rapporto non si sommano al reddito dell'anno in cui sono pagati ma si tassano separatamente (art. 17 TUIR), con un'aliquota media che evita l'effetto della progressività. Oltre al TFR (TRIB-14), riguarda soprattutto gli arretrati e le altre indennità di fine rapporto.",
+      punti: [
+        ["Altre indennità di cessazione (lett. a): indennità di preavviso, somme per il patto di non concorrenza (art. 2125 c.c.), incentivi all'esodo, somme da sentenze o transazioni sulla risoluzione del rapporto, al netto delle spese legali.", ["preavviso", "non concorrenza", "transazioni"]],
+        ["Arretrati (lett. b): emolumenti per anni precedenti pagati in base a leggi, contratti collettivi, sentenze o atti amministrativi sopravvenuti, o per altre cause non dipendenti dalla volontà delle parti.", ["arretrati", "anni precedenti", "volonta delle parti"]],
+        ["Aliquota (art. 21): quella corrispondente alla metà del reddito complessivo netto del biennio precedente l'anno di percezione; se manca reddito in un anno si usa l'altro, se in entrambi la prima aliquota. Per gli arretrati l'imposta si riduce delle detrazioni non fruite negli anni di riferimento (art. 21, c. 4).", ["meta", "biennio", "prima aliquota", "detrazioni"]],
+        ["Altre indennità connesse alla cessazione (art. 19, c. 2): tassate con l'aliquota media del TFR; le indennità di fine collaborazione coordinata e continuativa sono a tassazione separata se il diritto risulta da atto di data certa anteriore all'inizio del rapporto (art. 17, lett. c).", ["aliquota media", "data certa"]],
+        ["Riliquidazione: per TFR, altre indennità e arretrati gli uffici riliquidano l'imposta o la fanno concorrere al reddito complessivo dell'anno se è più favorevole (art. 17, c. 3). Queste somme non entrano nella base delle addizionali.", ["riliquid", "piu favorevole", "addizionali"]]
+      ],
+      aggancio: "In CU gli arretrati vanno nei punti della tassazione separata e non nei punti 1-2. In busta paga si tassano a parte, con l'aliquota dell'art. 21 calcolata dal sostituto.",
+      fonti: "Artt. 17, 19, 21 TUIR (917_1986_TUIR (testo vigente al 4/10/2026)); P2_00_PARAMETRI v5, § 7 (base delle addizionali)."
+    },
+
+    "S22-TRIB-14": {
+      sintesi: "Il trattamento di fine rapporto è una retribuzione differita che il lavoratore subordinato riceve alla cessazione del rapporto (art. 2120 c.c.). Si forma anno per anno accantonando una quota della retribuzione, che si rivaluta; fiscalmente è a tassazione separata con aliquota media (artt. 17 e 19 TUIR).",
+      punti: [
+        ["Formazione: quota annua pari alla retribuzione annua utile divisa per 13,5, meno il contributo dello 0,50% (L. 297/1982); rivalutazione al 31 dicembre dell'1,5% fisso più il 75% dell'aumento dell'indice ISTAT.", ["13,5", "0,50%", "1,5%", "75%"]],
+        ["Anticipazione: dopo almeno 8 anni di servizio, fino al 70% del TFR maturato, per spese sanitarie straordinarie, prima casa per sé o i figli, congedi parentali e formativi (art. 2120, c. 6-11, c.c.).", ["8 anni", "70%", "prima casa"]],
+        ["Destinazione: il lavoratore sceglie entro 6 mesi se lasciarlo in azienda o versarlo alla previdenza complementare; in caso di silenzio si va al fondo (D.Lgs. 252/2005; nuovo silenzio-assenso dal 1/7/2026, L. 199/2025). Se resta in azienda e il datore supera la soglia dimensionale, le quote vanno al Fondo di Tesoreria INPS: 60 addetti nel 2026-2027, 50 nel 2028-2031, 40 dal 2032.", ["6 mesi", "previdenza complementare", "silenzio", "tesoreria", "60 addetti"]],
+        ["Tassazione (art. 19 TUIR): sul TFR al netto delle rivalutazioni già tassate si applica l'aliquota corrispondente al reddito di riferimento (TFR diviso gli anni di servizio, per 12); poi l'Agenzia riliquida con l'aliquota media dei 5 anni precedenti. Sulle rivalutazioni annue si paga un'imposta sostitutiva del 17%.", ["reddito di riferimento", "12", "5 anni", "17%"]],
+        ["Tutela: in caso di insolvenza del datore il TFR è pagato dal Fondo di garanzia INPS (INPS-7).", ["fondo di garanzia", "insolvenza"]]
+      ],
+      aggancio: "Ragioneria: accantonamento annuo in conto economico (B9c) e debito per TFR nel passivo (voce C), al netto delle quote versate a fondi e Tesoreria (RAG del costo del personale). In CU i punti 801-813.",
+      fonti: "Art. 2120 c.c.; P2_00_PARAMETRI v5, § 10; Simone, Legislazione sociale, pp. 384-396; artt. 17 e 19 TUIR (917_1986_TUIR (testo vigente al 4/10/2026))."
+    },
+
+    "S22-TRIB-17": {
+      sintesi: "I fringe benefit sono i compensi in natura: beni e servizi che il datore dà al dipendente o ai suoi familiari (art. 51, c. 3, TUIR). Concorrono al reddito al valore normale, salvo i valori convenzionali previsti per auto, prestiti e fabbricati (c. 4). Sono esenti sotto una soglia annua, che per il 2025-2027 è aumentata.",
+      punti: [
+        ["Valutazione: valore normale (art. 9 TUIR); per i beni e servizi prodotti o scambiati dall'azienda, prezzo mediamente praticato o, in mancanza, costo sostenuto. Possono essere erogati anche con buoni (documenti di legittimazione, c. 3-bis).", ["valore normale", "prezzo mediamente praticato", "buoni"]],
+        ["Soglia di esenzione: ordinariamente 258,23 euro nel periodo d'imposta; per il 2025-2027 1.000 euro, 2.000 euro con figli a carico (L. 207/2024, c. 390). Se si supera la soglia, tutto il valore è tassato, non solo l'eccedenza.", ["258,23", "1.000", "2.000", "tutto il valore"]],
+        ["Auto in uso promiscuo (c. 4, lett. a, testo vigente): 50% del costo chilometrico ACI per 15.000 km, ridotto al 10% per le auto elettriche e al 20% per le ibride plug-in, al netto di quanto trattenuto al dipendente; +50% dopo il quinto anno dall'immatricolazione; +5% per accessori non valorizzati. Le auto concesse prima del 2025 seguono regole transitorie (DA VERIFICARE).", ["15.000", "50%", "10%", "20%", "aci"]],
+        ["Prestiti (lett. b): 50% della differenza tra gli interessi al tasso ufficiale di riferimento e quelli applicati. Fabbricati (lett. c): differenza tra rendita catastale più spese e quanto paga il dipendente; 30% se c'è l'obbligo di dimorare nell'alloggio.", ["prestiti", "tasso ufficiale", "rendita catastale", "30%"]],
+        ["Contributi: per i fringe benefit vale la stessa base imponibile previdenziale del reddito fiscale (art. 12 L. 153/1969 come armonizzato); vanno nel LUL e in busta paga come voce figurativa.", ["previdenziale", "lul", "figurativa"]]
+      ],
+      aggancio: "Distinguere i fringe benefit dal welfare dell'art. 51, c. 2 (DL-11a): il welfare offerto alla generalità o a categorie è escluso senza soglia; i fringe sono individuali e contano fino alla soglia.",
+      fonti: "Art. 51, c. 3, 3-bis e 4 TUIR (917_1986_TUIR (testo vigente al 4/10/2026)); P2_00_PARAMETRI v5, § 6 (soglie 2025-2027); armonizzazione contributiva: P2_00_PARAMETRI v5, § 12 (art. 12 L. 153/1969 non nei codici)."
+    },
+
+    "S22-TRIB-18": {
+      sintesi: "Il vitto fornito dal datore è un caso particolare di compenso in natura: l'art. 51, c. 2, lett. c), TUIR lo esclude dal reddito di lavoro dipendente se è somministrato direttamente o in mensa, e fino a importi giornalieri fissi se è sostitutivo (buoni pasto e indennità). Fuori da queste ipotesi, l'indennità di mensa in denaro è reddito.",
+      punti: [
+        ["Esclusi senza limiti: il vitto somministrato dal datore e i pasti nelle mense organizzate direttamente dal datore o gestite da terzi.", ["somministra", "mense", "terzi"]],
+        ["Prestazioni sostitutive (buoni pasto): esenti fino a 4 euro al giorno se cartacei, 10 euro se elettronici (dal 2026; 8 euro nel 2025); la parte eccedente è reddito.", ["4 euro", "10 euro", "8 euro", "eccedente"]],
+        ["Indennità sostitutive in denaro: esenti fino a 5,29 euro al giorno solo per gli addetti ai cantieri edili, ad altre strutture temporanee o a unità produttive in zone senza servizi di ristorazione; negli altri casi l'indennità di mensa in denaro è interamente imponibile.", ["5,29", "cantieri", "ristorazione", "imponibile"]],
+        ["Trasferte: vitto e alloggio entrano nelle regole dell'art. 51, c. 5 (indennità forfettaria ridotta di un terzo se c'è rimborso di vitto o alloggio; rimborsi analitici esenti solo se pagati con mezzi tracciabili dal 2025).", ["trasferte", "un terzo", "tracciabili"]],
+        ["Effetti: le stesse esclusioni valgono ai fini contributivi; nel LUL e in busta paga la parte esente e quella imponibile vanno distinte.", ["contributivi", "busta paga"]]
+      ],
+      aggancio: "Domanda tipica della seconda prova: buoni pasto elettronici da 12 euro per 20 giorni → esenti 10 euro al giorno, imponibili 2 euro al giorno, 40 euro nel mese. Distinguere i buoni pasto dai fringe benefit: non rientrano nella soglia dei fringe.",
+      fonti: "Art. 51, c. 2, lett. c), e c. 5 TUIR (917_1986_TUIR (testo vigente al 4/10/2026)); P2_00_PARAMETRI v5, § 6. L'esclusione anche contributiva deriva dall'armonizzazione delle basi imponibili (P2_00_PARAMETRI v5, § 12)."
     }
 
   };
@@ -3268,7 +3658,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '1.9 · 6/11/2026',
+    versione: '2.0 · 6/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,

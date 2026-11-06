@@ -244,7 +244,7 @@
       </ol>
       <h3 style="margin-top:14px">Limiti, da sapere</h3>
       <ul class="small">
-        <li><b>Risposte modello:</b> presenti solo dove le fonti sono state verificate (<span id="gRisp"></span>). Per le altre trovi l'approfondimento in libreria e il pulsante per chiedere a Claude la risposta modello.</li>
+        <li><b>Risposte modello:</b> presenti per ogni domanda (<span id="gRisp"></span>), già pronte: non serve chiederle a Claude. In fondo a ciascuna trovi le fonti; dove un dato non è stato riscontrato su fonte certa è scritto DA VERIFICARE.</li>
         <li><b>Riscontro automatico:</b> cerca nella tua risposta le parole chiave di ciascun punto. Non valuta la correttezza né l'esposizione: serve solo a vedere cosa hai toccato. Il giudizio è tuo o di Claude.</li>
         <li><b>Microfono:</b> la dettatura usa il riconoscimento vocale del browser (Chrome ed Edge su computer e Android, Safari su iPhone e Mac). Firefox non la supporta. La pagina deve poter usare il microfono: il browser lo chiede la prima volta. In Chrome l'audio è elaborato dai server del browser.</li>
         <li><b>Domande:</b> quelle «Ancona 2025» sono ufficiali ma della commissione 2025; quelle «Integrazione 2026» sono stime; quelle «altra sede 2022» vengono dall'elenco ufficiale degli argomenti della prova orale 2022 pubblicato dall'Ispettorato (sede non indicata, non Ancona; normativa al 2022, verifica le novità). Quando un argomento 2022 coincide con una domanda già trattata, ne condivide la risposta modello.</li>
@@ -436,7 +436,7 @@
   }
   function modelHtml(d, text){
     if (!d.r) {
-      return '<div class="model"><div class="notice">Risposta modello non ancora inserita per questa domanda. Studia sulle fonti indicate sotto, oppure chiedi a Claude di prepararla.</div>' +
+      return '<div class="model"><div class="notice">Risposta modello non disponibile per questa domanda. Studia sulle fonti indicate sotto.</div>' +
         approfHtml(d) + '<div class="row" style="margin-top:10px"><button class="btn alt sm" data-act="askModel" type="button">Copia richiesta per Claude</button></div></div>';
     }
     var h = hits(d.r, text);
