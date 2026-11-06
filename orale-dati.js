@@ -607,19 +607,19 @@ window.ORALE = (function () {
         ['Irretroattività della norma penale sfavorevole (art. 25 Cost.; art. 2 c.p.).', ['irretroattiv','prima del fatto']]
       ],
       aggancio: 'Per questo la depenalizzazione di molti reati del lavoro (D.Lgs. 8/2016) è passata per un decreto legislativo; e la sanzione dell\'art. 41, c. 2, D.Lgs. 198/2006 è oggi amministrativa (P1_Cap02).',
-      fonti: COST + ', art. 25. Art. 1 c.p. e art. 14 preleggi: da riscontrare sul codice.'
+      fonti: COST + ', art. 25; Simone, Diritto penale (scansione del 6/11/2026), p. 972 (artt. 25 Cost., 1 e 199 c.p.; riserva di legge, tassatività, irretroattività). Art. 14 preleggi: da riscontrare sul codice.'
     },
 
     'PPP-20': {
       sintesi: 'La responsabilità penale è personale (art. 27, c. 1, Cost.): si risponde solo di un fatto proprio e colpevole, mai per fatto altrui.',
       punti: [
-        ['Fatto proprio e colpevole: fondamento del principio di colpevolezza, letto dalla Corte costituzionale anche come esclusione della responsabilità oggettiva pura.', ['fatto proprio','colpevol','personale']],
+        ['Fatto proprio e colpevole: fondamento del principio di colpevolezza, letto dalla Corte costituzionale anche come esclusione della responsabilità oggettiva pura: la colpevolezza è fondamento e misura della pena (Corte cost. 364/1988).', ['fatto proprio','colpevol','personale']],
         ['Presunzione di non colpevolezza fino alla condanna definitiva (art. 27, c. 2).', ['non colpevol','condanna definitiva','presunzione']],
         ['Pene non contrarie al senso di umanità e tese alla rieducazione (art. 27, c. 3); divieto della pena di morte (c. 4).', ['rieducazion','umanita','pena di morte']],
         ['Coscienza e volontà della condotta sempre necessarie (art. 42, c. 1, c.p.).', ['coscienza e volonta']]
       ],
       aggancio: 'Nell\'impresa si individua il responsabile persona fisica: nella sicurezza il D.Lgs. 81/2008 distribuisce obblighi tra datore di lavoro, dirigente e preposto.',
-      fonti: COST + ', art. 27; c.p., art. 42 (Brocardi).'
+      fonti: COST + ', art. 27; c.p., art. 42 (Brocardi); Simone, Diritto penale (scansione del 6/11/2026), pp. 974-975.'
     },
 
     'PPP-21': {
@@ -632,7 +632,7 @@ window.ORALE = (function () {
         ['Differenza: l\'irretroattività penale ha rango costituzionale, quella delle altre leggi è un principio generale derogabile (art. 11 preleggi, da riscontrare).', ['rango costituzionale','derogabil','preleggi']]
       ],
       aggancio: 'Le depenalizzazioni nel lavoro operano retroattivamente come abolitio criminis, con la trasformazione in illecito amministrativo.',
-      fonti: COST + ', art. 25; c.p., art. 2 (Brocardi). Art. 11 preleggi: da riscontrare.'
+      fonti: COST + ', art. 25; c.p., art. 2 (Brocardi); Simone, Diritto penale (scansione del 6/11/2026), p. 972. Art. 11 preleggi: da riscontrare.'
     },
 
     'PPP-22': {
@@ -644,7 +644,7 @@ window.ORALE = (function () {
         ['Delitti punibili solo per dolo, salvo i casi di colpa o preterintenzione espressamente previsti (art. 42, c. 2); contravvenzioni punibili per dolo o colpa (c. 4).', ['contravvenzion','espressamente previst']]
       ],
       aggancio: 'L\'infortunio causato dalla violazione di norme di prevenzione è il caso tipico di colpa specifica del datore di lavoro (lesioni od omicidio colposi); le contravvenzioni del D.Lgs. 81/2008 si puniscono anche per colpa.',
-      fonti: 'c.p., artt. 42-43 (Brocardi, 30/10/2026).'
+      fonti: 'c.p., artt. 42-43 (Brocardi, 30/10/2026); Simone, Diritto penale (scansione del 6/11/2026), p. 974.'
     },
 
     'PPP-23': {
@@ -656,7 +656,7 @@ window.ORALE = (function () {
         ['Estinzione delle contravvenzioni di lavoro e sicurezza con la prescrizione obbligatoria: adempimento e pagamento di un quarto del massimo dell\'ammenda (D.Lgs. 758/1994, artt. 20-24).', ['prescrizione obbligatoria','758','un quarto','quarto del massimo']]
       ],
       aggancio: 'Gran parte dei reati del lavoro e della sicurezza sono contravvenzioni; l\'esercizio abusivo della professione (art. 348 c.p.) è invece un delitto.',
-      fonti: 'c.p., artt. 17, 39, 42 (Brocardi, 30/10/2026); D.Lgs. 758/1994 (libreria).'
+      fonti: 'c.p., artt. 17, 39, 42 (Brocardi, 30/10/2026); D.Lgs. 758/1994 (libreria); Simone, Diritto penale (scansione del 6/11/2026), pp. 973 e 986-988.'
     },
 
     'INAIL-3': {
@@ -3001,6 +3001,162 @@ window.ORALE = (function () {
       ],
       aggancio: "Ponte con il D.L. 62: entrambi usano il CCNL leader come misura della retribuzione corretta (parametro nel 62, presunzione relativa nel 96). Il consulente aggiorna annunci e informative, mappa i livelli per sesso e prepara i dati dove scatta la soglia.",
       fonti: "P1/P1_Mappe_DL62_DLgs96 (testi 62_2026 e 96_2026 in libreria, vigenti al 24/9/2026); P1_Cap02_DLgs96_2026."
+    },
+
+    "PPP-11": {
+      sintesi: "La proprietà è il diritto di godere e disporre delle cose in modo pieno ed esclusivo, entro i limiti e con l'osservanza degli obblighi stabiliti dall'ordinamento (art. 832 c.c.); il possesso è invece una situazione di fatto: il potere sulla cosa che si manifesta come esercizio della proprietà o di un altro diritto reale, anche senza esserne titolari.",
+      punti: [
+        ["Proprietà: diritto reale pieno, garantito e limitato dalla legge per assicurarne la funzione sociale (art. 42 Cost.); si acquista a titolo originario (per esempio usucapione) o derivativo (contratto, successione).", ["42 cost", "funzione sociale", "originario"]],
+        ["Possesso: corpus possessionis (disponibilità materiale) e animus possidendi (intenzione di comportarsi come titolare del diritto). Diverso dalla detenzione, in cui si ha la cosa senza quell'intenzione (per esempio il conduttore o il depositario).", ["corpus", "animus", "detenzione"]],
+        ["Tutela del possesso con le azioni possessorie: reintegrazione o spoglio, contro chi sottrae il possesso; manutenzione, contro le molestie e le turbative.", ["reintegrazione", "spoglio", "manutenzione"]],
+        ["Azioni di nunciazione, cautelari: denuncia di nuova opera e di danno temuto.", ["nuova opera", "danno temuto"]],
+        ["Usucapione: acquisto a titolo originario della proprietà o di un diritto reale di godimento con il possesso continuo, ininterrotto, non violento né clandestino per il tempo fissato dalla legge.", ["usucapione", "continuo", "clandestino"]]
+      ],
+      aggancio: "Per il Presidente il tema è poco pertinente alla professione: basta la distinzione tra diritto (proprietà) e fatto (possesso). Aggancio possibile: gli strumenti di lavoro dati al dipendente sono in sua detenzione, non in suo possesso.",
+      fonti: "Art. 832 c.c. (testo riportato da studiocataldi.it, fonte secondaria, 6/11/2026); Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), art. 42; Simone, Diritto privato (ORALE_Simone_Diritto_Privato_OCR), p. 730 (sintesi del capitolo sul possesso). Articoli su azioni possessorie e termini dell'usucapione: da riscontrare sul codice."
+    },
+
+    "PPP-15": {
+      sintesi: "I diritti reali sono diritti assoluti su una cosa, opponibili a tutti e tipici (solo quelli previsti dalla legge). Accanto alla proprietà ci sono i diritti reali su cosa altrui: di godimento, che consentono di usare il bene altrui, e di garanzia, che vincolano un bene all'adempimento di un credito.",
+      punti: [
+        ["Caratteri: immediatezza (potere diretto sulla cosa), assolutezza (valgono verso tutti), inerenza (seguono la cosa), tipicità (numero chiuso).", ["immediatezza", "assolut", "tipicita"]],
+        ["Diritti reali di godimento: superficie, enfiteusi, usufrutto, uso, abitazione, servitù prediali.", ["usufrutto", "superficie", "servitu", "abitazione"]],
+        ["Usufrutto: diritto di godere della cosa altrui, rispettandone la destinazione economica, per un tempo non oltre la vita dell'usufruttuario; uso e abitazione sono forme più ristrette, limitate ai bisogni del titolare e della famiglia.", ["destinazione economica", "vita", "bisogni"]],
+        ["Diritti reali di garanzia: pegno, sui beni mobili, con lo spossessamento del debitore; ipoteca, su beni immobili o mobili registrati, che si costituisce con l'iscrizione nei registri immobiliari.", ["pegno", "ipoteca", "iscrizione"]],
+        ["Garanzie e prelazione: pegno e ipoteca, insieme ai privilegi, sono cause legittime di prelazione rispetto agli altri creditori; restano distinte dalle garanzie personali come la fideiussione.", ["prelazione", "privilegi", "fideiussione"]]
+      ],
+      aggancio: "Aggancio al lavoro: i crediti di lavoro sono assistiti da privilegio generale sui mobili del datore (art. 2751-bis c.c.), che li fa pagare prima dei creditori chirografari nelle procedure concorsuali (Simone LS p. 404; ORALE_05).",
+      fonti: "Indice del Simone, Diritto privato, capp. 4 e 10, pp. 717-726 e 775-781 (pagine non in libreria: testi da riscontrare sul codice); Simone, Diritto privato (ORALE_Simone_Diritto_Privato_OCR); Simone, Legislazione sociale, p. 404 (privilegio dell'art. 2751-bis c.c.)."
+    },
+
+    "S22-PPP-11": {
+      sintesi: "I principi fondamentali (artt. 1-12 Cost.) disegnano l'identità della Repubblica: democrazia fondata sul lavoro, diritti inviolabili, uguaglianza, diritto al lavoro, autonomie, apertura internazionale e pace.",
+      punti: [
+        ["Principio democratico e lavorista: l'Italia è una Repubblica democratica fondata sul lavoro e la sovranità appartiene al popolo (art. 1); il lavoro è diritto e dovere, e la Repubblica promuove le condizioni per renderlo effettivo (art. 4).", ["democratica", "fondata sul lavoro", "sovranita", "art. 4"]],
+        ["Principio personalista e solidarista: la Repubblica riconosce e garantisce i diritti inviolabili dell'uomo e richiede l'adempimento dei doveri di solidarietà politica, economica e sociale (art. 2).", ["inviolabili", "solidarieta"]],
+        ["Uguaglianza formale e sostanziale (art. 3): pari dignità sociale senza distinzioni di sesso, razza, lingua, religione, opinioni politiche, condizioni personali e sociali; compito della Repubblica rimuovere gli ostacoli economici e sociali.", ["uguaglianza", "pari dignita", "rimuovere gli ostacoli"]],
+        ["Autonomie e minoranze: Repubblica una e indivisibile che riconosce e promuove le autonomie locali (art. 5); tutela delle minoranze linguistiche (art. 6); rapporti con la Chiesa cattolica e libertà delle confessioni religiose (artt. 7-8).", ["autonomie", "minoranze", "confessioni"]],
+        ["Cultura, ambiente, apertura internazionale: tutela del paesaggio, dell'ambiente, della biodiversità e degli animali (art. 9, riformato nel 2022); adeguamento al diritto internazionale e condizione dello straniero (art. 10); ripudio della guerra e limitazioni di sovranità per la pace e la giustizia tra le Nazioni (art. 11).", ["ambiente", "art. 10", "ripudi"]]
+      ],
+      aggancio: "Per l'orale del CdL il ponte è il principio lavorista: art. 1, art. 4 e art. 35 ss. Cost. sono la base di tutta la legislazione del lavoro; l'art. 3, c. 2, fonda le azioni positive e la parità di trattamento.",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 1-12; indice del Simone, Diritto pubblico, cap. 3, pp. 909-913 (pagine non in libreria)."
+    },
+
+    "S22-PPP-12": {
+      sintesi: "Il Parlamento è composto dalla Camera dei deputati e dal Senato della Repubblica (art. 55 Cost.), con bicameralismo perfetto: le due Camere hanno le stesse funzioni, legislativa e di indirizzo e controllo sul Governo.",
+      punti: [
+        ["Composizione dopo la L. cost. 1/2020: 400 deputati e 200 senatori elettivi, più i senatori a vita; legislatura di cinque anni.", ["400", "200", "senatori a vita", "cinque anni"]],
+        ["Funzioni: legislativa (artt. 70 ss.), con l'iter in commissione e in aula; fiducia al Governo e controllo politico con interrogazioni, interpellanze, mozioni e commissioni d'inchiesta.", ["legislativa", "fiducia", "interpellanz"]],
+        ["Parlamento in seduta comune: elegge il Presidente della Repubblica, un terzo dei membri del CSM e cinque giudici costituzionali; mette in stato d'accusa il Presidente della Repubblica.", ["seduta comune", "presidente della repubblica", "csm"]],
+        ["Garanzie dei parlamentari: rappresentano la Nazione senza vincolo di mandato (art. 67); insindacabilità per le opinioni e i voti espressi; autorizzazione della Camera per perquisizioni, arresti e intercettazioni (art. 68).", ["vincolo di mandato", "insindacabilita", "68"]],
+        ["Ogni Camera ha un proprio regolamento, approvato a maggioranza assoluta, che disciplina l'organizzazione interna.", ["regolamento", "maggioranza assoluta"]]
+      ],
+      aggancio: "Per il consulente: le leggi del lavoro nascono qui o per delega del Parlamento al Governo (decreti legislativi come il D.Lgs. 81/2015 o il D.Lgs. 96/2026); il D.L. 62/2026 è stato convertito dal Parlamento con modifiche (L. 112/2026).",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 55-82; Simone, Diritto pubblico (ORALE_Simone_Diritto_Pubblico_OCR), pp. 926-929."
+    },
+
+    "S22-PPP-18": {
+      sintesi: "Gli enti pubblici territoriali sono i Comuni, le Province, le Città metropolitane e le Regioni, che con lo Stato costituiscono la Repubblica (art. 114 Cost., riformato dalla L. cost. 3/2001). Sono enti autonomi con propri statuti, poteri e funzioni.",
+      punti: [
+        ["Regioni: ordinarie e a statuto speciale; potestà legislativa nelle materie concorrenti e in quelle residuali; lo Stato ha la legislazione esclusiva nelle materie dell'art. 117, c. 2, tra cui l'ordinamento civile e quindi il rapporto di lavoro privato.", ["regioni", "117", "concorrenti", "ordinamento civile"]],
+        ["Funzioni amministrative attribuite di regola ai Comuni, secondo sussidiarietà, differenziazione e adeguatezza (art. 118).", ["comuni", "sussidiarieta", "118"]],
+        ["Autonomia finanziaria di entrata e di spesa, con tributi propri e compartecipazioni (art. 119).", ["autonomia finanziaria", "119"]],
+        ["Organi del Comune: Consiglio, Giunta e Sindaco; della Regione: Consiglio regionale, Giunta e Presidente.", ["consiglio", "giunta", "sindaco", "presidente"]],
+        ["Poteri sostitutivi dello Stato in caso di inadempienze gravi (art. 120) e controlli; le Province sono state ridimensionate dalla L. 56/2014, con le Città metropolitane nelle grandi aree urbane.", ["poteri sostitutivi", "56/2014", "citta metropolitane"]]
+      ],
+      aggancio: "Per il lavoro: tutela e sicurezza del lavoro sono materia concorrente, mentre la disciplina del rapporto privato è statale; alle Regioni spettano politiche attive, centri per l'impiego e formazione (per esempio l'apprendistato).",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 114-133; indice del Simone, Diritto pubblico, cap. 5, pp. 949-968 (pagine non in libreria). L. 56/2014: citata dall'indice, testo DA VERIFICARE."
+    },
+
+    "S22-PPP-19": {
+      sintesi: "La Costituzione fissa i principi della pubblica amministrazione soprattutto negli artt. 97 e 98: legalità, imparzialità e buon andamento, con equilibrio di bilancio, accesso per concorso e servizio esclusivo della Nazione.",
+      punti: [
+        ["Riserva di legge sull'organizzazione dei pubblici uffici, perché siano assicurati il buon andamento e l'imparzialità dell'amministrazione (art. 97, c. 2).", ["riserva di legge", "buon andamento", "imparzialita"]],
+        ["Equilibrio dei bilanci e sostenibilità del debito pubblico (art. 97, c. 1, dalla L. cost. 1/2012).", ["equilibrio", "debito"]],
+        ["Accesso agli impieghi pubblici mediante concorso, salvo i casi stabiliti dalla legge (art. 97, ult. c.).", ["concorso"]],
+        ["I pubblici impiegati sono al servizio esclusivo della Nazione (art. 98); responsabilità diretta di funzionari e dipendenti per gli atti compiuti in violazione dei diritti, estesa allo Stato (art. 28).", ["servizio esclusivo", "98", "28"]],
+        ["Tutela contro gli atti della PA sempre ammessa davanti al giudice ordinario o amministrativo (art. 113); sussidiarietà e decentramento (artt. 5 e 118).", ["113", "giudice", "sussidiarieta"]]
+      ],
+      aggancio: "Il D.L. 62/2026 si applica solo al lavoro privato, mentre il D.Lgs. 96/2026 vale anche per il pubblico. L'ITL è una pubblica amministrazione: il buon andamento e l'imparzialità sono la misura dei suoi atti e il fondamento dei ricorsi.",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 28, 97, 98, 113; P1/P1_Mappe_DL62_DLgs96 (ambiti dei due decreti)."
+    },
+
+    "S22-PPP-20": {
+      sintesi: "La magistratura costituisce un ordine autonomo e indipendente da ogni altro potere (art. 104 Cost.). La giurisdizione si divide tra giudice ordinario, civile e penale, e giudici speciali previsti dalla Costituzione: amministrativo (TAR e Consiglio di Stato), contabile (Corte dei conti), tributario e militare.",
+      punti: [
+        ["Garanzie: giudice naturale precostituito per legge (art. 25); soggezione soltanto alla legge (art. 101); inamovibilità (art. 107); obbligatorietà dell'azione penale per il pubblico ministero (art. 112).", ["precostituito", "soltanto alla legge", "inamovibilita", "112"]],
+        ["CSM: presieduto dal Presidente della Repubblica, con membri di diritto ed elettivi (due terzi eletti dai magistrati, un terzo dal Parlamento); governa carriere e disciplina dei magistrati (artt. 104-105).", ["csm", "due terzi", "carriere"]],
+        ["Giusto processo (art. 111): contraddittorio in parità, giudice terzo e imparziale, ragionevole durata; ricorso in Cassazione sempre ammesso per violazione di legge contro sentenze e provvedimenti sulla libertà personale.", ["giusto processo", "terzo", "ragionevole durata", "cassazione"]],
+        ["Giustizia amministrativa: tutela degli interessi legittimi e, nelle materie indicate dalla legge, dei diritti soggettivi; TAR in primo grado, Consiglio di Stato in appello (art. 103 e 125).", ["interessi legittimi", "tar", "consiglio di stato"]],
+        ["Il referendum costituzionale del 22-23 marzo 2026 sulla separazione delle carriere ha respinto la riforma (No al 53,7%): l'assetto degli artt. 104-107 resta quello vigente.", ["referendum", "separazione delle carriere", "respinto"]]
+      ],
+      aggancio: "Per il consulente: le controversie di lavoro privato vanno al giudice ordinario in funzione di giudice del lavoro; il ricorso contro un atto dell'ITL privo di rimedio specifico (per esempio la disposizione) può andare al TAR, come ricorda Rausei.",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 24-25, 101-113; Simone, Diritto pubblico (ORALE_Simone_Diritto_Pubblico_OCR), pp. 940-946; esito del referendum: ilpost.it e pagellapolitica.it, 23/3/2026 (fonti secondarie concordanti); P1/P1_Mappe_Poteri_ispettivi."
+    },
+
+    "S22-PPP-26": {
+      sintesi: "Denuncia, querela ed esposto sono i modi con cui un fatto viene portato all'autorità. La denuncia riguarda i reati perseguibili d'ufficio; la querela è la condizione di procedibilità per i reati che la legge rimette alla volontà della persona offesa; l'esposto è una segnalazione con cui si chiede l'intervento dell'autorità, senza una forma tipica.",
+      punti: [
+        ["Denuncia: chiunque può presentarla, oralmente o per iscritto, al pubblico ministero o alla polizia giudiziaria (art. 333 c.p.p.); è obbligatoria per i pubblici ufficiali e gli incaricati di pubblico servizio (art. 331 c.p.p.). Non ha termini e non si può ritirare.", ["denuncia", "333", "331", "obbligatoria"]],
+        ["Querela: la presenta solo la persona offesa, manifestando la volontà che si proceda (art. 336 c.p.p.); va proposta entro tre mesi dalla notizia del fatto (art. 124 c.p.); si può rinunciare, anche tacitamente, e di regola rimettere.", ["persona offesa", "tre mesi", "124", "rinuncia"]],
+        ["Esposto: segnalazione non tipizzata di un fatto, anche non reato, perché l'autorità valuti se intervenire (per esempio la richiesta di intervento all'ITL).", ["esposto", "segnalazione"]],
+        ["Nel lavoro: le lesioni colpose gravi o gravissime commesse con violazione delle norme antinfortunistiche, sull'igiene del lavoro o che determinano una malattia professionale si procedono d'ufficio, non a querela (art. 590, ultimo comma, c.p.).", ["d'ufficio", "590", "malattia professionale"]],
+        ["Gli ispettori del lavoro, come ufficiali di polizia giudiziaria, trasmettono la notizia di reato al PM (art. 347 c.p.p.) quando accertano una contravvenzione, prima di impartire la prescrizione.", ["polizia giudiziaria", "347", "prescrizione"]]
+      ],
+      aggancio: "Per il consulente: la richiesta di intervento del lavoratore all'ITL è la porta della conciliazione monocratica; l'infortunio grave con violazione di norme di sicurezza apre comunque un procedimento penale d'ufficio.",
+      fonti: "Artt. 331, 333, 336 c.p.p. come riportati da miolegale.it (fonte secondaria, 6/11/2026); art. 124 c.p. (avvocato.it, 6/11/2026); art. 590 c.p. (miolegale.it, 6/11/2026); Simone, Legislazione sociale, p. 437 (art. 347 c.p.p.)."
+    },
+
+    "S22-PPP-27": {
+      sintesi: "L'omicidio colposo (art. 589 c.p.) e le lesioni personali colpose (art. 590 c.p.) sono i delitti tipici dell'infortunio sul lavoro: la violazione delle norme per la prevenzione degli infortuni è una circostanza aggravante, e la colpa del datore è di regola colpa specifica.",
+      punti: [
+        ["Omicidio colposo: reclusione da sei mesi a cinque anni; se il fatto è commesso con violazione delle norme per la prevenzione degli infortuni sul lavoro, da due a sette anni (art. 589, c. 2).", ["589", "sei mesi", "due a sette anni"]],
+        ["Lesioni colpose con violazione delle norme antinfortunistiche: per le gravi reclusione da tre mesi a un anno o multa da 500 a 2.000 euro; per le gravissime reclusione da uno a tre anni (art. 590, c. 3). In questi casi si procede d'ufficio.", ["590", "gravi", "gravissime", "d'ufficio"]],
+        ["Colpa specifica: inosservanza di leggi, regolamenti, ordini o discipline, come il D.Lgs. 81/2008; il datore risponde anche per omissione, perché ha l'obbligo giuridico di impedire l'evento (art. 40, c. 2, c.p.; art. 2087 c.c.).", ["colpa specifica", "omissione", "2087"]],
+        ["Responsabilità dell'ente: omicidio colposo e lesioni gravi o gravissime da violazione delle norme di sicurezza sono reati presupposto della responsabilità amministrativa della società (D.Lgs. 231/2001), salvo modello organizzativo efficace.", ["231/2001", "modello organizzativo"]],
+        ["Altre conseguenze: azione di regresso dell'INAIL verso il datore responsabile, risarcimento del danno differenziale, sospensione della patente a crediti nei cantieri.", ["regresso", "inail", "patente a crediti"]]
+      ],
+      aggancio: "Il D.Lgs. 81/2008 serve a evitare proprio questi reati: DVR, formazione, DPI e vigilanza del preposto sono gli elementi su cui si valuta la colpa del datore. Il consulente collabora alla parte documentale e formativa.",
+      fonti: "Art. 589 c.p. (filodiritto.com, 6/11/2026) e art. 590 c.p. (miolegale.it, 6/11/2026), fonti secondarie concordanti con Simone, Diritto penale (scansione del 6/11/2026), pp. 984-987; Simone, Diritto del lavoro, pp. 174-175 (regresso INAIL) e 164 (patente)."
+    },
+
+    "S22-PPP-28": {
+      sintesi: "Il datore che trattiene le ritenute previdenziali e assistenziali dalla retribuzione del lavoratore e non le versa all'INPS commette il reato dell'art. 2, c. 1-bis, D.L. 463/1983, ma solo se l'importo omesso supera 10.000 euro l'anno; sotto questa soglia è un illecito amministrativo (D.Lgs. 8/2016).",
+      punti: [
+        ["Sopra i 10.000 euro annui: reclusione fino a tre anni e multa fino a 1.032 euro.", ["10.000", "reclusione", "tre anni"]],
+        ["Fino a 10.000 euro: sanzione amministrativa da 10.000 a 50.000 euro.", ["sanzione amministrativa", "50.000"]],
+        ["Causa di non punibilità: il datore non è punibile, né soggetto alla sanzione, se versa le ritenute entro tre mesi dalla contestazione o dalla notifica dell'accertamento.", ["non punibil", "tre mesi", "contestazione"]],
+        ["Si tratta delle sole ritenute a carico del lavoratore: l'omesso versamento della quota a carico del datore non è reato, ma comporta sanzioni civili e recupero contributivo.", ["a carico del lavoratore", "sanzioni civili"]],
+        ["È uno dei pochi delitti del diritto penale del lavoro, accanto alla rimozione od omissione dolosa di cautele (art. 437 c.p.) e alle falsità nelle denunce contributive (art. 37 L. 689/1981).", ["437", "37", "689/1981"]]
+      ],
+      aggancio: "Per il consulente: il mancato versamento delle trattenute è il segnale classico della crisi d'impresa. Va gestito subito con rateazione e versamento entro i tre mesi dalla contestazione, per evitare il penale (ORALE_05).",
+      fonti: "Simone, Diritto penale (scansione del 6/11/2026), p. 987; Simone, Legislazione sociale, pp. 447-448 (art. 2, c. 1-bis, D.L. 463/1983: soglie, sanzione e causa di non punibilità)."
+    },
+
+    "S22-PPP-29": {
+      sintesi: "L'oblazione è una causa di estinzione delle contravvenzioni: pagando una somma prima del dibattimento o del decreto di condanna, il contravventore fa estinguere il reato. Nel diritto penale del lavoro si affianca alla prescrizione obbligatoria del D.Lgs. 758/1994.",
+      punti: [
+        ["Oblazione ordinaria (art. 162 c.p.): per le contravvenzioni punite con la sola ammenda; si paga un terzo del massimo più le spese; è un diritto, il giudice non può negarla.", ["162", "sola ammenda", "un terzo"]],
+        ["Oblazione speciale (art. 162-bis c.p.): per le contravvenzioni punite con arresto o ammenda in alternativa; si paga la metà del massimo dell'ammenda; il giudice può negarla per gravità del fatto, recidiva, abitualità o se restano conseguenze dannose eliminabili.", ["162-bis", "alternativa", "meta", "negarla"]],
+        ["Prescrizione obbligatoria (artt. 19-24 D.Lgs. 758/1994; art. 301 D.Lgs. 81/2008): l'organo di vigilanza impone la regolarizzazione entro un termine fino a 6 mesi; verificato l'adempimento, il contravventore paga un quarto del massimo dell'ammenda in sede amministrativa e il reato si estingue.", ["758/1994", "6 mesi", "un quarto"]],
+        ["Non si applica alle contravvenzioni punite con il solo arresto o con arresto e ammenda congiunti; per le prime il giudice può sostituire la pena con una somma se il rischio è stato eliminato e non c'è stato un infortunio grave (art. 302 D.Lgs. 81/2008).", ["solo arresto", "congiunt", "302"]],
+        ["Effetto: estinzione del reato, a differenza della diffida per gli illeciti amministrativi, che li estingue con il pagamento del minimo.", ["estinzione", "diffida"]]
+      ],
+      aggancio: "Nella vigilanza INL la regola è la prescrizione obbligatoria, che premia chi regolarizza; l'oblazione del codice penale resta per i casi residui. Il consulente segue i termini della prescrizione e il pagamento entro 30 giorni dalla verifica.",
+      fonti: "Simone, Diritto penale (scansione del 6/11/2026), pp. 980 e 987-988; Simone, Diritto del lavoro, p. 175; Simone, Legislazione sociale, p. 437; 758_1994 in libreria; P1/P1_Mappe_Poteri_ispettivi."
+    },
+
+    "S22-PPP-30": {
+      sintesi: "Un reato può essere anche illecito civile: l'art. 185 c.p. obbliga il colpevole alle restituzioni e al risarcimento del danno patrimoniale e non patrimoniale, insieme alle persone che per legge devono rispondere per lui.",
+      punti: [
+        ["Restituzioni: restituire il maltolto e ripristinare la situazione precedente.", ["restituzion", "ripristin"]],
+        ["Risarcimento: danno patrimoniale (danno emergente e lucro cessante) e non patrimoniale (sofferenza morale e lesione di interessi non economici); tra i concorrenti nel reato la responsabilità è solidale.", ["danno emergente", "lucro cessante", "non patrimoniale", "solidal"]],
+        ["Responsabile civile: risponde anche chi deve rispondere del fatto altrui, come il datore di lavoro per il fatto del dipendente (art. 2049 c.c.); la persona offesa può costituirsi parte civile nel processo penale.", ["responsabile civile", "datore di lavoro", "parte civile"]],
+        ["Obbligazione civile per le pene pecuniarie (artt. 196-197 c.p.): se il condannato è insolvente, paga chi doveva vigilare o l'ente nel cui interesse il dipendente ha agito.", ["196", "insolvente", "ente"]],
+        ["Garanzie: sequestro conservativo, cauzione e revocatoria penale (artt. 189-195 c.p.); rimborso allo Stato delle spese di mantenimento in carcere (art. 188).", ["sequestro conservativo", "188"]]
+      ],
+      aggancio: "Nell'infortunio sul lavoro: il datore condannato risponde del danno differenziale oltre l'indennizzo INAIL, e l'INAIL agisce in regresso per le prestazioni erogate.",
+      fonti: "Simone, Diritto penale (scansione del 6/11/2026), pp. 981-982 e 984; Simone, Diritto del lavoro, pp. 174-175. Art. 2049 c.c.: da riscontrare sul codice."
     }
 
   };
