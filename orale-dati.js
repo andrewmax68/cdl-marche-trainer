@@ -1828,8 +1828,8 @@ window.ORALE = (function () {
         ["Forma abbreviata (art. 2435-bis) se non si superano per due esercizi due di questi limiti: attivo 5.500.000 euro, ricavi 11.000.000 euro, 50 dipendenti medi; esonero dal rendiconto finanziario.", ["abbreviat","5.500.000","11.000.000","50"]],
         ["Micro-imprese (art. 2435-ter): attivo 220.000 euro, ricavi 440.000 euro, 5 dipendenti; esonero anche dalla nota integrativa a certe condizioni.", ["micro","220.000","440.000","5 dipendenti"]]
       ],
-      aggancio: "Il bilancio è redatto dagli amministratori, approvato dall'assemblea entro 120 giorni dalla chiusura dell'esercizio e depositato al registro delle imprese.",
-      fonti: "Artt. 2423, 2435-bis, 2435-ter c.c. (miolegale.it, testo in vigore dal 10/8/2025, verificato su Normattiva al 10/10/2026); Simone, Ragioneria, p. 1046. Testo dell'art. 2423-bis e termine di 120 giorni (art. 2364 c.c.): DA VERIFICARE."
+      aggancio: "Il bilancio è redatto dagli amministratori, approvato dall'assemblea entro 120 giorni dalla chiusura dell'esercizio (180 se la società redige il consolidato o per particolari esigenze) e depositato al registro delle imprese.",
+      fonti: "Artt. 2423, 2435-bis, 2435-ter c.c. (miolegale.it, testo in vigore dal 10/8/2025, verificato su Normattiva al 10/10/2026); Simone, Ragioneria, p. 1046; Simone, Ragioneria, cap. 8 sul bilancio (scansione del 6/11/2026), pp. 1156-1158 (art. 2423-bis), 1171-1174 (limiti 5.500.000 e 11.000.000; micro 220.000 e 440.000, dopo la dir. UE 2023/2775) e 1190 (approvazione entro 120 giorni, 180 con bilancio consolidato o particolari esigenze)."
     },
 
     'RAG-11': {
@@ -1855,7 +1855,7 @@ window.ORALE = (function () {
         ["Le immobilizzazioni sono esposte al netto dei fondi di ammortamento e svalutazione.", ["netto","ammortamento"]]
       ],
       aggancio: "Il consulente del lavoro alimenta tre voci: il fondo TFR (C), i debiti verso istituti previdenziali (D 13) e le ritenute da versare (D 12).",
-      fonti: "Art. 2424 c.c. (miolegale.it, testo in vigore dal 1/1/2016, verificato su Normattiva al 10/10/2026)."
+      fonti: "Art. 2424 c.c. (miolegale.it, testo in vigore dal 1/1/2016, verificato su Normattiva al 10/10/2026); Simone, Ragioneria, cap. 8 sul bilancio (scansione del 6/11/2026), pp. 1159-1163."
     },
 
     'RAG-14': {
@@ -1868,7 +1868,7 @@ window.ORALE = (function () {
         ["Dal 2016 non esiste più l'area straordinaria (ex E): proventi e oneri straordinari sono distribuiti nelle altre voci (D.Lgs. 139/2015).", ["straordinari","139/2015","2016"]]
       ],
       aggancio: "Per l'orale basta saper collocare con sicurezza il costo del lavoro: B9 per i dipendenti, B7 per collaboratori e amministratori.",
-      fonti: "Art. 2425 c.c. (miolegale.it, testo in vigore dal 1/1/2016, verificato su Normattiva). Eliminazione dell'area straordinaria: implicita nello schema vigente, che non la prevede."
+      fonti: "Art. 2425 c.c. (miolegale.it, testo in vigore dal 1/1/2016, verificato su Normattiva); Simone, Ragioneria, cap. 8 sul bilancio (scansione del 6/11/2026), pp. 1164-1168. Eliminazione dell'area straordinaria: implicita nello schema vigente, che non la prevede."
     },
 
     'RAG-16': {
@@ -3157,6 +3157,84 @@ window.ORALE = (function () {
       ],
       aggancio: "Nell'infortunio sul lavoro: il datore condannato risponde del danno differenziale oltre l'indennizzo INAIL, e l'INAIL agisce in regresso per le prestazioni erogate.",
       fonti: "Simone, Diritto penale (scansione del 6/11/2026), pp. 981-982 e 984; Simone, Diritto del lavoro, pp. 174-175. Art. 2049 c.c.: da riscontrare sul codice."
+    },
+
+    "S22-RAG-1": {
+      sintesi: "L'azienda è il complesso dei beni organizzati dall'imprenditore per l'esercizio dell'impresa (art. 2555 c.c.). L'impresa si fa riconoscere sul mercato con tre segni distintivi: la ditta (il nome dell'imprenditore), l'insegna (il segno del locale) e il marchio (il segno dei prodotti o dei servizi).",
+      punti: [
+        ["Ditta: unico segno obbligatorio, il nome sotto cui l'imprenditore opera; principi di verità (deve contenere almeno il cognome o la sigla dell'imprenditore) e di novità (non deve confondersi con altre); non si trasferisce senza l'azienda.", ["ditta", "obbligatori", "verita", "novita"]],
+        ["Insegna: segno facoltativo che distingue il locale; può coincidere con la ditta o essere una denominazione, una figura o un simbolo, purché originale, vero e nuovo.", ["insegna", "locale", "facoltativ"]],
+        ["Marchio: segno facoltativo che distingue i prodotti o i servizi da quelli dei concorrenti; disciplinato dagli artt. 2569-2574 c.c. e dal Codice della proprietà industriale (D.Lgs. 30/2005); la registrazione dà il diritto di uso esclusivo.", ["marchio", "2569", "30/2005", "esclusiv"]],
+        ["La legge tutela i segni distintivi riconoscendo l'uso esclusivo e il potere di impedire che altri li usino; gli atti confusori sono concorrenza sleale (art. 2598 c.c.).", ["uso esclusivo", "concorrenza sleale"]],
+        ["Trasferimento d'azienda: per i lavoratori vale l'art. 2112 c.c., che conserva i rapporti di lavoro e i diritti maturati presso il cessionario, con solidarietà per i crediti.", ["2112", "cessionario", "solidarieta"]]
+      ],
+      aggancio: "In contabilità l'avviamento e i marchi acquistati sono immobilizzazioni immateriali da ammortizzare; per il consulente il trasferimento d'azienda è soprattutto la procedura dell'art. 2112 e, sopra i 15 dipendenti, la consultazione sindacale.",
+      fonti: "Simone, Diritto privato, pp. 789-792 (ORALE_Simone_Diritto_Privato_OCR); art. 2112 c.c. (NORMA_Codice_civile_lavoro); Simone, Legislazione sociale, pp. 408-410."
+    },
+
+    "S22-RAG-5": {
+      sintesi: "L'ammortamento è il procedimento con cui si ripartisce sistematicamente il costo di un'immobilizzazione di utilizzo limitato nel tempo tra gli esercizi della sua vita utile, per imputare a ciascuno il costo di competenza, indipendentemente dai risultati economici (OIC 16).",
+      punti: [
+        ["Piano di ammortamento: valore da ammortizzare, residua possibilità di utilizzazione (vita utile economica, di regola più breve di quella fisica) e metodo; va rivisto se cambiano le stime.", ["piano", "vita utile", "metodo"]],
+        ["Metodi: a quote costanti, il più diffuso; decrescenti se il bene è sfruttato di più all'inizio; per unità di prodotto. Non sono ammesse quote crescenti né quote legate ai ricavi.", ["quote costanti", "decrescenti", "crescenti"]],
+        ["Inizio quando il bene è disponibile e pronto all'uso, anche se temporaneamente inutilizzato; stop quando il valore residuo stimato raggiunge il valore netto contabile.", ["pronto all'uso", "valore residuo"]],
+        ["Rilevazione indiretta: in dare il costo «Ammortamento» (conto economico, voce B10), in avere il «Fondo ammortamento», che in bilancio rettifica il costo storico: l'immobilizzazione è esposta al netto.", ["fondo ammortamento", "b10", "al netto"]],
+        ["Fiscalmente le quote sono deducibili nei limiti dei coefficienti ministeriali (art. 102 TUIR): civilistica e fiscale possono divergere.", ["coefficienti", "102"]]
+      ],
+      aggancio: "Il requisito della sistematicità impedisce di usare gli ammortamenti per politiche di bilancio. Per il consulente il collegamento è con i beni dati ai dipendenti (auto, telefoni), il cui uso privato genera un fringe benefit.",
+      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Generale_OCR), pp. 1134-1137 (OIC 16); Simone, Ragioneria, cap. 8 sul bilancio (scansione del 6/11/2026), p. 1164 (voce B10). Art. 102 TUIR: 917_1986_TUIR, da riscontrare sul testo."
+    },
+
+    "S22-RAG-7": {
+      sintesi: "Ratei e risconti sono scritture di assestamento che applicano la competenza economica ai costi e ricavi di contratti di durata a cavallo di due esercizi: i ratei integrano costi o ricavi maturati ma non ancora pagati o incassati; i risconti stornano costi o ricavi già rilevati ma di competenza futura.",
+      punti: [
+        ["Ratei: quote maturate nell'esercizio di costi o ricavi la cui manifestazione finanziaria avverrà dopo (pagamento posticipato), come interessi su mutui o affitti pagati a fine periodo.", ["ratei", "maturat", "posticipat"]],
+        ["Rateo attivo: credito presunto per un ricavo maturato (per esempio un fitto attivo da incassare); rateo passivo: debito presunto per un costo maturato (per esempio interessi passivi da pagare).", ["rateo attivo", "rateo passivo", "presunt"]],
+        ["Risconti: quote di costi o ricavi già rilevati per intero ma di competenza degli esercizi successivi (pagamento anticipato), come un premio assicurativo annuale pagato in corso d'anno; attivi se riferiti a costi, passivi se riferiti a ricavi.", ["risconti", "anticipat", "competenza"]],
+        ["Calcolo per proporzione temporale: quota = importo × giorni (o mesi) di competenza ÷ durata complessiva.", ["proporzione", "durata"]],
+        ["In bilancio: voce D dell'attivo (ratei e risconti attivi) e voce E del passivo (ratei e risconti passivi) dello stato patrimoniale.", ["voce d", "voce e", "stato patrimoniale"]]
+      ],
+      aggancio: "Per il personale le scritture tipiche di fine anno non sono ratei ma stanziamenti: ratei di tredicesima e quattordicesima maturati, ferie non godute e quota di TFR, che il consulente comunica al contabile per l'assestamento.",
+      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), pp. 1120-1124; Simone, Ragioneria, cap. 8 sul bilancio (scansione del 6/11/2026), pp. 1159-1163 (voci dello stato patrimoniale)."
+    },
+
+    "S22-RAG-8": {
+      sintesi: "L'inventario d'esercizio è il documento che, a fine anno, rileva, descrive e valuta tutti gli elementi attivi e passivi del patrimonio aziendale; è la base delle scritture di assestamento, compreso l'ammortamento, e del bilancio (art. 2217 c.c.).",
+      punti: [
+        ["Fasi: ricerca degli elementi, loro classificazione e descrizione, valutazione; inventario generale, ordinario e a valori.", ["ricerca", "classificazione", "valutazione"]],
+        ["Libro degli inventari (art. 2214 c.c.): obbligatorio con il libro giornale per l'imprenditore commerciale; contiene l'inventario iniziale e quelli annuali, con attività e passività e il bilancio; va sottoscritto entro tre mesi dal termine per la dichiarazione dei redditi (art. 2217).", ["libro degli inventari", "2214", "tre mesi", "2217"]],
+        ["Ammortamento in sede di inventario: si verifica il valore dei cespiti e si rileva la quota di competenza, che riduce il valore netto contabile.", ["ammortamento", "quota", "valore netto"]],
+        ["Scrittura: Ammortamento (costo, B10 del conto economico) a Fondo ammortamento (rettifica dell'attivo); in alternativa, raramente, l'ammortamento diretto in diminuzione del conto del bene.", ["fondo ammortamento", "b10", "diretto"]],
+        ["Tra gli altri valori di fine esercizio: rimanenze di magazzino, ratei e risconti, fondi rischi e oneri, quota TFR.", ["rimanenze", "ratei", "tfr"]]
+      ],
+      aggancio: "Dal punto di vista dottrinale inventario e stato patrimoniale coincidono nel contenuto e differiscono solo nella forma. Il consulente fornisce i dati del personale (TFR, ratei, ferie) che entrano nell'inventario.",
+      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), pp. 1115-1117; Simone, Ragioneria (ORALE_Simone_Ragioneria_Generale_OCR), pp. 1134-1137."
+    },
+
+    "S22-RAG-9": {
+      sintesi: "Plusvalenze e minusvalenze sono le differenze positive o negative tra il prezzo di cessione di un'immobilizzazione e il suo valore netto contabile, cioè il costo storico meno il fondo ammortamento.",
+      punti: [
+        ["Dismissione dell'immobilizzazione: vendita, permuta, rottamazione, distruzione involontaria, cessione gratuita.", ["dismissione", "vendita", "rottamazione"]],
+        ["Calcolo: valore netto contabile = costo originario − fondo ammortamento; plusvalenza se il prezzo è maggiore, minusvalenza se è minore. Un bene già interamente ammortizzato genera una plusvalenza pari a tutto il ricavo.", ["valore netto contabile", "plusvalenza", "minusvalenza"]],
+        ["Esempio del Simone: macchinario da 5.000 euro ammortizzato per 4.000, venduto a 1.200 più IVA: valore netto 1.000, plusvalenza 200.", ["5.000", "1.200", "200"]],
+        ["Scritture: si chiude il fondo ammortamento contro il conto del bene; si rileva il credito verso il cliente con l'IVA, il bene per il valore residuo e la plusvalenza (o la minusvalenza) per la differenza.", ["fondo ammortamento", "iva"]],
+        ["In bilancio dal 2016 non c'è più l'area straordinaria: plusvalenze e minusvalenze vanno nella gestione caratteristica (A5 altri ricavi, B14 oneri diversi).", ["area straordinaria", "a5", "b14"]]
+      ],
+      aggancio: "Distinguere dalle plusvalenze e minusvalenze da valutazione, che il principio di prudenza ammette solo in negativo. Per il consulente è materia contabile di contorno: basta il meccanismo del valore netto.",
+      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), p. 1097 (dismissioni) e pp. 1092-1093 (titoli e prudenza); RAG-14 del simulatore (art. 2425 c.c., area straordinaria eliminata). Collocazione in A5 e B14: secondo i principi OIC, DA VERIFICARE."
+    },
+
+    "S22-RAG-10": {
+      sintesi: "Il premio INAIL è a carico esclusivo del datore e si paga in autoliquidazione: entro il 16 febbraio si versano la rata del premio anticipato per l'anno in corso, calcolato sulle retribuzioni dell'anno prima, e il conguaglio dell'anno precedente sulle retribuzioni effettive. In contabilità serve una scrittura di assestamento per imputare il costo all'esercizio di competenza.",
+      punti: [
+        ["Pagamento con F24, in un'unica soluzione o in quattro rate (16 febbraio, maggio, agosto e novembre), con interessi sulle rate.", ["f24", "quattro rate", "16 febbraio"]],
+        ["Al versamento dell'acconto: Acconti INAIL (credito) a Banca c/c.", ["acconti inail", "banca"]],
+        ["Al 31/12, determinato il premio effettivo dell'anno: Oneri sociali INAIL (costo, voce B9 b del conto economico) per il premio di competenza, contro Acconti INAIL e, per la differenza, Contributi INAIL a debito (passivo D13) o a credito (attivo circolante).", ["oneri sociali inail", "b9", "d13"]],
+        ["L'anno dopo, il saldo a debito si versa con il nuovo acconto; il saldo a credito si scomputa dal nuovo acconto.", ["saldo", "nuovo acconto"]],
+        ["Base: retribuzioni imponibili dei dipendenti e tassi della tariffa per voce di rischio; la dichiarazione delle retribuzioni si trasmette telematicamente insieme all'autoliquidazione (modulo INAIL).", ["retribuzioni", "tariffa", "dichiarazione delle retribuzioni"]]
+      ],
+      aggancio: "Il consulente calcola l'autoliquidazione e passa al contabile i dati per l'assestamento: premio di competenza, acconto versato e saldo. Il mancato o tardivo pagamento genera sanzioni civili e la perdita della regolarità contributiva (DURC).",
+      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), pp. 1095-1097; INAIL-3 del simulatore (autoliquidazione). Termini e rate: come riportati dal Simone; la scadenza della dichiarazione delle retribuzioni è DA VERIFICARE sulla guida INAIL dell'anno."
     }
 
   };
