@@ -213,7 +213,7 @@
         <label class="small row" style="gap:6px;margin-left:10px"><input type="radio" name="tipo" value="mix"> Busta mista (a caso da tutte le domande: Ancona 2025, integrazioni 2026, argomenti 2022)</label>
       </div>
       <div class="row" style="margin-top:10px">
-        <label class="small row" style="gap:6px"><input type="checkbox" id="simNoModel"> Nascondi la risposta modello fino alla fine della busta (più realistico)</label>
+        <label class="small row" style="gap:6px"><input type="checkbox" id="simNoModel"> Nascondi la risposta migliore dopo ogni domanda (più realistico; resta disponibile col pulsante e nel riepilogo)</label>
         <label class="small row" style="gap:6px;margin-left:10px"><input type="checkbox" id="simSoloR" checked autocomplete="off"> Busta 2026 e mista: solo domande con risposta modello</label>
       </div>
       <div class="row" style="margin-top:6px">
@@ -630,7 +630,7 @@
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" id="sRead" type="button">🔊 Riascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" id="sMic" type="button">🎙 Rispondi a voce</button>' : '') + '</div>' +
       '<div class="ans"><textarea id="sAns" placeholder="Rispondi come davanti alla commissione: per iscritto o col microfono (Modalità audio). Restano modificabili."></textarea></div>' +
-      '<div class="row" style="margin-top:10px"><button class="btn red" id="sDone" type="button">Ho finito di rispondere</button><button class="btn alt sm" id="sSkip" type="button">Non la so, passo</button></div>' +
+      '<div class="row" style="margin-top:10px"><button class="btn red" id="sDone" type="button">Ho finito di rispondere</button><button class="btn alt sm" id="sSkip" type="button">Non la so, passo</button><button class="btn alt sm" id="sPeek" type="button">Risposta migliore</button></div>' +
       '<div id="sAfter"></div></div></div>';
     startTimer($('#sTimer'));
     $('#simQuit').onclick = function(){ if (confirm('Interrompere la simulazione? Le risposte date finora vanno perse.')) { stopAll(); run = null; $('#simRun').innerHTML = ''; $('#simSetup').style.display = ''; } };
@@ -638,6 +638,7 @@
     if ($('#sMic')) $('#sMic').onclick = function(){ if (recWanted) stopMic(); else startMic($('#sAns'), $('#sMic')); };
     $('#sDone').onclick = function(){ finishQ(false); };
     $('#sSkip').onclick = function(){ finishQ(true); };
+    $('#sPeek').onclick = function(){ run.peek = run.peek || {}; run.peek[run.i] = 1; finishQ(false); };
     if (S.audio.on && S.audio.autoRead !== false) readSim(d);
   }
   function readSim(d){
@@ -659,11 +660,14 @@
     $('#sAns').readOnly = true; $('#sDone').disabled = true; $('#sSkip').disabled = true;
     if ($('#sMic')) $('#sMic').disabled = true;
     var after = '';
-    if (!run.hide) after += modelHtml(d, text);
+    var vedi = !run.hide || (run.peek && run.peek[run.i]);
+    if (vedi) after += modelHtml(d, text);
+    else after += '<div class="row" style="margin-top:10px"><button class="btn alt sm" id="sShow" type="button">Mostra la risposta migliore</button></div><div id="sModel"></div>';
     after += '<div class="grade"><span class="small" style="align-self:center"><b>Autovalutazione:</b></span>' +
       '<button class="btn alt sm" data-v="2" type="button">Bene</button><button class="btn alt sm" data-v="1" type="button">Parziale</button><button class="btn alt sm" data-v="0" type="button">Scoperta</button>' +
       '<span class="grow"></span><button class="btn sm" id="sNext" type="button" disabled>'+(run.i < run.Q.length - 1 ? 'Domanda successiva →' : 'Vedi il riepilogo →')+'</button></div>';
     var box = $('#sAfter'); box.innerHTML = after;
+    if ($('#sShow')) $('#sShow').onclick = function(){ $('#sModel').innerHTML = modelHtml(d, text); this.style.display = 'none'; };
     if (skipped) { run.voto[run.i] = 0; box.querySelector('[data-v="0"]').classList.add('on'); $('#sNext').disabled = false; }
     box.querySelectorAll('[data-v]').forEach(function(b){ b.onclick = function(){ run.voto[run.i] = Number(b.dataset.v); box.querySelectorAll('[data-v]').forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on'); $('#sNext').disabled = false; }; });
     box.addEventListener('click', function(e){ var a = e.target.closest('[data-act=askModel]'); if (a) copy(askModelText(d)); });
@@ -680,7 +684,8 @@
     run.Q.forEach(function(d, k){ if (run.voto[k] < 2) S.stato[d.id] = 'rip'; });
     save();
     var rows = run.Q.map(function(d, k){
-      return '<tr><td>'+(k+1)+'</td><td><b>'+esc(MAT[d.m].corto)+'</b><br><span class="small muted">'+esc(C[commOf(d)].nome)+'</span></td><td>'+esc(d.testo)+'</td><td>'+lab(run.voto[k])+'<br><span class="small muted mono">'+Math.floor((run.tempi[k]||0)/60)+'′'+String((run.tempi[k]||0)%60).padStart(2,'0')+'″</span></td><td><button class="btn alt sm" data-open="'+d.id+'" type="button">Rivedi</button></td></tr>';
+      return '<tr><td>'+(k+1)+'</td><td><b>'+esc(MAT[d.m].corto)+'</b><br><span class="small muted">'+esc(C[commOf(d)].nome)+'</span></td><td>'+esc(d.testo)+'</td><td>'+lab(run.voto[k])+'<br><span class="small muted mono">'+Math.floor((run.tempi[k]||0)/60)+'′'+String((run.tempi[k]||0)%60).padStart(2,'0')+'″</span></td><td><button class="btn alt sm" data-open="'+d.id+'" type="button">Rivedi</button></td></tr>' +
+        '<tr><td></td><td colspan="4"><details><summary class="small"><b>Risposta migliore</b> (con il riscontro sulla tua risposta)</summary>' + modelHtml(d, run.ans[k] || '') + '</details></td></tr>';
     }).join('');
     $('#simRun').innerHTML = '<div class="box"><h2>Riepilogo — '+esc(run.titolo)+'</h2>' +
       '<div class="row"><div class="big">'+stima.toFixed(1)+'</div><div class="small muted">stima su 10 dalla tua autovalutazione (bene = 2, parziale = 1, scoperta = 0). Per l\'abilitazione serve almeno 6/10. Non è il voto della commissione: per una correzione vera usa il pacchetto per Claude.</div></div>' +
