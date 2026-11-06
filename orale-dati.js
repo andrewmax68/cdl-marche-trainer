@@ -1,6 +1,7 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
    Versione dati: 2.1 del 6/11/2026 (+ DL-X7 diffida accertativa e DL-X8 disposizione, con risposta modello)
+   Versione dati: 2.2 del 6/11/2026 (+ DL-X9 organi, accesso e verbali; DL-X10 diffide e prescrizione obbligatoria; DL-X11 lavoro nero e maxisanzione)
    Versione dati: 1.7 del 1/11/2026 (+ risposte modello di diritto tributario, lotto 5)
    Versione 1.6.1 del 1/11/2026: correzioni INPS e INAIL dopo revisione indipendente
    Versione 1.6 del 1/11/2026: + risposte modello di ragioneria, lotto 4
@@ -321,6 +322,9 @@ window.ORALE = (function () {
     ['DL','X6','Integrazione 2026','Il ruolo del consulente del lavoro nella crisi d\'impresa (D.Lgs. 14/2019)'],
     ['DL','X7','Vigilanza e illeciti','La diffida accertativa per crediti patrimoniali (art. 12 D.Lgs. 124/2004)'],
     ['DL','X8','Vigilanza e illeciti','La disposizione del personale ispettivo (art. 14 D.Lgs. 124/2004)'],
+    ['DL','X9','Vigilanza e illeciti','La vigilanza in materia di lavoro: organi, accesso ispettivo e verbali'],
+    ['DL','X10','Vigilanza e illeciti','Diffide e prescrizione obbligatoria: la regolarizzazione degli illeciti amministrativi e penali'],
+    ['DL','X11','Vigilanza e illeciti','Il lavoro nero: maxisanzione, diffida e sospensione dell\'attività'],
     ['INPS','X1','Integrazione 2026','Le novità 2026 sulla NASpI e sul congedo parentale'],
     ['TRIB','X1','Integrazione 2026','Il sostituto d\'imposta: chi è, soggetti, obblighi'],
     ['PPP','X1','Integrazione 2026','La parità di genere nel lavoro: art. 37 Cost. e Codice delle pari opportunità'],
@@ -3656,6 +3660,45 @@ window.ORALE = (function () {
       ],
       aggancio: "Domanda tipica della seconda prova: buoni pasto elettronici da 12 euro per 20 giorni → esenti 10 euro al giorno, imponibili 2 euro al giorno, 40 euro nel mese. Distinguere i buoni pasto dai fringe benefit: non rientrano nella soglia dei fringe.",
       fonti: "Art. 51, c. 2, lett. c), e c. 5 TUIR (917_1986_TUIR (testo vigente al 4/10/2026)); P2_00_PARAMETRI v5, § 6. L'esclusione anche contributiva deriva dall'armonizzazione delle basi imponibili (P2_00_PARAMETRI v5, § 12)."
+    },
+
+    "DL-X9": {
+      sintesi: "La vigilanza in materia di lavoro e legislazione sociale rende effettive le tutele degli artt. 35 e 36 Cost. ed è regolata dal D.Lgs. 124/2004. La esercita principalmente l'Ispettorato nazionale del lavoro (INL), con gli ITL e gli IAM; INPS e INAIL vigilano sul versante contributivo e assicurativo; ASL e INL, in modo paritario, sulla sicurezza. La logica del decreto è prima regolarizzare, poi sanzionare.",
+      punti: [
+        ["Organi: INL, agenzia istituita dal D.Lgs. 149/2015, con 3 Direzioni interregionali, gli Ispettorati di area metropolitana (IAM) e gli Ispettorati territoriali (ITL). Il D.L. 19/2024 ha tolto all'INL l'esclusiva e ha restituito a INPS e INAIL i propri ispettori, lasciando all'INL il coordinamento. Gli ispettori INL sono ufficiali di polizia giudiziaria; quelli INPS e INAIL no (art. 6, c. 3).", ["149/2015", "19/2024", "coordinamento", "polizia giudiziaria"]],
+        ["Accesso: l'ispettore si identifica con il tesserino; il datore può farsi assistere da un professionista abilitato, per esempio il consulente del lavoro. Si identificano i presenti e si raccolgono le dichiarazioni dei lavoratori senza il datore né i superiori.", ["tesserino", "professionista abilitato", "dichiarazioni"]],
+        ["Verbali: verbale di primo accesso (art. 13, c. 1) con lavoratori trovati, attività svolte, dichiarazioni e documenti richiesti; eventuale verbale interlocutorio; alla fine verbale unico di accertamento e notificazione, con illeciti e fonti di prova, diffida, possibilità di pagare in misura ridotta e mezzi di difesa. Se non ci sono violazioni, comunicazione scritta di definizione.", ["primo accesso", "interlocutorio", "verbale unico", "definizione"]],
+        ["Valore probatorio: il verbale fa piena prova fino a querela di falso solo per i fatti avvenuti davanti all'ispettore e per la provenienza delle dichiarazioni, non per il loro contenuto (Cass. 37764/2021).", ["querela di falso", "37764/2021"]],
+        ["Gli strumenti dipendono da che cosa trova l'ispettore: illecito amministrativo sanabile, diffida; contravvenzione, prescrizione; irregolarità senza sanzione, disposizione; crediti dei lavoratori, diffida accertativa o conciliazione monocratica; lavoro nero o gravi violazioni di sicurezza, sospensione (vedi DL-X7 diffida accertativa, DL-X8 disposizione, DL-X10, DL-X11, DL-22a e DL-22b).", ["diffida", "prescrizione", "disposizione", "sospensione"]]
+      ],
+      aggancio: "Difese contro gli atti ispettivi: ricorso al direttore della sede contro gli atti di accertamento (art. 16, 30 giorni) e al Comitato per i rapporti di lavoro sulla qualificazione del rapporto (art. 17); scritti difensivi in 30 giorni contro la contestazione (art. 18 L. 689/1981); opposizione all'ordinanza-ingiunzione in tribunale. Interpello al Ministero (art. 9): chi si adegua alla risposta non è sanzionato.",
+      fonti: "Simone, Legislazione sociale, pp. 425-431; P1/P1_Mappe_Poteri_ispettivi (dal convegno di Rausei a Fermo, 18/9/2026); D.Lgs. 124/2004 (124_2004.pdf in libreria, testo vigente), artt. 6-7, 9, 13, 16-17."
+    },
+
+    "DL-X10": {
+      sintesi: "Il sistema premia chi regolarizza. Per gli illeciti amministrativi sanabili c'è la diffida (art. 13 D.Lgs. 124/2004) e, prima ancora, la diffida amministrativa del D.Lgs. 103/2024; per le contravvenzioni c'è la prescrizione obbligatoria (art. 15 D.Lgs. 124/2004 e artt. 20-25 D.Lgs. 758/1994), che porta all'estinzione del reato. Chi non regolarizza riceve la contestazione e paga in misura ridotta.",
+      punti: [
+        ["Diffida amministrativa (art. 6 D.Lgs. 103/2024): per sanzioni con massimo fino a 5.000 euro, prima violazione nel quinquennio, materialmente sanabile, mai in materia di sicurezza né per obblighi di origine europea (per esempio l'informativa sulle condizioni di lavoro); 20 giorni per sanare e nessuna sanzione.", ["5.000", "quinquennio", "sicurezza", "20 giorni"]],
+        ["Diffida obbligatoria (art. 13, c. 2-3): è condizione di procedibilità per gli illeciti amministrativi sanabili; 30 giorni per regolarizzare e 15 per pagare il minimo della sanzione o un quarto di quella fissa; il pagamento estingue il procedimento per quelle violazioni.", ["condizione di procedibilita", "30 giorni", "15", "un quarto"]],
+        ["Se il datore non regolarizza, lo stesso verbale vale come contestazione: pagamento in misura ridotta (un terzo del massimo o il doppio del minimo) entro 60 giorni, oppure scritti difensivi in 30 giorni e poi ordinanza-ingiunzione (artt. 14, 16, 18 L. 689/1981).", ["contestazione", "un terzo", "60 giorni", "ordinanza"]],
+        ["Prescrizione obbligatoria: per le contravvenzioni punite con arresto o ammenda alternativi o con la sola ammenda, anche in materia di sicurezza (art. 301 D.Lgs. 81/2008); non per arresto e ammenda congiunti. L'ispettore impartisce le prescrizioni, con un termine fino a 6 mesi prorogabile una volta, e comunica la notizia di reato al PM; il procedimento penale resta sospeso.", ["contravvenzioni", "alternativi", "6 mesi", "pm"]],
+        ["Verifica entro 60 giorni dalla scadenza; se il datore ha adempiuto, paga un quarto del massimo dell'ammenda entro 30 giorni e il reato si estingue. Su contravvenzioni non si usano né diffida né disposizione (art. 25 D.Lgs. 758/1994).", ["60 giorni", "un quarto del massimo", "estingue", "758/1994"]]
+      ],
+      aggancio: "Errori da evitare all'orale: confondere le tre diffide (amministrativa, obbligatoria o precettiva, accertativa); dire che la diffida vale per le contravvenzioni. Il consulente cura la regolarizzazione nei termini, perché il risparmio sulla sanzione è grande.",
+      fonti: "Simone, Legislazione sociale, pp. 435-437; P1/P1_Mappe_Poteri_ispettivi (dal convegno di Rausei a Fermo, 18/9/2026) (tabella degli strumenti); D.Lgs. 124/2004 (124_2004.pdf in libreria, testo vigente), artt. 13 e 15."
+    },
+
+    "DL-X11": {
+      sintesi: "Il lavoro nero è l'impiego di lavoratori subordinati senza la comunicazione preventiva di assunzione. Oltre al recupero di contributi e premi, comporta la maxisanzione per ciascun lavoratore (art. 3, c. 3-5, D.L. 12/2002) e, se riguarda almeno il 10% dei presenti, la sospensione dell'attività (art. 14 D.Lgs. 81/2008). Si distingue dal lavoro grigio, formalmente dichiarato ma irregolare nei fatti.",
+      punti: [
+        ["Presupposti: mancata comunicazione preventiva e requisiti della subordinazione; esclusi i datori domestici. Rientrano anche l'autonomo occasionale o il PrestO che nascondono un rapporto subordinato, il tirocinio non comunicato e riqualificato, l'appalto, il distacco e la somministrazione illeciti, contestati all'utilizzatore (nota INL 856/2022).", ["comunicazione preventiva", "domestic", "tirocinio", "utilizzatore"]],
+        ["Importi per ciascun lavoratore (aumentati del 30% dal D.L. 19/2024): da 1.950 a 11.700 euro fino a 30 giorni di lavoro effettivo; da 3.900 a 23.400 euro da 31 a 60 giorni; da 7.800 a 46.800 euro oltre 60 giorni. Maggiorazioni raddoppiate in caso di recidiva nel triennio; ulteriore 20% per stranieri senza permesso, minori in età non lavorativa, beneficiari dell'Assegno di inclusione o del Supporto per la formazione e il lavoro.", ["1.950", "11.700", "46.800", "recidiva", "20%"]],
+        ["Diffida speciale: entro 120 giorni dal verbale unico il datore deve regolarizzare contributi e retribuzioni, assumere il lavoratore (tempo indeterminato, anche part-time non sotto il 50%, apprendistato, o tempo pieno determinato di almeno 3 mesi; non l'intermittente), tenerlo in servizio almeno 90 giorni dall'accesso e pagare la sanzione minima. Esclusa per stranieri irregolari e minori.", ["120 giorni", "50%", "90 giorni", "intermittente"]],
+        ["Non si applica se dagli adempimenti contributivi già fatti risulta che il datore non voleva occultare il rapporto, o se ha regolarizzato spontaneamente e per intero prima dell'accertamento. È aggiuntiva rispetto alle altre sanzioni, ma assorbe quella per la mancata comunicazione di cessazione se il rapporto è stato tutto in nero.", ["occultare", "spontaneamente", "aggiuntiva", "cessazione"]],
+        ["Sospensione dell'attività (art. 14 D.Lgs. 81/2008): obbligatoria con almeno il 10% di lavoratori in nero tra i presenti all'accesso; esclusa se l'irregolare è l'unico occupato; revoca con regolarizzazione e somma aggiuntiva di 2.500 euro fino a cinque irregolari o 5.000 euro oltre (vedi DL-22a).", ["10%", "unico occupato", "2.500", "5.000"]]
+      ],
+      aggancio: "Per il consulente: mai far iniziare un lavoratore prima della comunicazione al centro per l'impiego, inviata entro il giorno precedente. Collegamenti: S22-DL-6 (stranieri senza permesso, anche reato), S22-DL-10 (PrestO), S22-DL-8 (tirocinio), INPS sulle sanzioni civili per evasione contributiva.",
+      fonti: "Simone, Legislazione sociale, pp. 437-441; P1/P1_Mappe_Poteri_ispettivi (dal convegno di Rausei a Fermo, 18/9/2026) (Focus 3); art. 3 D.L. 12/2002 come riportato da Simone."
     }
 
   };
@@ -3689,7 +3732,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.1 · 6/11/2026',
+    versione: '2.2 · 6/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
