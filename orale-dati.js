@@ -2741,6 +2741,266 @@ window.ORALE = (function () {
       ],
       aggancio: "Il consulente struttura il piano con regolamento o accordo, rivolto alla generalità o a categorie di dipendenti, per non trasformare il welfare in retribuzione imponibile. Nella CU i fringe esenti vanno nei punti 474-475, non nel punto 1.",
       fonti: "Simone, Diritto del lavoro, pp. 149-150; P2/P2_Mod07 (soglie fringe e premi 2025-2027); P2/P2_Mod01 (punti CU 474-475, 571-602); art. 51 TUIR (917_1986_TUIR)."
+    },
+
+    "DL-14b": {
+      sintesi: "Le ferie annuali retribuite sono un diritto irrinunciabile del lavoratore (art. 36, c. 3, Cost.; art. 2109 c.c.): servono a recuperare le energie psicofisiche e a partecipare alla vita familiare e sociale. Il D.Lgs. 66/2003 (art. 10) ne fissa il minimo in 4 settimane.",
+      punti: [
+        ["Spettano a ogni lavoratore subordinato, qualunque sia il contratto e l'anzianità (Corte cost. 66/1963 ha eliminato il requisito di un anno di servizio); maturano per ratei mensili e anche durante malattia, infortunio e maternità, secondo i CCNL.", ["ogni lavoratore", "66/1963", "ratei", "malattia"]],
+        ["Fruizione: almeno 2 settimane nell'anno di maturazione, consecutive se il lavoratore lo chiede; le altre 2 entro i 18 mesi successivi alla fine dell'anno, salvo termine più lungo del CCNL.", ["2 settimane", "consecutive", "18 mesi"]],
+        ["Divieto di monetizzazione delle 4 settimane legali: l'indennità sostitutiva è ammessa solo alla cessazione del rapporto o nei contratti a termine brevi; i giorni ulteriori previsti dai CCNL si possono monetizzare.", ["monetizzazione", "cessazione", "indennita sostitutiva"]],
+        ["Il periodo lo fissa il datore, contemperando le esigenze dell'impresa con gli interessi del lavoratore (art. 2109 c.c.; Corte cost. 543/1990). Le ferie si possono cedere gratuitamente ai colleghi che assistono figli minori gravemente malati, oltre il minimo legale (art. 24 D.Lgs. 151/2015).", ["datore", "543/1990", "cedere", "151/2015"]],
+        ["Contributi: sulle ferie non godute si versano i contributi entro il diciottesimo mese successivo all'anno di maturazione; se poi vengono fruite si recuperano con UniEmens (circ. INPS 156/2025).", ["diciottesimo mese", "uniemens", "156/2025"]]
+      ],
+      aggancio: "In busta paga il consulente tiene il conto dei ratei maturati, goduti e residui e, al diciottesimo mese, assoggetta a contributi le ferie non godute. All'informativa del D.Lgs. 152/1997 va indicata la durata delle ferie.",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), art. 36; Simone, Diritto del lavoro, pp. 185-187 (art. 10 D.Lgs. 66/2003)."
+    },
+
+    "DL-16a": {
+      sintesi: "Il D.Lgs. 66/2003 definisce orario di lavoro qualsiasi periodo in cui il lavoratore è al lavoro, a disposizione del datore e nell'esercizio delle sue funzioni (art. 1, c. 2, lett. a). Fissa l'orario normale, il limite massimo medio, i riposi e le pause; ai CCNL lascia ampi spazi.",
+      punti: [
+        ["Orario normale: 40 ore settimanali (art. 3); i CCNL possono ridurlo o riferirlo alla media di un periodo fino a un anno (orario multiperiodale), senza che le ore in più di alcune settimane siano straordinario.", ["40 ore", "multiperiodale", "anno"]],
+        ["Durata massima: 48 ore ogni 7 giorni, compreso lo straordinario, come media su 4 mesi, elevabili dai CCNL a 6 o, per ragioni obiettive, tecniche o organizzative, a 12 (art. 4).", ["48 ore", "4 mesi", "12"]],
+        ["Riposo giornaliero di 11 ore consecutive ogni 24 (art. 7), da cui una giornata massima di 13 ore; pausa se l'orario supera le 6 ore, di almeno 10 minuti in mancanza di CCNL (art. 8).", ["11 ore", "13 ore", "6 ore", "10 minuti"]],
+        ["Riposo settimanale di almeno 24 ore consecutive ogni 7 giorni, di regola la domenica, calcolato come media su 14 giorni (art. 9); è irrinunciabile (art. 36 Cost.).", ["24 ore", "domenica", "14 giorni", "irrinunciabil"]],
+        ["Esclusi dalle regole sulla durata i lavoratori il cui orario non è misurabile: dirigenti e personale direttivo, manodopera familiare, lavoratori a domicilio e telelavoro (art. 17, c. 5). Le violazioni su durata massima e riposi hanno sanzioni maggiorate del 20% e raddoppiate in caso di recidiva (L. 145/2018).", ["dirigenti", "20%", "recidiva"]]
+      ],
+      aggancio: "I CCNL comparativamente più rappresentativi possono adattare media e riposi con compensazioni (artt. 4 e 17): non è una deroga di prossimità. Andare oltre questi spazi richiede l'art. 8 D.L. 138/2011, entro i limiti europei (P1_Cap05). Il consulente registra le ore sul LUL ogni mese.",
+      fonti: "Simone, Diritto del lavoro, pp. 181-184 (D.Lgs. 66/2003); P1_Cap05, § 4 e caso pratico."
+    },
+
+    "DL-17a": {
+      sintesi: "Lo straordinario è il lavoro prestato oltre l'orario normale di 40 ore settimanali (art. 1, c. 2, lett. c, D.Lgs. 66/2003); il supplementare è il lavoro del part-time oltre l'orario concordato ma entro l'orario normale (art. 6 D.Lgs. 81/2015).",
+      punti: [
+        ["Straordinario: va contenuto (art. 5); lo regolano i CCNL. Senza CCNL serve l'accordo tra le parti e non si superano 250 ore l'anno; è sempre ammesso, salvo diversa disciplina del CCNL, per eccezionali esigenze tecnico-produttive, forza maggiore o pericolo grave, eventi particolari come mostre e fiere.", ["contenuto", "accordo", "250 ore", "forza maggiore"]],
+        ["Compenso: maggiorazioni fissate dai CCNL oppure, in alternativa o in aggiunta, riposi compensativi; restano i limiti delle 48 ore medie e delle 11 ore di riposo.", ["maggiorazioni", "riposi compensativi", "48 ore"]],
+        ["Lo «straordinario contrattuale» tra l'orario del CCNL (per esempio 36 ore) e le 40 ore legali segue le regole del contratto collettivo.", ["contrattuale", "36 ore"]],
+        ["Supplementare nel part-time: se il CCNL non lo disciplina, fino al 25% delle ore settimanali concordate, con maggiorazione del 15%; il lavoratore può rifiutarlo per comprovate esigenze di lavoro, salute, famiglia o formazione. Oltre l'orario normale si torna allo straordinario.", ["25%", "15%", "rifiutar"]],
+        ["Fisco 2026: sulle maggiorazioni per notturno, festivo e turni è prevista un'imposta sostitutiva del 15% per i redditi di lavoro dipendente 2025 fino a 40.000 euro (L. 199/2025; fonte secondaria, P2_Mod07).", ["sostitutiva", "15%", "40.000"]]
+      ],
+      aggancio: "In busta paga lo straordinario si calcola sulla retribuzione oraria con la maggiorazione del CCNL ed entra nell'imponibile fiscale e contributivo del mese. In ispezione il riscontro tra LUL, presenze e buste paga fa emergere lo straordinario non pagato, recuperabile con diffida accertativa.",
+      fonti: "Simone, Diritto del lavoro, pp. 184-185 (D.Lgs. 66/2003); D.Lgs. 81/2015, art. 6 (81_2015 in libreria); P2/P2_Mod07."
+    },
+
+    "DL-5b": {
+      sintesi: "Il congedo di maternità è l'astensione obbligatoria della lavoratrice nei due mesi prima della data presunta del parto e nei tre mesi dopo (art. 16 D.Lgs. 151/2001), con un'indennità INPS dell'80% della retribuzione. Attua la protezione della madre e del bambino voluta dagli artt. 31 e 37 Cost.",
+      punti: [
+        ["Flessibilità: un mese prima e quattro dopo (art. 20), oppure tutto dopo il parto entro i cinque mesi successivi, con attestazione del medico del SSN e del medico competente che escludano rischi; i giorni non goduti prima di un parto anticipato si aggiungono dopo.", ["un mese prima", "quattro dopo", "dopo il parto", "medico competente"]],
+        ["Indennità INPS dell'80%, anticipata dal datore in busta paga e conguagliata con i contributi (art. 22; art. 1 D.L. 663/1979); molti CCNL integrano fino al 100%. Il periodo conta nell'anzianità, anche per tredicesima e ferie.", ["80%", "anticipata", "conguagliata", "anzianita"]],
+        ["Interdizione anticipata o prolungata per complicanze o lavori pregiudizievoli (art. 17). Adibire la lavoratrice al lavoro durante il congedo è reato: arresto fino a sei mesi (art. 18).", ["interdizione", "arresto", "sei mesi"]],
+        ["Adozione e affidamento: cinque mesi (adozione) o tre mesi (affidamento) dall'ingresso del minore in famiglia (art. 26).", ["adozione", "affidamento", "ingresso"]],
+        ["Garanzie: divieto di licenziamento dall'inizio della gravidanza fino a un anno del bambino, a pena di nullità (art. 54); dimissioni e risoluzioni consensuali nei primi tre anni del bambino efficaci solo dopo la convalida dell'ITL (art. 55, c. 4).", ["licenziamento", "nullita", "convalida", "tre anni"]]
+      ],
+      aggancio: "Nella busta paga il consulente trattiene le giornate, anticipa l'indennità all'80% e l'eventuale integrazione del CCNL e la conguaglia in UniEmens. Nel contratto a termine l'indennità spetta anche se il rapporto scade durante il congedo (Simone p. 208).",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 31 e 37; P1/P1_Cap09_Genitorialita (D.Lgs. 151/2001, testo consolidato Brocardi al 1/1/2026; circ. INPS 106/2026, msg. INPS 251/2026); Simone, Diritto del lavoro, pp. 118 e 208."
+    },
+
+    "DL-6b": {
+      sintesi: "L'interdizione anticipata dal lavoro è il provvedimento che estende l'astensione obbligatoria della lavoratrice prima dei due mesi antecedenti il parto, o la prolunga dopo, quando la gravidanza o il lavoro mettono a rischio la salute della madre o del bambino (art. 17 D.Lgs. 151/2001).",
+      punti: [
+        ["Casi: gravi complicanze della gravidanza o forme morbose che si presume aggravate dalla gravidanza; condizioni di lavoro o ambientali pregiudizievoli; lavori vietati quando la lavoratrice non può essere spostata ad altre mansioni.", ["complicanze", "pregiudizievoli", "spostata"]],
+        ["Lavori vietati (art. 7): trasporto e sollevamento pesi, lavori pericolosi, faticosi e insalubri; la lavoratrice va spostata ad altre mansioni, anche inferiori, conservando retribuzione e qualifica. Il divieto vale durante la gravidanza e fino a sette mesi dopo il parto.", ["lavori vietati", "sollevamento", "conservando", "sette mesi"]],
+        ["Se lo spostamento è impossibile, l'Ispettorato territoriale del lavoro dispone l'interdizione dal lavoro (art. 17).", ["ispettorato", "impossibile"]],
+        ["Durante l'interdizione spetta l'indennità di maternità dell'80%, come nel congedo; il periodo è tutelato dal divieto di licenziamento.", ["80%", "divieto di licenziamento"]],
+        ["Chi adibisce la lavoratrice a lavori vietati o durante i periodi di interdizione è punito con l'arresto fino a sei mesi (artt. 7, c. 7, e 18); trattandosi del solo arresto non si applica la prescrizione obbligatoria del D.Lgs. 758/1994.", ["arresto", "prescrizione obbligatoria"]]
+      ],
+      aggancio: "Il consulente, con il medico competente e la valutazione dei rischi, verifica se la mansione è compatibile; se non lo è e non c'è un'alternativa, prepara l'istanza di interdizione all'ITL.",
+      fonti: "P1/P1_Cap09_Genitorialita (D.Lgs. 151/2001, testo consolidato Brocardi al 1/1/2026; circ. INPS 106/2026, msg. INPS 251/2026) (artt. 7, 17, 18); Simone, Diritto del lavoro, pp. 108 e 118-124."
+    },
+
+    "DL-7b": {
+      sintesi: "Il congedo di paternità obbligatorio spetta al padre lavoratore dipendente per 10 giorni lavorativi (20 in caso di parto plurimo), fruibili anche in modo non continuativo dai due mesi prima ai cinque mesi dopo il parto, con un'indennità INPS del 100% (art. 27-bis D.Lgs. 151/2001, introdotto dal D.Lgs. 105/2022).",
+      punti: [
+        ["Ratio: la condivisione dei compiti di cura tra i genitori (dir. UE 2019/1158); è un diritto autonomo del padre, distinto dal congedo della madre.", ["condivisione", "2019/1158"]],
+        ["Preavviso scritto al datore di almeno cinque giorni; chiedere il rispetto del preavviso non è ostacolo al congedo (nota INL 2414/2022).", ["preavviso", "cinque giorni", "2414/2022"]],
+        ["Spetta anche alla madre intenzionale nella coppia di donne iscritte come genitori nei registri dello stato civile (Corte cost. 115/2025).", ["madre intenzionale", "115/2025"]],
+        ["Congedo di paternità alternativo (art. 28): per la durata residua del congedo della madre, in caso di morte o grave infermità, abbandono o affidamento esclusivo al padre; indennità all'80%.", ["alternativo", "28", "80%"]],
+        ["Sanzioni (art. 31-bis): rifiuto, opposizione od ostacolo sono puniti con la sanzione amministrativa da 516 a 2.582 euro e, se accertati nei due anni precedenti, impediscono la certificazione della parità di genere. Il divieto di licenziamento si estende al padre che fruisce del congedo (art. 54, c. 7).", ["516", "2.582", "parita di genere", "54"]]
+      ],
+      aggancio: "Il datore non può negarlo per esigenze produttive: è un diritto del lavoratore nei limiti di legge. In busta paga l'indennità al 100% è anticipata dal datore e conguagliata con l'INPS.",
+      fonti: "P1/P1_Cap09_Genitorialita (D.Lgs. 151/2001, testo consolidato Brocardi al 1/1/2026; circ. INPS 106/2026, msg. INPS 251/2026) (artt. 27-bis, 28, 29, 31-bis, 54); Simone, Diritto del lavoro, p. 119."
+    },
+
+    "DL-12a": {
+      sintesi: "L'art. 37 Cost. affida alla legge il limite minimo di età per il lavoro salariato e garantisce ai minori, a parità di lavoro, la parità di retribuzione. La disciplina è la L. 977/1967, adeguata alla dir. 94/33/CE dal D.Lgs. 345/1999: l'età minima coincide con la fine dell'obbligo di istruzione.",
+      punti: [
+        ["Età minima: 16 anni, con almeno 10 anni di istruzione obbligatoria (art. 1, c. 622, L. 296/2006). Eccezioni: apprendistato di primo livello da 15 anni (14 nello sport dilettantistico) e professionalizzante sportivo da 15.", ["16 anni", "10 anni", "296/2006", "15 anni"]],
+        ["Bambini (sotto i 15 anni o ancora soggetti all'obbligo scolastico) e adolescenti (15-18 anni): i bambini possono lavorare solo in attività culturali, artistiche, sportive, pubblicitarie e dello spettacolo, con il consenso dei genitori e l'autorizzazione dell'ITL.", ["bambini", "adolescenti", "spettacolo", "autorizzazione"]],
+        ["Lavori vietati agli adolescenti quelli pregiudizievoli per lo sviluppo (art. 6 e Allegato I), ammessi solo per formazione e sotto sorveglianza, con autorizzazione dell'ITL; valutazione dei rischi specifica per l'età e visite mediche preassuntive e periodiche.", ["lavori vietati", "formazione", "valutazione dei rischi", "visite"]],
+        ["Orario: massimo 7 ore al giorno e 35 a settimana per i bambini, 8 e 40 per gli adolescenti; lavoro notturno vietato; riposo settimanale di almeno 2 giorni, possibilmente consecutivi e con la domenica.", ["7 ore", "8", "notturno", "2 giorni"]],
+        ["Il contratto con un minore sotto l'età minima è nullo per illiceità dell'oggetto, ma la retribuzione per il lavoro svolto è dovuta (art. 2126, c. 2, c.c.).", ["nullo", "2126"]]
+      ],
+      aggancio: "Per il consulente: verificare età e assolvimento dell'obbligo prima dell'assunzione e chiedere la visita preassuntiva. L'impiego di minori in età non lavorativa aggrava del 20% la maxisanzione per lavoro nero e non è diffidabile (Simone LS pp. 439-440).",
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), art. 37; Simone, Diritto del lavoro, pp. 34 e 116-118; Simone, Legislazione sociale, pp. 439-440."
+    },
+
+    "DL-10b": {
+      sintesi: "La L. 68/1999 ha sostituito il vecchio collocamento obbligatorio con il collocamento mirato: valorizzare le capacità residue delle persone con disabilità e inserirle nel posto più adatto, con un obbligo di assunzione per i datori da 15 dipendenti in su.",
+      punti: [
+        ["Beneficiari (art. 1): invalidi civili con riduzione della capacità lavorativa oltre il 45%; invalidi del lavoro oltre il 33%; non vedenti e sordi; invalidi di guerra e per servizio; orfani per crimini domestici. Quote a parte per orfani e coniugi superstiti di vittime del lavoro, del terrorismo e della criminalità (art. 18).", ["45%", "33%", "non vedenti", "18"]],
+        ["Quota di riserva (art. 3): un lavoratore tra 15 e 35 dipendenti; due tra 36 e 50; il 7% oltre 50. Nel computo entrano i subordinati, compresi i contratti a termine oltre 6 mesi (art. 4).", ["quota di riserva", "15", "7%", "6 mesi"]],
+        ["Adempimenti: richiesta di assunzione entro 60 giorni dall'insorgere dell'obbligo, con richiesta nominativa o convenzione (art. 7); prospetto informativo telematico entro il 31 gennaio se nell'anno è cambiata la situazione occupazionale (art. 9, c. 6).", ["60 giorni", "nominativa", "prospetto informativo", "31 gennaio"]],
+        ["Flessibilità: esonero parziale per le attività che non consentono l'impiego (decreto ministeriale del 7/7/2000), sospensione per temporanea difficoltà produttiva (art. 3, c. 5), compensazioni territoriali; convenzioni di inserimento anche con cooperative sociali (artt. 11-12).", ["esonero", "sospension", "convenzion"]],
+        ["Senza assunzione gli uffici avviano d'ufficio secondo la graduatoria (avviamento numerico); il rifiuto di assumere è verbalizzato dall'ITL; le sanzioni sono amministrative, mai penali.", ["numerico", "itl", "amministrative"]]
+      ],
+      aggancio: "Il D.Lgs. 62/2024 sostituisce i termini «handicap» e «disabile» con «persona con disabilità» e introduce un nuovo accertamento, a regime dal 2027. Il consulente monitora la base di computo, invia il prospetto informativo e valuta convenzioni ed esoneri prima che scattino le sanzioni.",
+      fonti: "Simone, Diritto del lavoro, pp. 70-72 e 81-82 (L. 68/1999; D.Lgs. 62/2024). Numero del D.M. sugli esoneri: il Simone riporta «D.M. 7-7-2000, n. 35», DA VERIFICARE."
+    },
+
+    "DL-11b": {
+      sintesi: "Il caporalato è il reclutamento e l'impiego illecito di lavoratori sottoposti a sfruttamento, approfittando del loro stato di bisogno. Lo punisce l'art. 603-bis c.p. (intermediazione illecita e sfruttamento del lavoro), che colpisce sia il caporale sia il datore che utilizza la manodopera.",
+      punti: [
+        ["Condotte: reclutare manodopera per destinarla a terzi in condizioni di sfruttamento, approfittando dello stato di bisogno; utilizzare, assumere o impiegare manodopera, anche tramite intermediari, sottoponendola a sfruttamento. Pena: reclusione da 1 a 6 anni e multa da 500 a 1.000 euro per lavoratore; con violenza o minaccia da 5 a 8 anni e multa da 1.000 a 2.000 euro.", ["reclut", "stato di bisogno", "1 a 6 anni", "violenza"]],
+        ["Indici di sfruttamento: retribuzioni reiteratamente difformi dai CCNL o sproporzionate; violazioni reiterate di orario, riposi, ferie; violazioni delle norme di sicurezza; condizioni di lavoro, sorveglianza o alloggio degradanti.", ["indici", "ccnl", "sicurezza", "degradanti"]],
+        ["Aggravanti, con pena aumentata da un terzo alla metà: più di 3 lavoratori reclutati; minori in età non lavorativa; esposizione a grave pericolo.", ["aggravant", "3 lavoratori", "minori"]],
+        ["Misure sull'impresa: sequestro o, se l'interruzione danneggia occupazione e valore dell'azienda, controllo giudiziario; indennizzo statale alle vittime.", ["sequestro", "controllo giudiziario"]],
+        ["Tutela degli stranieri vittime: permesso di soggiorno «casi speciali» di un anno, rinnovabile, che consente di lavorare e può convertirsi in permesso per lavoro (art. 18-ter D.Lgs. 286/1998, introdotto dal D.L. 145/2024).", ["casi speciali", "18-ter", "145/2024"]]
+      ],
+      aggancio: "Diverso dall'interposizione illecita (appalto o distacco non genuini, art. 18 D.Lgs. 276/2003): il caporalato richiede sfruttamento e approfittamento del bisogno. In ispezione gli indici dell'art. 603-bis coincidono con violazioni che il consulente previene ogni giorno: retribuzione sotto il CCNL, orari, sicurezza.",
+      fonti: "Simone, Diritto del lavoro, pp. 62-64 (art. 603-bis c.p.; D.L. 145/2024)."
+    },
+
+    "DL-20b": {
+      sintesi: "Il lavoro sommerso comprende il lavoro «nero», cioè il rapporto del tutto sconosciuto alle autorità perché manca la comunicazione preventiva di assunzione, e il lavoro «grigio», formalmente dichiarato ma irregolare nello svolgimento. Il lavoro nero è punito con la maxisanzione dell'art. 3 D.L. 12/2002.",
+      punti: [
+        ["Lavoro grigio: falsa qualificazione del rapporto (false collaborazioni), appalti e distacchi non genuini, orario dichiarato inferiore a quello reale (abuso di part-time e intermittente).", ["grigio", "qualificazione", "part-time"]],
+        ["Maxisanzione per ciascun lavoratore in nero, a fasce di durata: da 1.950 a 11.700 euro fino a 30 giorni di lavoro effettivo; da 3.900 a 23.400 tra 31 e 60 giorni; da 7.800 a 46.800 oltre 60 giorni. Importi raddoppiati in caso di recidiva nel triennio e aumentati del 20% per stranieri senza permesso, minori in età non lavorativa, beneficiari dell'Assegno di inclusione o del Supporto per la formazione e il lavoro.", ["1.950", "46.800", "recidiva", "20%"]],
+        ["Non si applica se dagli adempimenti contributivi già fatti risulta la volontà di non occultare il rapporto, anche se qualificato in modo diverso, o se il datore ha regolarizzato spontaneamente per l'intera durata.", ["non occultare", "spontaneamente"]],
+        ["Diffida obbligatoria: il datore regolarizza assumendo il lavoratore con contratto ammesso e mantenendolo per almeno 90 giorni, pagando il minimo; esclusa per stranieri irregolari e minori in età non lavorativa.", ["diffida", "90 giorni", "stranieri", "minori"]],
+        ["Strumenti di contrasto: sospensione dell'attività con almeno il 10% di irregolari tra i presenti (art. 14 D.Lgs. 81/2008); Portale nazionale del sommerso, che raccoglie gli esiti delle ispezioni di INL, INPS, INAIL, Carabinieri e Guardia di finanza; decurtazione della patente a crediti nei cantieri.", ["sospensione", "10%", "portale nazionale del sommerso", "patente"]]
+      ],
+      aggancio: "Per il consulente la prevenzione è la comunicazione obbligatoria (UniLav) inviata entro il giorno precedente l'inizio del rapporto. Il recupero dei contributi evasi e le sanzioni civili si aggiungono alla maxisanzione.",
+      fonti: "Simone, Legislazione sociale, pp. 437-440 (art. 3 D.L. 12/2002; L. 145/2018); P1/P1_Mappe_Poteri_ispettivi (diffida, sospensione); P1_Cap04 (patente a crediti)."
+    },
+
+    "DL-22a": {
+      sintesi: "Il provvedimento di sospensione dell'attività d'impresa (art. 14 D.Lgs. 81/2008) è un potere vincolato dell'Ispettorato, esercitabile anche dalle ASL per la sicurezza: si adotta quando almeno il 10% dei lavoratori presenti all'accesso è irregolare o quando si riscontra una grave violazione di sicurezza dell'Allegato I.",
+      punti: [
+        ["Lavoro irregolare: lavoratori senza comunicazione preventiva di assunzione o autonomi occasionali inquadrati senza le condizioni di legge; la regolarizzazione durante l'ispezione non conta. Esclusa se l'irregolare è l'unico occupato, che va però allontanato.", ["comunicazione preventiva", "regolarizzazione", "unico occupato"]],
+        ["Sicurezza: basta una violazione dell'Allegato I, in qualunque settore (per esempio mancanza del DVR, del piano di emergenza, della formazione, dei DPI anticaduta).", ["allegato i", "dvr", "formazione"]],
+        ["Effetti: stop della parte di attività interessata dalle 12 del giorno lavorativo successivo, o subito se c'è pericolo; restano dovute retribuzioni e contributi; divieto di contrattare con la pubblica amministrazione.", ["12 del giorno", "retribuzion", "pubblica amministrazione"]],
+        ["Revoca: regolarizzazione più somma aggiuntiva (lavoro irregolare 2.500 euro fino a cinque irregolari, 5.000 oltre; per la sicurezza importi per violazione), raddoppiata se c'è stata un'altra sospensione nei cinque anni; si può pagare subito il 20% e il resto entro sei mesi, maggiorato del 5%.", ["revoca", "2.500", "5.000", "20%"]],
+        ["Difesa: per il lavoro irregolare ricorso all'Ispettorato interregionale entro 30 giorni (se tace 30 giorni, la sospensione perde efficacia); nessun ricorso amministrativo per la sicurezza. L'inottemperanza è reato.", ["interregionale", "30 giorni", "inottemperanza"]]
+      ],
+      aggancio: "La sospensione si somma alla maxisanzione per ciascun lavoratore in nero. Il consulente, chiamato in ispezione, regolarizza subito le posizioni per arrivare alla revoca e valuta il ricorso solo se il calcolo del 10% è sbagliato.",
+      fonti: "Art. 14 D.Lgs. 81/2008 (81_2008_ESTRATTO_TitoloI_XII); P1/P1_Mappe_Poteri_ispettivi, Focus 3 (circ. INL 3/2021; nota INL 162/2023)."
+    },
+
+    "DL-22b": {
+      sintesi: "La conciliazione monocratica (art. 11 D.Lgs. 124/2004) è un tentativo di accordo davanti a un solo funzionario dell'Ispettorato territoriale del lavoro, per le questioni di natura patrimoniale tra lavoratore e datore: serve a prevenire il contenzioso e a chiudere l'ispezione con il pagamento.",
+      punti: [
+        ["Due forme: preventiva, su richiesta di intervento del lavoratore o di chi ne ha il mandato; contestuale, avviata dall'ispettore durante la vigilanza con il consenso delle parti. Le parti possono farsi assistere da sindacati o professionisti.", ["preventiva", "contestuale", "consenso"]],
+        ["Non si usa se emergono indizi di reato, se l'ispettore ha già accertato le violazioni o per i rapporti certificati (per questi c'è il tentativo davanti alla commissione di certificazione).", ["reato", "accertato", "certificati"]],
+        ["L'accordo deve riconoscere un periodo di lavoro effettivo: non sono ammessi accordi solo transattivi (circ. Min. Lav. 36/2009); il funzionario può rifiutare la firma se il consenso del lavoratore non è libero.", ["periodo di lavoro", "transattivi", "rifiutare"]],
+        ["Il verbale non è impugnabile (art. 2113 c.c.) e diventa titolo esecutivo con decreto del giudice (art. 11, c. 3-bis); i contributi si calcolano sulla somma conciliata, non sotto i minimali.", ["2113", "titolo esecutivo", "minimali"]],
+        ["Il pagamento delle somme e il versamento di contributi e premi estinguono il procedimento ispettivo senza sanzioni; se l'accordo non arriva, l'ispezione prosegue.", ["estinguono", "sanzioni", "prosegue"]]
+      ],
+      aggancio: "È l'occasione tipica in cui il consulente assiste il datore all'ITL: valuta se conciliare conviene rispetto al rischio di diffida accertativa e sanzioni, e cura subito il versamento dei contributi sulla somma conciliata.",
+      fonti: "Simone, Legislazione sociale, p. 433 (art. 11 D.Lgs. 124/2004; circ. Min. Lav. 24/2004 e 36/2009); 124_2004 in libreria; P1/P1_Mappe_Poteri_ispettivi."
+    },
+
+    "DL-23a": {
+      sintesi: "Dal 1° ottobre 2024 le imprese e i lavoratori autonomi che operano nei cantieri temporanei o mobili devono avere la patente a crediti, rilasciata in formato digitale dall'INL (art. 27 D.Lgs. 81/2008; D.M. 132/2024).",
+      punti: [
+        ["Requisiti autocertificati: iscrizione alla Camera di commercio; adempimento degli obblighi formativi; DURC valido; DVR e nomina del RSPP nei casi previsti; regolarità fiscale nei casi previsti. Si chiede sul portale INL, anche tramite un delegato.", ["camera di commercio", "formativi", "durc", "dvr"]],
+        ["Punteggio: 30 crediti iniziali, fino a 100 con i crediti aggiuntivi (storicità dell'impresa, assenza di decurtazioni, altri criteri del D.M.). Si lavora solo con almeno 15 crediti; sotto, si può completare un appalto già eseguito oltre il 30%.", ["30 crediti", "100", "15 crediti", "30%"]],
+        ["Decurtazioni per i provvedimenti definitivi elencati nell'Allegato I-bis; per il lavoro nero, dal 2026, 5 crediti per ciascun lavoratore già alla notifica del verbale (D.L. 159/2025, come riportato nel P1_Cap04).", ["allegato i-bis", "5 crediti", "lavoro nero"]],
+        ["Sospensione cautelare fino a 12 mesi in caso di infortunio mortale o con inabilità permanente imputabile almeno a colpa grave; revoca per dichiarazioni non veritiere, con nuova domanda dopo 12 mesi.", ["sospensione", "12 mesi", "colpa grave", "revoca"]],
+        ["Senza patente o con meno di 15 crediti: sanzione pari al 10% del valore dei lavori, non inferiore a 12.000 euro, senza diffida, ed esclusione dai lavori pubblici per sei mesi (c. 11). Esenti le imprese con attestazione SOA dalla III classifica e chi fa solo forniture o prestazioni intellettuali.", ["10%", "12.000", "soa", "intellettual"]]
+      ],
+      aggancio: "Il consulente può presentare la domanda su delega e tenere sotto controllo i requisiti (formazione, DURC, DVR) da cui dipendono i crediti. In ispezione la patente si consulta sul Portale nazionale del sommerso.",
+      fonti: "Art. 27 D.Lgs. 81/2008 (81_2008_ESTRATTO_TitoloI_XII); Simone, Diritto del lavoro, pp. 162-164; P1_Cap04, § 3.7."
+    },
+
+    "DL-13b": {
+      sintesi: "Le norme del lavoro sono inderogabili e i diritti che ne derivano indisponibili: per questo l'art. 2113 c.c. rende invalide le rinunzie e le transazioni del lavoratore su diritti nati da norme inderogabili di legge o di contratto collettivo, salvo che siano fatte in una sede protetta.",
+      punti: [
+        ["Rinunzia: atto unilaterale con cui il lavoratore dismette un diritto; transazione (art. 1965 c.c.): contratto con cui le parti, con reciproche concessioni, chiudono o prevengono una lite.", ["rinunzia", "transazione", "1965", "reciproche concessioni"]],
+        ["Impugnazione: con qualsiasi atto scritto, anche stragiudiziale, entro 6 mesi dalla cessazione del rapporto o dalla rinunzia o transazione, se successiva. Termine di decadenza.", ["atto scritto", "6 mesi", "decadenza"]],
+        ["Sedi protette, dove l'atto non è impugnabile (art. 2113, c. 4): commissione di conciliazione dell'ITL (art. 410 c.p.c.); sede sindacale (art. 412-ter); collegio di conciliazione e arbitrato (art. 412-quater); giudice (art. 420); commissioni di certificazione (art. 82 D.Lgs. 276/2003).", ["sedi protette", "410", "sindacale", "certificazione"]],
+        ["Sono inoppugnabili anche l'offerta di conciliazione delle tutele crescenti (art. 6 D.Lgs. 23/2015), il verbale di conciliazione monocratica e l'accordo di negoziazione assistita, in cui il lavoratore può farsi assistere anche da un consulente del lavoro.", ["tutele crescenti", "monocratica", "negoziazione assistita"]],
+        ["Diverse le quietanze a saldo: dichiarazioni generiche di non avere più nulla a pretendere, che valgono come semplice dichiarazione di scienza e non come rinunzia: i crediti si possono far valere nel termine di prescrizione, senza la decadenza dell'art. 2113.", ["quietanze a saldo", "nulla a pretendere", "dichiarazione di scienza"]]
+      ],
+      aggancio: "Il consulente assiste le parti nelle sedi protette nel rispetto dell'art. 40 del Codice deontologico: interesse esclusivo dell'assistito, nessun atto nullo o fraudolento, astensione in caso di conflitto. Un accordo firmato in azienda, senza sede protetta, resta impugnabile per sei mesi.",
+      fonti: "Art. 2113 c.c. (NORMA_Codice_civile_lavoro); Simone, Legislazione sociale, pp. 405-407 e 418-420."
+    },
+
+    "DL-21b": {
+      sintesi: "Gli accordi conciliativi in sede protetta sono le conciliazioni concluse davanti a soggetti terzi che garantiscono la genuinità della volontà del lavoratore: per questo le rinunzie e le transazioni che contengono non sono impugnabili (art. 2113, c. 4, c.c.).",
+      punti: [
+        ["Commissione di conciliazione dell'ITL (art. 410 c.p.c.): richiesta all'ITL e alla controparte; se questa aderisce, memoria entro 20 giorni e convocazione; se la conciliazione fallisce, la commissione formula una proposta di cui il giudice terrà conto. La richiesta interrompe la prescrizione e sospende le decadenze fino a 20 giorni dopo la fine del tentativo.", ["410", "20 giorni", "proposta", "prescrizione"]],
+        ["Sede sindacale (art. 412-ter c.p.c.): procedure dei contratti collettivi; il verbale si deposita all'ITL e in tribunale per l'esecutività.", ["sindacale", "412-ter", "esecutiv"]],
+        ["Commissioni di certificazione, compresa quella del Consiglio provinciale dei consulenti del lavoro; per i contratti certificati il tentativo davanti alla commissione che ha certificato è obbligatorio prima del giudizio.", ["certificazione", "consulenti del lavoro", "obbligatorio"]],
+        ["Offerta di conciliazione nelle tutele crescenti (art. 6 D.Lgs. 23/2015): entro il termine per impugnare il licenziamento, una mensilità per anno di servizio, da 3 a 27, con assegno circolare in sede protetta, esente da IRPEF e contributi; l'accettazione estingue il rapporto e rinuncia all'impugnazione. Per i datori sotto soglia l'importo è dimezzato.", ["offerta", "3 a 27", "esente", "dimezzat"]],
+        ["Altri strumenti: arbitrato presso la commissione dell'ITL o il collegio dell'art. 412-quater, con lodo vincolante come un contratto; clausola compromissoria solo se prevista dai CCNL e certificata, mai per la risoluzione del rapporto; negoziazione assistita da avvocati, con possibile assistenza del consulente del lavoro.", ["arbitrato", "412-quater", "clausola compromissoria", "negoziazione assistita"]]
+      ],
+      aggancio: "Dopo Corte cost. 118/2025 il tetto di 6 mensilità per i piccoli datori è caduto: per l'offerta resta il dimezzamento, ma la misura esatta è una lettura del testo (P1_Cap08). Il consulente assiste in sede protetta secondo l'art. 40 del Codice deontologico.",
+      fonti: "Simone, Legislazione sociale, pp. 417-420 (artt. 410-412-quater c.p.c.; art. 6 D.Lgs. 23/2015; D.L. 132/2014); art. 2113 c.c. (NORMA_Codice_civile_lavoro); P1_Cap08, scheda 1."
+    },
+
+    "DL-15b": {
+      sintesi: "Il mobbing è una nozione di dottrina e giurisprudenza, senza una norma specifica: una serie di condotte persecutorie, sistematiche e prolungate, del datore, dei superiori o dei colleghi, che lede la salute, la personalità o la dignità del lavoratore, spesso per estrometterlo dall'azienda.",
+      punti: [
+        ["Elementi per la Cassazione: pluralità di comportamenti persecutori, anche leciti se presi da soli, ripetuti nel tempo; evento lesivo della salute, della personalità o della dignità; nesso causale; intento persecutorio unificante, provabile anche con presunzioni (Cass. 30583/2021, 33639/2022).", ["persecutori", "evento lesivo", "nesso", "intento persecutorio"]],
+        ["Tutela civile: responsabilità contrattuale del datore per violazione dell'art. 2087 c.c., che gli impone di tutelare integrità fisica e personalità morale anche impedendo le vessazioni dei colleghi; in aggiunta, responsabilità extracontrattuale (art. 2043 c.c.).", ["2087", "contrattuale", "2043"]],
+        ["Anche se il mobbing non è provato, il giudice deve verificare se il datore ha violato l'art. 2087 non adottando le misure necessarie (Cass. 3822/2024); per la Cassazione mobbing e straining hanno valore solo sociologico: conta l'illecito dell'art. 2087 (Cass. 31912/2024).", ["3822/2024", "31912/2024", "straining"]],
+        ["Straining: forma attenuata, anche una sola azione con effetti duraturi o un ambiente di lavoro stressogeno mantenuto colposamente dal datore.", ["stressogen", "una sola azione"]],
+        ["Nessun reato specifico: possono rilevare maltrattamenti (art. 572 c.p.) nei rapporti di tipo para-familiare, lesioni (artt. 582-583), violenza sessuale, atti persecutori (art. 612-bis, stalking occupazionale).", ["572", "lesioni", "612-bis"]]
+      ],
+      aggancio: "Il mobbing può giustificare le dimissioni per giusta causa, con NASpI (circ. INPS 163/2003, riportata da Simone pp. 232 e 235). Per il consulente: la valutazione del rischio stress lavoro-correlato nel DVR e procedure contro molestie e violenze (art. 15 D.Lgs. 81/2008) sono la prevenzione.",
+      fonti: "Simone, Diritto del lavoro, pp. 157, 175-178 e 232; art. 2087 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "DL-17b": {
+      sintesi: "L'art. 15 D.Lgs. 81/2008 elenca le misure generali di tutela della salute e della sicurezza: è il programma della prevenzione, che parte dalla valutazione dei rischi e dà priorità all'eliminazione del rischio alla fonte. Si collega all'obbligo generale di sicurezza dell'art. 2087 c.c.",
+      punti: [
+        ["Valutazione di tutti i rischi e programmazione della prevenzione, integrando condizioni tecniche, organizzazione e ambiente di lavoro.", ["valutazione", "programmazione"]],
+        ["Eliminazione dei rischi o, se impossibile, riduzione al minimo secondo il progresso tecnico; riduzione alla fonte; sostituzione di ciò che è pericoloso; principi ergonomici; minimo numero di esposti.", ["eliminazione", "fonte", "sostituzione", "ergonomic"]],
+        ["Priorità della protezione collettiva su quella individuale; controllo sanitario e allontanamento del lavoratore dall'esposizione per motivi sanitari, con altra mansione se possibile.", ["collettiva", "individuale", "controllo sanitario"]],
+        ["Informazione, formazione e istruzioni per lavoratori, dirigenti, preposti e RLS; partecipazione e consultazione dei lavoratori e dei loro rappresentanti.", ["formazione", "preposti", "rls", "consultazione"]],
+        ["Misure di emergenza (primo soccorso, antincendio, evacuazione), segnaletica, manutenzione regolare di ambienti e impianti, prevenzione di condotte violente o moleste.", ["emergenza", "manutenzione", "moleste"]]
+      ],
+      aggancio: "L'art. 2087 c.c. resta la norma di chiusura: impone la massima sicurezza tecnicamente possibile secondo particolarità del lavoro, esperienza e tecnica. Il T.U. si applica a tutti i settori e a tutti i lavoratori, anche autonomi e co.co.co. con regole proprie (artt. 3 e 21).",
+      fonti: "Art. 15 D.Lgs. 81/2008 (81_2008_ESTRATTO_TitoloI_XII); Simone, Diritto del lavoro, pp. 157-159; art. 2087 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "DL-23b": {
+      sintesi: "La valutazione dei rischi è l'adempimento centrale della sicurezza: il datore deve valutare tutti i rischi per la salute e la sicurezza dei lavoratori e riportarne l'esito nel documento di valutazione dei rischi, il DVR (artt. 17 e 28 D.Lgs. 81/2008). È un obbligo che il datore non può delegare.",
+      punti: [
+        ["Oggetto (art. 28, c. 1): tutti i rischi, compresi quelli di gruppi particolari: lavoratrici in gravidanza, differenze di genere, età, provenienza da altri Paesi, tipologia contrattuale; stress lavoro-correlato.", ["tutti i rischi", "gravidanza", "stress lavoro-correlato"]],
+        ["Chi: il datore, in collaborazione con il RSPP e con il medico competente quando c'è sorveglianza sanitaria, previa consultazione del RLS (art. 29); obbligo non delegabile (art. 17).", ["rspp", "medico competente", "rls", "non delegabile"]],
+        ["Contenuto del DVR (art. 28, c. 2): relazione con i criteri seguiti; misure di prevenzione e DPI; programma di miglioramento; procedure e ruoli; nomi di RSPP, RLS e medico competente; mansioni a rischio specifico.", ["dvr", "dpi", "programma", "mansioni"]],
+        ["Forma: data certa, anche informatica; conservazione nell'unità produttiva; aggiornamento entro 30 giorni dalle modifiche che lo richiedono (per esempio nuovi macchinari o nuove tecniche di lavoro).", ["data certa", "30 giorni", "aggiornamento"]],
+        ["Conseguenze: senza DVR è vietato ricorrere a contratti a termine, somministrazione e intermittente; la mancanza del DVR è causa di sospensione dell'attività (Allegato I) ed è una contravvenzione, estinguibile con prescrizione e pagamento di un quarto del massimo dell'ammenda.", ["contratti a termine", "sospensione", "contravvenzione", "un quarto"]]
+      ],
+      aggancio: "Negli appalti interni il committente redige anche il DUVRI per i rischi da interferenza (art. 26). Per il consulente la verifica del DVR viene prima di ogni assunzione a termine o intermittente, perché la sua mancanza converte il contratto.",
+      fonti: "Artt. 17, 26, 28, 29 D.Lgs. 81/2008 (81_2008_ESTRATTO_TitoloI_XII); Simone, Diritto del lavoro, pp. 160-162, 205 e 221; P1/P1_Mappe_Poteri_ispettivi (sospensione e prescrizione)."
+    },
+
+    "DL-X3": {
+      sintesi: "Il D.L. 30/4/2026 n. 62, convertito dalla L. 25/6/2026 n. 112, non introduce un salario minimo legale: per il settore privato fa della contrattazione collettiva comparativamente più rappresentativa la misura della retribuzione giusta dell'art. 36 Cost., attraverso il trattamento economico complessivo (TEC) del CCNL leader (art. 7).",
+      punti: [
+        ["Art. 7, c. 1-3: riferimento al TEC dei CCNL stipulati dalle organizzazioni comparativamente più rappresentative, per settore, attività prevalente, dimensione e natura del datore; il TEC dei CCNL diversi «non può essere inferiore». Nei settori senza contratto vale il CCNL leader più connesso (c. 4).", ["tec", "comparativamente", "non puo essere inferiore", "connesso"]],
+        ["Art. 7, c. 4-bis (aggiunto in conversione): nel TEC entrano le voci fisse e continuative, dirette, indirette e differite, le mensilità aggiuntive, le indennità fisse e continuative, il welfare per la generalità dei dipendenti; restano fuori gli elementi discrezionali e variabili individuali.", ["4-bis", "fisse e continuative", "welfare", "variabili"]],
+        ["Art. 7, c. 5: i benefici previsti dal decreto spettano solo se il trattamento individuale non è inferiore al TEC; c. 6: annunci sul SIISL con codice del CCNL e retribuzione.", ["benefici", "siisl"]],
+        ["Art. 10: se il CCNL non è rinnovato entro 9 mesi dalla scadenza, anticipazione del 50% dell'IPCA-NEI; per i CCNL già scaduti la regola vale dal 1/1/2027. Art. 11: codice alfanumerico del CCNL nell'informativa (lett. q-bis D.Lgs. 152/1997) e nel prospetto paga.", ["9 mesi", "ipca", "1/1/2027", "codice"]],
+        ["Nodi aperti: la norma richiama la proporzionalità ma non la sufficienza, che il giudice continua a controllare anche sul CCNL leader (Cass. 27711/2023); il c. 3 si avvicina all'efficacia generale vietata dall'art. 39 Cost.; confronto globale o voce per voce tra TEC e trattamento individuale.", ["sufficienza", "27711/2023", "39 cost", "confronto"]]
+      ],
+      aggancio: "È il tema del Presidente. In ispezione le differenze rispetto al TEC si recuperano con la diffida accertativa (pochi lavoratori) o con la disposizione (molti), sulla linea di Cons. Stato 10382/2025 e 4969/2026 riportata da Rausei. Il consulente mappa le voci retributive del cliente rispetto al TEC del CCNL leader.",
+      fonti: "P1/P1_Mappe_DL62_DLgs96 (testi 62_2026 e 96_2026 in libreria, vigenti al 24/9/2026); P1_Cap01_DL62_2026; P1/P1_Mappe_Poteri_ispettivi; Rausei, lezione 19/10/2026 (dottrina)."
+    },
+
+    "DL-X4": {
+      sintesi: "Il D.Lgs. 7/5/2026 n. 96, in vigore dal 7/6/2026, attua la dir. (UE) 2023/970 sulla trasparenza retributiva: rende verificabile il principio della parità di retribuzione tra uomini e donne per lo stesso lavoro o per un lavoro di pari valore (art. 37 Cost.; art. 157 TFUE). Si applica al lavoro pubblico e privato.",
+      punti: [
+        ["Definizioni e pari valore (artt. 3-4): retribuzione in senso ampio, anche variabile e in natura, e livello retributivo fisso e continuativo; il CCNL leader fa presumere, ma solo in modo relativo, la conformità; criteri: competenze, responsabilità, condizioni di lavoro.", ["pari valore", "presumere", "ccnl leader", "competenze"]],
+        ["Prima dell'assunzione (art. 5): retribuzione iniziale o fascia e CCNL negli avvisi e nei bandi; vietato chiedere al candidato la retribuzione pregressa; linguaggio neutro.", ["avvisi", "fascia", "retribuzione pregressa"]],
+        ["Durante il rapporto (artt. 6-7): criteri retributivi accessibili, di regola con l'informativa del D.Lgs. 152/1997; sotto i 50 dipendenti nessun obbligo sui criteri di progressione; diritto del lavoratore a conoscere i livelli medi per sesso della propria categoria, con risposta scritta entro 2 mesi; nulle le clausole di riservatezza sulla retribuzione.", ["criteri", "50 dipendenti", "2 mesi", "riservatezza"]],
+        ["Dati sul divario (art. 9): da 100 dipendenti; entro il 7/6/2027 per chi ne ha almeno 150, entro il 7/6/2031 tra 100 e 149. Valutazione congiunta con i rappresentanti se il divario del livello retributivo medio è almeno del 5%, non giustificato e non corretto entro 6 mesi (art. 10).", ["100", "7/6/2027", "5%", "valutazione congiunta"]],
+        ["Tutele (artt. 12-13): tutela giudiziaria del Codice delle pari opportunità con onere della prova attenuato (art. 40 D.Lgs. 198/2006), divieto di ritorsioni, revoca dei benefici; la sanzione dell'art. 41, c. 2, D.Lgs. 198/2006 è oggi amministrativa da 5.000 a 10.000 euro, non più l'ammenda riportata dal codice.", ["onere della prova", "ritorsion", "5.000", "10.000"]]
+      ],
+      aggancio: "Ponte con il D.L. 62: entrambi usano il CCNL leader come misura della retribuzione corretta (parametro nel 62, presunzione relativa nel 96). Il consulente aggiorna annunci e informative, mappa i livelli per sesso e prepara i dati dove scatta la soglia.",
+      fonti: "P1/P1_Mappe_DL62_DLgs96 (testi 62_2026 e 96_2026 in libreria, vigenti al 24/9/2026); P1_Cap02_DLgs96_2026."
     }
 
   };
