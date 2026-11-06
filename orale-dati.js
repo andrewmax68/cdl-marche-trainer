@@ -1,5 +1,6 @@
 /* ============================================================
    CdL Marche 2026 — Prova orale: banca dati
+   Versione dati: 2.1 del 6/11/2026 (+ DL-X7 diffida accertativa e DL-X8 disposizione, con risposta modello)
    Versione dati: 1.7 del 1/11/2026 (+ risposte modello di diritto tributario, lotto 5)
    Versione 1.6.1 del 1/11/2026: correzioni INPS e INAIL dopo revisione indipendente
    Versione 1.6 del 1/11/2026: + risposte modello di ragioneria, lotto 4
@@ -318,6 +319,8 @@ window.ORALE = (function () {
     ['DL','X4','Integrazione 2026','La trasparenza retributiva nel D.Lgs. 96/2026'],
     ['DL','X5','Integrazione 2026','Le dimissioni per fatti concludenti'],
     ['DL','X6','Integrazione 2026','Il ruolo del consulente del lavoro nella crisi d\'impresa (D.Lgs. 14/2019)'],
+    ['DL','X7','Vigilanza e illeciti','La diffida accertativa per crediti patrimoniali (art. 12 D.Lgs. 124/2004)'],
+    ['DL','X8','Vigilanza e illeciti','La disposizione del personale ispettivo (art. 14 D.Lgs. 124/2004)'],
     ['INPS','X1','Integrazione 2026','Le novità 2026 sulla NASpI e sul congedo parentale'],
     ['TRIB','X1','Integrazione 2026','Il sostituto d\'imposta: chi è, soggetti, obblighi'],
     ['PPP','X1','Integrazione 2026','La parità di genere nel lavoro: art. 37 Cost. e Codice delle pari opportunità'],
@@ -331,6 +334,8 @@ window.ORALE = (function () {
     'DL-X4': [['P1_Cap02_DLgs96_2026.docx', ''], ['P1/P1_Mappe_DL62_DLgs96.md', '']],
     'DL-X5': [['P1_Cap08_Schede_tradizionali.docx', 'scheda 5'], [SIMONE_DL, 'pp. 234-235']],
     'DL-X6': [['ORALE/ORALE_05_Crisi_impresa_CdL_scheda.md', ''], ['P1_Cap06_Occupazione_crisi.docx', '§ 3.7'], ['NORMA_Codice_civile_lavoro.md', 'art. 2086 c.c.']],
+    'DL-X7': [['P1/P1_Mappe_Poteri_ispettivi.md', 'Focus 2 e tabella dei ricorsi'], ['124_2004.pdf', 'art. 12'], ['P1_Cap03_Poteri_ispettivi.docx', ''], ['Rausei_Diffida accertativa e disposizione_lavgiur_2026_8-9.pdf', '']],
+    'DL-X8': [['P1/P1_Mappe_Poteri_ispettivi.md', 'Focus 1 e Mappa D'], ['124_2004.pdf', 'art. 14'], ['P1_Cap03_Poteri_ispettivi.docx', ''], ['Rausei_Diffida accertativa e disposizione_lavgiur_2026_8-9.pdf', '']],
     'INPS-X1': [['ORALE/ORALE_02_Commissione_2026_temi.md', 'sezione Gallotta'], ['P1/P1_Cap09_Genitorialita.md', '']],
     'TRIB-X1': [['P2/P2_Mod04_Sostituto_imposta_scalette_v1.1.md', 'scalette A-D']],
     'PPP-X1': [['198_2006.pdf', ''], ['P1_Cap02_DLgs96_2026.docx', ''], ['91_2026.pdf', '']],
@@ -3003,6 +3008,32 @@ window.ORALE = (function () {
       fonti: "P1/P1_Mappe_DL62_DLgs96 (testi 62_2026 e 96_2026 in libreria, vigenti al 24/9/2026); P1_Cap02_DLgs96_2026."
     },
 
+    "DL-X7": {
+      sintesi: "La diffida accertativa (art. 12 D.Lgs. 124/2004) è il provvedimento con cui l'ispettore, quando nella vigilanza emergono inosservanze della disciplina contrattuale da cui derivano crediti patrimoniali dei lavoratori, diffida il datore a pagare gli importi accertati. Se il datore non concilia e non ricorre, la diffida diventa titolo esecutivo a favore del lavoratore.",
+      punti: [
+        ["Oggetto (c. 1): crediti patrimoniali nati dall'inosservanza della disciplina contrattuale (differenze retributive, straordinari, mensilità aggiuntive, TFR); per la prassi devono essere certi, liquidi ed esigibili. Per la Cassazione anche da contratto individuale (Cass. 20830/2025, riportata da Rausei).", ["crediti patrimoniali", "contrattuale", "certi", "liquidi", "esigibili"]],
+        ["Destinatari: il datore di lavoro e, dal D.L. 76/2020, anche chi utilizza le prestazioni, solidalmente responsabile dei crediti accertati (committente negli appalti, utilizzatore nella somministrazione).", ["datore", "utilizza", "solidal", "76/2020"]],
+        ["Entro 30 giorni dalla notifica, in alternativa (c. 2): tentativo di conciliazione presso l'Ispettorato, e con l'accordo a verbale la diffida perde efficacia e il verbale non è impugnabile ex art. 2113 c.c.; oppure ricorso al direttore dell'ufficio che l'ha adottata, notificato anche al lavoratore, che sospende l'esecutività ed è deciso entro 60 giorni (per la prassi, senza silenzio-rigetto: circ. INL 6/2020).", ["30 giorni", "conciliazione", "ricorso", "direttore", "sospende", "60 giorni"]],
+        ["Titolo esecutivo (c. 3): se i 30 giorni passano senza iniziative, se la conciliazione fallisce o se il ricorso è respinto. Dal D.L. 76/2020 non serve più la validazione del direttore (c. 4 abrogato): il lavoratore può procedere direttamente all'esecuzione forzata.", ["titolo esecutivo", "validazione", "esecuzione"]],
+        ["Limiti: il titolo esecutivo non passa in giudicato, quindi il datore può contestare il credito in giudizio, con l'opposizione all'esecuzione davanti al giudice del lavoro verso il lavoratore creditore (Cass. 20826/2025, riportata da Rausei). Per la prassi è lo strumento privilegiato quando i lavoratori sono pochi; se sono molti si usa la disposizione.", ["giudicato", "opposizione", "pochi", "disposizione"]]
+      ],
+      aggancio: "Collegamento con il D.L. 62/2026: la differenza tra quanto pagato e il TEC del CCNL leader (art. 7) è il tipico credito da diffida accertativa. Il consulente ricontrolla i conteggi dell'ispettore, sceglie entro 30 giorni tra conciliazione e ricorso e cura la regolarizzazione contributiva delle somme. Non confonderla con la diffida precettiva dell'art. 13 (illeciti amministrativi sanabili) né con la diffida amministrativa del D.Lgs. 103/2024.",
+      fonti: "Art. 12 D.Lgs. 124/2004 (124_2004.pdf in libreria, vigente al 27/9/2026: testo riletto); P1/P1_Mappe_Poteri_ispettivi, Focus 2 e tabella dei ricorsi (prassi INL e sentenze riportate da Rausei al convegno di Fermo del 18/9/2026, testo delle sentenze non letto)."
+    },
+
+    "DL-X8": {
+      sintesi: "La disposizione (art. 14 D.Lgs. 124/2004, riscritto dall'art. 12-bis D.L. 76/2020) è il provvedimento immediatamente esecutivo con cui l'ispettore dell'INL ordina al datore di rimuovere irregolarità in materia di lavoro e legislazione sociale che non sono già punite con sanzioni penali o amministrative. È un potere discrezionale («può adottare») che rende effettive le norme prive di sanzione.",
+      punti: [
+        ["Presupposto (c. 1): irregolarità non già soggette a sanzioni penali o amministrative. Per la prassi riguarda le norme di legge senza sanzione e le norme del CCNL applicato anche di fatto, non gli obblighi di fonte solo individuale (circ. INL 5/2020).", ["non gia soggette", "sanzioni", "ccnl", "di fatto", "discrezional"]],
+        ["Esempi della prassi (nota INL 4539/2020): part-time senza collocazione oraria; diritto di precedenza; formazione dell'apprendista recuperabile; clausola sociale negli appalti; parte economica del CCNL leader quando i lavoratori interessati sono molti; TFR non versato al fondo; omessa consegna della CU.", ["part-time", "precedenza", "apprendist", "molti", "cu"]],
+        ["Ricorso (c. 2): entro 15 giorni al direttore dell'ITL, che decide nei 15 giorni successivi; se tace, il ricorso si intende respinto. Il ricorso non sospende l'esecutività. Dopo la decisione, secondo Rausei, resta la via del TAR o del ricorso straordinario.", ["15 giorni", "direttore", "respinto", "non sospende"]],
+        ["Inottemperanza (c. 3): sanzione amministrativa da 500 a 3.000 euro, senza la diffida obbligatoria dell'art. 13, c. 2.", ["500", "3.000", "senza diffida"]],
+        ["Giurisprudenza: i TAR la leggevano in modo restrittivo; il Consiglio di Stato (2778/2024, 7853/2025, 10382/2025, 4969/2026, riportate da Rausei) l'ha estesa alle violazioni dei contratti collettivi e all'adeguatezza della retribuzione ex art. 36 Cost. La dottrina critica obietta il principio di legalità e la libertà sindacale (art. 39 Cost.).", ["consiglio di stato", "tar", "36", "39"]]
+      ],
+      aggancio: "Come si sceglie lo strumento: irregolarità senza sanzione → disposizione; illecito amministrativo sanabile → diffida precettiva; contravvenzione → prescrizione (art. 15 e D.Lgs. 758/1994); crediti di pochi lavoratori → diffida accertativa. La disposizione non dà nulla direttamente al lavoratore: è un ordine assistito da una sanzione. Con il D.L. 62/2026 è lo strumento per riallineare al TEC molti lavoratori. Il consulente controlla che il verbale motivi l'irregolarità (per un diverso inquadramento, le declaratorie del CCNL: Trib. Cosenza 6/5/2025, riportato da Rausei) e valuta il ricorso nei 15 giorni.",
+      fonti: "Art. 14 D.Lgs. 124/2004 (124_2004.pdf in libreria, vigente al 27/9/2026: testo riletto); P1/P1_Mappe_Poteri_ispettivi, Focus 1, Mappa D e tabella degli strumenti (circ. INL 5/2020, nota INL 4539/2020 e sentenze riportate da Rausei al convegno di Fermo del 18/9/2026, testi non letti; data della Cons. Stato 4969/2026 DA VERIFICARE)."
+    },
+
     "PPP-11": {
       sintesi: "La proprietà è il diritto di godere e disporre delle cose in modo pieno ed esclusivo, entro i limiti e con l'osservanza degli obblighi stabiliti dall'ordinamento (art. 832 c.c.); il possesso è invece una situazione di fatto: il potere sulla cosa che si manifesta come esercizio della proprietà o di un altro diritto reale, anche senza esserne titolari.",
       punti: [
@@ -3658,7 +3689,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.0 · 6/11/2026',
+    versione: '2.1 · 6/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
