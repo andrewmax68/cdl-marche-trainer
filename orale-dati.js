@@ -354,7 +354,7 @@ window.ORALE = (function () {
      Ultimo campo: id della domanda equivalente, di cui si riusano risposta modello e approfondimenti. */
   var S22 = [
     // Diritto del lavoro (30)
-    ['DL',1,'Vigilanza e illeciti','La costituzione e la documentazione del rapporto di lavoro subordinato; la sanzione per il lavoro sommerso (art. 3 D.L. 12/2002)','DL-20b'],
+    ['DL',1,'Vigilanza e illeciti','La costituzione e la documentazione del rapporto di lavoro subordinato; la sanzione per il lavoro sommerso (art. 3 D.L. 12/2002)',null],
     ['DL',2,'Contratti flessibili','I diritti di precedenza e la loro incidenza sugli incentivi alle assunzioni',null],
     ['DL',3,'Contratti flessibili','L\'assunzione in prova: disciplina di legge e di contratto','DL-3a'],
     ['DL',4,'Contratti flessibili','L\'assunzione a tempo determinato','DL-1b'],
@@ -373,7 +373,7 @@ window.ORALE = (function () {
     ['DL',17,'Tutele specifiche','La tutela dei minori sul lavoro','DL-12a'],
     ['DL',18,'Tutele specifiche','La tutela della maternità e della paternità','DL-5b'],
     ['DL',19,'Tutele specifiche','Le misure per l\'occupazione dei lavoratori disabili','DL-10b'],
-    ['DL',20,'Svolgimento e retribuzione','La retribuzione, il prospetto paga e la prescrizione dei diritti del lavoratore','DL-19b'],
+    ['DL',20,'Svolgimento e retribuzione','La retribuzione, il prospetto paga e la prescrizione dei diritti del lavoratore',null],
     ['DL',21,'Svolgimento e retribuzione','La sospensione del rapporto per impossibilità temporanea del lavoratore',null],
     ['DL',22,'Svolgimento e retribuzione','La sospensione del rapporto per impossibilità temporanea del datore di lavoro',null],
     ['DL',23,'Cessazione del rapporto','Le dimissioni e la risoluzione consensuale',null],
@@ -425,7 +425,7 @@ window.ORALE = (function () {
     ['TRIB',6,'Lavoro dipendente','Le addizionali regionale e comunale all\'IRPEF: base imponibile e versamento',null],
     ['TRIB',7,'Parte generale e procedimento','Il ravvedimento operoso','TRIB-22'],
     ['TRIB',8,'Parte generale e procedimento','Il reddito professionale: base imponibile e deducibilità delle spese',null],
-    ['TRIB',9,'Parte generale e procedimento','I redditi da lavoro autonomo occasionale: definizione, tassazione e obblighi','DL-7a'],
+    ['TRIB',9,'Parte generale e procedimento','I redditi da lavoro autonomo occasionale: definizione, tassazione e obblighi',null],
     ['TRIB',10,'Parte generale e procedimento','La dichiarazione dei redditi (ex Modello Unico): soggetti obbligati',null],
     ['TRIB',11,'Lavoro dipendente','La Certificazione Unica e gli obblighi del sostituto d\'imposta','TRIB-X1'],
     ['TRIB',12,'Parte generale e procedimento','La compensazione in F24: verticale, orizzontale e limiti',null],
@@ -440,7 +440,7 @@ window.ORALE = (function () {
     // Elementi di ragioneria (10)
     ['RAG',1,'Contabilità e documenti','Azienda, ditta, insegna e marchio',null],
     ['RAG',2,'Contabilità e documenti','I libri contabili obbligatori; contabilità ordinaria e semplificata','RAG-18'],
-    ['RAG',3,'Costo del lavoro in contabilità','La rilevazione contabile del costo del personale','RAG-6'],
+    ['RAG',3,'Costo del lavoro in contabilità','La rilevazione contabile del costo del personale',null],
     ['RAG',4,'Bilancio','Il bilancio civilistico e fiscale: stato patrimoniale e conto economico','RAG-10'],
     ['RAG',5,'Bilancio','L\'ammortamento',null],
     ['RAG',6,'Contabilità e documenti','Fatturazione elettronica e corrispettivi telematici: soggetti obbligati ed esclusi','RAG-20'],
@@ -449,14 +449,14 @@ window.ORALE = (function () {
     ['RAG',9,'Bilancio','Plusvalenze e minusvalenze: definizione e rilevazione',null],
     ['RAG',10,'Costo del lavoro in contabilità','La denuncia salari INAIL: le rilevazioni contabili',null],
     // Diritto privato, pubblico e penale (30)
-    ['PPP',1,'Privato','Persona fisica e persona giuridica','PPP-9'],
+    ['PPP',1,'Privato','Persona fisica e persona giuridica',null],
     ['PPP',2,'Privato','Capacità giuridica e capacità d\'agire','PPP-9'],
     ['PPP',3,'Privato','La proprietà e i modi di acquisto','PPP-11'],
     ['PPP',4,'Privato','Possesso e detenzione','PPP-11'],
     ['PPP',5,'Privato','L\'obbligazione: fonti ed elementi','PPP-14'],
     ['PPP',6,'Privato','L\'obbligazione: adempimento e inadempimento','PPP-14'],
     ['PPP',7,'Privato','Il contratto: elementi essenziali','PPP-10'],
-    ['PPP',8,'Privato','Il contratto: nullità, annullabilità, risoluzione','PPP-13'],
+    ['PPP',8,'Privato','Il contratto: nullità, annullabilità, risoluzione',null],
     ['PPP',9,'Privato','L\'imprenditore: piccolo, agricolo, commerciale','PPP-17'],
     ['PPP',10,'Privato','Società di persone e società di capitali','PPP-18'],
     ['PPP',11,'Pubblico e costituzionale','I principi fondamentali della Costituzione',null],
@@ -480,7 +480,7 @@ window.ORALE = (function () {
     ['PPP',29,'Penale','L\'oblazione nelle contravvenzioni',null],
     ['PPP',30,'Penale','Le conseguenze civili del reato',null],
     // Ordinamento e deontologia (15)
-    ['DEO',1,'Codice deontologico','Il dovere di fedeltà e la trascuratezza degli interessi del cliente (artt. 6 e 32 Codice)','DEO-10'],
+    ['DEO',1,'Codice deontologico','Il dovere di fedeltà e la trascuratezza degli interessi del cliente (artt. 6 e 32 Codice)',null],
     ['DEO',2,'Codice deontologico','I rapporti con altri professionisti e l\'incarico congiunto (artt. 12 e 28 Codice)','DEO-14'],
     ['DEO',3,'Codice deontologico','L\'accettazione dell\'incarico (artt. 27 e 29 Codice)','DEO-18'],
     ['DEO',4,'Codice deontologico','La cessazione dell\'incarico e la documentazione del cliente (artt. 31 e 33 Codice)','DEO-20'],
@@ -491,7 +491,7 @@ window.ORALE = (function () {
     ['DEO',9,'Codice deontologico','La responsabilità patrimoniale (art. 11 Codice)','DEO-13'],
     ['DEO',10,'Codice deontologico','Il segreto professionale (art. 8 Codice e art. 6 L. 12/1979)','DEO-11'],
     ['DEO',11,'Ordinamento','Le sanzioni disciplinari (artt. 27-31 L. 12/1979)','DEO-6'],
-    ['DEO',12,'Ordinamento','L\'esercizio della professione (art. 1 L. 12/1979; art. 30 Codice)','DEO-1'],
+    ['DEO',12,'Ordinamento','L\'esercizio della professione (art. 1 L. 12/1979; art. 30 Codice)',null],
     ['DEO',13,'Codice deontologico','Il dovere di competenza e l\'obbligo di formazione (art. 9 Codice)','DEO-12'],
     ['DEO',14,'Codice deontologico','La partecipazione a società e le collaborazioni con imprese di servizi (art. 20 Codice)',null],
     ['DEO',15,'Codice deontologico','Il consulente del lavoro nel rapporto di lavoro subordinato (art. 36 Codice)',null]
@@ -3699,6 +3699,110 @@ window.ORALE = (function () {
       ],
       aggancio: "Per il consulente: mai far iniziare un lavoratore prima della comunicazione al centro per l'impiego, inviata entro il giorno precedente. Collegamenti: S22-DL-6 (stranieri senza permesso, anche reato), S22-DL-10 (PrestO), S22-DL-8 (tirocinio), INPS sulle sanzioni civili per evasione contributiva.",
       fonti: "Simone, Legislazione sociale, pp. 437-441; P1/P1_Mappe_Poteri_ispettivi (dal convegno di Rausei a Fermo, 18/9/2026) (Focus 3); art. 3 D.L. 12/2002 come riportato da Simone."
+    },
+
+    "S22-DL-1": {
+      sintesi: "Il rapporto di lavoro subordinato nasce con un contratto a forma di regola libera, ma la legge lo accompagna con una serie di documenti obbligatori: la comunicazione preventiva di assunzione, l'informativa scritta sulle condizioni di lavoro, l'iscrizione nel libro unico e il prospetto paga. Se manca la comunicazione preventiva il rapporto è «in nero» e scatta la maxisanzione dell'art. 3 D.L. 12/2002.",
+      punti: [
+        ["Assunzione diretta per tutti i datori privati (art. 4-bis D.Lgs. 181/2000); forma del contratto di regola libera, scritta solo nei casi previsti, a pena di nullità (per esempio il termine, art. 19 D.Lgs. 81/2015) o a fini di prova (part-time, art. 5).", ["assunzione diretta", "forma", "libera", "termine"]],
+        ["Comunicazione obbligatoria telematica al Ministero del lavoro entro le 24 del giorno precedente l'inizio del rapporto, anche se festivo; vale anche per INPS, INAIL e Ispettorato (pluriefficacia). Eccezioni: urgenza (entro 5 giorni, con informativa il giorno prima), forza maggiore, agenzie di somministrazione (entro il 20 del mese successivo). Trasformazioni, proroghe e cessazioni: entro 5 giorni.", ["giorno precedente", "pluriefficacia", "urgenza", "5 giorni"]],
+        ["Informativa sulle condizioni di lavoro (art. 1 D.Lgs. 152/1997, come modificato dal D.Lgs. 104/2022): contratto scritto o copia della comunicazione all'assunzione; le informazioni mancanti entro 7 giorni, alcune entro un mese. Dal 2026 contiene anche il codice alfanumerico del CCNL (lett. q-bis, aggiunta dall'art. 11 D.L. 62/2026, solo per i datori privati).", ["informativa", "7 giorni", "un mese", "codice alfanumerico"]],
+        ["Documentazione nel rapporto: iscrizione nel libro unico del lavoro, con registrazione entro la fine del mese successivo, e prospetto paga a ogni pagamento (vedi DL-19b).", ["libro unico", "mese successivo", "prospetto paga"]],
+        ["Sanzioni: l'omessa comunicazione è punita con la sanzione amministrativa dell'art. 19, c. 3, D.Lgs. 276/2003; se manca la comunicazione preventiva il lavoratore è in nero e si aggiunge la maxisanzione per ciascun lavoratore (art. 3 D.L. 12/2002, aumentata dal D.L. 19/2024), con diffida a regolarizzare e, dal 10% di irregolari tra i presenti, la sospensione dell'attività (art. 14 D.Lgs. 81/2008).", ["276/2003", "maxisanzione", "diffida", "sospensione"]]
+      ],
+      aggancio: "Importi e casi di esclusione della maxisanzione sono nella scheda DL-X11. Per il consulente: nessun lavoratore inizia prima della ricevuta della comunicazione, che fa fede di data e ora di invio.",
+      fonti: "Simone, Diritto del lavoro, pp. 30-31 (forma), 75-77 (comunicazioni obbligatorie e sanzione), 79-80 (informativa); Simone, Legislazione sociale, p. 267 (LUL) e pp. 437-441 (maxisanzione); art. 11 D.L. 62/2026 (62_2026.pdf). Importo della sanzione per l'omessa comunicazione: non riportato dal Simone, DA VERIFICARE."
+    },
+
+    "S22-DL-20": {
+      sintesi: "La retribuzione è la prestazione fondamentale del datore: deve essere proporzionata e sufficiente (art. 36 Cost.), va documentata con il prospetto paga e pagata con strumenti tracciabili. I crediti retributivi si prescrivono in cinque anni, che oggi decorrono dalla cessazione del rapporto.",
+      punti: [
+        ["Caratteri: proporzionalità e sufficienza (art. 36 Cost.), con potere del giudice di fissare la misura ex art. 2099, c. 2, c.c. usando le tabelle del contratto collettivo; corrispettività, obbligatorietà, determinabilità e continuità. Forme: a tempo, a cottimo, con partecipazione agli utili o ai prodotti, con provvigione, in natura (art. 2099 c.c.).", ["proporzionalita", "sufficienza", "2099", "cottimo"]],
+        ["Prospetto paga a ogni pagamento, con tutte le voci e le ritenute (art. 1 L. 4/1953) e, dal 2026, il codice alfanumerico del CCNL; la firma del lavoratore sulla busta paga non prova il pagamento (art. 1, c. 912, L. 205/2017; Cass. 21699/2018).", ["prospetto paga", "codice alfanumerico", "firma", "912"]],
+        ["Pagamento tracciabile: vietato pagare la retribuzione in contanti direttamente al lavoratore; si paga tramite banca o posta con bonifico, strumenti elettronici, contanti allo sportello con mandato o assegno (art. 1, c. 910 ss., L. 205/2017). La violazione è punita con sanzione amministrativa.", ["contanti", "bonifico", "910"]],
+        ["Prescrizione estintiva: 5 anni per retribuzioni e indennità di fine rapporto (art. 2948, nn. 4 e 5, c.c.), 10 anni per i diritti non retributivi, come la qualifica superiore (art. 2946). Dopo la L. 92/2012 e il D.Lgs. 23/2015 il rapporto a tempo indeterminato non è più stabile: la prescrizione dei crediti retributivi decorre dalla cessazione (Cass. 26246/2022 e 1989/2023, riportate dal Simone).", ["5 anni", "10 anni", "cessazione", "26246/2022"]],
+        ["Prescrizione presuntiva: si presume pagato il credito non reclamato entro 1 anno per le retribuzioni a periodi non superiori al mese (art. 2955, n. 2) ed entro 3 anni per quelle a periodi superiori, come la tredicesima (art. 2956, n. 1). È vinta solo dal giuramento o dalla confessione del debitore.", ["presuntiva", "2955", "2956", "tredicesima"]]
+      ],
+      aggancio: "Per il consulente: conservare i cedolini con la prova del bonifico, perché la busta firmata non basta.",
+      fonti: "Simone, Diritto del lavoro, pp. 141-143 (retribuzione) e 147-148 (pagamento e prospetto); Simone, Legislazione sociale, pp. 407-408 (prescrizione); art. 11 D.L. 62/2026. Regola sul giuramento e sulla confessione (artt. 2959-2960 c.c.): non nelle pagine del Simone in libreria, DA VERIFICARE sul codice."
+    },
+
+    "S22-DEO-1": {
+      sintesi: "Il dovere di fedeltà (art. 6 del Codice deontologico) impone al consulente di svolgere l'incarico con fedeltà verso il cliente e di anteporre gli interessi del cliente ai propri, nel rispetto della legge e del Codice. La sua violazione più tipica è la trascuratezza intenzionale degli interessi del cliente, che l'art. 32 qualifica come inadempimento disciplinare.",
+      punti: [
+        ["Art. 6, c. 1-2: fedeltà verso il cliente; prevalenza dei suoi interessi su quelli del consulente, ma sempre nel rispetto della legge e del Codice. Il richiamo dell'art. 7, c. 1 («fatto salvo l'art. 6, c. 2») coordina fedeltà e indipendenza di giudizio.", ["fedelta", "prevalenza", "indipendenza"]],
+        ["Limite della fedeltà: il consulente non suggerisce atti nulli, illeciti o fraudolenti e rifiuta l'incarico che concorre a un'operazione illecita (art. 24, c. 2 e 4); deve astenersi in caso di conflitto di interessi (art. 26).", ["illeciti", "art. 24", "conflitto di interessi"]],
+        ["Art. 32: costituisce inadempimento disciplinare l'intenzionale trascuratezza degli interessi del cliente. Serve l'intenzionalità, coerente con l'art. 45: la responsabilità disciplinare nasce da una condotta volontaria, omissiva o commissiva.", ["art. 32", "intenzionale", "art. 45", "volontaria"]],
+        ["Doveri collegati: diligenza e perizia nell'esecuzione (art. 30), rettifica a proprie spese degli errori imputabili (art. 30, c. 2, lett. b), restituzione senza indugio dei documenti richiesti (art. 33), preavviso adeguato quando si interrompe l'incarico (art. 31, c. 3).", ["art. 30", "rettifica", "art. 33", "preavviso"]],
+        ["Conseguenze: procedimento davanti al Consiglio di disciplina territoriale e sanzioni proporzionate alla gravità (censura, sospensione fino a 2 anni, radiazione); restano distinte la responsabilità civile verso il cliente, coperta dall'assicurazione obbligatoria (art. 11), e quella penale.", ["consiglio di disciplina", "censura", "assicurazione"]]
+      ],
+      aggancio: "Esempio: il consulente che, per inerzia voluta, lascia scadere il termine per impugnare un verbale o per chiedere la cassa integrazione del cliente. Differenza da spiegare: l'errore colposo è un problema di diligenza (art. 30), la trascuratezza intenzionale è l'illecito dell'art. 32.",
+      fonti: "Simone, Deontologia (testo del Codice deontologico, delibera CNO 101/2021 modificata dalla 49/2024), pp. 1248 (artt. 6-7), 1249 (art. 11), 1252-1254 (artt. 24, 26, 30-33), 1256-1257 (artt. 44-45); Simone, Deontologia, p. 1244 (sanzioni)."
+    },
+
+    "S22-DEO-12": {
+      sintesi: "L'art. 1 L. 12/1979 stabilisce chi può curare gli adempimenti di lavoro, previdenza e assistenza per conto dei datori: oltre al datore stesso, solo i consulenti del lavoro iscritti all'albo e gli altri professionisti indicati dalla legge. L'art. 30 del Codice deontologico regola invece come l'incarico va eseguito: con diligenza, perizia e chiarezza verso il cliente.",
+      punti: [
+        ["Art. 1 L. 12/1979: gli adempimenti per l'amministrazione del personale dipendente, se non li cura il datore direttamente o con propri dipendenti, possono essere svolti solo dai consulenti del lavoro iscritti all'albo e da avvocati, dottori commercialisti, ragionieri e periti commerciali, che devono però comunicarlo all'Ispettorato territoriale.", ["datore", "iscritti", "avvocati", "comunicarlo"]],
+        ["Art. 1, c. 4-5: le imprese artigiane e le piccole imprese possono affidarsi ai servizi delle associazioni di categoria, organizzabili tramite consulenti del lavoro anche dipendenti; possono usare centri di elaborazione dati solo per calcolo e stampa, assistiti da un professionista abilitato.", ["artigiane", "associazioni di categoria", "calcolo e stampa"]],
+        ["Il titolo di consulente del lavoro spetta solo a chi è abilitato e iscritto all'albo (art. 15 del Codice); il datore resta comunque responsabile dei propri obblighi anche quando affida gli adempimenti al consulente (art. 7 L. 12/1979).", ["titolo", "art. 15", "responsabile", "art. 7"]],
+        ["Art. 30 del Codice: il consulente usa la diligenza e la perizia richieste dalle norme del luogo e del tempo; illustra al cliente, con semplicità e chiarezza, gli elementi essenziali dell'incarico; dà le informazioni necessarie a una piena consapevolezza della prestazione; si adopera per rettificare errori, inesattezze od omissioni, a proprio carico se a lui imputabili.", ["diligenza", "perizia", "chiarezza", "rettificare"]],
+        ["Collegamenti: incarico per iscritto con oggetto, compensi e polizza (art. 27), divieto di collaborare con soggetti non abilitati in prestazioni riservate (art. 12), segreto professionale (art. 6 L. 12/1979, art. 25 del Codice).", ["art. 27", "non abilitati", "segreto"]]
+      ],
+      aggancio: "Collegamenti: DEO-1 (oggetto della professione), DEO-X1 (CED e associazioni), S22-DEO-1 (fedeltà e trascuratezza). Il rilievo penale dell'esercizio abusivo della professione non è trattato dal Simone in libreria: se lo citi, DA VERIFICARE.",
+      fonti: "Simone, Deontologia, pp. 1221 (art. 1 L. 12/1979) e 1233-1234; Simone, Deontologia (testo del Codice deontologico, delibera CNO 101/2021 modificata dalla 49/2024), pp. 1249-1250 (artt. 12 e 15), 1252-1253 (artt. 25, 27 e 30). Testo dell'art. 1 L. 12/1979: sintesi del Simone; testo vigente su Normattiva DA VERIFICARE."
+    },
+
+    "S22-TRIB-9": {
+      sintesi: "Il compenso per un'attività di lavoro autonomo svolta in modo non abituale è un reddito diverso (art. 67, c. 1, lett. l, TUIR), non un reddito di lavoro autonomo. Si tassa sul netto tra compensi incassati e spese specificamente inerenti, concorre al reddito complessivo e, se il committente è sostituto d'imposta, subisce una ritenuta d'acconto del 20%.",
+      punti: [
+        ["Definizione: redditi derivanti da attività di lavoro autonomo non esercitate abitualmente o dall'assunzione di obblighi di fare, non fare o permettere (art. 67, c. 1, lett. l, TUIR). Manca l'abitualità che caratterizza il lavoro autonomo dell'art. 53.", ["non esercitate abitualmente", "obblighi di fare", "art. 53"]],
+        ["Determinazione: differenza tra quanto percepito nel periodo d'imposta (principio di cassa) e le spese specificamente inerenti alla produzione (art. 71, c. 2, TUIR); il reddito concorre al reddito complessivo ed è tassato con l'IRPEF progressiva.", ["percepito", "spese specificamente inerenti", "art. 71"]],
+        ["Ritenuta: se il committente è sostituto d'imposta, trattiene il 20% del compenso a titolo d'acconto (art. 25 D.P.R. 600/1973), la versa con F24 entro il 16 del mese successivo e la certifica nella CU.", ["20%", "titolo d'acconto", "f24"]],
+        ["Obblighi del percettore: dichiara il reddito nella dichiarazione annuale e scomputa la ritenuta subita. Niente partita IVA, perché manca l'abitualità; per il fisco non c'è una soglia di esenzione.", ["dichiara", "scomputa", "partita iva"]],
+        ["Contributi: iscrizione alla gestione separata INPS solo per la parte di reddito annuo oltre 5.000 euro (art. 44 D.L. 269/2003). Sul piano lavoristico il committente comunica l'avvio all'Ispettorato prima dell'inizio (art. 14 D.Lgs. 81/2008): vedi DL-7a.", ["gestione separata", "5.000", "ispettorato"]]
+      ],
+      aggancio: "Da non confondere con le prestazioni occasionali dell'art. 54-bis D.L. 50/2017 (libretto famiglia e contratto di prestazione occasionale), i cui compensi sono esenti da imposizione fiscale. Collegamento con la seconda prova: la CU del lavoro autonomo occasionale.",
+      fonti: "Artt. 53, 67, c. 1, lett. l, e 71, c. 2, TUIR (917_1986_TUIR, vigente al 4/10/2026); Simone, Legislazione sociale, pp. 290-291 (gestione separata); P2_00_PARAMETRI § 11 e P2_Mod04 (ritenuta e F24). Termine di trasmissione della CU per questi redditi: DA VERIFICARE nelle istruzioni CU 2026. Art. 25 D.P.R. 600/1973 non è in libreria: misura del 20% concorde con le fonti secondarie; testo DA VERIFICARE su Normattiva. Esenzione fiscale dei compensi PrestO: DA VERIFICARE."
+    },
+
+    "S22-PPP-8": {
+      sintesi: "Nullità, annullabilità e risoluzione sono rimedi diversi: nullità e annullabilità colpiscono il contratto nato viziato (momento genetico); la risoluzione scioglie un contratto valido quando un evento successivo altera l'equilibrio tra le prestazioni (momento funzionale).",
+      punti: [
+        ["Nullità (artt. 1418-1424): contrasto con norme imperative, mancanza di un requisito dell'art. 1325, causa o motivo comune illecito, oggetto impossibile, illecito o indeterminabile. Nessun effetto, chiunque vi abbia interesse può farla valere, rilevabile d'ufficio, imprescrittibile, non convalidabile; può essere parziale e il contratto nullo può convertirsi.", ["norme imperative", "d'ufficio", "imprescrittibile", "convertirsi"]],
+        ["Annullabilità (artt. 1425-1446): incapacità legale o naturale e vizi del consenso (errore essenziale e riconoscibile, violenza, dolo determinante). Il contratto produce effetti finché non è annullato; agisce solo la parte protetta, entro 5 anni; è convalidabile; la sentenza è costitutiva e non pregiudica i terzi di buona fede a titolo oneroso, salvo l'incapacità legale.", ["vizi del consenso", "5 anni", "convalidabile", "costitutiva"]],
+        ["Risoluzione per inadempimento (art. 1453 ss.): nei contratti a prestazioni corrispettive la parte adempiente sceglie tra adempimento e risoluzione, oltre al risarcimento. Risoluzione di diritto con clausola risolutiva espressa, diffida ad adempiere di almeno 15 giorni o termine essenziale; altrimenti giudiziale. Serve un inadempimento imputabile e non di scarsa importanza.", ["corrispettive", "clausola risolutiva espressa", "15 giorni", "scarsa importanza"]],
+        ["Risoluzione per impossibilità sopravvenuta (art. 1463): opera di diritto e la parte liberata non può chiedere la controprestazione; se l'impossibilità è parziale si riduce la prestazione. Risoluzione per eccessiva onerosità (art. 1467): contratti di durata o a esecuzione differita, eventi straordinari e imprevedibili; l'altra parte può evitarla offrendo di modificare equamente il contratto.", ["impossibilita sopravvenuta", "eccessiva onerosita", "imprevedibili", "equamente"]],
+        ["Effetti della risoluzione: retroattivi tra le parti, ma non pregiudicano i diritti acquistati dai terzi prima della domanda giudiziale, salvi gli effetti della trascrizione. Rimedi di autotutela: eccezione d'inadempimento (art. 1460) e sospensione per mutate condizioni patrimoniali (art. 1461).", ["retroattivi", "terzi", "eccezione d'inadempimento", "1461"]]
+      ],
+      aggancio: "Nel lavoro: la nullità del contratto non toglie la retribuzione per il lavoro già prestato (art. 2126 c.c.); il licenziamento non è una risoluzione ex art. 1453 ma un recesso con regole proprie (L. 604/1966). Collegamento con PPP-13.",
+      fonti: "Artt. 1418-1467 c.c. come riportati da Simone, Diritto privato, pp. 751-755 (nullità, annullabilità, convalida, rescissione e risoluzione); art. 2126 c.c. (NORMA_Codice_civile_lavoro)."
+    },
+
+    "S22-PPP-1": {
+      sintesi: "Sono soggetti di diritto la persona fisica, cioè ogni individuo dotato di capacità giuridica, e la persona giuridica, cioè un complesso organizzato di persone e beni con uno scopo lecito a cui l'ordinamento riconosce la personalità. La differenza chiave per la persona giuridica è l'autonomia patrimoniale perfetta.",
+      punti: [
+        ["Persona fisica: capacità giuridica dalla nascita, purché il nato sia vivo (art. 1 c.c.), persa con la morte; capacità di agire a 18 anni (art. 2), limitata da interdizione, inabilitazione, emancipazione e incapacità naturale; protezione con tutela, curatela e amministrazione di sostegno (vedi PPP-9).", ["nascita", "18 anni", "interdizione", "amministrazione di sostegno"]],
+        ["Sede della persona: domicilio (sede principale di affari e interessi), residenza (dimora abituale), dimora (presenza occasionale); domicilio e residenza sono definiti dall'art. 43 c.c. Incertezza sull'esistenza: scomparsa, assenza e morte presunta, con termini dimezzati dalla L. 182/2025 secondo il Simone.", ["domicilio", "residenza", "morte presunta"]],
+        ["Persona giuridica: elemento materiale (persone e beni organizzati per uno scopo lecito) ed elemento formale (riconoscimento). Corporazioni, in cui prevalgono le persone (associazioni e società), e istituzioni, in cui prevale il patrimonio (fondazioni e comitati); enti pubblici e privati.", ["elemento formale", "corporazioni", "fondazioni", "enti pubblici"]],
+        ["Autonomia patrimoniale perfetta: i beni appartengono all'ente, il creditore dell'ente di regola non aggredisce i beni dei membri e il creditore del singolo membro non aggredisce il patrimonio dell'ente.", ["autonomia patrimoniale perfetta", "creditore"]],
+        ["Acquisto della personalità: le società di capitali e le cooperative con l'iscrizione nel registro delle imprese, che per loro ha efficacia costitutiva; associazioni e fondazioni con il riconoscimento, ottenuto con l'iscrizione nel registro delle persone giuridiche presso la prefettura o la regione (D.P.R. 361/2000).", ["registro delle imprese", "costitutiva", "riconoscimento", "361/2000"]]
+      ],
+      aggancio: "Per il consulente: il datore di lavoro può essere persona fisica o giuridica; nelle società di persone, prive di personalità, i soci illimitatamente responsabili rispondono dei debiti sociali, compresi quelli verso i lavoratori. La responsabilità dei soci di società di persone non è nelle pagine del Simone in libreria: DA VERIFICARE.",
+      fonti: "Simone, Diritto privato, pp. 699-707 (persona fisica, apertura del cap. 2) e 788 (efficacia costitutiva dell'iscrizione); D.P.R. 361/2000: testo pubblicato dalla Regione Piemonte (regione.piemonte.it), non in libreria. Il cap. 2 sulle persone giuridiche (pp. 708 ss.) non è in libreria."
+    },
+
+    "S22-RAG-3": {
+      sintesi: "In contabilità generale il costo del personale si rileva in partita doppia in più momenti: la retribuzione lorda come costo (Salari e stipendi), i contributi a carico dell'azienda (Oneri sociali), le ritenute e i contributi trattenuti come debiti verso Erario e istituti, il pagamento del netto e poi il versamento con F24. A fine anno si aggiungono gli stanziamenti di competenza: TFR, ratei di mensilità aggiuntive e ferie.",
+      punti: [
+        ["Acconti: Dipendenti c/acconti a Banca c/c; non toccano il conto economico e si recuperano al pagamento della retribuzione.", ["acconti", "conto economico"]],
+        ["Retribuzione lorda: Salari e stipendi (costo, B9 a) a Dipendenti c/retribuzioni. Contributi a carico azienda: Oneri sociali (B9 b) a Istituti previdenziali.", ["salari e stipendi", "oneri sociali", "istituti previdenziali"]],
+        ["Pagamento: Dipendenti c/retribuzioni a diversi: Dipendenti c/acconti, Istituti previdenziali (quota del lavoratore), Erario c/ritenute da versare (IRPEF e addizionali), Banca c/c (netto). Versamento con F24 entro il 16 del mese successivo: Istituti previdenziali ed Erario c/ritenute a Banca c/c.", ["erario c/ritenute", "netto", "16 del mese successivo"]],
+        ["INAIL: acconto versato in autoliquidazione (16 febbraio) in Acconti INAIL; al 31/12 si rileva il premio di competenza in Oneri sociali INAIL, con conguaglio a debito o a credito verso l'Istituto.", ["autoliquidazione", "16 febbraio", "conguaglio"]],
+        ["Fine esercizio: quota annua di TFR (retribuzione annua / 13,5 meno lo 0,50%) e rivalutazione (1,5% + 75% dell'indice ISTAT), Accantonamento TFR (B9 c) a Fondo TFR; imposta sostitutiva del 17% sulla rivalutazione trattenuta al dipendente (Fondo TFR a Erario c/ritenute), quindi non è un costo per l'azienda. Se il TFR va al Fondo di tesoreria INPS o alla previdenza complementare, il debito è verso l'INPS o il fondo. Ferie maturate e non godute: Salari e stipendi a Dipendenti c/ferie da liquidare.", ["13,5", "17%", "fondo di tesoreria", "ferie"]]
+      ],
+      aggancio: "Attenzione: il Simone usa ancora esempi superati, come l'assegno per il nucleo familiare (per i figli oggi c'è l'assegno unico, pagato direttamente dall'INPS) e la fiscalizzazione degli oneri sociali; all'orale citali come istituti storici. Collegamento con RAG-6 (voci della B9).",
+      fonti: "Simone, Ragioneria, pp. 1093-1097 (scritture del personale e INAIL) e 1110-1114 (TFR); P2_00_PARAMETRI § 10 (TFR e imposta sostitutiva); schema dell'art. 2425 c.c. come in RAG-6. Le scritture del manuale sono lette da OCR: importi da controllare sulla scansione."
     }
 
   };
@@ -3732,7 +3836,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.2 · 6/11/2026',
+    versione: '2.3 · 7/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,

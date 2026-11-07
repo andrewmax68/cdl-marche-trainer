@@ -104,6 +104,7 @@
     'S22-TRIB-10':'Dichiarazione e versamenti','S22-TRIB-12':'Dichiarazione e versamenti','TRIB-22':'Dichiarazione e versamenti','TRIB-16':'Rapporti con il Fisco','TRIB-17':'Rapporti con il Fisco',
     'DEO-7':'Doveri generali','DEO-8':'Doveri generali','DEO-9':'Doveri generali','DEO-10':'Doveri generali','DEO-11':'Doveri generali','DEO-12':'Doveri generali','DEO-13':'Doveri generali',
     'DEO-14':'Rapporti esterni e interni','DEO-15':'Rapporti esterni e interni','DEO-16':'Rapporti esterni e interni','DEO-17':'Rapporti esterni e interni','S22-DEO-14':'Rapporti esterni e interni',
+    'S22-DL-20':'Retribuzione','S22-PPP-1':'Persone','S22-PPP-8':'Contratto','S22-TRIB-9':'Imposte e redditi','S22-DEO-1':'Doveri generali',
     'DEO-18':'Incarico','DEO-19':'Incarico','DEO-20':'Incarico','DEO-21':'Incarico','S22-DEO-15':'Incarico'
   };
 
@@ -112,7 +113,7 @@
     'DL-1a':'Nozione di lavoro subordinato','DL-2a':'Requisiti del contratto di lavoro','DL-4a':'Prestazione di fatto','DL-4b':'Co.co.co.',
     'DL-5a':'Certificazione dei contratti','DL-6a':'Lavoro autonomo','DL-7a':'Autonomo occasionale','DL-19a':'Autonomo e subordinato a confronto',
     'DL-1b':'Contratto a termine','DL-2b':'Part-time','DL-3a':'Patto di prova','DL-3b':'Lavoro intermittente','DL-9a':'Distacco','DL-10a':'Somministrazione',
-    'DL-21a':'Apprendistato professionalizzante','S22-DL-2':'Diritti di precedenza e incentivi','S22-DL-8':'Tirocinio','S22-DL-10':'PrestO e Libretto famiglia',
+    'DL-21a':'Apprendistato professionalizzante','S22-DL-2':'Diritti di precedenza e incentivi','S22-DL-1':'Costituzione e documentazione del rapporto','S22-DL-20':'Retribuzione, prospetto paga, prescrizione','S22-DEO-1':'Fedeltà e trascuratezza (artt. 6 e 32)','S22-DEO-12':'Esercizio della professione (art. 1 L. 12/1979; art. 30)','S22-TRIB-9':'Autonomo occasionale: tassazione','S22-PPP-8':'Nullità, annullabilità, risoluzione','S22-PPP-1':'Persona fisica e giuridica','S22-RAG-3':'Scritture del costo del personale','S22-DL-8':'Tirocinio','S22-DL-10':'PrestO e Libretto famiglia',
     'DL-8a':'Patto di non concorrenza','DL-13a':'Mansioni e ius variandi','DL-14a':'Informativa all\'assunzione','DL-14b':'Ferie','DL-15a':'Controlli a distanza',
     'DL-16a':'Orario di lavoro','DL-17a':'Straordinario e supplementare','DL-18a':'Retribuzione (art. 36 Cost.)','DL-18b':'Superminimo e voci aggiuntive',
     'DL-19b':'Prospetto paga e LUL','DL-20a':'Tracciabilità della retribuzione','DL-11a':'Welfare aziendale',
