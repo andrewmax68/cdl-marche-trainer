@@ -710,13 +710,13 @@ window.ORALE = (function () {
     'TRIB-22': {
       sintesi: 'Il ravvedimento operoso consente di regolarizzare spontaneamente una violazione tributaria pagando tributo, interessi e una sanzione ridotta (art. 13 D.Lgs. 472/1997).',
       punti: [
-        ['Spontaneità: per i tributi dell\'Agenzia delle Entrate è precluso solo dalla notifica di atti di liquidazione o di accertamento (comprese le comunicazioni di irregolarità ex artt. 36-bis D.P.R. 600/1973 e 54-bis D.P.R. 633/1972).', ['spontane','notific','accertamento','36-bis']],
-        ['Pagamento contestuale di tributo, sanzione ridotta e interessi.', ['contestual','interessi','sanzione ridotta']],
+        ['Spontaneità: per i tributi dell\'Agenzia delle Entrate è precluso solo dalla notifica di atti di liquidazione o di accertamento (comprese le comunicazioni ex artt. 36-bis e 36-ter D.P.R. 600/1973 e 54-bis D.P.R. 633/1972: art. 13, c. 1-ter).', ['spontane','notific','accertamento','36-bis']],
+        ['Pagamento contestuale di tributo, sanzione ridotta e interessi al tasso legale (c. 2). Riduzioni del minimo: 1/10 per il versamento entro 30 giorni; 1/9 entro 90 giorni; 1/8 entro il termine della dichiarazione dell\'anno della violazione; 1/7 oltre; poi 1/6, 1/5 e 1/4 dopo lo schema di atto o il verbale di constatazione (c. 1).', ['contestual','interessi','sanzione ridotta']],
         ['Esteso a tutti i tributi, inclusi i locali; ammesso anche per versamenti frazionati (art. 13-bis).', ['tutti i tributi','frazionat']],
         ['Non impedisce l\'inizio o la prosecuzione dei controlli.', ['controlli','ispezion']]
       ],
       aggancio: 'Per il sostituto d\'imposta il caso tipico è il ravvedimento delle ritenute versate in ritardo con F24; in ambito contributivo esiste un istituto analogo per le sanzioni civili (Simone LS pp. 444-445).',
-      fonti: 'Simone, Diritto tributario, pp. 540-541. Le misure delle riduzioni (frazioni del minimo) nel testo vigente dopo il D.Lgs. 87/2024 non sono state lette: DA VERIFICARE sul codice prima di citarle.'
+      fonti: 'Simone, Diritto tributario, pp. 540-541. Art. 13 D.Lgs. 472/1997, testo vigente al 7/11/2026 letto su Normattiva. Dal 1/1/2027 si applica il testo unico delle sanzioni tributarie (D.Lgs. 173/2024, art. 102, come modificato dal D.L. 200/2025).'
     },
 
     'DL-X1': {
@@ -1669,7 +1669,7 @@ window.ORALE = (function () {
         ["Ai fini del TFR i periodi di malattia si computano con la retribuzione figurativa che sarebbe spettata (art. 2120, c. 3, c.c.).", ["2120","tfr","figurativ"]]
       ],
       aggancio: "È la stessa logica degli assegni anticipati per conto dell'INPS che il manuale contabilizza in dare del conto «Istituti previdenziali»: l'impresa fa solo da cassa.",
-      fonti: "Simone, Ragioneria, pp. 1094-1095 (scrittura degli importi anticipati per l'INPS, per analogia); Simone, Diritto del lavoro 2026, pp. 197-198; artt. 2120 e 2425 c.c. Classificazione nei principi contabili (OIC 12): DA VERIFICARE."
+      fonti: "Simone, Ragioneria, pp. 1094-1095 (scrittura degli importi anticipati per l'INPS, per analogia); Simone, Diritto del lavoro 2026, pp. 197-198; artt. 2120 e 2425 c.c. Anticipazione e conguaglio con i contributi: art. 1 D.L. 663/1979, letto su Normattiva il 7/11/2026; l'OIC 12 non tratta il caso in modo specifico."
     },
 
     'RAG-2': {
@@ -1682,7 +1682,7 @@ window.ORALE = (function () {
         ["Ai fini del TFR la maternità rientra nelle sospensioni dell'art. 2110: si accantona sulla retribuzione che sarebbe spettata (art. 2120, c. 3, c.c.).", ["tfr","2120","2110"]]
       ],
       aggancio: "I ratei di tredicesima e ferie maturati durante la maternità restano a carico dell'impresa: in assestamento si stanziano come per i periodi lavorati.",
-      fonti: "P1_Cap09 § 3.2 (art. 22 D.Lgs. 151/2001); Simone, Ragioneria, pp. 1094-1095 (per analogia); artt. 2110, 2120 c.c. Classificazione OIC: DA VERIFICARE."
+      fonti: "P1_Cap09 § 3.2 (art. 22 D.Lgs. 151/2001); Simone, Ragioneria, pp. 1094-1095 (per analogia); artt. 2110, 2120 c.c. Anticipazione e conguaglio con i contributi: art. 1 D.L. 663/1979, letto su Normattiva il 7/11/2026; l'OIC 12 non tratta il caso in modo specifico."
     },
 
     'RAG-5': {
@@ -1705,10 +1705,10 @@ window.ORALE = (function () {
         ["Oneri contrattuali e differiti: tredicesima e quattordicesima, ferie e permessi maturati e non goduti, premi, quota annua di TFR.", ["tredicesima","quattordicesima","ferie","tfr"]],
         ["Oneri sociali: contributi INPS e premio INAIL a carico del datore; il TFR non è base contributiva.", ["oneri sociali","inps","inail"]],
         ["Schema dell'art. 2425 c.c.: B9 a) salari e stipendi, b) oneri sociali, c) trattamento di fine rapporto, d) trattamento di quiescenza e simili, e) altri costi.", ["b9","salari e stipendi","quiescenza","altri costi"]],
-        ["Restano fuori dalla B9 i costi per servizi legati al personale esterno, come collaboratori, amministratori e lavoro somministrato, che vanno in B7.", ["b7","servizi","somministra","amministratori"]]
+        ["Fuori dalla B9: i compensi ad amministratori, sindaci e revisori vanno in B7 tra i costi per servizi. Il costo del lavoro interinale (somministrato), invece, secondo l'OIC 12 si iscrive in B9.", ["b7","servizi","somministra","amministratori"]]
       ],
       aggancio: "Per il cliente il costo orario reale è quasi il doppio del netto in busta: è il calcolo che lo studio fa per i preventivi di assunzione.",
-      fonti: "Simone, Ragioneria, pp. 1012-1013, 1093-1094 (cita anche l'indennità di contingenza, ormai conglobata nei minimi); art. 2425 c.c. (miolegale.it, verificato su Normattiva al 10/10/2026). Collocazione del lavoro somministrato in B7: DA VERIFICARE su OIC 12."
+      fonti: "Simone, Ragioneria, pp. 1012-1013, 1093-1094 (cita anche l'indennità di contingenza, ormai conglobata nei minimi); art. 2425 c.c. (miolegale.it, verificato su Normattiva al 10/10/2026). OIC 12 (2024), par. 63 (B7) e 66 (B9, compreso il lavoro interinale)."
     },
 
     'RAG-7': {
@@ -1744,10 +1744,10 @@ window.ORALE = (function () {
         ["Amministratori: il compenso, se non professionale, è reddito assimilato a quello di lavoro dipendente (art. 50, c. 1, lett. c-bis, TUIR) con ritenute come per i dipendenti; contributi in gestione separata, 2/3 a carico della società e 1/3 dell'amministratore.", ["assimilat","50","c-bis","due terzi","2/3"]],
         ["Deducibilità: per cassa, nell'esercizio in cui sono corrisposti (art. 95, c. 5, TUIR); il compenso di competenza non pagato si riprende in aumento in dichiarazione.", ["95","corrisposti","cassa","deducibil"]],
         ["Sindaci e revisori: se professionisti, emettono fattura; il costo è in B7 per competenza.", ["sindaci","fattura","competenza"]],
-        ["Il compenso deve essere deliberato dall'assemblea o previsto dallo statuto (art. 2389 c.c.).", ["2389","assemblea","statuto"]]
+        ["Il compenso è stabilito all'atto della nomina dall'organo competente, salvo diversa disposizione dello statuto (art. 2389 c.c.).", ["compenso", "statuto", "2389"]]
       ],
       aggancio: "Il CdL gestisce il cedolino dell'amministratore e il flusso UniEmens della gestione separata, ma il costo non va mai in B9.",
-      fonti: "Art. 95, c. 5, TUIR (917_1986_TUIR.md in libreria); art. 2425 c.c. Collocazione in B7 (OIC 12), art. 50, c. 1, lett. c-bis, TUIR e art. 2389 c.c.: DA VERIFICARE sui testi."
+      fonti: "Art. 95, c. 5, TUIR (917_1986_TUIR.md in libreria); art. 2425 c.c. OIC 12 (2024), par. 63 (B7); art. 50, c. 1, lett. c-bis, TUIR (libreria); art. 2389 c.c. letto su Normattiva il 7/11/2026."
     },
 
     'RAG-21': {
@@ -1772,8 +1772,8 @@ window.ORALE = (function () {
         ["Quote destinate a fondi pensione o al Fondo di Tesoreria INPS: sono costo B9 c) ma non incrementano il fondo; diventano un debito da versare.", ["fondo pensione","tesoreria","debito"]],
         ["Nel conto economico il costo dell'esercizio (quota più rivalutazione) è in B9 c).", ["b9","conto economico"]]
       ],
-      aggancio: "Dal 2007 nelle imprese con 50 o più dipendenti il TFR non destinato ai fondi va al Fondo di Tesoreria INPS: in quelle imprese il fondo TFR resta solo per le quote ante 2007.",
-      fonti: "Artt. 2120, 2424, 2424-bis c.c.; Simone, Ragioneria, pp. 1110-1114; P2_00_PARAMETRI § 10 (imposta sostitutiva 17%: L. 190/2014 da fonte secondaria). Soglia di 50 dipendenti e novità L. 199/2025 sul Fondo di Tesoreria: DA VERIFICARE."
+      aggancio: "Dal 2007 nelle imprese con 50 o più dipendenti il TFR non destinato ai fondi va al Fondo di Tesoreria INPS: in quelle imprese il fondo TFR resta solo per le quote ante 2007. Dal 2026 l'obbligo vale anche per chi raggiunge i 50 addetti dopo l'inizio dell'attività (media dell'anno precedente; per il 2026-2027 solo se la media è almeno 60); dal 2032 la soglia scende a 40 addetti (art. 1, c. 756, L. 296/2006).",
+      fonti: "Artt. 2120, 2424, 2424-bis c.c.; Simone, Ragioneria, pp. 1110-1114; P2_00_PARAMETRI § 10 (imposta sostitutiva 17%: L. 190/2014 da fonte secondaria). Fondo di Tesoreria: art. 1, c. 755-756, L. 296/2006, testo vigente letti su Normattiva il 7/11/2026."
     },
 
     'RAG-23': {
@@ -1799,7 +1799,7 @@ window.ORALE = (function () {
         ["Alla cessione si elimina il valore netto contabile e la differenza con il prezzo è plusvalenza o minusvalenza.", ["plusvalenza","minusvalenza","valore netto contabile"]]
       ],
       aggancio: "Fiscalmente l'ammortamento segue i coefficienti ministeriali (art. 102 TUIR, D.M. 31/12/1988): può divergere da quello civilistico.",
-      fonti: "Artt. 2424-bis e 2426 c.c. (miolegale.it e filodiritto.com, testo vigente); Simone, Ragioneria, pp. 1072-1073, 1134-1138 (OIC 16). Art. 102 TUIR e D.M. 31/12/1988: DA VERIFICARE."
+      fonti: "Artt. 2424-bis e 2426 c.c. (miolegale.it e filodiritto.com, testo vigente); Simone, Ragioneria, pp. 1072-1073, 1134-1138 (OIC 16). Art. 102, c. 2, TUIR (libreria); D.M. 31/12/1988, G.U. n. 27 del 2/2/1989, S.O. 8 (gazzettaufficiale.it)."
     },
 
     'RAG-4': {
@@ -1809,10 +1809,10 @@ window.ORALE = (function () {
         ["Iscrizione nell'attivo con il consenso del collegio sindacale, ove esistente, solo se hanno utilità pluriennale (art. 2426, n. 5).", ["collegio sindacale","consenso","utilita pluriennale"]],
         ["Ammortamento: impianto e ampliamento entro 5 anni; sviluppo secondo la vita utile o, se non stimabile, entro 5 anni.", ["5 anni","cinque anni","vita utile"]],
         ["Finché non sono ammortizzati si possono distribuire dividendi solo se restano riserve disponibili sufficienti a coprirli.", ["dividendi","riserve"]],
-        ["Dal 2016 la pubblicità e la ricerca non sono più capitalizzabili (D.Lgs. 139/2015): vanno a costo dell'esercizio.", ["pubblicita","ricerca","139/2015"]]
+        ["Dal 2016 la pubblicità e la ricerca non sono più capitalizzabili (D.Lgs. 139/2015): la ricerca di base è costo di periodo (OIC 24, par. 47) e la pubblicità resta nell'attivo solo se ha i requisiti dei costi di impianto e ampliamento (par. 100).", ["pubblicita","ricerca","139/2015"]]
       ],
       aggancio: "Esempio pratico: le spese notarili di costituzione di una S.r.l. cliente sono costi di impianto da ammortizzare in massimo 5 anni.",
-      fonti: "Art. 2426, n. 5, c.c. (miolegale.it, testo vigente dal 2016); art. 2424 c.c. (voce B I); Simone, Ragioneria, pp. 1012, 1073-1074 (che elenca ancora la pubblicità: dato superato). Non capitalizzabilità di pubblicità e ricerca (OIC 24): DA VERIFICARE."
+      fonti: "Art. 2426, n. 5, c.c. (miolegale.it, testo vigente dal 2016); art. 2424 c.c. (voce B I); Simone, Ragioneria, pp. 1012, 1073-1074 (che elenca ancora la pubblicità: dato superato). OIC 24 (2019): par. 47 (ricerca di base, costo di periodo), 49 (sviluppo), 65 (impianto e ampliamento entro 5 anni), 100 (pubblicità tolta da BI2)."
     },
 
     'RAG-8': {
@@ -1825,7 +1825,7 @@ window.ORALE = (function () {
         ["Le quote annue vanno in B10 a) e b) del conto economico.", ["b10","conto economico"]]
       ],
       aggancio: "Il terreno non si ammortizza: in un fabbricato acquistato va scorporato il valore dell'area.",
-      fonti: "Artt. 2424, 2424-bis, 2426 c.c. (testo vigente); Simone, Ragioneria, pp. 1072-1074, 1134-1137. Scorporo del terreno (OIC 16): DA VERIFICARE."
+      fonti: "Artt. 2424, 2424-bis, 2426 c.c. (testo vigente); Simone, Ragioneria, pp. 1072-1074, 1134-1137. OIC 16 (2019), par. 60: i terreni non si ammortizzano e il valore del fabbricato va scorporato, anche in base a stime."
     },
 
     'RAG-10': {
@@ -1847,11 +1847,11 @@ window.ORALE = (function () {
         ["Formula: patrimonio netto = attività − passività; se negativo si parla di deficit patrimoniale.", ["attivita","passivita","deficit"]],
         ["Composizione (voce A, I-X): capitale, riserva da sovrapprezzo, riserve di rivalutazione, riserva legale, riserve statutarie, altre riserve, riserva per copertura di flussi, utili o perdite portati a nuovo, utile o perdita dell'esercizio, riserva negativa per azioni proprie.", ["capitale","riserva legale","riserve","utile"]],
         ["Origine: esterna (conferimenti dei soci) o interna (utili non distribuiti, autofinanziamento).", ["conferimenti","utili non distribuiti","autofinanziamento"]],
-        ["Capitale minimo: 50.000 euro per S.p.A. e S.a.p.a.; per la S.r.l. il manuale indica 10.000 euro, ma la legge consente anche un capitale inferiore, da almeno 1 euro.", ["50.000","10.000","1 euro"]],
+        ["Capitale minimo: 50.000 euro per S.p.A. e S.a.p.a.; per la S.r.l. il manuale indica 10.000 euro, ma la legge consente anche un capitale inferiore, da almeno 1 euro: in tal caso conferimenti solo in denaro, versati per intero, e riserva di almeno un quinto degli utili fino a 10.000 euro (art. 2463 c.c.).", ["50.000","10.000","1 euro"]],
         ["Le riserve si distinguono dai fondi rischi: le riserve sono parti del patrimonio netto, i fondi sono passività per oneri determinati (art. 2424-bis, c. 3).", ["fondi rischi","2424-bis","passivita"]]
       ],
       aggancio: "Collegamento con la crisi d'impresa: la riduzione del capitale per perdite oltre un terzo obbliga gli amministratori a convocare l'assemblea (artt. 2446 e 2482-bis c.c.).",
-      fonti: "Art. 2424 c.c. (testo vigente); Simone, Ragioneria, pp. 1022-1023. Capitale minimo della S.r.l. (art. 2463 c.c., capitale da 1 euro) e artt. 2446, 2482-bis c.c.: DA VERIFICARE."
+      fonti: "Art. 2424 c.c. (testo vigente); Simone, Ragioneria, pp. 1022-1023. Artt. 2327, 2446, 2463 e 2482-bis c.c. letti su Normattiva il 7/11/2026."
     },
 
     'RAG-13': {
@@ -1916,33 +1916,33 @@ window.ORALE = (function () {
         ["Per i servizi la fattura si emette al pagamento del corrispettivo (art. 6, c. 3); la fattura immediata va trasmessa entro 12 giorni dall'operazione.", ["pagamento","12 giorni"]]
       ],
       aggancio: "Nella fattura del CdL: onorario, contributo integrativo ENPACL 4%, IVA 22% su entrambi, ritenuta 20% sul solo onorario se il cliente è sostituto d'imposta.",
-      fonti: "P2/P2_Mod05_Fattura_CdL_v2 (lezioni 1-2, 7); art. 21 D.P.R. 633/1972 non in libreria: elenco degli elementi e termine di 12 giorni DA VERIFICARE sul testo (Codice SEAC, p. 553). Dal 2027 la materia confluisce nel testo unico IVA."
+      fonti: "P2/P2_Mod05_Fattura_CdL_v2 (lezioni 1-2, 7); art. 21, c. 2 e 4, D.P.R. 633/1972, testo vigente letti su Normattiva il 7/11/2026. Dal 1/1/2027 si applica il testo unico IVA (D.Lgs. 19/1/2026 n. 10, art. 171)."
     },
 
     'RAG-20': {
       sintesi: "Dal 1° gennaio 2019 la fattura tra operatori residenti è di regola elettronica: è un file XML trasmesso attraverso il Sistema di Interscambio (SdI) dell'Agenzia delle Entrate; dal 2024 l'obbligo riguarda anche i forfettari.",
       punti: [
-        ["Obbligo generalizzato dal 1/1/2019 per le operazioni tra soggetti residenti, anche verso privati consumatori (L. 205/2017).", ["2019","obbligo","205/2017"]],
+        ["Obbligo generalizzato dal 1/1/2019 per le operazioni tra soggetti residenti, anche verso privati consumatori (art. 1, c. 3, D.Lgs. 127/2015).", ["1/1/2019", "residenti", "consumatori"]],
         ["Formato XML e trasmissione obbligatoria tramite SdI, che controlla il file e lo recapita al cliente; la fattura si considera emessa solo se lo SdI la accetta.", ["xml","sistema di interscambio","sdi","recapit"]],
         ["Forfettari: obbligati dal 1/7/2022 se con ricavi o compensi oltre 25.000 euro, e da tutti dal 1/1/2024 (D.L. 36/2022).", ["forfettari","25.000","2024","36/2022"]],
         ["Termini: fattura immediata entro 12 giorni; differita entro il 15 del mese successivo; conservazione digitale a norma.", ["12 giorni","differita","15 del mese","conservazione"]],
         ["Restano fuori dall'obbligo le operazioni con l'estero (per le quali si comunicano i dati) e, per ragioni di riservatezza, le prestazioni sanitarie inviate al Sistema tessera sanitaria.", ["estero","sanitari","tessera sanitaria"]]
       ],
-      aggancio: "Il bollo sulla fattura elettronica senza IVA oltre 77,47 euro si paga in modo virtuale con F24, su calcolo trimestrale dell'Agenzia delle Entrate.",
-      fonti: "P2/P2_Mod05 (lezioni 1, 7); ORALE_Simone_Diritto_Tributario_OCR («fattura elettronica»). Estremi L. 205/2017 e D.L. 36/2022, soglia di 25.000 euro, termini di emissione e pagamento trimestrale del bollo: DA VERIFICARE sui testi."
+      aggancio: "Il bollo sulle fatture elettroniche senza IVA si assolve in modo virtuale: l'Agenzia delle Entrate integra con procedure automatizzate le fatture prive dell'annotazione e comunica le somme non versate (art. 12-novies D.L. 34/2019).",
+      fonti: "P2/P2_Mod05 (lezioni 1, 7); ORALE_Simone_Diritto_Tributario_OCR («fattura elettronica»). Art. 1, c. 3, D.Lgs. 127/2015; art. 18, c. 2-3, D.L. 36/2022 (soglia di 25.000 euro); art. 21, c. 4, D.P.R. 633/1972 (12 giorni e 15 del mese successivo); art. 12-novies D.L. 34/2019 (bollo virtuale): testi vigenti letti su Normattiva il 7/11/2026."
     },
 
     'RAG-15': {
       sintesi: "Chi esercita arti e professioni tiene scritture semplificate per cassa (art. 19 D.P.R. 600/1973), con facoltà di optare per la contabilità ordinaria; i forfettari sono esonerati dalla tenuta delle scritture contabili.",
       punti: [
-        ["Regime naturale: contabilità semplificata con registri IVA integrati da incassi e pagamenti, oppure registro cronologico unico (art. 19 D.P.R. 600/1973).", ["semplificata","registri iva","incassi","art. 19"]],
-        ["Opzione per la contabilità ordinaria (registro cronologico e conti finanziari), vincolante per almeno un triennio.", ["ordinaria","opzione","triennio"]],
+        ["Scritture: registro cronologico delle somme percepite (importo, ritenuta subita, chi ha pagato, fattura) e delle spese di cui si chiede la deduzione; uno o più conti correnti dedicati; compensi incassati con mezzi tracciabili, salvo importi unitari sotto 100 euro (art. 19 D.P.R. 600/1973).", ["registro cronologico", "conti correnti", "100 euro"]],
+        ["Le somme annotate devono passare dai conti correnti dedicati, sui quali affluiscono i compensi e da cui si pagano le spese (art. 19).", ["conti correnti", "compensi", "spese"]],
         ["Il reddito di lavoro autonomo si determina per cassa: compensi incassati meno spese pagate (art. 54 TUIR).", ["cassa","54","compensi","spese"]],
         ["Restano gli obblighi IVA: fattura elettronica, liquidazioni periodiche, dichiarazione annuale; il professionista con dipendenti è anche sostituto d'imposta.", ["iva","fattura elettronica","liquidazion","sostituto"]],
         ["Forfettario (L. 190/2014): niente scritture contabili né IVA, ma conservazione dei documenti e fatturazione elettronica.", ["forfettario","190/2014","conservazione"]]
       ],
       aggancio: "È il regime contabile del consulente del lavoro stesso: un professionista in forfettario fattura con il 4% ENPACL ma senza IVA né ritenuta.",
-      fonti: "P2/P2_Mod05 (lezione 6); art. 54 TUIR (libreria). Art. 19 D.P.R. 600/1973 e vincolo triennale: DA VERIFICARE sul testo; dal 2027 la disciplina confluisce nel testo unico adempimenti e accertamento (D.Lgs. 141/2026, fonti secondarie)."
+      fonti: "P2/P2_Mod05 (lezione 6); art. 54 TUIR (libreria). Art. 19 D.P.R. 600/1973, testo vigente letti su Normattiva il 7/11/2026; dal 1/1/2027 si applica il testo unico adempimenti e accertamento (D.Lgs. 5/8/2026 n. 141, art. 368)."
     },
 
     'RAG-18': {
@@ -1950,12 +1950,12 @@ window.ORALE = (function () {
       punti: [
         ["Ordinaria: libro giornale, libro degli inventari, registri IVA, scritture di magazzino oltre certe soglie, registro dei beni ammortizzabili (artt. 14-16 D.P.R. 600/1973; art. 2214 c.c.).", ["libro giornale","inventari","registri iva","beni ammortizzabili"]],
         ["Obbligatoria per società di capitali ed enti commerciali, a prescindere dai ricavi.", ["societa di capitali","obbligatori"]],
-        ["Semplificata: ammessa per imprese individuali e società di persone con ricavi annui fino a 500.000 euro per i servizi e 800.000 euro per le altre attività (soglie dal 2023, L. 197/2022).", ["500.000","800.000","semplificata","197/2022"]],
-        ["Nella semplificata il reddito si determina con criterio misto di cassa e competenza (art. 66 TUIR); si può sempre optare per l'ordinaria.", ["66","cassa","opzione"]],
+        ["Semplificata: ammessa per imprese individuali e società di persone con ricavi annui fino a 500.000 euro per i servizi e 800.000 euro per le altre attività (art. 18, c. 1, D.P.R. 600/1973).", ["500.000", "800.000", "semplificata"]],
+        ["Nella semplificata il reddito si determina con criterio misto di cassa e competenza (art. 66 TUIR); si può optare per l'ordinaria, con vincolo di almeno tre anni (art. 18, c. 8).", ["cassa", "competenza", "tre anni"]],
         ["Il superamento delle soglie fa passare all'ordinaria dall'anno successivo.", ["anno successivo","superamento"]]
       ],
       aggancio: "Dal 2027 queste regole confluiscono nel testo unico adempimenti e accertamento (D.Lgs. 141/2026, art. 23 per la semplificata), ma all'esame si cita ancora il D.P.R. 600/1973.",
-      fonti: "Simone, Ragioneria, pp. 1055, 1116 (art. 2214 c.c.); soglie da ecnews.it (28/12/2023) e dall'art. 23 D.Lgs. 141/2026 su miolegale.it (fonti secondarie). Artt. 14 e 18 D.P.R. 600/1973, art. 66 TUIR e decorrenza del testo unico dal 2027: DA VERIFICARE sui testi."
+      fonti: "Simone, Ragioneria, pp. 1055, 1116 (art. 2214 c.c.); soglie da ecnews.it (28/12/2023) e dall'art. 23 D.Lgs. 141/2026 su miolegale.it (fonti secondarie). Artt. 14 e 18, c. 1 e 8, D.P.R. 600/1973 (soglie e opzione) letti su Normattiva il 7/11/2026; art. 66 TUIR (libreria); decorrenza del testo unico adempimenti e accertamento dal 1/1/2027 (D.Lgs. 141/2026, art. 368)."
     },
 
     "TRIB-1": {
@@ -1990,11 +1990,11 @@ window.ORALE = (function () {
         ["Deducibili (art. 10): contributi previdenziali obbligatori e volontari, assegni periodici al coniuge separato, spese mediche e di assistenza dei disabili, contributi alla previdenza complementare, contributi a fondi sanitari fino a 3.615,20 euro, alcune erogazioni liberali.", ["deducibil", "10", "previdenza complementare", "assegni"]],
         ["Detraibili al 19% (art. 15): interessi del mutuo per l'abitazione principale fino a 4.000 euro, spese sanitarie sulla parte oltre 129,11 euro, istruzione, attività sportive dei figli, assicurazioni vita e infortuni, spese funebri e veterinarie.", ["19%", "detraibil", "129,11", "4.000", "mutuo"]],
         ["Effetto diverso: la deduzione vale di più per chi ha l'aliquota marginale più alta; la detrazione vale la stessa percentuale per tutti.", ["aliquota marginale", "effetto"]],
-        ["Tracciabilità: dal 2020 la detrazione al 19% spetta solo con pagamenti tracciabili, salvo medicinali, dispositivi medici e prestazioni di strutture pubbliche o accreditate (L. 160/2019, c. 679).", ["tracciabil", "160/2019"]],
+        ["Tracciabilità: dal 2020 la detrazione al 19% spetta solo con pagamenti tracciabili, salvo medicinali, dispositivi medici e prestazioni di strutture pubbliche o accreditate (L. 160/2019, art. 1, c. 679; eccezioni al c. 680).", ["tracciabil", "160/2019"]],
         ["Limiti per redditi alti: oltre 75.000 euro le detrazioni sono ammesse entro 14.000 o 8.000 euro per un coefficiente legato ai figli, escluse le spese sanitarie (art. 16-ter).", ["75.000", "16-ter", "14.000"]]
       ],
       aggancio: "In busta paga il sostituto riconosce solo gli oneri che passano da lui (fondo pensione, fondo sanitario contrattuale): gli altri si fanno valere con il 730.",
-      fonti: "Artt. 10, 15 e 16-ter TUIR (917_1986_TUIR in libreria; all'art. 15, c. 1, il file riportava per errore «22 per cento», corretto in 19 il 1/11/2026 su Brocardi). Tracciabilità: L. 160/2019, c. 679, da fonti secondarie (DA VERIFICARE il testo)."
+      fonti: "Artt. 10, 15 e 16-ter TUIR (917_1986_TUIR in libreria; all'art. 15, c. 1, il file riportava per errore «22 per cento», corretto in 19 il 1/11/2026 su Brocardi). Tracciabilità: L. 160/2019, art. 1, c. 679-680, testo vigente letto su Normattiva il 7/11/2026."
     },
 
     "TRIB-4": {
@@ -2082,10 +2082,10 @@ window.ORALE = (function () {
         ["Contenuto: ritenute su lavoro dipendente, autonomo, redditi di capitale e altri; versamenti con F24 e crediti compensati; i dati dei singoli percipienti sono già nella CU.", ["ritenute", "versamenti", "compensa", "cu"]],
         ["Termine: 31 ottobre dell'anno successivo a quello in cui sono state operate le ritenute.", ["31 ottobre"]],
         ["Funzione di controllo: incrocio tra ritenute certificate, ritenute dichiarate e versamenti.", ["incrocio", "controllo"]],
-        ["Sanzioni: omessa o infedele dichiarazione del sostituto (D.Lgs. 471/1997); ritenute certificate e non versate oltre 150.000 euro per periodo d'imposta: reato dell'art. 10-bis D.Lgs. 74/2000.", ["150.000", "10-bis", "sanzion"]]
+        ["Sanzioni: omessa dichiarazione del sostituto, 120% delle ritenute non versate con un minimo di 250 euro, oppure da 250 a 2.000 euro se le ritenute sono state versate; dichiarazione infedele, 70% delle ritenute non versate sulla differenza (art. 2, c. 1-2, D.Lgs. 471/1997). Ritenute risultanti dalla certificazione e non versate entro il 31 dicembre dell'anno successivo, oltre 150.000 euro per periodo d'imposta: reato dell'art. 10-bis D.Lgs. 74/2000.", ["150.000", "10-bis", "sanzion"]]
       ],
       aggancio: "Lo studio del consulente lo predispone e trasmette come intermediario, partendo dalle CU e dagli F24 dell'anno.",
-      fonti: "P2_Mod04, scaletta A (art. 4 D.P.R. 322/1998; art. 10-bis D.Lgs. 74/2000 dopo C. cost. 175/2022, testo vigente DA VERIFICARE). Misura delle sanzioni per l'omessa dichiarazione del sostituto: DA VERIFICARE."
+      fonti: "P2_Mod04, scaletta A (art. 4 D.P.R. 322/1998); art. 2, c. 1-2, D.Lgs. 471/1997 e art. 10-bis D.Lgs. 74/2000, testi vigenti letti su Normattiva il 7/11/2026."
     },
 
     "TRIB-9": {
@@ -2111,7 +2111,7 @@ window.ORALE = (function () {
         ["Niente IVA in fattura e niente ritenuta d'acconto subita; esonero dall'IRAP.", ["iva", "ritenuta", "irap"]]
       ],
       aggancio: "Il forfettario che assume dipendenti resta sostituto d'imposta e deve operare le ritenute; il limite dei 20.000 euro di spese per personale va monitorato.",
-      fonti: "L. 207/2024, c. 12 (35.000 euro per il 2025 e il 2026: testo in libreria); requisiti, soglie e aliquote da fonti secondarie aggiornate al 2026 (centrofiscale.com): testo della L. 190/2014, c. 54-57 e 64-69, DA VERIFICARE."
+      fonti: "L. 207/2024, c. 12 (35.000 euro per il 2025 e il 2026: testo in libreria); requisiti, cause ostative, imposta sostitutiva, ritenuta e uscita: L. 190/2014, art. 1, c. 54, 57, 64, 65, 67 e 71, testo in vigore fino al 31/12/2026 letti su Normattiva il 7/11/2026. Dal 1/1/2027 la disciplina passa nel testo unico imposte sui redditi (D.Lgs. 19/6/2026 n. 117, art. 377)."
     },
 
     "TRIB-14": {
@@ -2147,10 +2147,10 @@ window.ORALE = (function () {
         ["Soggetti: società di capitali e di persone, enti commerciali e non commerciali, amministrazioni pubbliche; esclusi dal 2022 imprenditori individuali e professionisti persone fisiche, e i forfettari.", ["societa", "enti", "persone fisiche", "2022"]],
         ["Base imponibile: valore della produzione netta; per le società di capitali la differenza tra valore e costi della produzione, senza dedurre costo del personale, svalutazioni, accantonamenti e interessi (art. 5).", ["valore della produzione", "base imponibile", "personale"]],
         ["Costo del lavoro: deducibile per intero quello dei dipendenti a tempo indeterminato (art. 11, c. 4-octies); per i contratti a termine solo deduzioni specifiche (per esempio 1.850 euro per dipendente fino a 5, con ricavi fino a 400.000, e il 70% per gli stagionali).", ["tempo indeterminato", "4-octies", "1.850", "stagional"]],
-        ["Aliquota ordinaria del 3,9% (art. 16), che le Regioni possono variare entro i limiti di legge; gettito destinato alle Regioni.", ["3,9%", "regioni", "aliquota"]]
+        ["Aliquota ordinaria del 3,9% (art. 16), che le Regioni possono variare fino a 0,92 punti (c. 3); per il 2026-2027 è aumentata di 2 punti per alcuni settori (D.L. 21/2026, art. 3) e dal 2026 per banche e assicurazioni (L. 199/2025, c. 74); gettito destinato alle Regioni.", ["3,9%", "regioni", "aliquota"]]
       ],
       aggancio: "Per il consulente il tema tocca la scelta del contratto: l'assunzione a tempo indeterminato riduce l'IRAP, il contratto a termine no.",
-      fonti: "Edotto, «Il costo del lavoro nel modello Irap 2025» (28/8/2025) e MEF, Dipartimento Finanze, novità normative IRAP 2022 (fonti secondaria e ufficiale). Aliquota del 3,9% e art. 5: testo del D.Lgs. 446/1997 non riletto, DA VERIFICARE."
+      fonti: "Edotto, «Il costo del lavoro nel modello Irap 2025» (28/8/2025) e MEF, Dipartimento Finanze, novità normative IRAP 2022 (fonti secondaria e ufficiale). Artt. 3, 5, 11 (c. 4-bis.1 e 4-octies) e 16 D.Lgs. 446/1997 letti su Normattiva il 7/11/2026: il testo dell'art. 16, c. 1, riporta ancora il 3,50% di una modifica del D.L. 66/2014 abrogata dalla L. 190/2014 (nota di aggiornamento 47), perciò l'aliquota ordinaria resta il 3,9%. Persone fisiche escluse: art. 1, c. 8, L. 234/2021."
     },
 
     "TRIB-19": {
@@ -2176,7 +2176,7 @@ window.ORALE = (function () {
         ["I canoni restano fuori dal reddito complessivo ai fini della progressività, ma contano per i familiari a carico, le detrazioni e l'ISEE.", ["progressivita", "familiari a carico", "isee"]]
       ],
       aggancio: "Per il consulente pesa sul 730 del dipendente proprietario: il reddito da cedolare non fa salire lo scaglione ma può far perdere lo status di familiare a carico.",
-      fonti: "Art. 3 D.Lgs. 23/2011 come riportato da EC News (6/12/2019, aggiornato al 18/1/2026), fonte secondaria: testo vigente DA VERIFICARE su Normattiva. Non nel manuale in libreria."
+      fonti: "Art. 3, c. 1, 2, 7 e 11, D.Lgs. 23/2011, testo vigente letti su Normattiva il 7/11/2026 (non nel manuale in libreria)."
     },
 
     "TRIB-5": {
@@ -2188,8 +2188,8 @@ window.ORALE = (function () {
         ["Le s.r.l. a ristretta base proprietaria possono optare per la trasparenza (artt. 115-116 TUIR).", ["opzione", "115", "ristretta"]],
         ["Entrambe sono soggette all'IRAP sul valore della produzione netta e, se hanno dipendenti, agli obblighi del sostituto d'imposta.", ["irap", "sostituto"]]
       ],
-      aggancio: "Per il consulente cambia il trattamento dei soci che lavorano: il socio di s.n.c. è un imprenditore per i contributi (gestione artigiani o commercianti), l'amministratore di s.r.l. può avere un compenso assimilato al lavoro dipendente.",
-      fonti: "Artt. 5, 6, 73 e 77 TUIR (917_1986_TUIR in libreria). Artt. 115-116 TUIR non riletti. Contributi dei soci: DA VERIFICARE caso per caso."
+      aggancio: "Per il consulente cambia il trattamento dei soci che lavorano: il socio che partecipa personalmente al lavoro aziendale con abitualità e prevalenza si iscrive alla gestione INPS dei commercianti se ne ha i requisiti (art. 1, c. 203, L. 662/1996), l'amministratore di s.r.l. può avere un compenso assimilato al lavoro dipendente.",
+      fonti: "Artt. 5, 6, 73 e 77 TUIR (917_1986_TUIR in libreria). Artt. 115-116 TUIR (917_1986_TUIR in libreria). Contributi dei soci: art. 1, c. 203, L. 662/1996, letti su Normattiva il 7/11/2026."
     },
 
     "TRIB-20": {
@@ -2199,10 +2199,10 @@ window.ORALE = (function () {
         ["È un istituto residuale: si applica salvo che sia configurabile un diverso rapporto (per esempio lavoro subordinato o società).", ["residual", "diverso rapporto"]],
         ["Fisco: l'imprenditore resta titolare; il reddito si imputa ai familiari fino al 49% del reddito dichiarato, in proporzione alle quote (art. 5, c. 4, TUIR).", ["49", "imputat", "titolare"]],
         ["Condizioni fiscali: atto pubblico o scrittura privata autenticata anteriore all'inizio del periodo d'imposta, attestazione delle quote nella dichiarazione dell'imprenditore e lavoro continuativo e prevalente di ciascun familiare.", ["atto pubblico", "scrittura privata", "prevalent"]],
-        ["Familiari ai fini fiscali: coniuge, parenti entro il terzo grado, affini entro il secondo (art. 5, c. 5); per il convivente di fatto c'è l'art. 230-ter c.c.", ["coniuge", "terzo grado", "convivente"]]
+        ["Familiari ai fini fiscali: coniuge, parenti entro il terzo grado, affini entro il secondo (art. 5, c. 5, TUIR). Sul piano civile la Corte cost. 25/7/2024 n. 148 ha dichiarato illegittimo l'art. 230-bis, c. 3, c.c. nella parte in cui non comprende il convivente di fatto, e in conseguenza anche l'art. 230-ter c.c.", ["coniuge", "terzo grado", "convivente"]]
       ],
       aggancio: "Per il consulente il punto delicato è distinguere il familiare collaboratore, iscritto alla gestione INPS dell'imprenditore, dal familiare assunto come dipendente.",
-      fonti: "Art. 230-bis c.c. (filodiritto.com, testo vigente; non nell'estratto in libreria); art. 5, c. 4 e 5, TUIR (917_1986_TUIR in libreria). Art. 230-ter c.c. e Corte cost. 148/2024 sul convivente: DA VERIFICARE."
+      fonti: "Art. 230-bis c.c. (filodiritto.com, testo vigente; non nell'estratto in libreria); art. 5, c. 4 e 5, TUIR (917_1986_TUIR in libreria). Artt. 230-bis e 230-ter c.c. con le note sulla Corte cost. 148/2024 (G.U. 1ª s.s. n. 31 del 31/7/2024), letti su Normattiva il 7/11/2026."
     },
 
     "TRIB-21": {
@@ -2227,8 +2227,8 @@ window.ORALE = (function () {
         ["L'accomandante può dare autorizzazioni e pareri e ha diritto di ricevere il bilancio e controllarlo.", ["pareri", "bilancio"]],
         ["Ragione sociale: almeno il nome di un accomandatario; l'accomandante che vi consente il proprio nome risponde illimitatamente (art. 2314).", ["ragione sociale", "2314"]]
       ],
-      aggancio: "Ai fini contributivi l'accomandatario che lavora nell'impresa si iscrive di regola alla gestione artigiani o commercianti; per l'accomandante che presta lavoro va verificato il rapporto (DA VERIFICARE caso per caso).",
-      fonti: "Artt. 2313, 2314, 2318 e 2320 c.c. come riportati da studiocataldi.it (fonte secondaria; non nell'estratto in libreria). Fisco: art. 5 TUIR (TRIB-5)."
+      aggancio: "Ai fini contributivi conta l'art. 1, c. 203, L. 662/1996: si iscrive alla gestione commercianti chi partecipa personalmente al lavoro aziendale con abitualità e prevalenza e ha la piena responsabilità dell'impresa (requisito non richiesto ai soci di s.r.l.). L'accomandante può prestare la sua opera sotto la direzione degli amministratori, ma se compie atti di amministrazione risponde illimitatamente (art. 2320 c.c.).",
+      fonti: "Artt. 2313, 2318 e 2320 c.c. letti su Normattiva il 7/11/2026; art. 1, c. 203, L. 662/1996 (Normattiva). Fisco: art. 5 TUIR (TRIB-5)."
     },
 
     "TRIB-X1": {
@@ -2241,7 +2241,7 @@ window.ORALE = (function () {
         ["Il sostituito risponde in solido solo per le ritenute a titolo d'imposta non operate né versate (art. 35 D.P.R. 602/1973; Cass. S.U. 10378/2019).", ["solido", "35", "10378"]]
       ],
       aggancio: "È il terreno su cui il consulente lavora ogni mese: cedolini, F24, CU e 770 sono adempimenti del sostituto che lo studio esegue come intermediario.",
-      fonti: "P2_Mod04, scaletta A (artt. 23 e 64 D.P.R. 600/1973; art. 35 D.P.R. 602/1973; artt. 13-14 D.Lgs. 471/1997 e art. 10-bis D.Lgs. 74/2000, testi vigenti DA VERIFICARE nel codice); P2_00_PARAMETRI § 8."
+      fonti: "P2_Mod04, scaletta A (artt. 23 e 64 D.P.R. 600/1973; art. 35 D.P.R. 602/1973); artt. 13-14 D.Lgs. 471/1997 e art. 10-bis D.Lgs. 74/2000, testi vigenti letti su Normattiva il 7/11/2026; P2_00_PARAMETRI § 8."
     },
 
     "PPP-9": {
@@ -3256,7 +3256,7 @@ window.ORALE = (function () {
         ["In bilancio dal 2016 non c'è più l'area straordinaria: plusvalenze e minusvalenze vanno nella gestione caratteristica (A5 altri ricavi, B14 oneri diversi).", ["area straordinaria", "a5", "b14"]]
       ],
       aggancio: "Distinguere dalle plusvalenze e minusvalenze da valutazione, che il principio di prudenza ammette solo in negativo. Per il consulente è materia contabile di contorno: basta il meccanismo del valore netto.",
-      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), p. 1097 (dismissioni) e pp. 1092-1093 (titoli e prudenza); RAG-14 del simulatore (art. 2425 c.c., area straordinaria eliminata). Collocazione in A5 e B14: secondo i principi OIC, DA VERIFICARE."
+      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), p. 1097 (dismissioni) e pp. 1092-1093 (titoli e prudenza); RAG-14 del simulatore (art. 2425 c.c., area straordinaria eliminata). Collocazione: OIC 12 (2024), par. 56 (A5) e 84 (B14)."
     },
 
     "S22-RAG-10": {
@@ -3266,10 +3266,10 @@ window.ORALE = (function () {
         ["Al versamento dell'acconto: Acconti INAIL (credito) a Banca c/c.", ["acconti inail", "banca"]],
         ["Al 31/12, determinato il premio effettivo dell'anno: Oneri sociali INAIL (costo, voce B9 b del conto economico) per il premio di competenza, contro Acconti INAIL e, per la differenza, Contributi INAIL a debito (passivo D13) o a credito (attivo circolante).", ["oneri sociali inail", "b9", "d13"]],
         ["L'anno dopo, il saldo a debito si versa con il nuovo acconto; il saldo a credito si scomputa dal nuovo acconto.", ["saldo", "nuovo acconto"]],
-        ["Base: retribuzioni imponibili dei dipendenti e tassi della tariffa per voce di rischio; la dichiarazione delle retribuzioni si trasmette telematicamente insieme all'autoliquidazione (modulo INAIL).", ["retribuzioni", "tariffa", "dichiarazione delle retribuzioni"]]
+        ["Base: retribuzioni imponibili dei dipendenti e tassi della tariffa per voce di rischio; la dichiarazione delle retribuzioni si trasmette telematicamente entro il 28 febbraio, indicando anche se si sceglie il pagamento in quattro rate (Guida INAIL 2025/2026).", ["retribuzioni", "tariffa", "dichiarazione delle retribuzioni"]]
       ],
       aggancio: "Il consulente calcola l'autoliquidazione e passa al contabile i dati per l'assestamento: premio di competenza, acconto versato e saldo. Il mancato o tardivo pagamento genera sanzioni civili e la perdita della regolarità contributiva (DURC).",
-      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), pp. 1095-1097; INAIL-3 del simulatore (autoliquidazione). Termini e rate: come riportati dal Simone; la scadenza della dichiarazione delle retribuzioni è DA VERIFICARE sulla guida INAIL dell'anno."
+      fonti: "Simone, Ragioneria (ORALE_Simone_Ragioneria_Personale_OCR), pp. 1095-1097; INAIL-3 del simulatore (autoliquidazione). Termini e rate: come riportati dal Simone; dichiarazione delle retribuzioni telematica entro il 28 febbraio (nel 2026 il 2 marzo) e rate 2026 (16 febbraio, 18 maggio, 20 agosto, 16 novembre): Guida INAIL all'autoliquidazione 2025/2026."
     },
 
     "S22-DL-2": {
@@ -3602,12 +3602,12 @@ window.ORALE = (function () {
       punti: [
         ["Verticale: credito e debito della stessa imposta (per esempio credito IVA contro IVA). Orizzontale: imposta diversa o contributi (credito IVA contro IRPEF o contributi INPS); è possibile anche tra enti impositori diversi.", ["verticale", "orizzontale", "enti"]],
         ["Limite annuo: 2.000.000 di euro di crediti compensabili (art. 1, c. 72, L. 234/2021). Obbligo di usare i servizi telematici dell'Agenzia delle Entrate per presentare F24 con compensazioni.", ["2.000.000", "234/2021", "telematici"]],
-        ["Controlli: per i crediti IVA oltre 5.000 euro serve il visto di conformità; alcuni crediti si usano solo dal decimo giorno dopo la presentazione della dichiarazione da cui emergono.", ["5.000", "visto di conformita", "decimo giorno"]],
-        ["Blocco: chi ha debiti iscritti a ruolo oltre 100.000 euro scaduti e non sospesi non può compensare (L. 213/2023, c. 94); la legge di bilancio 2026 ha abbassato la soglia a 50.000 euro.", ["ruolo", "100.000", "50.000"]],
+        ["Controlli: per i crediti IVA oltre 5.000 euro annui serve il visto di conformità (art. 10 D.L. 78/2009); i crediti IVA, delle imposte sui redditi, delle sostitutive e dell'IRAP oltre 5.000 euro si compensano dal decimo giorno successivo alla presentazione della dichiarazione da cui emergono (art. 17, c. 1, D.Lgs. 241/1997).", ["5.000", "visto di conformita", "decimo giorno"]],
+        ["Blocco: chi ha iscrizioni a ruolo o carichi affidati all'agente della riscossione per imposte erariali oltre 50.000 euro, scaduti e non sospesi, non può compensare in F24, salvo alcuni crediti (art. 37, c. 49-quinquies, D.L. 223/2006, testo vigente).", ["50.000", "ruolo", "compensare"]],
         ["Datore di lavoro: se le indennità anticipate per conto dell'INPS (malattia, maternità) superano i contributi dovuti, il credito si recupera compensandolo in F24 con i tributi. L'uso di crediti non spettanti o inesistenti è sanzionato e, oltre certe soglie, è reato (art. 10-quater D.Lgs. 74/2000).", ["indennita anticipate", "inps", "inesistenti", "10-quater"]]
       ],
       aggancio: "Collegamento con S22-INPS-11. Per il consulente: prima di compensare verificare l'esistenza del credito, il visto, i termini e l'assenza di ruoli scaduti oltre soglia.",
-      fonti: "Simone, Legislazione sociale, p. 266 (art. 17 D.Lgs. 241/1997); Simone, Diritto tributario, pp. 500 e 545 (crediti non spettanti, art. 10-quater); limite annuo, visto, decimo giorno e blocco per ruoli: fonte secondaria (informazionefiscale.it), testi delle leggi DA VERIFICARE."
+      fonti: "Simone, Legislazione sociale, p. 266 (art. 17 D.Lgs. 241/1997); Simone, Diritto tributario, pp. 500 e 545 (crediti non spettanti, art. 10-quater); limite di 2 milioni (art. 34 L. 388/2000, elevato dall'art. 1, c. 72, L. 234/2021), visto e decimo giorno (art. 10 D.L. 78/2009; art. 17, c. 1, D.Lgs. 241/1997), blocco per ruoli oltre 50.000 euro (art. 37, c. 49-quinquies, D.L. 223/2006): testi vigenti letti su Normattiva il 7/11/2026."
     },
 
     "S22-TRIB-13": {
@@ -3641,7 +3641,7 @@ window.ORALE = (function () {
       punti: [
         ["Valutazione: valore normale (art. 9 TUIR); per i beni e servizi prodotti o scambiati dall'azienda, prezzo mediamente praticato o, in mancanza, costo sostenuto. Possono essere erogati anche con buoni (documenti di legittimazione, c. 3-bis).", ["valore normale", "prezzo mediamente praticato", "buoni"]],
         ["Soglia di esenzione: ordinariamente 258,23 euro nel periodo d'imposta; per il 2025-2027 1.000 euro, 2.000 euro con figli a carico (L. 207/2024, c. 390). Se si supera la soglia, tutto il valore è tassato, non solo l'eccedenza.", ["258,23", "1.000", "2.000", "tutto il valore"]],
-        ["Auto in uso promiscuo (c. 4, lett. a, testo vigente): 50% del costo chilometrico ACI per 15.000 km, ridotto al 10% per le auto elettriche e al 20% per le ibride plug-in, al netto di quanto trattenuto al dipendente; +50% dopo il quinto anno dall'immatricolazione; +5% per accessori non valorizzati. Le auto concesse prima del 2025 seguono regole transitorie (DA VERIFICARE).", ["15.000", "50%", "10%", "20%", "aci"]],
+        ["Auto in uso promiscuo (c. 4, lett. a, testo vigente): 50% del costo chilometrico ACI per 15.000 km, ridotto al 10% per le auto elettriche e al 20% per le ibride plug-in, al netto di quanto trattenuto al dipendente; +50% dopo il quinto anno dall'immatricolazione; +5% per accessori non valorizzati. Le maggiorazioni per l'anzianità del veicolo e per gli accessori sono del D.Lgs. 7/8/2026 n. 148, con decorrenza dal 2026 e regole particolari per i veicoli concessi nel 2025 (art. 2, c. 4-5).", ["15.000", "50%", "10%", "20%", "aci"]],
         ["Prestiti (lett. b): 50% della differenza tra gli interessi al tasso ufficiale di riferimento e quelli applicati. Fabbricati (lett. c): differenza tra rendita catastale più spese e quanto paga il dipendente; 30% se c'è l'obbligo di dimorare nell'alloggio.", ["prestiti", "tasso ufficiale", "rendita catastale", "30%"]],
         ["Contributi: per i fringe benefit vale la stessa base imponibile previdenziale del reddito fiscale (art. 12 L. 153/1969 come armonizzato); vanno nel LUL e in busta paga come voce figurativa.", ["previdenziale", "lul", "figurativa"]]
       ],
