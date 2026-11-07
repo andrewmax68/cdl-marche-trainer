@@ -1,10 +1,71 @@
 /* Mappe mentali per la prova orale — CdL Marche 2026.
    Le foglie sono le domande della banca dati (orale-dati.js): etichetta breve e norma di riferimento.
    Le norme sono prese dalle risposte modello; dove la risposta non indica una norma singola la foglia resta senza.
-   Versione 1.0 del 7/11/2026. */
+   Versione 1.1 del 7/11/2026: aggiunte due mappe per articolo su D.L. 62/2026 e D.Lgs. 96/2026 (da P1_Mappe_DL62_DLgs96, testi vigenti in libreria). */
 (function(){
   var C = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#1f4e8c', PPP:'#2f6b3f', TRIB:'#9a7a1e', RAG:'#9a7a1e', DEO:'#b05a12'};
   var MAPPE = [
+    {id:'dl62', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.L. 62/2026', sotto:'Salario giusto (conv. L. 112/2026)', colore:C.DL, schede:'scheda DL-X3',
+     speciale:[
+      ['Estremi e ambito', [
+        ['D.L. 30/4/2026 n. 62, in vigore dal 1/5/2026','', 'conv. L. 25/6/2026 n. 112, in vigore dal 28/6/2026'],
+        ['Solo lavoro subordinato privato; esclusa la PA','art. 18','salve le prerogative delle parti sociali (c. 4)'],
+        ['Non introduce un salario minimo legale','art. 7, c. 1','contrattazione collettiva come misura dell\'art. 36 Cost.']]],
+      ['Art. 7: il TEC', [
+        ['TEC dei CCNL comparativamente più rappresentativi','art. 7, c. 2','settore · attività prevalente · dimensione · natura del datore'],
+        ['Il TEC dei CCNL diversi «non può essere inferiore»','art. 7, c. 3','minimo per tutti o parametro? C. cost. 51/2015'],
+        ['Settori senza contratto: CCNL leader più connesso','art. 7, c. 4',''],
+        ['Che cosa entra nel TEC','art. 7, c. 4-bis','voci fisse e continuative · mensilità aggiuntive · indennità fisse · welfare per la generalità · esclusi i variabili individuali'],
+        ['Benefici solo se il trattamento individuale ≥ TEC','art. 7, c. 5','«DURC retributivo» (Rausei) · art. 1, c. 1175, L. 296/2006'],
+        ['Annunci sul SIISL con codice CCNL e retribuzione','art. 7, c. 6','da non confondere con l\'art. 5 D.Lgs. 96']]],
+      ['Rinnovi e codice del CCNL', [
+        ['CCNL non rinnovato entro 9 mesi: anticipazione del 50% IPCA-NEI','art. 10','stop al contributo di assistenza contrattuale dopo 12 mesi · CCNL già scaduti: dal 1/1/2027'],
+        ['Codice alfanumerico unico del CCNL','art. 11','informativa (lett. q-bis D.Lgs. 152/1997, solo privati) · prospetto paga (art. 1 L. 4/1953) · monitoraggio e vigilanza'],
+        ['Dati retributivi e Rapporto annuale del CNEL','artt. 8-9','CNEL · INPS · ISTAT · INAPP · INL']]],
+      ['Art. 7-bis: prossimità', [
+        ['Deposito di contratti e intese al MLPS e al CNEL','art. 8, c. 1-bis, D.L. 138/2011','senza deposito l\'intesa resta valida? questione aperta'],
+        ['Fino a 15 dipendenti: intese peggiorative presso l\'ITL','art. 8, c. 2-ter','requisito di validità? computo dei 15?'],
+        ['Informativa scritta ai lavoratori entro 3 giorni','art. 8, c. 2-quater',''],
+        ['Limiti: deroga eccezionale; la retribuzione non è derogabile','C. cost. 221/2012 e 52/2023','']]],
+      ['Altri capi del decreto', [
+        ['Incentivi all\'occupazione','artt. 1-4 e 6','donne · giovani under 35 · ZES · stabilizzazione · esonero conciliazione'],
+        ['Piattaforme digitali e rider','artt. 11-bis-15','capo V-bis D.Lgs. 81/2015 · riesame umano (art. 14)']]],
+      ['Nodi aperti e vigilanza', [
+        ['Sufficienza: il giudice controlla anche il CCNL leader','Cass. 27711/2023','l\'art. 7 richiama solo la proporzionalità'],
+        ['Efficacia generale di fatto?','art. 39 Cost.','parametro esterno, non estensione erga omnes'],
+        ['Confronto TEC e trattamento individuale: globale o voce per voce?','',''],
+        ['Differenze sul TEC: diffida accertativa (pochi) o disposizione (molti)','artt. 12 e 14 D.Lgs. 124/2004','Cons. Stato 10382/2025 e 4969/2026 (riportate da Rausei)']]]
+     ]},
+    {id:'dl96', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.Lgs. 96/2026', sotto:'Trasparenza retributiva (dir. UE 2023/970)', colore:C.DL, schede:'scheda DL-X4',
+     speciale:[
+      ['Estremi e ambito', [
+        ['D.Lgs. 7/5/2026 n. 96, in vigore dal 7/6/2026','', 'attua la dir. (UE) 2023/970 · 17 articoli'],
+        ['Pubblico e privato, anche dirigenti e part-time; art. 5 anche ai candidati','art. 2','esclusi domestico e intermittente'],
+        ['Fondamento: parità retributiva per lavoro uguale o di pari valore','art. 37 Cost.; art. 157 TFUE','']]],
+      ['Definizioni e pari valore', [
+        ['Retribuzione in senso ampio (anche variabile e in natura)','art. 3, lett. a)',''],
+        ['Livello retributivo: elementi fissi e continuativi','art. 3, lett. b)','somiglia al TEC del D.L. 62'],
+        ['CCNL leader = presunzione relativa di conformità','art. 4','criteri: competenze · responsabilità · condizioni di lavoro']]],
+      ['Prima dell\'assunzione', [
+        ['Retribuzione iniziale o fascia e CCNL negli avvisi e nei bandi','art. 5','nessuna sanzione autonoma'],
+        ['Vietato chiedere la retribuzione pregressa','art. 5','anche tramite selezionatori · linguaggio neutro']]],
+      ['Durante il rapporto', [
+        ['Criteri retributivi accessibili, di regola con l\'informativa','art. 6','sotto 50 dipendenti nessun obbligo sui criteri di progressione'],
+        ['Diritto di conoscere i livelli medi per sesso della propria categoria','art. 7','risposta scritta entro 2 mesi · nulle le clausole di riservatezza']]],
+      ['Dati e valutazione congiunta', [
+        ['Dati sul divario retributivo da 100 dipendenti','art. 9','≥ 150 entro il 7/6/2027 · 100-149 entro il 7/6/2031'],
+        ['Valutazione congiunta con i rappresentanti','art. 10','divario medio ≥ 5% · non giustificato · non corretto entro 6 mesi'],
+        ['Dati usati solo per la parità retributiva','art. 11','Reg. UE 2016/679'],
+        ['Organismo di monitoraggio presso il MLPS','art. 14','Organismo per la parità (D.Lgs. 91/2026) dal 1/1/2027']]],
+      ['Tutele e sanzioni', [
+        ['Tutela giudiziaria con onere della prova attenuato','art. 40 D.Lgs. 198/2006',''],
+        ['Divieto di ritorsioni','art. 41-bis D.Lgs. 198/2006',''],
+        ['Sanzione oggi amministrativa da 5.000 a 10.000 €','art. 41, c. 2, D.Lgs. 198/2006','il codice riporta ancora l\'ammenda: depenalizzata dal D.Lgs. 8/2016 · revoca dei benefici']]],
+      ['Ponte con il D.L. 62', [
+        ['CCNL leader: parametro nel 62, presunzione relativa nel 96','',''],
+        ['62 solo privato; 96 pubblico e privato','',''],
+        ['Ruolo del consulente: annunci, informative, mappa dei livelli per sesso, dati 2027','','']]]
+     ]},
     {id:'dl1', riga:'Riga 1 · rosso', titolo:'Diritto del lavoro', sotto:'Nascita del rapporto', colore:C.DL,
      rami:[['DL','Qualificazione'],['DL','Contratti flessibili']]},
     {id:'dl2', riga:'Riga 1 · rosso', titolo:'Diritto del lavoro', sotto:'Svolgimento e tutele', colore:C.DL,
@@ -141,5 +202,5 @@
   /* Domande da non studiare (indicazione informale del Presidente riferita da Andrea). */
   var ESCLUSE = {'PPP-11':'escluso: indicazione di Rausei (poco pertinente)'};
 
-  window.MAPPE_ORALE = {versione:'1.0 · 7/11/2026', mappe:MAPPE, sotto:SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
+  window.MAPPE_ORALE = {versione:'1.1 · 7/11/2026', mappe:MAPPE, sotto:SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
 })();

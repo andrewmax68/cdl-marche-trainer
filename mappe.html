@@ -109,6 +109,10 @@
     return h + '</div>';
   }
   var ORD = {X26:0, A25:1, S22:2};
+  function boxSpec(r){
+    return '<div class="box"><h3>' + esc(r.nome) + '</h3><ul>' + r.voci.map(function(v){ return '<li class="' + (v[3] || 'x26') + '">' + esc(v[0]) + (v[1] ? ' <span class="n">· ' + esc(v[1]) + '</span>' : '') + (v[2] ? '<span class="kw">' + esc(v[2]) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
+  }
+  function box(r){ return r.voci ? boxSpec(r) : boxHtml(r.nome, r.dd, r.sub); }
   function ramo(r){
     var dd = O.domande.filter(function(d){ return d.m === r[0] && d.gruppo === r[1] && !d.vedi; });
     dd.sort(function(a,b){ var sa = M.sotto[a.id] || '', sb = M.sotto[b.id] || ''; return sa < sb ? -1 : sa > sb ? 1 : (ORD[a.serie]||1) - (ORD[b.serie]||1); });
@@ -117,22 +121,23 @@
   }
 
   M.mappe.forEach(function(mp, i){
-    var rami = mp.rami.map(ramo).filter(function(r){ return r.dd.length; });
+    var rami = mp.speciale ? mp.speciale.map(function(x){ return {nome:x[0], voci:x[1], n:x[1].length * 2}; }) : mp.rami.map(ramo).filter(function(r){ return r.dd.length; });
     if (mp.dividi) { var g = {}, ord = []; rami.forEach(function(r){ r.dd.forEach(function(d){ var k = M.sotto[d.id] || r.nome; if (!g[k]) { g[k] = []; ord.push(k); } g[k].push(d); }); }); rami = ord.map(function(k){ g[k].sort(function(a,b){ return (ORD[a.serie]||1) - (ORD[b.serie]||1); }); return {nome:k, dd:g[k], n:g[k].length * 2, sub:true}; }); }
     // ripartizione sinistra/destra per altezza stimata
     var L = [], R = [], hl = 0, hr = 0;
-    rami.slice().sort(function(a,b){ return b.n - a.n; }).forEach(function(r){ if (hl <= hr) { L.push(r); hl += r.n + 2; } else { R.push(r); hr += r.n + 2; } });
-    var tot = rami.reduce(function(s,r){ return s + r.dd.length; }, 0);
+    if (mp.speciale) { var tt = rami.reduce(function(s,r){ return s + r.n + 2; }, 0), acc = 0; rami.forEach(function(r){ if (acc < tt / 2) { L.push(r); acc += r.n + 2; } else R.push(r); }); }
+    else rami.slice().sort(function(a,b){ return b.n - a.n; }).forEach(function(r){ if (hl <= hr) { L.push(r); hl += r.n + 2; } else { R.push(r); hr += r.n + 2; } });
+    var tot = mp.speciale ? 0 : rami.reduce(function(s,r){ return s + r.dd.length; }, 0);
     var html = '<div class="pagewrap" id="w-'+mp.id+'" style="--c:'+mp.colore+'"><div class="page">' +
-      '<div class="head"><div class="t">' + esc(mp.titolo) + '<small>' + esc(mp.sotto) + '</small></div><div class="r">' + esc(mp.riga) + '<br>' + tot + ' domande</div></div>' +
+      '<div class="head"><div class="t">' + esc(mp.titolo) + '<small>' + esc(mp.sotto) + '</small></div><div class="r">' + esc(mp.riga) + '<br>' + (mp.speciale ? esc(mp.schede) : tot + ' domande') + '</div></div>' +
       '<div class="area"><div class="inner"><svg class="links"></svg><div class="grid">' +
-      '<div class="col l">' + L.map(function(r){ return boxHtml(r.nome, r.dd, r.sub); }).join('') + '</div>' +
+      '<div class="col l">' + L.map(box).join('') + '</div>' +
       '<div class="center"><div class="node"><b>' + esc(mp.titolo) + '</b><span>' + esc(mp.sotto) + '</span></div></div>' +
-      '<div class="col r">' + R.map(function(r){ return boxHtml(r.nome, r.dd, r.sub); }).join('') + '</div>' +
+      '<div class="col r">' + R.map(box).join('') + '</div>' +
       '</div></div></div>' +
       '<div class="foot"><span>Mappe mentali · Orale CdL Marche 2026 · mappe ' + esc(M.versione) + ' · dati ' + esc(O.versione || '') + '</span><span>' + (i+1) + ' / ' + M.mappe.length + '</span></div>' +
       '</div></div>' +
-      '<div class="lista" style="--c:'+mp.colore+'"><h2>' + esc(mp.titolo) + ' · ' + esc(mp.sotto) + '</h2><div class="r">' + esc(mp.riga) + '</div>' + rami.map(function(r){ return boxHtml(r.nome, r.dd, r.sub); }).join('') + '</div>';
+      '<div class="lista" style="--c:'+mp.colore+'"><h2>' + esc(mp.titolo) + ' · ' + esc(mp.sotto) + '</h2><div class="r">' + esc(mp.riga) + '</div>' + rami.map(box).join('') + '</div>';
     stage.insertAdjacentHTML('beforeend', html);
     var b = document.createElement('button'); b.type = 'button'; b.textContent = mp.titolo.replace('Diritto del lavoro','Lavoro').replace('Legislazione sociale ','').replace('Ordinamento e deontologia','Deontologia') + (mp.id.indexOf('dl') === 0 ? ' ' + mp.id.slice(2) : (mp.id === 'inps' ? ' INPS' : mp.id === 'inail' ? ' INAIL' : ''));
     b.onclick = function(){ var t = document.getElementById('w-'+mp.id); (t.offsetParent ? t : t.nextElementSibling).scrollIntoView({behavior:'smooth'}); };
