@@ -271,11 +271,12 @@
   <div class="row" style="margin-top:8px"><label class="small">Velocità</label><input type="range" id="rateSel" min="0.7" max="1.3" step="0.05" value="1"><span class="mono small" id="rateLbl">1.00</span></div>
   <div class="row" style="margin-top:8px"><label class="small row" style="gap:6px"><input type="checkbox" id="autoRead" checked> Leggi la domanda appena compare</label></div>
   <div class="row" style="margin-top:8px"><label class="small row" style="gap:6px"><input type="checkbox" id="autoMic"> Avvia il microfono dopo la lettura</label></div>
-  <div class="row" style="margin-top:14px"><button class="btn alt sm" id="testVoice" type="button">Prova la voce</button><button class="btn sm" id="closeAudio" type="button">Chiudi</button></div>
+  <p class="small" id="voiceNote" style="color:#7a4b12"></p><div class="row" style="margin-top:14px"><button class="btn alt sm" id="testVoice" type="button">Prova la voce</button><button class="btn sm" id="closeAudio" type="button">Chiudi</button></div>
 </div></dialog>
 <div class="toast" id="toast"></div>
 
 <script src="orale-dati.js"></script>
+<script src="voce-umana.js"></script>
 <script>
 (function(){
   'use strict';
@@ -316,9 +317,10 @@
   var voices = [];
   function loadVoices(){
     if (!synth) return;
-    voices = synth.getVoices().filter(function(v){ return /^it/i.test(v.lang); });
-    var sel = $('#voiceSel'); sel.innerHTML = '<option value="">Automatica (per commissario)</option>' +
-      voices.map(function(v){ return '<option value="'+esc(v.name)+'"'+(v.name===S.audio.voice?' selected':'')+'>'+esc(v.name)+' ('+esc(v.lang)+')</option>'; }).join('');
+    voices = window.VoceUmana ? VoceUmana.ordinate() : synth.getVoices().filter(function(v){ return /^it/i.test(v.lang); });
+    var sel = $('#voiceSel'); sel.innerHTML = '<option value="">Automatica (la più naturale disponibile)</option>' +
+      voices.map(function(v){ return '<option value="'+esc(v.name)+'"'+(v.name===S.audio.voice?' selected':'')+'>'+(window.VoceUmana && VoceUmana.naturale(v) ? '★ ' : '')+esc(v.name)+' ('+esc(v.lang)+')</option>'; }).join('');
+    var nt = $('#voiceNote'); if (nt) nt.textContent = (window.VoceUmana && voices.length && !VoceUmana.naturale(voices[0])) ? VoceUmana.consiglio : '';
   }
   if (synth) { loadVoices(); if (typeof synth.onvoiceschanged !== 'undefined') synth.onvoiceschanged = loadVoices; }
 
@@ -327,6 +329,7 @@
   function pickVoice(gen){
     if (S.audio.voice) { var f = voices.filter(function(v){ return v.name === S.audio.voice; })[0]; if (f) return f; }
     if (!voices.length) return null;
+    if (window.VoceUmana) return VoceUmana.migliore(gen);
     var re = gen === 'f' ? FEM : MAS;
     return voices.filter(function(v){ return re.test(v.name); })[0] || voices[0];
   }
@@ -337,7 +340,7 @@
     u.lang = 'it-IT';
     var cv = comm && C[comm] ? C[comm].voce : { pitch:1, rate:1, gen:'m' };
     var v = pickVoice(cv.gen); if (v) u.voice = v;
-    u.pitch = cv.pitch; u.rate = Math.max(.5, Math.min(1.6, cv.rate * (S.audio.rate||1)));
+    u.pitch = (window.VoceUmana && VoceUmana.naturale(v)) ? 1 : cv.pitch; u.rate = Math.max(.5, Math.min(1.6, cv.rate * (S.audio.rate||1)));
     u.onend = function(){ if (onEnd) onEnd(); };
     u.onerror = function(){ if (onEnd) onEnd(); };
     synth.speak(u);

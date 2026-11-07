@@ -75,6 +75,9 @@
   .sp .az{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;font-family:var(--ui)}
   .sp .az a,.sp .az button{font:600 13px/1 var(--ui);border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:9px 13px;cursor:pointer;text-decoration:none}
   .sp .az .pri{background:var(--c);color:#fff;border-color:var(--c)}
+  .sp .vo{display:flex;gap:8px;align-items:center;margin-top:12px;font:500 13px/1.3 var(--ui);color:var(--muted)}
+  .sp .vo select{font:500 13px var(--ui);padding:6px 8px;border-radius:8px;border:1px solid var(--line);max-width:100%}
+  .sp .vonote{font:400 12.5px/1.45 var(--ui);color:#7a4b12;background:#fff4e2;border-radius:8px;padding:8px 10px;margin:8px 0 0}
   @media print{dialog.sp{display:none!important}}
   @page{size:A4 landscape;margin:0}
   @media print{
@@ -96,6 +99,7 @@
 
 <script src="orale-dati.js"></script>
 <script src="mappe-dati.js"></script>
+<script src="voce-umana.js"></script>
 <script>
 (function(){
   var O = window.ORALE || window.ORALE_DATI || Object.values(window).find(function(v){ return v && v.domande; });
@@ -185,26 +189,35 @@
         '<div class="ag"><b>Aggancio al lavoro:</b> ' + esc(r.aggancio) + '</div><div class="fo"><b>Fonti:</b> ' + esc(r.fonti) + '</div>';
     }
     h += '<div class="az"><a class="pri" href="orale.html#q=' + encodeURIComponent(d.id) + '">Prova a rispondere nel simulatore →</a>' +
-      ('speechSynthesis' in window && r ? '<button type="button" data-x="voce">🔊 Ascolta la risposta</button>' : '') +
-      '<button type="button" data-x="chiudi">Torna alla mappa</button></div></div>';
+      (VoceUmana.disponibile && r ? '<button type="button" data-x="voce">🔊 Ascolta la risposta</button>' : '') +
+      '<button type="button" data-x="chiudi">Torna alla mappa</button></div>' + (r && VoceUmana.disponibile ? opzioniVoce() : '') + '</div>';
     dlg.innerHTML = h; dlg.dataset.id = d.id;
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
     dlg.scrollTop = 0;
   }
   function leggi(id){
     var d = byId(id), r = d && (d.r || (d.vedi && byId(d.vedi) && byId(d.vedi).r)); if (!r) return;
-    speechSynthesis.cancel();
-    var testo = d.testo + '. ' + r.sintesi + ' ' + r.punti.map(function(p){ return p[0]; }).join(' ') + ' ' + r.aggancio;
-    var u = new SpeechSynthesisUtterance(testo.replace(/\bart\. /g, 'articolo ').replace(/\bartt\. /g, 'articoli ').replace(/\bc\. /g, 'comma ').replace(/c\.c\./g, 'codice civile'));
-    u.lang = 'it-IT'; u.rate = 1; var v = speechSynthesis.getVoices().find(function(x){ return /^it/i.test(x.lang); }); if (v) u.voice = v;
-    speechSynthesis.speak(u);
+    var sel = dlg.querySelector('#spVoce'), v = null;
+    if (sel && sel.value) v = VoceUmana.ordinate().filter(function(x){ return x.name === sel.value; })[0] || null;
+    var b = dlg.querySelector('[data-x=voce]'); if (b) b.textContent = '■ Ferma la lettura';
+    dlg.dataset.legge = '1';
+    VoceUmana.parla(d.testo + '. ' + r.sintesi + ' ' + r.punti.map(function(p){ return p[0]; }).join(' ') + ' ' + r.aggancio,
+      {voce: v, onEnd: function(){ dlg.dataset.legge = ''; var b2 = dlg.querySelector('[data-x=voce]'); if (b2) b2.textContent = '🔊 Ascolta la risposta'; }});
+  }
+  function opzioniVoce(){
+    var L = VoceUmana.ordinate(), cur = (VoceUmana.migliore() || {}).name;
+    if (!L.length) return '';
+    var h = '<label class="vo">Voce: <select id="spVoce">' + L.map(function(v){ return '<option value="' + esc(v.name) + '"' + (v.name === cur ? ' selected' : '') + '>' + (VoceUmana.naturale(v) ? '★ ' : '') + esc(v.name) + '</option>'; }).join('') + '</select></label>';
+    if (!VoceUmana.naturale(L[0])) h += '<p class="vonote">' + esc(VoceUmana.consiglio) + '</p>';
+    return h;
   }
   dlg.addEventListener('click', function(e){
     var b = e.target.closest('[data-x]');
-    if (e.target === dlg || (b && b.dataset.x === 'chiudi')) { if ('speechSynthesis' in window) speechSynthesis.cancel(); dlg.close ? dlg.close() : dlg.removeAttribute('open'); }
-    else if (b && b.dataset.x === 'voce') leggi(dlg.dataset.id);
+    if (e.target === dlg || (b && b.dataset.x === 'chiudi')) { VoceUmana.ferma(); dlg.close ? dlg.close() : dlg.removeAttribute('open'); }
+    else if (b && b.dataset.x === 'voce') { if (dlg.dataset.legge) { VoceUmana.ferma(); dlg.dataset.legge = ''; b.textContent = '🔊 Ascolta la risposta'; } else leggi(dlg.dataset.id); }
   });
-  dlg.addEventListener('close', function(){ if ('speechSynthesis' in window) speechSynthesis.cancel(); });
+  dlg.addEventListener('close', function(){ VoceUmana.ferma(); dlg.dataset.legge = ''; });
+  dlg.addEventListener('change', function(e){ if (e.target.id === 'spVoce') { VoceUmana.salva(e.target.value); if (dlg.dataset.legge) leggi(dlg.dataset.id); } });
   stage.addEventListener('click', function(e){
     var l = e.target.closest('li[data-id]'); if (!l || !l.dataset.id) return;
     var w = l.closest('[style*="--c"]'); apri(l.dataset.id, w ? getComputedStyle(w).getPropertyValue('--c') : '#7c2b2b');
