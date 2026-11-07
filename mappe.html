@@ -58,8 +58,9 @@
     .lista .r{font:600 10px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
     .lista .box{margin-bottom:10px}
   }
-  .box li[data-id]{cursor:pointer;border-radius:4px}
-  .box li[data-id]:hover{background:color-mix(in srgb,var(--c) 9%,#fff)}
+  .box li[data-id],.box li[data-sp]{cursor:pointer;border-radius:4px}
+  .box li[data-id]:hover,.box li[data-sp]:hover{background:color-mix(in srgb,var(--c) 9%,#fff)}
+  .sp ol li.on{background:color-mix(in srgb,var(--c) 10%,#fff);outline:2px solid color-mix(in srgb,var(--c) 45%,#fff);border-radius:4px;padding:2px 6px}
   dialog.sp{border:0;border-radius:14px;padding:0;max-width:760px;width:calc(100% - 24px);max-height:88vh;box-shadow:0 20px 60px -20px rgba(0,0,0,.5)}
   dialog.sp::backdrop{background:rgba(22,29,41,.45)}
   .sp .hd{position:sticky;top:0;background:var(--c);color:#fff;padding:12px 16px;display:flex;gap:10px;align-items:flex-start}
@@ -133,7 +134,7 @@
   }
   var ORD = {X26:0, A25:1, S22:2};
   function boxSpec(r){
-    return '<div class="box"><h3>' + esc(r.nome) + '</h3><ul>' + r.voci.map(function(v){ return '<li class="' + (v[3] || 'x26') + '" data-id="' + esc(r.rif || '') + '" tabindex="0">' + esc(v[0]) + (v[1] ? ' <span class="n">· ' + esc(v[1]) + '</span>' : '') + (v[2] ? '<span class="kw">' + esc(v[2]) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
+    return '<div class="box"><h3>' + esc(r.nome) + '</h3><ul>' + r.voci.map(function(v, j){ return '<li class="' + (v[3] || 'x26') + '" data-sp="' + esc(r.key) + '" data-i="' + j + '" tabindex="0">' + esc(v[0]) + (v[1] ? ' <span class="n">· ' + esc(v[1]) + '</span>' : '') + (v[2] ? '<span class="kw">' + esc(v[2]) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
   }
   function box(r){ return r.voci ? boxSpec(r) : boxHtml(r.nome, r.dd, r.sub); }
   function ramo(r){
@@ -144,7 +145,7 @@
   }
 
   M.mappe.forEach(function(mp, i){
-    var rami = mp.speciale ? mp.speciale.map(function(x){ return {nome:x[0], voci:x[1], n:x[1].length * 2, rif:mp.rif}; }) : mp.rami.map(ramo).filter(function(r){ return r.dd.length; });
+    var rami = mp.speciale ? mp.speciale.map(function(x, k){ return {nome:x[0], voci:x[1], n:x[1].length * 2, key:mp.id + '-' + k}; }) : mp.rami.map(ramo).filter(function(r){ return r.dd.length; });
     if (mp.dividi) { var g = {}, ord = []; rami.forEach(function(r){ r.dd.forEach(function(d){ var k = M.sotto[d.id] || r.nome; if (!g[k]) { g[k] = []; ord.push(k); } g[k].push(d); }); }); rami = ord.map(function(k){ g[k].sort(function(a,b){ return (ORD[a.serie]||1) - (ORD[b.serie]||1); }); return {nome:k, dd:g[k], n:g[k].length * 2, sub:true}; }); }
     // ripartizione sinistra/destra per altezza stimata
     var L = [], R = [], hl = 0, hr = 0;
@@ -191,11 +192,35 @@
     h += '<div class="az"><a class="pri" href="orale.html#q=' + encodeURIComponent(d.id) + '">Prova a rispondere nel simulatore →</a>' +
       (VoceUmana.disponibile && r ? '<button type="button" data-x="voce">🔊 Ascolta la risposta</button>' : '') +
       '<button type="button" data-x="chiudi">Torna alla mappa</button></div>' + (r && VoceUmana.disponibile ? opzioniVoce() : '') + '</div>';
-    dlg.innerHTML = h; dlg.dataset.id = d.id;
+    dlg.innerHTML = h; dlg.dataset.id = d.id; dlg.dataset.sp = '';
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
     dlg.scrollTop = 0;
   }
+  /* voci delle mappe per articolo (D.L. 62 e D.Lgs. 96): spiegazione del riquadro, con la voce cliccata evidenziata */
+  function apriSpec(key, i, colore){
+    var s = M.spieg && M.spieg[key]; if (!s) return;
+    var mp = M.mappe.filter(function(m){ return key.indexOf(m.id + '-') === 0; })[0];
+    var voce = mp && mp.speciale[+key.split('-').pop()][1][i];
+    var q = byId(s.sim);
+    dlg.style.setProperty('--c', colore);
+    var h = '<div class="hd"><div class="q"><small>' + esc(mp ? mp.titolo + ' · ' + mp.sotto : '') + (voce ? ' · voce: ' + esc(voce[0]) : '') + '</small>' + esc(s.titolo) + '</div><button type="button" data-x="chiudi">Chiudi ✕</button></div><div class="bd">' +
+      '<p class="sint">' + esc(s.sintesi) + '</p><ol>' + s.punti.map(function(p, j){ return '<li' + (j === +i ? ' class="on"' : '') + '>' + esc(p) + '</li>'; }).join('') + '</ol>' +
+      '<div class="ag"><b>Aggancio al lavoro:</b> ' + esc(s.aggancio) + '</div><div class="fo"><b>Fonti:</b> ' + esc(s.fonti) + '</div>' +
+      '<div class="az">' + (q ? '<a class="pri" href="orale.html#q=' + encodeURIComponent(q.id) + '">Domanda collegata nel simulatore (' + esc(q.id) + ') →</a>' : '') +
+      (VoceUmana.disponibile ? '<button type="button" data-x="voce">🔊 Ascolta la spiegazione</button>' : '') +
+      '<button type="button" data-x="chiudi">Torna alla mappa</button></div>' + (VoceUmana.disponibile ? opzioniVoce() : '') + '</div>';
+    dlg.innerHTML = h; dlg.dataset.id = ''; dlg.dataset.sp = key; dlg.dataset.i = i;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    dlg.scrollTop = 0;
+    var on = dlg.querySelector('ol li.on'); if (on && on.scrollIntoView) setTimeout(function(){ on.scrollIntoView({block:'center'}); }, 30);
+  }
+  function testoSpec(key, i){
+    var s = M.spieg[key]; if (!s) return '';
+    var p = s.punti.slice(); var primo = p.splice(+i, 1)[0];
+    return s.titolo + '. ' + primo + ' ' + s.sintesi + ' ' + p.join(' ') + ' ' + s.aggancio;
+  }
   function leggi(id){
+    if (!id && dlg.dataset.sp) { return parlaTesto(testoSpec(dlg.dataset.sp, dlg.dataset.i), '🔊 Ascolta la spiegazione'); }
     var d = byId(id), r = d && (d.r || (d.vedi && byId(d.vedi) && byId(d.vedi).r)); if (!r) return;
     var sel = dlg.querySelector('#spVoce'), v = null;
     if (sel && sel.value) v = VoceUmana.ordinate().filter(function(x){ return x.name === sel.value; })[0] || null;
@@ -203,6 +228,13 @@
     dlg.dataset.legge = '1';
     VoceUmana.parla(d.testo + '. ' + r.sintesi + ' ' + r.punti.map(function(p){ return p[0]; }).join(' ') + ' ' + r.aggancio,
       {voce: v, onEnd: function(){ dlg.dataset.legge = ''; var b2 = dlg.querySelector('[data-x=voce]'); if (b2) b2.textContent = '🔊 Ascolta la risposta'; }});
+  }
+  function parlaTesto(t, etichetta){
+    var sel = dlg.querySelector('#spVoce'), v = null;
+    if (sel && sel.value) v = VoceUmana.ordinate().filter(function(x){ return x.name === sel.value; })[0] || null;
+    var b = dlg.querySelector('[data-x=voce]'); if (b) b.textContent = '■ Ferma la lettura';
+    dlg.dataset.legge = '1';
+    VoceUmana.parla(t, {voce: v, onEnd: function(){ dlg.dataset.legge = ''; var b2 = dlg.querySelector('[data-x=voce]'); if (b2) b2.textContent = etichetta; }});
   }
   function opzioniVoce(){
     var L = VoceUmana.ordinate(), cur = (VoceUmana.migliore() || {}).name;
@@ -214,15 +246,16 @@
   dlg.addEventListener('click', function(e){
     var b = e.target.closest('[data-x]');
     if (e.target === dlg || (b && b.dataset.x === 'chiudi')) { VoceUmana.ferma(); dlg.close ? dlg.close() : dlg.removeAttribute('open'); }
-    else if (b && b.dataset.x === 'voce') { if (dlg.dataset.legge) { VoceUmana.ferma(); dlg.dataset.legge = ''; b.textContent = '🔊 Ascolta la risposta'; } else leggi(dlg.dataset.id); }
+    else if (b && b.dataset.x === 'voce') { if (dlg.dataset.legge) { VoceUmana.ferma(); dlg.dataset.legge = ''; b.textContent = dlg.dataset.sp ? '🔊 Ascolta la spiegazione' : '🔊 Ascolta la risposta'; } else leggi(dlg.dataset.id); }
   });
   dlg.addEventListener('close', function(){ VoceUmana.ferma(); dlg.dataset.legge = ''; });
   dlg.addEventListener('change', function(e){ if (e.target.id === 'spVoce') { VoceUmana.salva(e.target.value); if (dlg.dataset.legge) leggi(dlg.dataset.id); } });
   stage.addEventListener('click', function(e){
-    var l = e.target.closest('li[data-id]'); if (!l || !l.dataset.id) return;
-    var w = l.closest('[style*="--c"]'); apri(l.dataset.id, w ? getComputedStyle(w).getPropertyValue('--c') : '#7c2b2b');
+    var l = e.target.closest('li[data-id],li[data-sp]'); if (!l) return;
+    var w = l.closest('[style*="--c"]'), col = w ? getComputedStyle(w).getPropertyValue('--c') : '#7c2b2b';
+    if (l.dataset.sp) apriSpec(l.dataset.sp, l.dataset.i, col); else if (l.dataset.id) apri(l.dataset.id, col);
   });
-  stage.addEventListener('keydown', function(e){ if (e.key === 'Enter') { var l = e.target.closest('li[data-id]'); if (l) l.click(); } });
+  stage.addEventListener('keydown', function(e){ if (e.key === 'Enter') { var l = e.target.closest('li[data-id],li[data-sp]'); if (l) l.click(); } });
   function adatta(stampa){
     document.querySelectorAll('.pagewrap').forEach(function(w){
       var area = w.querySelector('.area'), inner = w.querySelector('.inner'), grid = w.querySelector('.grid'), svg = w.querySelector('svg.links');
