@@ -558,14 +558,14 @@ window.ORALE = (function () {
     'PPP-5': {
       sintesi: 'Il referendum abrogativo elimina in tutto o in parte una legge o un atto con valore di legge (art. 75 Cost.); il referendum costituzionale è eventuale e confermativo di una legge di revisione approvata senza i due terzi (art. 138 Cost.).',
       punti: [
-        ['Abrogativo: richiesto da 500.000 elettori o 5 Consigli regionali.', ['500.000','cinquecentomila','cinque consigli','5 consigli']],
+        ['Abrogativo: richiesto da 500.000 elettori o 5 Consigli regionali. Richieste depositate dal 1° gennaio al 30 settembre; l\'Ufficio centrale presso la Cassazione ne verifica la regolarità, la Corte costituzionale ne giudica l\'ammissibilità (artt. 32-33 L. 352/1970; art. 2 L. cost. 1/1953).', ['500.000','cinquecentomila','cinque consigli','5 consigli']],
         ['Esclusi: leggi tributarie e di bilancio, amnistia e indulto, autorizzazione a ratificare trattati internazionali.', ['tributari','bilancio','amnistia','indulto','trattati']],
         ['Quorum: partecipazione della maggioranza degli aventi diritto; approvato con la maggioranza dei voti validi.', ['quorum','maggioranza degli aventi','aventi diritto']],
         ['Revisione costituzionale: due deliberazioni per Camera a distanza di almeno 3 mesi, maggioranza assoluta nella seconda (art. 138).', ['tre mesi','3 mesi','maggioranza assoluta','due deliberazioni']],
         ['Referendum costituzionale entro 3 mesi dalla pubblicazione su richiesta di un quinto dei membri di una Camera, 500.000 elettori o 5 Consigli regionali; nessun quorum; escluso se approvata con i due terzi.', ['un quinto','due terzi','senza quorum','nessun quorum','confermativ']]
       ],
       aggancio: 'Il limite delle leggi tributarie riguarda materie che trattiamo ogni giorno (IRPEF e addizionali); i referendum in materia di lavoro sono invece ammessi.',
-      fonti: COST + ', artt. 75 e 138. Controllo della Cassazione e giudizio di ammissibilità della Corte (L. 352/1970; L. cost. 1/1953): estremi DA VERIFICARE.'
+      fonti: COST + ', artt. 75 e 138. Ufficio centrale presso la Cassazione e giudizio di ammissibilità della Corte: artt. 32-33 L. 352/1970 e art. 2 L. cost. 1/1953, letti su Normattiva il 7/11/2026.'
     },
 
     'PPP-6': {
@@ -726,10 +726,10 @@ window.ORALE = (function () {
         ['Reintegra piena, a prescindere dalle dimensioni: licenziamento nullo, discriminatorio, orale; risarcimento non inferiore a 5 mensilità e contributi.', ['nullo','discriminator','orale','5 mensilita','reintegr']],
         ['Vecchi assunti, sopra soglia: reintegra attenuata (fino a 12 mensilità) se il fatto non sussiste o è punibile con sanzione conservativa; indennità 12-24 mensilità negli altri casi; 6-12 per vizi di motivazione o di procedura (art. 18, c. 4-7).', ['12 mensilita','24','conservativ','procedura','insussistenza']],
         ['Nuovi assunti (D.Lgs. 23/2015): reintegra attenuata solo se è dimostrata in giudizio l\'insussistenza del fatto materiale; negli altri casi indennità tra 6 e 36 mensilità.', ['fatto materiale','36','tutele crescenti','23/2015']],
-        ['Corte cost. 194/2018 e 150/2020: illegittimo l\'automatismo legato solo all\'anzianità; il giudice valuta anche altri criteri. Piccoli datori: art. 8 L. 604/1966 (riassunzione o 2,5-6 mensilità) per i vecchi assunti; per i nuovi art. 9 D.Lgs. 23/2015, da riscontrare dopo Corte cost. 118/2025.', ['194','150','anzianita','604','2,5']]
+        ['Corte cost. 194/2018 e 150/2020: illegittimo l\'automatismo legato solo all\'anzianità; il giudice valuta anche altri criteri. Piccoli datori: art. 8 L. 604/1966 (riassunzione o 2,5-6 mensilità) per i vecchi assunti; per i nuovi indennità dimezzate (art. 9, c. 1, D.Lgs. 23/2015), senza più il tetto di 6 mensilità, dichiarato illegittimo da Corte cost. 21/7/2025 n. 118.', ['194','150','anzianita','604','2,5']]
       ],
       aggancio: 'Collegamento col potere disciplinare: la violazione della procedura dell\'art. 7 St. lav. nel licenziamento disciplinare, per i vecchi assunti sopra soglia, porta all\'indennità di 6-12 mensilità (art. 18, c. 6).',
-      fonti: 'Simone, Diritto del lavoro 2026, §§ 9.2-9.4, pp. 242-244, e p. 236. Art. 9 D.Lgs. 23/2015 dopo Corte cost. 118/2025: DA VERIFICARE.'
+      fonti: 'Simone, Diritto del lavoro 2026, §§ 9.2-9.4, pp. 242-244, e p. 236. Art. 9 D.Lgs. 23/2015 con la nota su Corte cost. 118/2025 (G.U. 1ª s.s. n. 30 del 23/7/2025), letto su Normattiva il 7/11/2026.'
     },
 
     'DL-X6': {
@@ -841,12 +841,12 @@ window.ORALE = (function () {
       punti: [
         ['Fonte: art. 7 D.P.R. 137/2012; art. 9, c. 4, Codice deontologico; Regolamento del Consiglio nazionale, delibera n. 117 del 24/10/2024, in vigore dal 1° gennaio 2025.', ['137','117','regolamento','2025']],
         ['Vale per tutti gli iscritti, anche se non esercitano e anche se sospesi; i crediti si riproporzionano in casi come malattia, infortunio, maternità o paternità.', ['tutti gli iscritti','sospesi','riproporzion','maternita']],
-        ['Periodo di riferimento biennale con un numero minimo di crediti; corsi, seminari, convegni e formazione a distanza, gestiti sulla piattaforma del Consiglio nazionale (il numero dei crediti va letto sul Regolamento).', ['biennal','crediti','webinar','distanza','piattaforma']],
+        ['Periodo di riferimento biennale con un numero minimo di crediti; corsi, seminari, convegni e formazione a distanza, gestiti sulla piattaforma del Consiglio nazionale (nel biennio 2023-2024 servivano almeno 50 crediti, di cui 6 deontologici, secondo il riepilogo del Consiglio nazionale del 2/10/2024).', ['biennal','crediti','webinar','distanza','piattaforma']],
         ['Organizzatori: Consigli provinciali, Consiglio nazionale, università e altri soggetti autorizzati.', ['consigli provinciali','universita','autorizzat']],
         ['Il Consiglio provinciale segnala l\'inadempiente al Consiglio di disciplina per il procedimento.', ['illecito disciplinare','segnal','consiglio di disciplina']]
       ],
       aggancio: 'Nel lavoro le regole cambiano di continuo (nel 2026: D.L. 62/2026, D.Lgs. 96/2026, legge di bilancio): la formazione è la condizione per il dovere di competenza verso il cliente.',
-      fonti: 'D.P.R. 137/2012, art. 7; Codice deontologico, art. 9; Simone, Deontologia, pp. 1235-1236. Numero minimo di crediti del biennio: DA VERIFICARE sul Regolamento CNO.'
+      fonti: 'D.P.R. 137/2012, art. 7; Codice deontologico, art. 9; Simone, Deontologia, pp. 1235-1236. Crediti del biennio 2023-2024: riepilogo FCO del Consiglio nazionale (consulentidellavoro.it, 2/10/2024). Il numero fissato dal Regolamento del 2024 per il biennio 2025-2026 non è stato letto: il PDF del Consiglio nazionale non è leggibile da qui.'
     },
 
     'DEO-7': {
@@ -1039,7 +1039,7 @@ window.ORALE = (function () {
         ['Conseguenze: la violazione dei limiti è illecito disciplinare e insieme violazione del Codice del consumo (D.Lgs. 206/2005) e della disciplina della pubblicità ingannevole (D.Lgs. 145/2007) (art. 4, c. 3, D.P.R. 137/2012); usare titoli non conseguiti è rilevante anche ex art. 15, c. 3, Codice.', ['illecito disciplinare','206/2005','145/2007','consumo','titoli non conseguiti']]
       ],
       aggancio: 'Esempio: un post su LinkedIn con titolo, studio, servizi e compenso per cedolino è lecito; non lo è raccontare il caso di un cliente riconoscibile (segreto, art. 25), screditare un collega o vantare entrature presso l\'Ispettorato (concorrenza sleale, art. 14, c. 2, lett. a ed e). Tema trattato dall\'Ordine di Ancona in un convegno su social media e deontologia (2022).',
-      fonti: 'D.P.R. 7/8/2012 n. 137 (G.U. 14/8/2012 n. 189), art. 4, su copia del testo pubblicata da unipg.it e Simone p. 1237; D.L. 4/7/2006 n. 223 conv. L. 4/8/2006 n. 248, art. 2, c. 1, lett. b (allegato alla legge di conversione, cliclavoro.gov.it); L. 124/2017, art. 1, c. 152, come riportato da Simone p. 1237 ed edotto.com (testo non letto in originale); Codice deontologico, artt. 10, 14, 15, 20, 25, 35 (Simone pp. 1248-1254); convegno Ordine di Ancona da edotto.com, 4/5/2022. DA VERIFICARE su Normattiva: testo vigente dell\'art. 4 D.P.R. 137/2012 (non consultabile da qui; nessuna modifica nota).'
+      fonti: 'D.P.R. 7/8/2012 n. 137 (G.U. 14/8/2012 n. 189), art. 4, su copia del testo pubblicata da unipg.it e Simone p. 1237; D.L. 4/7/2006 n. 223 conv. L. 4/8/2006 n. 248, art. 2, c. 1, lett. b (allegato alla legge di conversione, cliclavoro.gov.it); L. 124/2017, art. 1, c. 152, come riportato da Simone p. 1237 ed edotto.com (testo non letto in originale); Codice deontologico, artt. 10, 14, 15, 20, 25, 35 (Simone pp. 1248-1254); convegno Ordine di Ancona da edotto.com, 4/5/2022. Art. 4 D.P.R. 137/2012, testo vigente letto su Normattiva il 7/11/2026 (c. 3: la violazione è illecito disciplinare e integra anche le violazioni del Codice del consumo e del D.Lgs. 145/2007).'
     },
 
     'DEO-X1': {
@@ -1353,7 +1353,7 @@ window.ORALE = (function () {
         ["Tutele collegate: scelta della sede più vicina e divieto di trasferimento senza consenso (art. 33, c. 5); permessi indennizzati dall'INPS e coperti da contribuzione figurativa.", ["sede","trasferimento","consenso","figurativ"]]
       ],
       aggancio: "L'uso dei permessi per finalità diverse dall'assistenza può giustificare il licenziamento: tema frequente nel contenzioso e nei controlli.",
-      fonti: "Simone, Diritto del lavoro 2026, pp. 180, 192-193. Più familiari possono fruire dei permessi in alternativa tra loro, fermo il limite di 3 giorni (art. 33, c. 3, L. 104/1992, mod. D.Lgs. 105/2022). Indennizzo INPS: DA VERIFICARE."
+      fonti: "Simone, Diritto del lavoro 2026, pp. 180, 192-193. Più familiari possono fruire dei permessi in alternativa tra loro, fermo il limite di 3 giorni (art. 33, c. 3, L. 104/1992, mod. D.Lgs. 105/2022). Indennità a carico dell'INPS, anticipata dal datore e conguagliata con i contributi: art. 33, c. 4, L. 104/1992 e art. 43 D.Lgs. 151/2001, letti su Normattiva il 7/11/2026."
     },
 
     'INPS-9': {
@@ -1420,7 +1420,7 @@ window.ORALE = (function () {
         ["Ai premi non pagati per effetto dell'omissione si applicano le sanzioni civili per omissione o evasione (art. 116 L. 388/2000), secondo che i dati risultassero o meno dalle denunce.", ["omission","evasion","116"]]
       ],
       aggancio: "In studio la variazione INAIL va fatta insieme all'aggiornamento della visura e dell'inquadramento INPS, per non avere tassi sbagliati in autoliquidazione.",
-      fonti: "Simone, Legislazione sociale 2026, p. 339 (art. 12 T.U.; art. 14 D.I. 2019); pp. 443-445. Effetti economici della variazione tardiva (aumento e diminuzione del rischio) e sanzione amministrativa per l'omessa denuncia: DA VERIFICARE sulle Modalità di applicazione delle tariffe 2019."
+      fonti: "Simone, Legislazione sociale 2026, p. 339 (art. 12 T.U.; art. 14 D.I. 2019); pp. 443-445. Art. 12 T.U. (D.P.R. 1124/1965) letto su Normattiva il 7/11/2026."
     },
 
     'INAIL-6': {
@@ -1524,7 +1524,7 @@ window.ORALE = (function () {
         ["Dal marzo 2025 il registro infortuni telematico raccoglie denunce e comunicazioni ed è consultabile da ispettori, datori e consulenti delegati.", ["registro infortuni","telematico"]]
       ],
       aggancio: "Denuncia e comunicazione sono due adempimenti diversi, con soglie diverse (oltre 3 giorni e almeno 1 giorno): confonderle è l'errore tipico.",
-      fonti: "Simone, Legislazione sociale 2026, pp. 348-349 (circ. INAIL 24/2021, 25/2022, 33/2019, riportate). Sanzioni per omessa o tardiva denuncia: DA VERIFICARE."
+      fonti: "Simone, Legislazione sociale 2026, pp. 348-349 (circ. INAIL 24/2021, 25/2022, 33/2019, riportate). Sanzione per omessa o tardiva denuncia (artt. 53-54 T.U.): depenalizzata dalla L. 561/1993 (art. 1, lett. d), da 500.000 a 3.000.000 di lire (art. 2, lett. b), importi quintuplicati dall'art. 1, c. 1177, L. 296/2006, pari a 1.291,14-7.746,85 euro; testi letti su Normattiva il 7/11/2026, conversione a 1.936,27 lire per euro."
     },
 
     'INAIL-12': {
@@ -1536,8 +1536,8 @@ window.ORALE = (function () {
         ["Per le malattie tabellate la denuncia entro il periodo massimo di indennizzabilità consente la presunzione del nesso causale.", ["tabellat","periodo massimo","presunzione"]],
         ["Il medico che riconosce una malattia professionale ha un autonomo obbligo di denuncia (art. 139 T.U.).", ["medico","139"]]
       ],
-      aggancio: "Le malattie dell'apparato muscolo-scheletrico sono oggi le più denunciate: tema concreto per la valutazione dei rischi e il premio.",
-      fonti: "Simone, Legislazione sociale 2026, pp. 347-349. Obbligo di denuncia del medico: art. 139 T.U. (Brocardi). Dato sulle denunce più frequenti: DA VERIFICARE."
+      aggancio: "Per lo studio conta il termine: la denuncia del datore va fatta entro 5 giorni da quando il lavoratore gli ha comunicato la malattia (art. 53 T.U.), ed è anche un segnale da riportare nella valutazione dei rischi.",
+      fonti: "Simone, Legislazione sociale 2026, pp. 347-349. Obbligo di denuncia del medico: art. 139 T.U. (Brocardi). Art. 53 T.U. letto su Normattiva il 7/11/2026."
     },
 
     'INAIL-13': {
@@ -1563,7 +1563,7 @@ window.ORALE = (function () {
         ["Il comportamento abnorme del lavoratore può interrompere il nesso causale anche ai fini della responsabilità del datore.", ["nesso","abnorme"]]
       ],
       aggancio: "Domanda insidiosa perché mescola due piani: indennizzo INAIL e responsabilità civile o penale del datore. Distinguerli subito vale metà del voto.",
-      fonti: "Simone, Legislazione sociale 2026, pp. 345-346; Simone, Diritto del lavoro 2026, pp. 174-175. Regresso contro l'infortunato per dolo: art. 11, c. 4, T.U. (Brocardi). Esclusione dell'indennizzo per infortunio doloso (art. 65 T.U.): non letto, DA VERIFICARE."
+      fonti: "Simone, Legislazione sociale 2026, pp. 345-346; Simone, Diritto del lavoro 2026, pp. 174-175. Regresso contro l'infortunato per dolo: art. 11, c. 4, T.U. (Brocardi). Art. 65 T.U. letto su Normattiva il 7/11/2026: perde ogni prestazione l'assicurato che ha simulato l'infortunio o ne ha aggravato dolosamente le conseguenze."
     },
 
     'INAIL-22': {
@@ -1650,11 +1650,11 @@ window.ORALE = (function () {
         ["Decorrenza: dal quarto giorno successivo all'infortunio o alla manifestazione della malattia.", ["quarto giorno","4"]],
         ["Misura: 60% della retribuzione giornaliera fino al 90° giorno; 75% dal 91° giorno fino alla guarigione clinica.", ["60%","75%","90","91"]],
         ["Carenza: il datore paga l'intera retribuzione del giorno dell'infortunio e il 60% dei tre giorni successivi, salvo migliori condizioni del CCNL (art. 73).", ["giorno dell'infortunio","100%","60%","tre giorni","73"]],
-        ["L'indennità è anticipata dal datore se previsto dal CCNL, altrimenti la paga direttamente l'INAIL; molti contratti integrano fino al 100%.", ["anticipat","integr","ccnl"]],
+        ["L'indennità la paga l'INAIL; il datore deve anticiparla quando l'Istituto glielo chiede, con rimborso a fine mese (art. 70 T.U.); molti contratti integrano fino al 100%.", ["art. 70", "rimborso", "100%"]],
         ["La durata non ha un limite fisso: dura quanto l'inabilità che impedisce totalmente il lavoro.", ["guarigione","durata"]]
       ],
       aggancio: "In busta paga è la voce più frequente in caso di infortunio: il consulente deve distinguere i giorni di carenza a carico azienda dall'indennità INAIL.",
-      fonti: "Simone, Legislazione sociale 2026, p. 349; artt. 68 (misura e decorrenza) e 73 (carenza) T.U. riscontrati su Brocardi. Anticipazione da parte del datore: DA VERIFICARE."
+      fonti: "Simone, Legislazione sociale 2026, p. 349; artt. 68 (misura e decorrenza) e 73 (carenza) T.U. riscontrati su Brocardi. Anticipazione da parte del datore, su richiesta dell'INAIL, con rimborso a fine mese: art. 70 T.U., letto su Normattiva il 7/11/2026."
     },
 
     /* ===== Lotto 4 — Elementi di ragioneria (1/11/2026) ===== */
@@ -2722,7 +2722,7 @@ window.ORALE = (function () {
         ["Tempi: registrazione entro la fine del mese successivo; conservazione per 5 anni dall'ultima registrazione; tenuta solo meccanografica o informatica, con numerazione sequenziale.", ["fine del mese successivo", "5 anni", "numerazione"]],
         ["Tenuta presso lo studio del consulente del lavoro, con comunicazione preventiva all'ITL; il consulente può usare un libro unificato per tutti i clienti, previa delega e autorizzazione INAIL.", ["consulente del lavoro", "itl", "unificato", "inail"]]
       ],
-      aggancio: "Dal D.L. 62/2026 il prospetto paga deve indicare anche il codice del CCNL applicato (P1_Cap01). In ispezione il LUL è il primo documento richiesto: le registrazioni omesse o infedeli sono sanzionate (art. 39 D.L. 112/2008; importi DA VERIFICARE).",
+      aggancio: "Dal D.L. 62/2026 il prospetto paga deve indicare anche il codice del CCNL applicato (P1_Cap01). In ispezione il LUL è il primo documento richiesto: le registrazioni omesse o infedeli sono sanzionate (art. 39, c. 6-7, D.L. 112/2008: da 500 a 2.500 euro per la mancata istituzione o tenuta; da 200 a 2.000 euro per l'omessa esibizione; da 150 a 1.500 euro per l'omessa o infedele registrazione con effetti retributivi, previdenziali o fiscali, che sale oltre 5 o 10 lavoratori e oltre 6 o 12 mesi).",
       fonti: "Simone, Diritto del lavoro, p. 147; Simone, Legislazione sociale, pp. 267-268; P1_Cap01."
     },
 
@@ -2733,7 +2733,7 @@ window.ORALE = (function () {
         ["Ambito: ogni rapporto di lavoro subordinato, le collaborazioni coordinate e continuative e i rapporti con i soci di cooperativa.", ["subordinato", "coordinate", "soci"]],
         ["Riguarda solo le somme dovute a titolo di retribuzione: le somme a diverso titolo, come vitto e alloggio, possono essere pagate in contanti (nota INL 7369/2018).", ["retribuzione", "diverso titolo", "7369/2018"]],
         ["La firma del lavoratore sulla busta paga non costituisce prova del pagamento (c. 912): conta la tracciabilità.", ["firma", "prova"]],
-        ["La violazione è punita con una sanzione amministrativa pecuniaria (c. 913; importo DA VERIFICARE sul testo).", ["sanzione amministrativa", "913"]]
+        ["La violazione è punita con la sanzione amministrativa da 1.000 a 5.000 euro (art. 1, c. 913, L. 205/2017).", ["sanzione amministrativa", "913"]]
       ],
       aggancio: "Il consulente conserva le contabili dei bonifici con il prospetto paga: in ispezione e nelle vertenze sono la prova dell'avvenuto pagamento.",
       fonti: "Simone, Diritto del lavoro, p. 147 (art. 1, c. 910-913, L. 205/2017)."
@@ -2849,11 +2849,11 @@ window.ORALE = (function () {
         ["Beneficiari (art. 1): invalidi civili con riduzione della capacità lavorativa oltre il 45%; invalidi del lavoro oltre il 33%; non vedenti e sordi; invalidi di guerra e per servizio; orfani per crimini domestici. Quote a parte per orfani e coniugi superstiti di vittime del lavoro, del terrorismo e della criminalità (art. 18).", ["45%", "33%", "non vedenti", "18"]],
         ["Quota di riserva (art. 3): un lavoratore tra 15 e 35 dipendenti; due tra 36 e 50; il 7% oltre 50. Nel computo entrano i subordinati, compresi i contratti a termine oltre 6 mesi (art. 4).", ["quota di riserva", "15", "7%", "6 mesi"]],
         ["Adempimenti: richiesta di assunzione entro 60 giorni dall'insorgere dell'obbligo, con richiesta nominativa o convenzione (art. 7); prospetto informativo telematico entro il 31 gennaio se nell'anno è cambiata la situazione occupazionale (art. 9, c. 6).", ["60 giorni", "nominativa", "prospetto informativo", "31 gennaio"]],
-        ["Flessibilità: esonero parziale per le attività che non consentono l'impiego (decreto ministeriale del 7/7/2000), sospensione per temporanea difficoltà produttiva (art. 3, c. 5), compensazioni territoriali; convenzioni di inserimento anche con cooperative sociali (artt. 11-12).", ["esonero", "sospension", "convenzion"]],
+        ["Flessibilità: esonero parziale per le attività che non consentono l'impiego (D.M. 7/7/2000 n. 357), sospensione per temporanea difficoltà produttiva (art. 3, c. 5), compensazioni territoriali; convenzioni di inserimento anche con cooperative sociali (artt. 11-12).", ["esonero", "sospension", "convenzion"]],
         ["Senza assunzione gli uffici avviano d'ufficio secondo la graduatoria (avviamento numerico); il rifiuto di assumere è verbalizzato dall'ITL; le sanzioni sono amministrative, mai penali.", ["numerico", "itl", "amministrative"]]
       ],
       aggancio: "Il D.Lgs. 62/2024 sostituisce i termini «handicap» e «disabile» con «persona con disabilità» e introduce un nuovo accertamento, a regime dal 2027. Il consulente monitora la base di computo, invia il prospetto informativo e valuta convenzioni ed esoneri prima che scattino le sanzioni.",
-      fonti: "Simone, Diritto del lavoro, pp. 70-72 e 81-82 (L. 68/1999; D.Lgs. 62/2024). Numero del D.M. sugli esoneri: il Simone riporta «D.M. 7-7-2000, n. 35», DA VERIFICARE."
+      fonti: "Simone, Diritto del lavoro, pp. 70-72 e 81-82 (L. 68/1999; D.Lgs. 62/2024). Esoneri parziali: D.M. 7/7/2000 n. 357 (regolamento attuativo dell'art. 5, c. 4, L. 68/1999), letto su Normattiva il 7/11/2026; il «n. 35» del testo OCR del Simone è un errore."
     },
 
     "DL-11b": {
@@ -3032,10 +3032,10 @@ window.ORALE = (function () {
         ["Esempi della prassi (nota INL 4539/2020): part-time senza collocazione oraria; diritto di precedenza; formazione dell'apprendista recuperabile; clausola sociale negli appalti; parte economica del CCNL leader quando i lavoratori interessati sono molti; TFR non versato al fondo; omessa consegna della CU.", ["part-time", "precedenza", "apprendist", "molti", "cu"]],
         ["Ricorso (c. 2): entro 15 giorni al direttore dell'ITL, che decide nei 15 giorni successivi; se tace, il ricorso si intende respinto. Il ricorso non sospende l'esecutività. Dopo la decisione, secondo Rausei, resta la via del TAR o del ricorso straordinario.", ["15 giorni", "direttore", "respinto", "non sospende"]],
         ["Inottemperanza (c. 3): sanzione amministrativa da 500 a 3.000 euro, senza la diffida obbligatoria dell'art. 13, c. 2.", ["500", "3.000", "senza diffida"]],
-        ["Giurisprudenza: i TAR la leggevano in modo restrittivo; il Consiglio di Stato (2778/2024, 7853/2025, 10382/2025, 4969/2026, riportate da Rausei) l'ha estesa alle violazioni dei contratti collettivi e all'adeguatezza della retribuzione ex art. 36 Cost. La dottrina critica obietta il principio di legalità e la libertà sindacale (art. 39 Cost.).", ["consiglio di stato", "tar", "36", "39"]]
+        ["Giurisprudenza: i TAR la leggevano in modo restrittivo; il Consiglio di Stato (2778/2024, 7853/2025, 10382/2025, 4969/2026, riportate da Rausei) l'ha estesa alle violazioni dei contratti collettivi e all'adeguatezza della retribuzione ex art. 36 Cost. In senso più restrittivo TAR Marche, Ancona, 1/7/2026 n. 857 (riportata da Rausei): la disposizione è residuale e non si adotta se la legge o il CCNL non prevedono un obbligo. La dottrina critica obietta il principio di legalità e la libertà sindacale (art. 39 Cost.).", ["consiglio di stato", "tar", "36", "39"]]
       ],
       aggancio: "Come si sceglie lo strumento: irregolarità senza sanzione → disposizione; illecito amministrativo sanabile → diffida precettiva; contravvenzione → prescrizione (art. 15 e D.Lgs. 758/1994); crediti di pochi lavoratori → diffida accertativa. La disposizione non dà nulla direttamente al lavoratore: è un ordine assistito da una sanzione. Con il D.L. 62/2026 è lo strumento per riallineare al TEC molti lavoratori. Il consulente controlla che il verbale motivi l'irregolarità (per un diverso inquadramento, le declaratorie del CCNL: Trib. Cosenza 6/5/2025, riportato da Rausei) e valuta il ricorso nei 15 giorni.",
-      fonti: "Art. 14 D.Lgs. 124/2004 (124_2004.pdf in libreria, vigente al 27/9/2026: testo riletto); P1/P1_Mappe_Poteri_ispettivi, Focus 1, Mappa D e tabella degli strumenti (circ. INL 5/2020, nota INL 4539/2020 e sentenze riportate da Rausei al convegno di Fermo del 18/9/2026, testi non letti; data della Cons. Stato 4969/2026 DA VERIFICARE)."
+      fonti: "Art. 14 D.Lgs. 124/2004 (124_2004.pdf in libreria, vigente al 27/9/2026: testo riletto); P1/P1_Mappe_Poteri_ispettivi, Focus 1, Mappa D e tabella degli strumenti (circ. INL 5/2020, nota INL 4539/2020 e sentenze riportate da Rausei al convegno di Fermo del 18/9/2026, testi non letti; Cons. Stato 22/6/2026 n. 4969 e TAR Marche 1/7/2026 n. 857 riportati da Rausei)."
     },
 
     "PPP-11": {
@@ -3097,10 +3097,10 @@ window.ORALE = (function () {
         ["Funzioni amministrative attribuite di regola ai Comuni, secondo sussidiarietà, differenziazione e adeguatezza (art. 118).", ["comuni", "sussidiarieta", "118"]],
         ["Autonomia finanziaria di entrata e di spesa, con tributi propri e compartecipazioni (art. 119).", ["autonomia finanziaria", "119"]],
         ["Organi del Comune: Consiglio, Giunta e Sindaco; della Regione: Consiglio regionale, Giunta e Presidente.", ["consiglio", "giunta", "sindaco", "presidente"]],
-        ["Poteri sostitutivi dello Stato in caso di inadempienze gravi (art. 120) e controlli; le Province sono state ridimensionate dalla L. 56/2014, con le Città metropolitane nelle grandi aree urbane.", ["poteri sostitutivi", "56/2014", "citta metropolitane"]]
+        ["Poteri sostitutivi dello Stato in caso di inadempienze gravi (art. 120) e controlli; le Province sono state ridimensionate dalla L. 56/2014, che le qualifica enti territoriali di area vasta e istituisce le Città metropolitane nelle grandi aree urbane (art. 1, c. 2-3).", ["poteri sostitutivi", "56/2014", "citta metropolitane"]]
       ],
       aggancio: "Per il lavoro: tutela e sicurezza del lavoro sono materia concorrente, mentre la disciplina del rapporto privato è statale; alle Regioni spettano politiche attive, centri per l'impiego e formazione (per esempio l'apprendistato).",
-      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 114-133; indice del Simone, Diritto pubblico, cap. 5, pp. 949-968 (pagine non in libreria). L. 56/2014: citata dall'indice, testo DA VERIFICARE."
+      fonti: "Costituzione (testi Senato e Corte cost., verificati il 30/10/2026), artt. 114-133; indice del Simone, Diritto pubblico, cap. 5, pp. 949-968 (pagine non in libreria). L. 56/2014, art. 1, c. 2-3, letto su Normattiva il 7/11/2026."
     },
 
     "S22-PPP-19": {
@@ -3541,7 +3541,7 @@ window.ORALE = (function () {
         ["Coordinamento con l'art. 14: la concorrenza sleale si valuta fatto salvo l'art. 36, cioè tenendo conto della posizione del dipendente.", ["art. 14", "concorrenza sleale"]],
         ["Limiti esterni: l'iscrizione all'Albo è incompatibile con il lavoro alle dipendenze di enti pubblici, patronati e sindacati dei lavoratori (art. 4 L. 12/1979); il consulente dipendente di un'associazione di categoria può organizzare i servizi per le piccole imprese associate.", ["incompatibile", "enti pubblici", "patronati", "associazione di categoria"]]
       ],
-      aggancio: "Il dipendente non può essere accreditato come asseveratore Asse.Co., che richiede di non svolgere lavoro dipendente (Reg. Asse.Co., art. 1, c. 4), né far parte del Consiglio di disciplina territoriale. Dottrina e prassi applicative sull'art. 36: DA VERIFICARE, il Simone riporta solo il testo.",
+      aggancio: "Il dipendente non può essere accreditato come asseveratore Asse.Co., che richiede di non svolgere lavoro dipendente (Reg. Asse.Co., art. 1, c. 4), né far parte del Consiglio di disciplina territoriale.",
       fonti: "Simone, Deontologia (testo del Codice deontologico, delibera CNO 101/2021 modificata dalla 49/2024), pp. 1247 (art. 4), 1249 (art. 14) e 1254 (art. 36); Simone, Deontologia, pp. 1221, 1227, 1239 e 1245."
     },
 
@@ -3836,7 +3836,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.3 · 7/11/2026',
+    versione: '2.4 · 7/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
