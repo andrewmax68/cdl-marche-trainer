@@ -728,6 +728,9 @@
   $('#btnReset').addEventListener('click', function(){ if (confirm('Azzerare progressi e storico salvati su questo dispositivo?')) { S.stato = {}; S.storico = []; save(); renderList(); renderProg(); simHist(); toast('Azzerato'); } });
 
   renderProg(); renderList();
+  // collegamento diretto da altre pagine (es. mappe mentali): orale.html#q=ID apre la domanda nello Studio
+  function daHash(){ var m = location.hash.match(/^#q=([^&]+)/); if (m) { var id = decodeURIComponent(m[1]); if (byId(id)) { showTab('studio'); openQ(id); } } }
+  daHash(); window.addEventListener('hashchange', daHash);
 })();
 </script>
 </body>

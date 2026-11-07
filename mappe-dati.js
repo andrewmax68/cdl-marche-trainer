@@ -5,7 +5,7 @@
 (function(){
   var C = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#1f4e8c', PPP:'#2f6b3f', TRIB:'#9a7a1e', RAG:'#9a7a1e', DEO:'#b05a12'};
   var MAPPE = [
-    {id:'dl62', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.L. 62/2026', sotto:'Salario giusto (conv. L. 112/2026)', colore:C.DL, schede:'scheda DL-X3',
+    {id:'dl62', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.L. 62/2026', sotto:'Salario giusto (conv. L. 112/2026)', colore:C.DL, schede:'scheda DL-X3', rif:'DL-X3',
      speciale:[
       ['Estremi e ambito', [
         ['D.L. 30/4/2026 n. 62, in vigore dal 1/5/2026','', 'conv. L. 25/6/2026 n. 112, in vigore dal 28/6/2026'],
@@ -36,7 +36,7 @@
         ['Confronto TEC e trattamento individuale: globale o voce per voce?','',''],
         ['Differenze sul TEC: diffida accertativa (pochi) o disposizione (molti)','artt. 12 e 14 D.Lgs. 124/2004','Cons. Stato 10382/2025 e 4969/2026 (riportate da Rausei)']]]
      ]},
-    {id:'dl96', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.Lgs. 96/2026', sotto:'Trasparenza retributiva (dir. UE 2023/970)', colore:C.DL, schede:'scheda DL-X4',
+    {id:'dl96', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.Lgs. 96/2026', sotto:'Trasparenza retributiva (dir. UE 2023/970)', colore:C.DL, schede:'scheda DL-X4', rif:'DL-X4',
      speciale:[
       ['Estremi e ambito', [
         ['D.Lgs. 7/5/2026 n. 96, in vigore dal 7/6/2026','', 'attua la dir. (UE) 2023/970 · 17 articoli'],

@@ -58,6 +58,24 @@
     .lista .r{font:600 10px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
     .lista .box{margin-bottom:10px}
   }
+  .box li[data-id]{cursor:pointer;border-radius:4px}
+  .box li[data-id]:hover{background:color-mix(in srgb,var(--c) 9%,#fff)}
+  dialog.sp{border:0;border-radius:14px;padding:0;max-width:760px;width:calc(100% - 24px);max-height:88vh;box-shadow:0 20px 60px -20px rgba(0,0,0,.5)}
+  dialog.sp::backdrop{background:rgba(22,29,41,.45)}
+  .sp .hd{position:sticky;top:0;background:var(--c);color:#fff;padding:12px 16px;display:flex;gap:10px;align-items:flex-start}
+  .sp .hd .q{font:700 17px/1.3 var(--ui);flex:1}
+  .sp .hd small{display:block;font:600 10.5px/1.4 var(--mono);letter-spacing:.08em;opacity:.85;text-transform:uppercase;margin-bottom:3px}
+  .sp .hd button{background:rgba(255,255,255,.18);color:#fff;border:0;border-radius:8px;padding:6px 10px;cursor:pointer;font:600 13px var(--ui)}
+  .sp .bd{padding:14px 18px 18px;font:400 15px/1.55 Georgia,'Times New Roman',serif;color:var(--ink)}
+  .sp .sint{background:color-mix(in srgb,var(--c) 8%,#fff);border-left:4px solid var(--c);padding:10px 12px;margin:0 0 12px;font-size:16px}
+  .sp ol{margin:0 0 12px;padding-left:22px}.sp ol li{margin:0 0 8px}
+  .sp b{color:var(--c)}
+  .sp .ag{font-family:var(--ui);font-size:14px;background:#f4f2eb;border-radius:8px;padding:9px 11px;margin-bottom:10px}
+  .sp .fo{font:400 12px/1.45 var(--ui);color:var(--muted)}
+  .sp .az{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;font-family:var(--ui)}
+  .sp .az a,.sp .az button{font:600 13px/1 var(--ui);border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:9px 13px;cursor:pointer;text-decoration:none}
+  .sp .az .pri{background:var(--c);color:#fff;border-color:var(--c)}
+  @media print{dialog.sp{display:none!important}}
   @page{size:A4 landscape;margin:0}
   @media print{
     body{background:#fff}
@@ -72,8 +90,9 @@
 <body>
 <div class="bar" id="bar"><a class="back" href="orale.html">← Prova orale</a></div>
 <p class="legenda">Una mappa per materia, ordinate come le righe della busta. Al centro la materia, intorno i rami con le domande della banca dati: etichetta breve, norma di riferimento e codice della scheda (per ritrovarla nel fascicolo e nel simulatore).
-<b>★ in grassetto</b> = integrazioni 2026, priorità alta · <i>in grigio corsivo</i> = argomenti 2022 di altra sede, secondo livello · barrato = escluso. Per stampare: menu del browser → Stampa → A4 orizzontale, margini nessuno.</p>
+<b>★ in grassetto</b> = integrazioni 2026, priorità alta · <i>in grigio corsivo</i> = argomenti 2022 di altra sede, secondo livello · barrato = escluso. <b>Clicca su una voce</b> per aprire la spiegazione (risposta migliore), ascoltarla o provarla nel simulatore. Per stampare: menu del browser → Stampa → A4 orizzontale, margini nessuno.</p>
 <div class="stage" id="stage"></div>
+<dialog class="sp" id="sp"></dialog>
 
 <script src="orale-dati.js"></script>
 <script src="mappe-dati.js"></script>
@@ -99,7 +118,7 @@
     if (M.escluse[d.id]) cls = 'esc';
     var n = norma(d);
     var kw = (d.r && d.r.punti || []).map(function(p){ return parola(p[0], (p[1] || [])[0]); }).filter(Boolean).slice(0, 5);
-    return '<li class="'+cls+'">' + esc(etichetta(d)) + (n ? ' <span class="n">· ' + esc(n) + '</span>' : '') + '<span class="id">' + esc(d.id) + '</span>' + (kw.length && cls !== 'esc' ? '<span class="kw">' + kw.map(esc).join(' · ') + '</span>' : '') + '</li>';
+    return '<li class="'+cls+'" data-id="'+esc(d.id)+'" tabindex="0">' + esc(etichetta(d)) + (n ? ' <span class="n">· ' + esc(n) + '</span>' : '') + '<span class="id">' + esc(d.id) + '</span>' + (kw.length && cls !== 'esc' ? '<span class="kw">' + kw.map(esc).join(' · ') + '</span>' : '') + '</li>';
   }
   function boxHtml(titolo, dd, nosub){
     var groups = [], seen = {};
@@ -110,7 +129,7 @@
   }
   var ORD = {X26:0, A25:1, S22:2};
   function boxSpec(r){
-    return '<div class="box"><h3>' + esc(r.nome) + '</h3><ul>' + r.voci.map(function(v){ return '<li class="' + (v[3] || 'x26') + '">' + esc(v[0]) + (v[1] ? ' <span class="n">· ' + esc(v[1]) + '</span>' : '') + (v[2] ? '<span class="kw">' + esc(v[2]) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
+    return '<div class="box"><h3>' + esc(r.nome) + '</h3><ul>' + r.voci.map(function(v){ return '<li class="' + (v[3] || 'x26') + '" data-id="' + esc(r.rif || '') + '" tabindex="0">' + esc(v[0]) + (v[1] ? ' <span class="n">· ' + esc(v[1]) + '</span>' : '') + (v[2] ? '<span class="kw">' + esc(v[2]) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
   }
   function box(r){ return r.voci ? boxSpec(r) : boxHtml(r.nome, r.dd, r.sub); }
   function ramo(r){
@@ -121,7 +140,7 @@
   }
 
   M.mappe.forEach(function(mp, i){
-    var rami = mp.speciale ? mp.speciale.map(function(x){ return {nome:x[0], voci:x[1], n:x[1].length * 2}; }) : mp.rami.map(ramo).filter(function(r){ return r.dd.length; });
+    var rami = mp.speciale ? mp.speciale.map(function(x){ return {nome:x[0], voci:x[1], n:x[1].length * 2, rif:mp.rif}; }) : mp.rami.map(ramo).filter(function(r){ return r.dd.length; });
     if (mp.dividi) { var g = {}, ord = []; rami.forEach(function(r){ r.dd.forEach(function(d){ var k = M.sotto[d.id] || r.nome; if (!g[k]) { g[k] = []; ord.push(k); } g[k].push(d); }); }); rami = ord.map(function(k){ g[k].sort(function(a,b){ return (ORD[a.serie]||1) - (ORD[b.serie]||1); }); return {nome:k, dd:g[k], n:g[k].length * 2, sub:true}; }); }
     // ripartizione sinistra/destra per altezza stimata
     var L = [], R = [], hl = 0, hr = 0;
@@ -139,13 +158,58 @@
       '</div></div>' +
       '<div class="lista" style="--c:'+mp.colore+'"><h2>' + esc(mp.titolo) + ' · ' + esc(mp.sotto) + '</h2><div class="r">' + esc(mp.riga) + '</div>' + rami.map(box).join('') + '</div>';
     stage.insertAdjacentHTML('beforeend', html);
-    var b = document.createElement('button'); b.type = 'button'; b.textContent = mp.titolo.replace('Diritto del lavoro','Lavoro').replace('Legislazione sociale ','').replace('Ordinamento e deontologia','Deontologia') + (mp.id.indexOf('dl') === 0 ? ' ' + mp.id.slice(2) : (mp.id === 'inps' ? ' INPS' : mp.id === 'inail' ? ' INAIL' : ''));
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = mp.titolo.replace('Diritto del lavoro','Lavoro').replace('Legislazione sociale ','').replace('Ordinamento e deontologia','Deontologia') + (/^dl\d$/.test(mp.id) ? ' ' + mp.id.slice(2) : (mp.id === 'inps' ? ' INPS' : mp.id === 'inail' ? ' INAIL' : ''));
     b.onclick = function(){ var t = document.getElementById('w-'+mp.id); (t.offsetParent ? t : t.nextElementSibling).scrollIntoView({behavior:'smooth'}); };
     bar.appendChild(b);
   });
   var sp = document.createElement('span'); sp.className = 'sp'; bar.appendChild(sp);
   var pr = document.createElement('button'); pr.type = 'button'; pr.textContent = 'Stampa / PDF'; pr.onclick = function(){ window.print(); }; bar.appendChild(pr);
 
+
+  /* ---------- spiegazione (risposta migliore) al clic su una voce ---------- */
+  var dlg = document.getElementById('sp'), voce = null;
+  function byId(id){ return O.domande.find(function(d){ return d.id === id; }); }
+  function grassetto(testo, kws){
+    var out = esc(testo);
+    (kws || []).forEach(function(k){ var w = parola(testo, k); if (w && w.length > 1) out = out.split(esc(w)).join('<b>' + esc(w) + '</b>'); });
+    return out;
+  }
+  function apri(id, colore){
+    var d = byId(id); if (!d) return;
+    var r = d.r || (d.vedi && byId(d.vedi) && byId(d.vedi).r);
+    dlg.style.setProperty('--c', colore);
+    var h = '<div class="hd"><div class="q"><small>' + esc(d.id) + ' · ' + esc(d.gruppo || '') + (d.serie === 'X26' ? ' · integrazione 2026' : d.serie === 'S22' ? ' · argomenti 2022' : ' · buste Ancona 2025') + '</small>' + esc(d.testo) + '</div><button type="button" data-x="chiudi">Chiudi ✕</button></div><div class="bd">';
+    if (!r) h += '<p>Risposta migliore non disponibile per questa voce.</p>';
+    else {
+      h += '<p class="sint">' + esc(r.sintesi) + '</p><ol>' + r.punti.map(function(p){ return '<li>' + grassetto(p[0], p[1]) + '</li>'; }).join('') + '</ol>' +
+        '<div class="ag"><b>Aggancio al lavoro:</b> ' + esc(r.aggancio) + '</div><div class="fo"><b>Fonti:</b> ' + esc(r.fonti) + '</div>';
+    }
+    h += '<div class="az"><a class="pri" href="orale.html#q=' + encodeURIComponent(d.id) + '">Prova a rispondere nel simulatore →</a>' +
+      ('speechSynthesis' in window && r ? '<button type="button" data-x="voce">🔊 Ascolta la risposta</button>' : '') +
+      '<button type="button" data-x="chiudi">Torna alla mappa</button></div></div>';
+    dlg.innerHTML = h; dlg.dataset.id = d.id;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    dlg.scrollTop = 0;
+  }
+  function leggi(id){
+    var d = byId(id), r = d && (d.r || (d.vedi && byId(d.vedi) && byId(d.vedi).r)); if (!r) return;
+    speechSynthesis.cancel();
+    var testo = d.testo + '. ' + r.sintesi + ' ' + r.punti.map(function(p){ return p[0]; }).join(' ') + ' ' + r.aggancio;
+    var u = new SpeechSynthesisUtterance(testo.replace(/\bart\. /g, 'articolo ').replace(/\bartt\. /g, 'articoli ').replace(/\bc\. /g, 'comma ').replace(/c\.c\./g, 'codice civile'));
+    u.lang = 'it-IT'; u.rate = 1; var v = speechSynthesis.getVoices().find(function(x){ return /^it/i.test(x.lang); }); if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  }
+  dlg.addEventListener('click', function(e){
+    var b = e.target.closest('[data-x]');
+    if (e.target === dlg || (b && b.dataset.x === 'chiudi')) { if ('speechSynthesis' in window) speechSynthesis.cancel(); dlg.close ? dlg.close() : dlg.removeAttribute('open'); }
+    else if (b && b.dataset.x === 'voce') leggi(dlg.dataset.id);
+  });
+  dlg.addEventListener('close', function(){ if ('speechSynthesis' in window) speechSynthesis.cancel(); });
+  stage.addEventListener('click', function(e){
+    var l = e.target.closest('li[data-id]'); if (!l || !l.dataset.id) return;
+    var w = l.closest('[style*="--c"]'); apri(l.dataset.id, w ? getComputedStyle(w).getPropertyValue('--c') : '#7c2b2b');
+  });
+  stage.addEventListener('keydown', function(e){ if (e.key === 'Enter') { var l = e.target.closest('li[data-id]'); if (l) l.click(); } });
   function adatta(stampa){
     document.querySelectorAll('.pagewrap').forEach(function(w){
       var area = w.querySelector('.area'), inner = w.querySelector('.inner'), grid = w.querySelector('.grid'), svg = w.querySelector('svg.links');
