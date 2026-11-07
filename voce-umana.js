@@ -36,7 +36,7 @@
   /* legge frase per frase: pause più naturali ed evita il blocco di Chrome sulle letture lunghe */
   function frasi(t){ return String(t).replace(/\s+/g, ' ').match(/[^.;:!?]+[.;:!?]*\s*/g) || [t]; }
   function pronuncia(t){
-    return t.replace(/\bartt\.\s/g, 'articoli ').replace(/\bart\.\s/g, 'articolo ').replace(/\bc\.\s(?=\d)/g, 'comma ').replace(/\blett\.\s/g, 'lettera ')
+    return t.replace(/\bartt\.\s/gi, 'articoli ').replace(/\bart\.\s/gi, 'articolo ').replace(/\bc\.\s(?=\d)/g, 'comma ').replace(/\blett\.\s/g, 'lettera ')
       .replace(/c\.c\./g, 'codice civile').replace(/c\.p\.c\./g, 'codice di procedura civile').replace(/c\.p\.p\./g, 'codice di procedura penale').replace(/c\.p\./g, 'codice penale')
       .replace(/\bD\.Lgs\.\s?/g, 'decreto legislativo ').replace(/\bD\.L\.\s?/g, 'decreto legge ').replace(/\bD\.P\.R\.\s?/g, 'D P R ').replace(/\bL\.\s(?=\d)/g, 'legge ')
       .replace(/\bCost\./g, 'Costituzione').replace(/\bSt\. lav\./g, 'Statuto dei lavoratori').replace(/\bCass\.\s/g, 'Cassazione ').replace(/€/g, ' euro')
