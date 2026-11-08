@@ -132,7 +132,7 @@ def costruisci(dati, materia, out):
         etich = d['id'] + ('' if d['r'] else ' *')
         righe.append([Paragraph(escape(etich), S['cellsm']), Paragraph(escape(d['testo']), S['cell']), '', '', ''])
     w = A4[0] - 2.2 * cm - 5.2 * cm
-    t = Table(righe, colWidths=[1.7 * cm, w - 1.7 * cm - 3 * 0.9 * cm, 0.9 * cm, 0.9 * cm, 0.9 * cm], repeatRows=1)
+    t = Table(righe, colWidths=[2.1 * cm, w - 2.1 * cm - 3 * 0.9 * cm, 0.9 * cm, 0.9 * cm, 0.9 * cm], repeatRows=1)
     stile = [('VALIGN', (0, 0), (-1, -1), 'MIDDLE'), ('LINEBELOW', (0, 0), (-1, -1), 0.3, RULE),
              ('TOPPADDING', (0, 0), (-1, -1), 3), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]
     for i in range(1, len(righe)):
@@ -143,6 +143,22 @@ def costruisci(dati, materia, out):
     if len(con_r) < len(domande):
         st.append(Spacer(1, 4))
         st.append(Paragraph('* risposta modello non ancora disponibile: la scheda indica dove studiarla per ora.', S['small']))
+
+    rinvii = [x for x in dati.get('rinvii', []) if x['m'] == materia]
+    if rinvii:
+        testi = {d['id']: d for d in dati['domande']}
+        st.append(Paragraph('Domande 2022 con la stessa risposta di un\'altra scheda', S['h2']))
+        st.append(Paragraph('Queste domande della sessione 2022 non hanno una scheda propria: si risponde con la scheda indicata, che è stampata in questo fascicolo o in quello della materia indicata.', S['small']))
+        st.append(Spacer(1, 3))
+        rr = [[Paragraph('<b>Codice</b>', S['cellsm']), Paragraph('<b>Domanda 2022</b>', S['cellsm']), Paragraph('<b>Rispondi con</b>', S['cellsm'])]]
+        for x in rinvii:
+            dv = testi.get(x['vedi'])
+            rr.append([Paragraph(escape(x['id']), S['cellsm']), Paragraph(escape(x['testo']), S['cell']),
+                       Paragraph('<b>%s</b>%s' % (escape(x['vedi']), (' — ' + escape(dv['testo'])) if dv else ''), S['cellsm'])])
+        t2 = Table(rr, colWidths=[2.1 * cm, w - 2.1 * cm - 5 * cm, 5 * cm], repeatRows=1)
+        t2.setStyle(TableStyle([('VALIGN', (0, 0), (-1, -1), 'MIDDLE'), ('LINEBELOW', (0, 0), (-1, -1), 0.3, RULE),
+                                ('TOPPADDING', (0, 0), (-1, -1), 3), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]))
+        st.append(t2)
 
     for d in domande:
         st.append(CondPageBreak(7 * cm))
