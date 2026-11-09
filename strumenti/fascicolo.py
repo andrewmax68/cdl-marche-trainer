@@ -31,11 +31,11 @@ TINT = colors.HexColor('#f1efe8')
 RULE = colors.HexColor('#c9c6bc')
 # colore di ogni busta, uguale a quello delle mappe mentali (mappe-dati.js); con testo bianco resta leggibile
 COLORE_MAT = {'DL': '#7c2b2b', 'INPS': '#1f4e8c', 'INAIL': '#1f4e8c', 'PPP': '#2f6b3f',
-              'TRIB': '#8a6a00', 'RAG': '#8a6a00', 'DEO': '#c2410c'}
+              'TRIB': '#8a6a00', 'RAG': '#8a6a00', 'DEO': '#d9480f'}
 # fascia del titolo: colore di fondo e colore del testo (il giallo vivo vuole il testo scuro)
 FASCIA_MAT = {'DL': ('#7c2b2b', '#ffffff'), 'INPS': ('#1f4e8c', '#ffffff'), 'INAIL': ('#1f4e8c', '#ffffff'),
               'PPP': ('#2f6b3f', '#ffffff'), 'TRIB': ('#f5c400', '#1d1d1b'), 'RAG': ('#f5c400', '#1d1d1b'),
-              'DEO': ('#d9480f', '#ffffff')}
+              'DEO': ('#ff7a00', '#1d1d1b')}
 
 S = {
     'title': ParagraphStyle('t', fontName='Serif-B', fontSize=20, leading=24, textColor=INK, spaceAfter=4),
