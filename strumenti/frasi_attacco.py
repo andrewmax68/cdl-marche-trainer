@@ -69,6 +69,10 @@ def costruisci(dati, out):
         st.append(Paragraph('BUSTA ' + colore, ParagraphStyle('em', parent=S['eyebrow'], textColor=col)))
         st.append(Paragraph(escape(titolo), S['title']))
         for m in materie:
+            cm_ = colors.HexColor(COLORE_MAT[m])   # tonalità della singola materia (INPS/INAIL, tributario/ragioneria)
+            dom = ParagraphStyle('dm', parent=DOMANDA, textColor=cm_)
+            cod = ParagraphStyle('cm', parent=CODICE, textColor=cm_)
+            h2 = ParagraphStyle('hm', parent=S['h2'], textColor=cm_)
             domande = sorted([d for d in dati['domande'] if d['m'] == m and d['r']], key=ordina)
             if len(materie) > 1:
                 st.append(Paragraph(escape(nomi[m]), h2))

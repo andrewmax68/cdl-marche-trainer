@@ -15,8 +15,8 @@
     'DLGS 81/2008', 'DLGS 124/2004', 'DLGS 758/1994',
     'DPR 1124/1965', 'DLGS 38/2000', 'L 335/1995', 'DLGS 148/2015',
     'L 12/1979', 'DPR 137/2012', 'DPR 600/1973'];
-  var SRC_L = '\\b(L\\.|[Ll]egge|D\\.\\s?[Ll]gs\\.|D\\.L\\.|D\\.P\\.R\\.)\\s?(?:(?:n\\.\\s?)?(\\d+)\\/(\\d{4})\\b|\\d{1,2}\\/\\d{1,2}\\/(\\d{4}),?\\s?n\\.\\s?(\\d+))|\\bSt\\.\\s?lav\\.|\\bStatuto(?! del contribuente| Lavoratori)(?: dei lavoratori)?';
-  function tipoLegge(t) { return /^D\.\s?[Ll]gs/.test(t) ? 'DLGS' : t === 'D.L.' ? 'DL' : t === 'D.P.R.' ? 'DPR' : 'L'; }
+  var SRC_L = '\\b(L\\.|[Ll]egge|D\\.\\s?[Ll]gs\\.|D\\.L\\.|D\\.P\\.R\\.|T\\.U\\.)\\s?(?:(?:n\\.\\s?)?(\\d+)\\/(\\d{4})\\b|\\d{1,2}\\/\\d{1,2}\\/(\\d{4}),?\\s?n\\.\\s?(\\d+))|\\bSt\\.\\s?lav\\.|\\bStatuto(?! del contribuente| Lavoratori)(?: dei lavoratori)?';
+  function tipoLegge(t) { return /^D\.\s?[Ll]gs/.test(t) ? 'DLGS' : t === 'D.L.' ? 'DL' : (t === 'D.P.R.' || t === 'T.U.') ? 'DPR' : 'L'; }   // «T.U. 1124/1965» = D.P.R. 1124/1965
 
   var NUM = '\\d+(?:-(?:bis|ter|quater))?';
   var ORD = '(?:primo|secondo|terzo|quarto|quinto|sesto|settimo|ottavo|nono|decimo|ultimo)';

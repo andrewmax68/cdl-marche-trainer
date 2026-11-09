@@ -30,10 +30,10 @@ ACCENT = colors.HexColor('#7a2e2a')      # rosso scuro, stampa bene anche in bia
 TINT = colors.HexColor('#f1efe8')
 RULE = colors.HexColor('#c9c6bc')
 # colore di ogni busta, uguale a quello delle mappe mentali (mappe-dati.js); con testo bianco resta leggibile
-COLORE_MAT = {'DL': '#7c2b2b', 'INPS': '#1f4e8c', 'INAIL': '#1f4e8c', 'PPP': '#2f6b3f',
+COLORE_MAT = {'DL': '#7c2b2b', 'INPS': '#1f4e8c', 'INAIL': '#0a6896', 'PPP': '#2f6b3f',
               'TRIB': '#8a6a00', 'RAG': '#6b5f00', 'DEO': '#c2410c'}
 # fascia del titolo: colore di fondo e colore del testo (il giallo vivo vuole il testo scuro)
-FASCIA_MAT = {'DL': ('#7c2b2b', '#ffffff'), 'INPS': ('#1f4e8c', '#ffffff'), 'INAIL': ('#1f4e8c', '#ffffff'),
+FASCIA_MAT = {'DL': ('#7c2b2b', '#ffffff'), 'INPS': ('#1f4e8c', '#ffffff'), 'INAIL': ('#4fb6ea', '#1d1d1b'),
               'PPP': ('#2f6b3f', '#ffffff'), 'TRIB': ('#f5c400', '#1d1d1b'), 'RAG': ('#fff27a', '#1d1d1b'),
               'DEO': ('#ff7a00', '#1d1d1b')}
 
@@ -85,7 +85,7 @@ def imposta_articoli(ac):
 
 
 def _tipo_legge(t):
-    return 'DLGS' if re.match(r'D\.\s?[Ll]gs', t) else {'D.L.': 'DL', 'D.P.R.': 'DPR'}.get(t, 'L')
+    return 'DLGS' if re.match(r'D\.\s?[Ll]gs', t) else {'D.L.': 'DL', 'D.P.R.': 'DPR', 'T.U.': 'DPR'}.get(t, 'L')
 
 
 def _numeri(lista):

@@ -275,9 +275,9 @@
 </div></dialog>
 <div class="toast" id="toast"></div>
 
-<script src="orale-dati.js?v=20261109"></script>
-<script src="articoli-chiave.js?v=20261109"></script>
-<script src="voce-umana.js?v=20261109"></script>
+<script src="orale-dati.js?v=20261109b"></script>
+<script src="articoli-chiave.js?v=20261109b"></script>
+<script src="voce-umana.js?v=20261109b"></script>
 <script>
 (function(){
   'use strict';
@@ -444,8 +444,8 @@
   }
   // articoli chiave del lavoro evidenziati (giallo Costituzione, verde codice civile)
   // colore della busta per il titolo della domanda (stessi colori delle mappe e dei fascicoli)
-  var QCOL = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#1f4e8c', PPP:'#2f6b3f', TRIB:'#8a6a00', RAG:'#6b5f00', DEO:'#c2410c'};   // testo
-  var QBAR = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#1f4e8c', PPP:'#2f6b3f', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};   // barra: colore pieno della busta
+  var QCOL = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#0a6896', PPP:'#2f6b3f', TRIB:'#8a6a00', RAG:'#6b5f00', DEO:'#c2410c'};   // testo
+  var QBAR = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#4fb6ea', PPP:'#2f6b3f', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};   // barra: colore pieno della busta
   function hl(t){ return window.ART_CHIAVE ? window.ART_CHIAVE.html(t) : esc(t); }
   function modelHtml(d, text){
     if (!d.r) {
