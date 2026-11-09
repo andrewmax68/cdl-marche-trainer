@@ -96,7 +96,7 @@
   .avatar{width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px/1 var(--mono);flex:none}
   .who .n{font-weight:600;font-size:14px}
   .who .r{font-size:12px;color:var(--muted)}
-  .qtext{font:600 21px/1.35 var(--serif);margin:4px 0 12px;color:var(--oxblood);border-left:5px solid var(--oxblood);padding:2px 0 2px 12px}
+  .qtext{font:600 21px/1.35 var(--serif);margin:4px 0 12px;color:var(--qc,var(--oxblood));border-left:5px solid var(--qc,var(--oxblood));padding:2px 0 2px 12px}
   .timer{font:600 18px/1 var(--mono);color:var(--ink-2)}
   .timer.over{color:var(--err)}
   .ans{margin-top:14px}
@@ -443,6 +443,8 @@
     }).join('') + '</ul></div>';
   }
   // articoli chiave del lavoro evidenziati (giallo Costituzione, verde codice civile)
+  // colore della busta per il titolo della domanda (stessi colori delle mappe e dei fascicoli)
+  var QCOL = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#1f4e8c', PPP:'#2f6b3f', TRIB:'#9a7a1e', RAG:'#9a7a1e', DEO:'#b05a12'};
   function hl(t){ return window.ART_CHIAVE ? window.ART_CHIAVE.html(t) : esc(t); }
   function modelHtml(d, text){
     if (!d.r) {
@@ -534,7 +536,7 @@
     body.innerHTML = '<div class="qcard">' + whoHtml(d) +
       '<div class="row small muted"><span>'+esc(d.fonte)+' · '+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="qTimer">3:00</span></div>' +
       (d.vedi && byId(d.vedi) ? '<p class="small muted">Stesso tema di «'+esc(byId(d.vedi).testo)+'» ('+esc(byId(d.vedi).fonte)+'): risposta modello e approfondimenti condivisi.</p>' : '') +
-      '<p class="qtext">'+hl(d.testo)+'</p>' +
+      '<p class="qtext" style="--qc:'+(QCOL[d.m]||'')+'">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" data-act="read" type="button">🔊 Ascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" data-act="mic" type="button">🎙 Rispondi a voce</button>' : '') +
         '<button class="btn alt sm" data-act="timer" type="button">Avvia cronometro</button></div>' +
@@ -633,7 +635,7 @@
     $('#simRun').innerHTML = '<div class="box"><div class="row"><b>'+esc(run.titolo)+'</b><span class="small muted">· domanda '+(i+1)+' di '+run.Q.length+'</span><span class="grow"></span><button class="btn alt sm" id="simQuit" type="button">Interrompi</button></div><div class="steps">'+steps+'</div>' +
       '<div class="qcard">' + whoHtml(d) +
       '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="grow"></span><span class="timer mono" id="sTimer">3:00</span></div>' +
-      '<p class="qtext">'+hl(d.testo)+'</p>' +
+      '<p class="qtext" style="--qc:'+(QCOL[d.m]||'')+'">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" id="sRead" type="button">🔊 Riascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" id="sMic" type="button">🎙 Rispondi a voce</button>' : '') + '</div>' +
       '<div class="ans"><textarea id="sAns" placeholder="Rispondi come davanti alla commissione: per iscritto o col microfono (Modalità audio). Restano modificabili."></textarea></div>' +

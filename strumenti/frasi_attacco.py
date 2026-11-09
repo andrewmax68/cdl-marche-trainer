@@ -6,10 +6,11 @@ import json, sys
 from xml.sax.saxutils import escape
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
+from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, Table,
                                 TableStyle, PageBreak)
-from fascicolo import S, INK, MUTED, ACCENT, RULE, ordina, evidenzia, imposta_articoli, LEGENDA_ART
+from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, ordina, evidenzia, imposta_articoli, LEGENDA_ART
 
 GRUPPI = [('1 · ROSSO', 'Diritto del lavoro', ['DL']),
           ('2 · BLU', 'Legislazione sociale INPS e INAIL', ['INPS', 'INAIL']),
@@ -61,18 +62,22 @@ def costruisci(dati, out):
     tot = 0
     for g, (colore, titolo, materie) in enumerate(GRUPPI):
         st.append(PageBreak())
-        st.append(Paragraph('BUSTA ' + colore, S['eyebrow']))
+        col = colors.HexColor(COLORE_MAT[materie[0]])
+        dom = ParagraphStyle('dm', parent=DOMANDA, textColor=col)
+        cod = ParagraphStyle('cm', parent=CODICE, textColor=col)
+        h2 = ParagraphStyle('hm', parent=S['h2'], textColor=col)
+        st.append(Paragraph('BUSTA ' + colore, ParagraphStyle('em', parent=S['eyebrow'], textColor=col)))
         st.append(Paragraph(escape(titolo), S['title']))
         for m in materie:
             domande = sorted([d for d in dati['domande'] if d['m'] == m and d['r']], key=ordina)
             if len(materie) > 1:
-                st.append(Paragraph(escape(nomi[m]), S['h2']))
+                st.append(Paragraph(escape(nomi[m]), h2))
             righe, stile = [], [('VALIGN', (0, 0), (-1, -1), 'TOP'), ('LINEBELOW', (0, 0), (-1, -1), 0.3, RULE),
                                 ('TOPPADDING', (0, 0), (-1, -1), 4), ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
                                 ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 6)]
             for i, d in enumerate(domande):
-                testo = [Paragraph(evidenzia(d['testo']), DOMANDA), Paragraph(evidenzia(d['r']['sintesi']), FRASE)]
-                righe.append([Paragraph(escape(d['id']), CODICE), testo, casella()])
+                testo = [Paragraph(evidenzia(d['testo']), dom), Paragraph(evidenzia(d['r']['sintesi']), FRASE)]
+                righe.append([Paragraph(escape(d['id']), cod), testo, casella()])
             t = Table(righe, colWidths=[1.9 * cm, W - 1.9 * cm - 0.55 * cm, 0.55 * cm], rowHeights=None)
             stile += [('TOPPADDING', (2, 0), (2, -1), 6), ('RIGHTPADDING', (2, 0), (2, -1), 0)]
             t.setStyle(TableStyle(stile))
@@ -80,11 +85,11 @@ def costruisci(dati, out):
             tot += len(domande)
         rinvii = [x for x in dati.get('rinvii', []) if x['m'] in materie]
         if rinvii:
-            st.append(Paragraph('Domande 2022 che si risolvono con un\'altra scheda', S['h2']))
+            st.append(Paragraph('Domande 2022 che si risolvono con un\'altra scheda', h2))
             rr = []
             for x in sorted(rinvii, key=lambda x: (x['id'].rsplit('-', 1)[0], int(x['id'].rsplit('-', 1)[1]))):
                 dest = per_id.get(x['vedi'])
-                rr.append([Paragraph(escape(x['id']), CODICE), Paragraph(escape(x['testo']), RINVIO),
+                rr.append([Paragraph(escape(x['id']), cod), Paragraph(escape(x['testo']), RINVIO),
                            Paragraph('→ <b>%s</b>%s' % (escape(x['vedi']),
                                      (' · ' + escape(dest['testo'])) if dest else ''), RINVIO)])
             t = Table(rr, colWidths=[2.1 * cm, (W - 2.1 * cm) * 0.5, (W - 2.1 * cm) * 0.5], repeatRows=0)

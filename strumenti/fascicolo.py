@@ -29,6 +29,9 @@ MUTED = colors.HexColor('#5f5e5a')
 ACCENT = colors.HexColor('#7a2e2a')      # rosso scuro, stampa bene anche in bianco e nero
 TINT = colors.HexColor('#f1efe8')
 RULE = colors.HexColor('#c9c6bc')
+# colore di ogni busta, uguale a quello delle mappe mentali (mappe-dati.js); con testo bianco resta leggibile
+COLORE_MAT = {'DL': '#7c2b2b', 'INPS': '#1f4e8c', 'INAIL': '#1f4e8c', 'PPP': '#2f6b3f',
+              'TRIB': '#9a7a1e', 'RAG': '#9a7a1e', 'DEO': '#b05a12'}
 
 S = {
     'title': ParagraphStyle('t', fontName='Serif-B', fontSize=20, leading=24, textColor=INK, spaceAfter=4),
@@ -161,6 +164,9 @@ def ordina(d):
 
 def costruisci(dati, materia, out):
     imposta_articoli(dati.get('artchiave'))
+    col = colors.HexColor(COLORE_MAT.get(materia, '#7a2e2a'))
+    H2 = ParagraphStyle('h2m', parent=S['h2'], textColor=col)
+    EYE = ParagraphStyle('em', parent=S['eyebrow'], textColor=col)
     mat = next(m for m in dati['materie'] if m['k'] == materia)
     comm = dati['commissione'].get(mat['comm'], {})
     domande = sorted([d for d in dati['domande'] if d['m'] == materia], key=ordina)
@@ -185,7 +191,7 @@ def costruisci(dati, materia, out):
     st.append(Paragraph('Prova orale, Esame di Stato CdL 2026 (Marche). Commissario probabile (stima): %s, %s. '
                         'Domande: %d, di cui %d con risposta modello.' %
                         (escape(comm.get('nome', '—')), escape(comm.get('ruolo', '')), len(domande), len(con_r)), S['sub']))
-    st.append(Paragraph('Come usarlo', S['h2']))
+    st.append(Paragraph('Come usarlo', H2))
     for riga in [
         '1. Leggi la scheda una volta, a voce alta. Le parole in <b>grassetto</b> sono quelle che il simulatore cerca nella tua risposta: sono il minimo da dire.',
         '2. Copri la scheda e ripeti la risposta a voce in 2 minuti: prima la frase iniziale, poi la norma, poi i punti.',
@@ -195,7 +201,7 @@ def costruisci(dati, materia, out):
         st.append(Paragraph(riga, S['body']))
         st.append(Spacer(1, 3))
 
-    st.append(Paragraph('Elenco per l\'autointerrogazione', S['h2']))
+    st.append(Paragraph('Elenco per l\'autointerrogazione', H2))
     righe = [[Paragraph('<b>Codice</b>', S['cellsm']), Paragraph('<b>Domanda</b>', S['cellsm']),
               Paragraph('<b>1 g</b>', S['cellsm']), Paragraph('<b>3 g</b>', S['cellsm']), Paragraph('<b>7 g</b>', S['cellsm'])]]
     for d in domande:
@@ -217,7 +223,7 @@ def costruisci(dati, materia, out):
     rinvii = [x for x in dati.get('rinvii', []) if x['m'] == materia]
     if rinvii:
         testi = {d['id']: d for d in dati['domande']}
-        st.append(Paragraph('Domande 2022 con la stessa risposta di un\'altra scheda', S['h2']))
+        st.append(Paragraph('Domande 2022 con la stessa risposta di un\'altra scheda', H2))
         st.append(Paragraph('Queste domande della sessione 2022 non hanno una scheda propria: si risponde con la scheda indicata, che è stampata in questo fascicolo o in quello della materia indicata.', S['small']))
         st.append(Spacer(1, 3))
         rr = [[Paragraph('<b>Codice</b>', S['cellsm']), Paragraph('<b>Domanda 2022</b>', S['cellsm']), Paragraph('<b>Rispondi con</b>', S['cellsm'])]]
@@ -235,9 +241,9 @@ def costruisci(dati, materia, out):
         blocco = []
         etichetta = '%s · %s · %s' % (d['id'], d['etichetta'], d['gruppo'])
         blocco.append(Spacer(1, 10))
-        blocco.append(Paragraph(escape(etichetta).upper(), S['eyebrow']))
+        blocco.append(Paragraph(escape(etichetta).upper(), EYE))
         fascia = Table([[Paragraph(evidenzia(d['testo'], scuro=True), S['qband'])]], colWidths=[w])
-        fascia.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), ACCENT), ('LEFTPADDING', (0, 0), (-1, -1), 9),
+        fascia.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), col), ('LEFTPADDING', (0, 0), (-1, -1), 9),
                                     ('RIGHTPADDING', (0, 0), (-1, -1), 9), ('TOPPADDING', (0, 0), (-1, -1), 5),
                                     ('BOTTOMPADDING', (0, 0), (-1, -1), 7)]))
         blocco.append(Spacer(1, 2))
@@ -250,7 +256,7 @@ def costruisci(dati, materia, out):
                         colWidths=[w])
             box.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), TINT), ('LEFTPADDING', (0, 0), (-1, -1), 8),
                                      ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('TOPPADDING', (0, 0), (-1, -1), 6),
-                                     ('BOTTOMPADDING', (0, 0), (-1, -1), 6), ('LINEBEFORE', (0, 0), (0, -1), 2, ACCENT)]))
+                                     ('BOTTOMPADDING', (0, 0), (-1, -1), 6), ('LINEBEFORE', (0, 0), (0, -1), 2, col)]))
             blocco.append(box)
             blocco.append(Spacer(1, 6))
             st.append(KeepTogether(blocco))
