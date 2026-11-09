@@ -57,8 +57,50 @@ def norm(s):
     return ''.join(out)
 
 
-def evidenzia(testo, chiavi):
-    """Mette in grassetto le parole chiave che il simulatore cerca nella risposta."""
+# Articoli chiave dell'area giuslavoristica (regole e liste da articoli-chiave.js, via esporta_json.js)
+AC = None
+COLORE_ART = {'cost': '#ffe066', 'cc': '#a8dc9a'}
+LEGENDA_ART = ('5. Gli articoli chiave del lavoro sono evidenziati: <span backColor="#ffe066">&nbsp;giallo = Costituzione&nbsp;</span> '
+               '<span backColor="#a8dc9a">&nbsp;verde = codice civile&nbsp;</span>. Sono i riferimenti da citare per agganciare la risposta.')
+
+
+def imposta_articoli(ac):
+    global AC
+    AC = None if not ac else {'cost': set(ac['cost']), 'cc': set(ac['cc']),
+                               'rx': re.compile(ac['src']), 'dopo': re.compile(ac['dopo'])}
+
+
+def _numeri(lista):
+    out = []
+    for p in re.split(r'\s*,\s*|\s+e\s+', lista):
+        m = re.match(r'^(\d+)-(\d+)$', p)
+        out += [m.group(1), m.group(2)] if m else [p.strip()]
+    return out
+
+
+def articoli(testo):
+    """[(inizio, fine, 'cost'|'cc')] degli articoli chiave citati nel testo (stessa regola del simulatore)."""
+    if not AC:
+        return []
+    out = []
+    for m in AC['rx'].finditer(testo):
+        nn, suf, tipo, fine = _numeri(m.group(1)), m.group(4) or '', None, m.end()
+        if re.search('Cost|Costituzione', suf):
+            tipo = 'cost' if AC['cost'] & set(nn) else None
+        elif suf:
+            tipo = 'cc' if AC['cc'] & set(nn) else None
+        elif AC['cc'] & set(nn) and not AC['dopo'].match(testo[fine:fine + 14]):
+            tipo = 'cc'
+        if tipo:
+            while fine > m.start() and testo[fine - 1] in ', ':
+                fine -= 1
+            out.append((m.start(), fine, tipo))
+    return out
+
+
+def evidenzia(testo, chiavi=()):
+    """Grassetto sulle parole chiave che il simulatore cerca; sfondo colorato sugli articoli chiave
+    (giallo Costituzione, verde codice civile)."""
     n = norm(testo)
     segni = [False] * len(testo)
     for k in chiavi:
@@ -74,15 +116,21 @@ def evidenzia(testo, chiavi):
                 b += 1
             for i in range(a, b):
                 segni[i] = True
-    out, aperto = [], False
-    for ch, s in zip(testo, segni):
-        if s and not aperto:
-            out.append('<b>'); aperto = True
-        if not s and aperto:
-            out.append('</b>'); aperto = False
-        out.append(escape(ch))
-    if aperto:
-        out.append('</b>')
+    sfondo = [None] * len(testo)
+    for a, b, t in articoli(testo):
+        for i in range(a, b):
+            sfondo[i] = t
+    out, cb, ch = [], False, None
+    for c, sb, sh in zip(testo, segni, sfondo):
+        if sh != ch:   # cambia lo sfondo: si chiude tutto e si riapre (il grassetto sta dentro lo sfondo)
+            out.append(('</b>' if cb else '') + ('</span>' if ch else ''))
+            out.append(('<span backColor="%s">' % COLORE_ART[sh] if sh else '') + ('<b>' if sb else ''))
+            ch, cb = sh, sb
+        elif sb != cb:
+            out.append('<b>' if sb else '</b>')
+            cb = sb
+        out.append(escape(c))
+    out.append(('</b>' if cb else '') + ('</span>' if ch else ''))
     return ''.join(out)
 
 
@@ -92,6 +140,7 @@ def ordina(d):
 
 
 def costruisci(dati, materia, out):
+    imposta_articoli(dati.get('artchiave'))
     mat = next(m for m in dati['materie'] if m['k'] == materia)
     comm = dati['commissione'].get(mat['comm'], {})
     domande = sorted([d for d in dati['domande'] if d['m'] == materia], key=ordina)
@@ -121,7 +170,8 @@ def costruisci(dati, materia, out):
         '1. Leggi la scheda una volta, a voce alta. Le parole in <b>grassetto</b> sono quelle che il simulatore cerca nella tua risposta: sono il minimo da dire.',
         '2. Copri la scheda e ripeti la risposta a voce in 2 minuti: prima la frase iniziale, poi la norma, poi i punti.',
         '3. Ripassa dopo 1, 3 e 7 giorni usando l\'elenco qui sotto: segna una casella ogni volta che rispondi senza guardare.',
-        '4. Usa il margine destro per i tuoi appunti; le correzioni tornano poi nel simulatore, che resta la fonte unica.']:
+        '4. Usa il margine destro per i tuoi appunti; le correzioni tornano poi nel simulatore, che resta la fonte unica.',
+        LEGENDA_ART]:
         st.append(Paragraph(riga, S['body']))
         st.append(Spacer(1, 3))
 
@@ -166,7 +216,7 @@ def costruisci(dati, materia, out):
         etichetta = '%s · %s · %s' % (d['id'], d['etichetta'], d['gruppo'])
         blocco.append(Spacer(1, 10))
         blocco.append(Paragraph(escape(etichetta).upper(), S['eyebrow']))
-        blocco.append(Paragraph(escape(d['testo']), S['q']))
+        blocco.append(Paragraph(evidenzia(d['testo']), S['q']))
         r = d['r']
         if r:
             chiavi_tutte = [k for p in r['punti'] for k in p[1]]
@@ -181,9 +231,9 @@ def costruisci(dati, materia, out):
             for i, (testo, chiavi) in enumerate(r['punti'], 1):
                 st.append(Paragraph('%d.&nbsp;&nbsp;%s' % (i, evidenzia(testo, chiavi)), S['punto']))
             if r.get('aggancio'):
-                st.append(Paragraph('<b>Aggancio:</b> ' + escape(r['aggancio']), S['aggancio']))
+                st.append(Paragraph('<b>Aggancio:</b> ' + evidenzia(r['aggancio']), S['aggancio']))
             if r.get('fonti'):
-                st.append(Paragraph('Fonti: ' + escape(r['fonti']), S['fonti']))
+                st.append(Paragraph('Fonti: ' + evidenzia(r['fonti']), S['fonti']))
         else:
             st.append(KeepTogether(blocco))
             dove = '; '.join(escape(a[0]) + (' (' + escape(a[1]) + ')' if a[1] else '') for a in d['approf']) or '—'

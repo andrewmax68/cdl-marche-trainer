@@ -276,6 +276,7 @@
 <div class="toast" id="toast"></div>
 
 <script src="orale-dati.js"></script>
+<script src="articoli-chiave.js"></script>
 <script src="voce-umana.js"></script>
 <script>
 (function(){
@@ -441,6 +442,8 @@
       return '<li><code>'+esc(a[0])+'</code>' + (a[1] ? ' — cerca: ' + esc(a[1]) : '') + '</li>';
     }).join('') + '</ul></div>';
   }
+  // articoli chiave del lavoro evidenziati (giallo Costituzione, verde codice civile)
+  function hl(t){ return window.ART_CHIAVE ? window.ART_CHIAVE.html(t) : esc(t); }
   function modelHtml(d, text){
     if (!d.r) {
       return '<div class="model"><div class="notice">Risposta modello non disponibile per questa domanda. Studia sulle fonti indicate sotto.</div>' +
@@ -450,10 +453,11 @@
     var n = h ? h.filter(Boolean).length : 0;
     return '<div class="model"><h3>Risposta migliore</h3>' +
       (h ? '<p class="small muted">Riscontro automatico: '+n+' punti su '+d.r.punti.length+' toccati (parole chiave, non valuta la correttezza).</p>' : '') +
-      '<p class="sint">'+esc(d.r.sintesi)+'</p><ol>' +
-      d.r.punti.map(function(p, i){ return '<li>'+esc(p[0]) + (h ? (h[i] ? ' <span class="chip ok hit">toccato</span>' : ' <span class="chip warn hit">mancante</span>') : '') + '</li>'; }).join('') +
-      '</ol><div class="aggancio"><b>Aggancio al lavoro:</b> '+esc(d.r.aggancio)+'</div>' +
-      '<div class="fonti"><b>Fonti:</b> '+esc(d.r.fonti)+'</div>' + approfHtml(d) + '</div>';
+      (window.ART_CHIAVE ? window.ART_CHIAVE.legenda() : '') +
+      '<p class="sint">'+hl(d.r.sintesi)+'</p><ol>' +
+      d.r.punti.map(function(p, i){ return '<li>'+hl(p[0]) + (h ? (h[i] ? ' <span class="chip ok hit">toccato</span>' : ' <span class="chip warn hit">mancante</span>') : '') + '</li>'; }).join('') +
+      '</ol><div class="aggancio"><b>Aggancio al lavoro:</b> '+hl(d.r.aggancio)+'</div>' +
+      '<div class="fonti"><b>Fonti:</b> '+hl(d.r.fonti)+'</div>' + approfHtml(d) + '</div>';
   }
   function askModelText(d){
     return 'Prepara la risposta modello per l\'orale (2-3 minuti) alla domanda «' + d.testo + '» (id ' + d.id + ', ' + MAT[d.m].nome + ', ' + d.fonte + '), ' +
@@ -497,7 +501,7 @@
     var L = filtered();
     $('#fCount').textContent = L.length + ' domande';
     $('#qlist').innerHTML = L.map(function(d){
-      return '<button class="q" type="button" data-id="'+d.id+'"><div class="t">'+esc(d.testo)+'<div class="meta"><span class="chip ox">'+esc(MAT[d.m].corto)+'</span><span class="chip">'+esc(d.gruppo)+'</span><span class="chip">'+esc(d.etichetta)+'</span>'+(d.r ? '<span class="chip ok">risposta modello</span>' : '')+statoChip(d.id)+'</div></div></button>';
+      return '<button class="q" type="button" data-id="'+d.id+'"><div class="t">'+hl(d.testo)+'<div class="meta"><span class="chip ox">'+esc(MAT[d.m].corto)+'</span><span class="chip">'+esc(d.gruppo)+'</span><span class="chip">'+esc(d.etichetta)+'</span>'+(d.r ? '<span class="chip ok">risposta modello</span>' : '')+statoChip(d.id)+'</div></div></button>';
     }).join('') || '<p class="muted small">Nessuna domanda con questi filtri.</p>';
   }
   function renderProg(){
@@ -530,7 +534,7 @@
     body.innerHTML = '<div class="qcard">' + whoHtml(d) +
       '<div class="row small muted"><span>'+esc(d.fonte)+' · '+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="qTimer">3:00</span></div>' +
       (d.vedi && byId(d.vedi) ? '<p class="small muted">Stesso tema di «'+esc(byId(d.vedi).testo)+'» ('+esc(byId(d.vedi).fonte)+'): risposta modello e approfondimenti condivisi.</p>' : '') +
-      '<p class="qtext">'+esc(d.testo)+'</p>' +
+      '<p class="qtext">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" data-act="read" type="button">🔊 Ascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" data-act="mic" type="button">🎙 Rispondi a voce</button>' : '') +
         '<button class="btn alt sm" data-act="timer" type="button">Avvia cronometro</button></div>' +
@@ -629,7 +633,7 @@
     $('#simRun').innerHTML = '<div class="box"><div class="row"><b>'+esc(run.titolo)+'</b><span class="small muted">· domanda '+(i+1)+' di '+run.Q.length+'</span><span class="grow"></span><button class="btn alt sm" id="simQuit" type="button">Interrompi</button></div><div class="steps">'+steps+'</div>' +
       '<div class="qcard">' + whoHtml(d) +
       '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="grow"></span><span class="timer mono" id="sTimer">3:00</span></div>' +
-      '<p class="qtext">'+esc(d.testo)+'</p>' +
+      '<p class="qtext">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" id="sRead" type="button">🔊 Riascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" id="sMic" type="button">🎙 Rispondi a voce</button>' : '') + '</div>' +
       '<div class="ans"><textarea id="sAns" placeholder="Rispondi come davanti alla commissione: per iscritto o col microfono (Modalità audio). Restano modificabili."></textarea></div>' +
@@ -687,7 +691,7 @@
     run.Q.forEach(function(d, k){ if (run.voto[k] < 2) S.stato[d.id] = 'rip'; });
     save();
     var rows = run.Q.map(function(d, k){
-      return '<tr><td>'+(k+1)+'</td><td><b>'+esc(MAT[d.m].corto)+'</b><br><span class="small muted">'+esc(C[commOf(d)].nome)+'</span></td><td>'+esc(d.testo)+'</td><td>'+lab(run.voto[k])+'<br><span class="small muted mono">'+Math.floor((run.tempi[k]||0)/60)+'′'+String((run.tempi[k]||0)%60).padStart(2,'0')+'″</span></td><td><button class="btn alt sm" data-open="'+d.id+'" type="button">Rivedi</button></td></tr>' +
+      return '<tr><td>'+(k+1)+'</td><td><b>'+esc(MAT[d.m].corto)+'</b><br><span class="small muted">'+esc(C[commOf(d)].nome)+'</span></td><td>'+hl(d.testo)+'</td><td>'+lab(run.voto[k])+'<br><span class="small muted mono">'+Math.floor((run.tempi[k]||0)/60)+'′'+String((run.tempi[k]||0)%60).padStart(2,'0')+'″</span></td><td><button class="btn alt sm" data-open="'+d.id+'" type="button">Rivedi</button></td></tr>' +
         '<tr><td></td><td colspan="4"><details><summary class="small"><b>Risposta migliore</b> (con il riscontro sulla tua risposta)</summary>' + modelHtml(d, run.ans[k] || '') + '</details></td></tr>';
     }).join('');
     $('#simRun').innerHTML = '<div class="box"><h2>Riepilogo — '+esc(run.titolo)+'</h2>' +

@@ -99,6 +99,7 @@
 <dialog class="sp" id="sp"></dialog>
 
 <script src="orale-dati.js"></script>
+<script src="articoli-chiave.js"></script>
 <script src="mappe-dati.js"></script>
 <script src="voce-umana.js"></script>
 <script>
@@ -107,6 +108,9 @@
   var M = window.MAPPE_ORALE;
   var stage = document.getElementById('stage'), bar = document.getElementById('bar');
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  // articoli chiave del lavoro evidenziati (giallo Costituzione, verde codice civile)
+  var AC = window.ART_CHIAVE;
+  function hl(t, grassetti){ return AC ? AC.html(t, grassetti) : esc(t); }
   var RX = /(art(?:t)?\.\s?[0-9][0-9\-a-z, e]*?(?:c\.c\.|c\.p\.|Cost\.|TUIR|D\.Lgs\.\s?\d+\/\d{4}|L\.\s?\d+\/\d{4}|D\.L\.\s?\d+\/\d{4}|D\.P\.R\.\s?\d+\/\d{4}))/;
   function norma(d){
     if (Object.prototype.hasOwnProperty.call(M.norm, d.id)) return M.norm[d.id];
@@ -123,7 +127,7 @@
     if (M.escluse[d.id]) cls = 'esc';
     var n = norma(d);
     var kw = (d.r && d.r.punti || []).map(function(p){ return parola(p[0], (p[1] || [])[0]); }).filter(Boolean).slice(0, 5);
-    return '<li class="'+cls+'" data-id="'+esc(d.id)+'" tabindex="0">' + esc(etichetta(d)) + (n ? ' <span class="n">· ' + esc(n) + '</span>' : '') + '<span class="id">' + esc(d.id) + '</span>' + (kw.length && cls !== 'esc' ? '<span class="kw">' + kw.map(esc).join(' · ') + '</span>' : '') + '</li>';
+    return '<li class="'+cls+'" data-id="'+esc(d.id)+'" tabindex="0">' + esc(etichetta(d)) + (n ? ' <span class="n">· ' + hl(n) + '</span>' : '') + '<span class="id">' + esc(d.id) + '</span>' + (kw.length && cls !== 'esc' ? '<span class="kw">' + kw.map(esc).join(' · ') + '</span>' : '') + '</li>';
   }
   function boxHtml(titolo, dd, nosub){
     var groups = [], seen = {};
@@ -134,7 +138,7 @@
   }
   var ORD = {X26:0, A25:1, S22:2};
   function boxSpec(r){
-    return '<div class="box"><h3>' + esc(r.nome) + '</h3><ul>' + r.voci.map(function(v, j){ return '<li class="' + (v[3] || 'x26') + '" data-sp="' + esc(r.key) + '" data-i="' + j + '" tabindex="0">' + esc(v[0]) + (v[1] ? ' <span class="n">· ' + esc(v[1]) + '</span>' : '') + (v[2] ? '<span class="kw">' + esc(v[2]) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
+    return '<div class="box"><h3>' + esc(r.nome) + '</h3><ul>' + r.voci.map(function(v, j){ return '<li class="' + (v[3] || 'x26') + '" data-sp="' + esc(r.key) + '" data-i="' + j + '" tabindex="0">' + esc(v[0]) + (v[1] ? ' <span class="n">· ' + hl(v[1]) + '</span>' : '') + (v[2] ? '<span class="kw">' + hl(v[2]) + '</span>' : '') + '</li>'; }).join('') + '</ul></div>';
   }
   function box(r){ return r.voci ? boxSpec(r) : boxHtml(r.nome, r.dd, r.sub); }
   function ramo(r){
@@ -159,7 +163,7 @@
       '<div class="center"><div class="node"><b>' + esc(mp.titolo) + '</b><span>' + esc(mp.sotto) + '</span></div></div>' +
       '<div class="col r">' + R.map(box).join('') + '</div>' +
       '</div></div></div>' +
-      '<div class="foot"><span>Mappe mentali · Orale CdL Marche 2026 · mappe ' + esc(M.versione) + ' · dati ' + esc(O.versione || '') + '</span><span>' + (i+1) + ' / ' + M.mappe.length + '</span></div>' +
+      '<div class="foot"><span>' + (AC ? '<mark class="ac-cost">Costituzione</mark> <mark class="ac-cc">Codice civile</mark> · ' : '') + 'Mappe mentali · Orale CdL Marche 2026 · mappe ' + esc(M.versione) + ' · dati ' + esc(O.versione || '') + '</span><span>' + (i+1) + ' / ' + M.mappe.length + '</span></div>' +
       '</div></div>' +
       '<div class="lista" style="--c:'+mp.colore+'"><h2>' + esc(mp.titolo) + ' · ' + esc(mp.sotto) + '</h2><div class="r">' + esc(mp.riga) + '</div>' + rami.map(box).join('') + '</div>';
     stage.insertAdjacentHTML('beforeend', html);
@@ -175,19 +179,17 @@
   var dlg = document.getElementById('sp'), voce = null;
   function byId(id){ return O.domande.find(function(d){ return d.id === id; }); }
   function grassetto(testo, kws){
-    var out = esc(testo);
-    (kws || []).forEach(function(k){ var w = parola(testo, k); if (w && w.length > 1) out = out.split(esc(w)).join('<b>' + esc(w) + '</b>'); });
-    return out;
+    return hl(testo, (kws || []).map(function(k){ return parola(testo, k); }).filter(function(w){ return w && w.length > 1; }));
   }
   function apri(id, colore){
     var d = byId(id); if (!d) return;
     var r = d.r || (d.vedi && byId(d.vedi) && byId(d.vedi).r);
     dlg.style.setProperty('--c', colore);
-    var h = '<div class="hd"><div class="q"><small>' + esc(d.id) + ' · ' + esc(d.gruppo || '') + (d.serie === 'X26' ? ' · integrazione 2026' : d.serie === 'S22' ? ' · argomenti 2022' : ' · buste Ancona 2025') + '</small>' + esc(d.testo) + '</div><button type="button" data-x="chiudi">Chiudi ✕</button></div><div class="bd">';
+    var h = '<div class="hd"><div class="q"><small>' + esc(d.id) + ' · ' + esc(d.gruppo || '') + (d.serie === 'X26' ? ' · integrazione 2026' : d.serie === 'S22' ? ' · argomenti 2022' : ' · buste Ancona 2025') + '</small>' + hl(d.testo) + '</div><button type="button" data-x="chiudi">Chiudi ✕</button></div><div class="bd">';
     if (!r) h += '<p>Risposta migliore non disponibile per questa voce.</p>';
     else {
-      h += '<p class="sint">' + esc(r.sintesi) + '</p><ol>' + r.punti.map(function(p){ return '<li>' + grassetto(p[0], p[1]) + '</li>'; }).join('') + '</ol>' +
-        '<div class="ag"><b>Aggancio al lavoro:</b> ' + esc(r.aggancio) + '</div><div class="fo"><b>Fonti:</b> ' + esc(r.fonti) + '</div>';
+      h += (AC ? AC.legenda() : '') + '<p class="sint">' + hl(r.sintesi) + '</p><ol>' + r.punti.map(function(p){ return '<li>' + grassetto(p[0], p[1]) + '</li>'; }).join('') + '</ol>' +
+        '<div class="ag"><b>Aggancio al lavoro:</b> ' + hl(r.aggancio) + '</div><div class="fo"><b>Fonti:</b> ' + hl(r.fonti) + '</div>';
     }
     h += '<div class="az"><a class="pri" href="orale.html#q=' + encodeURIComponent(d.id) + '">Prova a rispondere nel simulatore →</a>' +
       (VoceUmana.disponibile && r ? '<button type="button" data-x="voce">🔊 Ascolta la risposta</button>' : '') +
@@ -204,8 +206,8 @@
     var q = byId(s.sim);
     dlg.style.setProperty('--c', colore);
     var h = '<div class="hd"><div class="q"><small>' + esc(mp ? mp.titolo + ' · ' + mp.sotto : '') + (voce ? ' · voce: ' + esc(voce[0]) : '') + '</small>' + esc(s.titolo) + '</div><button type="button" data-x="chiudi">Chiudi ✕</button></div><div class="bd">' +
-      '<p class="sint">' + esc(s.sintesi) + '</p><ol>' + s.punti.map(function(p, j){ return '<li' + (j === +i ? ' class="on"' : '') + '>' + esc(p) + '</li>'; }).join('') + '</ol>' +
-      '<div class="ag"><b>Aggancio al lavoro:</b> ' + esc(s.aggancio) + '</div><div class="fo"><b>Fonti:</b> ' + esc(s.fonti) + '</div>' +
+      (AC ? AC.legenda() : '') + '<p class="sint">' + hl(s.sintesi) + '</p><ol>' + s.punti.map(function(p, j){ return '<li' + (j === +i ? ' class="on"' : '') + '>' + hl(p) + '</li>'; }).join('') + '</ol>' +
+      '<div class="ag"><b>Aggancio al lavoro:</b> ' + hl(s.aggancio) + '</div><div class="fo"><b>Fonti:</b> ' + hl(s.fonti) + '</div>' +
       '<div class="az">' + (q ? '<a class="pri" href="orale.html#q=' + encodeURIComponent(q.id) + '">Domanda collegata nel simulatore (' + esc(q.id) + ') →</a>' : '') +
       (VoceUmana.disponibile ? '<button type="button" data-x="voce">🔊 Ascolta la spiegazione</button>' : '') +
       '<button type="button" data-x="chiudi">Torna alla mappa</button></div>' + (VoceUmana.disponibile ? opzioniVoce() : '') + '</div>';

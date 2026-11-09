@@ -9,7 +9,7 @@ from reportlab.lib.units import cm
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, Table,
                                 TableStyle, PageBreak)
-from fascicolo import S, INK, MUTED, ACCENT, RULE, ordina
+from fascicolo import S, INK, MUTED, ACCENT, RULE, ordina, evidenzia, imposta_articoli, LEGENDA_ART
 
 GRUPPI = [('1 · ROSSO', 'Diritto del lavoro', ['DL']),
           ('2 · BLU', 'Legislazione sociale INPS e INAIL', ['INPS', 'INAIL']),
@@ -30,6 +30,7 @@ def casella():
 
 
 def costruisci(dati, out):
+    imposta_articoli(dati.get('artchiave'))
     nomi = {m['k']: m['nome'] for m in dati['materie']}
     per_id = {d['id']: d for d in dati['domande']}
     W = A4[0] - 2 * cm - 1.8 * cm
@@ -54,7 +55,7 @@ def costruisci(dati, out):
                  '2. Scopri e confronta: conta la sostanza (istituto, norma, regola), non le parole identiche.',
                  '3. Se l\'hai detta bene, spunta la casella. Se no, torna alla scheda nel fascicolo del colore.',
                  '4. Ultimi due giorni: rifai solo le righe senza spunta. In fondo a ogni colore ci sono le domande 2022 '
-                 'che si risolvono con un\'altra scheda.']:
+                 'che si risolvono con un\'altra scheda.', LEGENDA_ART]:
         st.append(Paragraph(riga, S['body'])); st.append(Spacer(1, 2))
 
     tot = 0
@@ -70,7 +71,7 @@ def costruisci(dati, out):
                                 ('TOPPADDING', (0, 0), (-1, -1), 4), ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
                                 ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 6)]
             for i, d in enumerate(domande):
-                testo = [Paragraph(escape(d['testo']), DOMANDA), Paragraph(escape(d['r']['sintesi']), FRASE)]
+                testo = [Paragraph(evidenzia(d['testo']), DOMANDA), Paragraph(evidenzia(d['r']['sintesi']), FRASE)]
                 righe.append([Paragraph(escape(d['id']), CODICE), testo, casella()])
             t = Table(righe, colWidths=[1.9 * cm, W - 1.9 * cm - 0.55 * cm, 0.55 * cm], rowHeights=None)
             stile += [('TOPPADDING', (2, 0), (2, -1), 6), ('RIGHTPADDING', (2, 0), (2, -1), 0)]
