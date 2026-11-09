@@ -3,7 +3,7 @@
    Le norme sono prese dalle risposte modello; dove la risposta non indica una norma singola la foglia resta senza.
    Versione 1.1 del 7/11/2026: aggiunte due mappe per articolo su D.L. 62/2026 e D.Lgs. 96/2026 (da P1_Mappe_DL62_DLgs96, testi vigenti in libreria). */
 (function(){
-  var C = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#1f4e8c', PPP:'#2f6b3f', TRIB:'#9a7a1e', RAG:'#9a7a1e', DEO:'#e8590c'};
+  var C = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#1f4e8c', PPP:'#2f6b3f', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};
   var MAPPE = [
     {id:'dl62', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.L. 62/2026', sotto:'Salario giusto (conv. L. 112/2026)', colore:C.DL, schede:'scheda DL-X3', rif:'DL-X3',
      speciale:[
@@ -203,7 +203,7 @@
   /* Domande da non studiare (indicazione informale del Presidente riferita da Andrea). */
   var ESCLUSE = {'PPP-11':'escluso: indicazione di Rausei (poco pertinente)'};
 
-  window.MAPPE_ORALE = {versione:'1.2 · 7/11/2026', mappe:MAPPE, sotto:SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
+  window.MAPPE_ORALE = {versione:'1.3 · 9/11/2026', mappe:MAPPE, sotto:SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
 })();
 
 /* Spiegazioni delle voci delle due mappe per articolo (D.L. 62/2026 e D.Lgs. 96/2026): una per riquadro,
