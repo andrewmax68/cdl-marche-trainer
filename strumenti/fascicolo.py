@@ -31,7 +31,11 @@ TINT = colors.HexColor('#f1efe8')
 RULE = colors.HexColor('#c9c6bc')
 # colore di ogni busta, uguale a quello delle mappe mentali (mappe-dati.js); con testo bianco resta leggibile
 COLORE_MAT = {'DL': '#7c2b2b', 'INPS': '#1f4e8c', 'INAIL': '#1f4e8c', 'PPP': '#2f6b3f',
-              'TRIB': '#9a7a1e', 'RAG': '#9a7a1e', 'DEO': '#b05a12'}
+              'TRIB': '#8a6a00', 'RAG': '#8a6a00', 'DEO': '#c2410c'}
+# fascia del titolo: colore di fondo e colore del testo (il giallo vivo vuole il testo scuro)
+FASCIA_MAT = {'DL': ('#7c2b2b', '#ffffff'), 'INPS': ('#1f4e8c', '#ffffff'), 'INAIL': ('#1f4e8c', '#ffffff'),
+              'PPP': ('#2f6b3f', '#ffffff'), 'TRIB': ('#f5c400', '#1d1d1b'), 'RAG': ('#f5c400', '#1d1d1b'),
+              'DEO': ('#d9480f', '#ffffff')}
 
 S = {
     'title': ParagraphStyle('t', fontName='Serif-B', fontSize=20, leading=24, textColor=INK, spaceAfter=4),
@@ -167,6 +171,8 @@ def costruisci(dati, materia, out):
     col = colors.HexColor(COLORE_MAT.get(materia, '#7a2e2a'))
     H2 = ParagraphStyle('h2m', parent=S['h2'], textColor=col)
     EYE = ParagraphStyle('em', parent=S['eyebrow'], textColor=col)
+    fondo, testo_f = FASCIA_MAT.get(materia, ('#7a2e2a', '#ffffff'))
+    QB = ParagraphStyle('qbm', parent=S['qband'], textColor=colors.HexColor(testo_f))
     mat = next(m for m in dati['materie'] if m['k'] == materia)
     comm = dati['commissione'].get(mat['comm'], {})
     domande = sorted([d for d in dati['domande'] if d['m'] == materia], key=ordina)
@@ -242,8 +248,8 @@ def costruisci(dati, materia, out):
         etichetta = '%s · %s · %s' % (d['id'], d['etichetta'], d['gruppo'])
         blocco.append(Spacer(1, 10))
         blocco.append(Paragraph(escape(etichetta).upper(), EYE))
-        fascia = Table([[Paragraph(evidenzia(d['testo'], scuro=True), S['qband'])]], colWidths=[w])
-        fascia.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), col), ('LEFTPADDING', (0, 0), (-1, -1), 9),
+        fascia = Table([[Paragraph(evidenzia(d['testo'], scuro=(testo_f == '#ffffff')), QB)]], colWidths=[w])
+        fascia.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), colors.HexColor(fondo)), ('LEFTPADDING', (0, 0), (-1, -1), 9),
                                     ('RIGHTPADDING', (0, 0), (-1, -1), 9), ('TOPPADDING', (0, 0), (-1, -1), 5),
                                     ('BOTTOMPADDING', (0, 0), (-1, -1), 7)]))
         blocco.append(Spacer(1, 2))
