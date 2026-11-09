@@ -10,7 +10,7 @@ from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, Table,
                                 TableStyle, PageBreak)
-from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, ordina, evidenzia, imposta_articoli, LEGENDA_ART
+from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, chiave_colore, ordina, evidenzia, imposta_articoli, LEGENDA_ART
 
 GRUPPI = [('1 · ROSSO', 'Diritto del lavoro', ['DL']),
           ('2 · BLU', 'Legislazione sociale INPS e INAIL', ['INPS', 'INAIL']),
@@ -80,6 +80,10 @@ def costruisci(dati, out):
                                 ('TOPPADDING', (0, 0), (-1, -1), 4), ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
                                 ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 6)]
             for i, d in enumerate(domande):
+                if m == 'PPP':   # privato, pubblico e penale: tre verdi
+                    cm_ = colors.HexColor(COLORE_MAT[chiave_colore(d)])
+                    dom = ParagraphStyle('dm', parent=DOMANDA, textColor=cm_)
+                    cod = ParagraphStyle('cm', parent=CODICE, textColor=cm_)
                 testo = [Paragraph(evidenzia(d['testo']), dom), Paragraph(evidenzia(d['r']['sintesi']), FRASE)]
                 righe.append([Paragraph(escape(d['id']), cod), testo, casella()])
             t = Table(righe, colWidths=[1.9 * cm, W - 1.9 * cm - 0.55 * cm, 0.55 * cm], rowHeights=None)

@@ -3,7 +3,7 @@
    Le norme sono prese dalle risposte modello; dove la risposta non indica una norma singola la foglia resta senza.
    Versione 1.1 del 7/11/2026: aggiunte due mappe per articolo su D.L. 62/2026 e D.Lgs. 96/2026 (da P1_Mappe_DL62_DLgs96, testi vigenti in libreria). */
 (function(){
-  var C = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#4fb6ea', PPP:'#2f6b3f', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};
+  var C = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#4fb6ea', PPP:'#1b5e20', PRIV:'#8fd16a', PUBB:'#1b5e20', PEN:'#00a36c', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};
   var MAPPE = [
     {id:'dl62', riga:'Riga 1 · rosso · priorità del Presidente', titolo:'D.L. 62/2026', sotto:'Salario giusto (conv. L. 112/2026)', colore:C.DL, schede:'scheda DL-X3', rif:'DL-X3',
      speciale:[
@@ -76,11 +76,11 @@
      rami:[['INPS','Contribuzione'],['INPS','Adempimenti'],['INPS','Prestazioni'],['INPS','Ammortizzatori e sostegno al reddito'],['INPS','Integrazione 2026']]},
     {id:'inail', riga:'Riga 2 · blu', titolo:'Legislazione sociale', sotto:'INAIL', colore:C.INAIL,
      rami:[['INAIL','Obbligo, premi e adempimenti'],['INAIL','Infortunio e malattia professionale'],['INAIL','Prestazioni e azioni']]},
-    {id:'priv', dividi:true, riga:'Riga 3 · verde', titolo:'Diritto privato', sotto:'Persone, contratto, obbligazioni, impresa', colore:C.PPP,
+    {id:'priv', dividi:true, riga:'Riga 3 · verde', titolo:'Diritto privato', sotto:'Persone, contratto, obbligazioni, impresa', colore:C.PRIV,
      rami:[['PPP','Privato']]},
-    {id:'pubb', dividi:true, riga:'Riga 3 · verde', titolo:'Diritto pubblico', sotto:'Costituzione, fonti, organi', colore:C.PPP,
+    {id:'pubb', dividi:true, riga:'Riga 3 · verde', titolo:'Diritto pubblico', sotto:'Costituzione, fonti, organi', colore:C.PUBB,
      rami:[['PPP','Pubblico e costituzionale'],['PPP','Integrazione 2026']]},
-    {id:'pen', dividi:true, riga:'Riga 3 · verde', titolo:'Diritto penale', sotto:'Principi, reato, reati del lavoro', colore:C.PPP,
+    {id:'pen', dividi:true, riga:'Riga 3 · verde', titolo:'Diritto penale', sotto:'Principi, reato, reati del lavoro', colore:C.PEN,
      rami:[['PPP','Penale']]},
     {id:'trib', riga:'Riga 4 · giallo', titolo:'Diritto tributario', sotto:'IRPEF, lavoro dipendente, procedimento', colore:C.TRIB,
      rami:[['TRIB','Parte generale e procedimento'],['TRIB','Lavoro dipendente'],['TRIB','Società e impresa'],['TRIB','Integrazione 2026']]},

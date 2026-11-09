@@ -30,12 +30,21 @@ ACCENT = colors.HexColor('#7a2e2a')      # rosso scuro, stampa bene anche in bia
 TINT = colors.HexColor('#f1efe8')
 RULE = colors.HexColor('#c9c6bc')
 # colore di ogni busta, uguale a quello delle mappe mentali (mappe-dati.js); con testo bianco resta leggibile
-COLORE_MAT = {'DL': '#7c2b2b', 'INPS': '#1f4e8c', 'INAIL': '#0a6896', 'PPP': '#2f6b3f',
+COLORE_MAT = {'DL': '#7c2b2b', 'INPS': '#1f4e8c', 'INAIL': '#0a6896', 'PPP': '#1b5e20',
+              'PRIV': '#2e7d1f', 'PUBB': '#1b5e20', 'PEN': '#0b7a5e',
               'TRIB': '#8a6a00', 'RAG': '#6b5f00', 'DEO': '#c2410c'}
-# fascia del titolo: colore di fondo e colore del testo (il giallo vivo vuole il testo scuro)
+# fascia del titolo: colore di fondo e colore del testo (sui colori chiari il testo è scuro)
 FASCIA_MAT = {'DL': ('#7c2b2b', '#ffffff'), 'INPS': ('#1f4e8c', '#ffffff'), 'INAIL': ('#4fb6ea', '#1d1d1b'),
-              'PPP': ('#2f6b3f', '#ffffff'), 'TRIB': ('#f5c400', '#1d1d1b'), 'RAG': ('#fff27a', '#1d1d1b'),
-              'DEO': ('#ff7a00', '#1d1d1b')}
+              'PRIV': ('#8fd16a', '#1d1d1b'), 'PUBB': ('#1b5e20', '#ffffff'), 'PEN': ('#00a36c', '#1d1d1b'),
+              'TRIB': ('#f5c400', '#1d1d1b'), 'RAG': ('#fff27a', '#1d1d1b'), 'DEO': ('#ff7a00', '#1d1d1b')}
+FASCIA_MAT['PPP'] = FASCIA_MAT['PUBB']
+
+
+def chiave_colore(d):
+    """Materia ai fini del colore: la busta verde si divide in privato, pubblico e penale (come le mappe)."""
+    if d['m'] == 'PPP':
+        return {'Privato': 'PRIV', 'Penale': 'PEN'}.get(d.get('gruppo'), 'PUBB')
+    return d['m']
 
 S = {
     'title': ParagraphStyle('t', fontName='Serif-B', fontSize=20, leading=24, textColor=INK, spaceAfter=4),
@@ -243,6 +252,11 @@ def costruisci(dati, materia, out):
         st.append(t2)
 
     for d in domande:
+        k = chiave_colore(d)
+        col = colors.HexColor(COLORE_MAT.get(k, '#7a2e2a'))
+        EYE = ParagraphStyle('em', parent=S['eyebrow'], textColor=col)
+        fondo, testo_f = FASCIA_MAT.get(k, ('#7a2e2a', '#ffffff'))
+        QB = ParagraphStyle('qbm', parent=S['qband'], textColor=colors.HexColor(testo_f))
         st.append(CondPageBreak(7 * cm))
         blocco = []
         etichetta = '%s · %s · %s' % (d['id'], d['etichetta'], d['gruppo'])

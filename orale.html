@@ -275,9 +275,9 @@
 </div></dialog>
 <div class="toast" id="toast"></div>
 
-<script src="orale-dati.js?v=20261109b"></script>
-<script src="articoli-chiave.js?v=20261109b"></script>
-<script src="voce-umana.js?v=20261109b"></script>
+<script src="orale-dati.js?v=20261109c"></script>
+<script src="articoli-chiave.js?v=20261109c"></script>
+<script src="voce-umana.js?v=20261109c"></script>
 <script>
 (function(){
   'use strict';
@@ -444,8 +444,9 @@
   }
   // articoli chiave del lavoro evidenziati (giallo Costituzione, verde codice civile)
   // colore della busta per il titolo della domanda (stessi colori delle mappe e dei fascicoli)
-  var QCOL = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#0a6896', PPP:'#2f6b3f', TRIB:'#8a6a00', RAG:'#6b5f00', DEO:'#c2410c'};   // testo
-  var QBAR = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#4fb6ea', PPP:'#2f6b3f', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};   // barra: colore pieno della busta
+  var QCOL = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#0a6896', PPP:'#1b5e20', PRIV:'#2e7d1f', PUBB:'#1b5e20', PEN:'#0b7a5e', TRIB:'#8a6a00', RAG:'#6b5f00', DEO:'#c2410c'};   // testo
+  var QBAR = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#4fb6ea', PPP:'#1b5e20', PRIV:'#8fd16a', PUBB:'#1b5e20', PEN:'#00a36c', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};   // barra: colore pieno della busta
+  function kcol(d){ return d.m === 'PPP' ? ({'Privato':'PRIV', 'Penale':'PEN'}[d.gruppo] || 'PUBB') : d.m; }
   function hl(t){ return window.ART_CHIAVE ? window.ART_CHIAVE.html(t) : esc(t); }
   function modelHtml(d, text){
     if (!d.r) {
@@ -537,7 +538,7 @@
     body.innerHTML = '<div class="qcard">' + whoHtml(d) +
       '<div class="row small muted"><span>'+esc(d.fonte)+' · '+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="qTimer">3:00</span></div>' +
       (d.vedi && byId(d.vedi) ? '<p class="small muted">Stesso tema di «'+esc(byId(d.vedi).testo)+'» ('+esc(byId(d.vedi).fonte)+'): risposta modello e approfondimenti condivisi.</p>' : '') +
-      '<p class="qtext" style="--qc:'+(QCOL[d.m]||'')+';--qb:'+(QBAR[d.m]||'')+'">'+hl(d.testo)+'</p>' +
+      '<p class="qtext" style="--qc:'+(QCOL[kcol(d)]||'')+';--qb:'+(QBAR[kcol(d)]||'')+'">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" data-act="read" type="button">🔊 Ascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" data-act="mic" type="button">🎙 Rispondi a voce</button>' : '') +
         '<button class="btn alt sm" data-act="timer" type="button">Avvia cronometro</button></div>' +
@@ -636,7 +637,7 @@
     $('#simRun').innerHTML = '<div class="box"><div class="row"><b>'+esc(run.titolo)+'</b><span class="small muted">· domanda '+(i+1)+' di '+run.Q.length+'</span><span class="grow"></span><button class="btn alt sm" id="simQuit" type="button">Interrompi</button></div><div class="steps">'+steps+'</div>' +
       '<div class="qcard">' + whoHtml(d) +
       '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="grow"></span><span class="timer mono" id="sTimer">3:00</span></div>' +
-      '<p class="qtext" style="--qc:'+(QCOL[d.m]||'')+';--qb:'+(QBAR[d.m]||'')+'">'+hl(d.testo)+'</p>' +
+      '<p class="qtext" style="--qc:'+(QCOL[kcol(d)]||'')+';--qb:'+(QBAR[kcol(d)]||'')+'">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" id="sRead" type="button">🔊 Riascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" id="sMic" type="button">🎙 Rispondi a voce</button>' : '') + '</div>' +
       '<div class="ans"><textarea id="sAns" placeholder="Rispondi come davanti alla commissione: per iscritto o col microfono (Modalità audio). Restano modificabili."></textarea></div>' +
