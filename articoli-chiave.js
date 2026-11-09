@@ -1,4 +1,5 @@
-/* Articoli chiave dell'area giuslavoristica: Costituzione (giallo) e codice civile (verde).
+/* Articoli chiave dell'area giuslavoristica: Costituzione (giallo) e codice civile (verde);
+   leggi cardine sottolineate in blu.
    Fonte unica per simulatore, mappe e fascicoli PDF (strumenti/fascicolo.py usa le stesse liste
    tramite esporta_json.js e la stessa regola di riconoscimento: tenere allineate le due versioni). */
 (function (root) {
@@ -7,6 +8,15 @@
     '2082', '2083', '2086', '2087', '2094', '2095', '2096', '2099', '2103', '2104', '2105', '2106', '2107',
     '2108', '2109', '2110', '2112', '2113', '2114', '2115', '2116', '2118', '2119', '2120', '2121', '2122',
     '2125', '2126', '2135', '2222', '2229', '2230', '2231', '2232', '2233', '2751-bis', '2946', '2948'];
+  // Leggi cardine (tipo + numero/anno). D.L. 62/2026 con la legge di conversione 112/2026; art. 8 D.L. 138/2011.
+  var LEGGI = ['L 300/1970', 'L 604/1966', 'DLGS 23/2015', 'DLGS 81/2015', 'DLGS 276/2003', 'DLGS 66/2003',
+    'DLGS 152/1997', 'DLGS 104/2022', 'DLGS 151/2001', 'DLGS 198/2006', 'L 146/1990',
+    'DL 62/2026', 'L 112/2026', 'DLGS 96/2026', 'DL 138/2011',
+    'DLGS 81/2008', 'DLGS 124/2004', 'DLGS 758/1994',
+    'DPR 1124/1965', 'DLGS 38/2000', 'L 335/1995', 'DLGS 148/2015',
+    'L 12/1979', 'DPR 137/2012', 'DPR 600/1973'];
+  var SRC_L = '\\b(L\\.|[Ll]egge|D\\.\\s?[Ll]gs\\.|D\\.L\\.|D\\.P\\.R\\.)\\s?(?:(?:n\\.\\s?)?(\\d+)\\/(\\d{4})\\b|\\d{1,2}\\/\\d{1,2}\\/(\\d{4}),?\\s?n\\.\\s?(\\d+))|\\bSt\\.\\s?lav\\.|\\bStatuto(?! del contribuente| Lavoratori)(?: dei lavoratori)?';
+  function tipoLegge(t) { return /^D\.\s?[Ll]gs/.test(t) ? 'DLGS' : t === 'D.L.' ? 'DL' : t === 'D.P.R.' ? 'DPR' : 'L'; }
 
   var NUM = '\\d+(?:-(?:bis|ter|quater))?';
   var ORD = '(?:primo|secondo|terzo|quarto|quinto|sesto|settimo|ottavo|nono|decimo|ultimo)';
@@ -27,8 +37,17 @@
   }
   function tocca(nn, chiavi) { return nn.some(function (n) { return chiavi.indexOf(n) >= 0; }); }
 
-  /* Restituisce [[inizio, fine, 'cost'|'cc'], ...] sul testo semplice. */
+  /* Restituisce [[inizio, fine, 'cost'|'cc'|'legge'], ...] sul testo semplice. */
   function trova(testo) {
+    var out = trovaArt(testo), rx = new RegExp(SRC_L, 'g'), m;
+    testo = String(testo || '');
+    while ((m = rx.exec(testo))) {
+      var k = m[1] ? tipoLegge(m[1]) + ' ' + (m[2] ? m[2] + '/' + m[3] : m[5] + '/' + m[4]) : 'L 300/1970';
+      if (LEGGI.indexOf(k) >= 0) out.push([m.index, m.index + m[0].length, 'legge']);
+    }
+    return out.sort(function (a, b) { return a[0] - b[0]; });
+  }
+  function trovaArt(testo) {
     var rx = new RegExp(SRC, 'g'), out = [], m;
     testo = String(testo || '');
     while ((m = rx.exec(testo))) {
@@ -43,7 +62,7 @@
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  /* HTML con gli articoli chiave evidenziati e, se date, le parole in grassetto. */
+  /* HTML con gli articoli chiave evidenziati, le leggi cardine sottolineate e, se date, le parole in grassetto. */
   function html(testo, grassetti) {
     testo = String(testo || '');
     var n = testo.length, b = new Array(n), h = new Array(n), i;
@@ -67,11 +86,12 @@
     return out;
   }
 
-  var CSS = 'mark.ac-cost,mark.ac-cc{color:#161d29;padding:0 .12em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+  var CSS = 'mark.ac-legge{background:none;color:inherit;text-decoration:underline;text-decoration-color:#2457a6;text-decoration-thickness:2.5px;text-underline-offset:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    'mark.ac-cost,mark.ac-cc{color:#161d29;padding:0 .12em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
     'mark.ac-cost{background:#ffe066}mark.ac-cc{background:#a8dc9a}' +
     '.ac-leg{font:12px/1.4 system-ui,sans-serif;color:#5f5e5a;margin:6px 0}.ac-leg mark{font-weight:600}';
-  function legenda() { return '<div class="ac-leg">Articoli chiave del lavoro: <mark class="ac-cost">Costituzione</mark> <mark class="ac-cc">Codice civile</mark></div>'; }
+  function legenda() { return '<div class="ac-leg">Articoli chiave del lavoro: <mark class="ac-cost">Costituzione</mark> <mark class="ac-cc">Codice civile</mark> · <mark class="ac-legge">leggi cardine</mark></div>'; }
   if (root.document) { var st = root.document.createElement('style'); st.textContent = CSS; root.document.head.appendChild(st); }
 
-  root.ART_CHIAVE = { COST: COST, CC: CC, SRC: SRC, DOPO: DOPO.source, trova: trova, html: html, legenda: legenda };
+  root.ART_CHIAVE = { COST: COST, CC: CC, LEGGI: LEGGI, SRC: SRC, SRC_L: SRC_L, DOPO: DOPO.source, trova: trova, html: html, legenda: legenda };
 })(typeof window !== 'undefined' ? window : globalThis);

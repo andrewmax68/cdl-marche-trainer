@@ -60,14 +60,23 @@ def norm(s):
 # Articoli chiave dell'area giuslavoristica (regole e liste da articoli-chiave.js, via esporta_json.js)
 AC = None
 COLORE_ART = {'cost': '#ffe066', 'cc': '#a8dc9a'}
+APRI_ART = {'cost': '<span backColor="#ffe066">', 'cc': '<span backColor="#a8dc9a">',
+            'legge': '<u color="#2457a6" width="1.6" offset="-2.5">'}
+CHIUDI_ART = {'cost': '</span>', 'cc': '</span>', 'legge': '</u>'}
 LEGENDA_ART = ('5. Gli articoli chiave del lavoro sono evidenziati: <span backColor="#ffe066">&nbsp;giallo = Costituzione&nbsp;</span> '
-               '<span backColor="#a8dc9a">&nbsp;verde = codice civile&nbsp;</span>. Sono i riferimenti da citare per agganciare la risposta.')
+               '<span backColor="#a8dc9a">&nbsp;verde = codice civile&nbsp;</span>; le leggi cardine sono '
+               '<u color="#2457a6" width="1.6" offset="-2.5">sottolineate in blu</u>. Sono i riferimenti da citare per agganciare la risposta.')
 
 
 def imposta_articoli(ac):
     global AC
     AC = None if not ac else {'cost': set(ac['cost']), 'cc': set(ac['cc']),
-                               'rx': re.compile(ac['src']), 'dopo': re.compile(ac['dopo'])}
+                               'rx': re.compile(ac['src']), 'dopo': re.compile(ac['dopo']),
+                               'leggi': set(ac.get('leggi', [])), 'rxl': re.compile(ac['src_l']) if ac.get('src_l') else None}
+
+
+def _tipo_legge(t):
+    return 'DLGS' if re.match(r'D\.\s?[Ll]gs', t) else {'D.L.': 'DL', 'D.P.R.': 'DPR'}.get(t, 'L')
 
 
 def _numeri(lista):
@@ -95,7 +104,13 @@ def articoli(testo):
             while fine > m.start() and testo[fine - 1] in ', ':
                 fine -= 1
             out.append((m.start(), fine, tipo))
-    return out
+    if AC['rxl']:
+        for m in AC['rxl'].finditer(testo):
+            k = (_tipo_legge(m.group(1)) + ' ' + (m.group(2) + '/' + m.group(3) if m.group(2) else m.group(5) + '/' + m.group(4))
+                 if m.group(1) else 'L 300/1970')
+            if k in AC['leggi']:
+                out.append((m.start(), m.end(), 'legge'))
+    return sorted(out)
 
 
 def evidenzia(testo, chiavi=()):
@@ -123,14 +138,14 @@ def evidenzia(testo, chiavi=()):
     out, cb, ch = [], False, None
     for c, sb, sh in zip(testo, segni, sfondo):
         if sh != ch:   # cambia lo sfondo: si chiude tutto e si riapre (il grassetto sta dentro lo sfondo)
-            out.append(('</b>' if cb else '') + ('</span>' if ch else ''))
-            out.append(('<span backColor="%s">' % COLORE_ART[sh] if sh else '') + ('<b>' if sb else ''))
+            out.append(('</b>' if cb else '') + (CHIUDI_ART[ch] if ch else ''))
+            out.append((APRI_ART[sh] if sh else '') + ('<b>' if sb else ''))
             ch, cb = sh, sb
         elif sb != cb:
             out.append('<b>' if sb else '</b>')
             cb = sb
         out.append(escape(c))
-    out.append(('</b>' if cb else '') + ('</span>' if ch else ''))
+    out.append(('</b>' if cb else '') + (CHIUDI_ART[ch] if ch else ''))
     return ''.join(out)
 
 
