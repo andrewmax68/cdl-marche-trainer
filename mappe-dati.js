@@ -105,7 +105,8 @@
     'DEO-7':'Doveri generali','DEO-8':'Doveri generali','DEO-9':'Doveri generali','DEO-10':'Doveri generali','DEO-11':'Doveri generali','DEO-12':'Doveri generali','DEO-13':'Doveri generali',
     'DEO-14':'Rapporti esterni e interni','DEO-15':'Rapporti esterni e interni','DEO-16':'Rapporti esterni e interni','DEO-17':'Rapporti esterni e interni','S22-DEO-14':'Rapporti esterni e interni',
     'S22-DL-20':'Retribuzione','S22-PPP-1':'Persone','S22-PPP-8':'Contratto','S22-TRIB-9':'Imposte e redditi','S22-DEO-1':'Doveri generali',
-    'DEO-18':'Incarico','DEO-19':'Incarico','DEO-20':'Incarico','DEO-21':'Incarico','S22-DEO-15':'Incarico'
+    'DEO-18':'Incarico','DEO-19':'Incarico','DEO-20':'Incarico','DEO-21':'Incarico','S22-DEO-15':'Incarico',
+    "PPP-X2":"Regioni, enti locali e PA","PPP-X3":"Fonti e procedimento legislativo","TRIB-X2":"Imposte e redditi","TRIB-X4":"Rapporti con il Fisco","TRIB-X5":"Rapporti con il Fisco","TRIB-X6":"Rapporti con il Fisco","DL-X19":"Obblighi e poteri"
   };
 
   /* Etichette brevi (dove il testo della domanda è lungo). */
@@ -167,7 +168,8 @@
     'DEO-7':'Finalità del Codice','DEO-8':'Destinatari','DEO-9':'Dignità e decoro','DEO-10':'Lealtà, fedeltà, indipendenza','DEO-11':'Segreto e riservatezza',
     'DEO-12':'Competenza e informativa','DEO-13':'Polizza e pubblicità','DEO-14':'Altri professionisti e colleghi','DEO-15':'Concorrenza sleale','DEO-16':'Rapporti con i colleghi',
     'DEO-17':'Praticanti e collaboratori','DEO-18':'Accettazione dell\'incarico','DEO-19':'Esecuzione dell\'incarico','DEO-20':'Restituzione dei documenti',
-    'DEO-21':'Pubblicità informativa','S22-DEO-14':'Società e imprese di servizi (art. 20)','S22-DEO-15':'Consulente dipendente (art. 36)'
+    'DEO-21':'Pubblicità informativa','S22-DEO-14':'Società e imprese di servizi (art. 20)','S22-DEO-15':'Consulente dipendente (art. 36)',
+    "DL-X12":"Lavoro agile","DL-X13":"Piattaforme digitali e rider","DL-X14":"Licenziamenti collettivi","DL-X15":"Trasferimento d'azienda","DL-X16":"RSA, RSU e art. 28","DL-X17":"Figure della sicurezza e delega","DL-X18":"Whistleblowing","DL-X19":"Privacy del lavoratore","DL-X20":"Liquidazione giudiziale e lavoro","INPS-X2":"Gestione separata","INPS-X3":"Incentivi ed esoneri contributivi","INPS-X4":"Ricongiunzione, totalizzazione, cumulo","INPS-X5":"Ticket di licenziamento","PPP-X2":"Procedimento e accesso agli atti","PPP-X3":"Fonti e istituzioni UE","TRIB-X2":"IVA","TRIB-X3":"IRES","TRIB-X4":"Accertamento","TRIB-X5":"Riscossione e rateazione","TRIB-X6":"Contenzioso tributario","RAG-X1":"Nota integrativa e rendiconto finanziario","RAG-X2":"Bilancio abbreviato e micro-imprese","RAG-X3":"Criteri di valutazione","DEO-X3":"Antiriciclaggio","DEO-X4":"Praticantato ed esame di Stato","DEO-X5":"ENPACL","DEO-X6":"Società tra professionisti (STP)"
   };
 
   /* Norma di riferimento (dalle risposte modello). Stringa vuota = nessuna norma singola da memorizzare. */
@@ -197,13 +199,14 @@
     'DEO-2':'art. 1 L. 12/1979; art. 348 c.p.','DEO-5':'L. 2/2009','DEO-7':'artt. 1-2 Codice','DEO-8':'artt. 2-3 Codice','DEO-9':'art. 4 Codice','DEO-10':'artt. 5-7 Codice',
     'DEO-12':'art. 9 Codice','DEO-14':'artt. 12-13 Codice','DEO-15':'art. 14 Codice','DEO-16':'art. 13 Codice','DEO-17':'art. 22 Codice','DEO-18':'art. 27 Codice',
     'DEO-19':'art. 30 Codice','DEO-20':'art. 33 Codice','DEO-21':'art. 35 Codice','DEO-X1':'art. 1 L. 12/1979; art. 348 c.p.','DEO-X2':'art. 38 Codice',
-    'S22-DEO-14':'art. 20 Codice','S22-DEO-15':'art. 36 Codice'
+    'S22-DEO-14':'art. 20 Codice','S22-DEO-15':'art. 36 Codice',
+    "DL-X12":"artt. 18-23 L. 81/2017","DL-X13":"capo V-bis D.Lgs. 81/2015; art. 12 D.L. 62/2026","DL-X14":"artt. 4, 5 e 24 L. 223/1991; art. 10 D.Lgs. 23/2015","DL-X15":"art. 2112 c.c.; art. 47 L. 428/1990","DL-X16":"artt. 19 e 28 L. 300/1970; C. cost. 231/2013 e 156/2025","DL-X17":"artt. 16-19 e 47 D.Lgs. 81/2008","DL-X18":"D.Lgs. 24/2023","DL-X19":"Reg. UE 2016/679; artt. 113-114 e 171 D.Lgs. 196/2003; artt. 4 e 8 L. 300/1970","DL-X20":"artt. 189-191 D.Lgs. 14/2019 (CCII)","INPS-X2":"art. 2, c. 26-29, L. 335/1995","INPS-X3":"art. 31 D.Lgs. 150/2015; art. 1, c. 1175, L. 296/2006; artt. 1-4 e 7 D.L. 62/2026","INPS-X4":"L. 29/1979; L. 45/1990; D.Lgs. 42/2006; art. 1, c. 239, L. 228/2012","INPS-X5":"art. 2, c. 31-35, L. 92/2012","PPP-X2":"L. 241/1990; D.M. 757/1994","PPP-X3":"art. 13 TUE; art. 288 TFUE; artt. 11 e 117 Cost.; L. 234/2012","TRIB-X2":"D.P.R. 633/1972 (TU IVA D.Lgs. 10/2026 dal 2027)","TRIB-X3":"artt. 72-77, 83-84, 95-96 TUIR","TRIB-X4":"artt. 38-43 D.P.R. 600/1973; art. 6-bis L. 212/2000; D.Lgs. 218/1997","TRIB-X5":"D.P.R. 602/1973 (artt. 19, 25, 50, 77, 86)","TRIB-X6":"D.Lgs. 546/1992 (TU giustizia tributaria dal 2027)","RAG-X1":"artt. 2423, 2425-ter, 2427 c.c.","RAG-X2":"artt. 2435-bis e 2435-ter c.c.","RAG-X3":"art. 2426 c.c.","DEO-X3":"D.Lgs. 231/2007 (artt. 3, 11, 17, 31, 35, 37, 49)","DEO-X4":"L. 12/1979, artt. 3 e 8-bis; art. 6 D.P.R. 137/2012; Regolamento CNO 2015","DEO-X5":"Regolamento di previdenza ENPACL; D.Lgs. 509/1994","DEO-X6":"art. 10, c. 3-11, L. 183/2011; D.M. 34/2013; art. 20 Codice"
   };
 
   /* Domande da non studiare (indicazione informale del Presidente riferita da Andrea). */
   var ESCLUSE = {'PPP-11':'escluso: indicazione di Rausei (poco pertinente)'};
 
-  window.MAPPE_ORALE = {versione:'1.3 · 9/11/2026', mappe:MAPPE, sotto:SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
+  window.MAPPE_ORALE = {versione:'1.4 · 9/11/2026', mappe:MAPPE, sotto:SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
 })();
 
 /* Spiegazioni delle voci delle due mappe per articolo (D.L. 62/2026 e D.Lgs. 96/2026): una per riquadro,
