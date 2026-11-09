@@ -96,7 +96,11 @@
   .avatar{width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:600 14px/1 var(--mono);flex:none}
   .who .n{font-weight:600;font-size:14px}
   .who .r{font-size:12px;color:var(--muted)}
-  .qtext{font:600 21px/1.35 var(--serif);margin:4px 0 12px;color:var(--qc,var(--oxblood));border-left:8px solid var(--qb,var(--qc,var(--oxblood)));padding:2px 0 2px 12px}
+  .qtext{font:600 21px/1.35 var(--serif);margin:4px 0 12px;color:var(--ct,var(--oxblood));background:color-mix(in srgb,var(--c,var(--oxblood)) 22%,#fff);border:1.6px solid var(--cb,var(--oxblood));border-left-width:8px;border-radius:8px;padding:8px 12px}
+  .qgr{display:inline-block;font:700 11px/1.25 var(--ui,system-ui,sans-serif);text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:4px;color:var(--ct,var(--oxblood));background:color-mix(in srgb,var(--c,var(--oxblood)) 22%,#fff);border:1px solid color-mix(in srgb,var(--c,var(--oxblood)) 30%,#fff)}
+  .qcard .model{border-top-color:var(--cb,var(--ink))}
+  .qcard .model h3{color:var(--ct,inherit)}
+  .qcard .model .sint{background:color-mix(in srgb,var(--c,#888) 10%,#fff);border-left:4px solid var(--cb,var(--ink));padding:8px 10px}
   .timer{font:600 18px/1 var(--mono);color:var(--ink-2)}
   .timer.over{color:var(--err)}
   .ans{margin-top:14px}
@@ -446,6 +450,11 @@
   // colore della busta per il titolo della domanda (stessi colori delle mappe e dei fascicoli)
   var QCOL = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#0a6896', PPP:'#1b5e20', PRIV:'#2e7d1f', PUBB:'#1b5e20', PEN:'#0b7a5e', TRIB:'#8a6a00', RAG:'#6b5f00', DEO:'#c2410c'};   // testo
   var QBAR = {DL:'#7c2b2b', INPS:'#1f4e8c', INAIL:'#4fb6ea', PPP:'#1b5e20', PRIV:'#8fd16a', PUBB:'#1b5e20', PEN:'#00a36c', TRIB:'#f5c400', RAG:'#fff27a', DEO:'#ff7a00'};   // barra: colore pieno della busta
+  // stessi toni delle mappe (mappe.html): colore pieno c, testo ct, testo su pieno cf, bordo cb
+  var TONI = {'#f5c400':{ct:'#8a6a00', cf:'#1d1d1b', cb:'#d4a800'}, '#fff27a':{ct:'#6b5f00', cf:'#1d1d1b', cb:'#c9b800'},
+    '#ff7a00':{ct:'#c2410c', cf:'#1d1d1b', cb:'#ff7a00'}, '#4fb6ea':{ct:'#0a6896', cf:'#1d1d1b', cb:'#2d9fd8'},
+    '#8fd16a':{ct:'#2e7d1f', cf:'#1d1d1b', cb:'#5fae3c'}, '#00a36c':{ct:'#0b7a5e', cf:'#1d1d1b', cb:'#00a36c'}};
+  function qstile(d){ var c = QBAR[kcol(d)] || '#7c2b2b', t = TONI[c] || {ct:c, cf:'#fff', cb:c}; return '--c:'+c+';--ct:'+t.ct+';--cf:'+t.cf+';--cb:'+t.cb; }
   function kcol(d){ return d.m === 'PPP' ? ({'Privato':'PRIV', 'Penale':'PEN'}[d.gruppo] || 'PUBB') : d.m; }
   function hl(t){ return window.ART_CHIAVE ? window.ART_CHIAVE.html(t) : esc(t); }
   function modelHtml(d, text){
@@ -535,10 +544,10 @@
     var d = byId(id); if (!d) return;
     openId = id;
     var body = $('#dlgBody');
-    body.innerHTML = '<div class="qcard">' + whoHtml(d) +
-      '<div class="row small muted"><span>'+esc(d.fonte)+' · '+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="qTimer">3:00</span></div>' +
+    body.innerHTML = '<div class="qcard" style="'+qstile(d)+'">' + whoHtml(d) +
+      '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="qgr">'+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="qTimer">3:00</span></div>' +
       (d.vedi && byId(d.vedi) ? '<p class="small muted">Stesso tema di «'+esc(byId(d.vedi).testo)+'» ('+esc(byId(d.vedi).fonte)+'): risposta modello e approfondimenti condivisi.</p>' : '') +
-      '<p class="qtext" style="--qc:'+(QCOL[kcol(d)]||'')+';--qb:'+(QBAR[kcol(d)]||'')+'">'+hl(d.testo)+'</p>' +
+      '<p class="qtext">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" data-act="read" type="button">🔊 Ascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" data-act="mic" type="button">🎙 Rispondi a voce</button>' : '') +
         '<button class="btn alt sm" data-act="timer" type="button">Avvia cronometro</button></div>' +
@@ -635,9 +644,9 @@
     var i = run.i, d = run.Q[i];
     var steps = run.Q.map(function(_, k){ return '<span class="'+(k < i ? 'done' : k === i ? 'cur' : '')+'"></span>'; }).join('');
     $('#simRun').innerHTML = '<div class="box"><div class="row"><b>'+esc(run.titolo)+'</b><span class="small muted">· domanda '+(i+1)+' di '+run.Q.length+'</span><span class="grow"></span><button class="btn alt sm" id="simQuit" type="button">Interrompi</button></div><div class="steps">'+steps+'</div>' +
-      '<div class="qcard">' + whoHtml(d) +
-      '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="grow"></span><span class="timer mono" id="sTimer">3:00</span></div>' +
-      '<p class="qtext" style="--qc:'+(QCOL[kcol(d)]||'')+';--qb:'+(QBAR[kcol(d)]||'')+'">'+hl(d.testo)+'</p>' +
+      '<div class="qcard" style="'+qstile(d)+'">' + whoHtml(d) +
+      '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="qgr">'+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="sTimer">3:00</span></div>' +
+      '<p class="qtext">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" id="sRead" type="button">🔊 Riascolta</button>' : '') +
         (S.audio.on && micSupported() ? '<button class="btn sm" id="sMic" type="button">🎙 Rispondi a voce</button>' : '') + '</div>' +
       '<div class="ans"><textarea id="sAns" placeholder="Rispondi come davanti alla commissione: per iscritto o col microfono (Modalità audio). Restano modificabili."></textarea></div>' +
