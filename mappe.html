@@ -163,7 +163,7 @@
       '<div class="center"><div class="node"><b>' + esc(mp.titolo) + '</b><span>' + esc(mp.sotto) + '</span></div></div>' +
       '<div class="col r">' + R.map(box).join('') + '</div>' +
       '</div></div></div>' +
-      '<div class="foot"><span>' + (AC ? '<mark class="ac-cost">Costituzione</mark> <mark class="ac-cc">Codice civile</mark> · ' : '') + 'Mappe mentali · Orale CdL Marche 2026 · mappe ' + esc(M.versione) + ' · dati ' + esc(O.versione || '') + '</span><span>' + (i+1) + ' / ' + M.mappe.length + '</span></div>' +
+      '<div class="foot"><span>' + (AC ? '<mark class="ac-cost">Costituzione</mark> <mark class="ac-cc">Codice civile</mark> <mark class="ac-legge">leggi cardine</mark> · ' : '') + 'Mappe mentali · Orale CdL Marche 2026 · mappe ' + esc(M.versione) + ' · dati ' + esc(O.versione || '') + '</span><span>' + (i+1) + ' / ' + M.mappe.length + '</span></div>' +
       '</div></div>' +
       '<div class="lista" style="--c:'+mp.colore+'"><h2>' + esc(mp.titolo) + ' · ' + esc(mp.sotto) + '</h2><div class="r">' + esc(mp.riga) + '</div>' + rami.map(box).join('') + '</div>';
     stage.insertAdjacentHTML('beforeend', html);
