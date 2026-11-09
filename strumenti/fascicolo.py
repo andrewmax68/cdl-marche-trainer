@@ -40,6 +40,8 @@ S = {
     'cellsm': ParagraphStyle('cs', fontName='Sans', fontSize=8, leading=10, textColor=MUTED),
     'eyebrow': ParagraphStyle('e', fontName='Sans-B', fontSize=8, leading=10, textColor=ACCENT),
     'q': ParagraphStyle('q', fontName='Serif-B', fontSize=14, leading=17.5, textColor=INK, spaceBefore=2, spaceAfter=6),
+    # titolo della domanda: testo bianco su fascia rosso scuro (in bianco e nero resta una fascia grigio scuro)
+    'qband': ParagraphStyle('qb', fontName='Serif-B', fontSize=15, leading=18.5, textColor=colors.white),
     'sintesi': ParagraphStyle('si', fontName='Serif', fontSize=11, leading=14.5, textColor=INK),
     'punto': ParagraphStyle('p', fontName='Serif', fontSize=11, leading=14.5, textColor=INK, leftIndent=16, firstLineIndent=-16, spaceAfter=4),
     'aggancio': ParagraphStyle('a', fontName='Serif-I', fontSize=10.5, leading=14, textColor=INK, spaceBefore=4, spaceAfter=4),
@@ -113,7 +115,7 @@ def articoli(testo):
     return sorted(out)
 
 
-def evidenzia(testo, chiavi=()):
+def evidenzia(testo, chiavi=(), scuro=False):
     """Grassetto sulle parole chiave che il simulatore cerca; sfondo colorato sugli articoli chiave
     (giallo Costituzione, verde codice civile)."""
     n = norm(testo)
@@ -139,7 +141,10 @@ def evidenzia(testo, chiavi=()):
     for c, sb, sh in zip(testo, segni, sfondo):
         if sh != ch:   # cambia lo sfondo: si chiude tutto e si riapre (il grassetto sta dentro lo sfondo)
             out.append(('</b>' if cb else '') + (CHIUDI_ART[ch] if ch else ''))
-            out.append((APRI_ART[sh] if sh else '') + ('<b>' if sb else ''))
+            apri = APRI_ART[sh] if sh else ''
+            if scuro and sh == 'legge':   # su fondo scuro la sottolineatura blu non si vede: diventa bianca
+                apri = apri.replace('#2457a6', '#ffffff')
+            out.append(apri + ('<b>' if sb else ''))
             ch, cb = sh, sb
         elif sb != cb:
             out.append('<b>' if sb else '</b>')
@@ -231,7 +236,13 @@ def costruisci(dati, materia, out):
         etichetta = '%s · %s · %s' % (d['id'], d['etichetta'], d['gruppo'])
         blocco.append(Spacer(1, 10))
         blocco.append(Paragraph(escape(etichetta).upper(), S['eyebrow']))
-        blocco.append(Paragraph(evidenzia(d['testo']), S['q']))
+        fascia = Table([[Paragraph(evidenzia(d['testo'], scuro=True), S['qband'])]], colWidths=[w])
+        fascia.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), ACCENT), ('LEFTPADDING', (0, 0), (-1, -1), 9),
+                                    ('RIGHTPADDING', (0, 0), (-1, -1), 9), ('TOPPADDING', (0, 0), (-1, -1), 5),
+                                    ('BOTTOMPADDING', (0, 0), (-1, -1), 7)]))
+        blocco.append(Spacer(1, 2))
+        blocco.append(fascia)
+        blocco.append(Spacer(1, 6))
         r = d['r']
         if r:
             chiavi_tutte = [k for p in r['punti'] for k in p[1]]

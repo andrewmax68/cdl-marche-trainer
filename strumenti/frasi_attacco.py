@@ -18,7 +18,7 @@ GRUPPI = [('1 · ROSSO', 'Diritto del lavoro', ['DL']),
           ('5 · ARANCIONE', 'Ordinamento e deontologia', ['DEO'])]
 
 CODICE = ParagraphStyle('cod', fontName='Sans-B', fontSize=7.8, leading=10, textColor=ACCENT)
-DOMANDA = ParagraphStyle('dom', fontName='Serif-B', fontSize=10.2, leading=12.5, textColor=INK)
+DOMANDA = ParagraphStyle('dom', fontName='Serif-B', fontSize=10.6, leading=13, textColor=ACCENT)
 FRASE = ParagraphStyle('fr', fontName='Serif', fontSize=10, leading=12.8, textColor=INK, spaceBefore=1)
 RINVIO = ParagraphStyle('rv', fontName='Serif', fontSize=9, leading=11.2, textColor=INK)
 
