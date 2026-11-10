@@ -170,6 +170,17 @@ def evidenzia(testo, chiavi=(), scuro=False):
     return ''.join(out)
 
 
+# Fascicolo verde: tre parti, nell'ordine del programma d'esame (privato, pubblico, penale), ciascuna con il suo verde.
+PARTI_PPP = [('PRIV', 'Diritto privato'), ('PUBB', 'Diritto pubblico e costituzionale'), ('PEN', 'Diritto penale')]
+
+
+def parte(d):
+    """Indice della parte (0, 1, 2) per le domande del fascicolo verde; 0 per le altre materie."""
+    if d['m'] != 'PPP':
+        return 0
+    return [k for k, _ in PARTI_PPP].index(chiave_colore(d))
+
+
 def ordina(d):
     b = d['busta']
     return (0 if b is not None else 1, b if b is not None else 0, d['id'])
@@ -184,7 +195,7 @@ def costruisci(dati, materia, out):
     QB = ParagraphStyle('qbm', parent=S['qband'], textColor=colors.HexColor(testo_f))
     mat = next(m for m in dati['materie'] if m['k'] == materia)
     comm = dati['commissione'].get(mat['comm'], {})
-    domande = sorted([d for d in dati['domande'] if d['m'] == materia], key=ordina)
+    domande = sorted([d for d in dati['domande'] if d['m'] == materia], key=lambda d: (parte(d), ordina(d)))
     con_r = [d for d in domande if d['r']]
 
     def piede(canv, doc):
@@ -219,16 +230,30 @@ def costruisci(dati, materia, out):
     st.append(Paragraph('Elenco per l\'autointerrogazione', H2))
     righe = [[Paragraph('<b>Codice</b>', S['cellsm']), Paragraph('<b>Domanda</b>', S['cellsm']),
               Paragraph('<b>1 g</b>', S['cellsm']), Paragraph('<b>3 g</b>', S['cellsm']), Paragraph('<b>7 g</b>', S['cellsm'])]]
-    for d in domande:
+    intest = []   # righe-titolo delle parti (solo fascicolo verde)
+    for j, d in enumerate(domande):
+        if materia == 'PPP' and (j == 0 or parte(d) != parte(domande[j - 1])):
+            k, nome = PARTI_PPP[parte(d)]
+            f, tf = FASCIA_MAT[k]
+            n = sum(1 for x in domande if parte(x) == parte(d))
+            intest.append((len(righe), f, tf))
+            righe.append([Paragraph('<b>%s</b> · %d domande' % (escape(nome.upper()), n),
+                                    ParagraphStyle('ip', parent=S['cellsm'], textColor=colors.HexColor(tf))), '', '', '', ''])
         etich = d['id'] + ('' if d['r'] else ' *')
         righe.append([Paragraph(escape(etich), S['cellsm']), Paragraph(escape(d['testo']), S['cell']), '', '', ''])
     w = A4[0] - 2.2 * cm - 5.2 * cm
     t = Table(righe, colWidths=[2.1 * cm, w - 2.1 * cm - 3 * 0.9 * cm, 0.9 * cm, 0.9 * cm, 0.9 * cm], repeatRows=1)
     stile = [('VALIGN', (0, 0), (-1, -1), 'MIDDLE'), ('LINEBELOW', (0, 0), (-1, -1), 0.3, RULE),
              ('TOPPADDING', (0, 0), (-1, -1), 3), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]
+    righe_titolo = {i for i, _, _ in intest}
     for i in range(1, len(righe)):
+        if i in righe_titolo:
+            continue
         for c in (2, 3, 4):
             stile.append(('BOX', (c, i), (c, i), 0.6, MUTED))
+    for i, f, tf in intest:
+        stile += [('SPAN', (0, i), (-1, i)), ('BACKGROUND', (0, i), (-1, i), colors.HexColor(f)),
+                  ('TOPPADDING', (0, i), (-1, i), 5), ('BOTTOMPADDING', (0, i), (-1, i), 5)]
     t.setStyle(TableStyle(stile))
     st.append(t)
     if len(con_r) < len(domande):
@@ -251,7 +276,17 @@ def costruisci(dati, materia, out):
                                 ('TOPPADDING', (0, 0), (-1, -1), 3), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]))
         st.append(t2)
 
-    for d in domande:
+    for j, d in enumerate(domande):
+        if materia == 'PPP' and (j == 0 or parte(d) != parte(domande[j - 1])):
+            kp, nome = PARTI_PPP[parte(d)]
+            f, tf = FASCIA_MAT[kp]
+            n = sum(1 for x in domande if parte(x) == parte(d))
+            st.append(PageBreak())
+            tit = Table([[Paragraph('%s<br/><font size="10">%d schede · parte %d di 3 del fascicolo verde</font>' % (escape(nome), n, parte(d) + 1),
+                                    ParagraphStyle('pt', parent=S['title'], textColor=colors.HexColor(tf), spaceAfter=0))]], colWidths=[w])
+            tit.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), colors.HexColor(f)), ('LEFTPADDING', (0, 0), (-1, -1), 12),
+                                     ('TOPPADDING', (0, 0), (-1, -1), 10), ('BOTTOMPADDING', (0, 0), (-1, -1), 12)]))
+            st.append(tit)
         k = chiave_colore(d)
         col = colors.HexColor(COLORE_MAT.get(k, '#7a2e2a'))
         EYE = ParagraphStyle('em', parent=S['eyebrow'], textColor=col)

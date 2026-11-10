@@ -10,7 +10,7 @@ from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, Table,
                                 TableStyle, PageBreak)
-from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, chiave_colore, ordina, evidenzia, imposta_articoli, LEGENDA_ART
+from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, chiave_colore, ordina, evidenzia, imposta_articoli, LEGENDA_ART, PARTI_PPP, parte
 
 GRUPPI = [('1 · ROSSO', 'Diritto del lavoro', ['DL']),
           ('2 · BLU', 'Legislazione sociale INPS e INAIL', ['INPS', 'INAIL']),
@@ -68,22 +68,25 @@ def costruisci(dati, out):
         h2 = ParagraphStyle('hm', parent=S['h2'], textColor=col)
         st.append(Paragraph('BUSTA ' + colore, ParagraphStyle('em', parent=S['eyebrow'], textColor=col)))
         st.append(Paragraph(escape(titolo), S['title']))
+        blocchi = []   # (chiave colore, titolo della sottosezione o None, domande)
         for m in materie:
-            cm_ = colors.HexColor(COLORE_MAT[m])   # tonalità della singola materia (INPS/INAIL, tributario/ragioneria)
+            dd = sorted([d for d in dati['domande'] if d['m'] == m and d['r']], key=lambda d: (parte(d), ordina(d)))
+            if m == 'PPP':   # privato, pubblico e penale: tre sottosezioni, ciascuna con il suo verde
+                for i, (k, nome) in enumerate(PARTI_PPP):
+                    blocchi.append((k, nome, [d for d in dd if parte(d) == i]))
+            else:
+                blocchi.append((m, nomi[m] if len(materie) > 1 else None, dd))
+        for m, sottotitolo, domande in blocchi:
+            cm_ = colors.HexColor(COLORE_MAT[m])   # tonalità della singola materia (INPS/INAIL, tributario/ragioneria, tre verdi)
             dom = ParagraphStyle('dm', parent=DOMANDA, textColor=cm_)
             cod = ParagraphStyle('cm', parent=CODICE, textColor=cm_)
             h2 = ParagraphStyle('hm', parent=S['h2'], textColor=cm_)
-            domande = sorted([d for d in dati['domande'] if d['m'] == m and d['r']], key=ordina)
-            if len(materie) > 1:
-                st.append(Paragraph(escape(nomi[m]), h2))
+            if sottotitolo:
+                st.append(Paragraph(escape(sottotitolo), h2))
             righe, stile = [], [('VALIGN', (0, 0), (-1, -1), 'TOP'), ('LINEBELOW', (0, 0), (-1, -1), 0.3, RULE),
                                 ('TOPPADDING', (0, 0), (-1, -1), 4), ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
                                 ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 6)]
             for i, d in enumerate(domande):
-                if m == 'PPP':   # privato, pubblico e penale: tre verdi
-                    cm_ = colors.HexColor(COLORE_MAT[chiave_colore(d)])
-                    dom = ParagraphStyle('dm', parent=DOMANDA, textColor=cm_)
-                    cod = ParagraphStyle('cm', parent=CODICE, textColor=cm_)
                 testo = [Paragraph(evidenzia(d['testo']), dom), Paragraph(evidenzia(d['r']['sintesi']), FRASE)]
                 righe.append([Paragraph(escape(d['id']), cod), testo, casella()])
             t = Table(righe, colWidths=[1.9 * cm, W - 1.9 * cm - 0.55 * cm, 0.55 * cm], rowHeights=None)
@@ -92,6 +95,8 @@ def costruisci(dati, out):
             st.append(t)
             tot += len(domande)
         rinvii = [x for x in dati.get('rinvii', []) if x['m'] in materie]
+        h2 = ParagraphStyle('hm', parent=S['h2'], textColor=col)   # i rinvii tornano al colore della busta
+        cod = ParagraphStyle('cm', parent=CODICE, textColor=col)
         if rinvii:
             st.append(Paragraph('Domande 2022 che si risolvono con un\'altra scheda', h2))
             rr = []
