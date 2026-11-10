@@ -86,7 +86,14 @@
   /* list */
   .qlist{display:flex;flex-direction:column;gap:6px;margin-top:12px}
   .q{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line-2);background:#fff;border-radius:3px;padding:10px 12px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
-  .q:hover{border-color:var(--oxblood)}
+  .q:hover{border-color:var(--cb,var(--oxblood))}
+  .q{border-left:4px solid var(--cb,var(--line-2))}
+  .q .chip.ox{color:var(--ct,var(--oxblood));border-color:color-mix(in srgb,var(--c,#7c2b2b) 40%,#fff);background:color-mix(in srgb,var(--c,#7c2b2b) 12%,#fff)}
+  .qsec{margin:14px 0 2px;padding:8px 12px;border-radius:6px;background:var(--c);color:var(--cf,#fff);font:700 15px/1.25 var(--ui,system-ui,sans-serif)}
+  .qsec small{font-weight:500;opacity:.85;margin-left:6px}
+  .qramo{margin:8px 0 0;padding:5px 10px;border-radius:4px;background:color-mix(in srgb,var(--c) 22%,#fff);color:var(--ct);border:1px solid color-mix(in srgb,var(--c) 30%,#fff);border-left:5px solid var(--cb);font:700 12.5px/1.25 var(--ui,system-ui,sans-serif);text-transform:uppercase;letter-spacing:.04em}
+  .qramo small{text-transform:none;letter-spacing:0;font-weight:500;margin-left:6px}
+  .qsotto{margin:4px 0 0 4px;color:var(--ct);font:600 12px/1.3 var(--ui,system-ui,sans-serif);text-transform:uppercase;letter-spacing:.05em}
   .q .t{flex:1;font-size:14px}
   .q .meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
 
@@ -279,9 +286,10 @@
 </div></dialog>
 <div class="toast" id="toast"></div>
 
-<script src="orale-dati.js?v=20261110a"></script>
-<script src="articoli-chiave.js?v=20261110a"></script>
-<script src="voce-umana.js?v=20261110a"></script>
+<script src="orale-dati.js?v=20261110b"></script>
+<script src="articoli-chiave.js?v=20261110b"></script>
+<script src="mappe-dati.js?v=20261110b"></script>
+<script src="voce-umana.js?v=20261110b"></script>
 <script>
 (function(){
   'use strict';
@@ -488,11 +496,32 @@
   /* =====================================================
      STUDIO
      ===================================================== */
+  /* Ordine di studio = ordine dei fascicoli e delle mappe (mappe-dati.js): busta per colore, poi ramo della mappa,
+     sottoramo in ordine propedeutico, poi buste 2025, integrazioni 2026 e argomenti 2022. */
+  var MP = window.MAPPE_ORALE || {mappe:[], sotto:{}, ordSotto:[]};
+  var SEZ = [['DL','Diritto del lavoro'], ['INPS','Legislazione sociale — INPS'], ['INAIL','Legislazione sociale — INAIL'],
+    ['PRIV','Diritto privato'], ['PUBB','Diritto pubblico e costituzionale'], ['PEN','Diritto penale'],
+    ['TRIB','Diritto tributario'], ['RAG','Ragioneria'], ['DEO','Ordinamento e deontologia']];
+  var SEZ_I = {}; SEZ.forEach(function(x, i){ SEZ_I[x[0]] = i; });
+  var RAMI = {}; MP.mappe.forEach(function(mp){ (mp.rami || []).forEach(function(r){ var l = RAMI[r[0]] = RAMI[r[0]] || []; if (l.indexOf(r[1]) < 0) l.push(r[1]); }); });
+  function ramoI(d){ if (d.m === 'PPP') return 0; var l = RAMI[d.m] || [], i = l.indexOf(d.gruppo); return i < 0 ? l.length : i; }
+  function sotto(d){   // le domande 2022 «gemelle» seguono la scheda a cui rinviano, se è nello stesso ramo
+    var so = MP.sotto || {}; if (so[d.id]) return so[d.id];
+    var t = d.vedi && O.domande.filter(function(x){ return x.id === d.vedi; })[0];
+    return t && t.m === d.m && t.gruppo === d.gruppo ? (so[t.id] || '') : '';
+  }
+  function sottoI(d){ var s = sotto(d); if (!s) return 0; var i = (MP.ordSotto || []).indexOf(s); return i < 0 ? 999 : i + 1; }
+  var SER = {A25:0, X26:1, S22:2};
+  function numId(id){ var m = String(id).match(/(\d+)([a-z]?)$/); return m ? +m[1] + (m[2] ? (m[2].charCodeAt(0) - 96) / 10 : 0) : 0; }
+  function chiaveOrd(d){ return [SEZ_I[kcol(d)] || 0, ramoI(d), sottoI(d), SER[d.serie] || 0, d.busta || 0, numId(d.id)]; }
+  function confronta(a, b){ var x = chiaveOrd(a), y = chiaveOrd(b); for (var i = 0; i < x.length; i++) if (x[i] !== y[i]) return x[i] - y[i]; return a.id < b.id ? -1 : 1; }
+  function nomeRamo(g){ return g === 'Integrazione 2026' ? 'Novità 2026' : g; }
+
   var fMat = $('#fMat'), fGrp = $('#fGrp');
   fMat.innerHTML = '<option value="">Tutte le materie</option>' + O.materie.map(function(m){ return '<option value="'+m.k+'">'+esc(m.nome)+'</option>'; }).join('');
   function fillGroups(){
     var m = fMat.value, seen = {}, opts = ['<option value="">Tutti i gruppi</option>'];
-    O.domande.forEach(function(d){ if ((!m || d.m === m) && !seen[d.gruppo]) { seen[d.gruppo] = 1; opts.push('<option>'+esc(d.gruppo)+'</option>'); } });
+    O.domande.slice().sort(confronta).forEach(function(d){ if ((!m || d.m === m) && !seen[d.gruppo]) { seen[d.gruppo] = 1; opts.push('<option>'+esc(d.gruppo)+'</option>'); } });
     fGrp.innerHTML = opts.join('');
   }
   fillGroups();
@@ -511,10 +540,19 @@
   }
   function statoChip(id){ var s = S.stato[id]; return s === 'so' ? '<span class="chip ok">la so</span>' : s === 'rip' ? '<span class="chip warn">da ripassare</span>' : ''; }
   function renderList(){
-    var L = filtered();
+    var L = filtered().sort(confronta), prec = null;
     $('#fCount').textContent = L.length + ' domande';
+    var conta = function(f){ return L.filter(f).length; };
     $('#qlist').innerHTML = L.map(function(d){
-      return '<button class="q" type="button" data-id="'+d.id+'"><div class="t">'+hl(d.testo)+'<div class="meta"><span class="chip ox">'+esc(MAT[d.m].corto)+'</span><span class="chip">'+esc(d.gruppo)+'</span><span class="chip">'+esc(d.etichetta)+'</span>'+(d.r ? '<span class="chip ok">risposta modello</span>' : '')+statoChip(d.id)+'</div></div></button>';
+      var k = kcol(d), h = '', st = qstile(d);
+      if (!prec || kcol(prec) !== k)
+        h += '<div class="qsec" style="'+st+'">' + esc(SEZ[SEZ_I[k]][1]) + '<small>' + conta(function(x){ return kcol(x) === k; }) + ' domande</small></div>';
+      if (d.m !== 'PPP' && (!prec || kcol(prec) !== k || prec.gruppo !== d.gruppo))
+        h += '<div class="qramo" style="'+st+'">' + esc(nomeRamo(d.gruppo)) + '<small>' + conta(function(x){ return x.m === d.m && x.gruppo === d.gruppo; }) + '</small></div>';
+      if (sotto(d) && (!prec || kcol(prec) !== k || prec.gruppo !== d.gruppo || sotto(prec) !== sotto(d)))
+        h += '<div class="qsotto" style="'+st+'">▸ ' + esc(sotto(d)) + '</div>';
+      prec = d;
+      return h + '<button class="q" type="button" data-id="'+d.id+'" style="'+st+'"><div class="t">'+hl(d.testo)+'<div class="meta"><span class="chip ox">'+esc(MAT[d.m].corto)+'</span><span class="chip">'+esc(d.gruppo)+'</span><span class="chip">'+esc(d.etichetta)+'</span>'+(d.r ? '<span class="chip ok">risposta modello</span>' : '')+statoChip(d.id)+'</div></div></button>';
     }).join('') || '<p class="muted small">Nessuna domanda con questi filtri.</p>';
   }
   function renderProg(){
