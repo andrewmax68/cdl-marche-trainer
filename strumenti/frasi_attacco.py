@@ -10,7 +10,7 @@ from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, Table,
                                 TableStyle, PageBreak)
-from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, chiave_colore, ordina, evidenzia, imposta_articoli, LEGENDA_ART, PARTI_PPP, parte
+from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, chiave_colore, ordina, evidenzia, imposta_articoli, LEGENDA_ART, PARTI_PPP, parte, RAMI, ramo, sezione
 
 GRUPPI = [('1 · ROSSO', 'Diritto del lavoro', ['DL']),
           ('2 · BLU', 'Legislazione sociale INPS e INAIL', ['INPS', 'INAIL']),
@@ -70,10 +70,15 @@ def costruisci(dati, out):
         st.append(Paragraph(escape(titolo), S['title']))
         blocchi = []   # (chiave colore, titolo della sottosezione o None, domande)
         for m in materie:
-            dd = sorted([d for d in dati['domande'] if d['m'] == m and d['r']], key=lambda d: (parte(d), ordina(d)))
+            dd = sorted([d for d in dati['domande'] if d['m'] == m and d['r']], key=lambda d: (sezione(d), ordina(d)))
             if m == 'PPP':   # privato, pubblico e penale: tre sottosezioni, ciascuna con il suo verde
                 for i, (k, nome) in enumerate(PARTI_PPP):
                     blocchi.append((k, nome, [d for d in dd if parte(d) == i]))
+            elif m in RAMI:   # INPS e INAIL: un blocco per ramo della mappa
+                for i, g in enumerate(RAMI[m]):
+                    sub = [d for d in dd if ramo(d) == i]
+                    if sub:
+                        blocchi.append((m, nomi[m] + ' · ' + g, sub))
             else:
                 blocchi.append((m, nomi[m] if len(materie) > 1 else None, dd))
         for m, sottotitolo, domande in blocchi:

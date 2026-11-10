@@ -453,7 +453,7 @@
   // stessi toni delle mappe (mappe.html): colore pieno c, testo ct, testo su pieno cf, bordo cb
   var TONI = {'#f5c400':{ct:'#8a6a00', cf:'#1d1d1b', cb:'#d4a800'}, '#fff27a':{ct:'#6b5f00', cf:'#1d1d1b', cb:'#c9b800'},
     '#ff7a00':{ct:'#c2410c', cf:'#1d1d1b', cb:'#ff7a00'}, '#4fb6ea':{ct:'#0a6896', cf:'#1d1d1b', cb:'#2d9fd8'},
-    '#8fd16a':{ct:'#2e7d1f', cf:'#1d1d1b', cb:'#5fae3c'}, '#00a36c':{ct:'#0b7a5e', cf:'#1d1d1b', cb:'#00a36c'}};
+    '#8fd16a':{ct:'#2e7d1f', cf:'#1d1d1b', cb:'#5fae3c'}, '#00a36c':{ct:'#0b7a5e', cf:'#ffffff', cb:'#00a36c'}};
   function qstile(d){ var c = QBAR[kcol(d)] || '#7c2b2b', t = TONI[c] || {ct:c, cf:'#fff', cb:c}; return '--c:'+c+';--ct:'+t.ct+';--cf:'+t.cf+';--cb:'+t.cb; }
   function kcol(d){ return d.m === 'PPP' ? ({'Privato':'PRIV', 'Penale':'PEN'}[d.gruppo] || 'PUBB') : d.m; }
   function hl(t){ return window.ART_CHIAVE ? window.ART_CHIAVE.html(t) : esc(t); }

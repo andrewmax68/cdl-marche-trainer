@@ -111,7 +111,7 @@
   // toni per i colori chiari (giallo, limone, arancione): testo scuro sul colore, tinta scura per i testi su bianco, bordo più marcato
   var TONI = {'#f5c400':{ct:'#8a6a00', cf:'#1d1d1b', cb:'#d4a800'}, '#fff27a':{ct:'#6b5f00', cf:'#1d1d1b', cb:'#c9b800'},
     '#ff7a00':{ct:'#c2410c', cf:'#1d1d1b', cb:'#ff7a00'}, '#4fb6ea':{ct:'#0a6896', cf:'#1d1d1b', cb:'#2d9fd8'},
-    '#8fd16a':{ct:'#2e7d1f', cf:'#1d1d1b', cb:'#5fae3c'}, '#00a36c':{ct:'#0b7a5e', cf:'#1d1d1b', cb:'#00a36c'}};
+    '#8fd16a':{ct:'#2e7d1f', cf:'#1d1d1b', cb:'#5fae3c'}, '#00a36c':{ct:'#0b7a5e', cf:'#ffffff', cb:'#00a36c'}};
   function toni(c){ c = String(c || '').trim(); var t = TONI[c.toLowerCase()] || {ct:c, cf:'#fff', cb:c}; return {c:c, ct:t.ct, cf:t.cf, cb:t.cb}; }
   function stileToni(c){ var t = toni(c); return '--c:' + t.c + ';--ct:' + t.ct + ';--cf:' + t.cf + ';--cb:' + t.cb; }
   function applicaToni(el, c){ var t = toni(c); ['c','ct','cf','cb'].forEach(function(k){ el.style.setProperty('--' + k, t[k]); }); }
