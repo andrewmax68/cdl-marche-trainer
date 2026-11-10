@@ -69,7 +69,7 @@
     {id:'dl1', riga:'Riga 1 · rosso', titolo:'Diritto del lavoro', sotto:'Nascita del rapporto', colore:C.DL,
      rami:[['DL','Qualificazione'],['DL','Contratti flessibili']]},
     {id:'dl2', riga:'Riga 1 · rosso', titolo:'Diritto del lavoro', sotto:'Svolgimento e tutele', colore:C.DL,
-     rami:[['DL','Svolgimento e retribuzione'],['DL','Tutele specifiche'],['DL','Salute e sicurezza']]},
+     rami:[['DL','Svolgimento e retribuzione'],['DL','Salute e sicurezza'],['DL','Tutele specifiche']]},
     {id:'dl3', riga:'Riga 1 · rosso', titolo:'Diritto del lavoro', sotto:'Fine del rapporto, sindacale, vigilanza e novità 2026', colore:C.DL,
      rami:[['DL','Cessazione del rapporto'],['DL','Rinunce e conciliazioni'],['DL','Diritto sindacale'],['DL','Vigilanza e illeciti'],['DL','Integrazione 2026']]},
     {id:'inps', riga:'Riga 2 · blu', titolo:'Legislazione sociale', sotto:'INPS', colore:C.INPS,
@@ -85,7 +85,7 @@
     {id:'trib', riga:'Riga 4 · giallo', titolo:'Diritto tributario', sotto:'IRPEF, lavoro dipendente, procedimento', colore:C.TRIB,
      rami:[['TRIB','Parte generale e procedimento'],['TRIB','Lavoro dipendente'],['TRIB','Società e impresa'],['TRIB','Integrazione 2026']]},
     {id:'rag', riga:'Riga 4 · giallo', titolo:'Ragioneria', sotto:'Costo del lavoro e bilancio', colore:C.RAG,
-     rami:[['RAG','Costo del lavoro in contabilità'],['RAG','Contabilità e documenti'],['RAG','Bilancio']]},
+     rami:[['RAG','Contabilità e documenti'],['RAG','Costo del lavoro in contabilità'],['RAG','Bilancio']]},
     {id:'deo', riga:'Riga 5 · arancione', titolo:'Ordinamento e deontologia', sotto:'L. 12/1979 e Codice deontologico', colore:C.DEO,
      rami:[['DEO','Ordinamento'],['DEO','Codice deontologico'],['DEO','Integrazione 2026']]}
   ];
@@ -206,7 +206,15 @@
   /* Domande da non studiare (indicazione informale del Presidente riferita da Andrea). */
   var ESCLUSE = {'PPP-11':'escluso: indicazione di Rausei (poco pertinente)'};
 
-  window.MAPPE_ORALE = {versione:'1.4 · 9/11/2026', mappe:MAPPE, sotto:SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
+  /* Ordine propedeutico dei sottorami (dal generale al particolare), usato da mappe e fascicoli.
+     Le domande senza sottoramo vengono prima, come introduzione al ramo. */
+  var ORD_SOTTO = ['Persone', 'Obbligazioni e beni', 'Contratto', 'Impresa e società',
+    'Costituzione e principi', 'Fonti e procedimento legislativo', 'Organi costituzionali', 'Regioni, enti locali e PA',
+    'Principi', 'Il reato', 'Procedura ed estinzione', 'Reati del lavoro',
+    'Obblighi e poteri', 'Documenti e informazioni', 'Tempo di lavoro', 'Retribuzione', 'Sospensione del rapporto',
+    'Imposte e redditi', 'Dichiarazione e versamenti', 'Rapporti con il Fisco',
+    'Doveri generali', 'Incarico', 'Rapporti esterni e interni'];
+  window.MAPPE_ORALE = {versione:'1.5 · 10/11/2026', mappe:MAPPE, sotto:SOTTO, ordSotto:ORD_SOTTO, lab:LAB, norm:NORM, escluse:ESCLUSE};
 })();
 
 /* Spiegazioni delle voci delle due mappe per articolo (D.L. 62/2026 e D.Lgs. 96/2026): una per riquadro,

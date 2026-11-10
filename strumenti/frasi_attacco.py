@@ -10,7 +10,7 @@ from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph, Spacer, Table,
                                 TableStyle, PageBreak)
-from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, chiave_colore, ordina, evidenzia, imposta_articoli, LEGENDA_ART, PARTI_PPP, parte, RAMI, ramo, sezione
+from fascicolo import S, INK, MUTED, ACCENT, RULE, COLORE_MAT, chiave_colore, ordina, evidenzia, imposta_articoli, LEGENDA_ART, PARTI_PPP, parte, ORDINE, ramo, sezione, nome_ramo, imposta_ordine
 
 GRUPPI = [('1 · ROSSO', 'Diritto del lavoro', ['DL']),
           ('2 · BLU', 'Legislazione sociale INPS e INAIL', ['INPS', 'INAIL']),
@@ -32,6 +32,7 @@ def casella():
 
 def costruisci(dati, out):
     imposta_articoli(dati.get('artchiave'))
+    imposta_ordine(dati)
     nomi = {m['k']: m['nome'] for m in dati['materie']}
     per_id = {d['id']: d for d in dati['domande']}
     W = A4[0] - 2 * cm - 1.8 * cm
@@ -55,7 +56,7 @@ def costruisci(dati, out):
     for riga in ['1. Copri la frase con un foglio, leggi solo la domanda e di\' a voce la tua frase d\'attacco.',
                  '2. Scopri e confronta: conta la sostanza (istituto, norma, regola), non le parole identiche.',
                  '3. Se l\'hai detta bene, spunta la casella. Se no, torna alla scheda nel fascicolo del colore.',
-                 '4. Ultimi due giorni: rifai solo le righe senza spunta. In fondo a ogni colore ci sono le domande 2022 '
+                 '4. Le domande seguono l\'ordine dei fascicoli e delle mappe: per ramo, dal generale al particolare. Ultimi due giorni: rifai solo le righe senza spunta. In fondo a ogni colore ci sono le domande 2022 '
                  'che si risolvono con un\'altra scheda.', LEGENDA_ART]:
         st.append(Paragraph(riga, S['body'])); st.append(Spacer(1, 2))
 
@@ -74,11 +75,11 @@ def costruisci(dati, out):
             if m == 'PPP':   # privato, pubblico e penale: tre sottosezioni, ciascuna con il suo verde
                 for i, (k, nome) in enumerate(PARTI_PPP):
                     blocchi.append((k, nome, [d for d in dd if parte(d) == i]))
-            elif m in RAMI:   # INPS e INAIL: un blocco per ramo della mappa
-                for i, g in enumerate(RAMI[m]):
+            elif m in ORDINE:   # un blocco per ramo della mappa, in ordine propedeutico
+                for i, (g, _) in enumerate(ORDINE[m]):
                     sub = [d for d in dd if ramo(d) == i]
                     if sub:
-                        blocchi.append((m, nomi[m] + ' · ' + g, sub))
+                        blocchi.append((m, (nomi[m] + ' · ' if len(materie) > 1 else '') + nome_ramo(g), sub))
             else:
                 blocchi.append((m, nomi[m] if len(materie) > 1 else None, dd))
         for m, sottotitolo, domande in blocchi:

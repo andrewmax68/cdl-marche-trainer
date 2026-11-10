@@ -181,25 +181,62 @@ def parte(d):
     return [k for k, _ in PARTI_PPP].index(chiave_colore(d))
 
 
-# Fascicolo blu: dentro INPS e INAIL le schede seguono i rami della mappa (mappe-dati.js), non l'ordine delle buste.
-RAMI = {'INPS': ['Contribuzione', 'Adempimenti', 'Prestazioni', 'Ammortizzatori e sostegno al reddito', 'Integrazione 2026'],
-        'INAIL': ['Obbligo, premi e adempimenti', 'Infortunio e malattia professionale', 'Prestazioni e azioni']}
+# Ordine di studio di ogni fascicolo: i rami delle mappe mentali (mappe-dati.js) in sequenza propedeutica,
+# dal generale al particolare, e dentro i rami i sottorami. Le novità 2026 chiudono il fascicolo.
+ORDINE = {
+    'DL': [('Qualificazione', []), ('Contratti flessibili', []),
+           ('Svolgimento e retribuzione', ['Obblighi e poteri', 'Documenti e informazioni', 'Tempo di lavoro', 'Retribuzione', 'Sospensione del rapporto']),
+           ('Salute e sicurezza', []), ('Tutele specifiche', []), ('Cessazione del rapporto', []), ('Rinunce e conciliazioni', []),
+           ('Diritto sindacale', []), ('Vigilanza e illeciti', []), ('Integrazione 2026', [])],
+    'INPS': [('Contribuzione', []), ('Adempimenti', []), ('Prestazioni', []), ('Ammortizzatori e sostegno al reddito', []), ('Integrazione 2026', [])],
+    'INAIL': [('Obbligo, premi e adempimenti', []), ('Infortunio e malattia professionale', []), ('Prestazioni e azioni', [])],
+    'TRIB': [('Parte generale e procedimento', ['Imposte e redditi', 'Dichiarazione e versamenti', 'Rapporti con il Fisco']),
+             ('Lavoro dipendente', []), ('Società e impresa', []), ('Integrazione 2026', [])],
+    'RAG': [('Contabilità e documenti', []), ('Costo del lavoro in contabilità', []), ('Bilancio', [])],
+    'DEO': [('Ordinamento', []), ('Codice deontologico', ['Doveri generali', 'Incarico', 'Rapporti esterni e interni']), ('Integrazione 2026', [])],
+}
+SOTTO_PPP = {'PRIV': ['Persone', 'Obbligazioni e beni', 'Contratto', 'Impresa e società'],   # stesso ordine di ORD_SOTTO in mappe-dati.js
+             'PUBB': ['Costituzione e principi', 'Fonti e procedimento legislativo', 'Organi costituzionali', 'Regioni, enti locali e PA'],
+             'PEN': ['Principi', 'Il reato', 'Procedura ed estinzione', 'Reati del lavoro']}
+SOTTO = {}   # id -> sottoramo, caricato da imposta_ordine() con i dati delle mappe
+
+
+def imposta_ordine(dati):
+    SOTTO.clear(); SOTTO.update(dati.get('sotto') or {})
+
+
+def nome_ramo(g):
+    return 'Novità 2026' if g == 'Integrazione 2026' else g
 
 
 def ramo(d):
-    """Posizione del ramo della mappa per le materie ordinate per ramo; 0 per le altre."""
-    lista = RAMI.get(d['m'])
-    return lista.index(d['gruppo']) if lista and d['gruppo'] in lista else 0
+    """Posizione del ramo della mappa (0 per il fascicolo verde, diviso in parti)."""
+    lista = [g for g, _ in ORDINE.get(d['m'], [])]
+    return lista.index(d['gruppo']) if d['gruppo'] in lista else len(lista)
+
+
+def sottorami(d):
+    if d['m'] == 'PPP':
+        return SOTTO_PPP[chiave_colore(d)]
+    return dict(ORDINE.get(d['m'], [])).get(d['gruppo'], [])
+
+
+def sottoramo(d):
+    """Nome del sottoramo, se il ramo ne ha (altrimenti stringa vuota)."""
+    lista = sottorami(d)
+    return SOTTO.get(d['id'], '') if lista else ''
+
+
+def sezione(d):
+    lista = sottorami(d)
+    s = sottoramo(d)
+    return (parte(d), ramo(d), lista.index(s) if s in lista else len(lista))
 
 
 def chiaro(hexcol, quota=0.22):
     """Tinta chiara del colore (come color-mix al 22% con il bianco nelle mappe)."""
     c = colors.HexColor(hexcol)
     return colors.Color(1 - (1 - c.red) * quota, 1 - (1 - c.green) * quota, 1 - (1 - c.blue) * quota)
-
-
-def sezione(d):
-    return (parte(d), ramo(d))
 
 
 def ordina(d):
@@ -209,6 +246,7 @@ def ordina(d):
 
 def costruisci(dati, materia, out):
     imposta_articoli(dati.get('artchiave'))
+    imposta_ordine(dati)
     col = colors.HexColor(COLORE_MAT.get(materia, '#7a2e2a'))
     H2 = ParagraphStyle('h2m', parent=S['h2'], textColor=col)
     EYE = ParagraphStyle('em', parent=S['eyebrow'], textColor=col)
@@ -260,11 +298,16 @@ def costruisci(dati, materia, out):
             intest.append((len(righe), f, tf))
             righe.append([Paragraph('<b>%s</b> · %d domande' % (escape(nome.upper()), n),
                                     ParagraphStyle('ip', parent=S['cellsm'], textColor=colors.HexColor(tf))), '', '', '', ''])
-        if materia in RAMI and (j == 0 or ramo(d) != ramo(domande[j - 1])):
+        kc = chiave_colore(d)
+        if materia != 'PPP' and (j == 0 or ramo(d) != ramo(domande[j - 1])):
             n = sum(1 for x in domande if ramo(x) == ramo(d))
             intest.append((len(righe), chiaro(FASCIA_MAT[materia][0]), COLORE_MAT[materia]))
-            righe.append([Paragraph('<b>%s</b> · %d domande' % (escape(d['gruppo'].upper()), n),
+            righe.append([Paragraph('<b>%s</b> · %d domande' % (escape(nome_ramo(d['gruppo']).upper()), n),
                                     ParagraphStyle('ir', parent=S['cellsm'], textColor=colors.HexColor(COLORE_MAT[materia]))), '', '', '', ''])
+        if sottoramo(d) and (j == 0 or sezione(d) != sezione(domande[j - 1])):
+            intest.append((len(righe), colors.white, COLORE_MAT[kc]))
+            righe.append([Paragraph('<i>%s</i>' % escape(sottoramo(d)),
+                                    ParagraphStyle('is', parent=S['cellsm'], textColor=colors.HexColor(COLORE_MAT[kc]), leftIndent=8)), '', '', '', ''])
         etich = d['id'] + ('' if d['r'] else ' *')
         righe.append([Paragraph(escape(etich), S['cellsm']), Paragraph(escape(d['testo']), S['cell']), '', '', ''])
     w = A4[0] - 2.2 * cm - 5.2 * cm
@@ -313,19 +356,27 @@ def costruisci(dati, materia, out):
             tit.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), colors.HexColor(f)), ('LEFTPADDING', (0, 0), (-1, -1), 12),
                                      ('TOPPADDING', (0, 0), (-1, -1), 10), ('BOTTOMPADDING', (0, 0), (-1, -1), 12)]))
             st.append(tit)
-        if materia in RAMI and (j == 0 or ramo(d) != ramo(domande[j - 1])):
+        if materia != 'PPP' and (j == 0 or ramo(d) != ramo(domande[j - 1])):
             n = sum(1 for x in domande if ramo(x) == ramo(d))
             if j: st.append(PageBreak())
             else: st.append(CondPageBreak(9 * cm))
-            br = Table([[Paragraph('%s · %s<br/><font size="9">%d schede · ramo %d di %d della mappa %s</font>' %
-                                   (escape(mat['nome'].split()[-1] if materia in ('INPS', 'INAIL') else ''), escape(d['gruppo']), n,
-                                    ramo(d) + 1, len(RAMI[materia]), materia),
+            br = Table([[Paragraph('%s<br/><font size="9">%d schede · sezione %d di %d (ramo della mappa)</font>' %
+                                   (escape(nome_ramo(d['gruppo'])), n, ramo(d) + 1, len({ramo(x) for x in domande})),
                                    ParagraphStyle('rt', parent=S['h2'], textColor=colors.HexColor(COLORE_MAT[materia]), spaceBefore=0, spaceAfter=0))]],
                        colWidths=[w])
             br.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), chiaro(FASCIA_MAT[materia][0])),
                                     ('LINEBEFORE', (0, 0), (0, -1), 6, colors.HexColor(FASCIA_MAT[materia][0])),
                                     ('LEFTPADDING', (0, 0), (-1, -1), 10), ('TOPPADDING', (0, 0), (-1, -1), 7), ('BOTTOMPADDING', (0, 0), (-1, -1), 8)]))
             st.append(br)
+        if sottoramo(d) and (j == 0 or sezione(d) != sezione(domande[j - 1])):
+            kc = chiave_colore(d)
+            st.append(CondPageBreak(8 * cm))
+            st.append(Spacer(1, 6))
+            sr = Table([[Paragraph(escape(sottoramo(d).upper()),
+                                   ParagraphStyle('sr', parent=S['eyebrow'], fontSize=9.5, textColor=colors.HexColor(COLORE_MAT[kc])))]], colWidths=[w])
+            sr.setStyle(TableStyle([('LINEBELOW', (0, 0), (-1, -1), 1.2, colors.HexColor(FASCIA_MAT[kc][0])),
+                                    ('LEFTPADDING', (0, 0), (-1, -1), 0), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]))
+            st.append(sr)
         k = chiave_colore(d)
         col = colors.HexColor(COLORE_MAT.get(k, '#7a2e2a'))
         EYE = ParagraphStyle('em', parent=S['eyebrow'], textColor=col)
