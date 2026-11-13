@@ -95,6 +95,12 @@
   .qramo small{text-transform:none;letter-spacing:0;font-weight:500;margin-left:6px}
   #pane-quiz [hidden]{display:none!important}
   .qzq{font:600 20px/1.35 var(--serif);margin:8px 0 12px;color:var(--ct,var(--ink));background:color-mix(in srgb,var(--c,#7c2b2b) 14%,#fff);border-left:6px solid var(--cb,var(--ink));border-radius:6px;padding:10px 12px}
+  .qzv{border-radius:6px;padding:9px 12px;margin:10px 0;border:1px solid var(--line)}
+  .qzv.ok{background:var(--ok-bg);border-color:#b9d3bd}
+  .qzv.parz{background:var(--warn-bg);border-color:#e3cfa6}
+  .qzv.no{background:var(--err-bg);border-color:#e4bab4}
+  .qzch{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px}
+  #pane-quiz textarea{min-height:76px;margin:0 0 8px}
   .qza{border:1px dashed var(--line-2);border-radius:6px;padding:10px 12px;margin:10px 0;font-size:15.5px;background:var(--surface)}
   .qzcov{display:grid;grid-template-columns:minmax(150px,1.4fr) 2fr 70px;gap:6px 10px;align-items:center;font-size:13px}
   .qzcov .rm{cursor:pointer;color:var(--ct,var(--ink));font-weight:600}
@@ -190,7 +196,7 @@
   <section class="pane" id="pane-quiz">
     <div class="box">
       <h2>Quiz rapido</h2>
-      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Prova a rispondere a voce o a mente, poi scopri la risposta e segna se la sapevi. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
+      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: il simulatore ne fa una prima valutazione confrontandola con gli elementi essenziali (sì/no, numeri, estremi normativi, parole chiave), poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
       <div class="row">
         <select id="qzMat" aria-label="Materia"></select>
         <select id="qzRamo" aria-label="Ramo della mappa"></select>
@@ -332,7 +338,8 @@
 <script src="articoli-chiave.js?v=20261113a"></script>
 <script src="mappe-dati.js?v=20261113a"></script>
 <script src="voce-umana.js?v=20261113a"></script>
-<script src="quiz-dati.js?v=20261113a"></script>
+<script src="quiz-dati.js?v=20261113b"></script>
+<script src="quiz-valuta.js?v=20261113b"></script>
 <script>
 (function(){
   'use strict';
@@ -873,23 +880,59 @@
       run.hidden = false; mostra(); run.scrollIntoView({behavior:'smooth', block:'start'});
     });
     function mostra(){
+      stopMic();
       if (giro.i >= giro.lista.length) return fine();
-      var x = giro.lista[giro.i], d = sched(x);
+      var x = giro.lista[giro.i], d = sched(x), valutato = false;
       run.setAttribute('style', qstile(d));
       run.innerHTML = '<div class="row small muted"><span>Domanda ' + (giro.i + 1) + ' di ' + giro.lista.length + '</span><span class="qgr">' + esc(nomeRamo(d.gruppo)) + '</span><span class="grow"></span><span>sapute ' + giro.ok + ' · da ripassare ' + giro.ko + '</span></div>' +
         '<p class="qzq">' + hl(x.q) + '</p>' +
-        '<div id="qzA" hidden><div class="qza">' + hl(x.a) + '</div><p class="small muted">Dalla scheda <b>' + esc(x.s) + '</b> · ' + esc(d.testo) + '</p></div>' +
-        '<div class="row"><button class="btn" id="qzShow" type="button">Mostra la risposta</button>' +
-        '<button class="btn alt" id="qzOk" type="button" hidden>✓ La sapevo</button><button class="btn alt" id="qzKo" type="button" hidden>✗ Non la sapevo</button>' +
+        '<textarea id="qzTxt" rows="3" placeholder="Scrivi la risposta' + (micSupported() ? ' o dettala con il microfono' : '') + ' (Ctrl+Invio per valutare)"></textarea>' +
+        '<div class="row" id="qzRowA">' + (micSupported() ? '<button class="btn alt" id="qzMic" type="button">🎙 Rispondi a voce</button>' : '') +
+        '<button class="btn" id="qzVal" type="button">Valuta la risposta</button><button class="btn alt" id="qzShow" type="button">Mostra la risposta</button></div>' +
+        '<div id="qzEval" hidden></div>' +
+        '<div id="qzA" hidden><div class="qza"><b>Risposta:</b> ' + hl(x.a) + '</div><p class="small muted">Dalla scheda <b>' + esc(x.s) + '</b> · ' + esc(d.testo) + '</p></div>' +
+        '<div class="row"><button class="btn alt" id="qzOk" type="button" hidden>✓ La sapevo</button><button class="btn alt" id="qzKo" type="button" hidden>✗ Non la sapevo</button>' +
         '<span class="grow"></span><button class="btn alt sm" id="qzScheda" type="button">Apri la scheda</button><button class="btn alt sm" id="qzStop" type="button">Termina</button></div>';
-      $('#qzShow').addEventListener('click', function(){ $('#qzA').hidden = false; this.hidden = true; $('#qzOk').hidden = false; $('#qzKo').hidden = false; $('#qzOk').focus(); });
+      var ta = $('#qzTxt'), mic = $('#qzMic');
+      function svela(r){
+        valutato = true; ta.readOnly = true;
+        $('#qzRowA').hidden = true; $('#qzA').hidden = false; $('#qzOk').hidden = false; $('#qzKo').hidden = false;
+        $('#qzOk').className = 'btn' + (r && r.esito === 'ok' ? '' : ' alt'); $('#qzKo').className = 'btn' + (r && r.esito === 'no' ? '' : ' alt');
+        ($(r && r.esito === 'no' ? '#qzKo' : '#qzOk')).focus();
+      }
+      function valuta(){
+        if (valutato) return;
+        afterMic(function(){
+          var r = window.QuizValuta ? QuizValuta.valuta(x, ta.value) : null;
+          if (!r) { toast('Scrivi o detta prima la risposta, oppure usa «Mostra la risposta»'); return; }
+          x._auto = r.esito;
+          var lab = { ok: 'Accettabile', parz: 'Parziale', no: 'Non accettabile' }[r.esito];
+          var h = '<div class="qzv ' + r.esito + '"><b>Prima valutazione: ' + lab + '</b> <span class="small">· ' + r.perc + '% degli elementi</span><br><span class="small">' + esc(r.motivo) + '</span>';
+          var ch = [];
+          if (r.pol) ch.push('<span class="chip ' + (r.pol.ok ? 'ok' : 'err') + '">' + (r.pol.atteso === 'n' ? 'NO' : 'SÌ') + '</span>');
+          r.el.forEach(function(e){ ch.push('<span class="chip ' + (e.ok ? 'ok' : (e.t === 'n' ? 'err' : 'warn')) + '">' + (e.t === 'k' ? '' : '# ') + esc(e.l) + '</span>'); });
+          if (ch.length) h += '<div class="qzch">' + ch.join(' ') + '</div>';
+          if (r.rf.length) h += '<div class="small muted" style="margin-top:4px">Riferimento normativo (facoltativo): ' + r.rf.map(function(f){ return esc(f.l) + (f.ok ? ' ✓ citato' : ' · non citato'); }).join('; ') + '</div>';
+          h += '<div class="small muted" style="margin-top:4px">Verde = trovato · rosso = numero o estremo mancante · giallo = parola chiave mancante. È un confronto per parole e numeri, non di senso: decidi tu con i pulsanti sotto.</div></div>';
+          $('#qzEval').innerHTML = h; $('#qzEval').hidden = false;
+          svela(r);
+        });
+      }
+      if (mic) mic.addEventListener('click', function(){ if (recWanted) stopMic(); else startMic(ta, mic); });
+      $('#qzVal').addEventListener('click', valuta);
+      ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); valuta(); } });
+      $('#qzShow').addEventListener('click', function(){ stopMic(); x._auto = null; svela(null); });
       $('#qzOk').addEventListener('click', function(){ segna(x, true); });
       $('#qzKo').addEventListener('click', function(){ segna(x, false); });
-      $('#qzScheda').addEventListener('click', function(){ openQ(x.s); });
-      $('#qzStop').addEventListener('click', fine);
+      $('#qzScheda').addEventListener('click', function(){ stopMic(); openQ(x.s); });
+      $('#qzStop').addEventListener('click', function(){ stopMic(); fine(); });
+      if (S.audio.on && S.audio.autoRead !== false) speak(x.q, commOf(d), function(){ if (S.audio.autoMic && mic && !valutato) startMic(ta, mic); });
+      else if (S.audio.on && S.audio.autoMic && mic) startMic(ta, mic);
+      else ta.focus({preventScroll: true});
     }
     function segna(x, ok){
-      var st = S.quiz[x.id] || { n: 0 }; st.n++; st.ok = ok; st.t = Date.now(); S.quiz[x.id] = st; save();
+      stopMic(); if (synth) synth.cancel();
+      var st = S.quiz[x.id] || { n: 0 }; st.n++; st.ok = ok; st.t = Date.now(); if (x._auto) st.auto = x._auto; else delete st.auto; S.quiz[x.id] = st; save();
       if (ok) giro.ok++; else giro.ko++;
       giro.i++; mostra(); copertura(); avail();
     }
