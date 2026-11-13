@@ -93,6 +93,15 @@
   .qsec small{font-weight:500;opacity:.85;margin-left:6px}
   .qramo{margin:8px 0 0;padding:5px 10px;border-radius:4px;background:color-mix(in srgb,var(--c) 22%,#fff);color:var(--ct);border:1px solid color-mix(in srgb,var(--c) 30%,#fff);border-left:5px solid var(--cb);font:700 12.5px/1.25 var(--ui,system-ui,sans-serif);text-transform:uppercase;letter-spacing:.04em}
   .qramo small{text-transform:none;letter-spacing:0;font-weight:500;margin-left:6px}
+  #pane-quiz [hidden]{display:none!important}
+  .qzq{font:600 20px/1.35 var(--serif);margin:8px 0 12px;color:var(--ct,var(--ink));background:color-mix(in srgb,var(--c,#7c2b2b) 14%,#fff);border-left:6px solid var(--cb,var(--ink));border-radius:6px;padding:10px 12px}
+  .qza{border:1px dashed var(--line-2);border-radius:6px;padding:10px 12px;margin:10px 0;font-size:15.5px;background:var(--surface)}
+  .qzcov{display:grid;grid-template-columns:minmax(150px,1.4fr) 2fr 70px;gap:6px 10px;align-items:center;font-size:13px}
+  .qzcov .rm{cursor:pointer;color:var(--ct,var(--ink));font-weight:600}
+  .qzcov .rm:hover{text-decoration:underline}
+  .qzcov .tr{height:10px;border-radius:5px;background:var(--line-2);overflow:hidden;display:flex}
+  .qzcov .tr i{display:block;height:100%}
+  .qzcov h4{grid-column:1/-1;margin:10px 0 2px;padding:5px 9px;border-radius:4px;background:var(--c);color:var(--cf,#fff);font:700 13px/1.2 var(--ui,system-ui,sans-serif)}
   .qsotto{margin:4px 0 0 4px;color:var(--ct);font:600 12px/1.3 var(--ui,system-ui,sans-serif);text-transform:uppercase;letter-spacing:.05em}
   .q .t{flex:1;font-size:14px}
   .q .meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
@@ -166,6 +175,7 @@
     </div>
     <nav class="tabs" role="tablist">
       <button role="tab" data-tab="studio" aria-selected="true">Studio</button>
+      <button role="tab" data-tab="quiz" aria-selected="false">Quiz rapido</button>
       <button role="tab" data-tab="sim" aria-selected="false">Simulazione busta</button>
       <button role="tab" data-tab="comm" aria-selected="false">Commissione</button>
       <button role="tab" data-tab="guida" aria-selected="false">Guida</button>
@@ -175,6 +185,38 @@
 
 <main>
 <div class="wrap">
+
+  <!-- ================= QUIZ RAPIDO ================= -->
+  <section class="pane" id="pane-quiz">
+    <div class="box">
+      <h2>Quiz rapido</h2>
+      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Prova a rispondere a voce o a mente, poi scopri la risposta e segna se la sapevi. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
+      <div class="row">
+        <select id="qzMat" aria-label="Materia"></select>
+        <select id="qzRamo" aria-label="Ramo della mappa"></select>
+        <select id="qzMode" aria-label="Quali domande">
+          <option value="tutte">Tutte le domande</option>
+          <option value="nuove">Solo quelle mai fatte</option>
+          <option value="err">Solo quelle sbagliate</option>
+        </select>
+        <select id="qzN" aria-label="Quante domande">
+          <option value="10">10 domande</option>
+          <option value="20" selected>20 domande</option>
+          <option value="40">40 domande</option>
+          <option value="0">Tutte</option>
+        </select>
+        <button class="btn" id="qzStart" type="button">Inizia</button>
+        <span class="muted small" id="qzAvail"></span>
+      </div>
+    </div>
+    <div class="box" id="qzRun" hidden></div>
+    <div class="box">
+      <h3 style="margin-top:0">Copertura per ramo</h3>
+      <p class="muted small">Percentuale di risposte sapute sull'ultimo tentativo di ogni domanda. Sotto il 60% conviene tornare alla sezione del fascicolo. Clicca un ramo per fare il quiz solo su quello.</p>
+      <div id="qzCov"></div>
+      <div class="row" style="margin-top:10px"><button class="btn alt sm" id="qzReset" type="button">Azzera i risultati del quiz</button></div>
+    </div>
+  </section>
 
   <!-- ================= STUDIO ================= -->
   <section class="pane on" id="pane-studio">
@@ -286,10 +328,11 @@
 </div></dialog>
 <div class="toast" id="toast"></div>
 
-<script src="orale-dati.js?v=20261110c"></script>
-<script src="articoli-chiave.js?v=20261110c"></script>
-<script src="mappe-dati.js?v=20261110c"></script>
-<script src="voce-umana.js?v=20261110c"></script>
+<script src="orale-dati.js?v=20261113a"></script>
+<script src="articoli-chiave.js?v=20261113a"></script>
+<script src="mappe-dati.js?v=20261113a"></script>
+<script src="voce-umana.js?v=20261113a"></script>
+<script src="quiz-dati.js?v=20261113a"></script>
 <script>
 (function(){
   'use strict';
@@ -789,6 +832,94 @@
   // collegamento diretto da altre pagine (es. mappe mentali): orale.html#q=ID apre la domanda nello Studio
   function daHash(){ var m = location.hash.match(/^#q=([^&]+)/); if (m) { var id = decodeURIComponent(m[1]); if (byId(id)) { showTab('studio'); openQ(id); } } }
   daHash(); window.addEventListener('hashchange', daHash);
+
+  /* =====================================================
+     QUIZ RAPIDO: domande brevi con risposta nascosta (quiz-dati.js)
+     ===================================================== */
+  (function(){
+    var QZ = window.QUIZ_ORALE; if (!QZ) return;
+    var DD = {}; O.domande.forEach(function(d){ DD[d.id] = d; });
+    var QQ = QZ.domande.filter(function(x){ return DD[x.s]; });
+    S.quiz = S.quiz || {};
+    try { var r0 = JSON.parse(localStorage.getItem(KEY) || '{}'); if (r0.quiz) S.quiz = r0.quiz; } catch(e){}
+    var fM = $('#qzMat'), fR = $('#qzRamo'), fMo = $('#qzMode'), fN = $('#qzN'), run = $('#qzRun');
+    var sched = function(x){ return DD[x.s]; };
+    var ramoDi = function(x){ return sched(x).gruppo; };
+    fM.innerHTML = '<option value="">Tutte le materie del quiz</option>' + QZ.materie.map(function(m){ return '<option value="'+m+'">'+esc(MAT[m] ? MAT[m].nome : m)+'</option>'; }).join('');
+    function fillRami(){
+      var m = fM.value, seen = {}, op = ['<option value="">Tutti i rami</option>'];
+      QQ.forEach(function(x){ var d = sched(x); if ((!m || d.m === m) && !seen[d.m+'|'+d.gruppo]) { seen[d.m+'|'+d.gruppo] = 1; op.push('<option value="'+esc(d.m+'|'+d.gruppo)+'">'+esc((m ? '' : d.m + ' · ') + nomeRamo(d.gruppo))+'</option>'); } });
+      fR.innerHTML = op.join(''); avail();
+    }
+    function pool(){
+      var m = fM.value, r = fR.value, mo = fMo.value;
+      return QQ.filter(function(x){
+        var d = sched(x), st = S.quiz[x.id];
+        if (m && d.m !== m) return false;
+        if (r && d.m + '|' + d.gruppo !== r) return false;
+        if (mo === 'nuove' && st) return false;
+        if (mo === 'err' && !(st && !st.ok)) return false;
+        return true;
+      });
+    }
+    function avail(){ $('#qzAvail').textContent = pool().length + ' domande disponibili'; }
+    fM.addEventListener('change', fillRami); fR.addEventListener('change', avail); fMo.addEventListener('change', avail);
+    var giro = null;
+    function shuffle(a){ for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+    $('#qzStart').addEventListener('click', function(){
+      var p = shuffle(pool().slice()), n = +fN.value;
+      if (!p.length) { toast('Nessuna domanda con questi filtri'); return; }
+      giro = { lista: n ? p.slice(0, n) : p, i: 0, ok: 0, ko: 0 };
+      run.hidden = false; mostra(); run.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    function mostra(){
+      if (giro.i >= giro.lista.length) return fine();
+      var x = giro.lista[giro.i], d = sched(x);
+      run.setAttribute('style', qstile(d));
+      run.innerHTML = '<div class="row small muted"><span>Domanda ' + (giro.i + 1) + ' di ' + giro.lista.length + '</span><span class="qgr">' + esc(nomeRamo(d.gruppo)) + '</span><span class="grow"></span><span>sapute ' + giro.ok + ' · da ripassare ' + giro.ko + '</span></div>' +
+        '<p class="qzq">' + hl(x.q) + '</p>' +
+        '<div id="qzA" hidden><div class="qza">' + hl(x.a) + '</div><p class="small muted">Dalla scheda <b>' + esc(x.s) + '</b> · ' + esc(d.testo) + '</p></div>' +
+        '<div class="row"><button class="btn" id="qzShow" type="button">Mostra la risposta</button>' +
+        '<button class="btn alt" id="qzOk" type="button" hidden>✓ La sapevo</button><button class="btn alt" id="qzKo" type="button" hidden>✗ Non la sapevo</button>' +
+        '<span class="grow"></span><button class="btn alt sm" id="qzScheda" type="button">Apri la scheda</button><button class="btn alt sm" id="qzStop" type="button">Termina</button></div>';
+      $('#qzShow').addEventListener('click', function(){ $('#qzA').hidden = false; this.hidden = true; $('#qzOk').hidden = false; $('#qzKo').hidden = false; $('#qzOk').focus(); });
+      $('#qzOk').addEventListener('click', function(){ segna(x, true); });
+      $('#qzKo').addEventListener('click', function(){ segna(x, false); });
+      $('#qzScheda').addEventListener('click', function(){ openQ(x.s); });
+      $('#qzStop').addEventListener('click', fine);
+    }
+    function segna(x, ok){
+      var st = S.quiz[x.id] || { n: 0 }; st.n++; st.ok = ok; st.t = Date.now(); S.quiz[x.id] = st; save();
+      if (ok) giro.ok++; else giro.ko++;
+      giro.i++; mostra(); copertura(); avail();
+    }
+    function fine(){
+      var tot = giro.ok + giro.ko, pc = tot ? Math.round(giro.ok * 100 / tot) : 0;
+      run.removeAttribute('style');
+      run.innerHTML = '<h3 style="margin-top:0">Risultato: ' + giro.ok + ' su ' + tot + ' (' + pc + '%)</h3>' +
+        (giro.ko ? '<p class="small">Le domande sbagliate restano segnate: con «Solo quelle sbagliate» le ripeti finché non le sai.</p>' : '<p class="small">Nessun errore in questo giro.</p>') +
+        '<div class="row"><button class="btn" id="qzAgain" type="button">Nuovo giro</button></div>';
+      $('#qzAgain').addEventListener('click', function(){ $('#qzStart').click(); });
+      copertura();
+    }
+    function copertura(){
+      var gruppi = [], idx = {};
+      QQ.forEach(function(x){ var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
+      var h = '', prec = '';
+      gruppi.forEach(function(g){
+        if (g.m !== prec) { h += '<h4 style="' + qstile(g.d) + '">' + esc(MAT[g.m] ? MAT[g.m].nome : g.m) + '</h4>'; prec = g.m; }
+        var pOk = g.tot ? g.ok * 100 / g.tot : 0, pKo = g.tot ? (g.fatte - g.ok) * 100 / g.tot : 0, perc = g.fatte ? Math.round(g.ok * 100 / g.fatte) + '%' : '—';
+        var st = qstile(g.d);
+        h += '<span class="rm" data-k="' + esc(g.m + '|' + g.g) + '" style="' + st + '">' + esc(nomeRamo(g.g)) + '</span>' +
+          '<span class="tr" title="' + g.ok + ' sapute, ' + (g.fatte - g.ok) + ' da ripassare, ' + (g.tot - g.fatte) + ' mai fatte"><i style="width:' + pOk + '%;background:#2e7d32"></i><i style="width:' + pKo + '%;background:#c62828"></i></span>' +
+          '<span class="small' + (g.fatte && g.ok / g.fatte < 0.6 ? '" style="color:#c62828;font-weight:700' : '') + '">' + perc + ' <span class="muted">(' + g.fatte + '/' + g.tot + ')</span></span>';
+      });
+      $('#qzCov').innerHTML = '<div class="qzcov">' + h + '</div>';
+      $('#qzCov').querySelectorAll('.rm').forEach(function(el){ el.addEventListener('click', function(){ var k = el.dataset.k; fM.value = k.split('|')[0]; fillRami(); fR.value = k; avail(); $('#qzStart').click(); }); });
+    }
+    $('#qzReset').addEventListener('click', function(){ if (!confirm('Azzerare i risultati del quiz su questo dispositivo?')) return; S.quiz = {}; save(); copertura(); avail(); toast('Risultati del quiz azzerati'); });
+    fillRami(); copertura();
+  })();
 })();
 </script>
 </body>
