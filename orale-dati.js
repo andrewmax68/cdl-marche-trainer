@@ -2482,7 +2482,7 @@ window.ORALE = (function () {
       punti: [
         ["Capacità: per lavorare servono 16 anni e l'assolvimento dell'obbligo di istruzione, salvo eccezioni di legge; il minore che può lavorare esercita i diritti e le azioni che nascono dal contratto (art. 2 c.c.).", ["16 anni", "obbligo di istruzione", "art. 2"]],
         ["Accordo: incontro di proposta e accettazione (art. 1326 c.c.); causa: lo scambio tra lavoro e retribuzione; oggetto: la prestazione, che deve essere possibile, lecita, determinata o determinabile.", ["accordo", "1326", "causa", "scambio", "oggetto"]],
-        ["Forma: di regola libera. Fanno eccezione il patto di prova scritto (art. 2096 c.c.), il part-time scritto ai fini della prova (art. 5 D.Lgs. 81/2015) e il termine, che è privo di effetto se non risulta da atto scritto (art. 19, c. 4, D.Lgs. 81/2015).", ["forma", "libera", "2096", "ai fini della prova", "atto scritto"]],
+        ["Forma: di regola libera. Fanno eccezione il patto di prova scritto (art. 2096 c.c.), il part-time scritto ai fini della prova (art. 5 D.Lgs. 81/2015) e il termine, che è privo di effetto se non risulta da atto scritto, salvo i rapporti fino a 12 giorni: il rapporto è allora a tempo indeterminato (art. 19, c. 4, e art. 1 D.Lgs. 81/2015).", ["forma", "libera", "2096", "ai fini della prova", "atto scritto"]],
         ["Elementi accidentali: termine finale, condizione, patto di prova. Il datore deve inoltre fornire per iscritto le informazioni sul rapporto (D.Lgs. 152/1997).", ["accidentali", "termine", "152/1997"]],
         ["Invalidità: per il periodo in cui il rapporto è stato eseguito la nullità non ha effetto, salvo illiceità dell'oggetto o della causa (art. 2126 c.c.).", ["2126", "illiceita"]]
       ],
