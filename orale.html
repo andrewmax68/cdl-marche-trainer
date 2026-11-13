@@ -95,6 +95,11 @@
   .qramo small{text-transform:none;letter-spacing:0;font-weight:500;margin-left:6px}
   #pane-quiz [hidden]{display:none!important}
   .qzq{font:600 20px/1.35 var(--serif);margin:8px 0 12px;color:var(--ct,var(--ink));background:color-mix(in srgb,var(--c,#7c2b2b) 14%,#fff);border-left:6px solid var(--cb,var(--ink));border-radius:6px;padding:10px 12px}
+  .clbox{margin:0 0 12px}
+  .clv{border-radius:6px;padding:10px 12px;margin:8px 0;border:1px solid var(--line);display:grid;gap:6px;font-size:14.5px}
+  .clv.corretta{background:var(--ok-bg);border-color:#b9d3bd}.clv.corretta .clv-e{color:var(--ok)}
+  .clv.parziale{background:var(--warn-bg);border-color:#e3cfa6}.clv.parziale .clv-e{color:var(--warn)}
+  .clv.errata{background:var(--err-bg);border-color:#e4bab4}.clv.errata .clv-e{color:var(--err)}
   .qzv{border-radius:6px;padding:9px 12px;margin:10px 0;border:1px solid var(--line)}
   .qzv.ok{background:var(--ok-bg);border-color:#b9d3bd}
   .qzv.parz{background:var(--warn-bg);border-color:#e3cfa6}
@@ -196,7 +201,8 @@
   <section class="pane" id="pane-quiz">
     <div class="box">
       <h2>Quiz rapido</h2>
-      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: il simulatore ne fa una prima valutazione confrontandola con gli elementi essenziali (sì/no, numeri, estremi normativi, parole chiave), poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Qui il confronto è per parole chiave e non capisce il senso: per un giudizio di sostanza usa la <a href="https://claude.ai/artifact/L17rrGtQM6dLYrzxB6rELb" target="_blank" rel="noopener">versione con Claude</a> (si apre con il tuo account Claude). Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
+      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: la valuta Claude nella sostanza (nella versione del simulatore su claude.ai) oppure, altrove, un confronto per parole chiave; poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
+      <p class="small" id="qzMotore"></p>
       <div class="row">
         <select id="qzMat" aria-label="Materia"></select>
         <select id="qzRamo" aria-label="Ramo della mappa"></select>
@@ -353,7 +359,81 @@
   var KEY = 'cdl-orale-v1';
   var S = { stato:{}, storico:[], audio:{ on:false, voice:'', rate:1, autoRead:true, autoMic:false } };
   try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
-  function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
+  function save(){ S.t = Date.now(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} if (CL.dbSave) CL.dbSave(); }
+
+  /* ---------- Claude (solo quando la pagina è aperta come artifact su claude.ai) ---------- */
+  var CLAUDE_SIM = 'https://claude.ai/artifact/L17rrGtQM6dLYrzxB6rELb';
+  var CL = { art: !!(window.claude && typeof window.claude.use === 'function'), sample: null, dict: null, pronto: [], dbSave: null };
+  function clPronto(fn){ CL.pronto.push(fn); }
+  if (CL.art) {
+    window.claude.use('sample').then(function(x){ CL.sample = x; CL.pronto.forEach(function(f){ try { f(); } catch(e){} }); });
+    window.claude.use('dictation').then(function(x){ CL.dict = x; if (x) impostaDettatura(x); CL.pronto.forEach(function(f){ try { f(); } catch(e){} }); });
+    Promise.all([window.claude.use('user'), window.claude.use('db')]).then(async function(r){
+      var u = r[0], db = r[1]; if (!u || !db) return;
+      var id = await u.id(); if (!id) return;
+      var ref = db.collection('data/users/' + id).doc('simulatore'), busy = false, again = false;
+      try {
+        var sn = await ref.get();
+        if (sn.exists) {
+          var rem = sn.data() || {};
+          if ((rem.t || 0) > (S.t || 0)) {
+            S.stato = rem.stato || {}; S.storico = rem.storico || []; S.quiz = rem.quiz || {}; S.t = rem.t;
+            try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){}
+            CL.pronto.forEach(function(f){ try { f(); } catch(e){} });
+          }
+        }
+      } catch(e){}
+      CL.dbSave = function(){
+        if (busy) { again = true; return; }
+        busy = true;
+        ref.set({ t: S.t, stato: S.stato, storico: S.storico, quiz: S.quiz || {} }).catch(function(){}).then(function(){ busy = false; if (again) { again = false; CL.dbSave(); } });
+      };
+    });
+  }
+  function clGiudizio(r, etichette){
+    var e = ({ corretta: 1, parziale: 1, errata: 1 })[r && r.esito] ? r.esito : 'parziale';
+    function li(t, a){ return a && a.length ? '<div><b class="small">' + t + '</b><ul class="small" style="margin:2px 0 0;padding-left:20px">' + a.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' : ''; }
+    return { esito: e, html: '<div class="clv ' + e + '"><b class="clv-e">' + etichette[e] + '</b>' + (r.giudizio ? '<div>' + esc(r.giudizio) + '</div>' : '') +
+      li('Hai toccato', r.toccati) + li('Manca', r.manca) + li('Errori', r.errori) + li('Da verificare (non coperto dalla scheda)', r.da_verificare) +
+      (r.per_l_orale ? '<div><b class="small">All\'orale</b><div class="small">' + esc(r.per_l_orale) + '</div></div>' : '') +
+      '<div class="small muted">Giudizio di Claude sulla sostanza, confrontato con la risposta modello e la scheda verificata. La decisione finale resta tua.</div></div>' };
+  }
+  function clErrore(err){
+    if (err && /not_granted|sampling_disabled|not_declared|capability_disabled|capability_removed/.test(err.code)) { CL.sample = null; return 'Claude non è autorizzato per questa pagina: valuto per parole chiave.'; }
+    if (err && err.code === 'rate_limited') return 'Hai raggiunto il limite di richieste a Claude: per ora valuto per parole chiave, riprova più tardi.';
+    return 'Claude non ha risposto: valuto per parole chiave.';
+  }
+  function clScheda(d){
+    var r = d.r; if (!r) return '';
+    return 'SCHEDA «' + d.testo + '»: ' + r.sintesi + ' ' + r.punti.map(function(p){ return p[0]; }).join(' ') + ' Aggancio al lavoro: ' + r.aggancio + ' Fonti: ' + r.fonti;
+  }
+  var CL_REGOLE = [
+    '1. Valuta la SOSTANZA, non la forma. Accetta sinonimi, parafrasi, ordine diverso, linguaggio colloquiale, numeri in lettere, errori di battitura o di dettatura vocale, purché il concetto giuridico sia giusto.',
+    '2. Non pretendere articoli di legge, le parole della risposta modello o dettagli secondari.',
+    '3. Il riferimento è il materiale qui sotto, verificato su fonti ufficiali. Un\'affermazione del candidato che lo contraddice è un errore. Un\'affermazione che il materiale non tratta non va dichiarata sbagliata in base a tue conoscenze: se è rilevante mettila tra quelle da verificare.',
+    '4. Scrivi in italiano, frasi brevi, dando del tu al candidato, con il tono di un commissario esigente ma equo.'
+  ].join('\n');
+  function clPromptQuiz(x, d, risposta){
+    return ['Sei un commissario dell\'Esame di Stato per Consulente del Lavoro. Valuti la risposta breve che un candidato ha dato, a voce o per iscritto, a una domanda di ripasso.', '', 'REGOLE', CL_REGOLE,
+      '5. Contano il nucleo della risposta e i dati che la domanda chiede espressamente (un termine, una percentuale, un importo, un sì o un no). Esito: "corretta" se il nucleo c\'è e le omissioni sono secondarie; "parziale" se c\'è solo una parte del nucleo, manca un dato chiesto dalla domanda o c\'è un\'imprecisione rilevante; "errata" se il nucleo manca, è contraddetto o il dato chiesto è sbagliato.', '',
+      'DOMANDA: ' + x.q, 'RISPOSTA ATTESA: ' + x.a, clScheda(d), 'RISPOSTA DEL CANDIDATO: «' + risposta + '»', '',
+      'Restituisci solo un oggetto JSON: {"esito":"corretta"|"parziale"|"errata","giudizio":"una o due frasi sulla sostanza","manca":["elementi sostanziali mancanti"],"errori":["affermazioni sbagliate"],"da_verificare":["affermazioni non coperte dalla scheda"],"per_l_orale":"una frase su come completarla all\'orale, o stringa vuota"}'].join('\n');
+  }
+  function clPromptAperta(d, risposta){
+    return ['Sei un commissario dell\'Esame di Stato per Consulente del Lavoro. Il candidato ha risposto, a voce (trascritta) o per iscritto, a una domanda dell\'orale che richiede un\'esposizione di 2-3 minuti.', '', 'REGOLE', CL_REGOLE,
+      '5. Valuta se ha colto i punti essenziali della risposta modello, non se li ha detti tutti con le stesse parole. Esito: "corretta" se l\'esposizione è sostanzialmente completa e senza errori rilevanti; "parziale" se coglie l\'impostazione ma mancano punti importanti o c\'è un\'imprecisione rilevante; "errata" se manca il nucleo o ci sono errori gravi.', '',
+      'DOMANDA: ' + d.testo, 'RISPOSTA MODELLO E SCHEDA: ' + clScheda(d), 'RISPOSTA DEL CANDIDATO: «' + risposta + '»', '',
+      'Restituisci solo un oggetto JSON: {"esito":"corretta"|"parziale"|"errata","giudizio":"due o tre frasi sulla sostanza","toccati":["punti essenziali toccati"],"manca":["punti essenziali mancanti"],"errori":["affermazioni sbagliate"],"da_verificare":["affermazioni non coperte dalla scheda"],"per_l_orale":"un consiglio concreto per migliorare l\'esposizione"}'].join('\n');
+  }
+  var CLT = {}, cltN = 0;
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-clv]'); if (!b) return;
+    var k = b.dataset.clv, it = CLT[k]; if (!it || !CL.sample) return;
+    var out = b.parentNode.querySelector('.clv-out'); b.disabled = true; b.textContent = 'Claude sta valutando…';
+    CL.sample.json(clPromptAperta(it.d, it.text), { modelTier: 'default' }).then(function(r){
+      b.remove(); out.innerHTML = clGiudizio(r, { corretta: 'Risposta completa nella sostanza', parziale: 'Risposta parziale', errata: 'Risposta insufficiente' }).html;
+    }).catch(function(err){ if (err && err.code === 'cancelled') return; b.disabled = false; b.textContent = 'Valuta la sostanza con Claude'; out.innerHTML = '<div class="small muted">' + esc(clErrore(err).replace(': valuto per parole chiave', '')) + '</div>'; });
+  });
 
   function toast(t){ var el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(function(){ el.classList.remove('on'); }, 2200); }
   function copy(text){
@@ -411,8 +491,25 @@
 
   /* dettatura: un solo riconoscitore attivo, legato a una textarea */
   var rec = null, active = null, recWanted = false, recTarget = null, recBase = '', recBtn = null;
-  function micSupported(){ return !!SR; }
+  function micSupported(){ return CL.art ? !!CL.dict : !!SR; }
+  function impostaDettatura(dc){
+    dc.onPartial(function(e){ if (recTarget && recWanted) { recTarget.value = recBase + (e.text ? (recBase && !/\s$/.test(recBase) ? ' ' : '') + e.text : ''); } });
+    dc.onFinal(function(e){ if (recTarget) { var t = e.text; if (!recBase) t = t.replace(/^\s+/, ''); recBase += t; recTarget.value = recBase; recTarget.dispatchEvent(new Event('input')); } });
+    dc.onState(function(e){ if (e.state === 'idle') { recWanted = false; setRecBtn(false); } else setRecBtn(true); });
+  }
   function startMic(textarea, btn){
+    if (CL.art) {
+      if (!CL.dict) { toast('Dettatura non disponibile qui: usa il microfono della tastiera'); return; }
+      if (synth) synth.cancel();
+      recTarget = textarea; recBtn = btn; recWanted = true; recBase = textarea.value ? textarea.value.replace(/\s*$/, ' ') : '';
+      CL.dict.start({ language: 'it' }).catch(function(e){
+        recWanted = false; setRecBtn(false);
+        if (e && e.code === 'not_granted') toast('Microfono non consentito: puoi riattivarlo dal menu Autorizzazioni della pagina');
+        else if (e && e.code === 'no_gesture') { /* avvio automatico non consentito: si usa il pulsante */ }
+        else if (e && e.code !== 'stopped') toast('Dettatura non disponibile: usa il microfono della tastiera');
+      });
+      setRecBtn(true); return;
+    }
     if (!SR) { toast('Dettatura non disponibile in questo browser: usa Chrome, Edge o Safari'); return; }
     stopMic();
     if (synth) synth.cancel();
@@ -444,8 +541,11 @@
     };
     try { rec.start(); setRecBtn(true); } catch(e){ toast('Impossibile avviare il microfono'); }
   }
-  function stopMic(){ recWanted = false; var old = rec; rec = null; if (old) { try { old.stop(); } catch(e){} } setRecBtn(false); }
-  function afterMic(fn){ var was = recWanted; stopMic(); setTimeout(fn, was ? 600 : 0); }
+  function stopMic(){ recWanted = false; if (CL.art && CL.dict && CL.dict.active()) { CL.dict.stop().catch(function(){}); } var old = rec; rec = null; if (old) { try { old.stop(); } catch(e){} } setRecBtn(false); }
+  function afterMic(fn){
+    if (CL.art && CL.dict && CL.dict.active()) { recWanted = false; CL.dict.stop().catch(function(){}).then(function(){ setRecBtn(false); fn(); }); return; }
+    var was = recWanted; stopMic(); setTimeout(fn, was ? 600 : 0);
+  }
   function setRecBtn(on){ if (recBtn) { recBtn.classList.toggle('rec', on); recBtn.textContent = on ? '■ Ferma microfono' : '🎙 Rispondi a voce'; } }
   function stopAll(){ stopMic(); if (synth) synth.cancel(); stopTimer(); }
 
@@ -456,7 +556,7 @@
     var parts = [];
     if (!S.audio.on) { $('#audioSt').textContent = 'spenta'; return; }
     parts.push(synth ? 'voce sì' : 'voce non disponibile');
-    parts.push(SR ? 'microfono sì' : 'microfono non disponibile');
+    parts.push(micSupported() ? 'microfono sì' : 'microfono non disponibile');
     $('#audioSt').textContent = parts.join(' · ');
   }
   aOn.addEventListener('change', function(){
@@ -466,7 +566,8 @@
     rerenderOpen();
   });
   audioStatus();
-  $('#audioSupport').textContent = 'Sintesi vocale: ' + (synth ? 'disponibile' : 'non disponibile') + ' · Dettatura: ' + (SR ? 'disponibile' : 'non disponibile in questo browser (usa Chrome, Edge o Safari)') + '.';
+  function audioSupport(){ $('#audioSupport').textContent = 'Sintesi vocale: ' + (synth ? 'disponibile' : 'non disponibile') + ' · Dettatura: ' + (micSupported() ? 'disponibile' : (CL.art ? 'non disponibile in questa vista (su telefono usa il microfono della tastiera)' : 'non disponibile in questo browser (usa Chrome, Edge o Safari)')) + '.'; }
+  audioSupport(); clPronto(function(){ audioSupport(); audioStatus(); rerenderOpen(); });
   $('#audioCfg').addEventListener('click', function(){ loadVoices(); $('#dlgAudio').showModal(); });
   $('#closeAudio').addEventListener('click', function(){ $('#dlgAudio').close(); });
   $('#voiceSel').addEventListener('change', function(e){ S.audio.voice = e.target.value; save(); });
@@ -522,7 +623,9 @@
     }
     var h = hits(d.r, text);
     var n = h ? h.filter(Boolean).length : 0;
-    return '<div class="model"><h3>Risposta migliore</h3>' +
+    var clb = '';
+    if (CL.sample && String(text || '').trim()) { var ck = 'c' + (++cltN); CLT[ck] = { d: d, text: String(text).trim() }; clb = '<div class="clbox"><button class="btn sm" type="button" data-clv="' + ck + '">Valuta la sostanza con Claude</button><div class="clv-out"></div></div>'; }
+    return '<div class="model">' + clb + '<h3>Risposta migliore</h3>' +
       (h ? '<p class="small muted">Riscontro automatico: '+n+' punti su '+d.r.punti.length+' toccati (parole chiave, non valuta la correttezza).</p>' : '') +
       (window.ART_CHIAVE ? window.ART_CHIAVE.legenda() : '') +
       '<p class="sint">'+hl(d.r.sintesi)+'</p><ol>' +
@@ -653,6 +756,7 @@
     });
   }
   function rerenderOpen(){ if ($('#dlgQ').open && openId) { var v = ($('#qAns')||{}).value; openQ(openId); if (v) $('#qAns').value = v; } }
+  clPronto(function(){ renderList(); renderProg(); });
   $('#dlgQ').addEventListener('close', function(){ stopAll(); openId = null; renderList(); renderProg(); });
   $('#dlgQ').addEventListener('click', function(e){
     var a = e.target.closest('[data-act]'); if (!a) return;
@@ -903,6 +1007,22 @@
       function valuta(){
         if (valutato) return;
         afterMic(function(){
+          if (!ta.value.trim()) { toast('Scrivi o detta prima la risposta, oppure usa «Mostra la risposta»'); return; }
+          if (CL.sample) {
+            $('#qzVal').disabled = true; $('#qzShow').disabled = true; if (mic) mic.disabled = true;
+            $('#qzEval').innerHTML = '<div class="qzv"><b>Claude sta valutando la sostanza…</b></div>'; $('#qzEval').hidden = false;
+            CL.sample.json(clPromptQuiz(x, d, ta.value.trim()), { modelTier: 'default' }).then(function(r){
+              var g = clGiudizio(r, { corretta: 'Risposta corretta', parziale: 'Risposta parziale', errata: 'Risposta non corretta' });
+              x._auto = ({ corretta: 'ok', parziale: 'parz', errata: 'no' })[g.esito];
+              $('#qzEval').innerHTML = g.html; svela({ esito: x._auto });
+            }).catch(function(err){ if (err && err.code === 'cancelled') return; lessicale(clErrore(err)); qzMotore(); });
+            return;
+          }
+          lessicale('');
+        });
+      }
+      function lessicale(msg){
+        {
           var r = window.QuizValuta ? QuizValuta.valuta(x, ta.value) : null;
           if (!r) { toast('Scrivi o detta prima la risposta, oppure usa «Mostra la risposta»'); return; }
           x._auto = r.esito;
@@ -914,9 +1034,10 @@
           if (ch.length) h += '<div class="qzch">' + ch.join(' ') + '</div>';
           if (r.rf.length) h += '<div class="small muted" style="margin-top:4px">Riferimento normativo (facoltativo): ' + r.rf.map(function(f){ return esc(f.l) + (f.ok ? ' ✓ citato' : ' · non citato'); }).join('; ') + '</div>';
           h += '<div class="small muted" style="margin-top:4px">Verde = trovato · rosso = numero o estremo mancante · giallo = parola chiave mancante. È un confronto per parole e numeri, non di senso: decidi tu con i pulsanti sotto.</div></div>';
+          if (msg) h = h.replace('<div class="qzv ' + r.esito + '">', '<div class="qzv ' + r.esito + '"><div class="small">' + esc(msg) + '</div>');
           $('#qzEval').innerHTML = h; $('#qzEval').hidden = false;
           svela(r);
-        });
+        }
       }
       if (mic) mic.addEventListener('click', function(){ if (recWanted) stopMic(); else startMic(ta, mic); });
       $('#qzVal').addEventListener('click', valuta);
@@ -961,6 +1082,14 @@
       $('#qzCov').querySelectorAll('.rm').forEach(function(el){ el.addEventListener('click', function(){ var k = el.dataset.k; fM.value = k.split('|')[0]; fillRami(); fR.value = k; avail(); $('#qzStart').click(); }); });
     }
     $('#qzReset').addEventListener('click', function(){ if (!confirm('Azzerare i risultati del quiz su questo dispositivo?')) return; S.quiz = {}; save(); copertura(); avail(); toast('Risultati del quiz azzerati'); });
+    function qzMotore(){
+      var el = $('#qzMotore'); if (!el) return;
+      el.innerHTML = CL.sample ? '<span class="chip ok">Claude</span> Valutazione di sostanza con Claude (usa il tuo account Claude).'
+        : CL.art ? '<span class="chip warn">parole chiave</span> Claude non è disponibile in questa vista: la valutazione confronta parole e numeri.'
+        : '<span class="chip warn">parole chiave</span> Qui la valutazione confronta parole e numeri e non capisce il senso. Per il giudizio di sostanza di Claude apri il <a href="' + CLAUDE_SIM + '" target="_blank" rel="noopener">simulatore su claude.ai</a>.';
+    }
+    qzMotore();
+    clPronto(function(){ qzMotore(); copertura(); avail(); if (giro && run.querySelector('#qzTxt') && !run.querySelector('#qzTxt').value && !run.querySelector('#qzTxt').readOnly) mostra(); });
     fillRami(); copertura();
   })();
 })();
