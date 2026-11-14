@@ -232,6 +232,7 @@
       <h3 style="margin-top:0">Copertura per ramo</h3>
       <p class="muted small">Percentuale di risposte sapute sull'ultimo tentativo di ogni domanda. Sotto il 60% conviene tornare alla sezione del fascicolo. Clicca un ramo per fare il quiz solo su quello.</p>
       <div id="qzCov"></div>
+      <p class="small muted" id="qzSalv"></p>
       <div class="row" style="margin-top:10px"><button class="btn alt sm" id="qzReset" type="button">Azzera i risultati del quiz</button></div>
     </div>
   </section>
@@ -364,8 +365,32 @@
   /* ---------- storage (try/catch: può non essere disponibile) ---------- */
   var KEY = 'cdl-orale-v1';
   var S = { stato:{}, storico:[], audio:{ on:false, voice:'', rate:1, autoRead:true, autoMic:false } };
-  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
-  function save(){ S.t = Date.now(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} if (CL.dbSave) CL.dbSave(); }
+  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; S.quiz = p.quiz||{}; S.t = p.t||0; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
+  /* Unione di due stati salvati: per il quiz vince la risposta più recente di ogni domanda; per lo studio
+     restano tutte le schede segnate (prevale lo stato di questa vista); lo storico unisce le simulazioni. */
+  function unisci(base, altro){
+    if (!altro) return;
+    var q = base.quiz || (base.quiz = {}), aq = altro.quiz || {};
+    Object.keys(aq).forEach(function(k){ if (!q[k] || (aq[k] && (aq[k].t || 0) > (q[k].t || 0))) q[k] = aq[k]; });
+    var st = altro.stato || {}; Object.keys(st).forEach(function(k){ if (!(k in base.stato)) base.stato[k] = st[k]; });
+    var visti = {}, tutti = [];
+    (altro.storico || []).concat(base.storico || []).forEach(function(h){ var k = JSON.stringify(h); if (!visti[k]) { visti[k] = 1; tutti.push(h); } });
+    base.storico = tutti.slice(-50);
+  }
+  var SALV = { quando: 0, dove: '', errore: '' };
+  function save(){
+    S.t = Date.now();
+    try { var cur = JSON.parse(localStorage.getItem(KEY) || 'null'); if (cur) unisci(S, cur); } catch(e){}
+    try { localStorage.setItem(KEY, JSON.stringify(S)); SALV.dove = SALV.dove || 'dispositivo'; } catch(e){}
+    SALV.quando = Date.now();
+    if (CL.dbSave) CL.dbSave(); else salvStato();
+  }
+  function salvStato(){ var el = document.getElementById('qzSalv'); if (!el) return;
+    var n = Object.keys(S.quiz || {}).length;
+    el.textContent = n + ' domande del quiz con un esito registrato' + (SALV.quando ? ' · ultimo salvataggio alle ' + new Date(SALV.quando).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }) : '') +
+      (SALV.errore ? ' · salvataggio nel tuo account NON riuscito (' + SALV.errore + '): i risultati restano solo su questo dispositivo' : (SALV.dove === 'account' ? ' · salvati nel tuo account' : ' · salvati su questo dispositivo'));
+  }
+  window.addEventListener('storage', function(e){ if (e.key !== KEY || !e.newValue) return; try { unisci(S, JSON.parse(e.newValue)); CL.pronto.forEach(function(f){ try { f(); } catch(x){} }); } catch(x){} });
 
   /* ---------- Claude (solo quando la pagina è aperta come artifact su claude.ai) ---------- */
   var CLAUDE_SIM = 'https://claude.ai/artifact/L17rrGtQM6dLYrzxB6rELb';
@@ -382,18 +407,19 @@
         var sn = await ref.get();
         if (sn.exists) {
           var rem = sn.data() || {};
-          if ((rem.t || 0) > (S.t || 0)) {
-            S.stato = rem.stato || {}; S.storico = rem.storico || []; S.quiz = rem.quiz || {}; S.t = rem.t;
-            try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){}
-            CL.pronto.forEach(function(f){ try { f(); } catch(e){} });
-          }
+          unisci(S, rem);
+          try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){}
+          CL.pronto.forEach(function(f){ try { f(); } catch(e){} });
         }
-      } catch(e){}
+      } catch(e){ SALV.errore = (e && e.code) || 'lettura'; }
       CL.dbSave = function(){
         if (busy) { again = true; return; }
         busy = true;
-        ref.set({ t: S.t, stato: S.stato, storico: S.storico, quiz: S.quiz || {} }).catch(function(){}).then(function(){ busy = false; if (again) { again = false; CL.dbSave(); } });
+        var doc = JSON.parse(JSON.stringify({ t: S.t || Date.now(), stato: S.stato, storico: S.storico, quiz: S.quiz || {} }));
+        ref.set(doc).then(function(){ SALV.errore = ''; SALV.dove = 'account'; SALV.quando = Date.now(); }, function(e){ SALV.errore = (e && e.code) || 'errore'; })
+          .then(function(){ busy = false; salvStato(); if (again) { again = false; CL.dbSave(); } });
       };
+      CL.dbSave();
     });
   }
   function clGiudizio(r, etichette){
@@ -944,7 +970,12 @@
 
   /* ---------- guida ---------- */
   $('#gVer').textContent = 'versione ' + O.versione;
-  $('#btnReset').addEventListener('click', function(){ if (confirm('Azzerare progressi e storico salvati su questo dispositivo?')) { S.stato = {}; S.storico = []; save(); renderList(); renderProg(); simHist(); toast('Azzerato'); } });
+  $('#btnReset').addEventListener('click', function(){
+    var b = this; if (!b.dataset.conf) { b.dataset.conf = '1'; b.dataset.lab = b.textContent; b.textContent = 'Clicca di nuovo per azzerare'; setTimeout(function(){ if (b.dataset.conf) { delete b.dataset.conf; b.textContent = b.dataset.lab; } }, 4000); return; }
+    delete b.dataset.conf; b.textContent = b.dataset.lab;
+    S.stato = {}; S.storico = []; S.t = Date.now(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} if (CL.dbSave) CL.dbSave();
+    renderList(); renderProg(); simHist(); toast('Azzerato');
+  });
 
   renderProg(); renderList();
   // collegamento diretto da altre pagine (es. mappe mentali): orale.html#q=ID apre la domanda nello Studio
@@ -1094,15 +1125,19 @@
       $('#qzCov').innerHTML = '<div class="qzcov">' + h + '</div>';
       $('#qzCov').querySelectorAll('.rm').forEach(function(el){ el.addEventListener('click', function(){ var k = el.dataset.k; fM.value = k.split('|')[0]; fillRami(); fR.value = k; avail(); $('#qzStart').click(); }); });
     }
-    $('#qzReset').addEventListener('click', function(){ if (!confirm('Azzerare i risultati del quiz su questo dispositivo?')) return; S.quiz = {}; save(); copertura(); avail(); toast('Risultati del quiz azzerati'); });
+    $('#qzReset').addEventListener('click', function(){
+      var b = this; if (!b.dataset.conf) { b.dataset.conf = '1'; b.textContent = 'Clicca di nuovo per azzerare'; setTimeout(function(){ delete b.dataset.conf; b.textContent = 'Azzera i risultati del quiz'; }, 4000); return; }
+      delete b.dataset.conf; b.textContent = 'Azzera i risultati del quiz';
+      S.quiz = {}; S.t = Date.now(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} if (CL.dbSave) CL.dbSave(); copertura(); avail(); salvStato(); toast('Risultati del quiz azzerati');
+    });
     function qzMotore(){
       var el = $('#qzMotore'); if (!el) return;
       el.innerHTML = CL.sample ? '<span class="chip ok">Claude</span> Valutazione di sostanza con Claude (usa il tuo account Claude).'
         : CL.art ? '<span class="chip warn">parole chiave</span> Claude non è disponibile in questa vista: la valutazione confronta parole e numeri.'
         : '<span class="chip warn">parole chiave</span> Qui la valutazione confronta parole e numeri e non capisce il senso. Per il giudizio di sostanza di Claude apri il <a href="' + CLAUDE_SIM + '" target="_blank" rel="noopener">simulatore su claude.ai</a>.';
     }
-    qzMotore();
-    clPronto(function(){ qzMotore(); copertura(); avail(); if (giro && run.querySelector('#qzTxt') && !run.querySelector('#qzTxt').value && !run.querySelector('#qzTxt').readOnly) mostra(); });
+    qzMotore(); salvStato();
+    clPronto(function(){ qzMotore(); copertura(); avail(); salvStato(); if (giro && run.querySelector('#qzTxt') && !run.querySelector('#qzTxt').value && !run.querySelector('#qzTxt').readOnly) mostra(); });
     fillRami(); copertura();
   })();
 })();
