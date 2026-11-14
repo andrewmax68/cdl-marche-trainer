@@ -445,10 +445,11 @@
   /* lettura ad alta voce della riformulazione, anche con la modalità audio spenta */
   document.addEventListener('click', function(e){
     var b = e.target.closest('[data-leggi]'); if (!b || !synth) return;
-    if (synth.speaking) { synth.cancel(); b.textContent = '🔊 Ascoltala'; return; }
+    var lab = b.dataset.lab || (b.dataset.lab = b.textContent);
+    if (synth.speaking) { synth.cancel(); b.textContent = lab; return; }
     var t = b.parentNode.querySelector('.rif'); if (!t) return;
     var u = new SpeechSynthesisUtterance(t.textContent); u.lang = 'it-IT'; var v = pickVoice('m'); if (v) u.voice = v; u.rate = S.audio.rate || 1;
-    u.onend = u.onerror = function(){ b.textContent = '🔊 Ascoltala'; };
+    u.onend = u.onerror = function(){ b.textContent = lab; };
     b.textContent = '■ Ferma'; synth.speak(u);
   });
   /* tempo parlato per textarea (dettatura), per il ritmo in parole al minuto */
@@ -1145,6 +1146,12 @@
       var ta = $('#qzTxt'), mic = $('#qzMic');
       function svela(r){
         valutato = true; ta.readOnly = true;
+        if (synth && ta.value.trim() && !run.querySelector('.rilettura')) {
+          var rb = document.createElement('div'); rb.className = 'rilettura small'; rb.style.margin = '4px 0 8px';
+          rb.innerHTML = '<span class="rif" hidden></span><button class="btn alt sm" type="button" data-leggi="1">🔊 Riascolta le tue parole</button> <span class="muted">' + (CL.art ? 'lette dalla voce del computer: utili per la sintassi; la tua voce si riascolta solo nel simulatore su GitHub' : 'lette dalla voce del computer') + '</span>';
+          rb.querySelector('.rif').textContent = ta.value.trim();
+          (run.querySelector('.regs') || run.querySelector('.micst') || ta).insertAdjacentElement('afterend', rb);
+        }
         $('#qzRowA').hidden = true; $('#qzA').hidden = false; $('#qzOk').hidden = false; $('#qzKo').hidden = false;
         $('#qzOk').className = 'btn' + (r && r.esito === 'ok' ? '' : ' alt'); $('#qzKo').className = 'btn' + (r && r.esito === 'no' ? '' : ' alt');
         ($(r && r.esito === 'no' ? '#qzKo' : '#qzOk')).focus();
