@@ -201,7 +201,7 @@
   <section class="pane" id="pane-quiz">
     <div class="box">
       <h2>Quiz rapido</h2>
-      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: la valuta Claude nella sostanza (nella versione del simulatore su claude.ai) oppure, altrove, un confronto per parole chiave; poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
+      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: la valuta Claude nella sostanza (nella versione del simulatore su claude.ai) oppure, altrove, un confronto per parole chiave; poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Di norma il quiz esclude le 42 domande che chiedono solo il numero di un articolo o di una legge secondaria e tiene le 18 sugli articoli «pilastro» (quelli con la stella nella scheda Articoli da ricordare): puoi cambiarlo con il terzo filtro. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
       <p class="small" id="qzMotore"></p>
       <div class="row">
         <select id="qzMat" aria-label="Materia"></select>
@@ -210,6 +210,11 @@
           <option value="tutte">Tutte le domande</option>
           <option value="nuove">Solo quelle mai fatte</option>
           <option value="err">Solo quelle sbagliate</option>
+        </select>
+        <select id="qzTipo" aria-label="Tipo di domande">
+          <option value="base" selected>Sostanza + articoli pilastro</option>
+          <option value="tutte">Anche tutte le domande su articoli e norme</option>
+          <option value="art">Solo articoli pilastro</option>
         </select>
         <select id="qzN" aria-label="Quante domande">
           <option value="10">10 domande</option>
@@ -344,7 +349,7 @@
 <script src="articoli-chiave.js?v=20261113a"></script>
 <script src="mappe-dati.js?v=20261113a"></script>
 <script src="voce-umana.js?v=20261113a"></script>
-<script src="quiz-dati.js?v=20261113c"></script>
+<script src="quiz-dati.js?v=20261114a"></script>
 <script src="quiz-valuta.js?v=20261113c"></script>
 <script>
 (function(){
@@ -953,7 +958,8 @@
     var QQ = QZ.domande.filter(function(x){ return DD[x.s]; });
     S.quiz = S.quiz || {};
     try { var r0 = JSON.parse(localStorage.getItem(KEY) || '{}'); if (r0.quiz) S.quiz = r0.quiz; } catch(e){}
-    var fM = $('#qzMat'), fR = $('#qzRamo'), fMo = $('#qzMode'), fN = $('#qzN'), run = $('#qzRun');
+    var fM = $('#qzMat'), fR = $('#qzRamo'), fMo = $('#qzMode'), fN = $('#qzN'), fT = $('#qzTipo'), run = $('#qzRun');
+    var inTipo = function(x){ var t = fT.value; return t === 'tutte' ? true : t === 'art' ? x.t === 'p' : x.t !== 'e'; };
     var sched = function(x){ return DD[x.s]; };
     var ramoDi = function(x){ return sched(x).gruppo; };
     fM.innerHTML = '<option value="">Tutte le materie del quiz</option>' + QZ.materie.map(function(m){ return '<option value="'+m+'">'+esc(MAT[m] ? MAT[m].nome : m)+'</option>'; }).join('');
@@ -966,6 +972,7 @@
       var m = fM.value, r = fR.value, mo = fMo.value;
       return QQ.filter(function(x){
         var d = sched(x), st = S.quiz[x.id];
+        if (!inTipo(x)) return false;
         if (m && d.m !== m) return false;
         if (r && d.m + '|' + d.gruppo !== r) return false;
         if (mo === 'nuove' && st) return false;
@@ -975,6 +982,7 @@
     }
     function avail(){ $('#qzAvail').textContent = pool().length + ' domande disponibili'; }
     fM.addEventListener('change', fillRami); fR.addEventListener('change', avail); fMo.addEventListener('change', avail);
+    fT.addEventListener('change', function(){ avail(); copertura(); });
     var giro = null;
     function shuffle(a){ for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
     $('#qzStart').addEventListener('click', function(){
@@ -1070,7 +1078,7 @@
     }
     function copertura(){
       var gruppi = [], idx = {};
-      QQ.forEach(function(x){ var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
+      QQ.forEach(function(x){ if (fT.value !== 'tutte' && x.t === 'e') return; var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
       var h = '', prec = '';
       gruppi.forEach(function(g){
         if (g.m !== prec) { h += '<h4 style="' + qstile(g.d) + '">' + esc(MAT[g.m] ? MAT[g.m].nome : g.m) + '</h4>'; prec = g.m; }
