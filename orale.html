@@ -528,20 +528,44 @@
   function impostaDettatura(dc){
     dc.onPartial(function(e){ if (recTarget && recWanted) { recTarget.value = recBase + (e.text ? (recBase && !/\s$/.test(recBase) ? ' ' : '') + e.text : ''); } });
     dc.onFinal(function(e){ if (recTarget) { var t = e.text; if (!recBase) t = t.replace(/^\s+/, ''); recBase += t; recTarget.value = recBase; recTarget.dispatchEvent(new Event('input')); } });
-    dc.onState(function(e){ if (e.state === 'idle') { recWanted = false; setRecBtn(false); } else setRecBtn(true); });
+    dc.onState(function(e){
+      DSTATO = e.state;
+      if (e.state === 'idle') {
+        recWanted = false; setRecBtn(false);
+        var msg = { not_granted: 'Il microfono non è consentito: abilitalo dal menu Autorizzazioni della pagina (in alto) o dalle impostazioni del browser, poi riprova.',
+          unavailable: 'La dettatura non è disponibile per il tuo account o in questa vista: usa il microfono della tastiera o scrivi la risposta.',
+          upstream_error: 'Il microfono o il servizio di trascrizione non ha risposto: riprova tra poco.',
+          rate_limited: 'Troppe dettature in corso: riprova tra qualche secondo.',
+          dismissed: 'Hai chiuso la richiesta del microfono senza rispondere: premi di nuovo «Rispondi a voce» e consenti l\'accesso.',
+          hidden: 'La dettatura si è fermata perché la pagina non era più in primo piano.' }[e.reason];
+        micNota(msg || (recTarget && !recTarget.value.trim() && e.reason === 'stopped' ? 'Non ho ricevuto parole dalla dettatura: parla dopo che il pulsante mostra «in ascolto».' : ''));
+      } else {
+        setRecBtn(true, e.state);
+        micNota(e.state === 'starting' ? 'Sto aprendo il microfono: se compare la richiesta di autorizzazione in alto, consenti l\'accesso.' : e.state === 'listening' ? 'In ascolto: parla pure, il testo compare nel riquadro.' : '');
+      }
+    });
+  }
+  var DSTATO = 'idle';
+  function micNota(t){
+    if (!recTarget) return;
+    var n = recTarget.parentNode.querySelector('.micst');
+    if (!n) { n = document.createElement('p'); n.className = 'small micst'; n.style.margin = '4px 0 8px'; recTarget.insertAdjacentElement('afterend', n); }
+    n.textContent = t || ''; n.hidden = !t;
   }
   function startMic(textarea, btn){
     if (CL.art) {
       if (!CL.dict) { toast('Dettatura non disponibile qui: usa il microfono della tastiera'); return; }
       if (synth) synth.cancel();
       recTarget = textarea; recBtn = btn; recWanted = true; recBase = textarea.value ? textarea.value.replace(/\s*$/, ' ') : '';
-      CL.dict.start({ language: 'it' }).catch(function(e){
+      CL.dict.start().catch(function(e){
         recWanted = false; setRecBtn(false);
-        if (e && e.code === 'not_granted') toast('Microfono non consentito: puoi riattivarlo dal menu Autorizzazioni della pagina');
-        else if (e && e.code === 'no_gesture') { /* avvio automatico non consentito: si usa il pulsante */ }
-        else if (e && e.code !== 'stopped') toast('Dettatura non disponibile: usa il microfono della tastiera');
+        if (e && e.code === 'no_gesture') { micNota('Per dettare premi «Rispondi a voce».'); return; }
+        if (e && e.code === 'stopped') return;
+        micNota(e && e.code === 'not_granted' ? 'Il microfono non è consentito: abilitalo dal menu Autorizzazioni della pagina o dalle impostazioni del browser, poi riprova.'
+          : e && e.code === 'dismissed' ? 'Hai chiuso la richiesta del microfono: premi di nuovo «Rispondi a voce» e consenti l\'accesso.'
+          : 'Dettatura non disponibile (' + ((e && e.code) || 'errore') + '): usa il microfono della tastiera o scrivi la risposta.');
       });
-      setRecBtn(true); return;
+      setRecBtn(true, 'starting'); return;
     }
     if (!SR) { toast('Dettatura non disponibile in questo browser: usa Chrome, Edge o Safari'); return; }
     stopMic();
@@ -579,7 +603,7 @@
     if (CL.art && CL.dict && CL.dict.active()) { recWanted = false; CL.dict.stop().catch(function(){}).then(function(){ setRecBtn(false); fn(); }); return; }
     var was = recWanted; stopMic(); setTimeout(fn, was ? 600 : 0);
   }
-  function setRecBtn(on){ if (recBtn) { recBtn.classList.toggle('rec', on); recBtn.textContent = on ? '■ Ferma microfono' : '🎙 Rispondi a voce'; } }
+  function setRecBtn(on, st){ if (recBtn) { recBtn.classList.toggle('rec', on); recBtn.textContent = !on ? '🎙 Rispondi a voce' : st === 'starting' ? '⏳ Apro il microfono…' : st === 'finishing' ? '… trascrivo' : '■ Ferma (in ascolto)'; } }
   function stopAll(){ stopMic(); if (synth) synth.cancel(); stopTimer(); }
 
   /* interruttore audio */
@@ -1048,7 +1072,7 @@
       function valuta(){
         if (valutato) return;
         afterMic(function(){
-          if (!ta.value.trim()) { toast('Scrivi o detta prima la risposta, oppure usa «Mostra la risposta»'); return; }
+          if (!ta.value.trim()) { toast('Il riquadro è vuoto: scrivi o detta la risposta, oppure usa «Mostra la risposta»'); if (CL.art && CL.dict) { recTarget = ta; micNota('Il riquadro è vuoto: se hai parlato, la dettatura non ha trascritto nulla. Premi «Rispondi a voce», aspetta la scritta «in ascolto», parla e poi premi «Valuta la risposta».'); } return; }
           if (CL.sample) {
             $('#qzVal').disabled = true; $('#qzShow').disabled = true; if (mic) mic.disabled = true;
             $('#qzEval').innerHTML = '<div class="qzv"><b>Claude sta valutando la sostanza…</b></div>'; $('#qzEval').hidden = false;
