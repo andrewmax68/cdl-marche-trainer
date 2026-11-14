@@ -995,7 +995,7 @@
         '<button class="btn" id="qzVal" type="button">Valuta la risposta</button><button class="btn alt" id="qzShow" type="button">Mostra la risposta</button></div>' +
         '<div id="qzEval" hidden></div>' +
         '<div id="qzA" hidden><div class="qza"><b>Risposta:</b> ' + hl(x.a) + '</div><p class="small muted">Dalla scheda <b>' + esc(x.s) + '</b> · ' + esc(d.testo) + '</p></div>' +
-        '<div class="row"><button class="btn alt" id="qzOk" type="button" hidden>✓ La sapevo</button><button class="btn alt" id="qzKo" type="button" hidden>✗ Non la sapevo</button>' +
+        '<div class="row"><button class="btn alt" id="qzOk" type="button" hidden>✓ La sapevo · avanti</button><button class="btn alt" id="qzKo" type="button" hidden>✗ Non la sapevo · avanti</button>' +
         '<span class="grow"></span><button class="btn alt sm" id="qzScheda" type="button">Apri la scheda</button><button class="btn alt sm" id="qzStop" type="button">Termina</button></div>';
       var ta = $('#qzTxt'), mic = $('#qzMic');
       function svela(r){
@@ -1052,10 +1052,12 @@
       else ta.focus({preventScroll: true});
     }
     function segna(x, ok){
-      stopMic(); if (synth) synth.cancel();
-      var st = S.quiz[x.id] || { n: 0 }; st.n++; st.ok = ok; st.t = Date.now(); if (x._auto) st.auto = x._auto; else delete st.auto; S.quiz[x.id] = st; save();
+      try { stopMic(); if (synth) synth.cancel(); } catch(e){}
+      try { var st = S.quiz[x.id] || { n: 0 }; st.n++; st.ok = ok; st.t = Date.now(); if (x._auto) st.auto = x._auto; else delete st.auto; S.quiz[x.id] = st; save(); } catch(e){}
       if (ok) giro.ok++; else giro.ko++;
-      giro.i++; mostra(); copertura(); avail();
+      giro.i++; mostra();
+      try { copertura(); avail(); } catch(e){}
+      var top = run.getBoundingClientRect().top; if (top < 0) run.scrollIntoView({ block: 'start' });
     }
     function fine(){
       var tot = giro.ok + giro.ko, pc = tot ? Math.round(giro.ok * 100 / tot) : 0;
