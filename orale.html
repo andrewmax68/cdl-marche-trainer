@@ -532,7 +532,8 @@
       DSTATO = e.state;
       if (e.state === 'idle') {
         recWanted = false; setRecBtn(false);
-        var msg = { not_granted: 'Il microfono non è consentito: abilitalo dal menu Autorizzazioni della pagina (in alto) o dalle impostazioni del browser, poi riprova.',
+        if (e.reason === 'not_granted') { micNegato(); return; }
+        var msg = {
           unavailable: 'La dettatura non è disponibile per il tuo account o in questa vista: usa il microfono della tastiera o scrivi la risposta.',
           upstream_error: 'Il microfono o il servizio di trascrizione non ha risposto: riprova tra poco.',
           rate_limited: 'Troppe dettature in corso: riprova tra qualche secondo.',
@@ -546,11 +547,25 @@
     });
   }
   var DSTATO = 'idle';
-  function micNota(t){
+  function micNota(t, html){
     if (!recTarget) return;
     var n = recTarget.parentNode.querySelector('.micst');
-    if (!n) { n = document.createElement('p'); n.className = 'small micst'; n.style.margin = '4px 0 8px'; recTarget.insertAdjacentElement('afterend', n); }
-    n.textContent = t || ''; n.hidden = !t;
+    if (!n) { n = document.createElement('div'); n.className = 'small micst'; n.style.margin = '4px 0 8px'; recTarget.insertAdjacentElement('afterend', n); }
+    if (html) n.innerHTML = html; else n.textContent = t || '';
+    n.hidden = !(t || html);
+  }
+  /* Microfono negato: distingue il rifiuto dato alla pagina (si toglie dal pannello Autorizzazioni)
+     dal blocco del browser (si toglie dalle impostazioni del sito in Chrome). */
+  async function micNegato(){
+    var pm = null, st = '';
+    try { pm = await window.claude.use('permissions'); if (pm) st = await pm.state('dictation'); } catch(e){}
+    var browser = '<b>Se il microfono è bloccato dal browser:</b> clicca l\'icona a sinistra dell\'indirizzo (claude.ai), apri «Impostazioni sito» o la voce Microfono, scegli «Consenti» e ricarica la pagina.';
+    var h = '<div style="border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--err-bg)"><b>Il microfono non è consentito.</b> ';
+    if (st === 'denied') h += 'Per questa pagina la dettatura risulta rifiutata: riattivala dal pannello delle autorizzazioni.' + (pm ? ' <button class="btn sm" type="button" data-permessi="1">Apri le autorizzazioni</button>' : '') + '<br>' + browser;
+    else h += browser + (pm ? '<br>Puoi anche controllare le autorizzazioni della pagina: <button class="btn alt sm" type="button" data-permessi="1">Apri le autorizzazioni</button>' : '');
+    micNota('', h + '</div>');
+    var b = recTarget && recTarget.parentNode.querySelector('[data-permessi]');
+    if (b) b.addEventListener('click', function(){ pm.manage().then(function(){ micNota('Fatto: premi di nuovo «Rispondi a voce».'); }, function(){ micNota('Non riesco ad aprire il pannello da qui: usa il menu della pagina in alto (nome dell\'artifact) e cerca «Autorizzazioni».'); }); });
   }
   function startMic(textarea, btn){
     if (CL.art) {
@@ -561,8 +576,8 @@
         recWanted = false; setRecBtn(false);
         if (e && e.code === 'no_gesture') { micNota('Per dettare premi «Rispondi a voce».'); return; }
         if (e && e.code === 'stopped') return;
-        micNota(e && e.code === 'not_granted' ? 'Il microfono non è consentito: abilitalo dal menu Autorizzazioni della pagina o dalle impostazioni del browser, poi riprova.'
-          : e && e.code === 'dismissed' ? 'Hai chiuso la richiesta del microfono: premi di nuovo «Rispondi a voce» e consenti l\'accesso.'
+        if (e && e.code === 'not_granted') { micNegato(); return; }
+        micNota(e && e.code === 'dismissed' ? 'Hai chiuso la richiesta del microfono: premi di nuovo «Rispondi a voce» e consenti l\'accesso.'
           : 'Dettatura non disponibile (' + ((e && e.code) || 'errore') + '): usa il microfono della tastiera o scrivi la risposta.');
       });
       setRecBtn(true, 'starting'); return;
