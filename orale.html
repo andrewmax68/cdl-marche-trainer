@@ -201,7 +201,7 @@
   <section class="pane" id="pane-quiz">
     <div class="box">
       <h2>Quiz rapido</h2>
-      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: la valuta Claude nella sostanza (nella versione del simulatore su claude.ai) oppure, altrove, un confronto per parole chiave; poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Di norma il quiz esclude le 42 domande che chiedono solo il numero di un articolo o di una legge secondaria e tiene le 18 sugli articoli «pilastro» (quelli con la stella nella scheda Articoli da ricordare): puoi cambiarlo con il terzo filtro. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
+      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: la valuta Claude nella sostanza (nella versione del simulatore su claude.ai) oppure, altrove, un confronto per parole chiave; poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Di norma il quiz propone la sostanza: per ogni scheda una domanda sul cuore dell'argomento, le domande sui numeri che definiscono l'istituto o servono nella pratica quotidiana e le 18 sugli articoli «pilastro». Esclude 82 dettagli numerici secondari e 42 domande su articoli o leggi minori: puoi includerli con il terzo filtro. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
       <p class="small" id="qzMotore"></p>
       <div class="row">
         <select id="qzMat" aria-label="Materia"></select>
@@ -212,9 +212,10 @@
           <option value="err">Solo quelle sbagliate</option>
         </select>
         <select id="qzTipo" aria-label="Tipo di domande">
-          <option value="base" selected>Sostanza + articoli pilastro</option>
-          <option value="tutte">Anche tutte le domande su articoli e norme</option>
+          <option value="base" selected>Sostanza: cuore, numeri essenziali, articoli pilastro</option>
+          <option value="nucleo">Solo il cuore degli argomenti</option>
           <option value="art">Solo articoli pilastro</option>
+          <option value="tutte">Tutto, compresi dettagli e articoli minori</option>
         </select>
         <select id="qzN" aria-label="Quante domande">
           <option value="10">10 domande</option>
@@ -349,7 +350,7 @@
 <script src="articoli-chiave.js?v=20261113a"></script>
 <script src="mappe-dati.js?v=20261113a"></script>
 <script src="voce-umana.js?v=20261113a"></script>
-<script src="quiz-dati.js?v=20261114a"></script>
+<script src="quiz-dati.js?v=20261114b"></script>
 <script src="quiz-valuta.js?v=20261113c"></script>
 <script>
 (function(){
@@ -421,6 +422,7 @@
   function clPromptQuiz(x, d, risposta){
     return ['Sei un commissario dell\'Esame di Stato per Consulente del Lavoro. Valuti la risposta breve che un candidato ha dato, a voce o per iscritto, a una domanda di ripasso.', '', 'REGOLE', CL_REGOLE,
       '5. Contano il nucleo della risposta e i dati che la domanda chiede espressamente (un termine, una percentuale, un importo, un sì o un no). Esito: "corretta" se il nucleo c\'è e le omissioni sono secondarie; "parziale" se c\'è solo una parte del nucleo, manca un dato chiesto dalla domanda o c\'è un\'imprecisione rilevante; "errata" se il nucleo manca, è contraddetto o il dato chiesto è sbagliato.', '',
+      (x.t === 'c' ? '6. Questa domanda chiede il cuore dell\'argomento: valuta se il candidato ne coglie definizione, funzione e regola principale. Non pretendere numeri, termini, soglie o articoli; un dettaglio sbagliato è un errore solo se cambia la sostanza.\n' : '') +
       'DOMANDA: ' + x.q, 'RISPOSTA ATTESA: ' + x.a, clScheda(d), 'RISPOSTA DEL CANDIDATO: «' + risposta + '»', '',
       'Restituisci solo un oggetto JSON: {"esito":"corretta"|"parziale"|"errata","giudizio":"una o due frasi sulla sostanza","manca":["elementi sostanziali mancanti"],"errori":["affermazioni sbagliate"],"da_verificare":["affermazioni non coperte dalla scheda"],"per_l_orale":"una frase su come completarla all\'orale, o stringa vuota"}'].join('\n');
   }
@@ -959,7 +961,7 @@
     S.quiz = S.quiz || {};
     try { var r0 = JSON.parse(localStorage.getItem(KEY) || '{}'); if (r0.quiz) S.quiz = r0.quiz; } catch(e){}
     var fM = $('#qzMat'), fR = $('#qzRamo'), fMo = $('#qzMode'), fN = $('#qzN'), fT = $('#qzTipo'), run = $('#qzRun');
-    var inTipo = function(x){ var t = fT.value; return t === 'tutte' ? true : t === 'art' ? x.t === 'p' : x.t !== 'e'; };
+    var inTipo = function(x){ var t = fT.value; return t === 'tutte' ? true : t === 'art' ? x.t === 'p' : t === 'nucleo' ? x.t === 'c' : (x.t !== 'e' && x.t !== 'd'); };
     var sched = function(x){ return DD[x.s]; };
     var ramoDi = function(x){ return sched(x).gruppo; };
     fM.innerHTML = '<option value="">Tutte le materie del quiz</option>' + QZ.materie.map(function(m){ return '<option value="'+m+'">'+esc(MAT[m] ? MAT[m].nome : m)+'</option>'; }).join('');
@@ -1026,6 +1028,7 @@
             }).catch(function(err){ if (err && err.code === 'cancelled') return; lessicale(clErrore(err)); qzMotore(); });
             return;
           }
+          if (x.t === 'c') { x._auto = null; $('#qzEval').innerHTML = '<div class="qzv"><b>Confronta tu la tua risposta con quella qui sotto.</b><br><span class="small">Per le domande sul cuore di un argomento il confronto per parole chiave non è affidabile: serve il giudizio di Claude (simulatore su claude.ai) o il tuo.</span></div>'; $('#qzEval').hidden = false; svela(null); return; }
           lessicale('');
         });
       }
@@ -1078,7 +1081,7 @@
     }
     function copertura(){
       var gruppi = [], idx = {};
-      QQ.forEach(function(x){ if (fT.value !== 'tutte' && x.t === 'e') return; var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
+      QQ.forEach(function(x){ if (fT.value !== 'tutte' && (x.t === 'e' || x.t === 'd')) return; var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
       var h = '', prec = '';
       gruppi.forEach(function(g){
         if (g.m !== prec) { h += '<h4 style="' + qstile(g.d) + '">' + esc(MAT[g.m] ? MAT[g.m].nome : g.m) + '</h4>'; prec = g.m; }
