@@ -632,7 +632,7 @@
     recBase = textarea.value ? textarea.value.replace(/\s*$/, ' ') : '';
     var me = new SR(); rec = me; active = me;
     rec.lang = 'it-IT'; rec.interimResults = true;
-    try { rec.continuous = true; } catch(e){}
+    try { rec.continuous = !/Android/i.test(navigator.userAgent); } catch(e){} /* su Android la modalità continua ripete il testo: si riavvia a ogni frase */
     rec.onresult = function(ev){
       if (active !== me) return; /* i risultati finali arrivano anche dopo stop() */
       var fin = '', inter = '';
@@ -658,8 +658,11 @@
   }
   /* registrazione della propria voce per riascoltarla (solo fuori da claude.ai: lì la pagina riceve solo il testo) */
   var REG = null;
+  /* Su telefono e tablet il microfono non può servire insieme dettatura e registrazione: la registrazione
+     toglierebbe l'audio al riconoscimento vocale, quindi lì si registra solo il testo. */
+  var MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
   function avviaRegistrazione(ta){
-    if (CL.art || !navigator.mediaDevices || !window.MediaRecorder) return;
+    if (CL.art || MOBILE || !navigator.mediaDevices || !window.MediaRecorder) return;
     navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream){
       if (!recWanted || recTarget !== ta) { stream.getTracks().forEach(function(t){ t.stop(); }); return; }
       var mr = new MediaRecorder(stream), ch = [];
