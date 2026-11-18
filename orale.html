@@ -217,6 +217,7 @@
           <option value="art">Solo articoli pilastro</option>
           <option value="tutte">Tutto, compresi dettagli e articoli minori</option>
         </select>
+        <label class="small row" style="gap:5px"><input type="checkbox" class="fRare"> anche le schede rare</label>
         <select id="qzN" aria-label="Quante domande">
           <option value="10">10 domande</option>
           <option value="20" selected>20 domande</option>
@@ -261,6 +262,7 @@
           <option value="so">Le so</option>
         </select>
         <label class="small row" style="gap:5px"><input type="checkbox" id="fRisp"> solo con risposta modello</label>
+        <label class="small row" style="gap:5px" title="Le 29 schede stimate rare (ORALE_12): elenco 2022 di altra sede, doppioni, integrazioni non prioritarie"><input type="checkbox" class="fRare"> mostra anche le schede rare</label>
         <input type="search" id="fTxt" class="grow" placeholder="Cerca nel testo…" aria-label="Cerca">
       </div>
       <div class="row" style="margin-top:10px">
@@ -347,12 +349,13 @@
 </div></dialog>
 <div class="toast" id="toast"></div>
 
-<script src="orale-dati.js?v=20261113c"></script>
+<script src="orale-dati.js?v=20261118a"></script>
 <script src="articoli-chiave.js?v=20261113a"></script>
 <script src="mappe-dati.js?v=20261113a"></script>
 <script src="voce-umana.js?v=20261113a"></script>
-<script src="quiz-dati.js?v=20261114b"></script>
+<script src="quiz-dati.js?v=20261118a"></script>
 <script src="quiz-valuta.js?v=20261113c"></script>
+<script src="priorita.js?v=20261118a"></script>
 <script>
 (function(){
   'use strict';
@@ -365,7 +368,19 @@
   /* ---------- storage (try/catch: può non essere disponibile) ---------- */
   var KEY = 'cdl-orale-v1';
   var S = { stato:{}, storico:[], audio:{ on:false, voice:'', rate:1, autoRead:true, autoMic:false } };
-  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; S.quiz = p.quiz||{}; S.t = p.t||0; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
+  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; S.quiz = p.quiz||{}; S.t = p.t||0; S.mostraRare = !!p.mostraRare; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
+  /* Priorità di studio (priorita.js): schede rare da saltare e schede da sapere solo nel cuore */
+  var PRIO = window.PRIORITA_ORALE || { salta: [], sintesi: [] }, SALTA = {}, SINT = {};
+  PRIO.salta.forEach(function(i){ SALTA[i] = 1; }); PRIO.sintesi.forEach(function(i){ SINT[i] = 1; });
+  function rara(d){ return !!(d && (SALTA[d.id] || (d.vedi && SALTA[d.vedi]))); }
+  function escludiRara(d){ return !S.mostraRare && rara(d); }
+  function syncRare(){ document.querySelectorAll('.fRare').forEach(function(c){ c.checked = !!S.mostraRare; }); }
+  syncRare();
+  document.addEventListener('change', function(e){
+    if (!e.target.classList || !e.target.classList.contains('fRare')) return;
+    S.mostraRare = e.target.checked; syncRare(); save();
+    CL.pronto.forEach(function(f){ try { f(); } catch(x){} });
+  });
   /* Unione di due stati salvati: per il quiz vince la risposta più recente di ogni domanda; per lo studio
      restano tutte le schede segnate (prevale lo stato di questa vista); lo storico unisce le simulazioni. */
   function unisci(base, altro){
@@ -826,6 +841,7 @@
       if (g && d.gruppo !== g) return false;
       if (src && d.serie !== src) return false;
       if (onlyR && !d.r) return false;
+      if (escludiRara(d)) return false;
       var s = S.stato[d.id] || 'nuova';
       if (st && s !== st) return false;
       if (q && norm(d.testo).indexOf(q) < 0) return false;
@@ -846,7 +862,7 @@
       if (sotto(d) && (!prec || kcol(prec) !== k || prec.gruppo !== d.gruppo || sotto(prec) !== sotto(d)))
         h += '<div class="qsotto" style="'+st+'">▸ ' + esc(sotto(d)) + '</div>';
       prec = d;
-      return h + '<button class="q" type="button" data-id="'+d.id+'" style="'+st+'"><div class="t">'+hl(d.testo)+'<div class="meta"><span class="chip ox">'+esc(MAT[d.m].corto)+'</span><span class="chip">'+esc(d.gruppo)+'</span><span class="chip">'+esc(d.etichetta)+'</span>'+(d.r ? '<span class="chip ok">risposta modello</span>' : '')+statoChip(d.id)+'</div></div></button>';
+      return h + '<button class="q" type="button" data-id="'+d.id+'" style="'+st+'"><div class="t">'+hl(d.testo)+'<div class="meta"><span class="chip ox">'+esc(MAT[d.m].corto)+'</span><span class="chip">'+esc(d.gruppo)+'</span><span class="chip">'+esc(d.etichetta)+'</span>'+(d.r ? '<span class="chip ok">risposta modello</span>' : '')+(rara(d) ? '<span class="chip">rara: si può saltare</span>' : SINT[d.id] || (d.vedi && SINT[d.vedi]) ? '<span class="chip">solo il cuore</span>' : '')+statoChip(d.id)+'</div></div></button>';
     }).join('') || '<p class="muted small">Nessuna domanda con questi filtri.</p>';
   }
   function renderProg(){
@@ -878,6 +894,7 @@
     var body = $('#dlgBody');
     body.innerHTML = '<div class="qcard" style="'+qstile(d)+'">' + whoHtml(d) +
       '<div class="row small muted"><span>'+esc(d.fonte)+'</span><span class="qgr">'+esc(d.gruppo)+'</span><span class="grow"></span><span class="timer mono" id="qTimer">3:00</span></div>' +
+      (rara(d) ? '<p class="small" style="border-left:3px solid var(--warn);padding-left:8px">Scheda stimata <b>rara</b> (ORALE_12): puoi saltarla e concentrarti sulle altre.</p>' : (SINT[d.id] || (d.vedi && SINT[d.vedi])) ? '<p class="small" style="border-left:3px solid var(--warn);padding-left:8px">Per questa scheda basta il <b>cuore</b>: leggi la sintesi e salta i dettagli.</p>' : '') +
       (d.vedi && byId(d.vedi) ? '<p class="small muted">Stesso tema di «'+esc(byId(d.vedi).testo)+'» ('+esc(byId(d.vedi).fonte)+'): risposta modello e approfondimenti condivisi.</p>' : '') +
       '<p class="qtext">'+hl(d.testo)+'</p>' +
       '<div class="row">' + (S.audio.on ? '<button class="btn alt sm" data-act="read" type="button">🔊 Ascolta</button>' : '') +
@@ -940,7 +957,7 @@
       var mats = ks.slice(), x = null;
       while (!x && mats.length) {
         var m = pesca(mats); mats.splice(mats.indexOf(m), 1);
-        var base = O.domande.filter(function(d){ return area26(d) === m && !d.vedi && (!soloR() || d.r) && !(no22 && d.serie === 'S22'); });
+        var base = O.domande.filter(function(d){ return area26(d) === m && !d.vedi && (!soloR() || d.r) && !(no22 && d.serie === 'S22') && !escludiRara(d); });
         var pool = base.filter(function(d){ return !recenti[d.id]; });
         if (!pool.length) pool = base;
         if (pRip) { var rip = pool.filter(function(d){ return S.stato[d.id] === 'rip'; }); if (rip.length && Math.random() < 0.7) pool = rip; }
@@ -1100,7 +1117,9 @@
     S.quiz = S.quiz || {};
     try { var r0 = JSON.parse(localStorage.getItem(KEY) || '{}'); if (r0.quiz) S.quiz = r0.quiz; } catch(e){}
     var fM = $('#qzMat'), fR = $('#qzRamo'), fMo = $('#qzMode'), fN = $('#qzN'), fT = $('#qzTipo'), run = $('#qzRun');
-    var inTipo = function(x){ var t = fT.value; return t === 'tutte' ? true : t === 'art' ? x.t === 'p' : t === 'nucleo' ? x.t === 'c' : (x.t !== 'e' && x.t !== 'd'); };
+    var inTipo = function(x){ var t = fT.value;
+      if (!S.mostraRare && SALTA[x.s]) return false;
+      if (SINT[x.s] && t !== 'tutte' && t !== 'nucleo' && x.t !== 'c' && x.t !== 'p') return false; return t === 'tutte' ? true : t === 'art' ? x.t === 'p' : t === 'nucleo' ? x.t === 'c' : (x.t !== 'e' && x.t !== 'd'); };
     var sched = function(x){ return DD[x.s]; };
     var ramoDi = function(x){ return sched(x).gruppo; };
     fM.innerHTML = '<option value="">Tutte le materie del quiz</option>' + QZ.materie.map(function(m){ return '<option value="'+m+'">'+esc(MAT[m] ? MAT[m].nome : m)+'</option>'; }).join('');
@@ -1222,7 +1241,10 @@
     }
     function copertura(){
       var gruppi = [], idx = {};
-      QQ.forEach(function(x){ if (fT.value !== 'tutte' && (x.t === 'e' || x.t === 'd')) return; var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
+      QQ.forEach(function(x){ var tutte = fT.value === 'tutte';
+        if (!S.mostraRare && SALTA[x.s]) return;
+        if (!tutte && (x.t === 'e' || x.t === 'd')) return;
+        if (!tutte && SINT[x.s] && x.t !== 'c' && x.t !== 'p') return; var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
       var h = '', prec = '';
       gruppi.forEach(function(g){
         if (g.m !== prec) { h += '<h4 style="' + qstile(g.d) + '">' + esc(MAT[g.m] ? MAT[g.m].nome : g.m) + '</h4>'; prec = g.m; }
