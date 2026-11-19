@@ -1604,11 +1604,11 @@ window.ORALE = (function () {
     },
 
     'INAIL-20': {
-      sintesi: "La colpa del lavoratore non esclude l'indennizzo dell'infortunio: lo escludono solo il rischio elettivo e il dolo, che consente anche l'azione di regresso dell'INAIL contro l'infortunato.",
+      sintesi: "La colpa del lavoratore non esclude l'indennizzo dell'infortunio: lo esclude il rischio elettivo. Se l'infortunio è dovuto a dolo del lavoratore accertato con sentenza penale, l'INAIL può agire in regresso contro di lui per recuperare quanto erogato (art. 11, ultimo comma, T.U.).",
       punti: [
         ["L'assicurazione copre anche gli infortuni dovuti a negligenza, imprudenza o imperizia del lavoratore: è una tutela sociale, non una responsabilità per colpa.", ["colpa","negligenza","imprudenza"]],
         ["Il rischio elettivo, cioè un comportamento volontario, abnorme e per fini personali estraneo al lavoro, rompe l'occasione di lavoro ed esclude l'indennizzo.", ["elettivo","abnorme","personal"]],
-        ["Se l'infortunio è causato dolosamente dal lavoratore, accertato con sentenza penale, l'INAIL può agire in regresso contro di lui (art. 11, c. 4, T.U.).", ["dolo","regresso","sentenza penale"]],
+        ["Se l'infortunio è causato dolosamente dal lavoratore, accertato con sentenza penale, l'INAIL può agire in regresso contro di lui (art. 11, ultimo comma, T.U.).", ["dolo","regresso","sentenza penale"]],
         ["Sul piano della responsabilità del datore, la colpa del lavoratore non lo esonera se l'evento era prevedibile e non ha adottato le misure di sicurezza dovute (art. 2087 c.c.).", ["2087","misure di sicurezza","prevedibil"]],
         ["Il comportamento abnorme del lavoratore può interrompere il nesso causale anche ai fini della responsabilità del datore.", ["nesso","abnorme"]]
       ],
