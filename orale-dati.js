@@ -1806,7 +1806,7 @@ window.ORALE = (function () {
         ["Natura: conto di reddito acceso a un costo; si movimenta in dare quando matura la retribuzione, in contropartita al debito verso i dipendenti.", ["costo","dare","matura","debito"]],
         ["Contenuto: retribuzione lorda (minimi, scatti, superminimi, straordinari, indennità), mensilità aggiuntive, ferie e permessi maturati.", ["lorda","mensilita","straordinar","ferie"]],
         ["Restano fuori: contributi a carico del datore (Oneri sociali, B9 b), quota TFR (B9 c), indennità pagate per conto dell'INPS.", ["oneri sociali","tfr","per conto"]],
-        ["In assestamento si integra con i ratei di tredicesima, quattordicesima e ferie maturati e non ancora pagati.", ["assestamento","ratei","tredicesima"]],
+        ["In assestamento si integra con le quote maturate e non ancora pagate (quattordicesima, ferie e permessi non goduti; la tredicesima solo se non già pagata a dicembre): sono stanziamenti di costo, non ratei in senso contabile.", ["assestamento","ratei","tredicesima"]],
         ["A fine esercizio si chiude al conto economico; nel bilancio è esposto in B9 a) salari e stipendi (art. 2425 c.c.).", ["b9","2425","conto economico"]]
       ],
       aggancio: "Distinguere sempre il costo lordo (Salari e stipendi) dal debito netto verso i dipendenti (Personale c/retribuzioni).",
@@ -2486,7 +2486,7 @@ window.ORALE = (function () {
         ["Elementi accidentali: termine finale, condizione, patto di prova. Il datore deve inoltre fornire per iscritto le informazioni sul rapporto (D.Lgs. 152/1997).", ["accidentali", "termine", "152/1997"]],
         ["Invalidità: per il periodo in cui il rapporto è stato eseguito la nullità non ha effetto, salvo illiceità dell'oggetto o della causa (art. 2126 c.c.).", ["2126", "illiceita"]]
       ],
-      aggancio: "All'assunzione il consulente cura la lettera con le informazioni del D.Lgs. 152/1997, la comunicazione obbligatoria preventiva e la forma scritta dove serve; mancanze di forma su termine o part-time portano rispettivamente al tempo indeterminato e, su domanda del lavoratore, al tempo pieno.",
+      aggancio: "All'assunzione il consulente cura la lettera con le informazioni del D.Lgs. 152/1997, la comunicazione obbligatoria preventiva e la forma scritta dove serve; senza forma scritta il termine è privo di effetto (rapporto a tempo indeterminato); nel part-time, se manca la durata della prestazione il giudice, su domanda del lavoratore, dichiara il tempo pieno, se manca solo la collocazione oraria la determina.",
       fonti: "Simone, Diritto del lavoro, pp. 29-31; artt. 2, 2096, 2126 c.c. (NORMA_Codice_civile_lavoro); D.Lgs. 81/2015, artt. 5 e 19 (81_2015 in libreria)."
     },
 
