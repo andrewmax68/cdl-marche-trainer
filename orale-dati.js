@@ -2859,7 +2859,7 @@ window.ORALE = (function () {
       punti: [
         ["Casi: gravi complicanze della gravidanza o forme morbose che si presume aggravate dalla gravidanza; condizioni di lavoro o ambientali pregiudizievoli; lavori vietati quando la lavoratrice non può essere spostata ad altre mansioni.", ["complicanze", "pregiudizievoli", "spostata"]],
         ["Lavori vietati (art. 7): trasporto e sollevamento pesi, lavori pericolosi, faticosi e insalubri; la lavoratrice va spostata ad altre mansioni, anche inferiori, conservando retribuzione e qualifica. Il divieto vale durante la gravidanza e fino a sette mesi dopo il parto.", ["lavori vietati", "sollevamento", "conservando", "sette mesi"]],
-        ["Se lo spostamento è impossibile, l'Ispettorato territoriale del lavoro dispone l'interdizione dal lavoro (art. 17).", ["ispettorato", "impossibile"]],
+        ["Chi la dispone (art. 17, c. 3-4): per le gravi complicanze della gravidanza l'ASL; per condizioni di lavoro pregiudizievoli o se lo spostamento è impossibile l'Ispettorato territoriale del lavoro.", ["ASL", "ispettorato", "impossibile"]],
         ["Durante l'interdizione spetta l'indennità di maternità dell'80%, come nel congedo; il periodo è tutelato dal divieto di licenziamento.", ["80%", "divieto di licenziamento"]],
         ["Chi adibisce la lavoratrice a lavori vietati o durante i periodi di interdizione è punito con l'arresto fino a sei mesi (artt. 7, c. 7, e 18); trattandosi del solo arresto non si applica la prescrizione obbligatoria del D.Lgs. 758/1994.", ["arresto", "prescrizione obbligatoria"]]
       ],
@@ -4236,7 +4236,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.5 · 9/11/2026',
+    versione: '2.5.1 · 19/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
