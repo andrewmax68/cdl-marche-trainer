@@ -201,7 +201,7 @@
   <section class="pane" id="pane-quiz">
     <div class="box">
       <h2>Quiz rapido</h2>
-      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: la valuta Claude nella sostanza (nella versione del simulatore su claude.ai) oppure, altrove, un confronto per parole chiave; poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Di norma il quiz propone la sostanza: per ogni scheda una domanda sul cuore dell'argomento, le domande sui numeri che definiscono l'istituto o servono nella pratica quotidiana e le 18 sugli articoli «pilastro». Esclude 82 dettagli numerici secondari e 42 domande su articoli o leggi minori: puoi includerli con il terzo filtro. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Per ora: diritto del lavoro, INPS e INAIL.</p>
+      <p class="muted small">Domande brevi per misurare quanto ricordi di ogni argomento. Scrivi la risposta o dettala con il microfono: la valuta Claude nella sostanza (nella versione del simulatore su claude.ai) oppure, altrove, un confronto per parole chiave; poi decidi tu se la sapevi. Puoi anche solo scoprire la risposta. Di norma il quiz propone la sostanza: per ogni scheda una domanda sul cuore dell'argomento, le domande sui numeri che definiscono l'istituto o servono nella pratica quotidiana e le 18 sugli articoli «pilastro». Esclude i dettagli numerici secondari e le domande su articoli o leggi minori: puoi includerli con il terzo filtro. Ogni risposta viene da una scheda verificata: con «Apri la scheda» la ripassi per intero. Copre i cinque fascicoli: diritto del lavoro; INPS e INAIL; privato, pubblico e penale; tributario e ragioneria; deontologia.</p>
       <p class="small" id="qzMotore"></p>
       <div class="row">
         <select id="qzMat" aria-label="Materia"></select>
@@ -353,7 +353,7 @@
 <script src="articoli-chiave.js?v=20261113a"></script>
 <script src="mappe-dati.js?v=20261113a"></script>
 <script src="voce-umana.js?v=20261113a"></script>
-<script src="quiz-dati.js?v=20261119c"></script>
+<script src="quiz-dati.js?v=20261120a"></script>
 <script src="quiz-valuta.js?v=20261113c"></script>
 <script src="priorita.js?v=20261118a"></script>
 <script>
@@ -1121,11 +1121,12 @@
       if (!S.mostraRare && SALTA[x.s]) return false;
       if (SINT[x.s] && t !== 'tutte' && t !== 'nucleo' && x.t !== 'c' && x.t !== 'p') return false; return t === 'tutte' ? true : t === 'art' ? x.t === 'p' : t === 'nucleo' ? x.t === 'c' : (x.t !== 'e' && x.t !== 'd'); };
     var sched = function(x){ return DD[x.s]; };
+    var RM = QZ.rami || {}, grp = function(d){ return RM[d.id] || d.gruppo; };
     var ramoDi = function(x){ return sched(x).gruppo; };
     fM.innerHTML = '<option value="">Tutte le materie del quiz</option>' + QZ.materie.map(function(m){ return '<option value="'+m+'">'+esc(MAT[m] ? MAT[m].nome : m)+'</option>'; }).join('');
     function fillRami(){
       var m = fM.value, seen = {}, op = ['<option value="">Tutti i rami</option>'];
-      QQ.forEach(function(x){ var d = sched(x); if ((!m || d.m === m) && !seen[d.m+'|'+d.gruppo]) { seen[d.m+'|'+d.gruppo] = 1; op.push('<option value="'+esc(d.m+'|'+d.gruppo)+'">'+esc((m ? '' : d.m + ' · ') + nomeRamo(d.gruppo))+'</option>'); } });
+      QQ.forEach(function(x){ var d = sched(x); if ((!m || d.m === m) && !seen[d.m+'|'+grp(d)]) { seen[d.m+'|'+grp(d)] = 1; op.push('<option value="'+esc(d.m+'|'+grp(d))+'">'+esc((m ? '' : d.m + ' · ') + nomeRamo(grp(d)))+'</option>'); } });
       fR.innerHTML = op.join(''); avail();
     }
     function pool(){
@@ -1134,7 +1135,7 @@
         var d = sched(x), st = S.quiz[x.id];
         if (!inTipo(x)) return false;
         if (m && d.m !== m) return false;
-        if (r && d.m + '|' + d.gruppo !== r) return false;
+        if (r && d.m + '|' + grp(d) !== r) return false;
         if (mo === 'nuove' && st) return false;
         if (mo === 'err' && !(st && !st.ok)) return false;
         return true;
@@ -1156,7 +1157,7 @@
       if (giro.i >= giro.lista.length) return fine();
       var x = giro.lista[giro.i], d = sched(x), valutato = false;
       run.setAttribute('style', qstile(d));
-      run.innerHTML = '<div class="row small muted"><span>Domanda ' + (giro.i + 1) + ' di ' + giro.lista.length + '</span><span class="qgr">' + esc(nomeRamo(d.gruppo)) + '</span><span class="grow"></span><span>sapute ' + giro.ok + ' · da ripassare ' + giro.ko + '</span></div>' +
+      run.innerHTML = '<div class="row small muted"><span>Domanda ' + (giro.i + 1) + ' di ' + giro.lista.length + '</span><span class="qgr">' + esc(nomeRamo(grp(d))) + '</span><span class="grow"></span><span>sapute ' + giro.ok + ' · da ripassare ' + giro.ko + '</span></div>' +
         '<p class="qzq">' + hl(x.q) + '</p>' +
         '<textarea id="qzTxt" rows="3" placeholder="Scrivi la risposta' + (micSupported() ? ' o dettala con il microfono' : '') + ' (Ctrl+Invio per valutare)"></textarea>' +
         '<div class="row" id="qzRowA">' + (micSupported() ? '<button class="btn alt" id="qzMic" type="button">🎙 Rispondi a voce</button>' : '') +
@@ -1244,7 +1245,7 @@
       QQ.forEach(function(x){ var tutte = fT.value === 'tutte';
         if (!S.mostraRare && SALTA[x.s]) return;
         if (!tutte && (x.t === 'e' || x.t === 'd')) return;
-        if (!tutte && SINT[x.s] && x.t !== 'c' && x.t !== 'p') return; var d = sched(x), k = d.m + '|' + d.gruppo; if (!idx[k]) { idx[k] = { m: d.m, g: d.gruppo, d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
+        if (!tutte && SINT[x.s] && x.t !== 'c' && x.t !== 'p') return; var d = sched(x), k = d.m + '|' + grp(d); if (!idx[k]) { idx[k] = { m: d.m, g: grp(d), d: d, tot: 0, fatte: 0, ok: 0 }; gruppi.push(idx[k]); } var st = S.quiz[x.id]; idx[k].tot++; if (st) { idx[k].fatte++; if (st.ok) idx[k].ok++; } });
       var h = '', prec = '';
       gruppi.forEach(function(g){
         if (g.m !== prec) { h += '<h4 style="' + qstile(g.d) + '">' + esc(MAT[g.m] ? MAT[g.m].nome : g.m) + '</h4>'; prec = g.m; }
