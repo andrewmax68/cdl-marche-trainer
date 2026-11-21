@@ -1099,7 +1099,7 @@ window.ORALE = (function () {
         ['CED (art. 1, c. 5): calcolo e stampa e attività strumentali e accessorie, assistiti da iscritti agli albi.', ['calcolo e stampa','assistit','ced']],
         ['Restano riservate le attività valutative: CCNL e inquadramento, assunzioni e cessazioni, comunicazioni obbligatorie, LUL, assistenza nelle ispezioni (nota INL n. 4304 del 12/5/2025, riportata da dottrinalavoro.it).', ['valutativ','lul','4304','inquadramento']],
         ['Sanzioni: delitto di esercizio abusivo (art. 348 c.p., reclusione da 6 mesi a 3 anni e multa da 10.000 a 50.000 euro secondo la stessa fonte); l\'ispettore può anche usare la disposizione (art. 14 D.Lgs. 124/2004).', ['348','reclusione','disposizione','124']],
-        ['Deontologia: il consulente non può lavorare con soggetti non abilitati (art. 12 Codice) e collabora con l\'Ordine contro l\'abusivismo (art. 18).', ['non abilitat','abusivismo','18']]
+        ['Deontologia: il consulente non può accettare incarichi insieme a soggetti non abilitati per prestazioni riservate, né promuoverne o favorirne l\'attività (art. 12 Codice) e collabora con l\'Ordine contro l\'abusivismo (art. 18).', ['non abilitat','abusivismo','18']]
       ],
       aggancio: 'È il terreno d\'incontro tra il Presidente (vigilanza INL) e i tre commissari dell\'Ordine: protocollo INL-Consiglio nazionale del 29/3/2023 per mappare i CED.',
       fonti: 'L. 12/1979, art. 1 (Normattiva); nota INL n. 4304/2025 e art. 348 c.p. come riportati da dottrinalavoro.it (testi non letti in originale); Codice deontologico, artt. 12 e 18.'
