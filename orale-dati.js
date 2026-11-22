@@ -3209,13 +3209,13 @@ window.ORALE = (function () {
       sintesi: "Il datore che trattiene le ritenute previdenziali e assistenziali dalla retribuzione del lavoratore e non le versa all'INPS commette il reato dell'art. 2, c. 1-bis, D.L. 463/1983, ma solo se l'importo omesso supera 10.000 euro l'anno; sotto questa soglia è un illecito amministrativo (D.Lgs. 8/2016).",
       punti: [
         ["Sopra i 10.000 euro annui: reclusione fino a tre anni e multa fino a 1.032 euro.", ["10.000", "reclusione", "tre anni"]],
-        ["Fino a 10.000 euro: sanzione amministrativa da 10.000 a 50.000 euro.", ["sanzione amministrativa", "50.000"]],
+        ["Fino a 10.000 euro: sanzione amministrativa da una volta e mezza a quattro volte l'importo omesso (art. 23 D.L. 48/2023, conv. L. 85/2023, dal 5/5/2023; prima era da 10.000 a 50.000 euro, come riporta ancora il Simone penale).", ["sanzione amministrativa", "una volta e mezza", "quattro volte"]],
         ["Causa di non punibilità: il datore non è punibile, né soggetto alla sanzione, se versa le ritenute entro tre mesi dalla contestazione o dalla notifica dell'accertamento.", ["non punibil", "tre mesi", "contestazione"]],
         ["Si tratta delle sole ritenute a carico del lavoratore: l'omesso versamento della quota a carico del datore non è reato, ma comporta sanzioni civili e recupero contributivo.", ["a carico del lavoratore", "sanzioni civili"]],
         ["È uno dei pochi delitti del diritto penale del lavoro, accanto alla rimozione od omissione dolosa di cautele (art. 437 c.p.) e alle falsità nelle denunce contributive (art. 37 L. 689/1981).", ["437", "37", "689/1981"]]
       ],
       aggancio: "Per il consulente: il mancato versamento delle trattenute è il segnale classico della crisi d'impresa. Va gestito subito con rateazione e versamento entro i tre mesi dalla contestazione, per evitare il penale (ORALE_05).",
-      fonti: "Simone, Diritto penale (scansione del 6/11/2026), p. 987; Simone, Legislazione sociale, pp. 447-448 (art. 2, c. 1-bis, D.L. 463/1983: soglie, sanzione e causa di non punibilità)."
+      fonti: "Simone, Diritto penale (scansione del 6/11/2026), p. 987; Simone, Legislazione sociale, pp. 447-448 (art. 2, c. 1-bis, D.L. 463/1983: soglie, sanzione e causa di non punibilità). Sanzione amministrativa corretta il 22/11/2026 sul testo modificato dall'art. 23 D.L. 48/2023 (Brocardi, agg. 1/1/2026; Corte cost. 103/2025, che riporta il testo vigente)."
     },
 
     "S22-PPP-29": {
@@ -4236,7 +4236,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.5.1 · 19/11/2026',
+    versione: '2.5.2 · 22/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,

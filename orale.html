@@ -176,7 +176,7 @@
       <div>
         <p class="eyebrow"><a href="index.html">← CdL Marche 2026</a> · Prova orale · <a href="mappe.html">Mappe mentali →</a></p>
         <h1 class="title">Prova orale — allenamento e studio</h1>
-        <p class="sub">Il tuo orale: martedì 24 novembre 2026, ore 10:30, ITL Ancona (sessione del 23 e 24 novembre): busta con 5 domande, una per materia o gruppo di materie. Qui trovi le 23 buste di Ancona 2025 (8 domande, una per materia), le integrazioni 2026 e i 135 argomenti ufficiali 2022 di un'altra sede. Studia con le risposte modello e le fonti in libreria, oppure estrai una busta e rispondi alla commissione simulata, anche a voce.</p>
+        <p class="sub">Il tuo orale: martedì 24 novembre 2026, ore 10:30, ITL Ancona (sessione del 23 e 24 novembre): busta con 5 domande, una per materia o gruppo di materie. Qui trovi le 23 buste di Ancona 2025 (8 domande, una per materia), le integrazioni 2026 e i 135 argomenti ufficiali 2022 di un'altra sede. Studia con le risposte modello e le fonti in libreria, oppure estrai una busta e rispondi alla commissione simulata, anche a voce. Novità del 22/11: le <b>31 buste della Commissione 2026 simulata</b> (155 domande, 79 prioritarie ★) nella scheda Simulazione.</p>
       </div>
       <div class="audiobox">
         <label class="switch" title="Modalità audio"><input type="checkbox" id="audioOn"><span class="sl"></span></label>
@@ -281,6 +281,13 @@
       <div class="row" style="margin-top:10px">
         <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="b26" checked> Busta 2026 (5 domande, schema ufficiale)</label>
       </div>
+      <div class="row" style="margin-top:6px" id="c26Row">
+        <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="c26"> <b>Busta Commissione 2026 simulata</b> (31 buste da 5 domande)</label>
+        <select id="c26Set" aria-label="Domande da estrarre"><option value="tutte">tutte le 155 domande (31 buste fisse)</option><option value="prio">solo le 79 prioritarie ★</option></select>
+        <select id="c26N" aria-label="Numero busta simulata"></select>
+        <span class="small muted" id="c26Stato"></span>
+      </div>
+      <p class="small muted" style="margin:6px 0 0">Commissione 2026 simulata: ogni commissario compone le 31 domande della sua riga (riga 1 Rausei e CdL; riga 2 Gallotta e Sassi; riga 3 Terzoni; riga 4 e 5 CdL, con Rausei nella 5). Sono domande <b>simulate</b>, non quelle reali. Con «tutte» estrai una delle 31 buste fisse (a caso tra quelle non ancora fatte); con «prioritarie» una domanda ★ per riga, senza ripetere quelle già viste finché non le hai fatte tutte. Per rispondere a voce attiva la Modalità audio: alla fine di ogni domanda hai la risposta migliore, il riscontro dei punti toccati e, aperto come artifact su claude.ai, la valutazione della sostanza da parte di Claude.</p>
       <div class="row" style="margin-top:6px">
         <label class="small row" style="gap:6px"><input type="radio" name="tipo" value="uff"> Busta ufficiale 2025</label>
         <select id="nBusta" aria-label="Numero busta"></select>
@@ -317,7 +324,7 @@
       <h2>Come usarlo</h2>
       <ol class="small">
         <li><b>Studio.</b> Filtra per materia o gruppo, apri una domanda, prova a rispondere (a voce o per iscritto), poi apri la risposta modello. Segna «La so» o «Da ripassare»: il progresso resta salvato su questo dispositivo.</li>
-        <li><b>Simulazione.</b> Estrai una busta ufficiale o mista. Rispondi alle domande (5 nella busta 2026, 8 nelle altre); alla fine ottieni la tabella, una stima del voto in base alla tua autovalutazione e il <b>pacchetto per Claude</b> da incollare nella chat dedicata per la correzione vera.</li>
+        <li><b>Simulazione.</b> Estrai una busta ufficiale, mista o della <b>Commissione 2026 simulata</b> (tutte le 31 buste o solo le domande prioritarie ★). Rispondi alle domande (5 nella busta 2026, 8 nelle altre); alla fine ottieni la tabella, una stima del voto in base alla tua autovalutazione e il <b>pacchetto per Claude</b> da incollare nella chat dedicata per la correzione vera.</li>
         <li><b>Modalità audio</b> (interruttore in alto): la domanda viene letta dal «commissario» e puoi rispondere col microfono; la trascrizione resta modificabile. Spegnendola, tutto funziona per iscritto.</li>
       </ol>
       <h3 style="margin-top:14px">Limiti, da sapere</h3>
@@ -349,7 +356,8 @@
 </div></dialog>
 <div class="toast" id="toast"></div>
 
-<script src="orale-dati.js?v=20261121a"></script>
+<script src="orale-dati.js?v=20261122a"></script>
+<script src="orale-sim26.js?v=20261122a"></script>
 <script src="articoli-chiave.js?v=20261113a"></script>
 <script src="mappe-dati.js?v=20261113a"></script>
 <script src="voce-umana.js?v=20261113a"></script>
@@ -368,7 +376,7 @@
   /* ---------- storage (try/catch: può non essere disponibile) ---------- */
   var KEY = 'cdl-orale-v1';
   var S = { stato:{}, storico:[], audio:{ on:false, voice:'', rate:1, autoRead:true, autoMic:false } };
-  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; S.quiz = p.quiz||{}; S.t = p.t||0; S.mostraRare = !!p.mostraRare; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
+  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); S.stato = p.stato||{}; S.storico = p.storico||[]; S.quiz = p.quiz||{}; S.t = p.t||0; S.mostraRare = !!p.mostraRare; if (p.sim26) S.sim26 = p.sim26; if (p.audio) for (var k in p.audio) S.audio[k] = p.audio[k]; } } catch(e){}
   /* Priorità di studio (priorita.js): schede rare da saltare e schede da sapere solo nel cuore */
   var PRIO = window.PRIORITA_ORALE || { salta: [], sintesi: [] }, SALTA = {}, SINT = {};
   PRIO.salta.forEach(function(i){ SALTA[i] = 1; }); PRIO.sintesi.forEach(function(i){ SINT[i] = 1; });
@@ -391,6 +399,11 @@
     var visti = {}, tutti = [];
     (altro.storico || []).concat(base.storico || []).forEach(function(h){ var k = JSON.stringify(h); if (!visti[k]) { visti[k] = 1; tutti.push(h); } });
     base.storico = tutti.slice(-50);
+    if (altro.sim26) {   // simulazione Commissione 2026: unione di buste fatte e domande viste
+      var b = base.sim26 || (base.sim26 = { fatte: [], viste: {} });
+      (altro.sim26.fatte || []).forEach(function(n){ if (b.fatte.indexOf(n) < 0) b.fatte.push(n); });
+      Object.keys(altro.sim26.viste || {}).forEach(function(k){ b.viste[k] = 1; });
+    }
   }
   var SALV = { quando: 0, dove: '', errore: '' };
   function save(){
@@ -749,7 +762,7 @@
   /* =====================================================
      RENDER DI UNA DOMANDA (riusato in studio e simulazione)
      ===================================================== */
-  function commOf(d){ return C[MAT[d.m].comm] ? MAT[d.m].comm : 'rausei'; }
+  function commOf(d){ if (d.comm && C[d.comm]) return d.comm; return C[MAT[d.m].comm] ? MAT[d.m].comm : 'rausei'; }
   function initials(n){ return n.split(' ').map(function(x){ return x[0]; }).join('').slice(0,2); }
   function whoHtml(d){
     var ck = commOf(d), c = C[ck];
@@ -887,7 +900,22 @@
   $('#btnRandom').addEventListener('click', function(){ var L = filtered(); if (!L.length) return toast('Nessuna domanda nel filtro'); openQ(L[Math.floor(Math.random()*L.length)].id); });
 
   var openId = null;
-  function byId(id){ return O.domande.filter(function(d){ return d.id === id; })[0]; }
+  function byId(id){ return O.domande.filter(function(d){ return d.id === id; })[0] || simGet(id); }
+  /* ---------- Simulazione Commissione 2026 (orale-sim26.js): domande simulate con risposta sintetica;
+     punti chiave (per il riscontro), aggancio e fonti dalla prima scheda collegata ---------- */
+  var SIM = window.ORALE_SIM26 || null, SIMD = {}, SIMRAW = {};
+  if (SIM) SIM.domande.forEach(function(x){ SIMRAW[x.id] = x; });
+  function simGet(id){
+    if (SIMD[id]) return SIMD[id];
+    var s = SIMRAW[id]; if (!s) return null;
+    var b0 = O.domande.filter(function(d){ return d.id === s.schede[0]; })[0], r0 = b0 && b0.r;
+    SIMD[id] = { id: s.id, m: s.m, gruppo: s.gruppo, comm: s.comm, star: s.star, sim: true, schede: s.schede, testo: s.testo, serie: 'C26', ufficiale: false,
+      fonte: 'Commissione 2026 simulata · riga ' + s.riga + ', domanda ' + s.n + (s.star ? ' · ★ prioritaria' : ''),
+      approf: b0 ? (b0.approf || []) : [],
+      r: { sintesi: s.sintesi, punti: r0 ? r0.punti : [], aggancio: r0 ? r0.aggancio : '',
+        fonti: 'Risposta sintetica della simulazione del 22/11/2026. Punti, aggancio e fonti dalla scheda ' + s.schede[0] + (s.schede.length > 1 ? ' (vedi anche ' + s.schede.slice(1).join(', ') + ')' : '') + (r0 ? '. ' + r0.fonti : '') } };
+    return SIMD[id];
+  }
   function openQ(id){
     var d = byId(id); if (!d) return;
     openId = id;
@@ -975,6 +1003,35 @@
     });
     return out;
   }
+  var c26N = $('#c26N'), c26Set = $('#c26Set');
+  if (SIM && c26N) {
+    c26N.innerHTML = '<option value="0">a caso, tra quelle non fatte</option>' + SIM.buste.map(function(_, i){ return '<option value="'+(i+1)+'">n. '+(i+1)+'</option>'; }).join('');
+    var selC26 = function(){ var r = document.querySelector('input[name=tipo][value=c26]'); if (r) r.checked = true; c26N.disabled = c26Set.value === 'prio'; };
+    c26N.addEventListener('change', selC26); c26Set.addEventListener('change', selC26);
+  } else if ($('#c26Row')) $('#c26Row').style.display = 'none';
+  function c26Stato(){
+    var el = $('#c26Stato'); if (!el || !SIM) return;
+    var st = S.sim26 || { fatte: [], viste: {} };
+    var stelle = SIM.domande.filter(function(x){ return x.star; }), viste = stelle.filter(function(x){ return st.viste[x.id]; }).length;
+    el.textContent = 'Buste fatte: ' + st.fatte.length + '/31 · prioritarie viste: ' + viste + '/' + stelle.length;
+  }
+  c26Stato();
+  function bustaC26(){
+    var st = S.sim26 || (S.sim26 = { fatte: [], viste: {} });
+    function pesca(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+    if (c26Set.value === 'prio') {
+      var Q = SIM.righe.map(function(r){
+        var stelle = r.ids.filter(function(id){ return SIMRAW[id].star; });
+        var nuove = stelle.filter(function(id){ return !st.viste[id]; });
+        if (!nuove.length) { stelle.forEach(function(id){ delete st.viste[id]; }); nuove = stelle; }
+        return simGet(pesca(nuove));
+      });
+      return { titolo: 'Busta prioritarie ★ (Commissione 2026 simulata)', Q: Q, n: 0 };
+    }
+    var n = Number(c26N.value) || 0;
+    if (!n) { var lib = []; for (var i = 1; i <= SIM.buste.length; i++) if (st.fatte.indexOf(i) < 0) lib.push(i); if (!lib.length) { st.fatte = []; for (i = 1; i <= SIM.buste.length; i++) lib.push(i); } n = pesca(lib); }
+    return { titolo: 'Busta simulata n. ' + n + ' (Commissione 2026)', Q: SIM.buste[n-1].map(simGet), n: n };
+  }
   var run = null;
   function simHist(){
     var h = S.storico.slice(-3).reverse();
@@ -984,6 +1041,7 @@
   $('#btnStart').addEventListener('click', function(){
     var tipo = document.querySelector('input[name=tipo]:checked').value;
     var n = Number(nb.value) || (1 + Math.floor(Math.random()*O.buste));
+    if (tipo === 'c26' && SIM) { var bc = bustaC26(); run = { titolo: bc.titolo, Q: bc.Q, c26: bc.n, i: 0, ans: [], voto: [], tempi: [], hide: $('#simNoModel').checked }; $('#simSetup').style.display = 'none'; renderStep(); return; }
     var Q = tipo === 'uff' ? bustaUff(n) : tipo === 'b26' ? busta2026() : bustaMix();
     run = { titolo: tipo === 'uff' ? 'Busta 2025 n. ' + n : tipo === 'b26' ? 'Busta 2026 (5 domande)' : 'Busta mista (8 domande)', Q: Q, i: 0, ans: [], voto: [], tempi: [], hide: $('#simNoModel').checked };
     $('#simSetup').style.display = 'none';
@@ -1051,8 +1109,9 @@
     var data = new Date().toLocaleDateString('it-IT');
     S.storico.push({ data: data, titolo: run.titolo, stima: stima.toFixed(1) + '/10', ids: run.Q.map(function(d){ return d.id; }), voti: run.voto });
     if (S.storico.length > 50) S.storico = S.storico.slice(-50);
-    run.Q.forEach(function(d, k){ if (run.voto[k] < 2) S.stato[d.id] = 'rip'; });
-    save();
+    run.Q.forEach(function(d, k){ if (run.voto[k] < 2) (d.sim ? d.schede : [d.id]).forEach(function(id){ S.stato[id] = 'rip'; }); });
+    if (run.c26 !== undefined) { var st26 = S.sim26 || (S.sim26 = { fatte: [], viste: {} }); if (run.c26 && st26.fatte.indexOf(run.c26) < 0) st26.fatte.push(run.c26); run.Q.forEach(function(d){ st26.viste[d.id] = 1; }); }
+    save(); c26Stato();
     var rows = run.Q.map(function(d, k){
       return '<tr><td>'+(k+1)+'</td><td><b>'+esc(MAT[d.m].corto)+'</b><br><span class="small muted">'+esc(C[commOf(d)].nome)+'</span></td><td>'+hl(d.testo)+'</td><td>'+lab(run.voto[k])+'<br><span class="small muted mono">'+Math.floor((run.tempi[k]||0)/60)+'′'+String((run.tempi[k]||0)%60).padStart(2,'0')+'″</span></td><td><button class="btn alt sm" data-open="'+d.id+'" type="button">Rivedi</button></td></tr>' +
         '<tr><td></td><td colspan="4"><details><summary class="small"><b>Risposta migliore</b> (con il riscontro sulla tua risposta)</summary>' + modelHtml(d, run.ans[k] || '') + '</details></td></tr>';
@@ -1060,7 +1119,7 @@
     $('#simRun').innerHTML = '<div class="box"><h2>Riepilogo — '+esc(run.titolo)+'</h2>' +
       '<div class="row"><div class="big">'+stima.toFixed(1)+'</div><div class="small muted">stima su 10 dalla tua autovalutazione (bene = 2, parziale = 1, scoperta = 0). Per l\'abilitazione serve almeno 6/10. Non è il voto della commissione: per una correzione vera usa il pacchetto per Claude.</div></div>' +
       '<table class="sum"><thead><tr><th>#</th><th>Materia</th><th>Domanda</th><th>Esito</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>' +
-      '<p class="small muted">Le domande non segnate «bene» sono state messe tra quelle da ripassare nello Studio.</p>' +
+      '<p class="small muted">Le domande non segnate «bene» sono state messe tra quelle da ripassare nello Studio' + (run.c26 !== undefined ? ' (per le domande simulate, le schede collegate)' : '') + '.</p>' +
       '<div class="row" style="margin-top:12px"><button class="btn red" id="pkt" type="button">Copia pacchetto per Claude</button><button class="btn alt" id="again" type="button">Nuova busta</button></div></div>';
     $('#pkt').onclick = function(){ copy(pacchetto(data, stima)); };
     $('#again').onclick = function(){ run = null; $('#simRun').innerHTML = ''; $('#simSetup').style.display = ''; simHist(); };
