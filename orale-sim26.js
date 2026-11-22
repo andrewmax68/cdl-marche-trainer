@@ -1664,7 +1664,7 @@ window.ORALE_SIM26 = {
 "comm": "bucchini",
 "star": true,
 "testo": "I fringe benefit: valutazione, soglia di esenzione e auto aziendale.",
-"sintesi": "Sono compensi in natura, beni e servizi dati al dipendente o ai familiari (art. 51, c. 3, TUIR), valutati al valore normale, salvo i valori convenzionali per auto, prestiti e fabbricati (c. 4). Soglia di esenzione ordinaria 258,23 euro annui; per il 2025-2027 1.000 euro, 2.000 con figli a carico (L. 207/2024): se si supera la soglia, è tassato tutto il valore. Auto in uso promiscuo: percentuale del costo chilometrico ACI per 15.000 km (50%, ridotta al 10% per le elettriche e al 20% per le ibride plug-in), al netto di quanto trattenuto al dipendente. La base è la stessa anche ai fini contributivi.",
+"sintesi": "Sono compensi in natura, beni e servizi dati al dipendente o ai familiari (art. 51, c. 3, TUIR), valutati al valore normale, salvo i valori convenzionali per auto, prestiti e fabbricati (c. 4). Soglia di esenzione ordinaria 258,23 euro annui; per il 2025-2027 1.000 euro, 2.000 con figli a carico (art. 1, c. 390-391, L. 207/2024), e nella soglia speciale rientrano anche le somme erogate o rimborsate per utenze domestiche (acqua, luce, gas), affitto o interessi del mutuo dell'abitazione principale: se si supera la soglia, è tassato tutto il valore. Auto in uso promiscuo concessa con contratti dal 2025: 50% del costo chilometrico ACI per 15.000 km, ridotto al 10% per le elettriche e al 20% per le ibride plug-in (art. 51, c. 4, lett. a), al netto di quanto trattenuto al dipendente. La base è la stessa anche ai fini contributivi.",
 "schede": [
 "S22-TRIB-17"
 ]
