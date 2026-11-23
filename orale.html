@@ -578,18 +578,43 @@
     var re = gen === 'f' ? FEM : MAS;
     return voices.filter(function(v){ return re.test(v.name); })[0] || voices[0];
   }
+  /* Lettura delle domande. Ogni lettura ha un numero: le richiamate di letture vecchie (annullate o finite in ritardo)
+     vengono ignorate, così non aprono il microfono sulla domanda nuova né la interrompono. Dopo cancel() si aspetta
+     un attimo prima di parlare (in Chrome ed Edge una lettura avviata subito dopo cancel() può partire in ritardo
+     o perdersi) e, se la voce non parte entro 2,5 secondi, si riprova una volta. */
+  var PARLA_ID = 0;
   function speak(text, comm, onEnd){
+    var id = ++PARLA_ID;
     if (!synth || !S.audio.on) { if (onEnd) onEnd(); return; }
+    var occupato = synth.speaking || synth.pending;
     synth.cancel();
-    var u = new SpeechSynthesisUtterance(text);
-    u.lang = 'it-IT';
     var cv = comm && C[comm] ? C[comm].voce : { pitch:1, rate:1, gen:'m' };
-    var v = pickVoice(cv.gen); if (v) u.voice = v;
-    u.pitch = (window.VoceUmana && VoceUmana.naturale(v)) ? 1 : cv.pitch; u.rate = Math.max(.5, Math.min(1.6, cv.rate * (S.audio.rate||1)));
-    u.onend = function(){ if (onEnd) onEnd(); };
-    u.onerror = function(){ if (onEnd) onEnd(); };
-    synth.speak(u);
+    var v = pickVoice(cv.gen), tentativi = 0, partita = false, chiusa = false;
+    function chiudi(){ if (chiusa || id !== PARLA_ID) return; chiusa = true; if (onEnd) setTimeout(function(){ if (id === PARLA_ID) onEnd(); }, 350); }
+    function avvia(){
+      if (id !== PARLA_ID) return;
+      tentativi++;
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = 'it-IT'; if (v) u.voice = v;
+      u.pitch = (window.VoceUmana && VoceUmana.naturale(v)) ? 1 : cv.pitch; u.rate = Math.max(.5, Math.min(1.6, cv.rate * (S.audio.rate||1)));
+      u.onstart = function(){ partita = true; };
+      u.onend = function(){ if (id === PARLA_ID) chiudi(); };
+      u.onerror = function(e){
+        if (id !== PARLA_ID) return;
+        if (e && (e.error === 'interrupted' || e.error === 'canceled')) return; /* annullata da noi: nessun microfono */
+        chiudi();
+      };
+      try { synth.resume(); } catch(e){}
+      synth.speak(u);
+      setTimeout(function(){ /* la voce non è partita: un nuovo tentativo, poi si va avanti senza voce */
+        if (id !== PARLA_ID || partita || chiusa) return;
+        if (tentativi < 2) { synth.cancel(); setTimeout(avvia, 250); }
+        else { synth.cancel(); toast('La voce del browser non è partita: leggi la domanda sullo schermo'); chiudi(); }
+      }, 2500);
+    }
+    setTimeout(avvia, occupato ? 300 : 60);
   }
+  function taci(){ PARLA_ID++; if (synth) synth.cancel(); }
 
   /* dettatura: un solo riconoscitore attivo, legato a una textarea */
   var rec = null, active = null, recWanted = false, recTarget = null, recBase = '', recBtn = null;
@@ -641,7 +666,7 @@
   function startMic(textarea, btn){
     if (CL.art) {
       if (!CL.dict) { toast('Dettatura non disponibile qui: usa il microfono della tastiera'); return; }
-      if (synth) synth.cancel();
+      taci();
       recTarget = textarea; recBtn = btn; recWanted = true; recBase = textarea.value ? textarea.value.replace(/\s*$/, ' ') : '';
       CL.dict.start().catch(function(e){
         recWanted = false; setRecBtn(false);
@@ -655,7 +680,7 @@
     }
     if (!SR) { toast('Dettatura non disponibile in questo browser: usa Chrome, Edge o Safari'); return; }
     stopMic();
-    if (synth) synth.cancel();
+    taci();
     recTarget = textarea; recBtn = btn; recWanted = true;
     recBase = textarea.value ? textarea.value.replace(/\s*$/, ' ') : '';
     var me = new SR(); rec = me; active = me;
@@ -716,7 +741,7 @@
     var was = recWanted; stopMic(); setTimeout(fn, was ? 600 : 0);
   }
   function setRecBtn(on, st){ if (recBtn) { recBtn.classList.toggle('rec', on); recBtn.textContent = !on ? '🎙 Rispondi a voce' : st === 'starting' ? '⏳ Apro il microfono…' : st === 'finishing' ? '… trascrivo' : '■ Ferma (in ascolto)'; } }
-  function stopAll(){ stopMic(); if (synth) synth.cancel(); stopTimer(); }
+  function stopAll(){ stopMic(); taci(); stopTimer(); }
 
   /* interruttore audio */
   var aOn = $('#audioOn');
@@ -937,7 +962,7 @@
   }
   function readQ(d, scope){
     var c = C[commOf(d)];
-    speak((c.titolo === 'prof.ssa' ? 'Professoressa ' : 'Dottor ') + c.nome.split(' ').slice(-1)[0] + '. ' + d.testo + '.', commOf(d), function(){
+    speak((c.titolo === 'prof.ssa' ? 'Professoressa ' : 'Dottor ') + c.nome.split(' ').slice(1).join(' ') + '. ' + d.testo + '.', commOf(d), function(){
       if (S.audio.on && S.audio.autoMic && micSupported()) { var b = scope.querySelector('[data-act=mic]'); var ta = scope.querySelector('textarea'); if (b && ta) startMic(ta, b); }
     });
   }
@@ -1072,12 +1097,12 @@
   function readSim(d){
     var c = C[commOf(d)];
     var intro = run.i === 0 ? 'Buongiorno. Cominciamo. ' : '';
-    speak(intro + (c.titolo === 'prof.ssa' ? 'Sono la professoressa ' : 'Sono il dottor ') + c.nome.split(' ').slice(-1)[0] + '. ' + d.testo + '.', commOf(d), function(){
+    speak(intro + (c.titolo === 'prof.ssa' ? 'Sono la professoressa ' : 'Sono il dottor ') + c.nome.split(' ').slice(1).join(' ') + '. ' + d.testo + '.', commOf(d), function(){
       if (S.audio.on && S.audio.autoMic && micSupported() && $('#sMic')) startMic($('#sAns'), $('#sMic'));
     });
   }
   function finishQ(skipped){
-    stopTimer(); if (synth) synth.cancel();
+    stopTimer(); taci();
     $('#sDone').disabled = true; $('#sSkip').disabled = true;
     afterMic(function(){ finishQ2(skipped); });
   }
@@ -1283,7 +1308,7 @@
       else ta.focus({preventScroll: true});
     }
     function segna(x, ok){
-      try { stopMic(); if (synth) synth.cancel(); } catch(e){}
+      try { stopMic(); taci(); } catch(e){}
       try { var st = S.quiz[x.id] || { n: 0 }; st.n++; st.ok = ok; st.t = Date.now(); if (x._auto) st.auto = x._auto; else delete st.auto; S.quiz[x.id] = st; save(); } catch(e){}
       if (ok) giro.ok++; else giro.ko++;
       giro.i++; mostra();
