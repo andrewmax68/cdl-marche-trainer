@@ -4199,12 +4199,13 @@ window.ORALE = (function () {
       punti: [
         ["Modelli e oggetto (art. 10, c. 3-4 e 8): qualsiasi tipo societario dei titoli V e VI del libro V del codice civile (le cooperative con almeno tre soci); esercizio esclusivo dell'attività professionale da parte dei soci; ammessa la STP multidisciplinare per più professioni.", ["titoli v e vi", "cooperativ", "esclusiv", "multidisciplinar"]],
         ["Soci (art. 10, c. 4, lett. b): professionisti iscritti ad albi, cittadini UE con titolo abilitante e soci non professionisti solo per prestazioni tecniche o per investimento; i professionisti devono avere la maggioranza dei due terzi nelle decisioni dei soci, altrimenti la società si scioglie e viene cancellata se non ripristina la condizione entro 6 mesi.", ["soci", "investimento", "due terzi", "scioglie", "6 mesi"]],
+        ["Come si contano i due terzi (art. 10, c. 4, lett. b, riscritto dall'art. 1, c. 24, L. 190/2025, dal 3/1/2026): il numero dei soci professionisti «ovvero, in alternativa» la loro partecipazione al capitale, «tenuto conto delle regole stabilite per il modello societario prescelto»; non contano i patti sociali o parasociali contrari. Nelle società di capitali, dove si vota per quote, decide il capitale (un solo professionista con almeno i 2/3 del capitale basta); nelle società di persone conta di regola il numero dei soci. Prima della riforma il CNDCEC chiedeva entrambi i requisiti, l'AGCM (2019) e l'Agenzia delle Entrate (ris. 10/E del 2022) li ritenevano alternativi.", ["in alternativa", "capitale", "teste", "modello societario", "190/2025"]],
         ["Atto costitutivo e cliente (art. 10, c. 4-5; art. 4 D.M. 34/2013): l'incarico è eseguito solo dai soci abilitati; il cliente può scegliere il professionista e riceve per iscritto l'elenco dei soci e l'informativa sui conflitti di interesse; polizza obbligatoria per la responsabilità civile; la denominazione contiene la dicitura «società tra professionisti».", ["soci abilitati", "scegliere", "conflitt", "polizza", "denominazione"]],
         ["Iscrizione e disciplina (art. 10, c. 6-7): iscrizione nella sezione speciale dell'albo; il socio non può partecipare ad altra STP; soci e società sono soggetti al codice deontologico e al potere disciplinare dell'Ordine; la società risponde con il professionista se la violazione deriva da sue direttive.", ["sezione speciale", "altra stp", "disciplinare", "direttive"]],
         ["Codice deontologico (art. 20, c. 6-7): al consulente che opera in STP si applicano le regole per chi amministra società di servizi; il socio che contribuisce ad alterare la maggioranza dei due terzi e non la ripristina entro 6 mesi ne risponde disciplinarmente. Restano possibili lo studio associato e gli altri modelli già esistenti (art. 10, c. 9).", ["art. 20", "due terzi", "disciplinar", "studio associato"]]
       ],
       aggancio: "La STP serve a crescere con altri professionisti (commercialisti, avvocati) o con soci di capitale; il limite dei due terzi e l'esecuzione personale dell'incarico da parte del socio abilitato tutelano l'indipendenza della professione e la riserva dell'art. 1 L. 12/1979.",
-      fonti: "L. 12/11/2011 n. 183, art. 10, c. 3-9, testo vigente letto su Normattiva il 9/11/2026; D.M. Giustizia 8/2/2013 n. 34, art. 4 (riportato da Simone); Simone, Ordinamento e deontologia, pp. 1237-1238 e testo del Codice deontologico, art. 20."
+      fonti: "L. 12/11/2011 n. 183, art. 10, c. 3-9, testo vigente letto su Normattiva il 9/11/2026; per la lett. b) del c. 4 dopo la L. 190/2025: testo riportato da fonti secondarie (ecnews.it; circolare CPO Milano, R. Bellocchio, 2026), da riscontrare in G.U.; D.M. Giustizia 8/2/2013 n. 34, art. 4 (riportato da Simone); Simone, Ordinamento e deontologia, pp. 1237-1238 e testo del Codice deontologico, art. 20."
     }
   };
 
@@ -4237,7 +4238,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.5.3 · 23/11/2026',
+    versione: '2.5.4 · 23/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
