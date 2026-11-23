@@ -299,6 +299,7 @@
       </div>
       <div class="row" style="margin-top:6px">
         <label class="small row" style="gap:6px"><input type="checkbox" id="sim26no22" autocomplete="off"> Busta 2026: escludi gli argomenti 2022 di altra sede (solo Ancona 2025 e integrazioni 2026)</label>
+        <label class="small row" style="gap:6px"><input type="checkbox" id="sim26usc" autocomplete="off" checked> Busta 2026: escludi le 23 domande già uscite agli orali del 23/11 (riferite da una candidata; le buste estratte non tornano nell'urna)</label>
         <label class="small row" style="gap:6px;margin-left:10px"><input type="checkbox" id="sim26rip" autocomplete="off"> Busta 2026: privilegia le domande segnate «da ripassare»</label>
       </div>
       <div class="row" style="margin-top:14px">
@@ -998,11 +999,14 @@
   function soloR(){ var c = document.getElementById('simSoloR'); return c && c.checked; }
   var ORD26 = [['DL'], ['INPS','INAIL'], ['PPP:Privato','PPP:Pubblico e costituzionale','PPP:Penale'], ['TRIB','RAG'], ['DEO']];
   function area26(d){ return d.m !== 'PPP' ? d.m : 'PPP:' + (d.gruppo === 'Integrazione 2026' ? 'Pubblico e costituzionale' : d.gruppo); }
+  /* Domande riferite come uscite agli orali del 23/11/2026 (messaggio di una candidata), con lo stesso tema in altre schede */
+  var USCITE_2311 = ['DL-X3','DL-12b','DL-8b','DL-21a','INAIL-8','INAIL-22','INAIL-5','INPS-14','S22-INPS-14','PPP-14','PPP-19','PPP-13','PPP-17','RAG-6','RAG-13','RAG-19','TRIB-9','TRIB-14','RAG-16','TRIB-23','DEO-20','DEO-8','DEO-12'];
   function busta2026(){
     // Estrazione per riga: prima la materia del gruppo (a pari probabilità), poi la domanda.
     // Esclude i doppioni (argomenti 2022 che rinviano a una domanda equivalente) e le domande delle ultime 3 buste.
     var no22 = $('#sim26no22') && $('#sim26no22').checked;
     var pRip = $('#sim26rip') && $('#sim26rip').checked;
+    var usc = $('#sim26usc') && $('#sim26usc').checked;
     var recenti = {};
     S.storico.slice(-3).forEach(function(x){ (x.ids || []).forEach(function(id){ recenti[id] = 1; }); });
     function pesca(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
@@ -1010,7 +1014,7 @@
       var mats = ks.slice(), x = null;
       while (!x && mats.length) {
         var m = pesca(mats); mats.splice(mats.indexOf(m), 1);
-        var base = O.domande.filter(function(d){ return area26(d) === m && !d.vedi && (!soloR() || d.r) && !(no22 && d.serie === 'S22') && !escludiRara(d); });
+        var base = O.domande.filter(function(d){ return area26(d) === m && !d.vedi && (!soloR() || d.r) && !(no22 && d.serie === 'S22') && !(usc && USCITE_2311.indexOf(d.id) >= 0) && !escludiRara(d); });
         var pool = base.filter(function(d){ return !recenti[d.id]; });
         if (!pool.length) pool = base;
         if (pRip) { var rip = pool.filter(function(d){ return S.stato[d.id] === 'rip'; }); if (rip.length && Math.random() < 0.7) pool = rip; }
