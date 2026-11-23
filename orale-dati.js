@@ -2178,15 +2178,16 @@ window.ORALE = (function () {
     },
 
     "TRIB-16": {
-      sintesi: "L'autotutela è il potere dell'Amministrazione finanziaria di annullare o rinunciare ai propri atti illegittimi o infondati; dal 2024 lo Statuto del contribuente distingue un'autotutela obbligatoria (art. 10-quater) e una facoltativa (art. 10-quinquies), introdotte dal D.Lgs. 219/2023.",
+      sintesi: "L'autotutela è il potere dell'Amministrazione finanziaria di annullare o rinunciare ai propri atti illegittimi o infondati, che nella pratica si attiva quasi sempre su istanza del contribuente o del suo consulente; dal 2024 lo Statuto del contribuente distingue un'autotutela obbligatoria (art. 10-quater) e una facoltativa (art. 10-quinquies), introdotte dal D.Lgs. 219/2023.",
       punti: [
-        ["Obbligatoria, anche senza istanza, in pendenza di giudizio o su atti definitivi, per errori manifesti: errore di persona, di calcolo, sul tributo, sul presupposto, errore materiale del contribuente, pagamenti ignorati, documenti poi sanati.", ["obbligatori", "10-quater", "errore"]],
+        ["Come si attiva: il potere è dell'ufficio, che può agire anche d'ufficio; di regola però parte dall'istanza del contribuente, senza forme prestabilite, motivata e con i documenti che provano l'errore (per esempio gli F24 pagati). L'istanza serve anche per poter impugnare il rifiuto o il silenzio.", ["istanza", "contribuente", "document"]],
+        ["Obbligatoria: l'ufficio deve annullare, anche in pendenza di giudizio o su atti definitivi, per errori manifesti: errore di persona, di calcolo, sul tributo, sul presupposto, errore materiale del contribuente, pagamenti ignorati, documenti poi sanati.", ["obbligatori", "10-quater", "errore"]],
         ["Limiti: non c'è obbligo se c'è un giudicato favorevole all'Amministrazione o dopo un anno dalla definitività dell'atto non impugnato.", ["giudicato", "un anno", "definitiv"]],
         ["Facoltativa: fuori da quei casi, l'Amministrazione può comunque annullare o rinunciare se l'atto è illegittimo o infondato (art. 10-quinquies).", ["facoltativ", "10-quinquies", "illegittim"]],
         ["Impugnabili davanti alla Corte di giustizia tributaria il rifiuto espresso o tacito sull'autotutela obbligatoria e il rifiuto espresso sulla facoltativa (art. 19 D.Lgs. 546/1992).", ["impugn", "546/1992", "rifiuto"]],
         ["La responsabilità contabile dei funzionari per le valutazioni di fatto è limitata al dolo.", ["dolo", "responsabilita contabile"]]
       ],
-      aggancio: "Per lo studio è la via più rapida contro un avviso palesemente sbagliato, per esempio ritenute versate ma non considerate; i termini per il ricorso però continuano a correre.",
+      aggancio: "Per lo studio è la via più rapida contro un avviso palesemente sbagliato, per esempio ritenute versate ma non considerate; l'istanza però non sospende i 60 giorni per il ricorso: se l'errore non è banale, si presenta l'istanza e intanto si prepara il ricorso.",
       fonti: "Simone, Diritto tributario, pp. 473-474 (artt. 10-quater e 10-quinquies L. 212/2000; art. 19 D.Lgs. 546/1992)."
     },
 
@@ -4236,7 +4237,7 @@ window.ORALE = (function () {
   });
 
   return {
-    versione: '2.5.2 · 22/11/2026',
+    versione: '2.5.3 · 23/11/2026',
     materie: MATERIE,
     commissione: COMMISSIONE,
     domande: DOMANDE,
